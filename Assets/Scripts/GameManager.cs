@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
-    public BoardManager boardManager;
-    public BaseCardData someCardData; // Assign this in the Inspector
+    public DeckManager deckManager;
+    public HandManager handManager;
 
-    void Start() {
-        boardManager.AddCard(someCardData, 0); // Add the card to the first position
+    // Call this method to test drawing a card
+    public void TestDrawCard() {
+        BaseCardData drawnCard = deckManager.DrawCard();
+        if (drawnCard != null) {
+            handManager.AddCardToHand(drawnCard);
+        }
     }
 }
-
