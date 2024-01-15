@@ -9,15 +9,18 @@ public class CardPositionManager : MonoBehaviour {
 
     private List<Vector3> cardPositions;
 
-    void Awake() {
-        
+    void OnDrawGizmos() {
+        GenerateCardPositions(); // Call this here to update positions in the editor
+
+        if (cardPositions == null || cardPositions.Count == 0) return;
+
+        Gizmos.color = Color.red;
+        foreach (var pos in cardPositions) {
+            Gizmos.DrawSphere(pos, 0.1f); // Draw small spheres at each card position
+        }
     }
 
-    private void Start() {
-            
-    }
-
-    private void Update() {
+    void Start() {
         GenerateCardPositions();
     }
 
@@ -37,16 +40,5 @@ public class CardPositionManager : MonoBehaviour {
             return cardPositions[index];
         }
         return Vector3.zero; // Return zero if the index is out of range
-    }
-
-    // This method is called every frame by Unity when the object is selected in the Editor
-    void OnDrawGizmos() {
-       // if (cardPositions == null || cardPositions.Count == 0) return;
-      //  Debug.Log(cardPositions);
-
-        Gizmos.color = Color.red;
-        foreach (var pos in cardPositions) {
-            Gizmos.DrawSphere(pos, 0.1f); // Draw small spheres at each card position
-        }
     }
 }
