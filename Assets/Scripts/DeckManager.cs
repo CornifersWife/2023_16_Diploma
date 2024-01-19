@@ -14,4 +14,23 @@ public class DeckManager : MonoBehaviour {
         deck.RemoveAt(0);
         return cardData;
     }
+
+    // Fisher-Yates shuffle
+    public void Shuffle()
+    {
+        System.Random rand = new System.Random();
+        int n = deck.Count;
+         
+        for (int i = 0; i < n-1; i++)
+        {
+            // Random for remaining positions.
+            int r = i + rand.Next(n - i);
+             
+            //swapping the elements
+            BaseCardData temp = deck[r];
+            deck[r] = deck[i];
+            deck[i] = temp;
+             
+        }
+    }
 }
