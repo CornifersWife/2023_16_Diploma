@@ -21,7 +21,7 @@ public class CardDisplay : MonoBehaviour {
 
     public void DisplayData(GameObject card)
     {
-        GameObject cardCanvas = Instantiate(this.cardCanvas, card.transform);
+        GameObject cardCanvas = Instantiate(this.cardCanvas, card.transform.position, transform.rotation * Quaternion.Euler (90f, 0f, 180f));
         GameObject cardText = cardCanvas.transform.GetChild(0).gameObject;
 
         GameObject manaText = cardText.transform.GetChild(0).gameObject;
