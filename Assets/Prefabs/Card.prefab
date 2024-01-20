@@ -120,3 +120,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardData: {fileID: 0}
+  cardCanvas: {fileID: 1239359339357471944, guid: e260764058148eb4f877278ce1fc8249, type: 3}

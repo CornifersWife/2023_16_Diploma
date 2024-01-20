@@ -24,6 +24,7 @@ public class HandManager : MonoBehaviour {
 
         hand.Add(cardDisplay);
         UpdateCardPositionsInHand();
+        cardDisplay.DisplayData(cardObj);
     }
 
     // Rest of the HandManager code...
