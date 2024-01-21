@@ -35,6 +35,10 @@ public class CardDisplay : MonoBehaviour {
         nameText.GetComponent<TextMeshProUGUI>().text = cardData.cardName;
         manaText.GetComponent<TextMeshProUGUI>().text = cardData.cost.ToString();
         
+        //If card is not Minion:
+        attackText.GetComponent<TextMeshProUGUI>().text = "";
+        healthText.GetComponent<TextMeshProUGUI>().text = "";
+        
         //If card is Minion:
         /*
         attackText.GetComponent<TextMeshProUGUI>().text = cardData.power.ToString();
