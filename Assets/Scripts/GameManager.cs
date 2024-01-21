@@ -5,8 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
     public DeckManager deckManager;
     public HandManager handManager;
-    public DeckManager opponentDeckManager;
-    public HandManager opponentHandManager;
+    public DeckManager enemyDeckManager;
+    public HandManager enemyHandManager;
 
     // Call this method to test drawing a card
     public void TestDrawCard() {
@@ -16,11 +16,11 @@ public class GameManager : MonoBehaviour {
         }
     }
     
-    // Call this method to test opponent drawing a card
+    // Call this method to test enemy drawing a card
     public void TestOpponentDrawCard() {
-        BaseCardData drawnCard = opponentDeckManager.DrawCard();
+        BaseCardData drawnCard = enemyDeckManager.DrawCard();
         if (drawnCard != null) {
-            opponentHandManager.AddCardToHand(drawnCard);
+            enemyHandManager.AddCardToHand(drawnCard);
         }
     }
 

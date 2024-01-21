@@ -154,8 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckManager: {fileID: 2120817602}
   handManager: {fileID: 2120817603}
-  opponentDeckManager: {fileID: 1912020991}
-  opponentHandManager: {fileID: 918035320}
+  enemyDeckManager: {fileID: 1912020991}
+  enemyHandManager: {fileID: 918035320}
 --- !u!4 &157964561
 Transform:
   m_ObjectHideFlags: 0
@@ -552,7 +552,7 @@ GameObject:
   - component: {fileID: 918035319}
   - component: {fileID: 918035320}
   m_Layer: 0
-  m_Name: Opponent Hand
+  m_Name: Enemy Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1224,7 +1224,7 @@ GameObject:
   - component: {fileID: 1820437709}
   - component: {fileID: 1820437708}
   m_Layer: 0
-  m_Name: Opponent
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1270,7 +1270,7 @@ GameObject:
   - component: {fileID: 1912020990}
   - component: {fileID: 1912020991}
   m_Layer: 0
-  m_Name: Opponent Deck
+  m_Name: Enemy Deck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
