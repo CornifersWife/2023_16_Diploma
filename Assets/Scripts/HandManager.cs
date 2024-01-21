@@ -5,7 +5,8 @@ using UnityEngine;
 public class HandManager : MonoBehaviour {
     public List<CardDisplay> hand = new List<CardDisplay>();
     public GameObject cardPrefab; // Assign your card prefab here
-
+    public CardPositionManager cardPositionManager;
+    
     public float cardSpacing = 1.0f; // Space between cards
     // Call this method whenever you need to update the card positions in hand
     public void UpdateCardPositionsInHand() {
@@ -21,8 +22,11 @@ public class HandManager : MonoBehaviour {
         GameObject cardObj = Instantiate(cardPrefab, transform);
         CardDisplay cardDisplay = cardObj.GetComponent<CardDisplay>();
         cardDisplay.SetupCard(cardData);
-
         hand.Add(cardDisplay);
+        DraggableCard draggableCard = cardObj.GetComponent<DraggableCard>();
+        if (draggableCard != null) {
+            draggableCard.cardPositionManager = cardPositionManager;
+        }
         UpdateCardPositionsInHand();
         cardDisplay.DisplayData(cardObj);
     }
