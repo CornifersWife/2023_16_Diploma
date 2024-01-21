@@ -5,8 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
     public DeckManager deckManager;
     public HandManager handManager;
-    public DeckManager enemyDeckManager;
-    public HandManager enemyHandManager;
+    public Enemy enemy;
 
     // Call this method to test drawing a card
     public void TestDrawCard() {
@@ -17,11 +16,16 @@ public class GameManager : MonoBehaviour {
     }
     
     // Call this method to test enemy drawing a card
-    public void TestOpponentDrawCard() {
-        BaseCardData drawnCard = enemyDeckManager.DrawCard();
+    public void TestEnemyDrawCard() {
+        BaseCardData drawnCard = enemy.enemyDeckManager.DrawCard();
         if (drawnCard != null) {
-            enemyHandManager.AddCardToHand(drawnCard);
+            enemy.enemyHandManager.AddCardToHand(drawnCard);
         }
+    }
+    
+    // Call this method to test enemy playing a card
+    public void TestEnemyPlayCard() {
+        enemy.PlayCard();
     }
 
     // Call this method to test shuffling the deck

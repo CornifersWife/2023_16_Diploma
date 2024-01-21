@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Opponent : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public DeckManager enemyDeckManager;
+    public HandManager enemyHandManager;
+    public CardPositionManager cardPositionManager;
 
-    // Update is called once per frame
-    void Update()
+    public void PlayCard()
     {
-        
+        System.Random random = new System.Random();
+        List<CardDisplay> cards = enemyHandManager.hand;
+        CardDisplay playedCard = cards[random.Next(0, cards.Count)];
+
+        playedCard.transform.position =
+            cardPositionManager._opponentPositions[random.Next(0, cardPositionManager._opponentPositions.Count)];
     }
 }
