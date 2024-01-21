@@ -5,12 +5,22 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
     public DeckManager deckManager;
     public HandManager handManager;
+    public DeckManager opponentDeckManager;
+    public HandManager opponentHandManager;
 
     // Call this method to test drawing a card
     public void TestDrawCard() {
         BaseCardData drawnCard = deckManager.DrawCard();
         if (drawnCard != null) {
             handManager.AddCardToHand(drawnCard);
+        }
+    }
+    
+    // Call this method to test opponent drawing a card
+    public void TestOpponentDrawCard() {
+        BaseCardData drawnCard = opponentDeckManager.DrawCard();
+        if (drawnCard != null) {
+            opponentHandManager.AddCardToHand(drawnCard);
         }
     }
 
