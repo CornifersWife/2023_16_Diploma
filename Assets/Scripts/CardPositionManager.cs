@@ -8,8 +8,8 @@ public class CardPositionManager : MonoBehaviour {
     public Transform playerStart;
     public Transform playerEnd;
 
-    private List<Vector3> _playerPositions;
-    private List<Vector3> _opponentPositions;
+    public List<Vector3> _playerPositions;
+    public List<Vector3> _opponentPositions;
 
     void Start() {
         GeneratePositions();
@@ -50,7 +50,18 @@ public class CardPositionManager : MonoBehaviour {
 
         return Vector3.zero;
     }
-
+    /*
+    public Card GetOppositeCard(Card playerCard) {
+        int index = _playerPositions.IndexOf(playerCard.transform.position);
+        if (index != -1 && index < _opponentPositions.Count) {
+            Vector3 opponentPosition = _opponentPositions[index];
+            // Find the card at this opponent position
+            // This requires you to keep track of cards on the board
+            return FindCardAtPosition(opponentPosition);
+        }
+        return null;
+    }
+*/
 
     void OnDrawGizmos() {
         GeneratePositions(); // Call this here to update positions in the editor
