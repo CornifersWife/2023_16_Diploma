@@ -121,6 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardData: {fileID: 0}
+  minionCardData: {fileID: 0}
+  cardCanvas: {fileID: 1239359339357471944, guid: e260764058148eb4f877278ce1fc8249, type: 3}
 --- !u!114 &2577079146452593127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,5 +135,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e860bf46f4d983741ab6ea864b0c95d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+  isDragging: 0
   offset: {x: 0, y: 0, z: 0}
-  distance: 10
+  distanceToCamera: 0
+  dragStartScreenPosition: {x: 0, y: 0, z: 0}
+  cardPositionManager: {fileID: 0}
