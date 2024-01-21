@@ -75,7 +75,6 @@ GameObject:
   - component: {fileID: 2770891749431637345}
   - component: {fileID: 2879867531348955668}
   - component: {fileID: 959629004774000928}
-  - component: {fileID: 8843974903181244524}
   m_Layer: 0
   m_Name: board
   m_TagString: Untagged
@@ -184,21 +183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc8d3f6bd10e0da4cbfaa35d285a37a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: {fileID: 3965642273603035030}
-  endPosition: {fileID: 8018409736167142010}
-  numberOfSpots: 4
---- !u!114 &8843974903181244524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7030127489098056447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4716bbf3537e957428174a5c79c9f264, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardPrefab: {fileID: 0}
-  cardPositions:
-  - {fileID: 0}
+  spotsPerSide: 4
+  playerStart: {fileID: 3965642273603035030}
+  playerEnd: {fileID: 8018409736167142010}
