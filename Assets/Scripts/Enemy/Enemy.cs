@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ public class Enemy : MonoBehaviour
 
     private Dictionary<Vector3, bool> positionAvailabilityMap;
 
-    public void PlayCard()
+    public void Start()
     {
         //move this to card position manager if possible
         //------------------------------------------------
@@ -22,7 +23,11 @@ public class Enemy : MonoBehaviour
             positionAvailabilityMap.Add(cardPositionManager._opponentPositions[i], true);
         }
         //------------------------------------------------
-        
+        NotDraggable();
+    }
+
+    public void PlayCard()
+    {
         System.Random random = new System.Random();
         if (enemyHandManager.hand.Count != 0)
         {
@@ -40,6 +45,11 @@ public class Enemy : MonoBehaviour
                 playedCard.transform.position = pos;
 
                 positionAvailabilityMap[pos] = false;
+                
+                foreach (Vector3 v in positionAvailabilityMap.Keys)
+                {
+                    Debug.Log(positionAvailabilityMap[v]);
+                }
             }
         }
     }
@@ -55,5 +65,13 @@ public class Enemy : MonoBehaviour
             }
         }
         return res;
+    }
+
+    private void NotDraggable()
+    {
+        for (int i = 0; i < enemyHandManager.hand.Count(); i++)
+        {
+            enemyHandManager.hand[i].GetComponent<DraggableCard>().enabled = false;
+        }
     }
 }
