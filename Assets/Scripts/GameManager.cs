@@ -49,4 +49,26 @@ public class GameManager : MonoBehaviour {
         ids += "]";
         Debug.Log(ids);
     }
+    
+    // Call this method to test enemy shuffling the deck
+    public void TestEnemyShuffle()
+    {
+        string ids = "Before shuffle: [";
+        foreach (BaseCardData card in enemy.enemyDeckManager.deck)
+        {
+            ids += card.id + ", ";
+        }
+        ids += "]";
+        Debug.Log(ids);
+        
+        enemy.enemyDeckManager.Shuffle();
+        
+        ids = "After shuffle: [";
+        foreach (BaseCardData card in enemy.enemyDeckManager.deck)
+        {
+            ids += card.id + ", ";
+        }
+        ids += "]";
+        Debug.Log(ids);
+    }
 }
