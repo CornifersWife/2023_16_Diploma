@@ -23,7 +23,6 @@ public class Enemy : MonoBehaviour
             positionAvailabilityMap.Add(cardPositionManager._opponentPositions[i], true);
         }
         //------------------------------------------------
-        NotDraggable();
     }
 
     public void PlayCard()
@@ -34,7 +33,7 @@ public class Enemy : MonoBehaviour
             //take random index
             int index = random.Next(0, enemyHandManager.hand.Count);
             CardDisplay playedCard = enemyHandManager.hand[index];
-            enemyHandManager.hand.Remove(enemyHandManager.hand[index]);
+            enemyHandManager.hand.Remove(playedCard);
             
             List<Vector3> aSpots = AvailableSpots();
             //check available spots
@@ -45,11 +44,6 @@ public class Enemy : MonoBehaviour
                 playedCard.transform.position = pos;
 
                 positionAvailabilityMap[pos] = false;
-                
-                foreach (Vector3 v in positionAvailabilityMap.Keys)
-                {
-                    Debug.Log(positionAvailabilityMap[v]);
-                }
             }
         }
     }
@@ -65,13 +59,5 @@ public class Enemy : MonoBehaviour
             }
         }
         return res;
-    }
-
-    private void NotDraggable()
-    {
-        for (int i = 0; i < enemyHandManager.hand.Count(); i++)
-        {
-            enemyHandManager.hand[i].GetComponent<DraggableCard>().enabled = false;
-        }
     }
 }
