@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
     public DeckManager deckManager;
     public HandManager handManager;
+    public BoardSideManager boardSideManager;
     public Enemy enemy;
 
     // Call this method to test drawing a card
