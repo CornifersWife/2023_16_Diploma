@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 {
     public DeckManager enemyDeckManager;
     public HandManager enemyHandManager;
-    public CardPositionManager cardPositionManager;
+    public BoardSideManager boardSideManager;
 
     private Dictionary<Vector3, bool> positionAvailabilityMap;
 
