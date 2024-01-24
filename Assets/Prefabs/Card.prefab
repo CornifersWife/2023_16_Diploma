@@ -133,5 +133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e860bf46f4d983741ab6ea864b0c95d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+  isDragging: 0
   offset: {x: 0, y: 0, z: 0}
-  distance: 10
+  distanceToCamera: 0
+  dragStartScreenPosition: {x: 0, y: 0, z: 0}
+  cardPositionManager: {fileID: 0}
