@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2775998517780807221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7527021933378610021}
+  - component: {fileID: 2276270804808241581}
+  m_Layer: 0
+  m_Name: BoardSide
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7527021933378610021
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2775998517780807221}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.28, y: 1.05, z: -1.27}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4150459490861231547}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2276270804808241581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2775998517780807221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5fc0bf872a929d43949276972e4cf03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardPrefab: {fileID: 1741870825869677482, guid: b6e16c604f9e39c44b9d90764bea5afb, type: 3}
+  count: 5
+  board: []
+  cardSpacing: 1
 --- !u!1 &5667093268589797735
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,6 +127,7 @@ Transform:
   m_Children:
   - {fileID: 2580417826238897888}
   - {fileID: 5098201863365681037}
+  - {fileID: 7527021933378610021}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7713074856195259577
@@ -127,4 +176,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: []
   cardPrefab: {fileID: 1741870825869677482, guid: b6e16c604f9e39c44b9d90764bea5afb, type: 3}
+  cardPositionManager: {fileID: 0}
   cardSpacing: 1
