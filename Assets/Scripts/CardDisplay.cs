@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class CardDisplay : MonoBehaviour {
     public BaseCardData cardData;
-    public MinionCardData minionCardData;
     public GameObject cardCanvas;
+    public MinionCardData minionCardData;
     
     public void SetupCard(BaseCardData data) {
         cardData = data;
@@ -15,8 +15,8 @@ public class CardDisplay : MonoBehaviour {
         // For example, set the card's sprite to cardData.cardImage
     }
     
-    public void SetupMinionCard(MinionCardData minionData) {
-        minionCardData = minionData;
+    public void SetupCard(MinionCardData minionData) {
+        cardData = minionData;
     }
 
     public void DisplayData(GameObject card)
@@ -35,14 +35,20 @@ public class CardDisplay : MonoBehaviour {
         nameText.GetComponent<TextMeshProUGUI>().text = cardData.cardName;
         manaText.GetComponent<TextMeshProUGUI>().text = cardData.cost.ToString();
         
-        //If card is not Minion:
-        attackText.GetComponent<TextMeshProUGUI>().text = "";
-        healthText.GetComponent<TextMeshProUGUI>().text = "";
-        
         //If card is Minion:
         /*
-        attackText.GetComponent<TextMeshProUGUI>().text = cardData.power.ToString();
-        healthText.GetComponent<TextMeshProUGUI>().text = cardData.health.ToString();
+        if (cardData is MinionCardData)
+        {
+            attackText.GetComponent<TextMeshProUGUI>().text = cardData.power.ToString();
+            healthText.GetComponent<TextMeshProUGUI>().text = cardData.health.ToString();
+        }
         */
+
+        //If card is not Minion:
+        //else
+        {
+            attackText.GetComponent<TextMeshProUGUI>().text = "";
+            healthText.GetComponent<TextMeshProUGUI>().text = "";
+        }
     }
 }
