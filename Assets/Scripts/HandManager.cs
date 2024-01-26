@@ -74,4 +74,16 @@ public class HandManager : MonoBehaviour {
         // Additional logic for playing the card (e.g., moving it to the board)
         return playedCard;
     }*/
+
+    public int GetCardIndex(BaseCardData cardData)
+    {
+        for (int i = 0; i < hand.Count; i++)
+        {
+            if (hand[i] == cardData)
+            {
+                return i;
+            }
+        }
+        return 0;
+    }
 }

@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour {
     public DeckManager playerDeck;
@@ -80,7 +83,33 @@ public class GameManager : MonoBehaviour {
         Debug.Log(ids);
     }
 
-    
+    private GameObject _selectedCard;
+    private GameObject _hand;
+    private int _selectedIndex;
+    public void TestChooseCard()
+    {
+        GameObject cardButton = EventSystem.current.currentSelectedGameObject;
+        GameObject card = cardButton.transform.parent.gameObject.transform.parent.gameObject;
+        _hand = card.transform.parent.gameObject;
+        _selectedIndex = _hand.GetComponent<HandManager>().GetCardIndex(card.GetComponent<CardDisplay>().cardData);
+        _selectedCard = card;
+        Debug.Log(_selectedCard);
+    }
+
+    public void TestSelectSpot()
+    {
+        GameObject cardSpot = EventSystem.current.currentSelectedGameObject;
+        if (_selectedCard == null)
+        {
+            Debug.Log("SELECT CARD!");
+        }
+        else
+        {
+            _selectedCard.transform.position = cardSpot.transform.position;
+            cardSpot.SetActive(false);
+            _hand.GetComponent<HandManager>().RemoveCardFromHand(_selectedCard.GetComponent<CardDisplay>().cardData);
+        }
+    }
 
    
 }
