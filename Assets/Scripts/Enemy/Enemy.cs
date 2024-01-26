@@ -24,10 +24,10 @@ public class Enemy : MonoBehaviour
         {
             //take random index
             int index = random.Next(0, enemyHandManager.hand.Count);
-            BaseCardData playedCard = enemyHandManager.PlayCard(index);
+            //BaseCardData playedCard = enemyHandManager.PlayCard(index);
             
             index = random.Next(0, boardSideManager.count);
-            boardSideManager.AddCardToBoard(playedCard, index);
+            //boardSideManager.AddCardToBoard(playedCard, index);
         }
     }
 }
