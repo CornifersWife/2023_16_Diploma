@@ -1,27 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CardDisplay : MonoBehaviour {
     public BaseCardData cardData;
-    public GameObject cardCanvas;
-    public MinionCardData minionCardData;
     
     public void SetupCard(BaseCardData data) {
         cardData = data;
+        DisplayData(gameObject);
     }
     
     public void SetupCard(MinionCardData minionData) {
         cardData = minionData;
+        DisplayData(gameObject);
     }
 
     public void DisplayData(GameObject card)
     {
-        GameObject cardCanvas = Instantiate(this.cardCanvas, card.transform.position, transform.rotation * Quaternion.Euler (90f, 0f, 180f));
-        cardCanvas.transform.SetParent(card.transform);
-        GameObject cardText = cardCanvas.transform.GetChild(0).gameObject;
+        GameObject canvas = card.transform.GetChild(0).gameObject;
+        GameObject cardText = canvas.transform.GetChild(0).gameObject;
 
         GameObject idText = cardText.transform.GetChild(0).gameObject;
         GameObject nameText = cardText.transform.GetChild(1).gameObject;
@@ -34,16 +32,15 @@ public class CardDisplay : MonoBehaviour {
         manaText.GetComponent<TextMeshProUGUI>().text = cardData.cost.ToString();
         
         //If card is Minion:
-        /*
+        MinionCardData minionCardData = (MinionCardData)cardData;
         if (cardData is MinionCardData)
         {
-            attackText.GetComponent<TextMeshProUGUI>().text = cardData.power.ToString();
-            healthText.GetComponent<TextMeshProUGUI>().text = cardData.health.ToString();
+            attackText.GetComponent<TextMeshProUGUI>().text = minionCardData.power.ToString();
+            healthText.GetComponent<TextMeshProUGUI>().text = minionCardData.currentHealth.ToString();
         }
-        */
 
         //If card is not Minion:
-        //else
+        else
         {
             attackText.GetComponent<TextMeshProUGUI>().text = "";
             healthText.GetComponent<TextMeshProUGUI>().text = "";
