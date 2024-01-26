@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
     public int boardspacechosen = -1;
 
     // Call this method to test drawing a card
-    public void TestPlayPlayerCard() {
+    public void PlayerPlayCard() {
         int handIndex = 0; // For testing, we'll play the first card in hand
         if (playerHand.hand.Count > handIndex) {
             BaseCardData playedCard = playerHand.hand[handIndex];
@@ -25,14 +25,14 @@ public class GameManager : MonoBehaviour {
             // Additional logic for other types of cards (like spells)
         }
     }
-    public void TestDrawPlayerCard() {
+    public void PlayerDrawCard() {
         BaseCardData drawnCard = playerDeck.DrawCard();
         if (drawnCard != null) {
             playerHand.AddCardToHand(drawnCard);
         }
     }
     
-    public void TestPlayEnemyCard() {
+    public void EnemyPlayCard() {
         int handIndex = 0; // For testing, we'll play the first card in hand
         if (enemyHand.hand.Count > handIndex) {
             BaseCardData playedCard = enemyHand.hand[handIndex];
@@ -43,13 +43,21 @@ public class GameManager : MonoBehaviour {
             // Additional logic for other types of cards (like spells)
         }
     }
-    public void TestDrawEnemyCard() {
+    public void EnemyDrawCard() {
         BaseCardData drawnCard = enemyDeck.DrawCard();
         if (drawnCard != null) {
             enemyHand.AddCardToHand(drawnCard);
         }
     }
+
+
+    public void PlayerAttack() {
+        board.MinionsAttack(true);
+    }
     
+    public void EnemyAttack() {
+        board.MinionsAttack(false);
+    }
 
     // Call this method to test shuffling the deck
     public void TestShuffle() {
