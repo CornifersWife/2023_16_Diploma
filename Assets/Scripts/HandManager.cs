@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class HandManager : MonoBehaviour {
     public List<BaseCardData> hand = new List<BaseCardData>();
+    public DeckManager deck;
     public GameObject cardPrefab; 
     public float cardSpacing = 1.0f; // Space between cards
     
@@ -33,7 +34,11 @@ public class HandManager : MonoBehaviour {
         newCardDisplay.SetupCard(cardData);
         return newCardDisplay;
     }
-    
+
+    public void DrawACard() {
+        BaseCardData drawn = deck.DrawCard();
+        AddCardToHand(drawn);
+    }
     public void AddCardToHand(BaseCardData cardData) {
         hand.Add(cardData);
         UpdateCardPositionsInHand();
