@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class BoardSideManager : MonoBehaviour {
@@ -9,7 +5,7 @@ public class BoardSideManager : MonoBehaviour {
     public int count = 5;
     public CardDisplay[] board;
     public float cardSpacing = 1.0f; // Space between cards
-
+    
     private void Start() {
         board = new CardDisplay[count];
     }
@@ -24,13 +20,13 @@ public class BoardSideManager : MonoBehaviour {
     }
     
     public void AddCardToBoard(BaseCardData cardData,int index) {
-        print(board.Count());
         GameObject cardObj = Instantiate(cardPrefab, transform);
         CardDisplay cardDisplay = cardObj.GetComponent<CardDisplay>();
         cardDisplay.SetupCard(cardData);
         board[index] = cardDisplay;
         
         UpdateCardPositionsOnBoard();
+        cardDisplay.DisplayData(cardObj);
     }
 
     public void RemoveCardFromBoard(int index) {
