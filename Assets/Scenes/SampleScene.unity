@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerTurn: 1
+  enemyDelay: 1
   playerHand: {fileID: 1909609034}
   playerDeck: {fileID: 1878188155}
   enemyHand: {fileID: 702799566}
@@ -3019,6 +3020,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 109626419}
     - target: {fileID: 6374912989519180820, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
+      propertyPath: cardPrefab
+      value: 
+      objectReference: {fileID: 3111465510936162625, guid: c2486b5d46d544e40963fd307d1628da, type: 3}
+    - target: {fileID: 6374912989519180820, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: cardPositionManager
       value: 
       objectReference: {fileID: 0}
@@ -3680,6 +3685,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1877969348}
     - target: {fileID: 3847458534249568042, guid: 57ff90964ffb00848b78bf3ed0c41018, type: 3}
+      propertyPath: minionCardPrefab
+      value: 
+      objectReference: {fileID: 3111465510936162625, guid: c2486b5d46d544e40963fd307d1628da, type: 3}
+    - target: {fileID: 3847458534249568042, guid: 57ff90964ffb00848b78bf3ed0c41018, type: 3}
       propertyPath: playerMinionArea
       value: 
       objectReference: {fileID: 556235711}
@@ -3816,6 +3825,10 @@ PrefabInstance:
       propertyPath: deck
       value: 
       objectReference: {fileID: 1878188155}
+    - target: {fileID: 6374912989519180820, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
+      propertyPath: cardPrefab
+      value: 
+      objectReference: {fileID: 3111465510936162625, guid: c2486b5d46d544e40963fd307d1628da, type: 3}
     - target: {fileID: 6374912989519180820, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: hand.Array.size
       value: 0

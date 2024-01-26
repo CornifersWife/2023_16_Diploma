@@ -12,6 +12,7 @@ public class ManaManager : MonoBehaviour {
     public void GameStart() {
         manaCount = GetComponent<TextMeshPro>();
         actualMana = 1;
+        usedMana = 0;
         manaCount.text = "Mana: " + actualMana;
     }
 
