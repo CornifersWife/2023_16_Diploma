@@ -3,12 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
-
-    public DeckManager deckManager;
-    public HandManager handManager;
-    public BoardSideManager boardSideManager;
-    public Enemy enemy;
-
     public DeckManager playerDeck;
     public HandManager playerHand;
     
@@ -19,9 +13,8 @@ public class GameManager : MonoBehaviour {
     public int cardtoplay = -1;
     public int boardspacechosen = -1;
 
-
     // Call this method to test drawing a card
-    public void TestPlayPlayerCard() {
+    public void PlayerPlayCard() {
         int handIndex = 0; // For testing, we'll play the first card in hand
         if (playerHand.hand.Count > handIndex) {
             BaseCardData playedCard = playerHand.hand[handIndex];
@@ -32,29 +25,14 @@ public class GameManager : MonoBehaviour {
             // Additional logic for other types of cards (like spells)
         }
     }
-
-    
-    // Call this method to test enemy drawing a card
-    public void TestEnemyDrawCard() {
-        BaseCardData drawnCard = enemy.enemyDeckManager.DrawCard();
-        if (drawnCard != null) {
-            enemy.enemyHandManager.AddCardToHand(drawnCard);
-        }
-    }
-    
-    // Call this method to test enemy playing a card
-    public void TestEnemyPlayCard() {
-        enemy.PlayCard();
-    }
-
-    public void TestDrawPlayerCard() {
+    public void PlayerDrawCard() {
         BaseCardData drawnCard = playerDeck.DrawCard();
         if (drawnCard != null) {
             playerHand.AddCardToHand(drawnCard);
         }
     }
     
-    public void TestPlayEnemyCard() {
+    public void EnemyPlayCard() {
         int handIndex = 0; // For testing, we'll play the first card in hand
         if (enemyHand.hand.Count > handIndex) {
             BaseCardData playedCard = enemyHand.hand[handIndex];
@@ -65,14 +43,21 @@ public class GameManager : MonoBehaviour {
             // Additional logic for other types of cards (like spells)
         }
     }
-    public void TestDrawEnemyCard() {
+    public void EnemyDrawCard() {
         BaseCardData drawnCard = enemyDeck.DrawCard();
         if (drawnCard != null) {
             enemyHand.AddCardToHand(drawnCard);
         }
     }
-    
 
+
+    public void PlayerAttack() {
+        board.MinionsAttack(true);
+    }
+    
+    public void EnemyAttack() {
+        board.MinionsAttack(false);
+    }
 
     // Call this method to test shuffling the deck
     public void TestShuffle() {
@@ -93,30 +78,6 @@ public class GameManager : MonoBehaviour {
 
         ids += "]";
         Debug.Log(ids);
-
-    }
-    
-    // Call this method to test enemy shuffling the deck
-    public void TestEnemyShuffle()
-    {
-        string ids = "Before shuffle: [";
-        foreach (BaseCardData card in enemy.enemyDeckManager.deck)
-        {
-            ids += card.id + ", ";
-        }
-        ids += "]";
-        Debug.Log(ids);
-        
-        enemy.enemyDeckManager.Shuffle();
-        
-        ids = "After shuffle: [";
-        foreach (BaseCardData card in enemy.enemyDeckManager.deck)
-        {
-            ids += card.id + ", ";
-        }
-        ids += "]";
-        Debug.Log(ids);
-
     }
 
     

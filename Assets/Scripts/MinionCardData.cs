@@ -19,18 +19,16 @@ public class MinionCardData : BaseCardData {
             Death();
         }
     }
-    public void Attack(GameObject target) {
-        MinionCardData targetMinion = target.GetComponent<MinionCardData>();
-        if (targetMinion != null) {
-            targetMinion.TakeDamage(power);
-            TakeDamage(targetMinion.power);
+    public void Attack(MinionCardData target) {
+        if (target != null) {
+            target.TakeDamage(power);
+            TakeDamage(target.power);
             return;
         }
-        Hero targetHero = target.GetComponent<Hero>();
-        if (targetHero != null) {
-            targetHero.TakeDamage(power);
-            return;
-        }
+    }
+
+    public void Attack(Hero hero) {
+        hero.TakeDamage(power);
     }
 
     public void Death() {
