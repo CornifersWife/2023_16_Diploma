@@ -62,7 +62,8 @@ namespace TurnSystem {
 
     public class TurnManager : MonoBehaviour {
         [SerializeField]public bool isPlayerTurn = true; // Flag to track whose turn it is
-
+        [SerializeField] public float enemyDelay = 1f;
+        
         private bool _gameStarted = false;
         
         // Reference to the HandManager and Board for the player
@@ -87,7 +88,7 @@ namespace TurnSystem {
             if (OnGameStarted != null)
                 OnGameStarted.Invoke(); //
         }
-
+        
         [SerializeField]public bool HasGameStarted {
             //each player draws 5 cards
             get { return _gameStarted; }
@@ -121,17 +122,6 @@ namespace TurnSystem {
         IEnumerator Start() {
             yield return new WaitUntil(() => { return HasGameStarted; });
 
-            while (!IsGameComplete) {
-                StartOfTurn(playerHand);
-                
-                yield return new WaitUntil(() => { return !isPlayerTurn; });
-                EndOfTurn(true);
-                
-
-                
-                yield return StartCoroutine(OpponentTurnRoutine());
-            }
-
             if (HasWonGame) {
                 if (OnGameWon != null)
                     OnGameWon.Invoke();
@@ -143,10 +133,19 @@ namespace TurnSystem {
             }
         }
 
-        private void StartOfTurn(HandManager handManager) {
-            handManager.DrawACard();
-            //add +1 max mana
-            //refresh mana
+        private void StartOfTurn() {
+            if (isPlayerTurn) StartPlayerTurn();
+            else {
+                StartEnemyTurn();
+            }
+        }
+
+        private void StartPlayerTurn() {
+            playerHand.DrawACard();
+        }
+
+        private void StartEnemyTurn() {
+            enemyHand.DrawACard();
         }
 
         private void EndOfTurn(bool isPlayer) {
@@ -173,8 +172,8 @@ namespace TurnSystem {
         private IEnumerator OpponentTurnRoutine() {
             //refreshmana
             //addmaxmana
-            enemyHand.DrawACard();
-            yield return new WaitForSeconds(1f);
+            StartOfTurn();
+            yield return new WaitForSeconds(enemyDelay);
             
             /* DOCELOWO
              * while( ( has playable card (manacost<= cardcost) ) && (has board space)) 
@@ -182,7 +181,7 @@ namespace TurnSystem {
              *      play on random playable space
              *      yield return new WaitForSeconds(0.5f)
             */
-            while (enemyHand.hand.Count > 0 && board.HasEmptySpace(false)) {
+            while (enemyHand.hand.Count > 0 && board.HasEmptySpace(false)) { //50% to stop after each card
                 List<int> avalibleSpaces = new List<int>();
                 for (int i = 0; i < board.opponentMinions.Length; i++) {
                     if(board.opponentMinions[i] is null)
@@ -191,27 +190,19 @@ namespace TurnSystem {
 
                 int cardIndex = Random.Range(0, enemyHand.hand.Count);
                 int boardSpaceIndex = avalibleSpaces[Random.Range(0, avalibleSpaces.Count)];
-                print(boardSpaceIndex);
                 BaseCardData playedCard = enemyHand.hand[cardIndex];
                 if (playedCard is MinionCardData) {
                     board.AddMinionToBoard((MinionCardData)playedCard, false, boardSpaceIndex);
                     enemyHand.RemoveCardFromHand(playedCard);
                 }
-                yield return new WaitForSeconds(1f);
-                
-                EndOfTurn(false);
+                yield return new WaitForSeconds(enemyDelay);
+
+                if (Random.Range(0, 2) > 0) break;
             }
-                
-            
-            
-            
-            yield return new WaitForSeconds(2);
-            
-            
-            
-            // After the opponent's turn is over, switch back to the player's turn
+            EndOfTurn(false);
+            yield return new WaitForSeconds(enemyDelay);
             isPlayerTurn = true;
-            // Optionally, trigger start-of-turn actions for the player
+            StartOfTurn();
         }
     }
 }
