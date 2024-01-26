@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4636615028573317394}
   - component: {fileID: 2024318182900241152}
   - component: {fileID: 8932935983915464413}
-  - component: {fileID: 2577079146452593127}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -123,21 +122,3 @@ MonoBehaviour:
   cardData: {fileID: 0}
   minionCardData: {fileID: 0}
   cardCanvas: {fileID: 1239359339357471944, guid: e260764058148eb4f877278ce1fc8249, type: 3}
---- !u!114 &2577079146452593127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741870825869677482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e860bf46f4d983741ab6ea864b0c95d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
-  isDragging: 0
-  offset: {x: 0, y: 0, z: 0}
-  distanceToCamera: 0
-  dragStartScreenPosition: {x: 0, y: 0, z: 0}
-  cardPositionManager: {fileID: 0}
