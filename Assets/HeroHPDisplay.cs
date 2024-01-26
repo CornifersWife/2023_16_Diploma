@@ -7,11 +7,13 @@ public class HeroHPDisplay : MonoBehaviour {
     public Button button; // Assign your button here
     private int showValue;
     private int maxValue;// Your int variable
+    private TMP_Text buttonText;
 
     private void Start() {
         hero = GetComponent<Hero>();
         maxValue = hero.maxHealth;
         showValue = hero.currentHealth;
+        buttonText = button.GetComponentInChildren<TMP_Text>(); 
     }
 
     void Update()
@@ -22,7 +24,6 @@ public class HeroHPDisplay : MonoBehaviour {
 
     void UpdateButtonText()
     {
-        TMP_Text buttonText = button.GetComponentInChildren<TMP_Text>(); 
         buttonText.text = showValue.ToString();
     }
 }

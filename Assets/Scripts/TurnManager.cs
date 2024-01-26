@@ -20,30 +20,31 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
-namespace TurnSystem
-{
+namespace TurnSystem {
     public interface IActor {
         bool IsAI { get; }
         bool IsAlive { get; }
         IEnumerator DoTurn();
     }
 
-    public class CheckCondition : ScriptableObject
-    {
-        public virtual bool HasSatisfied() { return false; }
+    public class CheckCondition : ScriptableObject {
+        public virtual bool HasSatisfied() {
+            return false;
+        }
     }
 
     /// <summary>
     /// define 'Enemy' tag in Unity, set tag of dead enemies to 'Dead'
     /// </summary>
     [CreateAssetMenu(fileName = "win_condition", menuName = "Basic Win Condition", order = 0)]
-    public class BasicWinCondition : CheckCondition
-    {
+    public class BasicWinCondition : CheckCondition {
         public override bool HasSatisfied() {
             return GameObject.FindGameObjectsWithTag("Enemy").Length == 0;
         }
@@ -53,116 +54,164 @@ namespace TurnSystem
     /// set tag of dead Players to 'Dead'
     /// </summary>
     [CreateAssetMenu(fileName = "lose_condition", menuName = "Basic Lose Condition", order = 0)]
-    public class BasicLoseCondition : CheckCondition
-    {
-        public override bool HasSatisfied()
-        {
+    public class BasicLoseCondition : CheckCondition {
+        public override bool HasSatisfied() {
             return GameObject.FindGameObjectsWithTag("Player").Length == 0;
         }
     }
 
-    public class TurnManager : MonoBehaviour
-    {
-        private bool _gameStarted = false;
-        private List<IActor> _players = new List<IActor>();
-        private List<IActor> _enemy = new List<IActor>();
+    public class TurnManager : MonoBehaviour {
+        [SerializeField]public bool isPlayerTurn = true; // Flag to track whose turn it is
 
-        [Header("Events")]
-        public UnityEvent OnGameStarted;
+        private bool _gameStarted = false;
+        
+        // Reference to the HandManager and Board for the player
+        public HandManager playerHand;
+        public DeckManager playerDeck;
+
+        // Reference to the HandManager and Board for the enemy (AI)
+        public HandManager enemyHand;
+        public DeckManager enemyDeck;
+        public Board board;
+
+        [Header("Events")] public UnityEvent OnGameStarted;
         public UnityEvent OnGameWon;
         public UnityEvent OnGameLost;
 
-        [Header("Conditions")]
-        public CheckCondition[] winConditions;
+        [Header("Conditions")] public CheckCondition[] winConditions;
         public CheckCondition[] loseConditions;
 
-        public void StartGame()
-        {
+        public void StartGame() {
             _gameStarted = true;
 
             if (OnGameStarted != null)
-                OnGameStarted.Invoke();
+                OnGameStarted.Invoke(); //
         }
 
-        public bool HasGameStarted
-        {
-            get
-            {
-                return _gameStarted;
-            }
+        [SerializeField]public bool HasGameStarted {
+            //each player draws 5 cards
+            get { return _gameStarted; }
         }
 
-        public bool HasWonGame
-        {
-            get
-            {
-                foreach (CheckCondition check in winConditions)
-                {
+        public bool HasWonGame {
+            get {
+                foreach (CheckCondition check in winConditions) {
                     if (!check.HasSatisfied()) return false;
                 }
+
                 return true;
             }
         }
 
-        public bool HasLostGame
-        {
-            get
-            {
-                foreach (CheckCondition check in loseConditions)
-                {
+        public bool HasLostGame {
+            get {
+                foreach (CheckCondition check in loseConditions) {
                     if (!check.HasSatisfied()) return false;
                 }
+
                 return true;
             }
         }
 
-        public bool IsGameComplete
-        {
-            get
-            {                
-                return HasWonGame || HasLostGame;
-            }
+        public bool IsGameComplete {
+            get { return HasWonGame || HasLostGame; }
         }
 
         // Start is called before the first frame update
-        IEnumerator Start()
-        {
+        IEnumerator Start() {
             yield return new WaitUntil(() => { return HasGameStarted; });
 
-            foreach(GameObject actor in GameObject.FindGameObjectsWithTag("actors"))
-            {
-                IActor iactor = actor.GetComponent<IActor>();
+            while (!IsGameComplete) {
+                StartOfTurn(playerHand);
+                
+                yield return new WaitUntil(() => { return !isPlayerTurn; });
+                EndOfTurn(true);
+                
 
-                if (iactor.IsAI)
-                    _enemy.Add(iactor);
-                else
-                    _players.Add(iactor);
+                
+                yield return StartCoroutine(OpponentTurnRoutine());
             }
 
-            while(!IsGameComplete)
-            {
-                foreach(IActor player in _players)
-                {
-                    yield return StartCoroutine(player.DoTurn());
-                }
-
-                foreach (IActor enemy in _enemy)
-                {
-                    yield return StartCoroutine(enemy.DoTurn());
-                }
-            }
-
-            if(HasWonGame)
-            {
+            if (HasWonGame) {
                 if (OnGameWon != null)
                     OnGameWon.Invoke();
             }
 
-            if (HasLostGame)
-            {
+            if (HasLostGame) {
                 if (OnGameLost != null)
                     OnGameLost.Invoke();
             }
+        }
+
+        private void StartOfTurn(HandManager handManager) {
+            handManager.DrawACard();
+            //add +1 max mana
+            //refresh mana
+        }
+
+        private void EndOfTurn(bool isPlayer) {
+            // Perform actions that happen at the end of the turn
+            // Example: Minions attack
+            board.MinionsAttack(isPlayer);
+        }
+
+        public void EndPlayerTurn() {
+            if (!isPlayerTurn) return; // Only proceed if it's currently the player's turn
+
+            // Perform any end-of-turn actions for the player
+            EndOfPlayerTurnActions();
+
+            // Switch to the opponent's turn
+            isPlayerTurn = false;
+            StartCoroutine(OpponentTurnRoutine());
+        }
+
+        private void EndOfPlayerTurnActions() {
+            board.MinionsAttack(true);
+        }
+
+        private IEnumerator OpponentTurnRoutine() {
+            //refreshmana
+            //addmaxmana
+            enemyHand.DrawACard();
+            yield return new WaitForSeconds(1f);
+            
+            /* DOCELOWO
+             * while( ( has playable card (manacost<= cardcost) ) && (has board space)) 
+             *      choose random playable card
+             *      play on random playable space
+             *      yield return new WaitForSeconds(0.5f)
+            */
+            while (enemyHand.hand.Count > 0 && board.HasEmptySpace(false)) {
+                List<int> avalibleSpaces = new List<int>();
+                for (int i = 0; i < board.opponentMinions.Length; i++) {
+                    if(board.opponentMinions[i] is null)
+                        avalibleSpaces.Add(i);
+                }
+
+                int cardIndex = Random.Range(0, enemyHand.hand.Count);
+                int boardSpaceIndex = avalibleSpaces[Random.Range(0, avalibleSpaces.Count)];
+                print(boardSpaceIndex);
+                BaseCardData playedCard = enemyHand.hand[cardIndex];
+                if (playedCard is MinionCardData) {
+                    board.AddMinionToBoard((MinionCardData)playedCard, false, boardSpaceIndex);
+                    enemyHand.RemoveCardFromHand(playedCard);
+                }
+                yield return new WaitForSeconds(1f);
+                
+                EndOfTurn(false);
+            }
+                
+            
+            
+            
+            yield return new WaitForSeconds(2);
+            
+            
+            
+            // After the opponent's turn is over, switch back to the player's turn
+            isPlayerTurn = true;
+            // Optionally, trigger start-of-turn actions for the player
         }
     }
 }
