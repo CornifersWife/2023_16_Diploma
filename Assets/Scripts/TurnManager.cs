@@ -93,6 +93,7 @@ namespace TurnSystem {
             if (OnGameStarted != null)
                 OnGameStarted.Invoke(); //
         }
+        [SerializeField]public bool HasGameStarted {
             //each player draws 5 cards
             get { return _gameStarted; }
         }
