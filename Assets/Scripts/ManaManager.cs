@@ -9,15 +9,14 @@ public class ManaManager : MonoBehaviour {
     public TMP_Text manaCount;
 
     //Use at the beginning of the game
-    public void GameStart() {
-        manaCount = GetComponent<TMP_Text>();
-        actualMana = 1;
+    public void Start() {
+        actualMana = 0;
         usedMana = 0;
         manaCount.text = "Mana: " + actualMana;
     }
 
     //Use this method to buy a card
-    public bool UseMana(Card card) {
+    public bool UseMana(BaseCardData card) {
         if (actualMana >= card.cost) {
             actualMana -= card.cost;
             usedMana += card.cost;

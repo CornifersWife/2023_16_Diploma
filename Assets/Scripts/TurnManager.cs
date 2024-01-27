@@ -135,6 +135,7 @@ namespace TurnSystem {
         // Start is called before the first frame update
         IEnumerator Start() {
             startingHand();
+            GameObject.FindWithTag("Player").GetComponent<ManaManager>().NextRound();
             yield return new WaitUntil(() => { return HasGameStarted; });
 
             if (HasWonGame) {
@@ -157,10 +158,14 @@ namespace TurnSystem {
 
         private void StartPlayerTurn() {
             playerHand.DrawACard();
+            //Refresh mana
+            GameObject.FindWithTag("Player").GetComponent<ManaManager>().NextRound();
         }
 
         private void StartEnemyTurn() {
             enemyHand.DrawACard();
+            //Refresh mana
+            GameObject.FindWithTag("Enemy").GetComponent<ManaManager>().NextRound();
         }
 
         private void EndOfTurn(bool isPlayer) {

@@ -18,11 +18,13 @@ public class GameManager : MonoBehaviour {
         int handIndex = 0; // For testing, we'll play the first card in hand
         if (playerHand.hand.Count > handIndex) {
             BaseCardData playedCard = playerHand.hand[handIndex];
-            if (playedCard is MinionCardData) {
-                board.AddMinionToBoard((MinionCardData)playedCard, true);
-                playerHand.RemoveCardFromHand(playedCard);
+            if (GameObject.FindWithTag("Player").GetComponent<ManaManager>().UseMana(playedCard)) {//check if player has enough mana
+                if (playedCard is MinionCardData) {
+                    board.AddMinionToBoard((MinionCardData)playedCard, true);
+                    playerHand.RemoveCardFromHand(playedCard);
+                }
+                // Additional logic for other types of cards (like spells)
             }
-            // Additional logic for other types of cards (like spells)
         }
     }
     public void PlayerDrawCard() {
@@ -36,11 +38,13 @@ public class GameManager : MonoBehaviour {
         int handIndex = 0; // For testing, we'll play the first card in hand
         if (enemyHand.hand.Count > handIndex) {
             BaseCardData playedCard = enemyHand.hand[handIndex];
-            if (playedCard is MinionCardData) {
-                board.AddMinionToBoard((MinionCardData)playedCard, false);
-                enemyHand.RemoveCardFromHand(playedCard);
+            if (GameObject.FindWithTag("Enemy").GetComponent<ManaManager>().UseMana(playedCard)) { //check if enemy has enough mana, but he don't use this function
+                if (playedCard is MinionCardData) {
+                    board.AddMinionToBoard((MinionCardData)playedCard, false);
+                    enemyHand.RemoveCardFromHand(playedCard);
+                }
+                // Additional logic for other types of cards (like spells)
             }
-            // Additional logic for other types of cards (like spells)
         }
     }
     public void EnemyDrawCard() {
