@@ -7,6 +7,8 @@ public class HandManager : MonoBehaviour {
     public List<BaseCardData> hand = new List<BaseCardData>();
     public GameObject cardPrefab; 
     public float cardSpacing = 1.0f; // Space between cards
+
+    public ButtonManager buttonManager;
     
     private void UpdateCardPositionsInHand() {
         for (int i = 0; i < hand.Count; i++) {
@@ -16,6 +18,7 @@ public class HandManager : MonoBehaviour {
             CardDisplay cardDisplay = FindOrCreateCardDisplay(hand[i]);
             cardDisplay.transform.localPosition = cardPos;
         }
+        buttonManager.UpdateCardOptions();
     }
 
     private CardDisplay FindOrCreateCardDisplay(BaseCardData cardData) {

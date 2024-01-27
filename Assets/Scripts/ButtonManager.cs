@@ -1,22 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
-    public ToggleGroup toggleGroup;
+    public ToggleGroup boardToggleGroup;
+    public TMP_Dropdown dropdown;
+    public HandManager playerHand;
     
     private GameObject _selectedCard;
-    private GameObject _hand;
-    private int _selectedIndex;
+    private Toggle _selectedToggle;
+
+    private List<GameObject> cards = new List<GameObject>();
+    private int _cardIndex;
+    private int _spotIndex;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        UpdateCardOptions();
     }
 
     // Update is called once per frame
@@ -24,33 +31,49 @@ public class ButtonManager : MonoBehaviour
     {
         
     }
-    
-    public void SelectCard()
+
+    public void UpdateCardOptions()
     {
-        GameObject cardButton = EventSystem.current.currentSelectedGameObject;
-        Debug.Log("Button: " + cardButton);
-        GameObject card = cardButton.transform.parent.gameObject.transform.parent.gameObject;
-        _hand = card.transform.parent.gameObject;
-        _selectedIndex = _hand.GetComponent<HandManager>().GetCardIndex(card.GetComponent<CardDisplay>().cardData);
-        _selectedCard = card;
-        Debug.Log("Selected card from button: " + _selectedCard);
+        cards.Clear();
+        foreach(Transform child in playerHand.transform)
+        {
+            cards.Add(child.gameObject);
+        }
+        dropdown.ClearOptions();
+
+        List<string> options = new List<string>();
+        
+        for (int i = 0; i < cards.Count; i++)
+        {
+            string option = i + " " + cards[i].GetComponent<CardDisplay>().cardData.cardName;
+            options.Add(option);
+        }
+        dropdown.AddOptions(options);
+        dropdown.RefreshShownValue();
+    }
+    
+    public void SelectCard(int cardIndex)
+    {
+        _cardIndex = cardIndex;
+        _selectedCard = cards[cardIndex];
+        Debug.Log(_selectedCard);
+        Debug.Log(_cardIndex);
     }
 
     public void SelectSpot()
     {
-        Debug.Log(toggleGroup);
-        Toggle selectedSpot = toggleGroup.ActiveToggles().FirstOrDefault();
-        Debug.Log("Toggle: " + selectedSpot);
-        Debug.Log("Selected card for toggle: " + _selectedCard);
-        if (_selectedCard == null)
-        {
-            Debug.Log("SELECT CARD!");
-        }
-        else
-        {
-            _selectedCard.transform.position = selectedSpot.transform.position;
-            _hand.GetComponent<HandManager>().RemoveCardFromHand(_selectedCard.GetComponent<CardDisplay>().cardData);
-        }
-        
+        _selectedToggle = boardToggleGroup.ActiveToggles().FirstOrDefault();
+        _spotIndex = _selectedToggle.GetComponent<CustomToggle>().index;
+        Debug.Log(_spotIndex);
+    }
+
+    public int GetCardIndex()
+    {
+        return _cardIndex;
+    }
+
+    public int GetSpotIndex()
+    {
+        return _spotIndex;
     }
 }

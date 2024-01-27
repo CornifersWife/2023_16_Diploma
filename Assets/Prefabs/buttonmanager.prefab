@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb119aad6af968c4fa62d110616a4e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toggleGroup: {fileID: 0}
+  boardToggleGroup: {fileID: 0}

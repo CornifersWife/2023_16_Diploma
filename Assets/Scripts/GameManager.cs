@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour {
     
     public DeckManager enemyDeck;
     public HandManager enemyHand;
+
+    public ButtonManager buttonManager;
     
     public Board board;
     public int cardtoplay = -1;
@@ -21,11 +23,11 @@ public class GameManager : MonoBehaviour {
 
     // Call this method to test drawing a card
     public void PlayerPlayCard() {
-        int handIndex = 0; // For testing, we'll play the first card in hand
+        int handIndex = buttonManager.GetCardIndex(); // For testing, we'll play the first card in hand
         if (playerHand.hand.Count > handIndex) {
             BaseCardData playedCard = playerHand.hand[handIndex];
             if (playedCard is MinionCardData) {
-                board.AddMinionToBoard((MinionCardData)playedCard, true);
+                board.AddMinionToBoard((MinionCardData)playedCard, buttonManager.GetSpotIndex());
                 playerHand.RemoveCardFromHand(playedCard);
             }
             // Additional logic for other types of cards (like spells)

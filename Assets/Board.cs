@@ -43,6 +43,28 @@ public class Board : MonoBehaviour {
         }
         Debug.Log("No more space on the board.");
     }
+    
+    //Add minion on board side index
+    public void AddMinionToBoard(MinionCardData minion, int index) {
+        MinionCardData[] side = playerMinions;
+        Transform parentTransform = playerMinionArea;
+        
+        if (side[index] == null) {
+            side[index] = minion;
+            // Instantiate the minion card prefab and set up its display
+            GameObject minionObj = Instantiate(minionCardPrefab, parentTransform);
+            CardDisplay cardDisplay = minionObj.GetComponent<CardDisplay>();
+            cardDisplay.SetupCard(minion);
+
+            // Position the minion on the board visually
+            UpdateMinionPositions(true);
+                return;
+        }
+        else
+        {
+            Debug.Log("Space is occupied");
+        }
+    }
 
     public void MinionsAttack(bool isPlayerSide) {
         MinionCardData[] attackers = isPlayerSide ? playerMinions : opponentMinions;
