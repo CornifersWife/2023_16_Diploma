@@ -60,11 +60,6 @@ namespace TurnSystem {
         }
     }
 
-    public class GameEnd : TurnManager
-    {
-        //public 
-    }
-
     public class TurnManager : MonoBehaviour {
         [SerializeField]public bool isPlayerTurn = true; // Flag to track whose turn it is
         [SerializeField] public float enemyDelay = 1f;
@@ -135,8 +130,8 @@ namespace TurnSystem {
         // Start is called before the first frame update
         IEnumerator Start() {
             startingHand();
-            GameObject.FindWithTag("Player").GetComponent<ManaManager>().NextRound();
             yield return new WaitUntil(() => { return HasGameStarted; });
+            //GameObject.FindWithTag("Player").GetComponent<ManaManager>().NextRound();
 
             if (HasWonGame) {
                 if (OnGameWon != null)
@@ -148,24 +143,41 @@ namespace TurnSystem {
                     OnGameLost.Invoke();
             }
         }
-
+        
+        public void gameEnd() {
+            if (IsGameComplete) { //Is always giving true.
+                //if (HasWonGame) {
+                    //Show something
+                //}
+                //if (HasLostGame) {
+                    //Show something
+                //}
+                Application.Quit();
+            }
+        }
+        
         private void StartOfTurn() {
             if (isPlayerTurn) StartPlayerTurn();
             else {
                 StartEnemyTurn();
             }
+            gameEnd();
         }
 
         private void StartPlayerTurn() {
             playerHand.DrawACard();
             //Refresh mana
-            GameObject.FindWithTag("Player").GetComponent<ManaManager>().NextRound();
+            if (GameObject.FindWithTag("Player")) {
+                GameObject.FindWithTag("Player").GetComponent<ManaManager>().NextRound();
+            }
         }
 
         private void StartEnemyTurn() {
             enemyHand.DrawACard();
             //Refresh mana
-            GameObject.FindWithTag("Enemy").GetComponent<ManaManager>().NextRound();
+            if (GameObject.FindWithTag("Enemy")) {
+                GameObject.FindWithTag("Enemy").GetComponent<ManaManager>().NextRound();
+            }
         }
 
         private void EndOfTurn(bool isPlayer) {

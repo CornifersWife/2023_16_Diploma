@@ -10,7 +10,6 @@ public class ManaManager : MonoBehaviour {
 
     //Use at the beginning of the game
     public void Start() {
-        actualMana = 0;
         usedMana = 0;
         manaCount.text = "Mana: " + actualMana;
     }
