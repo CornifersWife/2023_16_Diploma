@@ -58,7 +58,6 @@ public class Board : MonoBehaviour {
 
             // Position the minion on the board visually
             UpdateMinionPositions(true);
-                return;
         }
         else
         {
