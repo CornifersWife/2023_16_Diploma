@@ -57,7 +57,7 @@ public class Board : MonoBehaviour {
             cardDisplay.SetupCard(minion);
 
             // Position the minion on the board visually
-            minionObj.transform.position = toggle.position;
+            minionObj.transform.position = toggle.position + new Vector3(0, 1, 0);
         }
         else
         {
