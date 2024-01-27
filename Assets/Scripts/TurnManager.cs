@@ -60,6 +60,11 @@ namespace TurnSystem {
         }
     }
 
+    public class GameEnd : TurnManager
+    {
+        //public 
+    }
+
     public class TurnManager : MonoBehaviour {
         [SerializeField]public bool isPlayerTurn = true; // Flag to track whose turn it is
         [SerializeField] public float enemyDelay = 1f;
@@ -88,12 +93,10 @@ namespace TurnSystem {
             if (OnGameStarted != null)
                 OnGameStarted.Invoke(); //
         }
-        
-        [SerializeField]public bool HasGameStarted {
             //each player draws 5 cards
             get { return _gameStarted; }
         }
-
+        
         public bool HasWonGame {
             get {
                 foreach (CheckCondition check in winConditions) {
@@ -117,9 +120,19 @@ namespace TurnSystem {
         public bool IsGameComplete {
             get { return HasWonGame || HasLostGame; }
         }
-
+        
+        public void startingHand() { 
+            playerDeck.Shuffle();
+            enemyDeck.Shuffle();
+            for(int i = 0; i < 5; i++){
+                playerHand.DrawACard();
+                enemyHand.DrawACard();
+            }
+        }
+        
         // Start is called before the first frame update
         IEnumerator Start() {
+            startingHand();
             yield return new WaitUntil(() => { return HasGameStarted; });
 
             if (HasWonGame) {
