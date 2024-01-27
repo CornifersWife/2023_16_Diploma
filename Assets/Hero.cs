@@ -16,6 +16,6 @@ public class Hero : MonoBehaviour {
         }
     }
     public void Death() {
-        GetComponent<GameObject>().tag = "Dead";
+        GetComponent<Hero>().tag = "Dead";
     }
 }

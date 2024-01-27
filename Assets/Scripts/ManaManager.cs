@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ManaManager : MonoBehaviour {
-    private int actualMana;
-    private int usedMana;
+    public int actualMana;
+    public int usedMana;
     public TextMeshPro manaCount;
 
     //Use at the beginning of the game
