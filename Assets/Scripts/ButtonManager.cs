@@ -76,4 +76,9 @@ public class ButtonManager : MonoBehaviour
     {
         return _spotIndex;
     }
+
+    public Toggle GetToggle()
+    {
+        return _selectedToggle;
+    }
 }

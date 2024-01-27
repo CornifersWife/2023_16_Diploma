@@ -18,6 +18,7 @@ public class Board : MonoBehaviour {
     public Hero playerHero;
     public Hero opponentHero;
 
+    public ButtonManager buttonManager;
 
     private void Awake() {
         playerMinions = new MinionCardData[maxMinions];
@@ -45,19 +46,20 @@ public class Board : MonoBehaviour {
     }
     
     //Add minion on board side index
-    public void AddMinionToBoard(MinionCardData minion, int index) {
+    public void AddMinionToBoard(MinionCardData minion, int cardIndex) {
         MinionCardData[] side = playerMinions;
         Transform parentTransform = playerMinionArea;
         
-        if (side[index] == null) {
-            side[index] = minion;
+        if (side[cardIndex] == null) {
+            side[cardIndex] = minion;
             // Instantiate the minion card prefab and set up its display
             GameObject minionObj = Instantiate(minionCardPrefab, parentTransform);
             CardDisplay cardDisplay = minionObj.GetComponent<CardDisplay>();
             cardDisplay.SetupCard(minion);
 
             // Position the minion on the board visually
-            UpdateMinionPositions(true);
+            Transform spot = buttonManager.GetToggle().transform;
+            minionObj.transform.position = spot.position;
         }
         else
         {
