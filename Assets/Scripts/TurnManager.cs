@@ -122,6 +122,7 @@ namespace TurnSystem {
             get { return HasWonGame || HasLostGame; }
         }
         
+        //Used to get first five cards
         public void startingHand() { 
             playerDeck.Shuffle();
             enemyDeck.Shuffle();

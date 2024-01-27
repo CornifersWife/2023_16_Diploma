@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class ManaManager : MonoBehaviour {
     public int actualMana;
     public int usedMana;
-    public TextMeshPro manaCount;
+    public TMP_Text manaCount;
 
     //Use at the beginning of the game
     public void GameStart() {
-        manaCount = GetComponent<TextMeshPro>();
+        manaCount = GetComponent<TMP_Text>();
         actualMana = 1;
         usedMana = 0;
         manaCount.text = "Mana: " + actualMana;
