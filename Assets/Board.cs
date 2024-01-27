@@ -17,8 +17,7 @@ public class Board : MonoBehaviour {
     
     public Hero playerHero;
     public Hero opponentHero;
-
-    public ButtonManager buttonManager;
+    
 
     private void Awake() {
         playerMinions = new MinionCardData[maxMinions];
@@ -45,8 +44,8 @@ public class Board : MonoBehaviour {
         Debug.Log("No more space on the board.");
     }
     
-    //Add minion on board side index
-    public void AddMinionToBoard(MinionCardData minion, int cardIndex) {
+    //Add minion on board by active toggle
+    public void AddMinionToBoard(MinionCardData minion, int cardIndex, Transform toggle) {
         MinionCardData[] side = playerMinions;
         Transform parentTransform = playerMinionArea;
         
@@ -58,8 +57,7 @@ public class Board : MonoBehaviour {
             cardDisplay.SetupCard(minion);
 
             // Position the minion on the board visually
-            Transform spot = buttonManager.GetToggle().transform;
-            minionObj.transform.position = spot.position;
+            minionObj.transform.position = toggle.position;
         }
         else
         {
