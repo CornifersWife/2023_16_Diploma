@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PlayCardVisualManager : MonoBehaviour
+public class ButtonManager : MonoBehaviour
 {
     public ToggleGroup toggleGroup;
     
@@ -24,6 +24,7 @@ public class PlayCardVisualManager : MonoBehaviour
     {
         
     }
+    
     public void SelectCard()
     {
         GameObject cardButton = EventSystem.current.currentSelectedGameObject;
@@ -37,6 +38,7 @@ public class PlayCardVisualManager : MonoBehaviour
 
     public void SelectSpot()
     {
+        Debug.Log(toggleGroup);
         Toggle selectedSpot = toggleGroup.ActiveToggles().FirstOrDefault();
         Debug.Log("Toggle: " + selectedSpot);
         Debug.Log("Selected card for toggle: " + _selectedCard);
