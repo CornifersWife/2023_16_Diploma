@@ -27,11 +27,11 @@ public class CardDisplay : MonoBehaviour {
         GameObject attackText = cardText.transform.GetChild(2).gameObject;
         GameObject healthText = cardText.transform.GetChild(3).gameObject;
 
-        GameObject Image = canvas.transform.GetChild(1).gameObject;
+        //GameObject Image = canvas.transform.GetChild(1).gameObject;
         
         nameText.GetComponent<TextMeshProUGUI>().text = cardData.cardName;
         manaText.GetComponent<TextMeshProUGUI>().text = cardData.cost.ToString();
-        Image.GetComponent<Image>().sprite = cardData.cardImage;
+        //Image.GetComponent<Image>().sprite = cardData.cardImage;
         
         //If card is Minion:
         MinionCardData minionCardData = (MinionCardData)cardData;
