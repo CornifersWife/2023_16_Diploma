@@ -18,7 +18,8 @@ public class GameManager : MonoBehaviour {
     // Call this method to test drawing a card
     public void PlayerPlayCard() {
         int handIndex = buttonManager.GetCardIndex(); // Get selected card index in hand
-        if (playerHand.hand.Count > handIndex) {
+        if (playerHand.hand.Count > handIndex)
+        {
             BaseCardData playedCard = playerHand.hand[handIndex];
             if (GameObject.FindWithTag("Player").GetComponent<ManaManager>().UseMana(playedCard)) {//check if player has enough mana
                 if (playedCard is MinionCardData) {

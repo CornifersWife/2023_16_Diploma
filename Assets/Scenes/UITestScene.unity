@@ -340,7 +340,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1195019522}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: EnemyDrawCard
         m_Mode: 1
@@ -560,7 +560,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1195019522}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: EnemyPlayCard
         m_Mode: 1
@@ -783,7 +783,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1195019522}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: PlayerDrawCard
         m_Mode: 1
@@ -989,7 +989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639476b0429349498d4c5d6f670be1de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actualMana: 0
+  actualMana: 10
   usedMana: 0
   manaCount: {fileID: 1022924366}
 --- !u!114 &448196960
@@ -3141,7 +3141,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1195019522}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: EnemyAttack
         m_Mode: 1
@@ -3274,7 +3274,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2014060754}
         m_TargetAssemblyTypeName: TurnSystem.TurnManager, Assembly-CSharp
         m_MethodName: EndPlayerTurn
         m_Mode: 1
@@ -3329,6 +3329,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2288598747451283243, guid: 0ff3446dd4d3b0542850ffb2c2206642, type: 3}
   m_PrefabInstance: {fileID: 3182712248293017452}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1195019522 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1451274071192890932, guid: 0ff3446dd4d3b0542850ffb2c2206642, type: 3}
+  m_PrefabInstance: {fileID: 3182712248293017452}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195019521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 568b66baa79f1114faa0a2095a01bfe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1233481728
 GameObject:
   m_ObjectHideFlags: 0
@@ -4035,7 +4046,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1195019522}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: PlayerPlayCard
         m_Mode: 1
@@ -5710,7 +5721,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1195019522}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: PlayerAttack
         m_Mode: 1
