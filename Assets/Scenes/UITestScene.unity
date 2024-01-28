@@ -4817,12 +4817,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3573726438947976270, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: deck.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3573726438947976270, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: deck.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 94b239623e2a8cc4784b10c8af1e94c0, type: 2}
+      objectReference: {fileID: 11400000, guid: 87e142b5b6d36e74ba63b42a7dd792b1, type: 2}
     - target: {fileID: 4150459490861231547, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.1724458
