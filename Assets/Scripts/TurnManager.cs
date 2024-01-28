@@ -88,12 +88,11 @@ namespace TurnSystem {
             if (OnGameStarted != null)
                 OnGameStarted.Invoke(); //
         }
-        
         [SerializeField]public bool HasGameStarted {
             //each player draws 5 cards
             get { return _gameStarted; }
         }
-
+        
         public bool HasWonGame {
             get {
                 foreach (CheckCondition check in winConditions) {
@@ -117,10 +116,22 @@ namespace TurnSystem {
         public bool IsGameComplete {
             get { return HasWonGame || HasLostGame; }
         }
-
+        
+        //Used to get first five cards
+        public void startingHand() { 
+            playerDeck.Shuffle();
+            enemyDeck.Shuffle();
+            for(int i = 0; i < 5; i++){
+                playerHand.DrawACard();
+                enemyHand.DrawACard();
+            }
+        }
+        
         // Start is called before the first frame update
         IEnumerator Start() {
+            startingHand();
             yield return new WaitUntil(() => { return HasGameStarted; });
+            //GameObject.FindWithTag("Player").GetComponent<ManaManager>().NextRound();
 
             if (HasWonGame) {
                 if (OnGameWon != null)
@@ -132,20 +143,41 @@ namespace TurnSystem {
                     OnGameLost.Invoke();
             }
         }
-
+        
+        public void gameEnd() {
+            if (IsGameComplete) { //Is always giving true.
+                //if (HasWonGame) {
+                    //Show something
+                //}
+                //if (HasLostGame) {
+                    //Show something
+                //}
+                Application.Quit();
+            }
+        }
+        
         private void StartOfTurn() {
             if (isPlayerTurn) StartPlayerTurn();
             else {
                 StartEnemyTurn();
             }
+            gameEnd();
         }
 
         private void StartPlayerTurn() {
             playerHand.DrawACard();
+            //Refresh mana
+            if (GameObject.FindWithTag("Player")) {
+                GameObject.FindWithTag("Player").GetComponent<ManaManager>().NextRound();
+            }
         }
 
         private void StartEnemyTurn() {
             enemyHand.DrawACard();
+            //Refresh mana
+            if (GameObject.FindWithTag("Enemy")) {
+                GameObject.FindWithTag("Enemy").GetComponent<ManaManager>().NextRound();
+            }
         }
 
         private void EndOfTurn(bool isPlayer) {

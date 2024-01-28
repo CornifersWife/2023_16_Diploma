@@ -1,12 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using TMPro;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
     public DeckManager playerDeck;
@@ -14,8 +8,6 @@ public class GameManager : MonoBehaviour {
     
     public DeckManager enemyDeck;
     public HandManager enemyHand;
-
-    public ButtonManager buttonManager;
     
     public Board board;
     public int cardtoplay = -1;
@@ -23,15 +15,16 @@ public class GameManager : MonoBehaviour {
 
     // Call this method to test drawing a card
     public void PlayerPlayCard() {
-        int handIndex = buttonManager.GetCardIndex(); // Get chosen card index in hand
+        int handIndex = 0; // For testing, we'll play the first card in hand
         if (playerHand.hand.Count > handIndex) {
             BaseCardData playedCard = playerHand.hand[handIndex];
-            if (playedCard is MinionCardData) {
-                bool success = board.AddMinionToBoard((MinionCardData)playedCard, buttonManager.GetSpotIndex(), buttonManager.GetToggle().transform);
-                if(success)
+            if (GameObject.FindWithTag("Player").GetComponent<ManaManager>().UseMana(playedCard)) {//check if player has enough mana
+                if (playedCard is MinionCardData) {
+                    board.AddMinionToBoard((MinionCardData)playedCard, true);
                     playerHand.RemoveCardFromHand(playedCard);
+                }
+                // Additional logic for other types of cards (like spells)
             }
-            // Additional logic for other types of cards (like spells)
         }
     }
     public void PlayerDrawCard() {
@@ -45,11 +38,13 @@ public class GameManager : MonoBehaviour {
         int handIndex = 0; // For testing, we'll play the first card in hand
         if (enemyHand.hand.Count > handIndex) {
             BaseCardData playedCard = enemyHand.hand[handIndex];
-            if (playedCard is MinionCardData) {
-                board.AddMinionToBoard((MinionCardData)playedCard, false);
-                enemyHand.RemoveCardFromHand(playedCard);
+            if (GameObject.FindWithTag("Enemy").GetComponent<ManaManager>().UseMana(playedCard)) { //check if enemy has enough mana, but he don't use this function
+                if (playedCard is MinionCardData) {
+                    board.AddMinionToBoard((MinionCardData)playedCard, false);
+                    enemyHand.RemoveCardFromHand(playedCard);
+                }
+                // Additional logic for other types of cards (like spells)
             }
-            // Additional logic for other types of cards (like spells)
         }
     }
     public void EnemyDrawCard() {
@@ -88,4 +83,8 @@ public class GameManager : MonoBehaviour {
         ids += "]";
         Debug.Log(ids);
     }
+
+    
+
+   
 }

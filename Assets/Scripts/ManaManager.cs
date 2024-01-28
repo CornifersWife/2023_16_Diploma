@@ -4,19 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ManaManager : MonoBehaviour {
-    private int actualMana;
-    private int usedMana;
-    public TextMeshPro manaCount;
+    public int actualMana;
+    public int usedMana;
+    public TMP_Text manaCount;
 
     //Use at the beginning of the game
-    public void GameStart() {
-        manaCount = GetComponent<TextMeshPro>();
-        actualMana = 1;
+    public void Start() {
+        usedMana = 0;
         manaCount.text = "Mana: " + actualMana;
     }
 
     //Use this method to buy a card
-    public bool UseMana(Card card) {
+    public bool UseMana(BaseCardData card) {
         if (actualMana >= card.cost) {
             actualMana -= card.cost;
             usedMana += card.cost;
