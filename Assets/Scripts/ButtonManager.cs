@@ -13,10 +13,9 @@ public class ButtonManager : MonoBehaviour
     public TMP_Dropdown dropdown;
     public HandManager playerHand;
     
-    private GameObject _selectedCard;
     private Toggle _selectedToggle;
 
-    private List<GameObject> cards = new List<GameObject>();
+    private List<BaseCardData> cards = new List<BaseCardData>();
     private int _cardIndex;
     private int _spotIndex;
     
@@ -34,19 +33,18 @@ public class ButtonManager : MonoBehaviour
 
     public void UpdateCardOptions()
     {
-        cards.Clear();
-        foreach(Transform child in playerHand.transform)
-        {
-            cards.Add(child.gameObject);
-        }
         dropdown.ClearOptions();
+        cards.Clear();
+        foreach(BaseCardData cardData in playerHand.hand)
+        {
+            cards.Add(cardData);
+        }
 
         List<string> options = new List<string>();
         
         for (int i = 0; i < cards.Count; i++)
         {
-            BaseCardData cardData = cards[i].GetComponent<CardDisplay>().cardData;
-            string option = "ID: " + cardData.id + " " + cardData.cardName;
+            string option = i + " ID: " + cards[i].id + " " + cards[i].cardName;
             options.Add(option);
         }
         dropdown.AddOptions(options);
@@ -56,7 +54,6 @@ public class ButtonManager : MonoBehaviour
     public void SelectCard(int cardIndex)
     {
         _cardIndex = cardIndex;
-        _selectedCard = cards[cardIndex];
         //Debug.Log(_selectedCard);
         //Debug.Log(_cardIndex);
     }
