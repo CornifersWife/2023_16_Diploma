@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Board : MonoBehaviour {
-
     public int maxMinions = 5;
     public MinionCardData[] playerMinions;
     public MinionCardData[] opponentMinions;
@@ -14,7 +13,7 @@ public class Board : MonoBehaviour {
     public Transform opponentMinionArea; // Parent transform for opponent minions
 
     public int cardSpacing = 1;
-    
+
     public Hero playerHero;
     public Hero opponentHero;
     
@@ -41,6 +40,7 @@ public class Board : MonoBehaviour {
                 return;
             }
         }
+
         Debug.Log("No more space on the board.");
     }
     
@@ -64,15 +64,45 @@ public class Board : MonoBehaviour {
         return false;
     }
 
+    public void AddMinionToBoard(MinionCardData minion, bool isPlayerSide, int index) {
+        MinionCardData[] side = isPlayerSide ? playerMinions : opponentMinions;
+        Transform parentTransform = isPlayerSide ? playerMinionArea : opponentMinionArea;
+
+
+        if (side[index] is null) {
+            side[index] = minion;
+            // Instantiate the minion card prefab and set up its display
+            GameObject minionObj = Instantiate(minionCardPrefab, parentTransform);
+            CardDisplay cardDisplay = minionObj.GetComponent<CardDisplay>();
+            cardDisplay.SetupCard(minion);
+
+            // Position the minion on the board visually
+            UpdateMinionPositions(isPlayerSide);
+            return;
+        }
+
+        Debug.Log("No more space on this spot.");
+    }
+
+    public bool HasEmptySpace(bool isPlayerSide) {
+        MinionCardData[] boardSide = isPlayerSide ? playerMinions : opponentMinions;
+        for (int i = 0; i < boardSide.Length; i++) {
+            if (boardSide[i] is null)
+                return true;
+        }
+
+        return false;
+    }
+
     public void MinionsAttack(bool isPlayerSide) {
         MinionCardData[] attackers = isPlayerSide ? playerMinions : opponentMinions;
         MinionCardData[] targetted = !isPlayerSide ? playerMinions : opponentMinions;
         Hero targetHero = !isPlayerSide ? playerHero : opponentHero;
         for (int i = 0; i < attackers.Length; i++) {
-            if(attackers[i]==null) continue;
-            
+            if (attackers[i] is null) continue;
+
             MinionCardData attacker = attackers[i];
-            if(targetted[i]!=null)
+            if (targetted[i] is null)
                 attacker.Attack(targetted[i]);
             else {
                 attacker.Attack(targetHero);
@@ -84,10 +114,14 @@ public class Board : MonoBehaviour {
         MinionCardData[] side = isPlayerSide ? playerMinions : opponentMinions;
         Transform parentTransform = isPlayerSide ? playerMinionArea : opponentMinionArea;
 
+        int childIndex = 0;
         for (int i = 0; i < side.Length; i++) {
-            if (parentTransform.childCount > i) {
+            if (side[i] is not null) {
                 Vector3 minionPos = new Vector3(i * cardSpacing, 0, 0);
-                parentTransform.GetChild(i).localPosition = minionPos;
+                if (parentTransform.childCount > childIndex) {
+                    parentTransform.GetChild(childIndex).localPosition = minionPos;
+                    childIndex++;
+                }
             }
         }
     }
