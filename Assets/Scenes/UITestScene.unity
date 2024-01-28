@@ -152,6 +152,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 394be1ab9aab5094f8ae38ac0b181f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  enemyDelay: 1
+  playerHand: {fileID: 0}
+  playerDeck: {fileID: 0}
+  enemyHand: {fileID: 0}
+  enemyDeck: {fileID: 0}
+  board: {fileID: 0}
   OnGameStarted:
     m_PersistentCalls:
       m_Calls: []

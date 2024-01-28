@@ -56,7 +56,7 @@ public class ButtonManager : MonoBehaviour
     {
         _cardIndex = cardIndex;
         //Debug.Log(_selectedCard);
-        Debug.Log(_cardIndex);
+        //Debug.Log(_cardIndex);
     }
 
     public void SelectSpot(bool isOn)
