@@ -19,7 +19,8 @@ public class HandManager : MonoBehaviour {
             CardDisplay cardDisplay = FindOrCreateCardDisplay(hand[i]);
             cardDisplay.transform.localPosition = cardPos;
         }
-        buttonManager.UpdateCardOptions();
+        if(buttonManager != null)
+            buttonManager.UpdateCardOptions();
     }
 
     private CardDisplay FindOrCreateCardDisplay(BaseCardData cardData) {
