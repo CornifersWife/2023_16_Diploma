@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardDisplay : MonoBehaviour {
     public BaseCardData cardData;
@@ -26,10 +27,13 @@ public class CardDisplay : MonoBehaviour {
         GameObject manaText = cardText.transform.GetChild(2).gameObject;
         GameObject attackText = cardText.transform.GetChild(3).gameObject;
         GameObject healthText = cardText.transform.GetChild(4).gameObject;
+
+        GameObject Image = canvas.transform.GetChild(1).gameObject;
         
         idText.GetComponent<TextMeshProUGUI>().text = cardData.id.ToString();
         nameText.GetComponent<TextMeshProUGUI>().text = cardData.cardName;
         manaText.GetComponent<TextMeshProUGUI>().text = cardData.cost.ToString();
+        Image.GetComponent<Image>().sprite = cardData.cardImage;
         
         //If card is Minion:
         MinionCardData minionCardData = (MinionCardData)cardData;

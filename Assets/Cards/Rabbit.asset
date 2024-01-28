@@ -17,4 +17,5 @@ MonoBehaviour:
   cardName: Rabbit
   cardImage: {fileID: 21300000, guid: ee3459a0ed9a0aa47ba134a3ec2c9ebb, type: 3}
   power: 3
-  health: 8
+  currentHealth: 8
+  maxHealth: 8
