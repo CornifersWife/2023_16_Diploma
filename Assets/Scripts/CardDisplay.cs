@@ -21,16 +21,14 @@ public class CardDisplay : MonoBehaviour {
     {
         GameObject canvas = card.transform.GetChild(0).gameObject;
         GameObject cardText = canvas.transform.GetChild(0).gameObject;
-
-        GameObject idText = cardText.transform.GetChild(0).gameObject;
-        GameObject nameText = cardText.transform.GetChild(1).gameObject;
-        GameObject manaText = cardText.transform.GetChild(2).gameObject;
-        GameObject attackText = cardText.transform.GetChild(3).gameObject;
-        GameObject healthText = cardText.transform.GetChild(4).gameObject;
+        
+        GameObject nameText = cardText.transform.GetChild(0).gameObject;
+        GameObject manaText = cardText.transform.GetChild(1).gameObject;
+        GameObject attackText = cardText.transform.GetChild(2).gameObject;
+        GameObject healthText = cardText.transform.GetChild(3).gameObject;
 
         GameObject Image = canvas.transform.GetChild(1).gameObject;
         
-        idText.GetComponent<TextMeshProUGUI>().text = cardData.id.ToString();
         nameText.GetComponent<TextMeshProUGUI>().text = cardData.cardName;
         manaText.GetComponent<TextMeshProUGUI>().text = cardData.cost.ToString();
         Image.GetComponent<Image>().sprite = cardData.cardImage;
