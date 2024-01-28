@@ -44,7 +44,7 @@ public class ButtonManager : MonoBehaviour
         
         for (int i = 0; i < cards.Count; i++)
         {
-            string option = i + " ID: " + cards[i].id + " " + cards[i].cardName;
+            string option = i + ": " + cards[i].cardName;
             options.Add(option);
         }
         dropdown.AddOptions(options);
