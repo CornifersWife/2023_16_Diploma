@@ -45,6 +45,11 @@ public class HandManager : MonoBehaviour {
     }
     public void AddCardToHand(BaseCardData cardData) {
         hand.Add(cardData);
+        MinionCardData minionCardData = (MinionCardData)cardData;
+        if (cardData is MinionCardData) {
+            minionCardData.currentHealth = minionCardData.maxHealth;
+        }
+
         UpdateCardPositionsInHand();
     }
     public void RemoveCardFromHand(int index) {

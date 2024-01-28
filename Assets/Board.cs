@@ -16,7 +16,7 @@ public class Board : MonoBehaviour {
 
     public Hero playerHero;
     public Hero opponentHero;
-    
+    public static int indentifier = 1;
 
     private void Awake() {
         playerMinions = new MinionCardData[maxMinions];
@@ -71,12 +71,11 @@ public class Board : MonoBehaviour {
 
         if (side[index] is null) {
             side[index] = minion;
-            // Instantiate the minion card prefab and set up its display
             GameObject minionObj = Instantiate(minionCardPrefab, parentTransform);
+            minionObj.name = "Minion_" + index.ToString(); // Unique identifier
             CardDisplay cardDisplay = minionObj.GetComponent<CardDisplay>();
             cardDisplay.SetupCard(minion);
 
-            // Position the minion on the board visually
             UpdateMinionPositions(isPlayerSide);
             return;
         }
@@ -102,7 +101,7 @@ public class Board : MonoBehaviour {
             if (attackers[i] is null) continue;
 
             MinionCardData attacker = attackers[i];
-            if (targetted[i] is null)
+            if (targetted[i] is not null)
                 attacker.Attack(targetted[i]);
             else {
                 attacker.Attack(targetHero);
@@ -110,7 +109,7 @@ public class Board : MonoBehaviour {
         }
     }
 
-    private void UpdateMinionPositions(bool isPlayerSide) {
+    /*private void UpdateMinionPositions(bool isPlayerSide) {
         MinionCardData[] side = isPlayerSide ? playerMinions : opponentMinions;
         Transform parentTransform = isPlayerSide ? playerMinionArea : opponentMinionArea;
 
@@ -124,7 +123,22 @@ public class Board : MonoBehaviour {
                 }
             }
         }
+    }*/
+    
+    private void UpdateMinionPositions(bool isPlayerSide) {
+        MinionCardData[] side = isPlayerSide ? playerMinions : opponentMinions;
+        Transform parentTransform = isPlayerSide ? playerMinionArea : opponentMinionArea;
+        for (int i = 0; i < side.Length; i++) {
+            if (side[i] is not null) {
+                Transform minionTransform = parentTransform.Find("Minion_" + i.ToString());
+                if (minionTransform != null) {
+                    Vector3 minionPos = new Vector3(i * cardSpacing, 0, 0);
+                    minionTransform.localPosition = minionPos;
+                }
+            }
+        }
     }
+
 
     // Other methods to handle minion removal, attacking, etc.
 }
