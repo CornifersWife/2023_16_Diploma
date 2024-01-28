@@ -13,15 +13,18 @@ public class GameManager : MonoBehaviour {
     public int cardtoplay = -1;
     public int boardspacechosen = -1;
 
+    public ButtonManager buttonManager;
+
     // Call this method to test drawing a card
     public void PlayerPlayCard() {
-        int handIndex = 0; // For testing, we'll play the first card in hand
+        int handIndex = buttonManager.GetCardIndex(); // Get selected card index in hand
         if (playerHand.hand.Count > handIndex) {
             BaseCardData playedCard = playerHand.hand[handIndex];
             if (GameObject.FindWithTag("Player").GetComponent<ManaManager>().UseMana(playedCard)) {//check if player has enough mana
                 if (playedCard is MinionCardData) {
-                    board.AddMinionToBoard((MinionCardData)playedCard, true);
-                    playerHand.RemoveCardFromHand(playedCard);
+                    bool success = board.AddMinionToBoard((MinionCardData)playedCard, buttonManager.GetSpotIndex(), buttonManager.GetToggle().transform);
+                    if(success)
+                        playerHand.RemoveCardFromHand(playedCard);
                 }
                 // Additional logic for other types of cards (like spells)
             }
