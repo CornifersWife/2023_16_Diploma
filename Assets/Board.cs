@@ -45,12 +45,12 @@ public class Board : MonoBehaviour {
     }
     
     //Add minion on board by active toggle
-    public void AddMinionToBoard(MinionCardData minion, int cardIndex, Transform toggle) {
+    public bool AddMinionToBoard(MinionCardData minion, int toggleIndex, Transform toggle) {
         MinionCardData[] side = playerMinions;
         Transform parentTransform = playerMinionArea;
         
-        if (side[cardIndex] == null) {
-            side[cardIndex] = minion;
+        if (side[toggleIndex] == null) {
+            side[toggleIndex] = minion;
             // Instantiate the minion card prefab and set up its display
             GameObject minionObj = Instantiate(minionCardPrefab, parentTransform);
             CardDisplay cardDisplay = minionObj.GetComponent<CardDisplay>();
@@ -58,10 +58,12 @@ public class Board : MonoBehaviour {
 
             // Position the minion on the board visually
             minionObj.transform.position = toggle.position + new Vector3(0, 1, 0);
+            return true;
         }
         else
         {
             Debug.Log("Space is occupied");
+            return false;
         }
     }
 

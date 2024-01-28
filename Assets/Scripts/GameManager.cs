@@ -23,12 +23,13 @@ public class GameManager : MonoBehaviour {
 
     // Call this method to test drawing a card
     public void PlayerPlayCard() {
-        int handIndex = buttonManager.GetCardIndex(); // For testing, we'll play the first card in hand
+        int handIndex = buttonManager.GetCardIndex(); // Get chosen card index in hand
         if (playerHand.hand.Count > handIndex) {
             BaseCardData playedCard = playerHand.hand[handIndex];
             if (playedCard is MinionCardData) {
-                board.AddMinionToBoard((MinionCardData)playedCard, buttonManager.GetCardIndex(), buttonManager.GetToggle().transform);
-                playerHand.RemoveCardFromHand(playedCard);
+                bool success = board.AddMinionToBoard((MinionCardData)playedCard, buttonManager.GetSpotIndex(), buttonManager.GetToggle().transform);
+                if(success)
+                    playerHand.RemoveCardFromHand(playedCard);
             }
             // Additional logic for other types of cards (like spells)
         }

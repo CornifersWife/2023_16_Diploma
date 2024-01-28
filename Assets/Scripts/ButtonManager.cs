@@ -45,7 +45,8 @@ public class ButtonManager : MonoBehaviour
         
         for (int i = 0; i < cards.Count; i++)
         {
-            string option = i + " " + cards[i].GetComponent<CardDisplay>().cardData.cardName;
+            BaseCardData cardData = cards[i].GetComponent<CardDisplay>().cardData;
+            string option = "ID: " + cardData.id + " " + cardData.cardName;
             options.Add(option);
         }
         dropdown.AddOptions(options);
@@ -56,15 +57,25 @@ public class ButtonManager : MonoBehaviour
     {
         _cardIndex = cardIndex;
         _selectedCard = cards[cardIndex];
-        Debug.Log(_selectedCard);
-        Debug.Log(_cardIndex);
+        //Debug.Log(_selectedCard);
+        //Debug.Log(_cardIndex);
     }
 
-    public void SelectSpot()
+    public void SelectSpot(bool isOn)
     {
-        _selectedToggle = boardToggleGroup.ActiveToggles().FirstOrDefault();
-        _spotIndex = _selectedToggle.GetComponent<CustomToggle>().index;
-        Debug.Log(_spotIndex);
+        if (isOn)
+        {
+            _selectedToggle = boardToggleGroup.ActiveToggles().FirstOrDefault();
+            if (_selectedToggle != null)
+            {
+                _spotIndex = _selectedToggle.GetComponent<CustomToggle>().index;
+                //Debug.Log(_spotIndex);
+            }
+            else
+            {
+                Debug.Log("No spot selected!");
+            }
+        }
     }
 
     public int GetCardIndex()
