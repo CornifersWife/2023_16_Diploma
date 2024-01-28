@@ -5968,11 +5968,11 @@ PrefabInstance:
     - target: {fileID: 575956353512574474, guid: 01528cfc55a1e4140a121b243095e55c, type: 3}
       propertyPath: playerHero
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 448196961}
     - target: {fileID: 575956353512574474, guid: 01528cfc55a1e4140a121b243095e55c, type: 3}
       propertyPath: opponentHero
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 129740989}
     - target: {fileID: 575956353512574474, guid: 01528cfc55a1e4140a121b243095e55c, type: 3}
       propertyPath: buttonManager
       value: 
@@ -5984,11 +5984,11 @@ PrefabInstance:
     - target: {fileID: 575956353512574474, guid: 01528cfc55a1e4140a121b243095e55c, type: 3}
       propertyPath: playerMinionArea
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1366739281}
     - target: {fileID: 575956353512574474, guid: 01528cfc55a1e4140a121b243095e55c, type: 3}
       propertyPath: opponentMinionArea
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 378016365}
     - target: {fileID: 1467807026749120728, guid: 01528cfc55a1e4140a121b243095e55c, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
