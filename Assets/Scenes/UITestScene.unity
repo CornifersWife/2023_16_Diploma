@@ -123,68 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &13838525
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 13838527}
-  - component: {fileID: 13838526}
-  m_Layer: 0
-  m_Name: turnmanager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &13838526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 13838525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 394be1ab9aab5094f8ae38ac0b181f0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPlayerTurn: 1
-  enemyDelay: 1
-  playerHand: {fileID: 136956496}
-  playerDeck: {fileID: 1899659643}
-  enemyHand: {fileID: 1470736300}
-  enemyDeck: {fileID: 1053457730}
-  board: {fileID: 9115249612491355192}
-  OnGameStarted:
-    m_PersistentCalls:
-      m_Calls: []
-  OnGameWon:
-    m_PersistentCalls:
-      m_Calls: []
-  OnGameLost:
-    m_PersistentCalls:
-      m_Calls: []
-  winConditions: []
-  loseConditions: []
---- !u!4 &13838527
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 13838525}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.82676417, y: 2.4413629, z: 1.1518012}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &22829220
 GameObject:
   m_ObjectHideFlags: 0
@@ -3386,6 +3324,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143762615}
   m_CullTransparentMesh: 1
+--- !u!1 &1195019521 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2288598747451283243, guid: 0ff3446dd4d3b0542850ffb2c2206642, type: 3}
+  m_PrefabInstance: {fileID: 3182712248293017452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1233481728
 GameObject:
   m_ObjectHideFlags: 0
@@ -5336,6 +5279,95 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2014060752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2014060755}
+  - component: {fileID: 2014060754}
+  - component: {fileID: 2014060753}
+  m_Layer: 0
+  m_Name: turnmanager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2014060753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014060752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae9ea5b564fd38b4680faea3bb663e3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 617100303}
+  isPlayerTurn: 0
+--- !u!114 &2014060754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014060752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 394be1ab9aab5094f8ae38ac0b181f0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  enemyDelay: 1
+  playerHand: {fileID: 136956496}
+  playerDeck: {fileID: 1899659643}
+  enemyHand: {fileID: 1470736300}
+  enemyDeck: {fileID: 1053457730}
+  board: {fileID: 9115249612491355192}
+  OnGameStarted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1195019521}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnGameWon:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGameLost:
+    m_PersistentCalls:
+      m_Calls: []
+  winConditions: []
+  loseConditions: []
+--- !u!4 &2014060755
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014060752}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.82676417, y: 2.4413629, z: 1.1518012}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2022674452 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7209136390537787489, guid: 01528cfc55a1e4140a121b243095e55c, type: 3}
@@ -6162,7 +6194,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 6457710695195267044}
-  - {fileID: 13838527}
+  - {fileID: 2014060755}
   - {fileID: 3182712248293017452}
   - {fileID: 963194228}
   - {fileID: 705507995}
