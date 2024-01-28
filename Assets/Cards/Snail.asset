@@ -17,4 +17,5 @@ MonoBehaviour:
   cardName: Snail
   cardImage: {fileID: 21300000, guid: 3d5ecf2ac1e5dd646a3548aa482053f8, type: 3}
   power: 1
-  health: 6
+  currentHealth: 6
+  maxHealth: 6

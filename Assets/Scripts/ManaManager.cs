@@ -29,6 +29,7 @@ public class ManaManager : MonoBehaviour {
     //Use this method when starting a new round 
     public void NextRound() {
         actualMana += usedMana;
+        usedMana = 0;
         if (actualMana < 10) {
             actualMana++;
         }

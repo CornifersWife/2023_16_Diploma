@@ -17,4 +17,5 @@ MonoBehaviour:
   cardName: Fish
   cardImage: {fileID: 21300000, guid: ce353f303ad495f49a77cd660951c046, type: 3}
   power: 2
-  health: 9
+  currentHealth: 9
+  maxHealth: 9

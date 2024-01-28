@@ -17,4 +17,5 @@ MonoBehaviour:
   cardName: Caterpillar
   cardImage: {fileID: 21300000, guid: b4d67a14bd74e984aa962205dd852ad9, type: 3}
   power: 1
-  health: 10
+  currentHealth: 10
+  maxHealth: 10

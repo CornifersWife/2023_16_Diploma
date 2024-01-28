@@ -17,4 +17,5 @@ MonoBehaviour:
   cardName: Hedgehog
   cardImage: {fileID: 21300000, guid: 29b9d8ccb6cda0746bd0b7f1bdc7c8bc, type: 3}
   power: 4
-  health: 9
+  currentHealth: 9
+  maxHealth: 9
