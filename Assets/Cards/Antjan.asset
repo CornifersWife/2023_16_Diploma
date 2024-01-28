@@ -17,4 +17,5 @@ MonoBehaviour:
   cardName: Antjan
   cardImage: {fileID: 21300000, guid: d2bf914aec3ea81488fbe33025c5585d, type: 3}
   power: 3
-  health: 10
+  currentHealth: 10
+  maxHealth: 10

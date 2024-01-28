@@ -17,4 +17,5 @@ MonoBehaviour:
   cardName: Frog
   cardImage: {fileID: 21300000, guid: d9592250fdea3a94e952572ca0d004a9, type: 3}
   power: 4
-  health: 8
+  currentHealth: 8
+  maxHealth: 8
