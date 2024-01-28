@@ -59,12 +59,9 @@ public class Board : MonoBehaviour {
             // Position the minion on the board visually
             minionObj.transform.position = toggle.position + new Vector3(0, 1, 0);
             return true;
-        }
-        else
-        {
-            Debug.Log("Space is occupied");
-            return false;
-        }
+        } 
+        Debug.Log("Space is occupied");
+        return false;
     }
 
     public void MinionsAttack(bool isPlayerSide) {
