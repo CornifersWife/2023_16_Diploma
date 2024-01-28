@@ -33,12 +33,12 @@ public class ButtonManager : MonoBehaviour
 
     public void UpdateCardOptions()
     {
-        dropdown.ClearOptions();
         cards.Clear();
         foreach(BaseCardData cardData in playerHand.hand)
         {
             cards.Add(cardData);
         }
+        dropdown.ClearOptions();
 
         List<string> options = new List<string>();
         
@@ -49,13 +49,14 @@ public class ButtonManager : MonoBehaviour
         }
         dropdown.AddOptions(options);
         dropdown.RefreshShownValue();
+        _cardIndex = 0;
     }
     
     public void SelectCard(int cardIndex)
     {
         _cardIndex = cardIndex;
         //Debug.Log(_selectedCard);
-        //Debug.Log(_cardIndex);
+        Debug.Log(_cardIndex);
     }
 
     public void SelectSpot(bool isOn)
