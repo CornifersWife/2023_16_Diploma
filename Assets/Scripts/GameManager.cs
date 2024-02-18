@@ -66,6 +66,25 @@ public class GameManager : MonoBehaviour {
     public void EnemyAttack() {
         board.MinionsAttack(false);
     }
+    
+    //TODO in the future i want this to be how attacks are handled, it will become a lot easier to do anything with this
+    //and in general i want more stuff to be in here instead of in diffrent places in code
+    public void HandleAttack(MinionCardData attacker, MinionCardData target) {
+        // Assuming you have a way to get CardDisplay from MinionCardData, which might be a dictionary or lookup
+        CardDisplay attackerDisplay = GetCardDisplayForMinion(attacker);
+        CardDisplay targetDisplay = GetCardDisplayForMinion(target);
+
+        Vector3 targetPosition = targetDisplay.transform.position;
+        attackerDisplay.AttackTarget(targetPosition);
+
+        // Now handle the actual attack logic, damage calculation, etc.
+        target.TakeDamage(attacker.power);
+        attacker.TakeDamage(target.power);
+    }
+
+    private CardDisplay GetCardDisplayForMinion(MinionCardData minion) {
+        throw new System.NotImplementedException();
+    }
 
     // Call this method to test shuffling the deck
     public void TestShuffle() {

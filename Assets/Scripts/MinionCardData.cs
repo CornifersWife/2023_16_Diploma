@@ -1,10 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting.FullSerializer;
+
 using UnityEngine;
-using UnityEngine.PlayerLoop;
+
 
 [CreateAssetMenu(fileName = "New MinionCard", menuName = "Card/Minion")]
 public class MinionCardData : BaseCardData {
