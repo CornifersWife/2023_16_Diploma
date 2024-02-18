@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardData: {fileID: 0}
+  attackAnimatonDuration: 0.3
 --- !u!1 &824715117623516081
 GameObject:
   m_ObjectHideFlags: 0

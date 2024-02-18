@@ -11,17 +11,22 @@ public class MinionCardData : BaseCardData {
     public int power;
     public int currentHealth;
     public int maxHealth;
+    public event Action<int> OnHealthChanged;
+    public event Action<Vector3> OnAttack;
     
 
     public void TakeDamage(int amount) {
         currentHealth -= amount;
+        OnHealthChanged?.Invoke(currentHealth);
         if (currentHealth <= 0) {
             Death();
         }
-        //event wyslij informacje o aktualizacji zycia do displaycard
     }
+
     public void Attack(MinionCardData target) {
         if (target is not null) {
+            //OnAttack?.Invoke(target.transform.position);
+            // target is minioncarddata, which has no position 
             target.TakeDamage(power);
             TakeDamage(target.power);
             return;
@@ -29,6 +34,7 @@ public class MinionCardData : BaseCardData {
     }
 
     public void Attack(Hero hero) {
+        OnAttack?.Invoke(hero.transform.position);
         hero.TakeDamage(power);
     }
 

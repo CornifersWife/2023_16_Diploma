@@ -17,5 +17,5 @@ MonoBehaviour:
   cardName: Penguin
   cardImage: {fileID: 21300000, guid: dfe59b98ed4ab6f4b85b8a2ba4d7884d, type: 3}
   power: 2
-  currentHealth: 7
-  maxHealth: 7
+  currentHealth: 14
+  maxHealth: 14

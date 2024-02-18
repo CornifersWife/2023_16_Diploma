@@ -146,12 +146,12 @@ namespace TurnSystem {
         
         public void gameEnd() {
             if (IsGameComplete) { //Is always giving true.
-                //if (HasWonGame) {
+                if (HasWonGame) {
                     //Show something
-                //}
-                //if (HasLostGame) {
+                }
+                if (HasLostGame) {
                     //Show something
-                //}
+                }
                 Application.Quit();
             }
         }
