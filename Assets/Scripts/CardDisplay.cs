@@ -10,7 +10,10 @@ public class CardDisplay : MonoBehaviour {
     public BaseCardData cardData;
     private String _healthText;
     
-    public float attackAnimatonDuration = 1.0f; // Duration of the move towards the target and back
+    [SerializeField] private float attackAnimationDuration = 0.2f; // Duration of the entire attack movement
+    [SerializeField] private float easeOutDurationFraction = 0.6f; // Fraction of the duration for easing out
+    [SerializeField] private float easeInDurationFraction = 0.4f; // Fraction of the duration for easing in
+    [SerializeField] private float impactPauseDuration = 0.05f; // Pause duration at the impact to emphasize it
     
     
     public void SetupCard(BaseCardData data) {
@@ -29,37 +32,41 @@ public class CardDisplay : MonoBehaviour {
     public void AttackTarget(Vector3 targetPosition) {
         StartCoroutine(MoveTowardsTarget(targetPosition));
     }
+    
     IEnumerator MoveTowardsTarget(Vector3 targetPosition)
     {
         float elapsedTime = 0.0f;
         Vector3 startPosition = transform.position;
 
-        // Ease out (start slow, then accelerate)
-        while (elapsedTime < attackAnimatonDuration / 2)
+        float easeOutDuration = attackAnimationDuration * easeOutDurationFraction;
+        float easeInDuration = attackAnimationDuration * easeInDurationFraction;
+
+        // Ease out (move towards the target)
+        while (elapsedTime < easeOutDuration)
         {
             elapsedTime += Time.deltaTime;
-            float t = elapsedTime / (attackAnimatonDuration / 2);
-            t = Mathf.Sin(t * Mathf.PI * 0.5f); // Using Sin for ease out
+            float t = elapsedTime / easeOutDuration;
             transform.position = Vector3.Lerp(startPosition, targetPosition, t);
             yield return null;
         }
 
-        // Reset elapsedTime for the return journey
-        elapsedTime = 0.0f;
+        // Pause at impact to emphasize it
+        yield return new WaitForSeconds(impactPauseDuration);
 
-        // Ease in (start fast, then decelerate)
-        while (elapsedTime < attackAnimatonDuration / 2)
+        // Ease in (return to start position)
+        elapsedTime = 0.0f; // Reset elapsed time for the return journey
+        while (elapsedTime < easeInDuration)
         {
             elapsedTime += Time.deltaTime;
-            float t = elapsedTime / (attackAnimatonDuration / 2);
-            t = 1 - Mathf.Cos(t * Mathf.PI * 0.5f); // Using Cos for ease in
+            float t = elapsedTime / easeInDuration;
             transform.position = Vector3.Lerp(targetPosition, startPosition, t);
             yield return null;
         }
 
-        // Ensure the card returns to exactly its start position
-        transform.position = startPosition;
+        transform.position = startPosition; // Ensure the object is exactly at the start position at the end
     }
+
+
 
 
     

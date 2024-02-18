@@ -26,7 +26,10 @@ public class MinionCardData : BaseCardData {
     public void Attack(MinionCardData target) {
         if (target is not null) {
             //OnAttack?.Invoke(target.transform.position);
-            // target is minioncarddata, which has no position 
+            // target is minionCardData, which has no position
+            
+            //TODO: figure out how to check position of target
+            
             target.TakeDamage(power);
             TakeDamage(target.power);
             return;

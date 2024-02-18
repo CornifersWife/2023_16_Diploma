@@ -13,7 +13,8 @@ public class Board : MonoBehaviour {
     public Transform opponentMinionArea; // Parent transform for opponent minions
 
     public int cardSpacing = 1;
-
+    public float delayBetweenAttacks = 0.3f;
+    
     public Hero playerHero;
     public Hero opponentHero;
     public static int indentifier = 1;
@@ -94,12 +95,16 @@ public class Board : MonoBehaviour {
     }
 
     public void MinionsAttack(bool isPlayerSide) {
+        StartCoroutine(AttackCoroutine(isPlayerSide));
+    }
+
+    private IEnumerator AttackCoroutine(bool isPlayerSide) {
         MinionCardData[] attackers = isPlayerSide ? playerMinions : opponentMinions;
         MinionCardData[] targetted = !isPlayerSide ? playerMinions : opponentMinions;
         Hero targetHero = !isPlayerSide ? playerHero : opponentHero;
         for (int i = 0; i < attackers.Length; i++) {
             if (attackers[i] is null) continue;
-
+            yield return new WaitForSeconds(delayBetweenAttacks);
             MinionCardData attacker = attackers[i];
             if (targetted[i] is not null)
                 attacker.Attack(targetted[i]);
