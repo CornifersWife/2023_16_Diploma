@@ -19,17 +19,11 @@ public class ButtonManager : MonoBehaviour
     private int _cardIndex;
     private int _spotIndex;
     
-    // Start is called before the first frame update
     void Start()
     {
         UpdateCardOptions();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void UpdateCardOptions()
     {

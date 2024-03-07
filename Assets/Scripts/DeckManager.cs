@@ -1,12 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DeckManager : MonoBehaviour {
+    public List<BaseCardData> deck_data = new List<BaseCardData>();
     public List<BaseCardData> deck = new List<BaseCardData>();
-
     // Methods to shuffle, draw, and manage the deck
-    
+
+    public void Awake() {
+        foreach (var card in deck_data) {
+            deck.Add(ScriptableObject.CreateInstance<BaseCardData>());
+        }
+    }
+
     public BaseCardData DrawCard() {
         if (deck.Count == 0) return null;
     
