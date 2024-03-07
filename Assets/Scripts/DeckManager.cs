@@ -6,7 +6,6 @@ using UnityEngine;
 public class DeckManager : MonoBehaviour {
     public List<BaseCardData> deck_data = new List<BaseCardData>();
     public List<BaseCardData> deck = new List<BaseCardData>();
-    // Methods to shuffle, draw, and manage the deck
 
     public void Awake() {
         foreach (var card in deck_data) {
@@ -33,7 +32,6 @@ public class DeckManager : MonoBehaviour {
             // Random for remaining positions.
             int r = i + rand.Next(n - i);
              
-            //swapping the elements
             BaseCardData temp = deck[r];
             deck[r] = deck[i];
             deck[i] = temp;

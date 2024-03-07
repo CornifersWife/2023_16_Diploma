@@ -14,14 +14,24 @@ public class Board : MonoBehaviour {
 
     public int cardSpacing = 1;
     public float delayBetweenAttacks = 0.3f;
-    
+
     public Hero playerHero;
     public Hero opponentHero;
+    //TODO add board space prefab and change algorith generating spaces
+    //public BoardSpace boardSpace;
     public static int indentifier = 1;
+
 
     private void Awake() {
         playerMinions = new MinionCardData[maxMinions];
         opponentMinions = new MinionCardData[maxMinions];
+    }
+
+    public void GenerateBoardSpaces() {
+        for (int i = 0; i < maxMinions; i++) {
+            Vector3 boardPosition = new Vector3(i * cardSpacing, 0, 0);
+            //TODO
+        }
     }
 
     public void AddMinionToBoard(MinionCardData minion, bool isPlayerSide) {
@@ -41,15 +51,13 @@ public class Board : MonoBehaviour {
                 return;
             }
         }
-
         Debug.Log("No more space on the board.");
     }
-    
-    //Add minion on board by active toggle
+
     public bool AddMinionToBoard(MinionCardData minion, int toggleIndex, Transform toggle) {
         MinionCardData[] side = playerMinions;
         Transform parentTransform = playerMinionArea;
-        
+
         if (side[toggleIndex] == null) {
             side[toggleIndex] = minion;
             // Instantiate the minion card prefab and set up its display
@@ -58,9 +66,10 @@ public class Board : MonoBehaviour {
             cardDisplay.SetupCard(minion);
 
             // Position the minion on the board visually
-            minionObj.transform.position = toggle.position + new Vector3(0, 1, 0);//display slightly above toggle
+            minionObj.transform.position = toggle.position + new Vector3(0, 1, 0); //display slightly above toggle
             return true;
-        } 
+        }
+
         Debug.Log("Space is occupied");
         return false;
     }
@@ -114,29 +123,14 @@ public class Board : MonoBehaviour {
         }
     }
 
-    /*private void UpdateMinionPositions(bool isPlayerSide) {
-        MinionCardData[] side = isPlayerSide ? playerMinions : opponentMinions;
-        Transform parentTransform = isPlayerSide ? playerMinionArea : opponentMinionArea;
 
-        int childIndex = 0;
-        for (int i = 0; i < side.Length; i++) {
-            if (side[i] is not null) {
-                Vector3 minionPos = new Vector3(i * cardSpacing, 0, 0);
-                if (parentTransform.childCount > childIndex) {
-                    parentTransform.GetChild(childIndex).localPosition = minionPos;
-                    childIndex++;
-                }
-            }
-        }
-    }*/
-    
     private void UpdateMinionPositions(bool isPlayerSide) {
         MinionCardData[] side = isPlayerSide ? playerMinions : opponentMinions;
         Transform parentTransform = isPlayerSide ? playerMinionArea : opponentMinionArea;
         for (int i = 0; i < side.Length; i++) {
             if (side[i] is not null) {
                 Transform minionTransform = parentTransform.Find("Minion_" + i.ToString());
-                if (minionTransform != null) {
+                if (minionTransform is not null) {
                     Vector3 minionPos = new Vector3(i * cardSpacing, 0, 0);
                     minionTransform.localPosition = minionPos;
                 }
