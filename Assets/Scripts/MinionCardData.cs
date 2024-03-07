@@ -4,18 +4,18 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "New MinionCard", menuName = "Card/Minion")]
-public class MinionCardData : BaseCardData {
+public class MinionCardData : BaseCardData,IDamageable {
     public int power;
     public int currentHealth;
     public int maxHealth;
     public event Action<int> OnHealthChanged;
     public event Action<Vector3> OnAttack;
-    
+    public event Action<MinionCardData> OnDeath;
 
     public void TakeDamage(int amount) {
         currentHealth -= amount;
         OnHealthChanged?.Invoke(currentHealth);
-        if (currentHealth <= 0) {
+        if (!IsAlive()) {
             Death();
         }
     }
@@ -38,7 +38,21 @@ public class MinionCardData : BaseCardData {
         hero.TakeDamage(power);
     }
 
-    public void Death() {
-        
+    public Vector3 GetPosition()
+    {
+        // This method needs to communicate with the MonoBehaviour that represents this card in the game world
+        // Since ScriptableObjects do not have a transform, you might handle this with an event or a direct method call to the CardDisplay
+        throw new System.NotImplementedException("GetPosition needs to be implemented through game object representation.");
     }
+
+    public bool IsAlive()
+    {
+        return currentHealth > 0;
+    }
+    
+    public void Death()
+    {
+        OnDeath?.Invoke(this);
+    }
+
 }

@@ -1864,7 +1864,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2580417826238897888, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.66
+      value: -3.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580417826238897888, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 3573726438947976270, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: deck.Array.size
@@ -3812,11 +3816,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2580417826238897888, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.43
+      value: -3.12
       objectReference: {fileID: 0}
     - target: {fileID: 2580417826238897888, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.1
+      value: 0.36
       objectReference: {fileID: 0}
     - target: {fileID: 3573726438947976270, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: deck.Array.size

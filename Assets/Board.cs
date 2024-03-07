@@ -35,7 +35,7 @@ public class Board : MonoBehaviour {
                 GameObject minionObj = Instantiate(minionCardPrefab, parentTransform);
                 CardDisplay cardDisplay = minionObj.GetComponent<CardDisplay>();
                 cardDisplay.SetupCard(minion);
-
+                GameManager.Instance.RegisterMinionDisplay(minion, cardDisplay);
                 // Position the minion on the board visually
                 UpdateMinionPositions(isPlayerSide);
                 return;

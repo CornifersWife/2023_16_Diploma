@@ -11,16 +11,19 @@ public class HandManager : MonoBehaviour {
 
     public ButtonManager buttonManager;
     
+    private Dictionary<BaseCardData, CardDisplay> cardDisplays = new Dictionary<BaseCardData, CardDisplay>();
+
+    
     private void UpdateCardPositionsInHand() {
+        float totalWidth = (hand.Count - 1) * cardSpacing;
+        Vector3 startPos = -Vector3.right * totalWidth / 2;
+
         for (int i = 0; i < hand.Count; i++) {
-            // Calculate the position for each card
-            Vector3 cardPos = new Vector3(i * cardSpacing, 0, 0);
-            // Find or create the visual representation for each card
-            CardDisplay cardDisplay = FindOrCreateCardDisplay(hand[i]);
-            cardDisplay.transform.localPosition = cardPos;
+            Vector3 cardPos = startPos + Vector3.right * (i * cardSpacing);
+            if (cardDisplays.TryGetValue(hand[i], out CardDisplay cardDisplay)) {
+                cardDisplay.transform.localPosition = cardPos;
+            }
         }
-        if(buttonManager != null)
-            buttonManager.UpdateCardOptions();
     }
 
     private CardDisplay FindOrCreateCardDisplay(BaseCardData cardData) {
@@ -43,31 +46,34 @@ public class HandManager : MonoBehaviour {
         BaseCardData drawn = deck.DrawCard();
         AddCardToHand(drawn);
     }
+    
     public void AddCardToHand(BaseCardData cardData) {
-        hand.Add(cardData);
-        MinionCardData minionCardData = (MinionCardData)cardData;
-        if (cardData is MinionCardData) {
-            minionCardData.currentHealth = minionCardData.maxHealth;
+        if (!hand.Contains(cardData)) {
+            hand.Add(cardData);
+            // Instantiate the card display prefab and set up its data
+            GameObject cardObj = Instantiate(cardPrefab, transform);
+            CardDisplay newCardDisplay = cardObj.GetComponent<CardDisplay>();
+            newCardDisplay.SetupCard(cardData);
+            // Add the display to the dictionary
+            cardDisplays.Add(cardData, newCardDisplay);
         }
 
         UpdateCardPositionsInHand();
     }
-    public void RemoveCardFromHand(int index) {
-        if (index < 0 || index >= hand.Count) {
-            throw new ArgumentOutOfRangeException(nameof(index), "Invalid card index.");
-        }
-        BaseCardData cardToRemove = hand[index];
-        hand.RemoveAt(index);
-        DestroyCardDisplay(cardToRemove);
-        UpdateCardPositionsInHand();
-    }
+
+    
 
     public void RemoveCardFromHand(BaseCardData cardData) {
         if (hand.Remove(cardData)) {
-            DestroyCardDisplay(cardData);
+            // Remove and destroy the card's GameObject
+            if (cardDisplays.TryGetValue(cardData, out CardDisplay cardObj)) {
+                Destroy(cardObj); // Remove the GameObject from the scene
+                cardDisplays.Remove(cardData); // Remove the reference
+            }
             UpdateCardPositionsInHand();
         }
     }
+
     
     private void DestroyCardDisplay(BaseCardData cardData) {
         foreach (Transform child in transform) {
@@ -78,16 +84,6 @@ public class HandManager : MonoBehaviour {
             }
         }
     }
-    /*public BaseCardData PlayCard(int index) {
-        if (index < 0 || index >= hand.Count) {
-            throw new ArgumentOutOfRangeException(nameof(index), "Invalid card index.");
-        }
-        BaseCardData playedCard = hand[index];
-        hand.RemoveAt(index);
-        UpdateCardPositionsInHand();
-        // Additional logic for playing the card (e.g., moving it to the board)
-        return playedCard;
-    }*/
 
     public int GetCardIndex(BaseCardData cardData)
     {

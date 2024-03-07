@@ -15,6 +15,37 @@ public class GameManager : MonoBehaviour {
 
     public ButtonManager buttonManager;
 
+    private Dictionary<MinionCardData, CardDisplay> minionToDisplayMap = new Dictionary<MinionCardData, CardDisplay>();
+
+    public static GameManager Instance { get; private set; }
+    
+    private void Awake() {
+        if (Instance != null && Instance != this) {
+            Destroy(this.gameObject);
+        } else {
+            Instance = this;
+        }
+    }
+    
+    public void RegisterMinionDisplay(MinionCardData minion, CardDisplay display) {
+        if (!minionToDisplayMap.ContainsKey(minion)) {
+            minionToDisplayMap.Add(minion, display);
+        }
+    }
+
+    public void UnregisterMinionDisplay(MinionCardData minion) {
+        if (minionToDisplayMap.ContainsKey(minion)) {
+            minionToDisplayMap.Remove(minion);
+        }
+    }
+
+    public CardDisplay GetCardDisplayForMinion(MinionCardData minion) {
+        if (minionToDisplayMap.TryGetValue(minion, out CardDisplay display)) {
+            return display;
+        }
+        return null;
+    }
+    
     // Call this method to test drawing a card
     public void PlayerPlayCard() {
         int handIndex = buttonManager.GetCardIndex(); // Get selected card index in hand
@@ -69,21 +100,24 @@ public class GameManager : MonoBehaviour {
     
     //TODO in the future i want this to be how attacks are handled, it will become a lot easier to do anything with this
     //and in general i want more stuff to be in here instead of in diffrent places in code
-    public void HandleAttack(MinionCardData attacker, MinionCardData target) {
-        // Assuming you have a way to get CardDisplay from MinionCardData, which might be a dictionary or lookup
+    public void HandleAttack(MinionCardData attacker, object target) {
         CardDisplay attackerDisplay = GetCardDisplayForMinion(attacker);
-        CardDisplay targetDisplay = GetCardDisplayForMinion(target);
+        Vector3 targetPosition;
 
-        Vector3 targetPosition = targetDisplay.transform.position;
+        if (target is MinionCardData targetMinion) {
+            CardDisplay targetDisplay = GetCardDisplayForMinion(targetMinion);
+            targetPosition = targetDisplay.transform.position;
+            targetMinion.TakeDamage(attacker.power);
+        } else if (target is Hero targetHero) {
+            targetPosition = targetHero.transform.position;
+            targetHero.TakeDamage(attacker.power);
+        } else {
+            Debug.LogError("Unknown target type for attack.");
+            return;
+        }
+
         attackerDisplay.AttackTarget(targetPosition);
-
-        // Now handle the actual attack logic, damage calculation, etc.
-        target.TakeDamage(attacker.power);
-        attacker.TakeDamage(target.power);
-    }
-
-    private CardDisplay GetCardDisplayForMinion(MinionCardData minion) {
-        throw new System.NotImplementedException();
+        
     }
 
     // Call this method to test shuffling the deck
