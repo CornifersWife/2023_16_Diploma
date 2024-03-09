@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CardSpot : MonoBehaviour {
-    [SerializeField]
-    private GameObject cardDisplay;
+    public GameObject cardDisplay;
 
     public bool isPlayers = true;
     public event Action<CardSpot,GameObject> Play;
@@ -13,18 +12,15 @@ public class CardSpot : MonoBehaviour {
     public GameObject CardDisplay {
         get { return cardDisplay; }
         set {
-            cardDisplay = value;
-            Play?.Invoke(this,cardDisplay);
-            Debug.Log("xd");
+            Play?.Invoke(this,value);
         }
     }
 
     public bool IsValid () {
-        if (!isPlayers)
-            return false;
-        if (cardDisplay is not null)
-            return false;
-        return true;
+        if (isPlayers && CardDisplay == null) {
+            return true;
+        }
+        return false;
     }
     
 }

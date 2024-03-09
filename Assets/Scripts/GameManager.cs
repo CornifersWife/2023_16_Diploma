@@ -29,21 +29,21 @@ public class GameManager : MonoBehaviour {
         } else {
             Instance = this;
         }
-        foreach (var cardSpot in FindObjectsOfType<CardSpot>()) {
-            SubscribeToCardSpot(cardSpot);
-        }
+        
     }
     void Start() {
         playerMana = GameObject.FindWithTag("Player").GetComponent<ManaManager>();
         enemyMana = GameObject.FindWithTag("Enemy").GetComponent<ManaManager>();
-        
+        foreach (var cardSpot in FindObjectsOfType<CardSpot>()) {
+            SubscribeToCardSpot(cardSpot);
+        }
     }
     
     
     public void OnCardPlayed(CardSpot cardSpot, GameObject cardDisplay) {
-        Debug.Log(":<");
+        //TODO make it actually change in the hierarchy to be child of cardspot
         cardDisplay.GetComponent<CardMovement>().TransformToSpot(cardSpot.transform);
-        cardSpot.CardDisplay = cardDisplay;
+        cardSpot.cardDisplay = cardDisplay;
         cardDisplay.transform.position = cardSpot.transform.position;
     }
     public void SubscribeToCardSpot(CardSpot cardSpot) {

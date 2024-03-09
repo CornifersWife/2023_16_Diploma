@@ -33,9 +33,10 @@ public class DragAndDrop : MonoBehaviour {
     }
 
     private void FindTargetToSnapTo() {
-        var snapTargets = FindObjectsOfType<CardSpot>().Where(cardSpot => cardSpot.IsValid()).ToArray();
-
-        var closestTarget = snapTargets
+        
+        var targets = FindObjectsOfType<CardSpot>().Where(cardSpot => cardSpot.IsValid()).ToArray();
+        
+        var closestTarget = targets
             .OrderBy(t => (t.transform.position - transform.position).sqrMagnitude)
             .FirstOrDefault();
 
@@ -43,9 +44,9 @@ public class DragAndDrop : MonoBehaviour {
             SnapBack();
             return;
         }
-
+        
         if ((closestTarget.transform.position - transform.position).sqrMagnitude <= snapDistance * snapDistance) {
-            transform.position = closestTarget.transform.position;
+            //transform.position = closestTarget.transform.position;
             PlayCardAt(closestTarget);
         }
         else {
