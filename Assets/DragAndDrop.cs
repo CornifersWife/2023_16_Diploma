@@ -9,7 +9,7 @@ public class DragAndDrop : MonoBehaviour {
     public bool validTarget;
     public Vector3 startingPosition;
 
-    public event Action<CardSpot,GameObject> Play;
+   
     
     [SerializeField] float snapDistance = 2.0f;
 
@@ -58,9 +58,6 @@ public class DragAndDrop : MonoBehaviour {
     }
 
     private void PlayCardAt(CardSpot target) {
-        Play?.Invoke(target,this.gameObject);
         target.CardDisplay = this.gameObject;
-        
-        
     }
 }

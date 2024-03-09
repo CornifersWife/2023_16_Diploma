@@ -2,16 +2,12 @@ using UnityEngine;
 
 public class CardMovement : MonoBehaviour
 {
-    // Drag and drop the Board GameObject in the inspector
-    public Transform boardTransform;
-
-    // Method to call to move this card to the board
-    public void MoveToBoard()
+    public void TransformToSpot(Transform transform)
     {
-        if (boardTransform != null)
+        Debug.LogError("it worked", this);
+        if (transform != null)
         {
-            // This sets the card's parent to the board, effectively moving it in the hierarchy
-            transform.SetParent(boardTransform, false);
+            transform.SetParent(transform, false);
         }
         else
         {

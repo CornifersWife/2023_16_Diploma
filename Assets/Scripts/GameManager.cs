@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour {
     
     public DeckManager enemyDeck;
     public HandManager enemyHand;
+
+    public ManaManager playerMana;
+    public ManaManager enemyMana;
     
     public Board board;
     public int cardtoplay = -1;
@@ -19,13 +22,37 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager Instance { get; private set; }
     
+    
     private void Awake() {
         if (Instance != null && Instance != this) {
             Destroy(this.gameObject);
         } else {
             Instance = this;
         }
+        foreach (var cardSpot in FindObjectsOfType<CardSpot>()) {
+            SubscribeToCardSpot(cardSpot);
+        }
     }
+    void Start() {
+        playerMana = GameObject.FindWithTag("Player").GetComponent<ManaManager>();
+        enemyMana = GameObject.FindWithTag("Enemy").GetComponent<ManaManager>();
+        
+    }
+    
+    
+    public void OnCardPlayed(CardSpot cardSpot, GameObject cardDisplay) {
+        Debug.Log(":<");
+        cardDisplay.GetComponent<CardMovement>().TransformToSpot(cardSpot.transform);
+        cardSpot.CardDisplay = cardDisplay;
+        cardDisplay.transform.position = cardSpot.transform.position;
+    }
+    public void SubscribeToCardSpot(CardSpot cardSpot) {
+        cardSpot.Play += OnCardPlayed;
+    }
+    public void UnsubscribeFromCardSpot(CardSpot cardSpot) {
+        cardSpot.Play -= OnCardPlayed;
+    }
+
     
     public void RegisterMinionDisplay(MinionCardData minion, CardDisplay display) {
         if (!minionToDisplayMap.ContainsKey(minion)) {
@@ -60,7 +87,7 @@ public class GameManager : MonoBehaviour {
         int handIndex = 0; // For testing, we'll play the first card in hand
         if (enemyHand.hand.Count > handIndex) {
             BaseCardData playedCard = enemyHand.hand[handIndex];
-            if (GameObject.FindWithTag("Enemy").GetComponent<ManaManager>().UseMana(playedCard)) { //check if enemy has enough mana, but he don't use this function
+            if (enemyMana.UseMana(playedCard)) { //check if enemy has enough mana, but he don't use this function
                 if (playedCard is MinionCardData) {
                     board.AddMinionToBoard((MinionCardData)playedCard, false);
                     enemyHand.RemoveCardFromHand(playedCard);

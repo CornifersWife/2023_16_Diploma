@@ -50,11 +50,10 @@ public class CardDisplay : MonoBehaviour {
             yield return null;
         }
 
-        // Pause at impact to emphasize it
         yield return new WaitForSeconds(impactPauseDuration);
 
         // Ease in (return to start position)
-        elapsedTime = 0.0f; // Reset elapsed time for the return journey
+        elapsedTime = 0.0f; 
         while (elapsedTime < easeInDuration)
         {
             elapsedTime += Time.deltaTime;
@@ -63,7 +62,7 @@ public class CardDisplay : MonoBehaviour {
             yield return null;
         }
 
-        transform.position = startPosition; // Ensure the object is exactly at the start position at the end
+        transform.position = startPosition; 
     }
 
 
@@ -77,11 +76,9 @@ public class CardDisplay : MonoBehaviour {
             MinionCardData minionCardData = (MinionCardData)cardData;
             string newHealthText = minionCardData.currentHealth.ToString();
 
-            // Check if the health text has changed before updating the UI to avoid unnecessary updates
             if (_healthText != newHealthText)
             {
                 _healthText = newHealthText;
-                // Find and update the health text UI component directly
                 UpdateHealthDisplay(minionCardData.currentHealth);
             }
         }
