@@ -6,8 +6,9 @@ public class CardSpot : MonoBehaviour {
     [SerializeField]
     private GameObject cardDisplay;
 
-    private bool isPlayers = true;
-    
+    public bool isPlayers = true;
+
+
     public GameObject CardDisplay {
         get { return cardDisplay; }
         set { cardDisplay = value; }

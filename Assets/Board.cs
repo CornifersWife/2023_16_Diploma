@@ -30,6 +30,17 @@ public class Board : MonoBehaviour {
     }
 
     public void GenerateBoardSpaces() {
+         GeneratePlayerBoardSpaces();
+         GenerateEnemyBoardSpaces();
+    }
+    public void GenerateEnemyBoardSpaces() {
+        for (int i = 0; i < maxMinions; i++) {
+            GameObject cardSpotobj = Instantiate(cardSpot, opponentMinionArea);
+            cardSpotobj.GetComponent<CardSpot>().isPlayers = false;
+            cardSpotobj.transform.position += new Vector3(i * cardSpacing, 0, 0);
+        }
+    }
+    public void GeneratePlayerBoardSpaces() {
         for (int i = 0; i < maxMinions; i++) {
             GameObject cardSpotobj = Instantiate(cardSpot, playerMinionArea);
             cardSpotobj.transform.position += new Vector3(i * cardSpacing, 0, 0);
