@@ -8,11 +8,12 @@ public class Board : MonoBehaviour {
     public MinionCardData[] playerMinions;
     public MinionCardData[] opponentMinions;
 
+    public GameObject cardSpot;
     public GameObject minionCardPrefab; // Reference to the minion card prefab
     public Transform playerMinionArea; // Parent transform for player minions
     public Transform opponentMinionArea; // Parent transform for opponent minions
 
-    public int cardSpacing = 1;
+    public float cardSpacing = 1;
     public float delayBetweenAttacks = 0.3f;
 
     public Hero playerHero;
@@ -25,12 +26,13 @@ public class Board : MonoBehaviour {
     private void Awake() {
         playerMinions = new MinionCardData[maxMinions];
         opponentMinions = new MinionCardData[maxMinions];
+        GenerateBoardSpaces();
     }
 
     public void GenerateBoardSpaces() {
         for (int i = 0; i < maxMinions; i++) {
-            Vector3 boardPosition = new Vector3(i * cardSpacing, 0, 0);
-            //TODO
+            GameObject cardSpotobj = Instantiate(cardSpot, playerMinionArea);
+            cardSpotobj.transform.position += new Vector3(i * cardSpacing, 0, 0);
         }
     }
 
