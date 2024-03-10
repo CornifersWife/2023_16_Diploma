@@ -2,14 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Board : MonoBehaviour {
     public int maxMinions = 5;
-    public MinionCardData[] playerMinions;
-    public MinionCardData[] opponentMinions;
-    //public CardSpot[] playerMinions;
-   // public CardSpot[] opponentMinions;
-   
+
+    //public MinionCardData[] playerMinions;
+    //public MinionCardData[] enemyMinions;
+    public CardSpot[] playerMinions;
+    public CardSpot[] enemyMinions;
+
     public GameObject cardSpot;
     public GameObject minionCardPrefab; // Reference to the minion card prefab
     public Transform playerMinionArea; // Parent transform for player minions
@@ -19,108 +21,46 @@ public class Board : MonoBehaviour {
     public float delayBetweenAttacks = 0.3f;
 
     public Hero playerHero;
+
     public Hero opponentHero;
+
     //TODO add board space prefab and change algorith generating spaces
     //public BoardSpace boardSpace;
     public static int indentifier = 1;
-    
+
     private void Awake() {
-        playerMinions = new MinionCardData[maxMinions];
-        opponentMinions = new MinionCardData[maxMinions];
-        GenerateBoardSpaces();
-        
-    }
-
-
-    /*private void Awake() {
         playerMinions = new CardSpot[maxMinions];
-        opponentMinions = new CardSpot[maxMinions];
+        enemyMinions = new CardSpot[maxMinions];
         GenerateBoardSpaces();
-        
-    }*/
+
+    }
 
     public void GenerateBoardSpaces() {
-         GeneratePlayerBoardSpaces();
-         GenerateEnemyBoardSpaces();
+        GeneratePlayerBoardSpaces();
+        GenerateEnemyBoardSpaces();
     }
+
     public void GenerateEnemyBoardSpaces() {
-        for (int i = maxMinions-1; i >= 0; i--) {
+        for (int i = 0; i <maxMinions; i++) {
             GameObject cardSpotobj = Instantiate(cardSpot, opponentMinionArea);
             cardSpotobj.GetComponent<CardSpot>().isPlayers = false;
             cardSpotobj.transform.position += new Vector3(i * cardSpacing, 0, 0);
             cardSpotobj.name = "EnemyCardSpot_" + i;
+            enemyMinions[i] = cardSpotobj.GetComponent<CardSpot>();
         }
     }
+
     public void GeneratePlayerBoardSpaces() {
-        for (int i = maxMinions-1; i >= 0; i--) {
+        for (int i = 0; i <maxMinions; i++) {
             GameObject cardSpotobj = Instantiate(cardSpot, playerMinionArea);
             cardSpotobj.transform.position += new Vector3(i * cardSpacing, 0, 0);
             cardSpotobj.name = "PlayerCardSpot_" + i;
+            playerMinions[i] = cardSpotobj.GetComponent<CardSpot>();
         }
-    }
-
-    //public void AddMinionToBoard(GameObject cardInHand,CardSpot cardSpot)
-    public void AddMinionToBoard(MinionCardData minion, bool isPlayerSide) {
-        MinionCardData[] side = isPlayerSide ? playerMinions : opponentMinions;
-        Transform parentTransform = isPlayerSide ? playerMinionArea : opponentMinionArea;
-
-        for (int i = 0; i < side.Length; i++) {
-            if (side[i] == null) {
-                side[i] = minion;
-                // Instantiate the minion card prefab and set up its display
-                GameObject minionObj = Instantiate(minionCardPrefab, parentTransform);
-                CardDisplay cardDisplay = minionObj.GetComponent<CardDisplay>();
-                cardDisplay.SetupCard(minion);
-                GameManager.Instance.RegisterMinionDisplay(minion, cardDisplay);
-                // Position the minion on the board visually
-                UpdateMinionPositions(isPlayerSide);
-                return;
-            }
-        }
-        Debug.Log("No more space on the board.");
-    }
-
-    public bool AddMinionToBoard(MinionCardData minion, int toggleIndex, Transform toggle) {
-        MinionCardData[] side = playerMinions;
-        Transform parentTransform = playerMinionArea;
-
-        if (side[toggleIndex] == null) {
-            side[toggleIndex] = minion;
-            // Instantiate the minion card prefab and set up its display
-            GameObject minionObj = Instantiate(minionCardPrefab, parentTransform);
-            CardDisplay cardDisplay = minionObj.GetComponent<CardDisplay>();
-            cardDisplay.SetupCard(minion);
-
-            // Position the minion on the board visually
-            minionObj.transform.position = toggle.position + new Vector3(0, 1, 0); //display slightly above toggle
-            return true;
-        }
-
-        Debug.Log("Space is occupied");
-        return false;
-    }
-
-    public void AddMinionToBoard(MinionCardData minion, bool isPlayerSide, int index) {
-        MinionCardData[] side = isPlayerSide ? playerMinions : opponentMinions;
-        Transform parentTransform = isPlayerSide ? playerMinionArea : opponentMinionArea;
-
-
-        if (side[index] is null) {
-            side[index] = minion;
-            GameObject minionObj = Instantiate(minionCardPrefab, parentTransform);
-            minionObj.name = "Minion_" + index.ToString(); // Unique identifier
-            CardDisplay cardDisplay = minionObj.GetComponent<CardDisplay>();
-            cardDisplay.SetupCard(minion);
-
-            UpdateMinionPositions(isPlayerSide);
-            return;
-        }
-
-        Debug.Log("No more space on this spot.");
     }
 
     public bool HasEmptySpace(bool isPlayerSide) {
-        MinionCardData[] boardSide = isPlayerSide ? playerMinions : opponentMinions;
+        CardSpot[] boardSide = isPlayerSide ? playerMinions : enemyMinions;
         for (int i = 0; i < boardSide.Length; i++) {
             if (boardSide[i] is null)
                 return true;
@@ -134,24 +74,26 @@ public class Board : MonoBehaviour {
     }
 
     private IEnumerator AttackCoroutine(bool isPlayerSide) {
-        MinionCardData[] attackers = isPlayerSide ? playerMinions : opponentMinions;
-        MinionCardData[] targetted = !isPlayerSide ? playerMinions : opponentMinions;
+        CardSpot[] attackers = isPlayerSide ? playerMinions : enemyMinions;
+        CardSpot[] targetted = !isPlayerSide ? playerMinions : enemyMinions;
         Hero targetHero = !isPlayerSide ? playerHero : opponentHero;
         for (int i = 0; i < attackers.Length; i++) {
-            if (attackers[i] is null) continue;
+            if (attackers[i].IsEmpty()) continue;
             yield return new WaitForSeconds(delayBetweenAttacks);
-            MinionCardData attacker = attackers[i];
-            if (targetted[i] is not null)
-                attacker.Attack(targetted[i]);
-            else {
+            var attacker = (MinionCardData)attackers[i].cardDisplay.cardData;
+            if (targetted[i].IsEmpty()) {
                 attacker.Attack(targetHero);
+                continue;
             }
+            var target = (MinionCardData)targetted[i].cardDisplay.cardData;
+            attacker.Attack(target);
         }
     }
 
 
+/*
     private void UpdateMinionPositions(bool isPlayerSide) {
-        MinionCardData[] side = isPlayerSide ? playerMinions : opponentMinions;
+        MinionCardData[] side = isPlayerSide ? playerMinions : enemyMinions;
         Transform parentTransform = isPlayerSide ? playerMinionArea : opponentMinionArea;
         for (int i = 0; i < side.Length; i++) {
             if (side[i] is not null) {
@@ -163,9 +105,9 @@ public class Board : MonoBehaviour {
             }
         }
     }
-    /*
+
     public void AddMinionToBoard(MinionCardData minion, bool isPlayerSide) {
-        MinionCardData[] side = isPlayerSide ? playerMinions : opponentMinions;
+        MinionCardData[] side = isPlayerSide ? playerMinions : enemyMinions;
         Transform parentTransform = isPlayerSide ? playerMinionArea : opponentMinionArea;
 
         for (int i = 0; i < side.Length; i++) {
@@ -205,7 +147,7 @@ public class Board : MonoBehaviour {
     }
 
     public void AddMinionToBoard(MinionCardData minion, bool isPlayerSide, int index) {
-        MinionCardData[] side = isPlayerSide ? playerMinions : opponentMinions;
+        MinionCardData[] side = isPlayerSide ? playerMinions : enemyMinions;
         Transform parentTransform = isPlayerSide ? playerMinionArea : opponentMinionArea;
 
 
@@ -224,7 +166,7 @@ public class Board : MonoBehaviour {
     }
 
     public bool HasEmptySpace(bool isPlayerSide) {
-        MinionCardData[] boardSide = isPlayerSide ? playerMinions : opponentMinions;
+        MinionCardData[] boardSide = isPlayerSide ? playerMinions : enemyMinions;
         for (int i = 0; i < boardSide.Length; i++) {
             if (boardSide[i] is null)
                 return true;
@@ -238,8 +180,8 @@ public class Board : MonoBehaviour {
     }
 
     private IEnumerator AttackCoroutine(bool isPlayerSide) {
-        MinionCardData[] attackers = isPlayerSide ? playerMinions : opponentMinions;
-        MinionCardData[] targetted = !isPlayerSide ? playerMinions : opponentMinions;
+        MinionCardData[] attackers = isPlayerSide ? playerMinions : enemyMinions;
+        MinionCardData[] targetted = !isPlayerSide ? playerMinions : enemyMinions;
         Hero targetHero = !isPlayerSide ? playerHero : opponentHero;
         for (int i = 0; i < attackers.Length; i++) {
             if (attackers[i] is null) continue;
@@ -255,7 +197,7 @@ public class Board : MonoBehaviour {
 
 
     private void UpdateMinionPositions(bool isPlayerSide) {
-        MinionCardData[] side = isPlayerSide ? playerMinions : opponentMinions;
+        MinionCardData[] side = isPlayerSide ? playerMinions : enemyMinions;
         Transform parentTransform = isPlayerSide ? playerMinionArea : opponentMinionArea;
         for (int i = 0; i < side.Length; i++) {
             if (side[i] is not null) {

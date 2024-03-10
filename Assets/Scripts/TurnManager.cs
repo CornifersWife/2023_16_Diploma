@@ -202,31 +202,12 @@ namespace TurnSystem {
         }
 
         private IEnumerator OpponentTurnRoutine() {
-            //refreshmana
-            //addmaxmana
             StartOfTurn();
             yield return new WaitForSeconds(enemyDelay);
             
-            /* DOCELOWO
-             * while( ( has playable card (manacost<= cardcost) ) && (has board space)) 
-             *      choose random playable card
-             *      play on random playable space
-             *      yield return new WaitForSeconds(0.5f)
-            */
-            while (enemyHand.hand.Count > 0 && board.HasEmptySpace(false)) { //50% to stop after each card
-                List<int> avalibleSpaces = new List<int>();
-                for (int i = 0; i < board.opponentMinions.Length; i++) {
-                    if(board.opponentMinions[i] is null)
-                        avalibleSpaces.Add(i);
-                }
-
-                int cardIndex = Random.Range(0, enemyHand.hand.Count);
-                int boardSpaceIndex = avalibleSpaces[Random.Range(0, avalibleSpaces.Count)];
-                BaseCardData playedCard = enemyHand.hand[cardIndex];
-                if (playedCard is MinionCardData) {
-                    board.AddMinionToBoard((MinionCardData)playedCard, false, boardSpaceIndex);
-                    enemyHand.RemoveCardFromHand(playedCard);
-                }
+          
+            while (true) { 
+                GameManager.Instance.EnemyPlayMinion();
                 yield return new WaitForSeconds(enemyDelay);
 
                 if (Random.Range(0, 2) > 0) break;

@@ -6,6 +6,6 @@ public abstract class BaseCardData : ScriptableObject {
     public int cost;
     public string cardName;
     public Sprite cardImage;
-    // Add other shared properties
+    //add clone method
 }
 

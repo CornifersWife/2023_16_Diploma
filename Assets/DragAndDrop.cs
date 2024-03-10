@@ -46,7 +46,6 @@ public class DragAndDrop : MonoBehaviour {
         }
         
         if ((closestTarget.transform.position - transform.position).sqrMagnitude <= snapDistance * snapDistance) {
-            //transform.position = closestTarget.transform.position;
             PlayCardAt(closestTarget);
         }
         else {
@@ -59,6 +58,6 @@ public class DragAndDrop : MonoBehaviour {
     }
 
     private void PlayCardAt(CardSpot target) {
-        target.CardDisplay = this.gameObject;
+        target.CardDisplay = this.GetComponent<CardDisplay>();
     }
 }

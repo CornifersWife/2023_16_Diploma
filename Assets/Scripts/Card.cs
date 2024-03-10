@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 [System.Serializable]
@@ -21,7 +18,6 @@ public abstract class Card : MonoBehaviour {
     }
     
     
-    
     public Sprite cardImage;
     private SpriteRenderer spriteRenderer;
     void Start() {
@@ -32,7 +28,6 @@ public abstract class Card : MonoBehaviour {
     }
     
     
-    // Other methods for Card
 }
 
 [System.Serializable]

@@ -19,6 +19,9 @@ public class Hero : MonoBehaviour, IDamageable
         }
     }
 
+    public int GetPower() {
+        return 0;
+    }
     public void Death()
     {
         // Handle death (e.g., disable the hero, trigger death animation)

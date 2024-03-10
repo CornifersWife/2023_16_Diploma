@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
@@ -26,11 +25,17 @@ public class CardDisplay : MonoBehaviour {
         minionData.currentHealth = minionData.maxHealth;
         minionData.OnHealthChanged += UpdateHealthDisplay; // Correctly subscribe to the event
         minionData.OnAttack += AttackTarget;
+        minionData.OnRequestPosition += GetCardPosition;
         DisplayData(gameObject);
     }
 
-    public void AttackTarget(Vector3 targetPosition) {
-        StartCoroutine(MoveTowardsTarget(targetPosition));
+    Vector3 GetCardPosition()
+    {
+        return transform.position;
+    }
+    public void AttackTarget(IDamageable target) {
+        StartCoroutine(MoveTowardsTarget(target.GetPosition()));
+
     }
     
     IEnumerator MoveTowardsTarget(Vector3 targetPosition)
@@ -64,13 +69,8 @@ public class CardDisplay : MonoBehaviour {
 
         transform.position = startPosition; 
     }
-
-
-
-
     
     private void Update() {
-        
         if (cardData is MinionCardData)
         {
             MinionCardData minionCardData = (MinionCardData)cardData;

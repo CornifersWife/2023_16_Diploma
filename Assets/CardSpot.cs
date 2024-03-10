@@ -4,23 +4,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CardSpot : MonoBehaviour {
-    public GameObject cardDisplay;
+    public CardDisplay cardDisplay;
 
     public bool isPlayers = true;
-    public event Action<CardSpot,GameObject> Play;
+    public event Action<CardSpot,CardDisplay> Play;
 
-    public GameObject CardDisplay {
+    public CardDisplay CardDisplay {
         get { return cardDisplay; }
         set {
             Play?.Invoke(this,value);
         }
     }
 
-    public bool IsValid () {
-        if (isPlayers && CardDisplay == null) {
+    public bool IsEmpty () {
+        if (cardDisplay is null) {
             return true;
         }
         return false;
     }
+    public bool IsValid () {
+        if (isPlayers && IsEmpty()) {
+            return true;
+        }
+        return false;
+    }
+    
     
 }

@@ -1,16 +1,34 @@
 using System;
-
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "New MinionCard", menuName = "Card/Minion")]
-public class MinionCardData : BaseCardData,IDamageable {
+public class MinionCardData : BaseCardData, IDamageable {
     public int power;
     public int currentHealth;
     public int maxHealth;
     public event Action<int> OnHealthChanged;
-    public event Action<Vector3> OnAttack;
+    public event Action<IDamageable> OnAttack;
     public event Action<MinionCardData> OnDeath;
+
+    public delegate Vector3 RequestPositionDelegate();
+
+    public event RequestPositionDelegate OnRequestPosition;
+
+
+    public MinionCardData Clone() {
+        var clone = ScriptableObject.CreateInstance<MinionCardData>();
+        clone.power = this.power;
+        clone.currentHealth = this.currentHealth;
+        clone.maxHealth = this.maxHealth;
+        clone.id = id;
+        clone.cost = cost;
+        clone.cardName = cardName;
+        clone.cardImage = cardImage;
+        // Copy over other necessary data here
+        return clone;
+    }
 
     public void TakeDamage(int amount) {
         currentHealth -= amount;
@@ -20,39 +38,34 @@ public class MinionCardData : BaseCardData,IDamageable {
         }
     }
 
-    public void Attack(MinionCardData target) {
+    public void Attack(IDamageable target) {
         if (target is not null) {
-            //OnAttack?.Invoke(target.transform.position);
-            // target is minionCardData, which has no position
-            
-            //TODO: figure out how to check position of target
-            
+            OnAttack?.Invoke(target);
             target.TakeDamage(power);
-            TakeDamage(target.power);
-            return;
+            TakeDamage(target.GetPower());
         }
     }
 
-    public void Attack(Hero hero) {
-        OnAttack?.Invoke(hero.transform.position);
-        hero.TakeDamage(power);
+
+    public int GetPower() {
+        return power;
     }
 
-    public Vector3 GetPosition()
-    {
-        // This method needs to communicate with the MonoBehaviour that represents this card in the game world
-        // Since ScriptableObjects do not have a transform, you might handle this with an event or a direct method call to the CardDisplay
-        throw new System.NotImplementedException("GetPosition needs to be implemented through game object representation.");
+    public Vector3 GetPosition() {
+        if (OnRequestPosition != null) {
+            return OnRequestPosition.Invoke();
+        }
+        else {
+            Debug.Log("no information of position of target");
+            return Vector3.zero;
+        }
     }
 
-    public bool IsAlive()
-    {
+    public bool IsAlive() {
         return currentHealth > 0;
     }
-    
-    public void Death()
-    {
+
+    public void Death() {
         OnDeath?.Invoke(this);
     }
-
 }
