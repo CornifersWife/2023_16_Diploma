@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float _MoveSpeed = 5f;
-    [SerializeField] private float _rotationSpeed = 3f;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float rotationSpeed = 3f;
     [SerializeField] private InputAction mouseClickAction;
     private Camera _mainCamera;
     private CharacterController _characterController;
@@ -57,12 +57,12 @@ public class PlayerController : MonoBehaviour
         
         while (Vector3.Distance(transform.position, target) > 0.1f)
         {
-            Vector3 destination = Vector3.MoveTowards(transform.position, target, _MoveSpeed * Time.deltaTime);
+            Vector3 destination = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
             Vector3 direction = target - transform.position;
-            Vector3 movement = direction.normalized * _MoveSpeed * Time.deltaTime;
+            Vector3 movement = moveSpeed * Time.deltaTime * direction.normalized;
             _characterController.Move(movement);
             
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction.normalized), _rotationSpeed *Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction.normalized), rotationSpeed *Time.deltaTime);
             yield return null;
         }
     }
@@ -70,6 +70,6 @@ public class PlayerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(_targetPosition, 0.5f);
+        Gizmos.DrawSphere(_targetPosition, 0.3f);
     }
 }
