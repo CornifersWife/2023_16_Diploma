@@ -467,7 +467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2953d703d209ff441bf2b0e403463c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToWait: 0.5
+  timeToWait: 0.3
   messageToShow: Interactive object
 --- !u!1 &612385608
 GameObject:
@@ -925,6 +925,7 @@ GameObject:
   - component: {fileID: 1801287400}
   - component: {fileID: 1801287399}
   - component: {fileID: 1801287398}
+  - component: {fileID: 1801287402}
   m_Layer: 0
   m_Name: Building
   m_TagString: Untagged
@@ -1018,6 +1019,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1801287402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801287397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2953d703d209ff441bf2b0e403463c22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToWait: 0.3
+  messageToShow: Building
 --- !u!1 &1927758953
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,6 +1212,7 @@ GameObject:
   - component: {fileID: 1962375745}
   - component: {fileID: 1962375744}
   - component: {fileID: 1962375743}
+  - component: {fileID: 1962375747}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -1292,6 +1308,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1962375747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962375742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2953d703d209ff441bf2b0e403463c22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToWait: 0.3
+  messageToShow: '[NPC] Testificate'
 --- !u!1 &2027947470
 GameObject:
   m_ObjectHideFlags: 0
