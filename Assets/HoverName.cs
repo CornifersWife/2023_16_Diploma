@@ -6,19 +6,17 @@ using UnityEngine.InputSystem;
 
 public class Name : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private float timeToWait = 1f;
+    [SerializeField] private float timeToWait = 0.5f;
     [SerializeField] private string messageToShow;
     
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Active");
         StopAllCoroutines();
         StartCoroutine(MessageShowTimer());
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("Not active");
         StopAllCoroutines();
         ShowNameManager.OnMouseLoseFocus();
     }

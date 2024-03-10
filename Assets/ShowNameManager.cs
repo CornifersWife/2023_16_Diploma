@@ -27,12 +27,12 @@ public class ShowNameManager : MonoBehaviour
         OnMouseLoseFocus -= HideName;
     }
 
-    private void ShowName(string name, Vector2 mousePosition)
+    private void ShowName(string nameToDisplay, Vector2 mousePosition)
     {
-        nameText.text = name;
-        nameWindow.sizeDelta = new Vector2(nameText.preferredWidth > 20 ? 20 : nameText.preferredWidth, nameText.preferredHeight);
+        nameText.text = nameToDisplay;
+        nameWindow.sizeDelta = new Vector2(nameText.preferredWidth > 100 ? 100 : nameText.preferredWidth, nameText.preferredHeight);
         nameWindow.gameObject.SetActive(true);
-        nameWindow.transform.position = new Vector2(mousePosition.x + nameWindow.sizeDelta.x * 2, mousePosition.y);
+        nameWindow.transform.position = new Vector2(mousePosition.x + nameWindow.sizeDelta.x/2, mousePosition.y);
     }
 
     private void HideName()
