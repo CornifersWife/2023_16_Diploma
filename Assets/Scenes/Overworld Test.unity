@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 521379627}
   - component: {fileID: 521379626}
   - component: {fileID: 521379625}
-  - component: {fileID: 521379629}
+  - component: {fileID: 521379631}
   m_Layer: 0
   m_Name: Interactive Object
   m_TagString: Untagged
@@ -455,7 +455,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &521379629
+--- !u!114 &521379631
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -464,11 +464,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 521379624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2953d703d209ff441bf2b0e403463c22, type: 3}
+  m_Script: {fileID: 11500000, guid: a228c981b4cb4620808cc35ed9745fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToWait: 0.3
+  timeToWait: 0.6
   messageToShow: Interactive object
+  detectionRadius: 3
+  player: {fileID: 1927758953}
 --- !u!1 &612385608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,11 +1045,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1801287397}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2953d703d209ff441bf2b0e403463c22, type: 3}
+  m_Script: {fileID: 11500000, guid: a228c981b4cb4620808cc35ed9745fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToWait: 0.3
+  timeToWait: 0.5
   messageToShow: Building
+  detectionRadius: 5
+  player: {fileID: 1927758953}
 --- !u!1 &1927758953
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,7 +1068,7 @@ GameObject:
   - component: {fileID: 1927758960}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1332,11 +1336,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1962375742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2953d703d209ff441bf2b0e403463c22, type: 3}
+  m_Script: {fileID: 11500000, guid: a228c981b4cb4620808cc35ed9745fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToWait: 0.3
-  messageToShow: '[NPC] Testificate'
+  timeToWait: 0.5
+  messageToShow: '[NPC] Bella'
+  detectionRadius: 3
+  player: {fileID: 1927758953}
 --- !u!1 &2027947470
 GameObject:
   m_ObjectHideFlags: 0
