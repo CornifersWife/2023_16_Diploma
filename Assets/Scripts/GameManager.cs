@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour {
             return;
         }
         var card = avalibleCards[Random.Range(0, avalibleCards.Count())];
-        var boardspot = avalibleBoardSpaces[Random.Range(0, avalibleCards.Count())];
+        var boardspot = avalibleBoardSpaces[Random.Range(0, avalibleBoardSpaces.Count())];
         boardspot.CardDisplay = card;
     }
     

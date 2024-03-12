@@ -3,18 +3,24 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class CardDisplay : MonoBehaviour {
     public BaseCardData cardData;
     private String _healthText;
+    public delegate void OnDestroyedDelegate();
+    public event OnDestroyedDelegate OnDestroyed;
+
+    private bool inAnimation=false;
     
     [SerializeField] private float attackAnimationDuration = 0.2f; // Duration of the entire attack movement
     [SerializeField] private float easeOutDurationFraction = 0.6f; // Fraction of the duration for easing out
     [SerializeField] private float easeInDurationFraction = 0.4f; // Fraction of the duration for easing in
     [SerializeField] private float impactPauseDuration = 0.05f; // Pause duration at the impact to emphasize it
-    
-    
+
+    [SerializeField] private float deathAnimationRotationDuration = 0.2f;
+    [SerializeField] private float deathAnimationStopDuration = 0.1f;
     public void SetupCard(BaseCardData data) {
         cardData = data;
         DisplayData(gameObject);
@@ -26,6 +32,7 @@ public class CardDisplay : MonoBehaviour {
         minionData.OnHealthChanged += UpdateHealthDisplay; 
         minionData.OnAttack += AttackTarget;
         minionData.OnRequestPosition += GetCardPosition;
+        minionData.OnDeath += Destroy;
         DisplayData(gameObject);
     }
 
@@ -35,11 +42,10 @@ public class CardDisplay : MonoBehaviour {
     }
     public void AttackTarget(IDamageable target) {
         StartCoroutine(MoveTowardsTarget(target.GetPosition()));
-
     }
     
-    IEnumerator MoveTowardsTarget(Vector3 targetPosition)
-    {
+    IEnumerator MoveTowardsTarget(Vector3 targetPosition) {
+        inAnimation = true;
         //TODO animationTimeBased On Distance to target
         float elapsedTime = 0.0f;
         Vector3 startPosition = transform.position;
@@ -68,9 +74,42 @@ public class CardDisplay : MonoBehaviour {
             yield return null;
         }
 
-        transform.position = startPosition; 
+        transform.position = startPosition;
+        inAnimation = false;
     }
-    
+    private void OnDestroy()
+    {
+        OnDestroyed?.Invoke();
+    }
+    private void Destroy(MinionCardData minionData) {
+        StartCoroutine(DeathSequence());
+        minionData.OnHealthChanged -= UpdateHealthDisplay; 
+        minionData.OnAttack -= AttackTarget;
+        minionData.OnRequestPosition -= GetCardPosition;
+        minionData.OnDeath -= Destroy;
+    }
+
+    private IEnumerator DeathSequence() {
+        yield return new WaitUntil(() => !inAnimation);
+        yield return StartCoroutine(DeathAnimation());
+        Destroy(gameObject);
+    }
+    private IEnumerator DeathAnimation()
+    {
+        float time = 0; 
+        Quaternion startRotation = transform.rotation; 
+        Quaternion endRotation = transform.rotation * Quaternion.Euler(0, 30, 0); 
+
+        while (time < deathAnimationRotationDuration)
+        {
+            time += Time.deltaTime;
+            float t = time / deathAnimationRotationDuration;
+            transform.rotation = Quaternion.Slerp(startRotation, endRotation, t);
+            yield return null;
+        }
+        transform.rotation = endRotation;
+        yield return new WaitForSeconds(deathAnimationStopDuration);
+    }
     private void Update() {
         if (cardData is MinionCardData)
         {
@@ -92,11 +131,6 @@ public class CardDisplay : MonoBehaviour {
         GameObject healthTextGameObject = cardText.transform.GetChild(3).gameObject; // Assuming health text is at child index 3
         healthTextGameObject.GetComponent<TextMeshProUGUI>().text = healthText;
         _healthText = healthText; // Update the cached health text
-    }
-    private void OnDestroy() {
-        if (cardData is MinionCardData minionData) {
-            minionData.OnHealthChanged -= UpdateHealthDisplay; // Unsubscribe to avoid memory leaks
-        }
     }
 
 
