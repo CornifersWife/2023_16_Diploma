@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7527021933378610021}
-  - component: {fileID: 2276270804808241581}
   m_Layer: 0
   m_Name: BoardSide
   m_TagString: Untagged
@@ -32,22 +31,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4150459490861231547}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2276270804808241581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2775998517780807221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5fc0bf872a929d43949276972e4cf03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardPrefab: {fileID: 1741870825869677482, guid: b6e16c604f9e39c44b9d90764bea5afb, type: 3}
-  count: 5
-  board: []
-  cardSpacing: 1
 --- !u!1 &5667093268589797735
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab9271fca3870d94bb12a02e9abf2860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deck_data: []
   deck:
   - {fileID: 11400000, guid: ca371342ba374cc4ebd84e5b44cc4d08, type: 2}
   - {fileID: 11400000, guid: 3cbb122798f6b8c43b60d55966b90e54, type: 2}
@@ -175,6 +159,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: []
+  deck: {fileID: 0}
   cardPrefab: {fileID: 1741870825869677482, guid: b6e16c604f9e39c44b9d90764bea5afb, type: 3}
-  cardPositionManager: {fileID: 0}
   cardSpacing: 1
