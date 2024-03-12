@@ -11,9 +11,7 @@ public class MinionCardData : BaseCardData, IDamageable {
     public event Action<int> OnHealthChanged;
     public event Action<IDamageable> OnAttack;
     public event Action<MinionCardData> OnDeath;
-
     public delegate Vector3 RequestPositionDelegate();
-
     public event RequestPositionDelegate OnRequestPosition;
 
 

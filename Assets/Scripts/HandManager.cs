@@ -31,31 +31,14 @@ public class HandManager : MonoBehaviour {
         CardDisplay newCardDisplay = cardObj.GetComponent<CardDisplay>();
        
         if(cardData is MinionCardData)
-            newCardDisplay.SetupCard((MinionCardData)cardData);
+            newCardDisplay.SetupCard(Instantiate((MinionCardData)cardData));
         else {
-        newCardDisplay.SetupCard(cardData);
+        newCardDisplay.SetupCard(Instantiate(cardData));
         }
         hand.Add(newCardDisplay);
         UpdateCardPositionsInHand();
     }
-    /*
-    public void AddCardToHand(BaseCardData cardData) {
-        GameObject cardObj = Instantiate(cardPrefab, transform);
-        CardDisplay newCardDisplay = cardObj.GetComponent<CardDisplay>();
-
-        BaseCardData cardDataCopy;
-        if(cardData is MinionCardData minionCardData) {
-            cardDataCopy = minionCardData.Clone();
-        } else {
-            // If there are other types of CardData, handle them accordingly
-            cardDataCopy = null; // Ensure proper handling of this case
-        }
-
-        newCardDisplay.SetupCard(cardDataCopy); // Assuming SetupCard can accept BaseCardData
-        hand.Add(newCardDisplay);
-        UpdateCardPositionsInHand();
-    }
-    */
+   
 
 
 

@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour {
     public DeckManager playerDeck;
@@ -54,6 +57,8 @@ public class GameManager : MonoBehaviour {
     public void UnsubscribeFromCardSpot(CardSpot cardSpot) {
         cardSpot.Play -= OnCardPlayed;
     }
+
+    
 
     
     public void PlayerDrawCard() {

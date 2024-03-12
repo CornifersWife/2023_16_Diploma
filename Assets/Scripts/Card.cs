@@ -54,6 +54,4 @@ public class SpellCard : Card {
     public SpellCard(string CardName, int Cost) : base(CardName, Cost) {
         throw new NotImplementedException();
     }
-    // Other methods for Card
-
 }
