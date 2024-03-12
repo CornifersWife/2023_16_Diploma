@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +7,8 @@ public class ShowName: MonoBehaviour
 {
     [SerializeField] private float timeToWait = 0.5f;
     [SerializeField] private string messageToShow;
+    [SerializeField] private RectTransform nameWindow;
+    [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private float detectionRadius = 3f;
     [SerializeField] private GameObject player;
     
@@ -18,6 +21,7 @@ public class ShowName: MonoBehaviour
         _camera = Camera.main;
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player");
+        HideMessage();
     }
 
     void Update()
@@ -28,13 +32,14 @@ public class ShowName: MonoBehaviour
             _hoverTimer += Time.deltaTime;
             if (_hoverTimer >= timeToWait)
             {
+                MoveTextNearCursor();
                 ShowMessage();
             }
         }
         else
         {
             _hoverTimer = 0f;
-            ShowNameManager.OnMouseLoseFocus();
+            HideMessage();
         }
     }
 
@@ -67,8 +72,22 @@ public class ShowName: MonoBehaviour
         return false;
     }
     
+    private void MoveTextNearCursor()
+    {
+        Vector3 mousePosition = Mouse.current.position.ReadValue();
+        nameWindow.sizeDelta = new Vector2(nameText.preferredWidth > 100 ? 100 : nameText.preferredWidth, nameText.preferredHeight);
+        nameWindow.transform.position = new Vector2(mousePosition.x + nameWindow.sizeDelta.x/2, mousePosition.y);
+    }
+    
     private void ShowMessage()
     {
-        ShowNameManager.OnMouseHover(messageToShow, Mouse.current.position.ReadValue());
+        nameText.text = messageToShow;
+        nameWindow.gameObject.SetActive(true);
+    }
+
+    private void HideMessage()
+    {
+        nameText.text = messageToShow;
+        nameWindow.gameObject.SetActive(false);
     }
 }
