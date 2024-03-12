@@ -85,7 +85,6 @@ public class CardDisplay : MonoBehaviour {
         }
     }
 
-// This method updates the health display on the UI
     private void UpdateHealthDisplay(int newHealth) {
         string healthText = newHealth.ToString();
         GameObject canvas = gameObject.transform.GetChild(0).gameObject;

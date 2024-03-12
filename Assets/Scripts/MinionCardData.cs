@@ -13,21 +13,7 @@ public class MinionCardData : BaseCardData, IDamageable {
     public event Action<MinionCardData> OnDeath;
     public delegate Vector3 RequestPositionDelegate();
     public event RequestPositionDelegate OnRequestPosition;
-
-
-    public MinionCardData Clone() {
-        var clone = ScriptableObject.CreateInstance<MinionCardData>();
-        clone.power = this.power;
-        clone.currentHealth = this.currentHealth;
-        clone.maxHealth = this.maxHealth;
-        clone.id = id;
-        clone.cost = cost;
-        clone.cardName = cardName;
-        clone.cardImage = cardImage;
-        // Copy over other necessary data here
-        return clone;
-    }
-
+    
     public void TakeDamage(int amount) {
         currentHealth -= amount;
         OnHealthChanged?.Invoke(currentHealth);

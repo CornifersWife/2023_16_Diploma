@@ -20,9 +20,7 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
@@ -40,19 +38,13 @@ namespace TurnSystem {
         }
     }
 
-    /// <summary>
-    /// define 'Enemy' tag in Unity, set tag of dead enemies to 'Dead'
-    /// </summary>
     [CreateAssetMenu(fileName = "win_condition", menuName = "Basic Win Condition", order = 0)]
     public class BasicWinCondition : CheckCondition {
         public override bool HasSatisfied() {
             return GameObject.FindGameObjectsWithTag("Enemy").Length == 0;
         }
     }
-
-    /// <summary>
-    /// set tag of dead Players to 'Dead'
-    /// </summary>
+    
     [CreateAssetMenu(fileName = "lose_condition", menuName = "Basic Lose Condition", order = 0)]
     public class BasicLoseCondition : CheckCondition {
         public override bool HasSatisfied() {
@@ -117,7 +109,6 @@ namespace TurnSystem {
             get { return HasWonGame || HasLostGame; }
         }
         
-        //Used to get first five cards
         public void startingHand() { 
             playerDeck.Shuffle();
             enemyDeck.Shuffle();
@@ -127,11 +118,9 @@ namespace TurnSystem {
             }
         }
         
-        // Start is called before the first frame update
         IEnumerator Start() {
             startingHand();
             yield return new WaitUntil(() => { return HasGameStarted; });
-            //GameObject.FindWithTag("Player").GetComponent<ManaManager>().NextRound();
 
             if (HasWonGame) {
                 if (OnGameWon != null)
@@ -181,8 +170,6 @@ namespace TurnSystem {
         }
 
         private void EndOfTurn(bool isPlayer) {
-            // Perform actions that happen at the end of the turn
-            // Example: Minions attack
             board.MinionsAttack(isPlayer);
         }
 

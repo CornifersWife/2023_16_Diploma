@@ -29,7 +29,6 @@ public class DeckManager : MonoBehaviour {
          
         for (int i = 0; i < n-1; i++)
         {
-            // Random for remaining positions.
             int r = i + rand.Next(n - i);
              
             BaseCardData temp = deck[r];

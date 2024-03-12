@@ -14,7 +14,6 @@ public class DragAndDrop : MonoBehaviour {
     [SerializeField] float snapDistance = 2.0f;
 
 
-    //private GameObject currentSnapTarget;
     private Vector3 GetMousePos() {
         return Camera.main.WorldToScreenPoint(transform.position);
     }

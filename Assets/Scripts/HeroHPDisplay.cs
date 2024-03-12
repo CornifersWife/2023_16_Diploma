@@ -4,14 +4,12 @@ using UnityEngine.UI;
 
 public class HeroHPDisplay : MonoBehaviour {
     private Hero hero;
-    public Button button; // Assign your button here
+    public Button button; 
     private int showValue;
-    private int maxValue;// Your int variable
     private TMP_Text buttonText;
 
     private void Start() {
         hero = GetComponent<Hero>();
-        maxValue = hero.maxHealth;
         showValue = hero.currentHealth;
         buttonText = button.GetComponentInChildren<TMP_Text>(); 
     }

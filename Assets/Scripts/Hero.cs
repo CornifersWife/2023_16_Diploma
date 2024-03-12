@@ -24,8 +24,7 @@ public class Hero : MonoBehaviour, IDamageable
     }
     public void Death()
     {
-        // Handle death (e.g., disable the hero, trigger death animation)
-        GetComponent<Hero>().tag = "Dead";
+        
     }
 
     public Vector3 GetPosition()

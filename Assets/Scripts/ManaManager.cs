@@ -8,13 +8,11 @@ public class ManaManager : MonoBehaviour {
     public int usedMana;
     public TMP_Text manaCount;
 
-    //Use at the beginning of the game
     public void Start() {
         usedMana = 0;
         manaCount.text = "Mana: " + actualMana;
     }
 
-    //Use this method to buy a card
     public bool UseMana(BaseCardData card) {
         if (actualMana >= card.cost) {
             actualMana -= card.cost;
@@ -26,7 +24,6 @@ public class ManaManager : MonoBehaviour {
         }
     }
 
-    //Use this method when starting a new round 
     public void NextRound() {
         actualMana += usedMana;
         usedMana = 0;

@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class HandManager : MonoBehaviour {
@@ -10,7 +7,6 @@ public class HandManager : MonoBehaviour {
     public GameObject cardPrefab;
     public float cardSpacing = 1.0f; // Space between cards
     
-
     private void UpdateCardPositionsInHand() {
         float totalWidth = (hand.Count - 1) * cardSpacing;
         Vector3 startPos = -Vector3.right * totalWidth / 2;
@@ -38,31 +34,9 @@ public class HandManager : MonoBehaviour {
         hand.Add(newCardDisplay);
         UpdateCardPositionsInHand();
     }
-   
-
-
-
+    
     public void RemoveCardFromHand(CardDisplay card) {
         if (hand.Remove(card))
             UpdateCardPositionsInHand();
-    }
-    
-    private void DestroyCardDisplay(BaseCardData cardData) {
-        foreach (Transform child in transform) {
-            CardDisplay cardDisplay = child.GetComponent<CardDisplay>();
-            if (cardDisplay != null && cardDisplay.cardData == cardData) {
-                Destroy(cardDisplay.gameObject);
-                break;
-            }
-        }
-    }
-
-    public int GetCardIndex(BaseCardData cardData) {
-        for (int i = 0; i < hand.Count; i++) {
-            if (hand[i] == cardData) {
-                return i;
-            }
-        }
-        return 0;
     }
 }

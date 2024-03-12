@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -17,10 +13,6 @@ public class GameManager : MonoBehaviour {
     public ManaManager enemyMana;
     
     public Board board;
-    public int cardtoplay = -1;
-    public int boardspacechosen = -1;
-    
-    private Dictionary<MinionCardData, CardDisplay> minionToDisplayMap = new Dictionary<MinionCardData, CardDisplay>();
 
     public static GameManager Instance { get; private set; }
     
@@ -48,8 +40,6 @@ public class GameManager : MonoBehaviour {
         cardDisplay.transform.SetParent(cardSpot.transform);
         cardDisplay.transform.localPosition = Vector3.zero;
         cardDisplay.transform.position = cardSpot.transform.position;
-
-
     }
     public void SubscribeToCardSpot(CardSpot cardSpot) {
         cardSpot.Play += OnCardPlayed;
@@ -57,9 +47,6 @@ public class GameManager : MonoBehaviour {
     public void UnsubscribeFromCardSpot(CardSpot cardSpot) {
         cardSpot.Play -= OnCardPlayed;
     }
-
-    
-
     
     public void PlayerDrawCard() {
         BaseCardData drawnCard = playerDeck.DrawCard();
@@ -75,7 +62,6 @@ public class GameManager : MonoBehaviour {
         var avalibleBoardSpaces = board.enemyMinions
             .Where(space => space.IsEmpty()).ToArray();
         if (avalibleCards.Count() <= 0 || avalibleBoardSpaces.Count() <= 0) {
-            Debug.Log("enemy cant play cards");
             return;
         }
         var card = avalibleCards[Random.Range(0, avalibleCards.Count())];
@@ -89,8 +75,7 @@ public class GameManager : MonoBehaviour {
             enemyHand.AddCardToHand(drawnCard);
         }
     }
-
-
+    
     public void PlayerAttack() {
         board.MinionsAttack(true);
     }
@@ -104,17 +89,13 @@ public class GameManager : MonoBehaviour {
         foreach (BaseCardData card in playerDeck.deck) {
             ids += card.id + ", ";
         }
-
         ids += "]";
         Debug.Log(ids);
-
         playerDeck.Shuffle();
-
         ids = "After shuffle: [";
         foreach (BaseCardData card in playerDeck.deck) {
             ids += card.id + ", ";
         }
-
         ids += "]";
         Debug.Log(ids);
     }
