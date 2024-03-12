@@ -244,7 +244,6 @@ GameObject:
   - component: {fileID: 159117991}
   - component: {fileID: 159117990}
   - component: {fileID: 159117989}
-  - component: {fileID: 159117993}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -335,20 +334,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &159117993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 159117988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af765d94be3b81246ae99d71dddb057b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameWindow: {fileID: 1406766844}
-  nameText: {fileID: 1273330247}
 --- !u!1 &327693192
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,7 +770,6 @@ GameObject:
   - component: {fileID: 496267655}
   - component: {fileID: 496267654}
   - component: {fileID: 496267653}
-  - component: {fileID: 496267652}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -813,20 +797,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &496267652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 496267650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af765d94be3b81246ae99d71dddb057b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameWindow: {fileID: 327693193}
-  nameText: {fileID: 1785240188}
 --- !u!114 &496267653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1226,7 +1196,6 @@ GameObject:
   - component: {fileID: 966790006}
   - component: {fileID: 966790005}
   - component: {fileID: 966790004}
-  - component: {fileID: 966790003}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1254,20 +1223,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &966790003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 966790001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af765d94be3b81246ae99d71dddb057b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameWindow: {fileID: 927882305}
-  nameText: {fileID: 331267418}
 --- !u!114 &966790004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1573,7 +1528,6 @@ GameObject:
   - component: {fileID: 1395321074}
   - component: {fileID: 1395321073}
   - component: {fileID: 1395321072}
-  - component: {fileID: 1395321071}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1601,20 +1555,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1395321071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1395321069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af765d94be3b81246ae99d71dddb057b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameWindow: {fileID: 381884970}
-  nameText: {fileID: 1894858004}
 --- !u!114 &1395321072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1766,7 +1706,6 @@ GameObject:
   - component: {fileID: 1705909337}
   - component: {fileID: 1705909336}
   - component: {fileID: 1705909335}
-  - component: {fileID: 1705909334}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1794,20 +1733,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1705909334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1705909332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af765d94be3b81246ae99d71dddb057b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameWindow: {fileID: 937979219}
-  nameText: {fileID: 436051807}
 --- !u!114 &1705909335
 MonoBehaviour:
   m_ObjectHideFlags: 0
