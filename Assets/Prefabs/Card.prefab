@@ -101,10 +101,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardData: {fileID: 0}
+  distanceImportance: 0.5
   attackAnimationDuration: 0.35
   easeOutDurationFraction: 0.2
   easeInDurationFraction: 0.9
   impactPauseDuration: 0.1
+  deathAnimationRotationDuration: 0.2
+  deathAnimationStopDuration: 0.1
 --- !u!54 &5751253126594945508
 Rigidbody:
   m_ObjectHideFlags: 0
