@@ -2,9 +2,6 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 public class CardDisplay : MonoBehaviour {
     public BaseCardData cardData;
@@ -46,6 +43,7 @@ public class CardDisplay : MonoBehaviour {
     
     IEnumerator MoveTowardsTarget(Vector3 targetPosition) {
         inAnimation = true;
+        targetPosition.y += 0.1f; //avoids mesh fighting
         //TODO animationTimeBased On Distance to target
         float elapsedTime = 0.0f;
         Vector3 startPosition = transform.position;

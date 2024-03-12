@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour {
         cardDisplay.transform.SetParent(cardSpot.transform);
         cardDisplay.transform.localPosition = Vector3.zero;
         cardDisplay.transform.position = cardSpot.transform.position;
+        cardDisplay.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
     public void SubscribeToCardSpot(CardSpot cardSpot) {
         cardSpot.Play += OnCardPlayed;
