@@ -1,9 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Board : MonoBehaviour {
     public int maxMinions = 5;
@@ -13,8 +9,8 @@ public class Board : MonoBehaviour {
 
     public GameObject cardSpot;
     public GameObject minionCardPrefab; //check if still needed
-    public Transform playerMinionArea; 
-    public Transform opponentMinionArea; 
+    public Transform playerMinionArea;
+    public Transform opponentMinionArea;
 
     public float cardSpacing = 1;
     public float delayBetweenAttacks = 0.3f;
@@ -28,7 +24,6 @@ public class Board : MonoBehaviour {
         playerMinions = new CardSpot[maxMinions];
         enemyMinions = new CardSpot[maxMinions];
         GenerateBoardSpaces();
-
     }
 
     public void GenerateBoardSpaces() {
@@ -37,18 +32,18 @@ public class Board : MonoBehaviour {
     }
 
     public void GenerateEnemyBoardSpaces() {
-        for (int i = 0; i <maxMinions; i++) {
+        for (int i = 0; i < maxMinions; i++) {
             GameObject cardSpotobj = Instantiate(cardSpot, opponentMinionArea);
             cardSpotobj.GetComponent<CardSpot>().isPlayers = false;
             cardSpotobj.transform.position += new Vector3(i * cardSpacing, 0, 0);
             cardSpotobj.name = "EnemyCardSpot_" + i;
-            cardSpotobj.transform.rotation *= Quaternion.Euler(0, 180, 0); 
+            cardSpotobj.transform.rotation *= Quaternion.Euler(0, 180, 0);
             enemyMinions[i] = cardSpotobj.GetComponent<CardSpot>();
         }
     }
 
     public void GeneratePlayerBoardSpaces() {
-        for (int i = 0; i <maxMinions; i++) {
+        for (int i = 0; i < maxMinions; i++) {
             GameObject cardSpotobj = Instantiate(cardSpot, playerMinionArea);
             cardSpotobj.transform.position += new Vector3(i * cardSpacing, 0, 0);
             cardSpotobj.name = "PlayerCardSpot_" + i;
@@ -82,6 +77,7 @@ public class Board : MonoBehaviour {
                 attacker.Attack(targetHero);
                 continue;
             }
+
             var target = (MinionCardData)targetted[i].cardDisplay.cardData;
             attacker.Attack(target);
         }

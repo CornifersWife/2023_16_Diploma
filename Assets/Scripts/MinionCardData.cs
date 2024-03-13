@@ -11,7 +11,7 @@ public class MinionCardData : BaseCardData, IDamageable {
     public event Action<int> OnHealthChanged;
     public event Action<IDamageable> OnAttack;
     public event Action<MinionCardData> OnDeath;
-    public delegate Vector3 RequestPositionDelegate();
+    public delegate Vector3 RequestPositionDelegate(); //TODO added by chatbot, need to think if its needed and if it is i need to understand why
     public event RequestPositionDelegate OnRequestPosition;
     
     public void TakeDamage(int amount) {

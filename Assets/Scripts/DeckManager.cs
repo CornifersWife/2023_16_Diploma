@@ -34,7 +34,6 @@ public class DeckManager : MonoBehaviour {
             BaseCardData temp = deck[r];
             deck[r] = deck[i];
             deck[i] = temp;
-             
         }
     }
 }

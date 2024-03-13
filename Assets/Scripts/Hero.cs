@@ -24,7 +24,6 @@ public class Hero : MonoBehaviour, IDamageable
     }
     public void Death()
     {
-        
     }
 
     public Vector3 GetPosition()

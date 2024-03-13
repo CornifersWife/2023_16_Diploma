@@ -43,10 +43,10 @@ public class CardDisplay : MonoBehaviour {
         StartCoroutine(MoveTowardsTarget(target.GetPosition()));
     }
 
+    //TODO Change how it works the code is awful
     IEnumerator MoveTowardsTarget(Vector3 targetPosition) {
         inAnimation = true;
         targetPosition.y += 0.1f; //avoids mesh fighting
-        //TODO animationTimeBased On Distance to target
         float elapsedTime = 0.0f;
         Vector3 startPosition = transform.position;
         float distanceToTarget = Vector3.Distance(this.transform.position, targetPosition);

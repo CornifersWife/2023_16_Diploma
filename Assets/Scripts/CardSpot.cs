@@ -1,12 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
 
 public class CardSpot : MonoBehaviour {
     public CardDisplay cardDisplay;
-
     public bool isPlayers = true;
     public event Action<CardSpot,CardDisplay> Play;
 
