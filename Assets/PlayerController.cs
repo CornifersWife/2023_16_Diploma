@@ -57,11 +57,11 @@ public class PlayerController : MonoBehaviour
         
         while (Vector3.Distance(transform.position, target) > 0.1f)
         {
-            Vector3 destination = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
             Vector3 direction = target - transform.position;
             Vector3 movement = moveSpeed * Time.deltaTime * direction.normalized;
             _characterController.Move(movement);
-            
+
+            direction.y = 0f;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction.normalized), rotationSpeed *Time.deltaTime);
             yield return null;
         }
