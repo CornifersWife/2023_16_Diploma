@@ -20,6 +20,10 @@ public class HandManager : MonoBehaviour {
 
     public void DrawACard() {
         BaseCardData drawn = deck.DrawCard();
+        if (drawn is null) {
+            Debug.Log("Deck is empty");
+            return;
+        }
         AddCardToHand(drawn);
     }
 

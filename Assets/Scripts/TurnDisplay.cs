@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class TurnDisplay : MonoBehaviour {
     private TurnManager turnManager;
     public Button button;
-    public bool isPlayerTurn;
     private TMP_Text buttonText;
     private Image buttonColor;
     private void Start() {
@@ -25,6 +24,6 @@ public class TurnDisplay : MonoBehaviour {
     {
         buttonText.text = turnManager.isPlayerTurn ? "Your Turn" : "Enemy Turn";
         buttonColor.color =
-            isPlayerTurn ? new Color(0.8f, 1f, 0.6f, 1f) : new Color(1f, 0.5f, 0.5f, 1f);
+            turnManager.isPlayerTurn ? new Color(0.8f, 1f, 0.6f, 1f) : new Color(1f, 0.5f, 0.5f, 1f);
     }
 }
