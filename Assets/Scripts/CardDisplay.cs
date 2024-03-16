@@ -21,7 +21,7 @@ public class CardDisplay : MonoBehaviour {
     [SerializeField] private float deathAnimationStopDuration = 0.1f;
 
     public void SetupCard(BaseCardData data) {
-        if (cardData is MinionCardData minionCardData) {
+        if (data is MinionCardData minionCardData) {
             SetupCard(minionCardData);
             return;
         }
@@ -132,7 +132,7 @@ public class CardDisplay : MonoBehaviour {
     private void UpdateHealthDisplay(int newHealth) {
         healthText = newHealth.ToString();
         GameObject canvas = gameObject.transform.GetChild(0).gameObject;
-        GameObject cardText = canvas.transform.GetChild(0).gameObject;
+        GameObject cardText = canvas.transform.GetChild(1).gameObject;
         GameObject healthTextGameObject =
                 cardText.transform.GetChild(3).gameObject; // Assuming health text is at child index 3
         healthTextGameObject.GetComponent<TextMeshProUGUI>().text = healthText;
@@ -141,7 +141,7 @@ public class CardDisplay : MonoBehaviour {
 //TODO rework this
     private void DisplayData(GameObject card) {
         GameObject canvas = card.transform.GetChild(0).gameObject;
-        GameObject cardText = canvas.transform.GetChild(0).gameObject;
+        GameObject cardText = canvas.transform.GetChild(1).gameObject;
 
         GameObject nameText = cardText.transform.GetChild(0).gameObject;
         GameObject manaText = cardText.transform.GetChild(1).gameObject;
