@@ -1607,6 +1607,50 @@ Transform:
   - {fileID: 864746081}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &662785244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 662785246}
+  - component: {fileID: 662785245}
+  m_Layer: 0
+  m_Name: SceneSwitcher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &662785245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662785244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f5bf0ec4ab9344ea7f86c54931c83e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &662785246
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662785244}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.79990745, y: 1.9324856, z: 4.222659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &819368318
 GameObject:
   m_ObjectHideFlags: 0
@@ -3019,13 +3063,14 @@ GameObject:
   - component: {fileID: 1710800760}
   - component: {fileID: 1710800759}
   - component: {fileID: 1710800763}
+  - component: {fileID: 1710800764}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1710800759
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3041,11 +3086,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1710800760
 MeshRenderer:
@@ -3126,11 +3171,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToWait: 0.5
-  messageToShow: CUBE
+  messageToShow: Switch scene
   nameWindow: {fileID: 927882305}
   nameText: {fileID: 331267418}
   detectionRadius: 3
   player: {fileID: 1927758953}
+--- !u!114 &1710800764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710800758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf940cfaad04d347a27684ce393cd0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadName: final scene
+  unloadName: 
 --- !u!1 &1724828319
 GameObject:
   m_ObjectHideFlags: 0
@@ -4327,6 +4386,7 @@ RectTransform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 2063954340}
   - {fileID: 1210402852}
   - {fileID: 612385609}
   - {fileID: 1724828323}
@@ -4338,6 +4398,6 @@ SceneRoots:
   - {fileID: 1962375746}
   - {fileID: 521379628}
   - {fileID: 1710800762}
-  - {fileID: 2063954340}
   - {fileID: 159117992}
   - {fileID: 1030159840}
+  - {fileID: 662785246}
