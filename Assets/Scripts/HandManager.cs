@@ -1,21 +1,41 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HandManager : MonoBehaviour {
     public List<CardDisplay> hand = new List<CardDisplay>();
-    public DeckManager deck;
-    public GameObject cardPrefab;
-    public float cardSpacing = 1.0f; // Space between cards
+    [SerializeField] private DeckManager deck;
     public bool isPlayers = true;
-    
-    private void UpdateCardPositionsInHand() {
-        float totalWidth = (hand.Count - 1) * cardSpacing;
-        Vector3 startPos = -Vector3.right * totalWidth / 2;
+    [SerializeField] private float baseCardSpacing = 1.0f; 
+    [SerializeField] private float animationDuration = 0.1f;
 
+    [Header("card spacing")] 
+    [SerializeField] private int cardAmountLimit = 4;
+
+    [SerializeField] private float verticalCardSpacing = 0.05f;
+    private void UpdateCardPositionsInHand() {
+        var cardSpacing = baseCardSpacing;
+        if (hand.Count > cardAmountLimit)
+            cardSpacing = 3f / (hand.Count - (cardAmountLimit - 3)) ;
+        float totalWidth = (hand.Count - 1) * cardSpacing;
+        Vector3 startPos = -Vector3.left * totalWidth / 2;
         for (int i = 0; i < hand.Count; i++) {
-            Vector3 cardPos = startPos + Vector3.right * (i * cardSpacing);
-            hand[i].transform.localPosition = cardPos;
+            Vector3 targetPos = startPos + Vector3.left * (i * cardSpacing);
+            targetPos += Vector3.up * (i * verticalCardSpacing);
+            StartCoroutine(AnimateCardToPosition(hand[i].transform, targetPos, animationDuration));
         }
+    }
+
+    private IEnumerator AnimateCardToPosition(Transform cardTransform, Vector3 targetPosition, float duration) {
+        Vector3 startPosition = cardTransform.localPosition;
+        float time = 0;
+        while (time < duration) {
+            cardTransform.localPosition = Vector3.Lerp(startPosition, targetPosition, time / duration);
+            time += Time.deltaTime;
+            yield return null; // Wait for the next frame
+        }
+
+        cardTransform.localPosition = targetPosition;
     }
 
     public void DrawACard() {
@@ -27,21 +47,17 @@ public class HandManager : MonoBehaviour {
         AddCardToHand(drawn);
     }
 
+    
     public void AddCardToHand(BaseCardData cardData) {
-        GameObject cardObj = Instantiate(cardPrefab, transform);
-        CardDisplay newCardDisplay = cardObj.GetComponent<CardDisplay>();
+        CardDisplay newCardDisplay = GameManager.Instance.CreateCardInstance(cardData,deck.transform);
         if (!isPlayers) {
-            cardObj.GetComponent<DragAndDrop>().enabled = false;
+            newCardDisplay.GetComponent<DragAndDrop>().enabled = false;
         }
-        if(cardData is MinionCardData data)
-            newCardDisplay.SetupCard(Instantiate(data));
-        else {
-        newCardDisplay.SetupCard(Instantiate(cardData));
-        }
+        newCardDisplay.transform.SetParent(transform);
         hand.Add(newCardDisplay);
         UpdateCardPositionsInHand();
     }
-    
+
     public void RemoveCardFromHand(CardDisplay card) {
         if (hand.Remove(card))
             UpdateCardPositionsInHand();

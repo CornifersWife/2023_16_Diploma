@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour {
@@ -14,12 +15,14 @@ public class GameManager : MonoBehaviour {
     
     public Board board;
 
+    public GameObject cardPrefab;
+
     public static GameManager Instance { get; private set; }
     
     
     private void Awake() {
         if (Instance != null && Instance != this) {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         } else {
             Instance = this;
         }
@@ -29,7 +32,20 @@ public class GameManager : MonoBehaviour {
             SubscribeToCardSpot(cardSpot);
         }
     }
-    
+
+    public CardDisplay CreateCardInstance(BaseCardData cardData) {
+        GameObject cardObj = Instantiate(cardPrefab, transform);
+        CardDisplay newCardDisplay = cardObj.GetComponent<CardDisplay>();
+        newCardDisplay.SetupCard(Instantiate(cardData));
+        return newCardDisplay;
+    }
+    public CardDisplay CreateCardInstance(BaseCardData cardData, Transform newTransform) {
+        GameObject cardObj = Instantiate(cardPrefab, transform);
+        cardObj.transform.position = newTransform.position;
+        CardDisplay newCardDisplay = cardObj.GetComponent<CardDisplay>();
+        newCardDisplay.SetupCard(Instantiate(cardData));
+        return newCardDisplay;
+    }
     private void OnCardPlayed(CardSpot cardSpot, CardDisplay cardDisplay) {
         var mana = cardSpot.isPlayers ? playerMana : enemyMana;
         if (!mana.CanPlayCard(cardDisplay)) {
@@ -40,9 +56,10 @@ public class GameManager : MonoBehaviour {
         cardSpot.SetCardDisplay(cardDisplay);
         mana.UseMana(cardDisplay);
         hand.RemoveCardFromHand(cardDisplay);
-        cardDisplay.transform.SetParent(cardSpot.transform);
-        cardDisplay.transform.localPosition = Vector3.zero;
-        cardDisplay.transform.position = cardSpot.transform.position;
+        Transform cardTransform;
+        (cardTransform = cardDisplay.transform).SetParent(cardSpot.transform);
+        cardTransform.localPosition = Vector3.zero;
+        cardTransform.position = cardSpot.transform.position;
         cardDisplay.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
     private void SubscribeToCardSpot(CardSpot cardSpot) {
