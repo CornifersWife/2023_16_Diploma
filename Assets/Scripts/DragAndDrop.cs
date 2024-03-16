@@ -3,14 +3,10 @@ using UnityEngine;
 
 public class DragAndDrop : MonoBehaviour {
     public Vector3 mousePosition;
-    public bool validTarget;
     public Vector3 startingPosition;
-
-   
     
     [SerializeField] float snapDistance = 2.0f;
-
-
+    
     private Vector3 GetMousePos() {
         return Camera.main.WorldToScreenPoint(transform.position);
     }
@@ -54,6 +50,6 @@ public class DragAndDrop : MonoBehaviour {
     }
 
     private void PlayCardAt(CardSpot target) {
-        target.CardDisplay = this.GetComponent<CardDisplay>();
+        target.CardDisplay = GetComponent<CardDisplay>();
     }
 }

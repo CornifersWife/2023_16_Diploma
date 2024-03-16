@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CardDisplay : MonoBehaviour {
     public BaseCardData cardData;
-    private String _healthText;
+    private String healthText;
     public delegate void OnDestroyedDelegate();
     public event OnDestroyedDelegate OnDestroyed;
 
@@ -21,6 +21,10 @@ public class CardDisplay : MonoBehaviour {
     [SerializeField] private float deathAnimationStopDuration = 0.1f;
 
     public void SetupCard(BaseCardData data) {
+        if (cardData is MinionCardData minionCardData) {
+            SetupCard(minionCardData);
+            return;
+        }
         cardData = data;
         DisplayData(gameObject);
     }
@@ -39,17 +43,19 @@ public class CardDisplay : MonoBehaviour {
         return transform.position;
     }
 
-    public void AttackTarget(IDamageable target) {
+    
+    private void AttackTarget(IDamageable target) {
         StartCoroutine(MoveTowardsTarget(target.GetPosition()));
     }
 
     //TODO Change how it works the code is awful
+    //TODO move to a separate component
     IEnumerator MoveTowardsTarget(Vector3 targetPosition) {
         inAnimation = true;
         targetPosition.y += 0.1f; //avoids mesh fighting
         float elapsedTime = 0.0f;
         Vector3 startPosition = transform.position;
-        float distanceToTarget = Vector3.Distance(this.transform.position, targetPosition);
+        float distanceToTarget = Vector3.Distance(startPosition, targetPosition);
         float distanceFactor = distanceImportance * (float)Math.Sqrt(distanceToTarget);
         attackAnimationDuration *= distanceFactor;
         float easeOutDuration = easeOutDurationFraction * attackAnimationDuration ;
@@ -99,7 +105,7 @@ public class CardDisplay : MonoBehaviour {
     private IEnumerator DeathAnimation() {
         float time = 0;
         Quaternion startRotation = transform.rotation;
-        Quaternion endRotation = transform.rotation * Quaternion.Euler(0, 30, 0);
+        Quaternion endRotation = startRotation * Quaternion.Euler(0, 30, 0);
 
         while (time < deathAnimationRotationDuration) {
             time += Time.deltaTime;
@@ -113,30 +119,27 @@ public class CardDisplay : MonoBehaviour {
     }
 
     private void Update() {
-        if (cardData is MinionCardData) {
-            MinionCardData minionCardData = (MinionCardData)cardData;
+        if (cardData is MinionCardData minionCardData) {
             string newHealthText = minionCardData.currentHealth.ToString();
 
-            if (_healthText != newHealthText) {
-                _healthText = newHealthText;
+            if (healthText != newHealthText) {
+                healthText = newHealthText;
                 UpdateHealthDisplay(minionCardData.currentHealth);
             }
         }
     }
 
     private void UpdateHealthDisplay(int newHealth) {
-        string healthText = newHealth.ToString();
+        healthText = newHealth.ToString();
         GameObject canvas = gameObject.transform.GetChild(0).gameObject;
         GameObject cardText = canvas.transform.GetChild(0).gameObject;
-        GameObject
-            healthTextGameObject =
+        GameObject healthTextGameObject =
                 cardText.transform.GetChild(3).gameObject; // Assuming health text is at child index 3
         healthTextGameObject.GetComponent<TextMeshProUGUI>().text = healthText;
-        _healthText = healthText; // Update the cached health text
     }
 
-
-    public void DisplayData(GameObject card) {
+//TODO rework this
+    private void DisplayData(GameObject card) {
         GameObject canvas = card.transform.GetChild(0).gameObject;
         GameObject cardText = canvas.transform.GetChild(0).gameObject;
 
@@ -156,7 +159,7 @@ public class CardDisplay : MonoBehaviour {
         if (cardData is MinionCardData) {
             attackText.GetComponent<TextMeshProUGUI>().text = minionCardData.power.ToString();
             healthText.GetComponent<TextMeshProUGUI>().text = minionCardData.currentHealth.ToString();
-            _healthText = healthText.GetComponent<TextMeshProUGUI>().text;
+            this.healthText = healthText.GetComponent<TextMeshProUGUI>().text;
         }
 
         //If card is not Minion:
