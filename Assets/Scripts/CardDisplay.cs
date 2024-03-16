@@ -129,6 +129,7 @@ public class CardDisplay : MonoBehaviour {
         }
     }
 
+    //TODO rework this to not ask for the index of child
     private void UpdateHealthDisplay(int newHealth) {
         healthText = newHealth.ToString();
         GameObject canvas = gameObject.transform.GetChild(0).gameObject;
@@ -153,10 +154,8 @@ public class CardDisplay : MonoBehaviour {
         nameText.GetComponent<TextMeshProUGUI>().text = cardData.cardName;
         manaText.GetComponent<TextMeshProUGUI>().text = cardData.cost.ToString();
         //Image.GetComponent<Image>().sprite = cardData.cardImage;
-
-        //If card is Minion:
-        MinionCardData minionCardData = (MinionCardData)cardData;
-        if (cardData is MinionCardData) {
+        
+        if (cardData is MinionCardData minionCardData) {
             attackText.GetComponent<TextMeshProUGUI>().text = minionCardData.power.ToString();
             cardHealthText.GetComponent<TextMeshProUGUI>().text = minionCardData.currentHealth.ToString();
             this.healthText = cardHealthText.GetComponent<TextMeshProUGUI>().text;
