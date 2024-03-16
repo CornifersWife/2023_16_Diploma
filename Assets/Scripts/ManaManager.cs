@@ -1,35 +1,38 @@
-using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ManaManager : MonoBehaviour {
-    public int actualMana;
-    public int usedMana;
+    public int maxMana = 10;
+    public int currentMaxMana;
+    public int currentMana;
     public TMP_Text manaCount;
 
-    public void Start() {
-        usedMana = 0;
-        manaCount.text = "Mana: " + actualMana;
+    private void Start() {
+        currentMana = 0;
+        manaCount.text = "Mana: " + currentMana;
     }
 
-    public bool UseMana(BaseCardData card) {
-        if (actualMana >= card.cost) {
-            actualMana -= card.cost;
-            usedMana += card.cost;
-            manaCount.text = "Mana: " + actualMana;
-            return true;
-        }else {
-            return false;
+    public void UseMana(CardDisplay cardDisplay) {
+        UseMana(cardDisplay.cardData);
+    }
+
+    public void UseMana(BaseCardData card) {
+        if (CanPlayCard(card)) {
+            currentMana -= card.cost;
+            manaCount.text = "Mana: " + currentMana;
         }
     }
 
-    public void NextRound() {
-        actualMana += usedMana;
-        usedMana = 0;
-        if (actualMana < 10) {
-            actualMana++;
-        }
-        manaCount.text = "Mana: " + actualMana;
+    public bool CanPlayCard(CardDisplay cardDisplay) {
+        return CanPlayCard(cardDisplay.cardData);
+    }    
+    public bool CanPlayCard(BaseCardData card) {
+        return currentMana >= card.cost;
+    }
+    public void StartRound() {
+        if (currentMaxMana < maxMana)
+            currentMaxMana++;
+        currentMana = currentMaxMana;
+        manaCount.text = "Mana: " + currentMana;
     }
 }

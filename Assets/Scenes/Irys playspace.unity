@@ -300,7 +300,6 @@ GameObject:
   - component: {fileID: 129740986}
   - component: {fileID: 129740989}
   - component: {fileID: 129740988}
-  - component: {fileID: 129740987}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Enemy
@@ -323,21 +322,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1053457729}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &129740987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129740985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 639476b0429349498d4c5d6f670be1de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actualMana: 0
-  usedMana: 0
-  manaCount: {fileID: 1976768006}
 --- !u!114 &129740988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,6 +360,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54a52cab05e5d5744bc0a69648f74b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &281106833 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6080153318332867301, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
+  m_PrefabInstance: {fileID: 1053457728}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &378016364
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,7 +407,6 @@ GameObject:
   - component: {fileID: 448196958}
   - component: {fileID: 448196961}
   - component: {fileID: 448196960}
-  - component: {fileID: 448196959}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Player
@@ -445,21 +433,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.28, y: 0.653}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &448196959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 448196957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 639476b0429349498d4c5d6f670be1de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actualMana: 10
-  usedMana: 0
-  manaCount: {fileID: 1022924366}
 --- !u!114 &448196960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,6 +460,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   currentHealth: 0
+--- !u!1 &451853154 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6080153318332867301, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
+  m_PrefabInstance: {fileID: 1899659641}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &587732503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,12 +1389,16 @@ PrefabInstance:
       objectReference: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 6080153318332867301, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: m_Name
-      value: enemy
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 6374912989519180820, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: deck
       value: 
       objectReference: {fileID: 1053457730}
+    - target: {fileID: 6374912989519180820, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
+      propertyPath: isPlayers
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6374912989519180820, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: cardPrefab
       value: 
@@ -1454,7 +1436,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4150459490861231547, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 378016365}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6080153318332867301, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1053457731}
   m_SourcePrefab: {fileID: 100100000, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
 --- !u!4 &1053457729 stripped
 Transform:
@@ -1472,6 +1457,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab9271fca3870d94bb12a02e9abf2860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1053457731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281106833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639476b0429349498d4c5d6f670be1de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMana: 10
+  currentMaxMana: 0
+  currentMana: 0
+  manaCount: {fileID: 1976768006}
 --- !u!1 &1087553414
 GameObject:
   m_ObjectHideFlags: 0
@@ -2136,7 +2137,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.45
+  m_fontSize: 25.05
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2272,7 +2273,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 20.8
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2610,7 +2611,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4150459490861231547, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 55313314}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6080153318332867301, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1899659645}
   m_SourcePrefab: {fileID: 100100000, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
 --- !u!4 &1899659642 stripped
 Transform:
@@ -2628,6 +2632,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab9271fca3870d94bb12a02e9abf2860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1899659645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451853154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639476b0429349498d4c5d6f670be1de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMana: 10
+  currentMaxMana: 0
+  currentMana: 0
+  manaCount: {fileID: 1022924366}
 --- !u!1 &1976768004
 GameObject:
   m_ObjectHideFlags: 0
@@ -2849,6 +2869,8 @@ MonoBehaviour:
   playerDeck: {fileID: 1899659643}
   enemyHand: {fileID: 1470736300}
   enemyDeck: {fileID: 1053457730}
+  playerMana: {fileID: 1899659645}
+  enemyMana: {fileID: 1053457731}
   board: {fileID: 9115249612491355192}
   OnGameStarted:
     m_PersistentCalls:
@@ -2909,6 +2931,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1470736300}
     - target: {fileID: 1451274071192890932, guid: 0ff3446dd4d3b0542850ffb2c2206642, type: 3}
+      propertyPath: enemyMana
+      value: 
+      objectReference: {fileID: 1053457731}
+    - target: {fileID: 1451274071192890932, guid: 0ff3446dd4d3b0542850ffb2c2206642, type: 3}
       propertyPath: playerDeck
       value: 
       objectReference: {fileID: 1899659643}
@@ -2916,6 +2942,10 @@ PrefabInstance:
       propertyPath: playerHand
       value: 
       objectReference: {fileID: 136956496}
+    - target: {fileID: 1451274071192890932, guid: 0ff3446dd4d3b0542850ffb2c2206642, type: 3}
+      propertyPath: playerMana
+      value: 
+      objectReference: {fileID: 1899659645}
     - target: {fileID: 1451274071192890932, guid: 0ff3446dd4d3b0542850ffb2c2206642, type: 3}
       propertyPath: toggleGroup
       value: 

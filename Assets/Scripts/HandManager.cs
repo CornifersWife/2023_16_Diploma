@@ -6,6 +6,7 @@ public class HandManager : MonoBehaviour {
     public DeckManager deck;
     public GameObject cardPrefab;
     public float cardSpacing = 1.0f; // Space between cards
+    public bool isPlayers = true;
     
     private void UpdateCardPositionsInHand() {
         float totalWidth = (hand.Count - 1) * cardSpacing;
@@ -25,9 +26,11 @@ public class HandManager : MonoBehaviour {
     public void AddCardToHand(BaseCardData cardData) {
         GameObject cardObj = Instantiate(cardPrefab, transform);
         CardDisplay newCardDisplay = cardObj.GetComponent<CardDisplay>();
-       
-        if(cardData is MinionCardData)
-            newCardDisplay.SetupCard(Instantiate((MinionCardData)cardData));
+        if (!isPlayers) {
+            cardObj.GetComponent<DragAndDrop>().enabled = false;
+        }
+        if(cardData is MinionCardData data)
+            newCardDisplay.SetupCard(Instantiate(data));
         else {
         newCardDisplay.SetupCard(Instantiate(cardData));
         }

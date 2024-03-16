@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HeroHPDisplay : MonoBehaviour {
+public class HeroHpDisplay : MonoBehaviour {
     private Hero hero;
     public Button button; 
     private int showValue;

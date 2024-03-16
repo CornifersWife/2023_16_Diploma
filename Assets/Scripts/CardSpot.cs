@@ -10,8 +10,13 @@ public class CardSpot : MonoBehaviour {
         get { return cardDisplay; }
         set {
             Play?.Invoke(this,value);
-            cardDisplay.OnDestroyed += HandleCardDisplayDestroyed;
         }
+    }
+
+    public void SetCardDisplay(CardDisplay newCardDisplay) {
+        cardDisplay = newCardDisplay;
+        cardDisplay.OnDestroyed += HandleCardDisplayDestroyed;
+        
     }
     private void HandleCardDisplayDestroyed() {
         cardDisplay.OnDestroyed -= HandleCardDisplayDestroyed;

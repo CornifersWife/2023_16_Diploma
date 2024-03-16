@@ -146,7 +146,7 @@ public class CardDisplay : MonoBehaviour {
         GameObject nameText = cardText.transform.GetChild(0).gameObject;
         GameObject manaText = cardText.transform.GetChild(1).gameObject;
         GameObject attackText = cardText.transform.GetChild(2).gameObject;
-        GameObject healthText = cardText.transform.GetChild(3).gameObject;
+        GameObject cardHealthText = cardText.transform.GetChild(3).gameObject;
 
         //GameObject Image = canvas.transform.GetChild(1).gameObject;
 
@@ -158,14 +158,14 @@ public class CardDisplay : MonoBehaviour {
         MinionCardData minionCardData = (MinionCardData)cardData;
         if (cardData is MinionCardData) {
             attackText.GetComponent<TextMeshProUGUI>().text = minionCardData.power.ToString();
-            healthText.GetComponent<TextMeshProUGUI>().text = minionCardData.currentHealth.ToString();
-            this.healthText = healthText.GetComponent<TextMeshProUGUI>().text;
+            cardHealthText.GetComponent<TextMeshProUGUI>().text = minionCardData.currentHealth.ToString();
+            this.healthText = cardHealthText.GetComponent<TextMeshProUGUI>().text;
         }
 
         //If card is not Minion:
         else {
             attackText.GetComponent<TextMeshProUGUI>().text = "";
-            healthText.GetComponent<TextMeshProUGUI>().text = "";
+            cardHealthText.GetComponent<TextMeshProUGUI>().text = "";
         }
     }
 }

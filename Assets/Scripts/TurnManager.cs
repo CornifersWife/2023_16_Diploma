@@ -44,7 +44,7 @@ namespace TurnSystem {
             return GameObject.FindGameObjectsWithTag("Enemy").Length == 0;
         }
     }
-    
+
     [CreateAssetMenu(fileName = "lose_condition", menuName = "Basic Lose Condition", order = 0)]
     public class BasicLoseCondition : CheckCondition {
         public override bool HasSatisfied() {
@@ -53,18 +53,20 @@ namespace TurnSystem {
     }
 
     public class TurnManager : MonoBehaviour {
-        [SerializeField]public bool isPlayerTurn = true; // Flag to track whose turn it is
+        [SerializeField] public bool isPlayerTurn = true; // Flag to track whose turn it is
         [SerializeField] public float enemyDelay = 1f;
-        
-        private bool _gameStarted = false;
-        
-        // Reference to the HandManager and Board for the player
+
+        private bool gameStarted = false;
+
         public HandManager playerHand;
         public DeckManager playerDeck;
 
-        // Reference to the HandManager and Board for the enemy (AI)
         public HandManager enemyHand;
         public DeckManager enemyDeck;
+
+        public ManaManager playerMana;
+        public ManaManager enemyMana;
+
         public Board board;
 
         [Header("Events")] public UnityEvent OnGameStarted;
@@ -74,17 +76,31 @@ namespace TurnSystem {
         [Header("Conditions")] public CheckCondition[] winConditions;
         public CheckCondition[] loseConditions;
 
+
+        public static TurnManager Instance { get; private set; }
+
+        private void Awake() {
+            if (Instance != null && Instance != this) {
+                Destroy(gameObject);
+            }
+            else {
+                Instance = this;
+            }
+        }
+
         public void StartGame() {
-            _gameStarted = true;
+            gameStarted = true;
 
             if (OnGameStarted != null)
                 OnGameStarted.Invoke(); //
         }
-        [SerializeField]public bool HasGameStarted {
+
+        [SerializeField]
+        public bool HasGameStarted {
             //each player draws 5 cards
-            get { return _gameStarted; }
+            get { return gameStarted; }
         }
-        
+
         public bool HasWonGame {
             get {
                 foreach (CheckCondition check in winConditions) {
@@ -108,18 +124,19 @@ namespace TurnSystem {
         public bool IsGameComplete {
             get { return HasWonGame || HasLostGame; }
         }
-        
-        public void startingHand() { 
+
+        public void startingHand() {
             playerDeck.Shuffle();
             enemyDeck.Shuffle();
-            for(int i = 0; i < 5; i++){
+            for (int i = 0; i < 5; i++) {
                 playerHand.DrawACard();
                 enemyHand.DrawACard();
             }
         }
-        
+
         IEnumerator Start() {
             startingHand();
+            StartOfTurn();
             yield return new WaitUntil(() => { return HasGameStarted; });
 
             if (HasWonGame) {
@@ -132,41 +149,40 @@ namespace TurnSystem {
                     OnGameLost.Invoke();
             }
         }
-        
+
         public void gameEnd() {
             if (IsGameComplete) { //Is always giving true.
                 if (HasWonGame) {
                     //Show something
                 }
+
                 if (HasLostGame) {
                     //Show something
                 }
+
                 Application.Quit();
             }
         }
-        
+
         private void StartOfTurn() {
+            var mana = isPlayerTurn ? playerMana : enemyMana;
+            var hand = isPlayerTurn ? playerHand : enemyHand;
+            mana.StartRound();
+            hand.DrawACard();
             if (isPlayerTurn) StartPlayerTurn();
             else {
                 StartEnemyTurn();
             }
+
             gameEnd();
         }
 
         private void StartPlayerTurn() {
-            playerHand.DrawACard();
-            //Refresh mana
-            if (GameObject.FindWithTag("Player")) {
-                GameObject.FindWithTag("Player").GetComponent<ManaManager>().NextRound();
-            }
+            //unique to player like do some animation
         }
 
         private void StartEnemyTurn() {
-            enemyHand.DrawACard();
-            //Refresh mana
-            if (GameObject.FindWithTag("Enemy")) {
-                GameObject.FindWithTag("Enemy").GetComponent<ManaManager>().NextRound();
-            }
+            //unique to enemy like do some animation
         }
 
         private void EndOfTurn(bool isPlayer) {
@@ -191,14 +207,15 @@ namespace TurnSystem {
         private IEnumerator OpponentTurnRoutine() {
             StartOfTurn();
             yield return new WaitForSeconds(enemyDelay);
-            
-          
-            while (true) { 
+
+
+            while (true) {
                 GameManager.Instance.EnemyPlayMinion();
                 yield return new WaitForSeconds(enemyDelay);
 
-                if (Random.Range(0, 2) > 0) break;
+                if (!GameManager.Instance.EnemyPlayMinion() || Random.Range(0, 2) > 0) break;
             }
+
             EndOfTurn(false);
             yield return new WaitForSeconds(enemyDelay);
             isPlayerTurn = true;

@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 
@@ -11,7 +10,7 @@ public class MinionCardData : BaseCardData, IDamageable {
     public event Action<int> OnHealthChanged;
     public event Action<IDamageable> OnAttack;
     public event Action<MinionCardData> OnDeath;
-    public delegate Vector3 RequestPositionDelegate(); //TODO added by chatbot, need to think if its needed and if it is i need to understand why
+    public delegate Vector3 RequestPositionDelegate(); //TODO added by chat-bot, need to think if its needed and if it is i need to understand why
     public event RequestPositionDelegate OnRequestPosition;
     
     public void TakeDamage(int amount) {
@@ -49,7 +48,7 @@ public class MinionCardData : BaseCardData, IDamageable {
         return currentHealth > 0;
     }
 
-    public void Death() {
+    private void Death() {
         OnDeath?.Invoke(this);
     }
 }

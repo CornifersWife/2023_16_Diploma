@@ -23,30 +23,30 @@ public class GameManager : MonoBehaviour {
         } else {
             Instance = this;
         }
-        
     }
     void Start() {
-        playerMana = GameObject.FindWithTag("Player").GetComponent<ManaManager>();
-        enemyMana = GameObject.FindWithTag("Enemy").GetComponent<ManaManager>();
         foreach (var cardSpot in FindObjectsOfType<CardSpot>()) {
             SubscribeToCardSpot(cardSpot);
         }
     }
     
-    public void OnCardPlayed(CardSpot cardSpot, CardDisplay cardDisplay) {
-        cardSpot.cardDisplay = cardDisplay;
+    private void OnCardPlayed(CardSpot cardSpot, CardDisplay cardDisplay) {
+        var mana = cardSpot.isPlayers ? playerMana : enemyMana;
+        if (!mana.CanPlayCard(cardDisplay)) {
+            cardDisplay.GetComponent<DragAndDrop>().SnapBack();
+            return;
+        }
         var hand = cardSpot.isPlayers ? playerHand : enemyHand;
+        cardSpot.SetCardDisplay(cardDisplay);
+        mana.UseMana(cardDisplay);
         hand.RemoveCardFromHand(cardDisplay);
         cardDisplay.transform.SetParent(cardSpot.transform);
         cardDisplay.transform.localPosition = Vector3.zero;
         cardDisplay.transform.position = cardSpot.transform.position;
         cardDisplay.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
-    public void SubscribeToCardSpot(CardSpot cardSpot) {
+    private void SubscribeToCardSpot(CardSpot cardSpot) {
         cardSpot.Play += OnCardPlayed;
-    }
-    public void UnsubscribeFromCardSpot(CardSpot cardSpot) {
-        cardSpot.Play -= OnCardPlayed;
     }
     
     public void PlayerDrawCard() {
@@ -56,18 +56,18 @@ public class GameManager : MonoBehaviour {
         }
     }
     
-    public void EnemyPlayMinion() {
-        //TODO check how manamanager works
-        var avalibleCards=enemyHand.hand
-            .Where(card => card.cardData is MinionCardData  && card.cardData.cost<=enemyMana.actualMana).ToArray();
-        var avalibleBoardSpaces = board.enemyMinions
+    public bool EnemyPlayMinion() {
+        var availableCards=enemyHand.hand
+            .Where(card => card.cardData is MinionCardData  && enemyMana.CanPlayCard(card)).ToArray();
+        var availableBoardSpaces = board.enemyMinions
             .Where(space => space.IsEmpty()).ToArray();
-        if (avalibleCards.Count() <= 0 || avalibleBoardSpaces.Count() <= 0) {
-            return;
+        if (availableCards.Length <= 0 || availableBoardSpaces.Length <= 0) {
+            return false;
         }
-        var card = avalibleCards[Random.Range(0, avalibleCards.Count())];
-        var boardspot = avalibleBoardSpaces[Random.Range(0, avalibleBoardSpaces.Count())];
-        boardspot.CardDisplay = card;
+        var card = availableCards[Random.Range(0, availableCards.Count())];
+        var boardSpot = availableBoardSpaces[Random.Range(0, availableBoardSpaces.Count())];
+        boardSpot.CardDisplay = card;
+        return true;
     }
     
     public void EnemyDrawCard() {

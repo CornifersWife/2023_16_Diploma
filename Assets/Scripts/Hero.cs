@@ -22,7 +22,7 @@ public class Hero : MonoBehaviour, IDamageable
     public int GetPower() {
         return 0;
     }
-    public void Death()
+    private void Death()
     {
     }
 
