@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9bb6bc7ae256548b2b771d59e834a1, type: 3}
   m_Name: Ladybug
   m_EditorClassIdentifier: 
-  id: 6
   cost: 2
   cardName: Ladybug
   cardImage: {fileID: 21300000, guid: 835e850c746885a46b130a6ba8edcb99, type: 3}
-  power: 2
-  currentHealth: 8
-  maxHealth: 8
+  power: 4
+  currentHealth: 1
+  maxHealth: 1

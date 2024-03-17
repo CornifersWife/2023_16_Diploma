@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9bb6bc7ae256548b2b771d59e834a1, type: 3}
   m_Name: Snail
   m_EditorClassIdentifier: 
-  id: 1
   cost: 1
   cardName: Snail
   cardImage: {fileID: 21300000, guid: 3d5ecf2ac1e5dd646a3548aa482053f8, type: 3}
   power: 1
-  currentHealth: 6
-  maxHealth: 6
+  currentHealth: 3
+  maxHealth: 3

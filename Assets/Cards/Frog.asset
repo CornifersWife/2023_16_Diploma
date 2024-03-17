@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9bb6bc7ae256548b2b771d59e834a1, type: 3}
   m_Name: Frog
   m_EditorClassIdentifier: 
-  id: 2
   cost: 3
   cardName: Frog
   cardImage: {fileID: 21300000, guid: d9592250fdea3a94e952572ca0d004a9, type: 3}
-  power: 4
-  currentHealth: 8
-  maxHealth: 8
+  power: 3
+  currentHealth: 3
+  maxHealth: 3

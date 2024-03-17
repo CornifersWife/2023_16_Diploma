@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9bb6bc7ae256548b2b771d59e834a1, type: 3}
   m_Name: Butterfly
   m_EditorClassIdentifier: 
-  id: 5
   cost: 4
   cardName: Butterfly
   cardImage: {fileID: 21300000, guid: d5a22720f56bf324d95bda47efa9b6e0, type: 3}
-  power: 3
-  currentHealth: 10
-  maxHealth: 10
+  power: 2
+  currentHealth: 7
+  maxHealth: 7

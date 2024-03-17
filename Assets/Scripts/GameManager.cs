@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour {
         board.MinionsAttack(false);
     }
     
-    public void TestShuffle() {
+    /*public void TestShuffle() {
         string ids = "Before shuffle: [";
         foreach (BaseCardData card in playerDeck.deck) {
             ids += card.id + ", ";
@@ -116,5 +116,5 @@ public class GameManager : MonoBehaviour {
         }
         ids += "]";
         Debug.Log(ids);
-    }
+    }*/
 }
