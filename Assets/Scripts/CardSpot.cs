@@ -2,17 +2,22 @@ using System;
 using UnityEngine;
 
 public class CardSpot : MonoBehaviour {
-    public CardDisplay cardDisplay;
+    private CardDisplay cardDisplay;
     public bool isPlayers = true;
     public event Action<CardSpot,CardDisplay> Play;
-
+    
+    public Material defaultMaterial;
+    public Material outlineMaterial; // Assign the shimmering outline material here
+    private Renderer objectRenderer;
     public CardDisplay CardDisplay {
-        get { return cardDisplay; }
-        set {
-            Play?.Invoke(this,value);
-        }
+        get => cardDisplay;
+        set => Play?.Invoke(this,value);
     }
 
+    void Start() {
+        objectRenderer = GetComponent<Renderer>();
+        objectRenderer.material = defaultMaterial;
+    }
     public void SetCardDisplay(CardDisplay newCardDisplay) {
         cardDisplay = newCardDisplay;
         cardDisplay.OnDestroyed += HandleCardDisplayDestroyed;
@@ -36,6 +41,12 @@ public class CardSpot : MonoBehaviour {
         }
         return false;
     }
-    
-    
+
+    public void Highlight() {
+        objectRenderer.material = outlineMaterial;
+    }
+
+    public void ClearHighlight() {
+        objectRenderer.material = defaultMaterial;
+    }
 }

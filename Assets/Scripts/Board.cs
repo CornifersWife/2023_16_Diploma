@@ -72,13 +72,13 @@ public class Board : MonoBehaviour {
         for (int i = 0; i < attackers.Length; i++) {
             if (attackers[i].IsEmpty()) continue;
             yield return new WaitForSeconds(delayBetweenAttacks);
-            var attacker = (MinionCardData)attackers[i].cardDisplay.cardData;
+            var attacker = (MinionCardData)attackers[i].CardDisplay.cardData;
             if (targetted[i].IsEmpty()) {
                 attacker.Attack(targetHero);
                 continue;
             }
 
-            var target = (MinionCardData)targetted[i].cardDisplay.cardData;
+            var target = (MinionCardData)targetted[i].CardDisplay.cardData;
             attacker.Attack(target);
         }
     }

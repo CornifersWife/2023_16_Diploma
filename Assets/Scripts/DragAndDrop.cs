@@ -1,18 +1,60 @@
-using System;
 using System.Linq;
 using TurnSystem;
 using UnityEngine;
 
 public class DragAndDrop : MonoBehaviour {
-    public Vector3 mousePosition;
-    public Vector3 startingPosition;
+    private Vector3 mousePosition;
+    private Vector3 startingPosition;
     private TurnManager turnManager;
     [SerializeField] float snapDistance = 2.0f;
     
+    private CardSpot potentialSnapTarget;
+
     private void Awake() {
         turnManager = TurnManager.Instance;
     }
+    
+    
 
+    private void OnMouseDrag() {
+        if (!enabled) return;
+        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
+        if(turnManager.isPlayerTurn)
+            UpdatePotentialSnapTarget(); 
+    }
+    private void UpdatePotentialSnapTarget() {
+        if (!turnManager.isPlayerTurn) return;
+
+        var targets = FindObjectsOfType<CardSpot>().Where(cardSpot => cardSpot.IsValid()).ToArray();
+        var closestTarget = targets
+            .OrderBy(t => (t.transform.position - transform.position).sqrMagnitude)
+            .FirstOrDefault();
+
+        if (closestTarget != null && (closestTarget.transform.position - transform.position).sqrMagnitude <= snapDistance * snapDistance) {
+            if (potentialSnapTarget != closestTarget) {
+                potentialSnapTarget?.ClearHighlight();
+                potentialSnapTarget = closestTarget;
+                potentialSnapTarget.Highlight();
+            }
+        } else {
+            potentialSnapTarget?.ClearHighlight();
+            potentialSnapTarget = null;
+        }
+    }
+    private void FindTargetToSnapTo() {
+        if (!turnManager.isPlayerTurn) {
+            SnapBack();
+            return;
+        }
+        if (potentialSnapTarget is null) {
+            SnapBack();
+        } else {
+            PlayCardAt(potentialSnapTarget);
+            potentialSnapTarget.ClearHighlight();
+            potentialSnapTarget = null; 
+        }
+    }
+ 
     private Vector3 GetMousePos() {
         return Camera.main.WorldToScreenPoint(transform.position);
     }
@@ -28,36 +70,9 @@ public class DragAndDrop : MonoBehaviour {
         mousePosition = Input.mousePosition - GetMousePos();
         startingPosition = transform.position;
     }
+    
 
-    private void OnMouseDrag() {
-        if (!enabled) return; 
-        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
-    }
-
-    private void FindTargetToSnapTo() {
-        if (!turnManager.isPlayerTurn) {
-            SnapBack();
-            return;
-        }
-        var targets = FindObjectsOfType<CardSpot>().Where(cardSpot => cardSpot.IsValid()).ToArray();
-
-        var closestTarget = targets
-            .OrderBy(t => (t.transform.position - transform.position).sqrMagnitude)
-            .FirstOrDefault();
-
-        if (closestTarget is null) {
-            SnapBack();
-            return;
-        }
-
-        if ((closestTarget.transform.position - transform.position).sqrMagnitude <= snapDistance * snapDistance) {
-            PlayCardAt(closestTarget);
-        }
-        else {
-            SnapBack();
-        }
-    }
-
+    //TODO BUG when holding a card and drawing new ones, after snapping back the card will return to its original position, not the correct position that it should be at after after drawing a new card
     public void SnapBack() {
         transform.position = startingPosition;
     }
