@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class SceneTrigger : MonoBehaviour
 {
     [SerializeField] private string loadName;
     [SerializeField] private string unloadName;
