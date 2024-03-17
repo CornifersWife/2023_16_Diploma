@@ -1,5 +1,7 @@
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
+[SuppressMessage("ReSharper", "Unity.InefficientPropertyAccess")]
 public class HoverEffect : MonoBehaviour
 {
     public Vector3 scaleIncrease = new Vector3(1.2f, 1.2f, 1.2f);
