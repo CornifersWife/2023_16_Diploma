@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private IEnumerator PlayerMove(Vector3 target)
+    public IEnumerator PlayerMove(Vector3 target)
     {
         // Maintain distance from player to floor
         float playerDistanceToFloor = transform.position.y - target.y;
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
     }
-
+    
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
