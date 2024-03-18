@@ -9,6 +9,7 @@ public class NPCRandomWalk : MonoBehaviour
     [SerializeField] private int xLocalRange;
     [Range(-100, 100)]
     [SerializeField] private int xGlobalRange;
+    [Space(20)]
     [Range(-100, 100)]
     [SerializeField] private int zLocalRange;
     [Range(-100, 100)]
