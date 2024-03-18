@@ -1930,7 +1930,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadName: final scene
   unloadName: 
-  detectionRadius: 10
+  detectionRadius: 5
+  player: {fileID: 1927758953}
   mouseClickAction:
     m_Name: Mouse Click
     m_Type: 0
@@ -1948,7 +1949,6 @@ MonoBehaviour:
       m_Action: Mouse Click
       m_Flags: 0
     m_Flags: 0
-  player: {fileID: 1927758953}
 --- !u!1001 &499622296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6461,6 +6461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rotationSpeed: 3
+  objectDistance: 0.1
   mouseClickAction:
     m_Name: Mouse Click
     m_Type: 0
