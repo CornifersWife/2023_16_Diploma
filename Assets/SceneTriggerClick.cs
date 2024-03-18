@@ -61,7 +61,7 @@ public class SceneTriggerClick : MonoBehaviour
     public void YesClicked()
     {
         popupPanel.gameObject.SetActive(false);
-        StartCoroutine(playerController.PlayerMove(target));
+        StartCoroutine(playerController.PlayerMove(target, 0.1f));
     }
 
     public void NoClicked()
