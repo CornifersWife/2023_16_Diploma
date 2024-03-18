@@ -38,10 +38,13 @@ public class SceneTriggerClick : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (loadName != "")
-            SceneSwitcher.Instance.LoadScene(loadName);
-        if(unloadName != "")
-            SceneSwitcher.Instance.UnloadScene(unloadName);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (loadName != "")
+                SceneSwitcher.Instance.LoadScene(loadName);
+            if(unloadName != "")
+                SceneSwitcher.Instance.UnloadScene(unloadName);
+        }
     }
 
     private void Clicked(InputAction.CallbackContext context)
