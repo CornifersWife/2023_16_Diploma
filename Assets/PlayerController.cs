@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float rotationSpeed = 3f;
+    [SerializeField] private float objectDistance = 0.1f;
     [SerializeField] private InputAction mouseClickAction;
     private Camera _mainCamera;
     private CharacterController _characterController;
@@ -44,18 +45,18 @@ public class PlayerController : MonoBehaviour
             {
                 StopCoroutine(_coroutine);
             }
-            _coroutine = StartCoroutine(PlayerMove(hit.point));
+            _coroutine = StartCoroutine(PlayerMove(hit.point, objectDistance));
             _targetPosition = hit.point;
         }
     }
 
-    private IEnumerator PlayerMove(Vector3 target)
+    public IEnumerator PlayerMove(Vector3 target, float objectDistance)
     {
         // Maintain distance from player to floor
         float playerDistanceToFloor = transform.position.y - target.y;
         target.y += playerDistanceToFloor;
         
-        while (Vector3.Distance(transform.position, target) > 0.1f)
+        while (Vector3.Distance(transform.position, target) > objectDistance)
         {
             Vector3 direction = target - transform.position;
             Vector3 movement = moveSpeed * Time.deltaTime * direction.normalized;
