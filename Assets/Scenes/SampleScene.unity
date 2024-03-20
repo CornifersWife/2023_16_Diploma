@@ -2206,7 +2206,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1267210330}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: EnemyPlayCard
+        m_MethodName: EnemyPlayMinion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

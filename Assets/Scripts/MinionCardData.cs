@@ -1,38 +1,54 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
+
 
 [CreateAssetMenu(fileName = "New MinionCard", menuName = "Card/Minion")]
-public class MinionCardData : BaseCardData {
+public class MinionCardData : BaseCardData, IDamageable {
     public int power;
     public int currentHealth;
     public int maxHealth;
+    public event Action<int> OnHealthChanged;
+    public event Action<IDamageable> OnAttack;
+    public event Action<MinionCardData> OnDeath;
+    public delegate Vector3 RequestPositionDelegate(); //TODO added by chat-bot, need to think if its needed and if it is i need to understand why
+    public event RequestPositionDelegate OnRequestPosition;
     
-
     public void TakeDamage(int amount) {
         currentHealth -= amount;
-        if (currentHealth <= 0) {
+        OnHealthChanged?.Invoke(currentHealth);
+        if (!IsAlive()) {
             Death();
         }
-        //event wyslij informacje o aktualizacji zycia do displaycard
     }
-    public void Attack(MinionCardData target) {
+
+    public void Attack(IDamageable target) {
         if (target is not null) {
+            OnAttack?.Invoke(target);
             target.TakeDamage(power);
-            TakeDamage(target.power);
-            return;
+            TakeDamage(target.GetPower());
         }
     }
 
-    public void Attack(Hero hero) {
-        hero.TakeDamage(power);
+
+    public int GetPower() {
+        return power;
     }
 
-    public void Death() {
-        
+    public Vector3 GetPosition() {
+        if (OnRequestPosition != null) {
+            return OnRequestPosition.Invoke();
+        }
+        else {
+            Debug.Log("no information of position of target");
+            return Vector3.zero;
+        }
+    }
+
+    public bool IsAlive() {
+        return currentHealth > 0;
+    }
+
+    private void Death() {
+        OnDeath?.Invoke(this);
     }
 }
