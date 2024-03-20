@@ -14,8 +14,6 @@ public class DragAndDrop : MonoBehaviour {
         turnManager = TurnManager.Instance;
     }
     
-    
-
     private void OnMouseDrag() {
         if (!enabled) return;
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
