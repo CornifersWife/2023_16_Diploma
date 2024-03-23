@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputAction mouseClickAction;
     private Camera _mainCamera;
     private CharacterController _characterController;
+    private NavMeshAgent navMeshAgent;
     
     private Coroutine _coroutine;
     private Vector3 _targetPosition;
@@ -20,18 +22,19 @@ public class PlayerController : MonoBehaviour
     {
         _mainCamera = Camera.main;
         _characterController = GetComponent<CharacterController>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
         _groundLayer = LayerMask.NameToLayer("Ground");
     }
 
     private void OnEnable()
     {
         mouseClickAction.Enable();
-        mouseClickAction.performed += Move;
+        mouseClickAction.performed += GetMouseClickPosition;
     }
 
     private void OnDisable()
     {
-        mouseClickAction.performed -= Move;
+        mouseClickAction.performed -= GetMouseClickPosition;
         mouseClickAction.Disable();
     }
 
@@ -66,10 +69,26 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
     }
+
+    private Vector3 mousePos;
+    private void GetMouseClickPosition(InputAction.CallbackContext context)
+    {
+        Ray ray = _mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(_groundLayer) == 0)
+        {
+            mousePos = hit.point;
+            MovePlayer(mousePos);
+        }
+    }
+
+    public void MovePlayer(Vector3 target)
+    {
+        navMeshAgent.SetDestination(target);
+    }
     
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(_targetPosition, 0.3f);
+        Gizmos.DrawSphere(mousePos, 0.3f);
     }
 }
