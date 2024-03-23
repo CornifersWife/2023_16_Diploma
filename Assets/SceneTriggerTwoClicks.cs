@@ -26,11 +26,6 @@ public class SceneTriggerTwoClicks : MonoBehaviour
         clickableLayer = LayerMask.NameToLayer("Clickable");
         playerController = player.GetComponent<PlayerController>();
     }
-
-    private void Update()
-    {
-        //Debug.Log(playerController.enabled);
-    }
     
     private void OnEnable()
     {
@@ -62,7 +57,9 @@ public class SceneTriggerTwoClicks : MonoBehaviour
             if (clickNumber == 1 && playerDistance > detectionRadius)
             {
                 playerController.enabled = false;
-                coroutine = StartCoroutine(MovePlayer(hit.point));
+                playerController.MovePlayer(hit.point);
+                playerController.enabled = true;
+                //coroutine = StartCoroutine(MovePlayer(hit.point));
             }
 
             if (clickNumber == 2)
