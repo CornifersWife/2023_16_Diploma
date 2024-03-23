@@ -1,16 +1,13 @@
 using UnityEngine;
 
-public class UILookAt : MonoBehaviour
-{
+public class UILookAt : MonoBehaviour {
     private Camera mainCamera;
 
-    private void Awake()
-    {
+    private void Awake() {
         mainCamera = Camera.main;
     }
 
-    private void LateUpdate()
-    {
+    private void LateUpdate() {
         transform.LookAt(transform.position + mainCamera.transform.rotation * Vector3.forward, mainCamera.transform.rotation * Vector3.up);
     }
 }

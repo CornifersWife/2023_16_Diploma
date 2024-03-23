@@ -2,8 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class SceneTriggerClick : MonoBehaviour
-{
+public class SceneTriggerClick : MonoBehaviour {
     // Click on door then button pops up click that and it automatically goes to the door
     
     [SerializeField] private string loadName;
@@ -16,28 +15,24 @@ public class SceneTriggerClick : MonoBehaviour
     private int clickableLayer;
     private PlayerController playerController;
     private Vector3 target;
-    private void Awake()
-    {
+    private void Awake() {
         mainCamera = Camera.main;
         clickableLayer = LayerMask.NameToLayer("Clickable");
         playerController = player.GetComponent<PlayerController>();
         popupPanel.gameObject.SetActive(false);
     }
     
-    private void OnEnable()
-    {
+    private void OnEnable() {
         mouseClickAction.Enable();
         mouseClickAction.performed += Clicked;
     }
 
-    private void OnDisable()
-    {
+    private void OnDisable() {
         mouseClickAction.performed -= Clicked;
         mouseClickAction.Disable();
     }
     
-    private void OnTriggerEnter(Collider other)
-    {
+    private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player"))
         {
             if (loadName != "")
@@ -47,26 +42,22 @@ public class SceneTriggerClick : MonoBehaviour
         }
     }
 
-    private void Clicked(InputAction.CallbackContext context)
-    {
+    private void Clicked(InputAction.CallbackContext context) {
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(clickableLayer) == 0)
-        {
+        if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(clickableLayer) == 0) {
             target = hit.point;
             popupPanel.gameObject.SetActive(true);
             playerController.enabled = false;
         }
     }
 
-    public void YesClicked()
-    {
+    public void YesClicked() {
         popupPanel.gameObject.SetActive(false);
         playerController.MovePlayer(target);
         //StartCoroutine(playerController.PlayerMove(target, 0.1f));
     }
 
-    public void NoClicked()
-    {
+    public void NoClicked() {
         popupPanel.gameObject.SetActive(false);
         playerController.enabled = true;
     }
