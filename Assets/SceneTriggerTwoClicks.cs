@@ -49,7 +49,7 @@ public class SceneTriggerTwoClicks : MonoBehaviour {
             float playerDistance = Vector3.Distance(transform.position, player.transform.position);
             if (clickNumber == 1 && playerDistance > detectionRadius) {
                 playerController.enabled = false;
-                playerController.Move(hit.point);
+                playerController.Walk(hit.point);
                 playerController.enabled = true;
             }
 

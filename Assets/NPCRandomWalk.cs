@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NPCRandomWalk : MonoBehaviour {
+public class NPCRandomWalk : MonoBehaviour, IWalkable {
     [Space(10)]
     [Header("Ranges")]
     [Range(-100, 100)]
@@ -23,28 +23,29 @@ public class NPCRandomWalk : MonoBehaviour {
     }
 
     private void Update() {
-        Walk();
+        Walk(destination);
     }
 
-    private void Walk() {
+    public void Walk(Vector3 target) {
         if (waypointSet) {
-            navMeshAgent.SetDestination(destination);
+            navMeshAgent.SetDestination(target);
         }
 
-        if (Vector3.Distance(transform.position, destination) < 0.1f) {
+        if (Vector3.Distance(transform.position, target) < 0.1f) {
             waypointSet = false;
         }
 
         if (!waypointSet) {
-            SearchForWaypoint();
+            SetTargetPoint();
         }
     }
 
-    private void SearchForWaypoint() {
+    public void SetTargetPoint() {
         float x = Random.Range(-xLocalRange, xLocalRange);
         float z = Random.Range(-zLocalRange, zLocalRange);
 
-        destination = new Vector3(transform.position.x + x, transform.position.y, transform.position.z + z);
+        Vector3 position = transform.position;
+        destination = new Vector3(position.x + x, position.y, position.z + z);
 
         destination.x = Validate(destination.x, xGlobalRange);
         destination.z = Validate(destination.z, zGlobalRange);

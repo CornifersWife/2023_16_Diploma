@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour, IWalkable {
     
     private void MovePlayer(InputAction.CallbackContext context) {
         SetTargetPoint();
-        Move(targetPosition);
+        Walk(targetPosition);
     }
     
     public void SetTargetPoint() {
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour, IWalkable {
         }
     }
 
-    public void Move(Vector3 target) {
+    public void Walk(Vector3 target) {
         navMeshAgent.SetDestination(target);
     }
     
