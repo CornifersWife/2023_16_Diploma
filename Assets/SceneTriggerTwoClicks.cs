@@ -49,9 +49,8 @@ public class SceneTriggerTwoClicks : MonoBehaviour {
             float playerDistance = Vector3.Distance(transform.position, player.transform.position);
             if (clickNumber == 1 && playerDistance > detectionRadius) {
                 playerController.enabled = false;
-                playerController.MovePlayer(hit.point);
+                playerController.Move(hit.point);
                 playerController.enabled = true;
-                //coroutine = StartCoroutine(MovePlayer(hit.point));
             }
 
             if (clickNumber == 2)
@@ -60,10 +59,5 @@ public class SceneTriggerTwoClicks : MonoBehaviour {
         else {
             clickNumber = 0;
         }
-    }
-
-    private IEnumerator MovePlayer(Vector3 target) {
-        yield return StartCoroutine(playerController.PlayerMove(target, 1f));
-        playerController.enabled = true;
     }
 }
