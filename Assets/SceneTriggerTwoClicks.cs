@@ -3,9 +3,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class SceneTriggerTwoClicks : MonoBehaviour {
-    // Click on door
-    // if player is far away automatically go to door
-    // if player is near click again to enter door
     
     [SerializeField] private string loadName;
     [SerializeField] private string unloadName;

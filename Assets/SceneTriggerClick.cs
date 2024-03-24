@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class SceneTriggerClick : MonoBehaviour {
-    // Click on door then button pops up click that and it automatically goes to the door
     
     [SerializeField] private string loadName;
     [SerializeField] private string unloadName;
