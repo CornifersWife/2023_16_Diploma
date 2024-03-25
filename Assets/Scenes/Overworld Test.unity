@@ -261,7 +261,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2569,6 +2569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 612385609}
   - component: {fileID: 612385610}
+  - component: {fileID: 612385611}
   m_Layer: 0
   m_Name: Camera Pivot
   m_TagString: Untagged
@@ -2606,6 +2607,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothing: 5
   target: {fileID: 1927758958}
+--- !u!114 &612385611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612385608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3193dbb7017d9c438cdd65d846751f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomSpeed: 0.1
+  minZoomRange: 1
+  maxZoomRange: 8
+  rotationSpeed: 5
 --- !u!1001 &619570317
 PrefabInstance:
   m_ObjectHideFlags: 0
