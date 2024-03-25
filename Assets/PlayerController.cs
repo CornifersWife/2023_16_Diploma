@@ -4,9 +4,6 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour, IWalkable {
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float rotationSpeed = 3f;
-    [SerializeField] private float objectDistance = 0.1f;
     [SerializeField] private InputAction mouseClickAction;
     private Camera mainCamera;
     private NavMeshAgent navMeshAgent;
@@ -14,7 +11,7 @@ public class PlayerController : MonoBehaviour, IWalkable {
     private Vector3 targetPosition;
     private int groundLayer;
 
-    void Awake() {
+    private void Awake() {
         mainCamera = Camera.main;
         navMeshAgent = GetComponent<NavMeshAgent>();
         groundLayer = LayerMask.NameToLayer("Ground");
