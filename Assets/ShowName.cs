@@ -10,12 +10,12 @@ public class ShowName: MonoBehaviour {
     [SerializeField] private float detectionRadius = 3f;
     [SerializeField] private GameObject player;
     
-    private Camera camera;
+    private Camera mainCamera;
     private bool playerNear = false;
     private float hoverTimer = 0f;
 
     void Awake() {
-        camera = Camera.main;
+        mainCamera = Camera.main;
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player");
         HideMessage();
@@ -49,7 +49,7 @@ public class ShowName: MonoBehaviour {
     }
 
     bool IsMouseOver() {
-        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         
         if (Physics.Raycast(ray, out hit) && hit.collider.gameObject == gameObject) {
