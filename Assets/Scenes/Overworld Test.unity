@@ -2623,6 +2623,8 @@ MonoBehaviour:
   minZoomRange: 1
   maxZoomRange: 8
   rotationSpeed: 5
+  rightRotateRangeUnits: 0.2
+  leftRotateRangeUnits: 0.2
 --- !u!1001 &619570317
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6847,7 +6849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &1962375743
 CapsuleCollider:
   m_ObjectHideFlags: 0
