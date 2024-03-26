@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour, IWalkable {
     [SerializeField] private InputAction mouseClickAction;
     private Camera mainCamera;
