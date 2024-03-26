@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
-public class NPCRandomWalk : MonoBehaviour, IWalkable {
+public class RandomWalk : MonoBehaviour, IWalkable {
     [Space(10)]
     [Header("Ranges")]
     [Range(-100, 100)]
