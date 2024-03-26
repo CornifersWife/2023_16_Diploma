@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class NPCRandomWalk : MonoBehaviour, IWalkable {
     [Space(10)]
@@ -59,5 +60,10 @@ public class NPCRandomWalk : MonoBehaviour, IWalkable {
         if (coord < -range)
             return -range;
         return coord;
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(destination, 0.3f);
     }
 }
