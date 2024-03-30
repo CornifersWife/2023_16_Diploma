@@ -7255,8 +7255,6 @@ GameObject:
   - component: {fileID: 1962375743}
   - component: {fileID: 1962375749}
   - component: {fileID: 1962375747}
-  - component: {fileID: 1962375748}
-  - component: {fileID: 1962375750}
   - component: {fileID: 1962375751}
   m_Layer: 9
   m_Name: NPC
@@ -7373,22 +7371,6 @@ MonoBehaviour:
   nameText: {fileID: 1785240188}
   detectionRadius: 3
   player: {fileID: 1927758953}
---- !u!114 &1962375748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962375742}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df4b423a2c7295b4288f3bcbeed1ab64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  xLocalRange: 10
-  xGlobalRange: 30
-  zLocalRange: 10
-  zGlobalRange: 30
 --- !u!195 &1962375749
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -7411,23 +7393,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1962375750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962375742}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dc817c465a331d49a8901f7fe148a34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waitTimeSeconds: 2
-  waypoints:
-  - {fileID: 1387656977}
-  - {fileID: 968577643}
-  - {fileID: 1014176854}
 --- !u!114 &1962375751
 MonoBehaviour:
   m_ObjectHideFlags: 0
