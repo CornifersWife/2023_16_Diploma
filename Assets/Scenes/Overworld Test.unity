@@ -7257,6 +7257,7 @@ GameObject:
   - component: {fileID: 1962375747}
   - component: {fileID: 1962375748}
   - component: {fileID: 1962375750}
+  - component: {fileID: 1962375751}
   m_Layer: 9
   m_Name: NPC
   m_TagString: Untagged
@@ -7417,9 +7418,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962375742}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3dc817c465a331d49a8901f7fe148a34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitTimeSeconds: 2
+  waypoints:
+  - {fileID: 1387656977}
+  - {fileID: 968577643}
+  - {fileID: 1014176854}
+--- !u!114 &1962375751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962375742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41327384dc2ae1e438942c8596440b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   waitTimeSeconds: 2
