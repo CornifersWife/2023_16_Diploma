@@ -14,11 +14,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Player
   - Ground
-  - 
-  - 
-  - 
+  - Clickable
+  - NPC
+  - Interactible
   - 
   - 
   - 
