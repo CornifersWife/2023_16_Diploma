@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 public class UnbeatenState : BaseState {
     private EnemySM enemySM;
     
@@ -8,6 +10,7 @@ public class UnbeatenState : BaseState {
 
     public override void Enter() {
         base.Enter();
+        enemySM.GetRenderer().material = enemySM.GetUnbeatenMaterial();
         //prepare deck?
     }
 

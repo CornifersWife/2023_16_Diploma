@@ -8,11 +8,16 @@ public class EnemySM : StateMachine {
     [HideInInspector]
     public BeatenState beatenState;
 
+    [SerializeField] private Material unbeatenMaterial;
+    [SerializeField] private Material beatenMaterial;
+
     private bool isLocked, isBeaten;
     private EnemyPopup enemyPopup;
+    private Renderer objectRenderer;
     
     private void Awake() {
         enemyPopup = GetComponent<EnemyPopup>();
+        objectRenderer = GetComponent<Renderer>();
         
         lockedState = new LockedState(this);
         unbeatenState = new UnbeatenState(this);
@@ -41,5 +46,17 @@ public class EnemySM : StateMachine {
 
     public EnemyPopup GetEnemyPopup() {
         return enemyPopup;
+    }
+
+    public Material GetUnbeatenMaterial() {
+        return unbeatenMaterial;
+    }
+    
+    public Material GetBeatenMaterial() {
+        return beatenMaterial;
+    }
+
+    public Renderer GetRenderer() {
+        return objectRenderer;
     }
 }

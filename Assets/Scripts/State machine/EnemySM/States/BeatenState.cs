@@ -7,6 +7,7 @@ public class BeatenState : BaseState {
     public override void Enter() {
         base.Enter();
         enemySM.GetEnemyPopup().enabled = false;
+        enemySM.GetRenderer().material = enemySM.GetBeatenMaterial();
     }
 
     public override void UpdateLogic() {

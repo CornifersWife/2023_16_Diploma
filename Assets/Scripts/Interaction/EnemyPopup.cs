@@ -40,6 +40,7 @@ public class EnemyPopup : MonoBehaviour {
 
     public void YesClicked() {
         popupPanel.gameObject.SetActive(false);
+        playerController.enabled = true;
         enemySM.SetBeaten(true);
     }
 
