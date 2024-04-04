@@ -51,7 +51,7 @@ public class MovingSM : StateMachine {
         return waiting;
     }
 
-    public void SetWaiting(bool state) {
-        waiting = state;
+    public void SetWaiting(bool value) {
+        waiting = value;
     }
 }
