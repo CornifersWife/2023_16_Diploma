@@ -1,11 +1,12 @@
-
-
 public class BeatenState : BaseState {
+    private EnemySM enemySM;
     public BeatenState(EnemySM stateMachine) : base("Beaten", stateMachine) {
+        enemySM = stateMachine;
     }
 
     public override void Enter() {
         base.Enter();
+        enemySM.GetEnemyPopup().enabled = false;
     }
 
     public override void UpdateLogic() {
@@ -15,9 +16,5 @@ public class BeatenState : BaseState {
 
     public override void UpdatePhysics() {
         base.UpdatePhysics();
-    }
-
-    public override void Exit() {
-        base.Exit();
     }
 }

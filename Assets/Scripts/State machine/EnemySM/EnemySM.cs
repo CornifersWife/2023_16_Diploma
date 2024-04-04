@@ -9,8 +9,11 @@ public class EnemySM : StateMachine {
     public BeatenState beatenState;
 
     private bool isLocked, isBeaten;
+    private EnemyPopup enemyPopup;
     
     private void Awake() {
+        enemyPopup = GetComponent<EnemyPopup>();
+        
         lockedState = new LockedState(this);
         unbeatenState = new UnbeatenState(this);
         beatenState = new BeatenState(this);
@@ -34,5 +37,9 @@ public class EnemySM : StateMachine {
 
     public void SetBeaten(bool value) {
         isBeaten = value;
+    }
+
+    public EnemyPopup GetEnemyPopup() {
+        return enemyPopup;
     }
 }

@@ -11,14 +11,14 @@ public class SceneTriggerTwoClicks : MonoBehaviour {
     [SerializeField] private InputAction mouseClickAction;
     
     private Camera mainCamera;
-    private int clickableLayer;
+    private int doorLayer;
     private PlayerController playerController;
     private Coroutine coroutine;
 
     private int clickNumber = 0;
     private void Awake() {
         mainCamera = Camera.main;
-        clickableLayer = LayerMask.NameToLayer("Clickable");
+        doorLayer = LayerMask.NameToLayer("Door");
         playerController = player.GetComponent<PlayerController>();
     }
     
@@ -41,7 +41,7 @@ public class SceneTriggerTwoClicks : MonoBehaviour {
 
     private void Clicked(InputAction.CallbackContext context) {
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(clickableLayer) == 0) {
+        if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(doorLayer) == 0) {
             clickNumber += 1;
             float playerDistance = Vector3.Distance(transform.position, player.transform.position);
             if (clickNumber == 1 && playerDistance > detectionRadius) {

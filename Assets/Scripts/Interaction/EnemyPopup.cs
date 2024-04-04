@@ -1,22 +1,21 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class SceneTriggerClick : MonoBehaviour {
-    
-    [SerializeField] private string loadName;
-    [SerializeField] private string unloadName;
+public class EnemyPopup : MonoBehaviour {
     [SerializeField] private RectTransform popupPanel;
     [SerializeField] private InputAction mouseClickAction;
+    [SerializeField] private EnemySM enemySM;
+    
     private Camera mainCamera;
     public GameObject player;
 
-    private int doorLayer;
+    private int clickableLayer;
     private PlayerController playerController;
     private Vector3 target;
+    
     private void Awake() {
         mainCamera = Camera.main;
-        doorLayer = LayerMask.NameToLayer("Door");
+        clickableLayer = LayerMask.NameToLayer("Clickable");
         playerController = player.GetComponent<PlayerController>();
         popupPanel.gameObject.SetActive(false);
     }
@@ -30,21 +29,10 @@ public class SceneTriggerClick : MonoBehaviour {
         mouseClickAction.performed -= Clicked;
         mouseClickAction.Disable();
     }
-    
-    private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            if (loadName != "")
-                SceneSwitcher.Instance.LoadScene(loadName);
-            if(unloadName != "")
-                SceneSwitcher.Instance.UnloadScene(unloadName);
-        }
-    }
 
     private void Clicked(InputAction.CallbackContext context) {
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(doorLayer) == 0) {
-            target = hit.point;
+        if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(clickableLayer) == 0) {
             popupPanel.gameObject.SetActive(true);
             playerController.enabled = false;
         }
@@ -52,11 +40,12 @@ public class SceneTriggerClick : MonoBehaviour {
 
     public void YesClicked() {
         popupPanel.gameObject.SetActive(false);
-        playerController.Walk(target);
+        enemySM.SetBeaten(true);
     }
 
     public void NoClicked() {
         popupPanel.gameObject.SetActive(false);
+        enemySM.SetBeaten(false);
         playerController.enabled = true;
     }
 }
