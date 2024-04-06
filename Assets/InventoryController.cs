@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.PostProcessing;
@@ -5,6 +7,9 @@ using UnityEngine.Rendering.PostProcessing;
 public class InventoryController : MonoBehaviour {
     [SerializeField] private GameObject inventoryUI;
     [SerializeField] private InputAction rightClickAction;
+
+    [SerializeField] private List<ItemSlot> itemSlots;
+    [SerializeField] private List<ItemSlot> cardSetSlots;
 
     private PostProcessVolume postProcessVolume;
     private PlayerController playerController;
@@ -33,5 +38,21 @@ public class InventoryController : MonoBehaviour {
         postProcessVolume.enabled = false;
         playerController.enabled = true;
         inventoryUI.SetActive(false);
+    }
+
+    public void AddItem(Item item) {
+        if(item is CardSet)
+            AddToSlot(item, cardSetSlots);
+        else
+            AddToSlot(item, itemSlots);
+    }
+
+    public void AddToSlot(Item item, List<ItemSlot> itemList) {
+        foreach (ItemSlot itemSlot in itemList) {
+            if (!itemSlot.IsOccupied()) {
+                itemSlot.AddItem(item);
+                return;
+            }
+        }
     }
 }
