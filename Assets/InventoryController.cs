@@ -10,6 +10,7 @@ public class InventoryController : MonoBehaviour {
 
     [SerializeField] private List<ItemSlot> itemSlots;
     [SerializeField] private List<ItemSlot> cardSetSlots;
+    [SerializeField] private List<ItemSlot> deckSlots;
 
     private PostProcessVolume postProcessVolume;
     private PlayerController playerController;
@@ -53,6 +54,19 @@ public class InventoryController : MonoBehaviour {
                 itemSlot.AddItem(item);
                 return;
             }
+        }
+    }
+
+    public void DeselectAllSlots() {
+        DeselectSlots(itemSlots);
+        DeselectSlots(cardSetSlots);
+        DeselectSlots(deckSlots);
+    }
+
+    private void DeselectSlots(List<ItemSlot> itemList) {
+        foreach (ItemSlot itemSlot in itemList) {
+            itemSlot.GetSelectedShader().SetActive(false);
+            itemSlot.SetIsActive(false);
         }
     }
 }

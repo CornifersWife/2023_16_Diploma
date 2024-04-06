@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemImage: {fileID: 6796047345515135940}
+  selectedShader: {fileID: 6810523441715282931}
 --- !u!1 &4781827310013561740
 GameObject:
   m_ObjectHideFlags: 0
