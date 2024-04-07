@@ -8,7 +8,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler {
     
     private string itemName;
     private Sprite itemSprite;
-    private bool isOccupied;
+    private bool isOccupied = false;
     private bool isActive;
     private InventoryController inventoryController;
     private GameObject parentPanel;
@@ -23,6 +23,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler {
         itemSprite = item.GetSprite();
         isOccupied = true;
         itemImage.sprite = itemSprite;
+        itemImage.gameObject.SetActive(true);
     }
 
     public bool IsOccupied() {
