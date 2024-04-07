@@ -28,10 +28,10 @@ public class DraggableItem: MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
     public void OnEndDrag(PointerEventData eventData) {
         itemLayoutElement.ignoreLayout = false;
         transform.SetParent(parentAfterDrag);
+        itemImage.raycastTarget = true;
     }
 
     public void SetParentAfterDrag(Transform newParent) {
         parentAfterDrag = newParent;
-        itemImage.raycastTarget = true;
     }
 }
