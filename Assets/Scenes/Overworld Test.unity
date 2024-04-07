@@ -2181,7 +2181,7 @@ GameObject:
   - component: {fileID: 381884972}
   - component: {fileID: 381884971}
   m_Layer: 5
-  m_Name: Interactive Obj Name Window
+  m_Name: Item Name Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3661,7 +3661,7 @@ GameObject:
   - component: {fileID: 521379631}
   - component: {fileID: 521379632}
   m_Layer: 10
-  m_Name: Interactive Object
+  m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3766,7 +3766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToWait: 0.6
-  messageToShow: Interactive object
+  messageToShow: Item
   nameWindow: {fileID: 381884970}
   nameText: {fileID: 1894858004}
   detectionRadius: 3
@@ -3783,7 +3783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 727edcd55306f0c4e948758f1b521739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Cube
+  itemName: Item
   sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
 --- !u!54 &521379633
 Rigidbody:
@@ -5705,7 +5705,7 @@ GameObject:
   - component: {fileID: 927882307}
   - component: {fileID: 927882306}
   m_Layer: 5
-  m_Name: Cube Name Window
+  m_Name: Enemy Name Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
