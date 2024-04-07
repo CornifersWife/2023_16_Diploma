@@ -2,8 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour, IPointerClickHandler {
-    [SerializeField] private Image itemImage;
+public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
     [SerializeField] private GameObject selectedShader;
     
     private string itemName;
@@ -22,8 +21,25 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler {
         itemName = item.GetName();
         itemSprite = item.GetSprite();
         isOccupied = true;
-        itemImage.sprite = itemSprite;
-        itemImage.gameObject.SetActive(true);
+        CreateItemObject();
+    }
+    private void CreateItemObject() {
+        GameObject itemObject = new GameObject();
+        itemObject.transform.SetParent(transform);
+        
+        RectTransform itemRectTransform = itemObject.AddComponent<RectTransform>();
+        itemRectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 0, 0);
+        itemRectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 0, 0);
+        itemRectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, 0);
+        itemRectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, 0, 0);
+        itemRectTransform.anchorMin = new Vector2(0, 0);
+        itemRectTransform.anchorMax = new Vector2(1, 1);
+        
+        Image objectImage = itemObject.AddComponent<Image>();
+        objectImage.sprite = itemSprite;
+
+        itemObject.AddComponent<DraggableItem>();
+        itemObject.AddComponent<LayoutElement>();
     }
 
     public bool IsOccupied() {
@@ -47,5 +63,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler {
         inventoryController.DeselectAllSlots();
         selectedShader.SetActive(true);
         SetIsActive(true);
+    }
+
+    public void OnDrop(PointerEventData eventData) {
+        if (!isOccupied) {
+            GameObject itemObject = eventData.pointerDrag;
+            itemObject.GetComponent<DraggableItem>().SetParentAfterDrag(transform);
+        }
     }
 }
