@@ -46,6 +46,10 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
         return isOccupied;
     }
 
+    public void SetIsOccupied(bool value) {
+        isOccupied = value;
+    }
+
     public void SetIsActive(bool value) {
         isActive = value;
     }
