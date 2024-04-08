@@ -20,6 +20,7 @@ public class CardSpot : MonoBehaviour {
     }
     public void SetCardDisplay(CardDisplay newCardDisplay) {
         cardDisplay = newCardDisplay;
+        cardDisplay.GetComponent<DragAndDrop>().enabled = false;
         cardDisplay.OnDestroyed += HandleCardDisplayDestroyed;
         
     }

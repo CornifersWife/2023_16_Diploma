@@ -6,25 +6,30 @@ using UnityEngine;
 public class CardDisplay : MonoBehaviour {
     public BaseCardData cardData;
     private String healthText;
+
     public delegate void OnDestroyedDelegate();
+
     public event OnDestroyedDelegate OnDestroyed;
 
     private bool inAnimation;
 
-    [SerializeField] private float distanceImportance = 1f;
+    [Header("animations")] [SerializeField]
+    private float distanceImportance = 1f;
+
     [SerializeField] private float attackAnimationDuration = 0.2f; // Duration of the entire attack movement
     [SerializeField] private float easeOutDurationFraction = 0.6f; // Fraction of the duration for easing out
     [SerializeField] private float easeInDurationFraction = 0.4f; // Fraction of the duration for easing in
     [SerializeField] private float impactPauseDuration = 0.05f; // Pause duration at the impact to emphasize it
-
+    [Header("death animations")] 
     [SerializeField] private float deathAnimationRotationDuration = 0.2f;
-    [SerializeField] private float deathAnimationStopDuration = 0.1f;
+    [SerializeField] private float deathAnimationStopDuration = 0.6f;
 
     public void SetupCard(BaseCardData data) {
         if (data is MinionCardData minionCardData) {
             SetupCard(minionCardData);
             return;
         }
+
         cardData = data;
         DisplayData(gameObject);
     }
@@ -43,7 +48,7 @@ public class CardDisplay : MonoBehaviour {
         return transform.position;
     }
 
-    
+
     private void AttackTarget(IDamageable target) {
         StartCoroutine(MoveTowardsTarget(target.GetPosition()));
     }
@@ -58,8 +63,8 @@ public class CardDisplay : MonoBehaviour {
         float distanceToTarget = Vector3.Distance(startPosition, targetPosition);
         float distanceFactor = distanceImportance * (float)Math.Sqrt(distanceToTarget);
         attackAnimationDuration *= distanceFactor;
-        float easeOutDuration = easeOutDurationFraction * attackAnimationDuration ;
-        float easeInDuration = easeInDurationFraction * attackAnimationDuration ;
+        float easeOutDuration = easeOutDurationFraction * attackAnimationDuration;
+        float easeInDuration = easeInDurationFraction * attackAnimationDuration;
 
         // Ease out 
         while (elapsedTime < easeOutDuration) {
@@ -99,6 +104,7 @@ public class CardDisplay : MonoBehaviour {
     private IEnumerator DeathSequence() {
         yield return new WaitUntil(() => !inAnimation);
         yield return StartCoroutine(DeathAnimation());
+
         Destroy(gameObject);
     }
 
@@ -135,7 +141,7 @@ public class CardDisplay : MonoBehaviour {
         GameObject canvas = gameObject.transform.GetChild(0).gameObject;
         GameObject cardText = canvas.transform.GetChild(1).gameObject;
         GameObject healthTextGameObject =
-                cardText.transform.GetChild(3).gameObject; // Assuming health text is at child index 3
+            cardText.transform.GetChild(3).gameObject; // Assuming health text is at child index 3
         healthTextGameObject.GetComponent<TextMeshProUGUI>().text = healthText;
     }
 
@@ -145,20 +151,18 @@ public class CardDisplay : MonoBehaviour {
         GameObject cardText = canvas.transform.GetChild(1).gameObject;
 
         GameObject nameText = cardText.transform.GetChild(0).gameObject;
-        GameObject manaText = cardText.transform.GetChild(1).gameObject;
         GameObject attackText = cardText.transform.GetChild(2).gameObject;
         GameObject cardHealthText = cardText.transform.GetChild(3).gameObject;
 
         //GameObject Image = canvas.transform.GetChild(1).gameObject;
 
         nameText.GetComponent<TextMeshProUGUI>().text = cardData.cardName;
-        manaText.GetComponent<TextMeshProUGUI>().text = cardData.cost.ToString();
         //Image.GetComponent<Image>().sprite = cardData.cardImage;
-        
+
         if (cardData is MinionCardData minionCardData) {
             attackText.GetComponent<TextMeshProUGUI>().text = minionCardData.power.ToString();
             cardHealthText.GetComponent<TextMeshProUGUI>().text = minionCardData.currentHealth.ToString();
-            this.healthText = cardHealthText.GetComponent<TextMeshProUGUI>().text;
+            healthText = cardHealthText.GetComponent<TextMeshProUGUI>().text;
         }
 
         //If card is not Minion:

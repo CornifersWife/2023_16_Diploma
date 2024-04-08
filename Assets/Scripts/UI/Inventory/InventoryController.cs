@@ -11,7 +11,8 @@ public class InventoryController : MonoBehaviour {
     [SerializeField] private List<ItemSlot> itemSlots;
     [SerializeField] private List<ItemSlot> cardSetSlots;
     [SerializeField] private List<ItemSlot> deckSlots;
-
+    //add space to show cards
+    
     private PostProcessVolume postProcessVolume;
     private PlayerController playerController;
 
