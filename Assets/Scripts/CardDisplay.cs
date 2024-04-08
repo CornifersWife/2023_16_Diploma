@@ -141,7 +141,7 @@ public class CardDisplay : MonoBehaviour {
         GameObject canvas = gameObject.transform.GetChild(0).gameObject;
         GameObject cardText = canvas.transform.GetChild(1).gameObject;
         GameObject healthTextGameObject =
-            cardText.transform.GetChild(3).gameObject; // Assuming health text is at child index 3
+            cardText.transform.GetChild(2).gameObject; // Assuming health text is at child index 3
         healthTextGameObject.GetComponent<TextMeshProUGUI>().text = healthText;
     }
 
@@ -151,8 +151,8 @@ public class CardDisplay : MonoBehaviour {
         GameObject cardText = canvas.transform.GetChild(1).gameObject;
 
         GameObject nameText = cardText.transform.GetChild(0).gameObject;
-        GameObject attackText = cardText.transform.GetChild(2).gameObject;
-        GameObject cardHealthText = cardText.transform.GetChild(3).gameObject;
+        GameObject attackText = cardText.transform.GetChild(1).gameObject;
+        GameObject cardHealthText = cardText.transform.GetChild(2).gameObject;
 
         //GameObject Image = canvas.transform.GetChild(1).gameObject;
 

@@ -4,17 +4,16 @@ using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour {
+    
     public DeckManager playerDeck;
     public HandManager playerHand;
-    
+    public ManaManager playerMana;
+    [Space]
     public DeckManager enemyDeck;
     public HandManager enemyHand;
-
-    public ManaManager playerMana;
     public ManaManager enemyMana;
-    
+    [Space]
     public Board board;
-
     public GameObject cardPrefab;
 
     public static GameManager Instance { get; private set; }
@@ -48,13 +47,12 @@ public class GameManager : MonoBehaviour {
     }
     private void OnCardPlayed(CardSpot cardSpot, CardDisplay cardDisplay) {
         var mana = cardSpot.isPlayers ? playerMana : enemyMana;
-        if (!mana.CanPlayCard(cardDisplay)) {
+        if(!mana.CanPlayCard(cardDisplay)){
             cardDisplay.GetComponent<DragAndDrop>().SnapBack();
             return;
         }
         var hand = cardSpot.isPlayers ? playerHand : enemyHand;
         cardSpot.SetCardDisplay(cardDisplay);
-        mana.UseMana(cardDisplay);
         hand.RemoveCardFromHand(cardDisplay);
         Transform cardTransform;
         (cardTransform = cardDisplay.transform).SetParent(cardSpot.transform);

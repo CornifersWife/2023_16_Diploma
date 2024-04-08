@@ -2,8 +2,7 @@ using TMPro;
 using UnityEngine;
 
 public class ManaManager : MonoBehaviour {
-    public int maxMana = 10;
-    public int currentMaxMana;
+    public int maxMana = 3;
     public int currentMana;
     public TMP_Text manaCount;
 
@@ -30,9 +29,7 @@ public class ManaManager : MonoBehaviour {
         return currentMana >= card.cost;
     }
     public void StartRound() {
-        if (currentMaxMana < maxMana)
-            currentMaxMana++;
-        currentMana = currentMaxMana;
+        currentMana = maxMana;
         manaCount.text = "Mana: " + currentMana;
     }
 }

@@ -70,4 +70,6 @@ public class InventoryController : MonoBehaviour {
             itemSlot.SetIsActive(false);
         }
     }
+    
+    //TODO add something to load from deckslots into deck
 }
