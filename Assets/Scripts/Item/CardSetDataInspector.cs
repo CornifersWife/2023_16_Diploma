@@ -12,26 +12,38 @@ public class CardSetDataInspector : Editor {
             CreateAndAddMinionCard(cardSet);
         }
 
-        /*if (GUILayout.Button("Add New Spell Card")) { // Example for another type of card
-            CreateAndAddSpellCard(cardSet);
-        }*/
+        for (int i = cardSet.cards.Count - 1; i >= 0; i--)
+        {
+            GUILayout.BeginHorizontal();
+            EditorGUILayout.ObjectField("Card", cardSet.cards[i], typeof(BaseCardData), false);
 
-        // Ensure the changes made by the buttons are saved
+            if (GUILayout.Button("Remove", GUILayout.Width(100)))
+            {
+                RemoveCard(cardSet, i);
+            }
+
+            GUILayout.EndHorizontal();
+        }
+
+        if (GUI.changed)
+        {
+            EditorUtility.SetDirty(target);
+            AssetDatabase.SaveAssets(); 
+        }
+
         if (GUI.changed) {
             EditorUtility.SetDirty(target);
         }
     }
 
     private void CreateAndAddMinionCard(CardSetData cardSet) {
-        string folderPath = AssetDatabase.GetAssetPath(cardSet).Replace(cardSet.name + ".asset", "") + cardSet.name +
-                            "/Cards";
+        int cardCount = cardSet.cards.Count;
+        string baseName = cardSet.name; // Use the CardSetData's name as the base
+        string newCardName = $"{baseName}_Card_{cardCount}";
+        
 
-        if (!AssetDatabase.IsValidFolder(folderPath)) {
-            AssetDatabase.CreateFolder(AssetDatabase.GetAssetPath(cardSet).Replace("/" + cardSet.name + ".asset", ""),
-                cardSet.name + "/Cards");
-        }
-
-        MinionCardData newCard = CreateNewCard<MinionCardData>("New Minion Card");
+        MinionCardData newCard = CreateNewCard<MinionCardData>(newCardName);
+        newCard.cardName = newCardName;
         cardSet.cards.Add(newCard);
         AssetDatabase.AddObjectToAsset(newCard, cardSet);
         AssetDatabase.SaveAssets();
@@ -43,7 +55,18 @@ public class CardSetDataInspector : Editor {
 
     private T CreateNewCard<T>(string name) where T : BaseCardData {
         T newCard = ScriptableObject.CreateInstance<T>();
-        newCard.name = name; // Set the name of the new card
+        newCard.name = name; 
         return newCard;
+    }
+    private void RemoveCard(CardSetData cardSet, int index)
+    {
+        BaseCardData cardToRemove = cardSet.cards[index];
+        cardSet.cards.RemoveAt(index); // Remove from the list
+
+        AssetDatabase.RemoveObjectFromAsset(cardToRemove);
+        Object.DestroyImmediate(cardToRemove, true); // Destroy the object
+
+        AssetDatabase.SaveAssets(); // Save the changes to the asset database
+        AssetDatabase.Refresh(); // Refresh the Asset Database to show changes immediately
     }
 }
