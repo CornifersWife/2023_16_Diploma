@@ -7,7 +7,7 @@ public class CardSetDataInspector : Editor {
         base.OnInspectorGUI(); // Draws the default inspector
 
         CardSetData cardSet = (CardSetData)target;
-
+        
         if (GUILayout.Button("Add New Minion Card")) {
             CreateAndAddMinionCard(cardSet);
         }
