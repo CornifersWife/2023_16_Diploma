@@ -5,5 +5,4 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Card Set", menuName = "Cards/CardSet")]
 public class CardSetData :ScriptableObject {
     public List<BaseCardData> cards;
-    [ColorUsage(true)] private Color color;
 }

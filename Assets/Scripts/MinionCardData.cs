@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "New MinionCard", menuName = "Card/Minion")]
+[CreateAssetMenu(fileName = "New MinionCard", menuName = "Cards/Minion")]
 public class MinionCardData : BaseCardData, IDamageable {
     public int power;
     public int currentHealth;
