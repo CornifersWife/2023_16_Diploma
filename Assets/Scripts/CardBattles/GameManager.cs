@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(3);
         loseImage.enabled = false;
 
-        //SceneManager.LoadScene(LosingScene);
+        SceneSwitcher.Instance.LoadScene("TEST1 Overworld");
     }
 
     private IEnumerator WinnerImageAndLoadScene() {
@@ -149,6 +149,6 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(3);
         winImage.enabled = false;
 
-        //SceneManager.LoadScene(WinningScene);
+        SceneSwitcher.Instance.LoadScene("TEST1 Overworld");
     }
 }

@@ -2,9 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ManageGame : MonoBehaviour {
-    [SerializeField] private List<CardSet> currentDeck;
-
-    private InventoryController inventoryController;
+    [SerializeField] private List<CardSet> currentCardSets;
     
     private static ManageGame Instance { get; set; }
 
@@ -14,14 +12,12 @@ public class ManageGame : MonoBehaviour {
         } else {
             Instance = this;
         }
-
-        inventoryController = GameObject.Find("Inventory Controller").GetComponent<InventoryController>();
     }
 
     private void Start() {
-        if (currentDeck != null) {
-            foreach (CardSet cardSet in currentDeck) {
-                inventoryController.AddItem(cardSet);
+        if (currentCardSets != null) {
+            foreach (CardSet cardSet in currentCardSets) {
+                InventoryController.instance.AddItem(cardSet);
             }
         }
     }

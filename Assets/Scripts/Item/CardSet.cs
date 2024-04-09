@@ -1,6 +1,8 @@
 
+using UnityEngine;
+
 public class CardSet : Item {
-    private CardSetData cards;
+    [SerializeField]private CardSetData cards;
     private bool unlocked;
 
     public CardSetData GetCardSetData() {

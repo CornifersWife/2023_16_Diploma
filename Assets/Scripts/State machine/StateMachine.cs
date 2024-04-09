@@ -30,9 +30,4 @@ public class StateMachine : MonoBehaviour {
     public BaseState GetCurrentState() {
         return currentState;
     }
-
-    private void OnGUI() {
-        string text = currentState != null ? currentState.GetName() : "Null state!";
-        GUILayout.Label($"<color='black'><size=40>{text}</size></color>");
-    }
 }
