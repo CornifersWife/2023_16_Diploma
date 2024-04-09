@@ -22,7 +22,7 @@ public class CardSpot : MonoBehaviour {
         cardDisplay = newCardDisplay;
         cardDisplay.GetComponent<DragAndDrop>().enabled = false;
         cardDisplay.OnDestroyed += HandleCardDisplayDestroyed;
-        
+        cardDisplay.transform.localPosition = new Vector3(0, 0, 0);
     }
     private void HandleCardDisplayDestroyed() {
         cardDisplay.OnDestroyed -= HandleCardDisplayDestroyed;

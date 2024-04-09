@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ActionPointDisplay : MonoBehaviour {
@@ -13,12 +14,13 @@ public class ActionPointDisplay : MonoBehaviour {
         actionPointManager = GetComponent<ActionPointManager>();
         actionPointManager.OnAPChanged += UpdateOrbs;
         orbs = new GameObject[actionPointManager.maxAP];
-    }
-
-    private void Start() {
         InitializeOrbs();
     }
 
+    private void Start() {
+        UpdateOrbs();
+
+    }
 
     /*
     private void OnValidate() {
@@ -43,7 +45,6 @@ public class ActionPointDisplay : MonoBehaviour {
             orbs![i] = Instantiate(orbPrefab, GetPositionForOrb(i), Quaternion.identity, transform);
             orbs![i].transform.SetParent(apField,false);
         }
-        UpdateOrbs();
     }
     void UpdateOrbs() {
         for (int i = 0; i < orbs.Length; i++) {
