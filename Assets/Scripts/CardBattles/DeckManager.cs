@@ -13,7 +13,6 @@ public class DeckManager : MonoBehaviour {
     }
 
     private void Start() {
-        cardSets = LoadCardSetData();
         deck = CreateDeckFromCardSets();
     }
 
