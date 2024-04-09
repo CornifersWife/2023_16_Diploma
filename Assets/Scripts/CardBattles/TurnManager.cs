@@ -23,6 +23,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace TurnSystem {
@@ -64,8 +65,8 @@ namespace TurnSystem {
         public HandManager enemyHand;
         public DeckManager enemyDeck;
 
-        public ManaManager playerMana;
-        public ManaManager enemyMana;
+        [FormerlySerializedAs("playerMana")] public ActionPointManager playerActionPoint;
+        [FormerlySerializedAs("enemyMana")] public ActionPointManager enemyActionPoint;
 
         public Board board;
 
@@ -165,9 +166,9 @@ namespace TurnSystem {
         }
 
         private void StartOfTurn() {
-            var mana = isPlayerTurn ? playerMana : enemyMana;
+            var actionPointManager = isPlayerTurn ? playerActionPoint : enemyActionPoint;
             var hand = isPlayerTurn ? playerHand : enemyHand;
-            mana.StartRound();
+            actionPointManager.StartRound();
             hand.DrawACard();
             if (isPlayerTurn) StartPlayerTurn();
             else {

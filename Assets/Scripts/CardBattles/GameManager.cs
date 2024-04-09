@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
@@ -7,11 +8,11 @@ public class GameManager : MonoBehaviour {
     
     public DeckManager playerDeck;
     public HandManager playerHand;
-    public ManaManager playerMana;
+    [FormerlySerializedAs("playerMana")] public ActionPointManager playerActionPoint;
     [Space]
     public DeckManager enemyDeck;
     public HandManager enemyHand;
-    public ManaManager enemyMana;
+    [FormerlySerializedAs("enemyMana")] public ActionPointManager enemyActionPoint;
     [Space]
     public Board board;
     public GameObject cardPrefab;
@@ -46,8 +47,8 @@ public class GameManager : MonoBehaviour {
         return newCardDisplay;
     }
     private void OnCardPlayed(CardSpot cardSpot, CardDisplay cardDisplay) {
-        var mana = cardSpot.isPlayers ? playerMana : enemyMana;
-        if(!mana.CanPlayCard(cardDisplay)){
+        var actionPoint = cardSpot.isPlayers ? playerActionPoint : enemyActionPoint;
+        if(!actionPoint.CanUseAP()){
             cardDisplay.GetComponent<DragAndDrop>().SnapBack();
             return;
         }
@@ -73,7 +74,7 @@ public class GameManager : MonoBehaviour {
     
     public bool EnemyPlayMinion() {
         var availableCards=enemyHand.hand
-            .Where(card => card.cardData is MinionCardData  && enemyMana.CanPlayCard(card)).ToArray();
+            .Where(card => card.cardData is MinionCardData  && enemyActionPoint.CanUseAP()).ToArray();
         var availableBoardSpaces = board.enemyMinions
             .Where(space => space.IsEmpty()).ToArray();
         if (availableCards.Length <= 0 || availableBoardSpaces.Length <= 0) {

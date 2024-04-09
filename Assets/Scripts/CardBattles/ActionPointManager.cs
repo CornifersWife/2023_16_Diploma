@@ -1,35 +1,36 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class ManaManager : MonoBehaviour {
-    public int maxMana = 3;
-    public int currentMana;
-    public TMP_Text manaCount;
+public class ActionPointManager : MonoBehaviour {
+    public int maxAP = 3;
+    public int currentAP;
+    public TMP_Text APCount;
 
     private void Start() {
-        currentMana = 0;
-        manaCount.text = "Mana: " + currentMana;
+        currentAP = 0;
+        APCount.text = "AP: " + currentAP;
     }
 
-    public void UseMana(CardDisplay cardDisplay) {
-        UseMana(cardDisplay.cardData);
-    }
-
-    public void UseMana(BaseCardData card) {
-        if (CanPlayCard(card)) {
-            currentMana -= card.cost;
-            manaCount.text = "Mana: " + currentMana;
+    
+    public bool UseActionPoint() {
+        if (CanUseAP()) {
+            currentAP--;
+            return true;
         }
+        return false;
     }
 
-    public bool CanPlayCard(CardDisplay cardDisplay) {
-        return CanPlayCard(cardDisplay.cardData);
-    }    
-    public bool CanPlayCard(BaseCardData card) {
-        return currentMana >= card.cost;
+    public bool CanUseAP() {
+        return CanUseAP(1);
     }
+
+    //here in case we want to add something that costs more or less
+    public bool CanUseAP(int cost) {
+        return currentAP >= cost;
+    }
+
     public void StartRound() {
-        currentMana = maxMana;
-        manaCount.text = "Mana: " + currentMana;
+        currentAP = maxAP;
     }
 }
