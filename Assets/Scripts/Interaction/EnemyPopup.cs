@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//TODO attach this to some manager, not every enemy object
 public class EnemyPopup : MonoBehaviour {
     [SerializeField] private RectTransform popupPanel;
     [SerializeField] private InputAction mouseClickAction;
