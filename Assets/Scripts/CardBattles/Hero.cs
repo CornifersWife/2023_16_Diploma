@@ -3,7 +3,6 @@ using UnityEngine;
 public class Hero : MonoBehaviour, IDamageable {
     public int maxHealth = 20;
     public int currentHealth;
-
     private void Awake() {
         currentHealth = maxHealth;
     }
@@ -29,6 +28,15 @@ public class Hero : MonoBehaviour, IDamageable {
     }
 
     private void Death() {
-        
+        if (CompareTag("Player")) {
+            GameManager.Instance.Lose();
+            return;
+        }
+
+        if (CompareTag("Enemy")) {
+            GameManager.Instance.Win();
+            return;
+        }
+        Debug.Log("Critical error hero died but nothing happened");
     }
 }
