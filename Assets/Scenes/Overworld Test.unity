@@ -3660,7 +3660,7 @@ GameObject:
   - component: {fileID: 521379625}
   - component: {fileID: 521379631}
   - component: {fileID: 521379632}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11421,7 +11421,7 @@ GameObject:
   - component: {fileID: 1706197154}
   - component: {fileID: 1706197153}
   - component: {fileID: 1706197157}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Card Set 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11588,7 +11588,7 @@ GameObject:
   - component: {fileID: 1710800763}
   - component: {fileID: 1710800765}
   - component: {fileID: 1710800764}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
