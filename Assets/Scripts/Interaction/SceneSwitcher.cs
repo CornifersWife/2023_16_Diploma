@@ -5,7 +5,12 @@ public class SceneSwitcher : MonoBehaviour {
     public static SceneSwitcher Instance { get; set; }
 
     private void Awake() {
-        Instance = this;
+        if (Instance != null && Instance != this) {
+            Destroy(gameObject);
+        }
+        else {
+            Instance = this;
+        }
     }
 
     public void LoadScene(string sceneName) {
