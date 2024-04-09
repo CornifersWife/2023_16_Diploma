@@ -93,6 +93,14 @@ public class GameManager : MonoBehaviour {
             enemyHand.AddCardToHand(drawnCard);
         }
     }
+    public void PlayerDrawButton() {
+        if (!playerActionPoint.CanUseAP()) {
+            Debug.Log("Cant use AP");
+            return;
+        }
+        playerActionPoint.UseActionPoint();
+        playerHand.DrawACard();
+    }
     
     public void PlayerAttack() {
         board.MinionsAttack(true);

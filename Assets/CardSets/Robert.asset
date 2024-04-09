@@ -15,9 +15,9 @@ MonoBehaviour:
   cost: 1
   cardName: Robert_Card_0
   cardImage: {fileID: 0}
-  power: 0
+  power: 6
   currentHealth: 0
-  maxHealth: 0
+  maxHealth: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
