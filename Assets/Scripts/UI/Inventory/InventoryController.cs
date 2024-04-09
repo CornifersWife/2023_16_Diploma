@@ -72,6 +72,11 @@ public class InventoryController : MonoBehaviour {
             itemSlot.SetIsActive(false);
         }
     }
+
+    public List<ItemSlot> GetDeck() {
+        return deckSlots;
+    }
     
     //TODO add something to load from deckslots into deck
+    
 }
