@@ -15,8 +15,17 @@ public class InventoryController : MonoBehaviour {
     
     private PostProcessVolume postProcessVolume;
     private PlayerController playerController;
+    
+    public static InventoryController instance = null; 
 
     private void Awake() {
+        if (instance == null) {
+            instance = this;
+        }         
+        else if (instance != this) {
+            Destroy(gameObject);
+        }          
+        DontDestroyOnLoad(gameObject); 
         postProcessVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
@@ -55,6 +64,7 @@ public class InventoryController : MonoBehaviour {
         foreach (ItemSlot itemSlot in itemList) {
             if (!itemSlot.IsOccupied()) {
                 itemSlot.AddItem(item);
+                itemSlot.SetIsOccupied(true);
                 return;
             }
         }
@@ -75,6 +85,13 @@ public class InventoryController : MonoBehaviour {
 
     public List<ItemSlot> GetDeck() {
         return deckSlots;
+    }
+
+    public List<CardSetData> GetCardSets() {
+        List<CardSetData> cardSets = new List<CardSetData>();
+        foreach(ItemSlot slot in deckSlots)
+            cardSets.Add(((CardSet)slot.GetItem()).GetCardSetData());
+        return cardSets;
     }
     
     //TODO add something to load from deckslots into deck

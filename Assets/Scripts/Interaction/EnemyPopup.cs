@@ -5,6 +5,7 @@ public class EnemyPopup : MonoBehaviour {
     [SerializeField] private RectTransform popupPanel;
     [SerializeField] private InputAction mouseClickAction;
     [SerializeField] private EnemySM enemySM;
+    [SerializeField] private GameObject deckPopup;
     
     private Camera mainCamera;
     public GameObject player;
@@ -43,10 +44,10 @@ public class EnemyPopup : MonoBehaviour {
     public void YesClicked() {
         popupPanel.gameObject.SetActive(false);
         if (CheckDeck(3)) {
-            SceneSwitcher.Instance.LoadScene("final scene");
+            SceneSwitcher.Instance.LoadScene("Irys playspace");
         }
         else {
-            //popup
+            deckPopup.SetActive(true);
             NoClicked();
         }
     }
@@ -54,6 +55,10 @@ public class EnemyPopup : MonoBehaviour {
     public void NoClicked() {
         popupPanel.gameObject.SetActive(false);
         playerController.enabled = true;
+    }
+
+    public void ClosePopup() {
+        deckPopup.SetActive(false);
     }
 
     private bool CheckDeck(int count) {

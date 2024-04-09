@@ -69,7 +69,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
         if (!isOccupied) {
             GameObject itemObject = eventData.pointerDrag;
             itemObject.GetComponent<DraggableItem>().SetParentAfterDrag(transform);
-            isOccupied = true;
+            SetIsOccupied(true);
         }
+    }
+
+    public Item GetItem() {
+        return item;
     }
 }
