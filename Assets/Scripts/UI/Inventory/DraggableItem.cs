@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class DraggableItem: MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler {
+    private Item itemData;
     private Transform parentAfterDrag;
     
     private Image itemImage;
@@ -34,5 +35,9 @@ public class DraggableItem: MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
     public void SetParentAfterDrag(Transform newParent) {
         parentAfterDrag = newParent;
+    }
+
+    public void SetItemData(Item item) {
+        itemData = item;
     }
 }

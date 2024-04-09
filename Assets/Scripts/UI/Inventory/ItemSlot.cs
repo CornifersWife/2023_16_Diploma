@@ -4,22 +4,18 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
     [SerializeField] private GameObject selectedShader;
-    
-    private string itemName;
-    private Sprite itemSprite;
+
+    private Item item;
     private bool isOccupied = false;
     private bool isActive;
     private InventoryController inventoryController;
-    private GameObject parentPanel;
 
     private void Awake() {
         inventoryController = GameObject.Find("Inventory Controller").GetComponent<InventoryController>();
-        parentPanel = transform.parent.gameObject;
     }
     
     public void AddItem(Item item) {
-        itemName = item.GetName();
-        itemSprite = item.GetSprite();
+        this.item = item;
         isOccupied = true;
         CreateItemObject();
     }
@@ -36,9 +32,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
         itemRectTransform.anchorMax = new Vector2(1, 1);
         
         Image objectImage = itemObject.AddComponent<Image>();
-        objectImage.sprite = itemSprite;
+        objectImage.sprite = item.GetSprite();
 
-        itemObject.AddComponent<DraggableItem>();
+        itemObject.AddComponent<DraggableItem>().SetItemData(item);
         itemObject.AddComponent<LayoutElement>();
     }
 
