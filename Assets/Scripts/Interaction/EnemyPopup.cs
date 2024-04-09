@@ -45,6 +45,7 @@ public class EnemyPopup : MonoBehaviour {
     public void YesClicked() {
         popupPanel.gameObject.SetActive(false);
         if (CheckDeck(3)) {
+            playerController.enabled = true;
             SceneSwitcher.Instance.LoadScene("Irys playspace");
         }
         else {

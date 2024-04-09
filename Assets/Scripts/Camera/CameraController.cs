@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraController : MonoBehaviour {
     [Header("Zoom")]
@@ -20,7 +21,16 @@ public class CameraController : MonoBehaviour {
     private float rightRotation;
     private float leftRotation;
 
+    private static CameraController instance = null;
+
     private void Awake() {
+        if (instance == null) {
+            instance = this;
+        }         
+        else if (instance != this) {
+            Destroy(gameObject);
+        }          
+        DontDestroyOnLoad(gameObject); 
         mainCamera = Camera.main;
         initialRotation = transform.rotation.y;
     }

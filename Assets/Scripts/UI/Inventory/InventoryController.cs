@@ -26,7 +26,7 @@ public class InventoryController : MonoBehaviour {
             Destroy(gameObject);
         }          
         DontDestroyOnLoad(gameObject); 
-        postProcessVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
+        postProcessVolume = GameObject.FindWithTag("MainCamera").GetComponent<PostProcessVolume>();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
