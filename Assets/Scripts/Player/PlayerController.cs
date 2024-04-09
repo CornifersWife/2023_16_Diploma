@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour, IWalkable {
         mainCamera = Camera.main;
         navMeshAgent = GetComponent<NavMeshAgent>();
         groundLayer = LayerMask.NameToLayer("Ground");
+        isUIOpen = false;
     }
 
     private void OnEnable() {
