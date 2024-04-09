@@ -169,8 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db23cde86b7c1fa48b64d8f1d8674ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mousePosition: {x: 0, y: 0, z: 0}
-  startingPosition: {x: 0, y: 0, z: 0}
   snapDistance: 2
 --- !u!114 &5026121832572522258
 MonoBehaviour:
@@ -287,7 +285,8 @@ PrefabInstance:
       value: -67.175995
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5435006380458825723, guid: e260764058148eb4f877278ce1fc8249, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e260764058148eb4f877278ce1fc8249, type: 3}

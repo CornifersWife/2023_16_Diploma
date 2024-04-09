@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3682177001849596446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c9bb6bc7ae256548b2b771d59e834a1, type: 3}
+  m_Name: Ryby_Card_2
+  m_EditorClassIdentifier: 
+  cost: 1
+  cardName: Ryby_Card_2
+  cardImage: {fileID: 0}
+  power: 1
+  currentHealth: 0
+  maxHealth: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d34bb5124edf4366858d0b34405f3a41, type: 3}
+  m_Name: Ryby
+  m_EditorClassIdentifier: 
+  displayName: nodisplaynameset
+  cards:
+  - {fileID: 6527468646954711873}
+  - {fileID: 5999631620385289417}
+  - {fileID: -3682177001849596446}
+  setColor: {r: 0.8679245, g: 0.15884651, b: 0.15884651, a: 1}
+--- !u!114 &5999631620385289417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c9bb6bc7ae256548b2b771d59e834a1, type: 3}
+  m_Name: Ryby_Card_1
+  m_EditorClassIdentifier: 
+  cost: 1
+  cardName: Ryby_Card_1
+  cardImage: {fileID: 0}
+  power: 1
+  currentHealth: 0
+  maxHealth: 1
+--- !u!114 &6527468646954711873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c9bb6bc7ae256548b2b771d59e834a1, type: 3}
+  m_Name: Ryby_Card_0
+  m_EditorClassIdentifier: 
+  cost: 1
+  cardName: Ryby_Card_0
+  cardImage: {fileID: 0}
+  power: 4
+  currentHealth: 0
+  maxHealth: 4
