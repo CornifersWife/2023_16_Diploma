@@ -1,36 +1,36 @@
-using TMPro;
+using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class ActionPointManager : MonoBehaviour {
-    public int maxAP = 3;
-    public int currentAP;
-    public TMP_Text APCount;
+    public int maxAP  = 3;
+    public int CurrentAP { get; private set; }
+    public event Action OnAPChanged;
 
     private void Start() {
-        currentAP = 0;
-        APCount.text = "AP: " + currentAP;
+        CurrentAP = 0;
+        OnAPChanged?.Invoke(); 
     }
 
     
-    public bool UseActionPoint() {
+    public void UseActionPoint() {
         if (CanUseAP()) {
-            currentAP--;
-            return true;
+            CurrentAP -= 1;
+            OnAPChanged?.Invoke(); // Invoke event after AP changes
+            return;
         }
-        return false;
+        Debug.Log("CANT USE AP");
     }
 
     public bool CanUseAP() {
         return CanUseAP(1);
     }
 
-    //here in case we want to add something that costs more or less
     public bool CanUseAP(int cost) {
-        return currentAP >= cost;
+        return CurrentAP >= cost;
     }
 
     public void StartRound() {
-        currentAP = maxAP;
+        CurrentAP = maxAP;
+        OnAPChanged?.Invoke();
     }
 }

@@ -6,5 +6,4 @@ public class CardSetData :ScriptableObject {
     public string displayName = "nodisplaynameset";
     [HideInInspector]public List<BaseCardData> cards;
     public Color setColor = Color.white; 
-
 }

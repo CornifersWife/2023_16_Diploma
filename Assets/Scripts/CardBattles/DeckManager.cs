@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DeckManager : MonoBehaviour {
-    
+    [Header("CardSets")]
     [SerializeField] private List<CardSetData> cardSets = new List<CardSetData>();
+    [Space(10)]
     public List<BaseCardData> deck = new List<BaseCardData>();
 
     private void Awake() {

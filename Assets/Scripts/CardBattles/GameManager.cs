@@ -1,7 +1,6 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
-using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour {
@@ -52,6 +51,8 @@ public class GameManager : MonoBehaviour {
             cardDisplay.GetComponent<DragAndDrop>().SnapBack();
             return;
         }
+
+        actionPoint.UseActionPoint();
         var hand = cardSpot.isPlayers ? playerHand : enemyHand;
         cardSpot.SetCardDisplay(cardDisplay);
         hand.RemoveCardFromHand(cardDisplay);

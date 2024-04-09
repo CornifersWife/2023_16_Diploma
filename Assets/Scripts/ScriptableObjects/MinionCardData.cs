@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New MinionCard", menuName = "Cards/Minion")]
 public class MinionCardData : BaseCardData, IDamageable {
     public int power;
-    public int currentHealth;
+    [HideInInspector]public int currentHealth;
     public int maxHealth;
     public event Action<int> OnHealthChanged;
     public event Action<IDamageable> OnAttack;

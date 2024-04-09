@@ -7,32 +7,25 @@ public class CardSetDataInspector : Editor {
         base.OnInspectorGUI(); // Draws the default inspector
 
         CardSetData cardSet = (CardSetData)target;
-        
+
         if (GUILayout.Button("Add New Minion Card")) {
             CreateAndAddMinionCard(cardSet);
         }
 
-        for (int i = cardSet.cards.Count - 1; i >= 0; i--)
-        {
+        for (int i = cardSet.cards.Count - 1; i >= 0; i--) {
             GUILayout.BeginHorizontal();
             EditorGUILayout.ObjectField("Card", cardSet.cards[i], typeof(BaseCardData), false);
 
-            if (GUILayout.Button("Remove", GUILayout.Width(100)))
-            {
+            if (GUILayout.Button("Remove", GUILayout.Width(100))) {
                 RemoveCard(cardSet, i);
             }
 
             GUILayout.EndHorizontal();
         }
 
-        if (GUI.changed)
-        {
-            EditorUtility.SetDirty(target);
-            AssetDatabase.SaveAssets(); 
-        }
-
         if (GUI.changed) {
             EditorUtility.SetDirty(target);
+            AssetDatabase.SaveAssets();
         }
     }
 
@@ -40,7 +33,7 @@ public class CardSetDataInspector : Editor {
         int cardCount = cardSet.cards.Count;
         string baseName = cardSet.name; // Use the CardSetData's name as the base
         string newCardName = $"{baseName}_Card_{cardCount}";
-        
+
 
         MinionCardData newCard = CreateNewCard<MinionCardData>(newCardName);
         newCard.cardName = newCardName;
@@ -55,11 +48,11 @@ public class CardSetDataInspector : Editor {
 
     private T CreateNewCard<T>(string name) where T : BaseCardData {
         T newCard = ScriptableObject.CreateInstance<T>();
-        newCard.name = name; 
+        newCard.name = name;
         return newCard;
     }
-    private void RemoveCard(CardSetData cardSet, int index)
-    {
+
+    private void RemoveCard(CardSetData cardSet, int index) {
         BaseCardData cardToRemove = cardSet.cards[index];
         cardSet.cards.RemoveAt(index); // Remove from the list
 
