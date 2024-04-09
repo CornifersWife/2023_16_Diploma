@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour, IWalkable {
     
     private Vector3 targetPosition;
     private int groundLayer;
+    private bool isUIOpen;
 
     private void Awake() {
         mainCamera = Camera.main;
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour, IWalkable {
     
     public void SetTargetPoint() {
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(groundLayer) == 0) {
+        if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(groundLayer) == 0 && !isUIOpen) {
             targetPosition = hit.point;
         }
     }
@@ -45,6 +46,10 @@ public class PlayerController : MonoBehaviour, IWalkable {
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(targetPosition, 0.3f);
+    }
+
+    public void SetIsUIOpen(bool value) {
+        isUIOpen = value;
     }
 
 }

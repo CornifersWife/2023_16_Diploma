@@ -32,13 +32,15 @@ public class InventoryController : MonoBehaviour {
     private void ShowInventory(InputAction.CallbackContext context) {
         inventoryUI.SetActive(true);
         postProcessVolume.enabled = true;
-        playerController.enabled = false;
+        Time.timeScale = 0;
+        playerController.SetIsUIOpen(true);
     }
 
     public void HideInventory() {
         postProcessVolume.enabled = false;
-        playerController.enabled = true;
         inventoryUI.SetActive(false);
+        Time.timeScale = 1;
+        playerController.SetIsUIOpen(true);
     }
 
     public void AddItem(Item item) {
