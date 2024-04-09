@@ -1,39 +1,56 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DeckManager : MonoBehaviour {
-    public List<BaseCardData> deck_data = new List<BaseCardData>();
+    
+    [SerializeField] private List<CardSetData> cardSets = new List<CardSetData>();
     public List<BaseCardData> deck = new List<BaseCardData>();
 
-    public void Awake() {
-        foreach (var card in deck_data) {
-            deck.Add(ScriptableObject.CreateInstance<BaseCardData>());
+    private void Awake() {
+        //cardSets = LoadCardSetData();
+    }
+
+    private void Start() {
+        deck = CreateDeckFromCardSets();
+    }
+
+    private List<BaseCardData> CreateDeckFromCardSets() {
+        var cardSetDataCopies = new List<CardSetData>();
+        foreach (CardSetData cardSet in cardSets) {
+            cardSetDataCopies.Add(ScriptableObject.Instantiate(cardSet));
         }
+
+        var baseCardDatas = new List<BaseCardData>();
+        foreach (CardSetData cardSet in cardSetDataCopies) {
+            baseCardDatas.AddRange(cardSet.cards);
+        }
+
+        return baseCardDatas;
+    }
+
+    private List<CardSetData> LoadCardSetData() {
+        //TODO implement loading cardsetdatas from what was chosen in inventory
+        return null;
     }
 
     public BaseCardData DrawCard() {
         if (deck.Count == 0) return null;
-    
+
         BaseCardData cardData = deck[0];
         deck.RemoveAt(0);
         return cardData;
     }
 
     // Fisher-Yates shuffle
-    public void Shuffle()
-    {
+    public void Shuffle() {
         System.Random rand = new System.Random();
         int n = deck.Count;
-         
-        for (int i = 0; i < n-1; i++)
-        {
+
+        for (int i = 0; i < n - 1; i++) {
             int r = i + rand.Next(n - i);
-             
-            BaseCardData temp = deck[r];
-            deck[r] = deck[i];
-            deck[i] = temp;
+
+            (deck[r], deck[i]) = (deck[i], deck[r]);
         }
     }
 }
