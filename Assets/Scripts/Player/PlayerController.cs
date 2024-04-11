@@ -1,5 +1,8 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour, IWalkable {
@@ -9,13 +12,15 @@ public class PlayerController : MonoBehaviour, IWalkable {
     
     private Vector3 targetPosition;
     private int groundLayer;
-    private bool isUIOpen;
+    private GameObject UIGameObject;
+    private int activeUIOnStart;
 
     private void Awake() {
         mainCamera = Camera.main;
         navMeshAgent = GetComponent<NavMeshAgent>();
         groundLayer = LayerMask.NameToLayer("Ground");
-        isUIOpen = false;
+        UIGameObject = GameObject.Find("UI");
+        activeUIOnStart = GetActiveUIOnStart();
     }
 
     private void OnEnable() {
@@ -34,8 +39,19 @@ public class PlayerController : MonoBehaviour, IWalkable {
     }
     
     public void SetTargetPoint() {
-        Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(groundLayer) == 0 && !isUIOpen) {
+        Vector3 mousePos = Mouse.current.position.ReadValue();
+        PointerEventData eventData = new(EventSystem.current)
+        {
+            position = mousePos
+        };
+        List<RaycastResult> results = new();
+        EventSystem.current.RaycastAll(eventData, results);
+        Debug.Log(results.Count);
+        if (results.Count > activeUIOnStart)
+            return;
+
+        Ray ray = mainCamera.ScreenPointToRay(mousePos);
+        if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(groundLayer) == 0) {
             targetPosition = hit.point;
         }
     }
@@ -43,14 +59,19 @@ public class PlayerController : MonoBehaviour, IWalkable {
     public void Walk(Vector3 target) {
         navMeshAgent.SetDestination(target);
     }
+
+    private int GetActiveUIOnStart() {
+        int count = 0;
+        foreach (Transform uiChild in UIGameObject.transform) {
+            if (uiChild.gameObject.activeSelf)
+                count++;
+        }
+        return count;
+    }
     
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(targetPosition, 0.3f);
-    }
-
-    public void SetIsUIOpen(bool value) {
-        isUIOpen = value;
     }
 
 }
