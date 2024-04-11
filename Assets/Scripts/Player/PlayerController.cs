@@ -46,7 +46,6 @@ public class PlayerController : MonoBehaviour, IWalkable {
         };
         List<RaycastResult> results = new();
         EventSystem.current.RaycastAll(eventData, results);
-        Debug.Log(results.Count);
         if (results.Count > activeUIOnStart)
             return;
 
