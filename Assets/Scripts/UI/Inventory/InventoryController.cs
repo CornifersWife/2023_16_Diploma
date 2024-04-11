@@ -14,7 +14,6 @@ public class InventoryController : MonoBehaviour {
     //add space to show cards
     
     private PostProcessVolume postProcessVolume;
-    private PlayerController playerController;
     
     public static InventoryController instance = null; 
 
@@ -27,7 +26,6 @@ public class InventoryController : MonoBehaviour {
         }          
         DontDestroyOnLoad(gameObject); 
         postProcessVolume = GameObject.FindWithTag("MainCamera").GetComponent<PostProcessVolume>();
-        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     private void OnEnable() {

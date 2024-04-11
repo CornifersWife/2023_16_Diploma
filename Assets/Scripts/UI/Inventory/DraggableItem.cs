@@ -40,4 +40,9 @@ public class DraggableItem: MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
     public void SetItemData(Item item) {
         itemData = item;
     }
+
+    public Item GetItemData()
+    {
+        return itemData;
+    }
 }

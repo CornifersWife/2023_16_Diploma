@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
     [SerializeField] private GameObject selectedShader;
+    [SerializeField] private string itemListName = "Item list";
+    [SerializeField] private string deckListName = "Deck list";
+    [SerializeField] private string cardSetListName = "Card Set list";
 
     private Item item;
     private bool isOccupied = false;
@@ -68,7 +71,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
     public void OnDrop(PointerEventData eventData) {
         if (!isOccupied) {
             GameObject itemObject = eventData.pointerDrag;
-            itemObject.GetComponent<DraggableItem>().SetParentAfterDrag(transform);
+            DraggableItem draggableItem = itemObject.GetComponent<DraggableItem>();
+
+            if (transform.parent.name == itemListName && draggableItem.GetItemData() is CardSet)
+                return;
+            if ((transform.parent.name == cardSetListName || transform.parent.name == deckListName) && draggableItem.GetItemData() is CollectibleItem)
+                return;
+            draggableItem.SetParentAfterDrag(transform);
             SetIsOccupied(true);
         }
     }
