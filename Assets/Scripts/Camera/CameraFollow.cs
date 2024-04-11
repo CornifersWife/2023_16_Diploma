@@ -11,10 +11,10 @@ public class CameraFollow : MonoBehaviour{
     private void Awake() {
         cameraPosition = transform.position;
         targetPosition = target.position;
+        cameraPosition = targetPosition;
     }
 
     private void Start() {
-        cameraPosition = targetPosition;
         offset = cameraPosition - targetPosition;
     }
 
