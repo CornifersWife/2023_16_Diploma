@@ -20,9 +20,6 @@ public class DraggableItem: MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
         itemLayoutElement.ignoreLayout = true;
         transform.SetAsLastSibling();
         itemImage.raycastTarget = false;
-        ItemSlot itemSlot = parentAfterDrag.GetComponent<ItemSlot>();
-        itemSlot.SetIsOccupied(false);
-        itemSlot.ClearItem();
     }
 
     public void OnDrag(PointerEventData eventData) {
@@ -37,6 +34,10 @@ public class DraggableItem: MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
     public void SetParentAfterDrag(Transform newParent) {
         parentAfterDrag = newParent;
+    }
+
+    public Transform GetParent() {
+        return parentAfterDrag;
     }
 
     public void SetItemData(Item item) {

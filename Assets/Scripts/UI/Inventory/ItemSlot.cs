@@ -69,10 +69,19 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
             GameObject itemObject = eventData.pointerDrag;
             DraggableItem draggableItem = itemObject.GetComponent<DraggableItem>();
 
-            if (transform.parent.name == itemList.name && draggableItem.GetItemData() is CardSet)
+            if (transform.parent.name == itemList.name && draggableItem.GetItemData() is CardSet) {
                 return;
-            if ((transform.parent.name == cardSetList.name || transform.parent.name == deckList.name) && draggableItem.GetItemData() is CollectibleItem)
+            }
+
+            if ((transform.parent.name == cardSetList.name || transform.parent.name == deckList.name) &&
+                draggableItem.GetItemData() is CollectibleItem) {
                 return;
+            }
+            
+            ItemSlot previousItemSlot = draggableItem.GetParent().GetComponent<ItemSlot>();
+            previousItemSlot.SetIsOccupied(false);
+            previousItemSlot.ClearItem();
+            
             draggableItem.SetParentAfterDrag(transform);
             SetIsOccupied(true);
             SetItem(draggableItem.GetItemData());
