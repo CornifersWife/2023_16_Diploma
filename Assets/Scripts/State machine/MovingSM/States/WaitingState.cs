@@ -17,7 +17,7 @@ public class WaitingState : BaseState {
         base.UpdateLogic();
         if (movingSM.IsWaiting())
             Wait();
-        else{
+        else {
             movingSM.ChangeState(movingSM.walkingState);
         }
     }

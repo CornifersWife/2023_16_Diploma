@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public interface IDamageable
-{
+public interface IDamageable {
     void TakeDamage(int amount);
     Vector3 GetPosition(); 
     bool IsAlive(); 

@@ -92,11 +92,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
         return item;
     }
 
-    public void SetItem(Item newItem) {
+    private void SetItem(Item newItem) {
         this.item = newItem;
     }
-    
-    public void ClearItem() {
+
+    private void ClearItem() {
         this.item = null;
     }
 }
