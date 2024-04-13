@@ -29,7 +29,7 @@ public class CameraController : MonoBehaviour {
         else if (Instance != this) {
             Destroy(gameObject);
         }          
-        DontDestroyOnLoad(gameObject); 
+        //DontDestroyOnLoad(gameObject); 
         mainCamera = Camera.main;
         initialRotation = transform.rotation.y;
     }

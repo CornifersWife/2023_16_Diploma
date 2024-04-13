@@ -20,7 +20,7 @@ public class EnemyPopup : MonoBehaviour {
         mainCamera = Camera.main;
         enemyLayer = LayerMask.NameToLayer("Enemy");
         playerController = player.GetComponent<PlayerController>();
-        inventoryController = InventoryController.instance;
+        inventoryController = InventoryController.Instance;
         popupPanel.gameObject.SetActive(false);
     }
     

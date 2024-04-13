@@ -59,7 +59,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
     }
 
     private void OnLeftClick() {
-        InventoryController.instance.DeselectAllSlots();
+        InventoryController.Instance.DeselectAllSlots();
         selectedShader.SetActive(true);
         SetIsActive(true);
     }
