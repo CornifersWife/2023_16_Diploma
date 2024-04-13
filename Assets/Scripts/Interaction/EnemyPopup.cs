@@ -6,6 +6,7 @@ public class EnemyPopup : MonoBehaviour {
     [SerializeField] private RectTransform popupPanel;
     [SerializeField] private InputAction mouseClickAction;
     [SerializeField] private EnemySM enemySM;
+    [SerializeField] private MovingSM movingSM;
     [SerializeField] private GameObject deckPopup;
     
     private Camera mainCamera;
@@ -39,6 +40,7 @@ public class EnemyPopup : MonoBehaviour {
         if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(enemyLayer) == 0) {
             popupPanel.gameObject.SetActive(true);
             playerController.enabled = false;
+            movingSM.SetDialogue(true);
         }
     }
 
@@ -50,17 +52,19 @@ public class EnemyPopup : MonoBehaviour {
         }
         else {
             deckPopup.SetActive(true);
-            NoClicked();
+            popupPanel.gameObject.SetActive(false);
         }
     }
 
     public void NoClicked() {
         popupPanel.gameObject.SetActive(false);
         playerController.enabled = true;
+        movingSM.SetDialogue(false);
     }
 
     public void ClosePopup() {
         deckPopup.SetActive(false);
+        movingSM.SetDialogue(false);
     }
 
     private bool CheckDeck(int count) {
