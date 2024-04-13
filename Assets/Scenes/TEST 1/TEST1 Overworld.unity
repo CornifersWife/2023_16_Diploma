@@ -5774,7 +5774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: 
   sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
-  cards: {fileID: 11400000, guid: 2092508ccc1bfa2458aa123ae5847f1c, type: 2}
+  cards: {fileID: 11400000, guid: 14abd029b264d554f918fca768f67c90, type: 2}
 --- !u!1 &1018475491
 GameObject:
   m_ObjectHideFlags: 0
@@ -7301,7 +7301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: 
   sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
-  cards: {fileID: 11400000, guid: 72bc5e3aaa632ee40b6874351870f1c2, type: 2}
+  cards: {fileID: 11400000, guid: 14abd029b264d554f918fca768f67c90, type: 2}
 --- !u!1001 &1236488808
 PrefabInstance:
   m_ObjectHideFlags: 0
