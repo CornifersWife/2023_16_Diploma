@@ -31,7 +31,6 @@ public class DeckManager : MonoBehaviour {
     }
 
     private List<CardSetData> LoadCardSetData() {
-        //TODO implement loading cardsetdatas from what was chosen in inventory
         return InventoryController.Instance.GetCardSets();
     }
 
