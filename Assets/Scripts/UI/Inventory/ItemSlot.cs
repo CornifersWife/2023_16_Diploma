@@ -4,18 +4,13 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
     [SerializeField] private GameObject selectedShader;
-    [SerializeField] private string itemListName = "Item list";
-    [SerializeField] private string deckListName = "Deck list";
-    [SerializeField] private string cardSetListName = "Card Set list";
+    [SerializeField] private GameObject itemList;
+    [SerializeField] private GameObject deckList;
+    [SerializeField] private GameObject cardSetList;
 
     private Item item;
     private bool isOccupied = false;
     private bool isActive;
-    private InventoryController inventoryController;
-
-    private void Awake() {
-        inventoryController = GameObject.Find("Inventory Controller").GetComponent<InventoryController>();
-    }
     
     public void AddItem(Item item) {
         this.item = item;
@@ -33,6 +28,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
         itemRectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, 0, 0);
         itemRectTransform.anchorMin = new Vector2(0, 0);
         itemRectTransform.anchorMax = new Vector2(1, 1);
+        itemRectTransform.localScale = new Vector3(1, 1, 1);
         
         Image objectImage = itemObject.AddComponent<Image>();
         objectImage.sprite = item.GetSprite();
@@ -63,7 +59,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
     }
 
     private void OnLeftClick() {
-        inventoryController.DeselectAllSlots();
+        InventoryController.instance.DeselectAllSlots();
         selectedShader.SetActive(true);
         SetIsActive(true);
     }
@@ -73,16 +69,25 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
             GameObject itemObject = eventData.pointerDrag;
             DraggableItem draggableItem = itemObject.GetComponent<DraggableItem>();
 
-            if (transform.parent.name == itemListName && draggableItem.GetItemData() is CardSet)
+            if (transform.parent.name == itemList.name && draggableItem.GetItemData() is CardSet)
                 return;
-            if ((transform.parent.name == cardSetListName || transform.parent.name == deckListName) && draggableItem.GetItemData() is CollectibleItem)
+            if ((transform.parent.name == cardSetList.name || transform.parent.name == deckList.name) && draggableItem.GetItemData() is CollectibleItem)
                 return;
             draggableItem.SetParentAfterDrag(transform);
             SetIsOccupied(true);
+            SetItem(draggableItem.GetItemData());
         }
     }
 
     public Item GetItem() {
         return item;
+    }
+
+    public void SetItem(Item newItem) {
+        this.item = newItem;
+    }
+    
+    public void ClearItem() {
+        this.item = null;
     }
 }

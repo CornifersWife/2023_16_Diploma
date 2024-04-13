@@ -20,7 +20,9 @@ public class DraggableItem: MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
         itemLayoutElement.ignoreLayout = true;
         transform.SetAsLastSibling();
         itemImage.raycastTarget = false;
-        parentAfterDrag.GetComponent<ItemSlot>().SetIsOccupied(false);
+        ItemSlot itemSlot = parentAfterDrag.GetComponent<ItemSlot>();
+        itemSlot.SetIsOccupied(false);
+        itemSlot.ClearItem();
     }
 
     public void OnDrag(PointerEventData eventData) {
