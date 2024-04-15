@@ -12,9 +12,7 @@ public class DialogueState : BaseState {
 
     public override void Enter() {
         base.Enter();
-        Debug.Log("enter dialogue");
         NavMeshAgent navMeshAgent = movingSM.GetNavMeshAgent();
-        Debug.Log(navMeshAgent.gameObject.name);
         navMeshAgent.SetDestination(navMeshAgent.transform.position);
     }
 
