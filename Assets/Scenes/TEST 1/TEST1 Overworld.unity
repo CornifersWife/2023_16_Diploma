@@ -444,50 +444,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f5bf0ec4ab9344ea7f86c54931c83e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &93641266
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 93641268}
-  - component: {fileID: 93641267}
-  m_Layer: 0
-  m_Name: LoadHandler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &93641267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 93641266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3882272735977d34e91403d2e2ac744b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &93641268
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 93641266}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &117144225
 GameObject:
   m_ObjectHideFlags: 0
@@ -13133,8 +13089,9 @@ GameObject:
   - component: {fileID: 1968442028}
   - component: {fileID: 1968442027}
   - component: {fileID: 1968442032}
+  - component: {fileID: 1968442033}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13267,6 +13224,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1968442033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968442026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a228c981b4cb4620808cc35ed9745fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToWait: 0.5
+  messageToShow: Item
+  nameWindow: {fileID: 0}
+  nameText: {fileID: 0}
+  detectionRadius: 3
+  player: {fileID: 0}
 --- !u!1 &1981037121
 GameObject:
   m_ObjectHideFlags: 0
@@ -15127,4 +15102,3 @@ SceneRoots:
   - {fileID: 1467733382}
   - {fileID: 825152899}
   - {fileID: 1968442031}
-  - {fileID: 93641268}
