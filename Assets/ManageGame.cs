@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class ManageGame : MonoBehaviour {
     [SerializeField] private List<CardSet> currentCardSets;
-    
-    private static ManageGame Instance { get; set; }
+
+    private static ManageGame Instance = null;
 
     private void Awake() {
         if (Instance != null && Instance != this) {

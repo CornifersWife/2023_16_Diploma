@@ -5,12 +5,11 @@ using UnityEngine.InputSystem;
 public class EnemyPopup : MonoBehaviour {
     [SerializeField] private RectTransform popupPanel;
     [SerializeField] private InputAction mouseClickAction;
-    [SerializeField] private EnemySM enemySM;
-    [SerializeField] private MovingSM movingSM;
     [SerializeField] private GameObject deckPopup;
     
     private Camera mainCamera;
     public GameObject player;
+    private MovingSM movingSM;
 
     private int enemyLayer;
     private PlayerController playerController;
@@ -40,6 +39,7 @@ public class EnemyPopup : MonoBehaviour {
         if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(enemyLayer) == 0) {
             popupPanel.gameObject.SetActive(true);
             playerController.enabled = false;
+            movingSM = hit.collider.gameObject.GetComponent<MovingSM>();
             movingSM.SetDialogue(true);
         }
     }
