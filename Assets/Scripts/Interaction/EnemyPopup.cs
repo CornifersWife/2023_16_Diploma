@@ -65,6 +65,7 @@ public class EnemyPopup : MonoBehaviour {
     public void ClosePopup() {
         deckPopup.SetActive(false);
         movingSM.SetDialogue(false);
+        playerController.enabled = true;
     }
 
     private bool CheckDeck(int count) {
