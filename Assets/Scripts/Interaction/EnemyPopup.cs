@@ -13,14 +13,12 @@ public class EnemyPopup : MonoBehaviour {
 
     private int enemyLayer;
     private PlayerController playerController;
-    private InventoryController inventoryController;
     private Vector3 target;
     
     private void Awake() {
         mainCamera = Camera.main;
         enemyLayer = LayerMask.NameToLayer("Enemy");
         playerController = player.GetComponent<PlayerController>();
-        inventoryController = InventoryController.Instance;
         popupPanel.gameObject.SetActive(false);
     }
     
@@ -70,7 +68,7 @@ public class EnemyPopup : MonoBehaviour {
 
     private bool CheckDeck(int count) {
         int occupiedCount = 0;
-        foreach (ItemSlot slot in inventoryController.GetDeck()) {
+        foreach (ItemSlot slot in InventoryController.Instance.GetDeck()) {
             if (slot.IsOccupied())
                 occupiedCount++;
         }

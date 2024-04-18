@@ -1747,7 +1747,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d10cbc4e232812449b3bfa94948fc4ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyList: []
+  enemyList:
+  - {fileID: 1649443587}
+  - {fileID: 625553128}
 --- !u!1001 &334166475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2238,6 +2240,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ddaa13eb2675bf42a82c8f7d1619ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &398988640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 398988642}
+  - component: {fileID: 398988641}
+  m_Layer: 0
+  m_Name: EnemyPopupController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &398988641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398988640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb4a83a1827fbb142805003b5cead684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popupPanel: {fileID: 1823237557}
+  mouseClickAction:
+    m_Name: Mouse Click
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 1006ce48-37c3-4201-9af7-f7fd3b44f08f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 5be735f6-f5b4-4b8e-8330-1f5bde7345c3
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Mouse Click
+      m_Flags: 0
+    m_Flags: 0
+  deckPopup: {fileID: 1953306680}
+  player: {fileID: 1686206899}
+--- !u!4 &398988642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398988640}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &402312329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2321,7 +2387,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1649443586}
+      - m_Target: {fileID: 398988641}
         m_TargetAssemblyTypeName: EnemyPopup, Assembly-CSharp
         m_MethodName: YesClicked
         m_Mode: 1
@@ -3563,7 +3629,6 @@ GameObject:
   - component: {fileID: 625553131}
   - component: {fileID: 625553129}
   - component: {fileID: 625553128}
-  - component: {fileID: 625553127}
   - component: {fileID: 625553126}
   - component: {fileID: 625553134}
   m_Layer: 12
@@ -3604,38 +3669,6 @@ MonoBehaviour:
   waypoints:
   - {fileID: 585269688}
   - {fileID: 1733965877}
---- !u!114 &625553127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 625553124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb4a83a1827fbb142805003b5cead684, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  popupPanel: {fileID: 1823237557}
-  mouseClickAction:
-    m_Name: Mouse Click
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 30c30aec-cad2-41d4-a561-9db7fd138d39
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: f184e6ad-c99a-4929-bc19-f63ff37593f5
-      m_Path: <Mouse>/leftButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Mouse Click
-      m_Flags: 0
-    m_Flags: 0
-  deckPopup: {fileID: 1953306680}
-  player: {fileID: 1686206899}
 --- !u!114 &625553128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7891,7 +7924,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1649443586}
+      - m_Target: {fileID: 398988641}
         m_TargetAssemblyTypeName: EnemyPopup, Assembly-CSharp
         m_MethodName: NoClicked
         m_Mode: 1
@@ -10127,7 +10160,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1649443586}
+      - m_Target: {fileID: 398988641}
         m_TargetAssemblyTypeName: EnemyPopup, Assembly-CSharp
         m_MethodName: ClosePopup
         m_Mode: 1
@@ -10453,7 +10486,6 @@ GameObject:
   - component: {fileID: 1649443593}
   - component: {fileID: 1649443588}
   - component: {fileID: 1649443587}
-  - component: {fileID: 1649443586}
   - component: {fileID: 1649443592}
   m_Layer: 12
   m_Name: Enemy
@@ -10477,38 +10509,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1994738344}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1649443586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1649443584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb4a83a1827fbb142805003b5cead684, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  popupPanel: {fileID: 1823237557}
-  mouseClickAction:
-    m_Name: Mouse Click
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 30c30aec-cad2-41d4-a561-9db7fd138d39
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: f184e6ad-c99a-4929-bc19-f63ff37593f5
-      m_Path: <Mouse>/leftButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Mouse Click
-      m_Flags: 0
-    m_Flags: 0
-  deckPopup: {fileID: 1953306680}
-  player: {fileID: 1686206899}
 --- !u!114 &1649443587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15404,3 +15404,4 @@ SceneRoots:
   - {fileID: 825152899}
   - {fileID: 1968442031}
   - {fileID: 333326211}
+  - {fileID: 398988642}

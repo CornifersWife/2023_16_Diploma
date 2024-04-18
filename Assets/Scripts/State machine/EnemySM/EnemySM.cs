@@ -28,6 +28,20 @@ public class EnemySM : StateMachine {
         return lockedState;
     }
 
+    public void ChangeState(EnemyState state) {
+        switch (state) {
+            case (EnemyState)0:
+                ChangeState(lockedState);
+                break;
+            case (EnemyState)1:
+                ChangeState(unbeatenState);
+                break;
+            case (EnemyState)2:
+                ChangeState(beatenState);
+                break;
+        }
+    }
+
     public bool IsLocked() {
         return isLocked;
     }
