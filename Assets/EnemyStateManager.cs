@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyStateManager : MonoBehaviour {
-    [SerializeField] private List<EnemySM> enemyList = new List<EnemySM>();
+    private List<EnemySM> enemyList = new List<EnemySM>();
+    private Enemy currentEnemy;
     
     public static EnemyStateManager Instance = null;
 
@@ -13,11 +14,26 @@ public class EnemyStateManager : MonoBehaviour {
             Instance = this;
         }
         DontDestroyOnLoad(this);
+        LoadAllEnemies();
     }
 
-    public void ChangeEnemyState(int index, EnemyState state) {
-        enemyList[index].ChangeState(state);
+    private void LoadAllEnemies() {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (var enemy in enemies) {
+            enemyList.Add(enemy.GetComponent<EnemySM>());
+        }
+    }
+
+    public void ChangeEnemyState(EnemyState state) {
+        currentEnemy.ChangeState(state);
+    }
+
+    public void SetCurrentEnemy(Enemy enemy) {
+        currentEnemy = enemy;
     }
     
+    public Enemy GetCurrentEnemy() {
+        return currentEnemy;
+    }
     
 }

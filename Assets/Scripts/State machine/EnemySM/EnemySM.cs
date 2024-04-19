@@ -7,6 +7,8 @@ public class EnemySM : StateMachine {
     public UnbeatenState unbeatenState;
     [HideInInspector]
     public BeatenState beatenState;
+    
+    [SerializeField] private Enemy enemy;
 
     [SerializeField] private Material unbeatenMaterial;
     [SerializeField] private Material beatenMaterial;
@@ -25,20 +27,24 @@ public class EnemySM : StateMachine {
     }
     
     protected override BaseState GetInitialState() {
-        return lockedState;
+        return GetStateFromEnemy();
     }
 
     public void ChangeState(EnemyState state) {
-        switch (state) {
+        enemy.ChangeState(state);
+        ChangeState(GetStateFromEnemy());
+    }
+
+    private BaseState GetStateFromEnemy() {
+        switch (enemy.state) {
             case (EnemyState)0:
-                ChangeState(lockedState);
-                break;
-            case (EnemyState)1:
-                ChangeState(unbeatenState);
-                break;
+                return lockedState;
+            case (EnemyState)1: 
+                return unbeatenState;
             case (EnemyState)2:
-                ChangeState(beatenState);
-                break;
+                return beatenState;
+            default:
+                return lockedState;
         }
     }
 
@@ -60,6 +66,10 @@ public class EnemySM : StateMachine {
 
     public EnemyPopup GetEnemyPopup() {
         return enemyPopup;
+    }
+
+    public Enemy GetEnemy() {
+        return enemy;
     }
 
     public Material GetUnbeatenMaterial() {

@@ -1714,7 +1714,7 @@ GameObject:
   - component: {fileID: 333326211}
   - component: {fileID: 333326212}
   m_Layer: 0
-  m_Name: EnemyStateManager
+  m_Name: EnemyManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1747,9 +1747,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d10cbc4e232812449b3bfa94948fc4ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyList:
-  - {fileID: 1649443587}
-  - {fileID: 625553128}
 --- !u!1001 &334166475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2240,70 +2237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ddaa13eb2675bf42a82c8f7d1619ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &398988640
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 398988642}
-  - component: {fileID: 398988641}
-  m_Layer: 0
-  m_Name: EnemyPopupController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &398988641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 398988640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb4a83a1827fbb142805003b5cead684, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  popupPanel: {fileID: 1823237557}
-  mouseClickAction:
-    m_Name: Mouse Click
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 1006ce48-37c3-4201-9af7-f7fd3b44f08f
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 5be735f6-f5b4-4b8e-8330-1f5bde7345c3
-      m_Path: <Mouse>/leftButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Mouse Click
-      m_Flags: 0
-    m_Flags: 0
-  deckPopup: {fileID: 1953306680}
-  player: {fileID: 1686206899}
---- !u!4 &398988642
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 398988640}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &402312329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2387,7 +2320,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 398988641}
+      - m_Target: {fileID: 1659901116}
         m_TargetAssemblyTypeName: EnemyPopup, Assembly-CSharp
         m_MethodName: YesClicked
         m_Mode: 1
@@ -3633,7 +3566,7 @@ GameObject:
   - component: {fileID: 625553134}
   m_Layer: 12
   m_Name: Enemy (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3681,6 +3614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7085383748f8dbb40a551a277f7101ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 11400000, guid: b4a0e2832118a1949a2ac861ba9a8bf6, type: 2}
   unbeatenMaterial: {fileID: 2100000, guid: cefd3f4c819e7be4dae58ab529761ed7, type: 2}
   beatenMaterial: {fileID: 2100000, guid: 7d55af4c91526b34cb074df79891f15f, type: 2}
 --- !u!114 &625553129
@@ -7924,7 +7858,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 398988641}
+      - m_Target: {fileID: 1659901116}
         m_TargetAssemblyTypeName: EnemyPopup, Assembly-CSharp
         m_MethodName: NoClicked
         m_Mode: 1
@@ -7983,6 +7917,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1303699815}
+  - component: {fileID: 1303699816}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -8006,6 +7941,19 @@ Transform:
   - {fileID: 1255647183}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1303699816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303699814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44be31e257904541bf53aeecea2a5bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIGameObject: {fileID: 1303699814}
 --- !u!1 &1321267961
 GameObject:
   m_ObjectHideFlags: 0
@@ -10160,7 +10108,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 398988641}
+      - m_Target: {fileID: 1659901116}
         m_TargetAssemblyTypeName: EnemyPopup, Assembly-CSharp
         m_MethodName: ClosePopup
         m_Mode: 1
@@ -10489,7 +10437,7 @@ GameObject:
   - component: {fileID: 1649443592}
   m_Layer: 12
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10521,6 +10469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7085383748f8dbb40a551a277f7101ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 11400000, guid: 66561b19a76fbe24788d1342d7a0b198, type: 2}
   unbeatenMaterial: {fileID: 2100000, guid: cefd3f4c819e7be4dae58ab529761ed7, type: 2}
   beatenMaterial: {fileID: 2100000, guid: 7d55af4c91526b34cb074df79891f15f, type: 2}
 --- !u!114 &1649443588
@@ -10650,6 +10599,70 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!1 &1659901115
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1659901117}
+  - component: {fileID: 1659901116}
+  m_Layer: 0
+  m_Name: EnemyPopup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1659901116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659901115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb4a83a1827fbb142805003b5cead684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popupPanel: {fileID: 1823237557}
+  mouseClickAction:
+    m_Name: Mouse Click
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 1006ce48-37c3-4201-9af7-f7fd3b44f08f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 5be735f6-f5b4-4b8e-8330-1f5bde7345c3
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Mouse Click
+      m_Flags: 0
+    m_Flags: 0
+  deckPopup: {fileID: 1953306680}
+  player: {fileID: 1686206899}
+--- !u!4 &1659901117
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659901115}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1671617927
 GameObject:
   m_ObjectHideFlags: 0
@@ -15404,4 +15417,4 @@ SceneRoots:
   - {fileID: 825152899}
   - {fileID: 1968442031}
   - {fileID: 333326211}
-  - {fileID: 398988642}
+  - {fileID: 1659901117}

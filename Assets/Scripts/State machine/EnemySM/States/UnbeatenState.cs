@@ -17,8 +17,10 @@ public class UnbeatenState : BaseState {
     public override void UpdateLogic() {
         base.UpdateLogic();
         //check if beaten
+        /*
         if(enemySM.IsBeaten())
             enemySM.ChangeState(enemySM.beatenState);
+            */
     }
 
     public override void UpdatePhysics() {

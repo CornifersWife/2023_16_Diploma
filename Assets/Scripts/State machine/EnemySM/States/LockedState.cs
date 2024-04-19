@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class LockedState : BaseState {
     private EnemySM enemySM;
     public LockedState(EnemySM stateMachine) : base("Locked", stateMachine) {
