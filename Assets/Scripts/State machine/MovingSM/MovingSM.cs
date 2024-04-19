@@ -66,7 +66,7 @@ public class MovingSM : StateMachine {
         Vector3 mousePos = Mouse.current.position.ReadValue();
         bool isTarget = false;
 
-        //TODO check this some other way, this solution checks every frame and doesn't work properly
+        //TODO check this some other way, this solution checks every frame and we don't want that
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
         if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider) {
             isTarget = hit.collider.gameObject == gameObject;
