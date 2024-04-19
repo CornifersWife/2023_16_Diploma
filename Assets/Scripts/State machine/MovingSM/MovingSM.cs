@@ -18,11 +18,8 @@ public class MovingSM : StateMachine {
     private int currentWaypointIndex;
     private bool waiting = false;
 
-    private UIManager uiManager;
-
     private void Awake() {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        uiManager = UIManager.Instance;
         
         idleState = new IdleState(this);
         walkingState = new WalkingState(this);
@@ -71,7 +68,8 @@ public class MovingSM : StateMachine {
         if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider) {
             isTarget = hit.collider.gameObject == gameObject;
         }
-        
+
+        UIManager uiManager = UIManager.Instance;
         bool isUIOpen = uiManager.GetCurrentUICount() > uiManager.GetUICountOnStart();
         return isTarget && isUIOpen;
     }
