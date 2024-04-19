@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-//TODO attach this to some manager, not every enemy object
 public class EnemyPopup : MonoBehaviour {
     [SerializeField] private RectTransform popupPanel;
     [SerializeField] private InputAction mouseClickAction;
@@ -9,7 +8,7 @@ public class EnemyPopup : MonoBehaviour {
     
     private Camera mainCamera;
     public GameObject player;
-    private MovingSM movingSM;
+    private GameObject enemy;
 
     private int enemyLayer;
     private PlayerController playerController;
@@ -37,8 +36,7 @@ public class EnemyPopup : MonoBehaviour {
         if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(enemyLayer) == 0) {
             popupPanel.gameObject.SetActive(true);
             playerController.enabled = false;
-            movingSM = hit.collider.gameObject.GetComponent<MovingSM>();
-            movingSM.SetDialogue(true);
+            enemy = hit.collider.gameObject;
         }
     }
 
@@ -46,6 +44,7 @@ public class EnemyPopup : MonoBehaviour {
         popupPanel.gameObject.SetActive(false);
         if (CheckDeck(3)) {
             playerController.enabled = true;
+            EnemyStateManager.Instance.SetCurrentEnemy(enemy.GetComponent<EnemySM>());
             SceneSwitcher.Instance.LoadScene("Irys playspace");
         }
         else {
@@ -57,12 +56,10 @@ public class EnemyPopup : MonoBehaviour {
     public void NoClicked() {
         popupPanel.gameObject.SetActive(false);
         playerController.enabled = true;
-        movingSM.SetDialogue(false);
     }
 
     public void ClosePopup() {
         deckPopup.SetActive(false);
-        movingSM.SetDialogue(false);
         playerController.enabled = true;
     }
 

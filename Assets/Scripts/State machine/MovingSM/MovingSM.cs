@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 
 public class MovingSM : StateMachine {
     [HideInInspector]
@@ -16,10 +17,12 @@ public class MovingSM : StateMachine {
     private NavMeshAgent navMeshAgent;
     private int currentWaypointIndex;
     private bool waiting = false;
-    private bool isDialogue = false;
+
+    private UIManager uiManager;
 
     private void Awake() {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        uiManager = UIManager.Instance;
         
         idleState = new IdleState(this);
         walkingState = new WalkingState(this);
@@ -60,10 +63,16 @@ public class MovingSM : StateMachine {
     }
     
     public bool IsDialogue() {
-        return isDialogue;
-    }
+        Vector3 mousePos = Mouse.current.position.ReadValue();
+        bool isTarget = false;
 
-    public void SetDialogue(bool value) {
-        isDialogue = value;
+        //TODO check this some other way, this solution checks every frame and doesn't work properly
+        Ray ray = Camera.main.ScreenPointToRay(mousePos);
+        if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider) {
+            isTarget = hit.collider.gameObject == gameObject;
+        }
+        
+        bool isUIOpen = uiManager.GetCurrentUICount() > uiManager.GetUICountOnStart();
+        return isTarget && isUIOpen;
     }
 }
