@@ -16,7 +16,6 @@ public class UIManager : MonoBehaviour {
         } else {
             Instance = this;
         }
-        DontDestroyOnLoad(this);
         UIGameObject = this.gameObject;
     }
 
