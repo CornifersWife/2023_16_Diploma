@@ -8,7 +8,7 @@ public class EnemyPopup : MonoBehaviour {
     
     private Camera mainCamera;
     public GameObject player;
-    private GameObject enemy;
+    private Enemy enemy;
 
     private int enemyLayer;
     private PlayerController playerController;
@@ -34,9 +34,11 @@ public class EnemyPopup : MonoBehaviour {
     private void Clicked(InputAction.CallbackContext context) {
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(enemyLayer) == 0) {
-            popupPanel.gameObject.SetActive(true);
-            playerController.enabled = false;
-            enemy = hit.collider.gameObject;
+            enemy = hit.collider.gameObject.GetComponent<EnemySM>().GetEnemy();
+            if (enemy.GetState() == EnemyState.UnbeatenState) {
+                playerController.enabled = false;
+                popupPanel.gameObject.SetActive(true);
+            }
         }
     }
 
@@ -44,7 +46,7 @@ public class EnemyPopup : MonoBehaviour {
         popupPanel.gameObject.SetActive(false);
         if (CheckDeck(3)) {
             playerController.enabled = true;
-            EnemyStateManager.Instance.SetCurrentEnemy(enemy.GetComponent<EnemySM>().GetEnemy());
+            EnemyStateManager.Instance.SetCurrentEnemy(enemy);
             popupPanel.gameObject.SetActive(false);
             SceneSwitcher.Instance.LoadScene("Irys playspace");
         }
