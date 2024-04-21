@@ -8,7 +8,7 @@ public class EnemyPopup : MonoBehaviour {
     
     private Camera mainCamera;
     public GameObject player;
-    private Enemy enemy;
+    private Enemy enemy; //TODO IF We want to not use null, use for example Enemy 0 for default value
 
     private int enemyLayer;
     private PlayerController playerController;
@@ -34,10 +34,12 @@ public class EnemyPopup : MonoBehaviour {
     private void Clicked(InputAction.CallbackContext context) {
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(enemyLayer) == 0) {
-            enemy = hit.collider.gameObject.GetComponent<EnemySM>().GetEnemy();
-            if (enemy.GetState() == EnemyState.UnbeatenState) {
-                playerController.enabled = false;
-                popupPanel.gameObject.SetActive(true);
+            if (enemy == null) {
+                enemy = hit.collider.gameObject.GetComponent<EnemySM>().GetEnemy();
+                if (enemy.GetState() == EnemyState.UnbeatenState) {
+                    playerController.enabled = false;
+                    popupPanel.gameObject.SetActive(true);
+                }
             }
         }
     }
@@ -48,6 +50,7 @@ public class EnemyPopup : MonoBehaviour {
             playerController.enabled = true;
             EnemyStateManager.Instance.SetCurrentEnemy(enemy);
             popupPanel.gameObject.SetActive(false);
+            enemy = null;
             SceneSwitcher.Instance.LoadScene("Irys playspace");
         }
         else {
@@ -59,11 +62,13 @@ public class EnemyPopup : MonoBehaviour {
     public void NoClicked() {
         popupPanel.gameObject.SetActive(false);
         playerController.enabled = true;
+        enemy = null;
     }
 
     public void ClosePopup() {
         deckPopup.SetActive(false);
         playerController.enabled = true;
+        enemy = null;
     }
 
     private bool CheckDeck(int count) {
