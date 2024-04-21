@@ -14,9 +14,12 @@ public class MovingSM : StateMachine {
     
     [SerializeField] private float waitTimeSeconds;
     [SerializeField] private Transform[] waypoints;
+    [SerializeField] private InputAction mouseClickAction;
+    
     private NavMeshAgent navMeshAgent;
     private int currentWaypointIndex;
     private bool waiting = false;
+    private bool isClickTarget;
 
     private void Awake() {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -26,7 +29,27 @@ public class MovingSM : StateMachine {
         waitingState = new WaitingState(this);
         dialogueState = new DialogueState(this);
     }
-    
+
+    private void OnEnable() {
+        mouseClickAction.Enable();
+        mouseClickAction.performed += CheckTarget;
+    }
+
+    private void OnDisable() {
+        mouseClickAction.Disable();
+        mouseClickAction.performed -= CheckTarget;
+    }
+
+    //TODO chcek it some other way, not every frame
+    private void CheckTarget(InputAction.CallbackContext context) {
+        Vector3 mousePos = Mouse.current.position.ReadValue();
+
+        Ray ray = Camera.main.ScreenPointToRay(mousePos);
+        if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider) {
+            isClickTarget = hit.collider.gameObject == gameObject;
+        }
+    }
+
     protected override BaseState GetInitialState() {
         return idleState;
     }
@@ -60,17 +83,8 @@ public class MovingSM : StateMachine {
     }
     
     public bool IsDialogue() {
-        Vector3 mousePos = Mouse.current.position.ReadValue();
-        bool isTarget = false;
-
-        //TODO check this some other way, this solution checks every frame and we don't want that
-        Ray ray = Camera.main.ScreenPointToRay(mousePos);
-        if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider) {
-            isTarget = hit.collider.gameObject == gameObject;
-        }
-
         UIManager uiManager = UIManager.Instance;
         bool isUIOpen = uiManager.GetCurrentUICount() > uiManager.GetUICountOnStart();
-        return isTarget && isUIOpen;
+        return isClickTarget && isUIOpen;
     }
 }
