@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657832, g: 0.49641222, b: 0.57481664, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3615,6 +3615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: b4a0e2832118a1949a2ac861ba9a8bf6, type: 2}
+  enemyPopup: {fileID: 1659901116}
   unbeatenMaterial: {fileID: 2100000, guid: cefd3f4c819e7be4dae58ab529761ed7, type: 2}
   beatenMaterial: {fileID: 2100000, guid: 7d55af4c91526b34cb074df79891f15f, type: 2}
 --- !u!114 &625553129
@@ -10470,6 +10471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: 66561b19a76fbe24788d1342d7a0b198, type: 2}
+  enemyPopup: {fileID: 1659901116}
   unbeatenMaterial: {fileID: 2100000, guid: cefd3f4c819e7be4dae58ab529761ed7, type: 2}
   beatenMaterial: {fileID: 2100000, guid: 7d55af4c91526b34cb074df79891f15f, type: 2}
 --- !u!114 &1649443588

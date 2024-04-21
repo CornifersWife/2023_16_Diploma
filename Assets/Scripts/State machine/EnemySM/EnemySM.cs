@@ -9,16 +9,15 @@ public class EnemySM : StateMachine {
     public BeatenState beatenState;
     
     [SerializeField] private Enemy enemy;
+    [SerializeField] private EnemyPopup enemyPopup;
 
     [SerializeField] private Material unbeatenMaterial;
     [SerializeField] private Material beatenMaterial;
 
     private bool isLocked, isBeaten;
-    private EnemyPopup enemyPopup;
     private Renderer objectRenderer;
     
     private void Awake() {
-        enemyPopup = GetComponent<EnemyPopup>();
         objectRenderer = GetComponent<Renderer>();
         
         lockedState = new LockedState(this);
