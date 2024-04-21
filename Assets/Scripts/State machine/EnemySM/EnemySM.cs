@@ -35,12 +35,12 @@ public class EnemySM : StateMachine {
     }
 
     private BaseState GetStateFromEnemy() {
-        switch (enemy.state) {
-            case (EnemyState)0:
+        switch (enemy.GetState()) {
+            case EnemyState.LockedState:
                 return lockedState;
-            case (EnemyState)1: 
+            case EnemyState.UnbeatenState: 
                 return unbeatenState;
-            case (EnemyState)2:
+            case EnemyState.BeatenState:
                 return beatenState;
             default:
                 return lockedState;
