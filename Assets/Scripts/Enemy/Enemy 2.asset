@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: Enemy 2
   m_EditorClassIdentifier: 
   enemyName: Two
+  deck:
+  - {fileID: 11400000, guid: 2092508ccc1bfa2458aa123ae5847f1c, type: 2}
+  - {fileID: 11400000, guid: 2092508ccc1bfa2458aa123ae5847f1c, type: 2}
+  - {fileID: 11400000, guid: 2092508ccc1bfa2458aa123ae5847f1c, type: 2}
   state: 1
