@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour {
 
     [SerializeField] private GameObject UIGameObject;
     private int activeUIOnStart;
+    private bool isOpen;
     
     private void Awake() {
         if (Instance != null && Instance != this) {
@@ -46,5 +47,13 @@ public class UIManager : MonoBehaviour {
 
     public int GetUICountOnStart() {
         return activeUIOnStart;
+    }
+
+    public bool IsOpen() {
+        return isOpen;
+    }
+
+    public void SetIsOpen(bool value) {
+        isOpen = value;
     }
 }

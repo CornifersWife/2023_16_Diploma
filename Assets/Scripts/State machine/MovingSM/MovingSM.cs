@@ -3,7 +3,7 @@ using UnityEngine.AI;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class MovingSM : StateMachine, IPointerDownHandler {
+public class MovingSM : StateMachine {
     [HideInInspector]
     public IdleState idleState;
     [HideInInspector]
@@ -19,7 +19,6 @@ public class MovingSM : StateMachine, IPointerDownHandler {
     private NavMeshAgent navMeshAgent;
     private int currentWaypointIndex;
     private bool waiting = false;
-    private bool isClickTarget;
 
     private void Awake() {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -63,16 +62,6 @@ public class MovingSM : StateMachine, IPointerDownHandler {
     }
     
     public bool IsDialogue() {
-        UIManager uiManager = UIManager.Instance;
-        bool isUIOpen = uiManager.GetCurrentUICount() > uiManager.GetUICountOnStart();
-        //Debug.Log("Target: " + isClickTarget);
-        //Debug.Log("UI: " + isUIOpen);
-        return isClickTarget && isUIOpen;
-    }
-
-    //TODO check it some other way, not every frame
-    public void OnPointerDown(PointerEventData eventData) {
-        Debug.Log(eventData.pointerCurrentRaycast.gameObject.name);
-        isClickTarget = eventData.pointerCurrentRaycast.gameObject == gameObject;
+        return ObjectClickHandler.Instance.GetObject() == gameObject && UIManager.Instance.IsOpen();
     }
 }

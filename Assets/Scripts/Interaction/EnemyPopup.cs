@@ -40,6 +40,7 @@ public class EnemyPopup : MonoBehaviour {
                 if (enemy.GetState() == EnemyState.UnbeatenState) {
                     playerController.enabled = false;
                     popupPanel.gameObject.SetActive(true);
+                    UIManager.Instance.SetIsOpen(true);
                 }
             }
         }
@@ -52,6 +53,7 @@ public class EnemyPopup : MonoBehaviour {
             playerController.enabled = true;
             EnemyStateManager.Instance.SetCurrentEnemy(enemy);
             enemy = null;
+            UIManager.Instance.SetIsOpen(false);
             SceneSwitcher.Instance.LoadScene("Irys playspace");
         }
         else {
@@ -72,6 +74,7 @@ public class EnemyPopup : MonoBehaviour {
     private void Close() {
         playerController.enabled = true;
         enemy = null;
+        UIManager.Instance.SetIsOpen(false);
     }
 
     private bool CheckDeck(int count) {

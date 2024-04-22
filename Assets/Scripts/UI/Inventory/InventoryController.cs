@@ -44,12 +44,14 @@ public class InventoryController : MonoBehaviour {
         inventoryUI.SetActive(true);
         postProcessVolume.enabled = true;
         isOpen = true;
+        UIManager.Instance.SetIsOpen(true);
     }
 
     public void HideInventory() {
         postProcessVolume.enabled = false;
         inventoryUI.SetActive(false);
         isOpen = false;
+        UIManager.Instance.SetIsOpen(false);
     }
 
     public void AddItem(Item item) {

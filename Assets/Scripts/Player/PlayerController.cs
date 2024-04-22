@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour, IWalkable {
     
     public void SetTargetPoint() {
         Vector3 mousePos = Mouse.current.position.ReadValue();
-        if (uiManager.GetCurrentUICount() > uiManager.GetUICountOnStart())
+        if (uiManager.IsOpen())
             return;
 
         Ray ray = mainCamera.ScreenPointToRay(mousePos);
