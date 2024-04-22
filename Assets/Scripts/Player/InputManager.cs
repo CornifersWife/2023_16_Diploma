@@ -53,6 +53,10 @@ public class InputManager : MonoBehaviour, PlayerControls.IPlayerActionMapAction
     }
     
     public void OnPause(InputAction.CallbackContext context) {
-        throw new System.NotImplementedException();
+        if (Time.timeScale == 0)
+            Time.timeScale = 1;
+        else {
+            Time.timeScale = 0;
+        }
     }
 }
