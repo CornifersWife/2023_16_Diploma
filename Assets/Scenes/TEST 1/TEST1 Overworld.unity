@@ -7964,7 +7964,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIGameObject: {fileID: 1303699814}
-  activeUIOnStart: 2
 --- !u!1 &1321267961
 GameObject:
   m_ObjectHideFlags: 0
@@ -11034,6 +11033,7 @@ GameObject:
   - component: {fileID: 1686206903}
   - component: {fileID: 1686206902}
   - component: {fileID: 1686206901}
+  - component: {fileID: 1686206907}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -11208,6 +11208,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686206899}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1686206907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686206899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec84d145a84f4856aa9c3d23ef15d7d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraPivot: {fileID: 146316718}
+  smoothing: 2
 --- !u!1 &1688816304
 GameObject:
   m_ObjectHideFlags: 0

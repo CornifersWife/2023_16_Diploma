@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour, IWalkable {
@@ -52,9 +50,5 @@ public class PlayerController : MonoBehaviour, IWalkable {
         navMeshAgent.SetDestination(target);
     }
     
-    private void OnDrawGizmos() {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(targetPosition, 0.3f);
-    }
-
+    
 }
