@@ -1,4 +1,5 @@
 
+using UnityEngine;
 using UnityEngine.AI;
 
 public class DialogueState : BaseState {
@@ -11,7 +12,7 @@ public class DialogueState : BaseState {
     public override void Enter() {
         base.Enter();
         NavMeshAgent navMeshAgent = movingSM.GetNavMeshAgent();
-        navMeshAgent.SetDestination(navMeshAgent.transform.position);
+        navMeshAgent.isStopped = true;
     }
 
     public override void UpdateLogic() {
