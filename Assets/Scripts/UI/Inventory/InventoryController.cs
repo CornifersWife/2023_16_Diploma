@@ -11,9 +11,11 @@ public class InventoryController : MonoBehaviour {
     [SerializeField] private List<ItemSlot> itemSlots;
     [SerializeField] private List<ItemSlot> cardSetSlots;
     [SerializeField] private List<ItemSlot> deckSlots;
-    //add space to show cards
+    //TODO add space to show cards
     
     private PostProcessVolume postProcessVolume;
+
+    private bool isOpen;
     
     public static InventoryController Instance = null; 
 
@@ -38,14 +40,16 @@ public class InventoryController : MonoBehaviour {
         rightClickAction.Disable();
     }
 
-    private void ShowInventory(InputAction.CallbackContext context) {
+    public void ShowInventory(InputAction.CallbackContext context) {
         inventoryUI.SetActive(true);
         postProcessVolume.enabled = true;
+        isOpen = true;
     }
 
     public void HideInventory() {
         postProcessVolume.enabled = false;
         inventoryUI.SetActive(false);
+        isOpen = false;
     }
 
     public void AddItem(Item item) {
@@ -88,7 +92,8 @@ public class InventoryController : MonoBehaviour {
             cardSets.Add(((CardSet)slot.GetItem()).GetCardSetData());
         return cardSets;
     }
-    
-    //TODO add something to load from deckslots into deck
-    
+
+    public bool IsOpen() {
+        return isOpen;
+    }
 }

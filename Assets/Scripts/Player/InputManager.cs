@@ -44,9 +44,14 @@ public class InputManager : MonoBehaviour, PlayerControls.IPlayerActionMapAction
     }
     
     public void OnOpenInventory(InputAction.CallbackContext context) {
-        throw new System.NotImplementedException();
+        InventoryController inventoryController = InventoryController.Instance;
+        if(inventoryController.IsOpen())
+            inventoryController.HideInventory();
+        else {
+            inventoryController.ShowInventory(context);
+        }
     }
-
+    
     public void OnPause(InputAction.CallbackContext context) {
         throw new System.NotImplementedException();
     }
