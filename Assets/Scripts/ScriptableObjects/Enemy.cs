@@ -11,13 +11,11 @@ public class Enemy : ScriptableObject {
         state = enemyState;
     }
 
-    public List<CardSetData> GetDeck()
-    {
+    public List<CardSetData> GetDeck() {
         return deck;
     }
 
-    public EnemyState GetState()
-    {
+    public EnemyState GetState() {
         return state;
     }
 }

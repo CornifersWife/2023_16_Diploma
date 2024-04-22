@@ -30,8 +30,6 @@ public class MovingSM : StateMachine, IPointerDownHandler {
         dialogueState = new DialogueState(this);
     }
 
-    //TODO chcek it some other way, not every frame
-
     protected override BaseState GetInitialState() {
         return idleState;
     }
@@ -72,6 +70,7 @@ public class MovingSM : StateMachine, IPointerDownHandler {
         return isClickTarget && isUIOpen;
     }
 
+    //TODO check it some other way, not every frame
     public void OnPointerDown(PointerEventData eventData) {
         Debug.Log(eventData.pointerCurrentRaycast.gameObject.name);
         isClickTarget = eventData.pointerCurrentRaycast.gameObject == gameObject;
