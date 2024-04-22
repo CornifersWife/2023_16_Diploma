@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class MovingSM : StateMachine {
+public class MovingSM : StateMachine, IPointerDownHandler {
     [HideInInspector]
     public IdleState idleState;
     [HideInInspector]
@@ -14,7 +15,6 @@ public class MovingSM : StateMachine {
     
     [SerializeField] private float waitTimeSeconds;
     [SerializeField] private Transform[] waypoints;
-    [SerializeField] private InputAction mouseClickAction;
     
     private NavMeshAgent navMeshAgent;
     private int currentWaypointIndex;
@@ -30,25 +30,7 @@ public class MovingSM : StateMachine {
         dialogueState = new DialogueState(this);
     }
 
-    private void OnEnable() {
-        mouseClickAction.Enable();
-        mouseClickAction.performed += CheckTarget;
-    }
-
-    private void OnDisable() {
-        mouseClickAction.Disable();
-        mouseClickAction.performed -= CheckTarget;
-    }
-
     //TODO chcek it some other way, not every frame
-    private void CheckTarget(InputAction.CallbackContext context) {
-        Vector3 mousePos = Mouse.current.position.ReadValue();
-
-        Ray ray = Camera.main.ScreenPointToRay(mousePos);
-        if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider) {
-            isClickTarget = hit.collider.gameObject == gameObject;
-        }
-    }
 
     protected override BaseState GetInitialState() {
         return idleState;
@@ -85,6 +67,13 @@ public class MovingSM : StateMachine {
     public bool IsDialogue() {
         UIManager uiManager = UIManager.Instance;
         bool isUIOpen = uiManager.GetCurrentUICount() > uiManager.GetUICountOnStart();
+        //Debug.Log("Target: " + isClickTarget);
+        //Debug.Log("UI: " + isUIOpen);
         return isClickTarget && isUIOpen;
+    }
+
+    public void OnPointerDown(PointerEventData eventData) {
+        Debug.Log(eventData.pointerCurrentRaycast.gameObject.name);
+        isClickTarget = eventData.pointerCurrentRaycast.gameObject == gameObject;
     }
 }

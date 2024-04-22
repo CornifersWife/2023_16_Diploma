@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class EnemyPopup : MonoBehaviour {
     [SerializeField] private RectTransform popupPanel;
@@ -8,7 +9,7 @@ public class EnemyPopup : MonoBehaviour {
     
     private Camera mainCamera;
     public GameObject player;
-    private Enemy enemy; //TODO IF We want to not use null, use for example Enemy 0 for default value
+    private Enemy enemy; //TODO IF We dont want to use null, use for example Enemy 0 for default value
 
     private int enemyLayer;
     private PlayerController playerController;
@@ -46,27 +47,29 @@ public class EnemyPopup : MonoBehaviour {
 
     public void YesClicked() {
         popupPanel.gameObject.SetActive(false);
+        
         if (CheckDeck(3)) {
             playerController.enabled = true;
             EnemyStateManager.Instance.SetCurrentEnemy(enemy);
-            popupPanel.gameObject.SetActive(false);
             enemy = null;
             SceneSwitcher.Instance.LoadScene("Irys playspace");
         }
         else {
             deckPopup.SetActive(true);
-            popupPanel.gameObject.SetActive(false);
         }
     }
 
     public void NoClicked() {
         popupPanel.gameObject.SetActive(false);
-        playerController.enabled = true;
-        enemy = null;
+        Close();
     }
 
     public void ClosePopup() {
         deckPopup.SetActive(false);
+        Close();
+    }
+
+    private void Close() {
         playerController.enabled = true;
         enemy = null;
     }

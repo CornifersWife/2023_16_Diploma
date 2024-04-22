@@ -3602,23 +3602,6 @@ MonoBehaviour:
   waypoints:
   - {fileID: 585269688}
   - {fileID: 1733965877}
-  mouseClickAction:
-    m_Name: Mouse Click
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: f8d5fbc0-00d2-4a24-bb1b-f4726887946e
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 5fae2695-31cd-4152-9179-e1d5570a15a4
-      m_Path: <Mouse>/leftButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Mouse Click
-      m_Flags: 0
-    m_Flags: 0
 --- !u!114 &625553128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7981,6 +7964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIGameObject: {fileID: 1303699814}
+  activeUIOnStart: 2
 --- !u!1 &1321267961
 GameObject:
   m_ObjectHideFlags: 0
@@ -10605,23 +10589,6 @@ MonoBehaviour:
   waypoints:
   - {fileID: 1720672525}
   - {fileID: 1161962353}
-  mouseClickAction:
-    m_Name: Mouse Click
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 39e840a3-353f-45f9-ba34-bdb7bd754785
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 14c01851-81a4-408d-8b25-4f2c17c5c0dd
-      m_Path: <Mouse>/leftButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Mouse Click
-      m_Flags: 0
-    m_Flags: 0
 --- !u!195 &1649443593
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -12302,15 +12269,6 @@ MonoBehaviour:
   - {fileID: 1334954366}
   - {fileID: 1556696143}
   - {fileID: 511728683}
-  mouseClickAction:
-    m_Name: 
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 5a4a364d-824b-4d85-9373-4fc9183fd829
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
 --- !u!114 &1824967276
 MonoBehaviour:
   m_ObjectHideFlags: 0
