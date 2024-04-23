@@ -3616,8 +3616,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: b4a0e2832118a1949a2ac861ba9a8bf6, type: 2}
   enemyPopup: {fileID: 1659901116}
-  unbeatenMaterial: {fileID: 2100000, guid: cefd3f4c819e7be4dae58ab529761ed7, type: 2}
-  beatenMaterial: {fileID: 2100000, guid: 7d55af4c91526b34cb074df79891f15f, type: 2}
+  undefeatedMaterial: {fileID: 2100000, guid: cefd3f4c819e7be4dae58ab529761ed7, type: 2}
+  defeatedMaterial: {fileID: 2100000, guid: 7d55af4c91526b34cb074df79891f15f, type: 2}
 --- !u!114 &625553129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10481,8 +10481,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: 66561b19a76fbe24788d1342d7a0b198, type: 2}
   enemyPopup: {fileID: 1659901116}
-  unbeatenMaterial: {fileID: 2100000, guid: cefd3f4c819e7be4dae58ab529761ed7, type: 2}
-  beatenMaterial: {fileID: 2100000, guid: 7d55af4c91526b34cb074df79891f15f, type: 2}
+  undefeatedMaterial: {fileID: 2100000, guid: cefd3f4c819e7be4dae58ab529761ed7, type: 2}
+  defeatedMaterial: {fileID: 2100000, guid: 7d55af4c91526b34cb074df79891f15f, type: 2}
 --- !u!114 &1649443588
 MonoBehaviour:
   m_ObjectHideFlags: 0

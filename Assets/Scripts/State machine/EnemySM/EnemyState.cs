@@ -1,5 +1,5 @@
 public enum EnemyState {
-        LockedState = 0,
-        UnbeatenState = 1,
-        BeatenState = 2
+        Locked = 0,
+        Undefeated = 1,
+        Defeated = 2
 }

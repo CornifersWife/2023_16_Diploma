@@ -4,15 +4,15 @@ public class EnemySM : StateMachine {
     [HideInInspector]
     public LockedState lockedState;
     [HideInInspector]
-    public UnbeatenState unbeatenState;
+    public UndefeatedState undefeatedState;
     [HideInInspector]
-    public BeatenState beatenState;
+    public DefeatedState defeatedState;
     
     [SerializeField] private Enemy enemy;
     [SerializeField] private EnemyPopup enemyPopup;
 
-    [SerializeField] private Material unbeatenMaterial;
-    [SerializeField] private Material beatenMaterial;
+    [SerializeField] private Material undefeatedMaterial;
+    [SerializeField] private Material defeatedMaterial;
 
     private bool isLocked, isBeaten;
     private Renderer objectRenderer;
@@ -21,8 +21,8 @@ public class EnemySM : StateMachine {
         objectRenderer = GetComponent<Renderer>();
         
         lockedState = new LockedState(this);
-        unbeatenState = new UnbeatenState(this);
-        beatenState = new BeatenState(this);
+        undefeatedState = new UndefeatedState(this);
+        defeatedState = new DefeatedState(this);
     }
     
     protected override BaseState GetInitialState() {
@@ -36,12 +36,12 @@ public class EnemySM : StateMachine {
 
     private BaseState GetStateFromEnemy() {
         switch (enemy.GetState()) {
-            case EnemyState.LockedState:
+            case EnemyState.Locked:
                 return lockedState;
-            case EnemyState.UnbeatenState: 
-                return unbeatenState;
-            case EnemyState.BeatenState:
-                return beatenState;
+            case EnemyState.Undefeated: 
+                return undefeatedState;
+            case EnemyState.Defeated:
+                return defeatedState;
             default:
                 return lockedState;
         }
@@ -71,12 +71,12 @@ public class EnemySM : StateMachine {
         return enemy;
     }
 
-    public Material GetUnbeatenMaterial() {
-        return unbeatenMaterial;
+    public Material GetUndefeatedMaterial() {
+        return undefeatedMaterial;
     }
     
-    public Material GetBeatenMaterial() {
-        return beatenMaterial;
+    public Material GetDefeatedMaterial() {
+        return defeatedMaterial;
     }
 
     public Renderer GetRenderer() {

@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(3);
         loseImage.enabled = false;
 
-        EnemyStateManager.Instance.ChangeEnemyState(EnemyState.BeatenState);
+        EnemyStateManager.Instance.ChangeEnemyState(EnemyState.Defeated);
         SceneSwitcher.Instance.LoadScene("TEST1 Overworld");
     }
 
@@ -150,7 +150,7 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(3);
         winImage.enabled = false;
 
-        EnemyStateManager.Instance.ChangeEnemyState(EnemyState.BeatenState);
+        EnemyStateManager.Instance.ChangeEnemyState(EnemyState.Defeated);
         SceneSwitcher.Instance.LoadScene("TEST1 Overworld");
     }
 }

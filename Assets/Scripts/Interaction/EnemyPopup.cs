@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class EnemyPopup : MonoBehaviour {
     [SerializeField] private RectTransform popupPanel;
@@ -37,7 +36,7 @@ public class EnemyPopup : MonoBehaviour {
         if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(enemyLayer) == 0) {
             if (enemy == null) {
                 enemy = hit.collider.gameObject.GetComponent<EnemySM>().GetEnemy();
-                if (enemy.GetState() == EnemyState.UnbeatenState) {
+                if (enemy.GetState() == EnemyState.Undefeated) {
                     playerController.enabled = false;
                     popupPanel.gameObject.SetActive(true);
                     UIManager.Instance.SetIsOpen(true);
