@@ -33,7 +33,7 @@ public class ObjectClickHandler : MonoBehaviour {
     private void SetObject(InputAction.CallbackContext context) {
         Ray ray = mainCamera.ScreenPointToRay( Input.mousePosition );
 		
-        if( Physics.Raycast( ray, out RaycastHit hit) && !UIManager.Instance.IsOpen()) {
+        if( Physics.Raycast( ray, out RaycastHit hit)) {
             clickedObject = hit.collider.gameObject;
         }
     }

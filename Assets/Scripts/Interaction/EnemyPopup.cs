@@ -41,6 +41,9 @@ public class EnemyPopup : MonoBehaviour {
                     popupPanel.gameObject.SetActive(true);
                     UIManager.Instance.SetIsOpen(true);
                 }
+                else {
+                    enemy = null;
+                }
             }
         }
     }
