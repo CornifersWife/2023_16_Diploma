@@ -41,6 +41,8 @@ public class InventoryController : MonoBehaviour {
     }
 
     public void ShowInventory(InputAction.CallbackContext context) {
+        if (Time.timeScale == 0)
+            return;
         inventoryUI.SetActive(true);
         postProcessVolume.enabled = true;
         isOpen = true;
@@ -48,6 +50,8 @@ public class InventoryController : MonoBehaviour {
     }
 
     public void HideInventory() {
+        if (Time.timeScale == 0)
+            return;
         postProcessVolume.enabled = false;
         inventoryUI.SetActive(false);
         isOpen = false;
