@@ -134,6 +134,62 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""ObjectClick Map"",
+            ""id"": ""8ff5693c-36d6-4cbb-9ad7-0b925c2e64e2"",
+            ""actions"": [
+                {
+                    ""name"": ""Object Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""0dce766f-8e6c-44b1-9df1-35759dd0cffd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""36a78761-4279-4486-8c63-4de22fb61c42"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Object Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""EnemyClick Map"",
+            ""id"": ""84a4960f-ff0e-4f94-8922-301553cfcddf"",
+            ""actions"": [
+                {
+                    ""name"": ""Enemy Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""0218e505-4489-4691-8e84-9dfda91e7a7a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""885d7099-bb90-4d92-92bb-d8109228cd19"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Enemy Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -143,6 +199,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerActionMap_OpenInventory = m_PlayerActionMap.FindAction("Open Inventory", throwIfNotFound: true);
         m_PlayerActionMap_Pause = m_PlayerActionMap.FindAction("Pause", throwIfNotFound: true);
         m_PlayerActionMap_Move = m_PlayerActionMap.FindAction("Move", throwIfNotFound: true);
+        // ObjectClick Map
+        m_ObjectClickMap = asset.FindActionMap("ObjectClick Map", throwIfNotFound: true);
+        m_ObjectClickMap_ObjectClick = m_ObjectClickMap.FindAction("Object Click", throwIfNotFound: true);
+        // EnemyClick Map
+        m_EnemyClickMap = asset.FindActionMap("EnemyClick Map", throwIfNotFound: true);
+        m_EnemyClickMap_EnemyClick = m_EnemyClickMap.FindAction("Enemy Click", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -262,10 +324,110 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActionMapActions @PlayerActionMap => new PlayerActionMapActions(this);
+
+    // ObjectClick Map
+    private readonly InputActionMap m_ObjectClickMap;
+    private List<IObjectClickMapActions> m_ObjectClickMapActionsCallbackInterfaces = new List<IObjectClickMapActions>();
+    private readonly InputAction m_ObjectClickMap_ObjectClick;
+    public struct ObjectClickMapActions
+    {
+        private @PlayerControls m_Wrapper;
+        public ObjectClickMapActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ObjectClick => m_Wrapper.m_ObjectClickMap_ObjectClick;
+        public InputActionMap Get() { return m_Wrapper.m_ObjectClickMap; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ObjectClickMapActions set) { return set.Get(); }
+        public void AddCallbacks(IObjectClickMapActions instance)
+        {
+            if (instance == null || m_Wrapper.m_ObjectClickMapActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ObjectClickMapActionsCallbackInterfaces.Add(instance);
+            @ObjectClick.started += instance.OnObjectClick;
+            @ObjectClick.performed += instance.OnObjectClick;
+            @ObjectClick.canceled += instance.OnObjectClick;
+        }
+
+        private void UnregisterCallbacks(IObjectClickMapActions instance)
+        {
+            @ObjectClick.started -= instance.OnObjectClick;
+            @ObjectClick.performed -= instance.OnObjectClick;
+            @ObjectClick.canceled -= instance.OnObjectClick;
+        }
+
+        public void RemoveCallbacks(IObjectClickMapActions instance)
+        {
+            if (m_Wrapper.m_ObjectClickMapActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IObjectClickMapActions instance)
+        {
+            foreach (var item in m_Wrapper.m_ObjectClickMapActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ObjectClickMapActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public ObjectClickMapActions @ObjectClickMap => new ObjectClickMapActions(this);
+
+    // EnemyClick Map
+    private readonly InputActionMap m_EnemyClickMap;
+    private List<IEnemyClickMapActions> m_EnemyClickMapActionsCallbackInterfaces = new List<IEnemyClickMapActions>();
+    private readonly InputAction m_EnemyClickMap_EnemyClick;
+    public struct EnemyClickMapActions
+    {
+        private @PlayerControls m_Wrapper;
+        public EnemyClickMapActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @EnemyClick => m_Wrapper.m_EnemyClickMap_EnemyClick;
+        public InputActionMap Get() { return m_Wrapper.m_EnemyClickMap; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(EnemyClickMapActions set) { return set.Get(); }
+        public void AddCallbacks(IEnemyClickMapActions instance)
+        {
+            if (instance == null || m_Wrapper.m_EnemyClickMapActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_EnemyClickMapActionsCallbackInterfaces.Add(instance);
+            @EnemyClick.started += instance.OnEnemyClick;
+            @EnemyClick.performed += instance.OnEnemyClick;
+            @EnemyClick.canceled += instance.OnEnemyClick;
+        }
+
+        private void UnregisterCallbacks(IEnemyClickMapActions instance)
+        {
+            @EnemyClick.started -= instance.OnEnemyClick;
+            @EnemyClick.performed -= instance.OnEnemyClick;
+            @EnemyClick.canceled -= instance.OnEnemyClick;
+        }
+
+        public void RemoveCallbacks(IEnemyClickMapActions instance)
+        {
+            if (m_Wrapper.m_EnemyClickMapActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IEnemyClickMapActions instance)
+        {
+            foreach (var item in m_Wrapper.m_EnemyClickMapActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_EnemyClickMapActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public EnemyClickMapActions @EnemyClickMap => new EnemyClickMapActions(this);
     public interface IPlayerActionMapActions
     {
         void OnOpenInventory(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+    }
+    public interface IObjectClickMapActions
+    {
+        void OnObjectClick(InputAction.CallbackContext context);
+    }
+    public interface IEnemyClickMapActions
+    {
+        void OnEnemyClick(InputAction.CallbackContext context);
     }
 }

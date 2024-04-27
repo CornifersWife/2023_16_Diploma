@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class EnemyPopup : MonoBehaviour {
+public class EnemyPopup : MonoBehaviour, PlayerControls.IEnemyClickMapActions {
     [SerializeField] private RectTransform popupPanel;
-    [SerializeField] private InputAction mouseClickAction;
     [SerializeField] private GameObject deckPopup;
+
+    private PlayerControls playerControls;
     
     private Camera mainCamera;
     public GameObject player;
@@ -16,19 +17,20 @@ public class EnemyPopup : MonoBehaviour {
     
     private void Awake() {
         mainCamera = Camera.main;
+        
         enemyLayer = LayerMask.NameToLayer("Enemy");
         playerController = player.GetComponent<PlayerController>();
         popupPanel.gameObject.SetActive(false);
     }
-    
-    private void OnEnable() {
-        mouseClickAction.Enable();
-        mouseClickAction.performed += Clicked;
-    }
 
-    private void OnDisable() {
-        mouseClickAction.performed -= Clicked;
-        mouseClickAction.Disable();
+    private void Start() {
+        playerControls = InputManager.Instance.playerControls;
+        playerControls.EnemyClickMap.SetCallbacks(this);
+        playerControls.EnemyClickMap.Enable();
+    }
+    
+    public void OnEnemyClick(InputAction.CallbackContext context) {
+        Clicked(context);
     }
 
     private void Clicked(InputAction.CallbackContext context) {
@@ -40,6 +42,7 @@ public class EnemyPopup : MonoBehaviour {
                     playerController.enabled = false;
                     popupPanel.gameObject.SetActive(true);
                     UIManager.Instance.SetIsOpen(true);
+                    playerControls.ObjectClickMap.ObjectClick.Disable();
                 }
                 else {
                     enemy = null;
@@ -52,8 +55,8 @@ public class EnemyPopup : MonoBehaviour {
         popupPanel.gameObject.SetActive(false);
         
         if (CheckDeck(3)) {
-            EnemyStateManager.Instance.SetCurrentEnemy(enemy);
             Close();
+            EnemyStateManager.Instance.SetCurrentEnemy(enemy);
             SceneSwitcher.Instance.LoadScene("Irys playspace");
         }
         else {
@@ -75,6 +78,7 @@ public class EnemyPopup : MonoBehaviour {
         playerController.enabled = true;
         enemy = null;
         UIManager.Instance.SetIsOpen(false);
+        playerControls.ObjectClickMap.ObjectClick.Enable();
     }
 
     private bool CheckDeck(int count) {

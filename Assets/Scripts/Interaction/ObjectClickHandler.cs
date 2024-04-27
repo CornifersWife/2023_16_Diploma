@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class ObjectClickHandler : MonoBehaviour {
-    [SerializeField] private InputAction clickAction;
-
+public class ObjectClickHandler : MonoBehaviour, PlayerControls.IObjectClickMapActions {
     public static ObjectClickHandler Instance = null;
+    
+    private PlayerControls playerControls;
 
     private Camera mainCamera;
     private GameObject clickedObject;
@@ -17,24 +17,22 @@ public class ObjectClickHandler : MonoBehaviour {
             Instance = this;
         }
 
+        playerControls = InputManager.Instance.playerControls;
+        playerControls.ObjectClickMap.SetCallbacks(this);
+        playerControls.ObjectClickMap.Enable();
         mainCamera = Camera.main;
     }
-
-    private void OnEnable() {
-        clickAction.Enable();
-        clickAction.performed += SetObject;
+    
+    public void OnObjectClick(InputAction.CallbackContext context) {
+        SetObject();
     }
 
-    private void OnDisable() {
-        clickAction.performed -= SetObject;
-        clickAction.Disable();
-    }
-
-    private void SetObject(InputAction.CallbackContext context) {
+    private void SetObject() {
         Ray ray = mainCamera.ScreenPointToRay( Input.mousePosition );
 		
-        if(Physics.Raycast( ray, out RaycastHit hit) && !UIManager.Instance.IsOpen()) {
+        if(Physics.Raycast( ray, out RaycastHit hit)) {
             clickedObject = hit.collider.gameObject;
+            //Debug.Log(clickedObject);
         }
     }
     
