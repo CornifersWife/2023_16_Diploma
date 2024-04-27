@@ -1,4 +1,4 @@
-public class IdleState : BaseState {
+public class IdleState : PatrolState {
     public IdleState(MovingSM stateMachine) : base("Idle", stateMachine) {
     }
 

@@ -17,7 +17,7 @@ public class ManageGame : MonoBehaviour {
     private void Start() {
         if (currentCardSets != null) {
             foreach (CardSet cardSet in currentCardSets) {
-                InventoryController.instance.AddItem(cardSet);
+                InventoryController.Instance.AddItem(cardSet);
             }
         }
     }

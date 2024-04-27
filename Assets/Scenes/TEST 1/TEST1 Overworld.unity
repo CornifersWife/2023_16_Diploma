@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657832, g: 0.49641222, b: 0.57481664, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -287,6 +287,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -432,6 +444,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f5bf0ec4ab9344ea7f86c54931c83e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &93641266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 93641268}
+  - component: {fileID: 93641267}
+  m_Layer: 0
+  m_Name: LoadHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &93641267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93641266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3882272735977d34e91403d2e2ac744b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &93641268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93641266}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &117144225
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,6 +676,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1294,6 +1362,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1679,6 +1759,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2032,6 +2124,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2653,6 +2757,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3487,6 +3603,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4050,6 +4178,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4163,6 +4303,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4464,6 +4616,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4718,6 +4882,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4831,6 +5007,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5217,6 +5405,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5574,7 +5774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: 
   sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
-  cards: {fileID: 11400000, guid: 2092508ccc1bfa2458aa123ae5847f1c, type: 2}
+  cards: {fileID: 11400000, guid: 14abd029b264d554f918fca768f67c90, type: 2}
 --- !u!1 &1018475491
 GameObject:
   m_ObjectHideFlags: 0
@@ -5859,6 +6059,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6106,6 +6318,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6660,6 +6884,37 @@ MonoBehaviour:
   - {fileID: 513190769}
   - {fileID: 1233670815}
   - {fileID: 998033697}
+--- !u!1 &1161962352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1161962353}
+  m_Layer: 0
+  m_Name: Waypoint 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1161962353
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161962352}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.98, y: 0, z: 7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1547862119}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1164627131
 GameObject:
   m_ObjectHideFlags: 0
@@ -6918,6 +7173,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7065,7 +7332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: 
   sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
-  cards: {fileID: 11400000, guid: 72bc5e3aaa632ee40b6874351870f1c2, type: 2}
+  cards: {fileID: 11400000, guid: 14abd029b264d554f918fca768f67c90, type: 2}
 --- !u!1001 &1236488808
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7078,6 +7345,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7888,6 +8167,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8001,6 +8292,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8248,6 +8551,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8515,6 +8830,7 @@ Transform:
   - {fileID: 916762112}
   - {fileID: 357234733}
   - {fileID: 1827384513}
+  - {fileID: 1547862119}
   - {fileID: 436042900}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9007,6 +9323,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540007316}
   m_CullTransparentMesh: 1
+--- !u!1 &1547862118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1547862119}
+  m_Layer: 0
+  m_Name: Enemy waypoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1547862119
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547862118}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.16, y: -1, z: -5.23}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1720672525}
+  - {fileID: 1161962353}
+  m_Father: {fileID: 1467733382}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1556128876
 GameObject:
   m_ObjectHideFlags: 0
@@ -9598,6 +9947,7 @@ GameObject:
   - component: {fileID: 1611507866}
   - component: {fileID: 1611507865}
   - component: {fileID: 1611507871}
+  - component: {fileID: 1611507872}
   m_Layer: 5
   m_Name: Inventory UI
   m_TagString: Untagged
@@ -9739,6 +10089,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1611507863}
   m_CullTransparentMesh: 1
+--- !u!114 &1611507872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611507863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1001 &1623746310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9825,9 +10205,11 @@ GameObject:
   - component: {fileID: 1649443591}
   - component: {fileID: 1649443590}
   - component: {fileID: 1649443589}
+  - component: {fileID: 1649443593}
   - component: {fileID: 1649443588}
   - component: {fileID: 1649443587}
   - component: {fileID: 1649443586}
+  - component: {fileID: 1649443592}
   m_Layer: 12
   m_Name: Enemy
   m_TagString: Untagged
@@ -9844,7 +10226,7 @@ Transform:
   m_GameObject: {fileID: 1649443584}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.9, y: -0.5, z: 0.8}
+  m_LocalPosition: {x: -3.78, y: -0.5, z: 3.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9881,6 +10263,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   enemySM: {fileID: 1649443587}
+  movingSM: {fileID: 1649443592}
   deckPopup: {fileID: 1953306680}
   player: {fileID: 1686206899}
 --- !u!114 &1649443587
@@ -9986,6 +10369,44 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1649443584}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1649443592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649443584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41327384dc2ae1e438942c8596440b5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitTimeSeconds: 1
+  waypoints:
+  - {fileID: 1720672525}
+  - {fileID: 1161962353}
+--- !u!195 &1649443593
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649443584}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1671617927
 GameObject:
   m_ObjectHideFlags: 0
@@ -10361,7 +10782,7 @@ Transform:
   m_GameObject: {fileID: 1686206899}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.64, y: 1, z: -3.87}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10667,6 +11088,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -10904,6 +11337,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1713053177}
   m_CullTransparentMesh: 1
+--- !u!1 &1720672524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1720672525}
+  m_Layer: 0
+  m_Name: Waypoint 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1720672525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720672524}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.85, y: 0, z: 6.87}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1547862119}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1725720616
 GameObject:
   m_ObjectHideFlags: 0
@@ -11183,6 +11647,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -11459,7 +11935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1824967274
 Transform:
   m_ObjectHideFlags: 0
@@ -11469,7 +11945,7 @@ Transform:
   m_GameObject: {fileID: 1824967273}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.63, y: 0, z: 4.37}
+  m_LocalPosition: {x: 2.42, y: 0, z: 4.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11617,7 +12093,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1827384513}
   m_Layer: 0
-  m_Name: Waypoints
+  m_Name: NPC Waypoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11632,7 +12108,7 @@ Transform:
   m_GameObject: {fileID: 1827384512}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 6.78, y: -1, z: 2.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11829,6 +12305,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -11942,6 +12430,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -12188,6 +12688,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -12608,6 +13120,154 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 400, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1968442026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1968442031}
+  - component: {fileID: 1968442030}
+  - component: {fileID: 1968442029}
+  - component: {fileID: 1968442028}
+  - component: {fileID: 1968442027}
+  - component: {fileID: 1968442032}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1968442027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968442026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 497ab3d9b7184582b3d70b2e62e075b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Item
+  sprite: {fileID: 21300000, guid: 07045f10a0a16f140aea936d45b09cc6, type: 3}
+--- !u!65 &1968442028
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968442026}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1968442029
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968442026}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1968442030
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968442026}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1968442031
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968442026}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.09, y: 0.5, z: 3.24}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1968442032
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968442026}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1981037121
 GameObject:
   m_ObjectHideFlags: 0
@@ -12696,6 +13356,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -12949,7 +13621,7 @@ Transform:
   m_GameObject: {fileID: 2007427466}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.1236305, y: -27.142323, z: 9.72999}
+  m_LocalPosition: {x: 10.8, y: -27.142323, z: 12.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13048,6 +13720,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -13161,6 +13845,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -13379,6 +14075,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -13568,6 +14276,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -13681,6 +14401,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -13870,6 +14602,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -14255,6 +14999,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Slot (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: deckList
+      value: 
+      objectReference: {fileID: 1177146317}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: itemList
+      value: 
+      objectReference: {fileID: 684784709}
+    - target: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      propertyPath: cardSetList
+      value: 
+      objectReference: {fileID: 759717100}
     - target: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -14370,3 +15126,5 @@ SceneRoots:
   - {fileID: 1303699815}
   - {fileID: 1467733382}
   - {fileID: 825152899}
+  - {fileID: 1968442031}
+  - {fileID: 93641268}

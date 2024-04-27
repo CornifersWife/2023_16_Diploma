@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
@@ -19,6 +18,7 @@ public class PlayerController : MonoBehaviour, IWalkable {
         mainCamera = Camera.main;
         navMeshAgent = GetComponent<NavMeshAgent>();
         groundLayer = LayerMask.NameToLayer("Ground");
+        targetPosition = transform.position;
         UIGameObject = GameObject.Find("UI");
         activeUIOnStart = GetActiveUIOnStart();
     }
@@ -62,8 +62,9 @@ public class PlayerController : MonoBehaviour, IWalkable {
     private int GetActiveUIOnStart() {
         int count = 0;
         foreach (Transform uiChild in UIGameObject.transform) {
-            if (uiChild.gameObject.activeSelf)
+            if (uiChild.gameObject.activeSelf) {
                 count++;
+            }
         }
         return count;
     }

@@ -8,12 +8,15 @@ public class MovingSM : StateMachine {
     public WalkingState walkingState;
     [HideInInspector]
     public WaitingState waitingState;
+    [HideInInspector]
+    public DialogueState dialogueState;
     
     [SerializeField] private float waitTimeSeconds;
     [SerializeField] private Transform[] waypoints;
     private NavMeshAgent navMeshAgent;
     private int currentWaypointIndex;
     private bool waiting = false;
+    private bool isDialogue = false;
 
     private void Awake() {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -21,6 +24,7 @@ public class MovingSM : StateMachine {
         idleState = new IdleState(this);
         walkingState = new WalkingState(this);
         waitingState = new WaitingState(this);
+        dialogueState = new DialogueState(this);
     }
     
     protected override BaseState GetInitialState() {
@@ -53,5 +57,13 @@ public class MovingSM : StateMachine {
 
     public void SetWaiting(bool value) {
         waiting = value;
+    }
+    
+    public bool IsDialogue() {
+        return isDialogue;
+    }
+
+    public void SetDialogue(bool value) {
+        isDialogue = value;
     }
 }

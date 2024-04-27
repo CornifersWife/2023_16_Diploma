@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class CardDisplay : MonoBehaviour {
     public BaseCardData cardData;
+    [SerializeField] private TextMeshProUGUI cardNameText;
+    [SerializeField] private TextMeshProUGUI cardHealthText;
+    [SerializeField] private TextMeshProUGUI cardAttackText;
     private String healthText;
 
     public delegate void OnDestroyedDelegate();
@@ -134,41 +137,25 @@ public class CardDisplay : MonoBehaviour {
             }
         }
     }
-
-    //TODO rework this to not ask for the index of child
+    
     private void UpdateHealthDisplay(int newHealth) {
         healthText = newHealth.ToString();
-        GameObject canvas = gameObject.transform.GetChild(0).gameObject;
-        GameObject cardText = canvas.transform.GetChild(1).gameObject;
-        GameObject healthTextGameObject =
-            cardText.transform.GetChild(2).gameObject; // Assuming health text is at child index 3
-        healthTextGameObject.GetComponent<TextMeshProUGUI>().text = healthText;
+        cardHealthText.text = healthText;
     }
-
-//TODO rework this
+    
     private void DisplayData(GameObject card) {
-        GameObject canvas = card.transform.GetChild(0).gameObject;
-        GameObject cardText = canvas.transform.GetChild(1).gameObject;
-
-        GameObject nameText = cardText.transform.GetChild(0).gameObject;
-        GameObject attackText = cardText.transform.GetChild(1).gameObject;
-        GameObject cardHealthText = cardText.transform.GetChild(2).gameObject;
-
-        //GameObject Image = canvas.transform.GetChild(1).gameObject;
-
-        nameText.GetComponent<TextMeshProUGUI>().text = cardData.cardName;
-        //Image.GetComponent<Image>().sprite = cardData.cardImage;
+        cardNameText.text = cardData.cardName;
 
         if (cardData is MinionCardData minionCardData) {
-            attackText.GetComponent<TextMeshProUGUI>().text = minionCardData.power.ToString();
-            cardHealthText.GetComponent<TextMeshProUGUI>().text = minionCardData.currentHealth.ToString();
-            healthText = cardHealthText.GetComponent<TextMeshProUGUI>().text;
+            cardAttackText.text = minionCardData.power.ToString();
+            cardHealthText.text = minionCardData.currentHealth.ToString();
+            healthText = cardHealthText.text;
         }
 
         //If card is not Minion:
         else {
-            attackText.GetComponent<TextMeshProUGUI>().text = "";
-            cardHealthText.GetComponent<TextMeshProUGUI>().text = "";
+            cardAttackText.text = "";
+            cardHealthText.text = "";
         }
     }
 }

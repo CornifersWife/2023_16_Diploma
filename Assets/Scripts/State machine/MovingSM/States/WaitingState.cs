@@ -1,12 +1,11 @@
 using UnityEngine;
 
-public class WaitingState : BaseState {
-    private MovingSM movingSM;
+public class WaitingState : PatrolState {
     private float waitCounter;
     private float waitTime;
 
     public WaitingState(MovingSM stateMachine) : base("Waiting", stateMachine) {
-        movingSM = stateMachine;
+        
     }
 
     public override void Enter() {
@@ -17,7 +16,7 @@ public class WaitingState : BaseState {
         base.UpdateLogic();
         if (movingSM.IsWaiting())
             Wait();
-        else{
+        else {
             movingSM.ChangeState(movingSM.walkingState);
         }
     }

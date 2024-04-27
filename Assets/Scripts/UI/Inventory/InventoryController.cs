@@ -15,13 +15,13 @@ public class InventoryController : MonoBehaviour {
     
     private PostProcessVolume postProcessVolume;
     
-    public static InventoryController instance = null; 
+    public static InventoryController Instance = null; 
 
     private void Awake() {
-        if (instance == null) {
-            instance = this;
+        if (Instance == null) {
+            Instance = this;
         }         
-        else if (instance != this) {
+        else if (Instance != this) {
             Destroy(gameObject);
         }          
         DontDestroyOnLoad(gameObject); 

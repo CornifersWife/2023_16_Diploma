@@ -1,14 +1,13 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class WalkingState : BaseState {
-    private MovingSM movingSM;
+public class WalkingState : PatrolState {
     private NavMeshAgent navMeshAgent;
     private Transform[] waypoints;
     private int currentWaypointIndex;
     private Vector3 currentWaypoint;
     public WalkingState(MovingSM stateMachine) : base("Walking", stateMachine) {
-        movingSM = stateMachine;
+        
     }
 
     public override void Enter() {

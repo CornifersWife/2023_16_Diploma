@@ -9,7 +9,7 @@ public class DeckManager : MonoBehaviour {
     public List<BaseCardData> deck = new List<BaseCardData>();
 
     private void Awake() {
-        //cardSets = LoadCardSetData();
+        cardSets = LoadCardSetData();
     }
 
     private void Start() {
@@ -31,8 +31,7 @@ public class DeckManager : MonoBehaviour {
     }
 
     private List<CardSetData> LoadCardSetData() {
-        //TODO implement loading cardsetdatas from what was chosen in inventory
-        return InventoryController.instance.GetCardSets();
+        return InventoryController.Instance.GetCardSets();
     }
 
     public BaseCardData DrawCard() {
