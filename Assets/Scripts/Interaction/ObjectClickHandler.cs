@@ -10,11 +10,11 @@ public class ObjectClickHandler : MonoBehaviour {
     private GameObject clickedObject;
 
     private void Awake() {
-        if (Instance == null) {
-            Instance = this;
-        }         
-        else if (Instance != this) {
+        if (Instance != null && Instance != this) {
             Destroy(gameObject);
+        }
+        else {
+            Instance = this;
         }
 
         mainCamera = Camera.main;
@@ -33,7 +33,7 @@ public class ObjectClickHandler : MonoBehaviour {
     private void SetObject(InputAction.CallbackContext context) {
         Ray ray = mainCamera.ScreenPointToRay( Input.mousePosition );
 		
-        if( Physics.Raycast( ray, out RaycastHit hit)) {
+        if(Physics.Raycast( ray, out RaycastHit hit) && !UIManager.Instance.IsOpen()) {
             clickedObject = hit.collider.gameObject;
         }
     }

@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 
 public class MovingSM : StateMachine {
     [HideInInspector]
