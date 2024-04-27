@@ -40,6 +40,7 @@ public class InputManager : MonoBehaviour, PlayerControls.IPlayerActionMapAction
     public void OnMove(InputAction.CallbackContext context) {
         if (UIManager.Instance.IsOpen())
             return;
+        navMeshAgent.ResetPath();
         Vector2 input = context.ReadValue<Vector2>();
         Vector3 skewedInput = rotationMatrix.MultiplyPoint3x4(input);
         movementVector = new Vector3(skewedInput.x, 0, skewedInput.y);
