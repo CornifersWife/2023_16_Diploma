@@ -44,6 +44,7 @@ public class EnemyPopup : MonoBehaviour, PlayerControls.IEnemyClickMapActions {
                 playerController.enabled = false;
                 popupPanel.gameObject.SetActive(true);
                 UIManager.Instance.SetIsOpen(true);
+                ObjectClickHandler.Instance.SetObject(hit.collider.gameObject);
                 playerControls.ObjectClickMap.Disable();
             }
             else {
