@@ -1,19 +1,44 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "New MinionCard", menuName = "Cards/Minion")]
-public class MinionCardData : BaseCardData, IDamageable {
+public class MinionCardData : BaseCardData, IDamageable, IActivatable {
     public int power;
-    [HideInInspector]public int currentHealth;
+    [HideInInspector] public int currentHealth;
     public int maxHealth;
     public event Action<int> OnHealthChanged;
     public event Action<IDamageable> OnAttack;
     public event Action<MinionCardData> OnDeath;
-    public delegate Vector3 RequestPositionDelegate(); //TODO added by chat-bot, need to think if its needed and if it is i need to understand why
+    [SerializeField] private bool hasDivineShield = false;
+
+
+    public delegate Vector3
+        RequestPositionDelegate(); //TODO added by chat-bot, need to think if its needed and if it is i need to understand why
+
     public event RequestPositionDelegate OnRequestPosition;
     
+    public List<Effect> onPlayEffects;
+    public List<Effect> onActivationEffects;
+    public List<Effect> onDeathEffects;
+
+
+    public bool HasDivineShield {
+        get { return hasDivineShield; }
+        set {
+            //TODO add animation
+            hasDivineShield = value;
+        }
+    }
+
     public void TakeDamage(int amount) {
+        if (HasDivineShield) {
+            HasDivineShield = false;
+            return;
+        }
+
         currentHealth -= amount;
         OnHealthChanged?.Invoke(currentHealth);
         if (!IsAlive()) {
@@ -28,7 +53,6 @@ public class MinionCardData : BaseCardData, IDamageable {
             TakeDamage(target.GetPower());
         }
     }
-
 
     public int GetPower() {
         return power;
@@ -48,7 +72,25 @@ public class MinionCardData : BaseCardData, IDamageable {
         return currentHealth > 0;
     }
 
+    public void Play() {
+        if (onPlayEffects.Any())
+            foreach (var effect in onDeathEffects) {
+                effect.ExecuteEffect(this);
+            }
+    }
+
+    public void Activate() {
+        if (onPlayEffects.Any())
+            foreach (var effect in onDeathEffects) {
+                effect.ExecuteEffect(this);
+            }
+    }
+
     private void Death() {
         OnDeath?.Invoke(this);
+        if (onDeathEffects.Any())
+            foreach (var effect in onDeathEffects) {
+                effect.ExecuteEffect(this);
+            }
     }
 }

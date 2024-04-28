@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -150,5 +151,33 @@ public class GameManager : MonoBehaviour {
         winImage.enabled = false;
 
         SceneSwitcher.Instance.LoadScene("TEST1 Overworld");
+    }
+
+    public List<IDamageable> GetEnemyMinions(object owner) {
+        throw new System.NotImplementedException();
+    }
+
+    public List<IDamageable> GetYourMinions(object owner) {
+        throw new System.NotImplementedException();
+    }
+
+    public List<IDamageable> GetMinionsInSameSet(BaseCardData sourceCard) {
+        throw new System.NotImplementedException();
+    }
+
+    public IDamageable GetYourHero(object owner) {
+        throw new System.NotImplementedException();
+    }
+
+    public List<IDamageable> GetAllHeroes() {
+        throw new System.NotImplementedException();
+    }
+
+    public List<IDamageable> GetEnemies(object sourceCardOwner) {
+        throw new System.NotImplementedException();
+    }
+
+    public List<IDamageable> GetAllDamageable() {
+        throw new System.NotImplementedException();
     }
 }

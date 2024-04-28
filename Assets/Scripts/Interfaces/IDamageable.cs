@@ -5,4 +5,5 @@ public interface IDamageable {
     Vector3 GetPosition(); 
     bool IsAlive(); 
     int GetPower();
+    
 }

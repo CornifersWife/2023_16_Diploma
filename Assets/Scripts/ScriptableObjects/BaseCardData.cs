@@ -7,5 +7,6 @@ public abstract class BaseCardData : ScriptableObject {
     public string cardName;
     public Sprite cardImage;
     //effect?
+    public object Owner { get; set; }
 }
 
