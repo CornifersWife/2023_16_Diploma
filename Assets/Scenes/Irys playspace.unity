@@ -2686,6 +2686,10 @@ PrefabInstance:
       value: 0.36
       objectReference: {fileID: 0}
     - target: {fileID: 3573726438947976270, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
+      propertyPath: isPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573726438947976270, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: deck.Array.size
       value: 0
       objectReference: {fileID: 0}

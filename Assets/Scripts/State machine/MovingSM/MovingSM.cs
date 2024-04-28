@@ -13,10 +13,10 @@ public class MovingSM : StateMachine {
     
     [SerializeField] private float waitTimeSeconds;
     [SerializeField] private Transform[] waypoints;
+    
     private NavMeshAgent navMeshAgent;
     private int currentWaypointIndex;
     private bool waiting = false;
-    private bool isDialogue = false;
 
     private void Awake() {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -26,7 +26,7 @@ public class MovingSM : StateMachine {
         waitingState = new WaitingState(this);
         dialogueState = new DialogueState(this);
     }
-    
+
     protected override BaseState GetInitialState() {
         return idleState;
     }
@@ -60,10 +60,6 @@ public class MovingSM : StateMachine {
     }
     
     public bool IsDialogue() {
-        return isDialogue;
-    }
-
-    public void SetDialogue(bool value) {
-        isDialogue = value;
+        return ObjectClickHandler.Instance.GetObject() == gameObject && UIManager.Instance.IsOpen();
     }
 }
