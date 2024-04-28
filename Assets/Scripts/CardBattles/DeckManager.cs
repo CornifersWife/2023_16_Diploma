@@ -10,9 +10,12 @@ public class DeckManager : MonoBehaviour {
     public List<BaseCardData> deck = new List<BaseCardData>();
 
     private void Awake() {
+        
         if (this.CompareTag("Player"))
             isPlayer = true;
-        cardSets = LoadCardSetData();
+        Debug.Log(this.tag + isPlayer);
+
+        //TODO   cardSets = LoadCardSetData();
     }
 
     private void Start() {
@@ -31,7 +34,7 @@ public class DeckManager : MonoBehaviour {
         }
 
         foreach (var card in baseCardDatas) {
-            card.belongsToPlayer = true;
+            card.belongsToPlayer = isPlayer;
         }
 
         return baseCardDatas;

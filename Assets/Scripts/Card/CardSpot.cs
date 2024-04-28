@@ -20,6 +20,8 @@ public class CardSpot : MonoBehaviour {
     }
     public void SetCardDisplay(CardDisplay newCardDisplay) {
         cardDisplay = newCardDisplay;
+        //cardDisplay.cardData.belongsToPlayer = isPlayers;
+        cardDisplay.cardData.Play();
         cardDisplay.GetComponent<DragAndDrop>().enabled = false;
         cardDisplay.OnDestroyed += HandleCardDisplayDestroyed;
         cardDisplay.transform.localPosition = new Vector3(0, 0, 0);

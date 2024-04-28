@@ -72,16 +72,16 @@ public class MinionCardData : BaseCardData, IDamageable, IActivatable {
         return currentHealth > 0;
     }
 
-    public void Play() {
+    public override void Play() {
         if (onPlayEffects.Any())
-            foreach (var effect in onDeathEffects) {
+            foreach (var effect in onPlayEffects) {
                 effect.ExecuteEffect(this);
             }
     }
 
     public void Activate() {
         if (onPlayEffects.Any())
-            foreach (var effect in onDeathEffects) {
+            foreach (var effect in onActivationEffects) {
                 effect.ExecuteEffect(this);
             }
     }

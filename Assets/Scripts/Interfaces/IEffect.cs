@@ -5,9 +5,8 @@ public interface IEffect {
     void ExecuteEffect(BaseCardData sourceCard);
 }
 
-public abstract class Effect : IEffect {
-    protected List<GameObject> targets;
+public abstract class Effect : ScriptableObject, IEffect {
     public abstract void ExecuteEffect(BaseCardData sourceCard);
-    public abstract void SetTargets(BaseCardData sourceCard);
+    public abstract List<IDamageable> SetTargets(BaseCardData sourceCard);
 }
 
