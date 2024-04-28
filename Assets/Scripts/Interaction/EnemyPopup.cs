@@ -28,7 +28,8 @@ public class EnemyPopup : MonoBehaviour, PlayerControls.IEnemyClickMapActions {
     }
     
     public void OnEnemyClick(InputAction.CallbackContext context) {
-        Clicked();
+        if(context.started)
+            Clicked();
     }
 
     private void Clicked() {

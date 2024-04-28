@@ -168,6 +168,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "NPC Click Map",
+            "id": "bfc35c1c-6fb1-4ff5-8ca3-56b8e378775c",
+            "actions": [
+                {
+                    "name": "NPC Click",
+                    "type": "Button",
+                    "id": "3ad6c01c-e434-4fe6-9d7a-205bf6d86c04",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "85a37979-0e85-4446-8305-b5403e4e67f9",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NPC Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

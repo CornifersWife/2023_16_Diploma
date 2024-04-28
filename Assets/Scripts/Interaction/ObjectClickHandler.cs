@@ -26,7 +26,8 @@ public class ObjectClickHandler : MonoBehaviour, PlayerControls.IObjectClickMapA
     }
     
     public void OnObjectClick(InputAction.CallbackContext context) {
-        SetObject();
+        if(context.started)
+            SetObject();
     }
 
     private void SetObject() {
