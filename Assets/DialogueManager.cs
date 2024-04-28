@@ -4,9 +4,10 @@ using UnityEngine;
 public class DialogueManager : MonoBehaviour {
     [SerializeField] private GameObject dialoguePanel;
     private DialogueBox dialogueBox;
-    
-    private List<Dialogue> currentDialogue;
+
+    private NPCDialogue currentDilogue;
     private int currentIndex;
+    private List<Dialogue> currentDialogueList;
 
     public static DialogueManager Instance = null;
 
@@ -20,30 +21,31 @@ public class DialogueManager : MonoBehaviour {
     }
 
     private void OpenDialogue() {
-        dialoguePanel.SetActive(true);
-        dialogueBox.SetDialogue(currentDialogue[currentIndex]);
-        dialogueBox.ShowDialogue();
-        currentIndex++;
+        if (currentIndex < currentDialogueList.Count) {
+            dialoguePanel.SetActive(true);
+            dialogueBox.SetDialogue(currentDialogueList[currentIndex]);
+            dialogueBox.ShowDialogue();
+            currentIndex++;
+        }
     }
     
     public void NextDialogue() {
-        if (currentIndex < currentDialogue.Count) {
-            dialogueBox.SetDialogue(currentDialogue[currentIndex]);
+        if (currentIndex < currentDialogueList.Count) {
+            dialogueBox.SetDialogue(currentDialogueList[currentIndex]);
             currentIndex++;
         }
         else {
             dialogueBox.HideDialogue();
             dialoguePanel.SetActive(false);
+            currentDilogue.SetIndex(currentIndex);
         }
     }
 
-    public void SetCurrentDialogue(int index, List<Dialogue> dialogueList) {
-        currentIndex = index;
-        currentDialogue = dialogueList;
+    public void SetCurrentDialogue(GameObject dialogueObject) {
+        currentDilogue = dialogueObject.GetComponent<NPCDialogue>();
+        currentIndex = currentDilogue.GetIndex();
+        currentDialogueList = currentDilogue.GetDialogues();
         OpenDialogue();
     }
-
-    public List<Dialogue> GetCurrentDialogue() {
-        return currentDialogue;
-    }
+    
 }

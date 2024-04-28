@@ -25,8 +25,7 @@ public class DialogueTrigger : MonoBehaviour, PlayerControls.INPCClickMapActions
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(npcLayer) == 0) {
             GameObject NPC = hit.collider.gameObject;
-            NPCDialogue npcDialogue = NPC.GetComponent<NPCDialogue>();
-            DialogueManager.Instance.SetCurrentDialogue(npcDialogue.GetIndex(), npcDialogue.GetDialogues());
+            DialogueManager.Instance.SetCurrentDialogue(NPC);
             ObjectClickHandler.Instance.SetObject(NPC);
             playerControls.ObjectClickMap.Disable();
             playerControls.PlayerActionMap.Disable();

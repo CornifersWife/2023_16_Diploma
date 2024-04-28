@@ -12,4 +12,8 @@ public class NPCDialogue : MonoBehaviour {
     public int GetIndex() {
         return index;
     }
+
+    public void SetIndex(int value) {
+        index = value;
+    }
 }
