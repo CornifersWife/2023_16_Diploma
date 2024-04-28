@@ -9,12 +9,15 @@ using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour {
     private bool gameOver = false;
+    public Hero playerHero;
     public DeckManager playerDeck;
     public HandManager playerHand;
-    [FormerlySerializedAs("playerMana")] public ActionPointManager playerActionPoint;
-    [Space] public DeckManager enemyDeck;
+    public ActionPointManager playerActionPoint;
+
+    [Space] public Hero enemyHero;
+    public DeckManager enemyDeck;
     public HandManager enemyHand;
-    [FormerlySerializedAs("enemyMana")] public ActionPointManager enemyActionPoint;
+    public ActionPointManager enemyActionPoint;
     [Space] public Board board;
     public GameObject cardPrefab;
 
@@ -131,7 +134,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void Lose() {
-        if(!gameOver)
+        if (!gameOver)
             StartCoroutine(LoserImageAndLoadScene());
     }
 
@@ -152,32 +155,55 @@ public class GameManager : MonoBehaviour {
 
         SceneSwitcher.Instance.LoadScene("TEST1 Overworld");
     }
-
-    public List<IDamageable> GetEnemyMinions(object owner) {
-        throw new System.NotImplementedException();
+    
+    
+    
+    public List<IDamageable> GetYourMinions(bool belongsToPlayer) { //untested
+        return board.GetMinons(belongsToPlayer);
+    }
+    
+    public List<IDamageable> GetEnemyMinions(bool belongsToPlayer) { //untested
+        return GetYourMinions(!belongsToPlayer);
     }
 
-    public List<IDamageable> GetYourMinions(object owner) {
-        throw new System.NotImplementedException();
+    public List<IDamageable> GetAllMinions() { //untested
+        List<IDamageable> targets = new List<IDamageable>();
+        targets.AddRange(GetYourMinions(true));
+        targets.AddRange(GetYourMinions(false));
+        return targets;
     }
 
-    public List<IDamageable> GetMinionsInSameSet(BaseCardData sourceCard) {
-        throw new System.NotImplementedException();
+    public IDamageable GetYourHero(bool belongsToPlayer) { //untested
+        return belongsToPlayer ? playerHero : enemyHero;
     }
 
-    public IDamageable GetYourHero(object owner) {
-        throw new System.NotImplementedException();
+    public IDamageable GetEnemyHero(bool belongsToPlayer) { //untested
+        return GetYourHero(!belongsToPlayer);
     }
 
-    public List<IDamageable> GetAllHeroes() {
-        throw new System.NotImplementedException();
+    public List<IDamageable> GetAllHeroes() { //untested
+        return new List<IDamageable> { playerHero, enemyHero };
     }
 
-    public List<IDamageable> GetEnemies(object sourceCardOwner) {
-        throw new System.NotImplementedException();
+    public List<IDamageable> GetAllies(bool belongsToPlayer) { //untested
+        List<IDamageable> tmp = new List<IDamageable>();
+        tmp.AddRange(GetYourMinions(belongsToPlayer));
+        tmp.Add(GetYourHero(belongsToPlayer));
+        return tmp;
     }
 
-    public List<IDamageable> GetAllDamageable() {
+    public List<IDamageable> GetEnemies(bool belongsToPlayer) { //untested
+        return GetAllies(!belongsToPlayer);
+    }
+
+    public List<IDamageable> GetAllDamageable() { //untested
+        List<IDamageable> targets = new List<IDamageable>();
+        targets.AddRange(GetAllHeroes());
+        targets.AddRange(GetAllMinions());
+        return targets;
+    }
+
+    public List<IDamageable> GetMinionsInSameSet(BaseCardData sourceCard) { //untested
         throw new System.NotImplementedException();
     }
 }

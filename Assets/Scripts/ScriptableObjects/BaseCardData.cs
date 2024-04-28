@@ -2,11 +2,13 @@ using UnityEngine;
 
 
 public abstract class BaseCardData : ScriptableObject {
-    //public int id;
     [HideInInspector]public int cost = 1;
     public string cardName;
     public Sprite cardImage;
-    //effect?
-    public object Owner { get; set; }
+    [HideInInspector] public bool belongsToPlayer;
+
+    public object GetCardSetCards() {
+        throw new System.NotImplementedException();
+    }
 }
 

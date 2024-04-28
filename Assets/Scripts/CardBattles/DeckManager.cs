@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DeckManager : MonoBehaviour {
+    private bool isPlayer = false;
     [Header("CardSets")]
     [SerializeField] private List<CardSetData> cardSets = new List<CardSetData>();
     [Space(10)]
     public List<BaseCardData> deck = new List<BaseCardData>();
 
     private void Awake() {
+        if (this.CompareTag("Player"))
+            isPlayer = true;
         cardSets = LoadCardSetData();
     }
 
@@ -25,6 +28,10 @@ public class DeckManager : MonoBehaviour {
         var baseCardDatas = new List<BaseCardData>();
         foreach (CardSetData cardSet in cardSetDataCopies) {
             baseCardDatas.AddRange(cardSet.cards);
+        }
+
+        foreach (var card in baseCardDatas) {
+            card.belongsToPlayer = true;
         }
 
         return baseCardDatas;
