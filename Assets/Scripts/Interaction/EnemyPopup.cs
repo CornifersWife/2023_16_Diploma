@@ -9,18 +9,15 @@ public class EnemyPopup : MonoBehaviour, PlayerControls.IEnemyClickMapActions {
     private PlayerControls playerControls;
     
     private Camera mainCamera;
-    public GameObject player;
     private Enemy enemy; //TODO IF We dont want to use null, use for example Enemy 0 for default value
 
     private int enemyLayer;
-    private PlayerController playerController;
     private Vector3 target;
     
     private void Awake() {
         mainCamera = Camera.main;
         
         enemyLayer = LayerMask.NameToLayer("Enemy");
-        playerController = player.GetComponent<PlayerController>();
         popupPanel.gameObject.SetActive(false);
     }
 
@@ -41,11 +38,11 @@ public class EnemyPopup : MonoBehaviour, PlayerControls.IEnemyClickMapActions {
                 return;
             enemy = hit.collider.gameObject.GetComponent<EnemySM>().GetEnemy();
             if (enemy.GetState() == EnemyState.Undefeated) {
-                playerController.enabled = false;
                 popupPanel.gameObject.SetActive(true);
                 UIManager.Instance.SetIsOpen(true);
                 ObjectClickHandler.Instance.SetObject(hit.collider.gameObject);
                 playerControls.ObjectClickMap.Disable();
+                playerControls.PlayerActionMap.Disable();
             }
             else {
                 enemy = null;
@@ -77,10 +74,10 @@ public class EnemyPopup : MonoBehaviour, PlayerControls.IEnemyClickMapActions {
     }
 
     private void Close() {
-        playerController.enabled = true;
         enemy = null;
         UIManager.Instance.SetIsOpen(false);
         playerControls.ObjectClickMap.Enable();
+        playerControls.PlayerActionMap.Enable();
     }
 
     private bool CheckDeck(int count) {
