@@ -24,11 +24,6 @@ public class ObjectClickHandler : MonoBehaviour, PlayerControls.IObjectClickMapA
         playerControls.ObjectClickMap.Enable();
         mainCamera = Camera.main;
     }
-
-    private void Update()
-    {
-        Debug.Log(clickedObject);
-    }
     
     public void OnObjectClick(InputAction.CallbackContext context) {
         SetObject();
@@ -42,8 +37,8 @@ public class ObjectClickHandler : MonoBehaviour, PlayerControls.IObjectClickMapA
         }
     }
 
-    public void SetObject(GameObject gameObject) {
-        clickedObject = gameObject;
+    public void SetObject(GameObject newObject) {
+        clickedObject = newObject;
     }
     
     public GameObject GetObject() {
