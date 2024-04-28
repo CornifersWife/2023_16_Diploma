@@ -470,7 +470,7 @@ GameObject:
   - component: {fileID: 266070555}
   - component: {fileID: 266070554}
   m_Layer: 0
-  m_Name: Sprite (1)
+  m_Name: Water river
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -656,12 +656,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 266070553}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 311.0287, y: -2, z: -251}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 339.68567, y: 59.8, z: -318.1195}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 923903833}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &303177747
 PrefabInstance:
@@ -1258,6 +1258,39 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 645607036}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &923903832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 923903833}
+  m_Layer: 0
+  m_Name: Water
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &923903833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923903832}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -28.656979, y: -61.17199, z: 67.11949}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2108161316}
+  - {fileID: 266070559}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &975711680
 PrefabInstance:
@@ -2359,7 +2392,7 @@ GameObject:
   - component: {fileID: 2108161312}
   - component: {fileID: 2108161311}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: Water lake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2546,11 +2579,11 @@ Transform:
   m_GameObject: {fileID: 2108161310}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.005526416, w: 0.99998474}
-  m_LocalPosition: {x: -49.8, y: -0.6, z: -49.7}
+  m_LocalPosition: {x: -21.1, y: 61.3, z: -116.81949}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 923903833}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.633}
 --- !u!850595691 &2143994303
 LightingSettings:
@@ -2623,5 +2656,4 @@ SceneRoots:
   - {fileID: 1225104931}
   - {fileID: 726119931}
   - {fileID: 645607036}
-  - {fileID: 2108161316}
-  - {fileID: 266070559}
+  - {fileID: 923903833}
