@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class NPCDialogue : MonoBehaviour {
     [SerializeField] private List<Dialogue> dialogues;
