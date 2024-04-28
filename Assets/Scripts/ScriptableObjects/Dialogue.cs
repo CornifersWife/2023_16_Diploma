@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Dialogue", menuName = "UI")]
+[CreateAssetMenu(fileName = "Dialogue", menuName = "Dialogue")]
 public class Dialogue : ScriptableObject {
     [SerializeField] private Sprite icon;
     [SerializeField] private string nameText;
