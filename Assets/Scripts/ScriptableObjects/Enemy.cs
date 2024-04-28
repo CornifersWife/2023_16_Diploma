@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 [CreateAssetMenu(fileName = "Enemy", menuName = "Enemy")]
 public class Enemy : ScriptableObject {
     [SerializeField] private string enemyName;

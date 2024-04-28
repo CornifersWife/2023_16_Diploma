@@ -10,14 +10,11 @@ public class PlayerController : MonoBehaviour, IWalkable {
     private Vector3 targetPosition;
     private int groundLayer;
 
-    private UIManager uiManager;
-
     private void Awake() {
         mainCamera = Camera.main;
         navMeshAgent = GetComponent<NavMeshAgent>();
         groundLayer = LayerMask.NameToLayer("Ground");
         targetPosition = transform.position;
-        uiManager = UIManager.Instance;
     }
 
     private void OnEnable() {
@@ -37,7 +34,7 @@ public class PlayerController : MonoBehaviour, IWalkable {
     
     public void SetTargetPoint() {
         Vector3 mousePos = Mouse.current.position.ReadValue();
-        if (uiManager.IsOpen())
+        if (UIManager.Instance.IsOpen())
             return;
 
         Ray ray = mainCamera.ScreenPointToRay(mousePos);

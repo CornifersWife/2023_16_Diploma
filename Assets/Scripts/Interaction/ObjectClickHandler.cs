@@ -16,7 +16,9 @@ public class ObjectClickHandler : MonoBehaviour, PlayerControls.IObjectClickMapA
         else {
             Instance = this;
         }
+    }
 
+    private void Start() {
         playerControls = InputManager.Instance.playerControls;
         playerControls.ObjectClickMap.SetCallbacks(this);
         playerControls.ObjectClickMap.Enable();

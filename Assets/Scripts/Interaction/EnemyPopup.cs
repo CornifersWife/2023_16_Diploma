@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -30,23 +31,23 @@ public class EnemyPopup : MonoBehaviour, PlayerControls.IEnemyClickMapActions {
     }
     
     public void OnEnemyClick(InputAction.CallbackContext context) {
-        Clicked(context);
+        Clicked();
     }
 
-    private void Clicked(InputAction.CallbackContext context) {
+    private void Clicked() {
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(enemyLayer) == 0) {
-            if (enemy == null) {
-                enemy = hit.collider.gameObject.GetComponent<EnemySM>().GetEnemy();
-                if (enemy.GetState() == EnemyState.Undefeated) {
-                    playerController.enabled = false;
-                    popupPanel.gameObject.SetActive(true);
-                    UIManager.Instance.SetIsOpen(true);
-                    playerControls.ObjectClickMap.ObjectClick.Disable();
-                }
-                else {
-                    enemy = null;
-                }
+            if (enemy != null)
+                return;
+            enemy = hit.collider.gameObject.GetComponent<EnemySM>().GetEnemy();
+            if (enemy.GetState() == EnemyState.Undefeated) {
+                playerController.enabled = false;
+                popupPanel.gameObject.SetActive(true);
+                UIManager.Instance.SetIsOpen(true);
+                playerControls.ObjectClickMap.Disable();
+            }
+            else {
+                enemy = null;
             }
         }
     }
@@ -78,7 +79,7 @@ public class EnemyPopup : MonoBehaviour, PlayerControls.IEnemyClickMapActions {
         playerController.enabled = true;
         enemy = null;
         UIManager.Instance.SetIsOpen(false);
-        playerControls.ObjectClickMap.ObjectClick.Enable();
+        playerControls.ObjectClickMap.Enable();
     }
 
     private bool CheckDeck(int count) {
