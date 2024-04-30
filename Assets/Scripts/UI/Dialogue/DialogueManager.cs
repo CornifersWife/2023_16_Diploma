@@ -23,15 +23,14 @@ public class DialogueManager : MonoBehaviour {
     private void OpenDialogue() {
         if (currentIndex < currentDialogueList.Count) {
             dialoguePanel.SetActive(true);
-            dialogueBox.SetDialogue(currentDialogueList[currentIndex]);
-            dialogueBox.ShowDialogue();
+            dialogueBox.ShowDialogue(currentDialogueList[currentIndex]);
             currentIndex++;
         }
     }
     
     public void NextDialogue() {
         if (currentIndex < currentDialogueList.Count) {
-            dialogueBox.SetDialogue(currentDialogueList[currentIndex]);
+            dialogueBox.ShowDialogue(currentDialogueList[currentIndex]);
             currentIndex++;
         }
         else {
