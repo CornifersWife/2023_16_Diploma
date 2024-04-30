@@ -7,7 +7,7 @@ public class DialogueManager : MonoBehaviour {
 
     private NPCDialogue currentDialogue;
     private int currentIndex;
-    private List<Dialogue> currentDialogueList;
+    private List<MainDialogue> currentDialogueList = new List<MainDialogue>();
 
     public static DialogueManager Instance = null;
 
@@ -22,15 +22,24 @@ public class DialogueManager : MonoBehaviour {
 
     private void OpenDialogue() {
         if (currentIndex < currentDialogueList.Count) {
-            dialoguePanel.SetActive(true);
-            dialogueBox.ShowDialogue(currentDialogueList[currentIndex]);
+            ShowMainDialogue();
             currentIndex++;
+            currentDialogue.SetMainIndex(currentIndex);
         }
+    }
+
+    private void ShowMainDialogue() {
+        dialoguePanel.SetActive(true);
+        dialogueBox.ShowDialogue(currentDialogueList[currentIndex]);
     }
     
     private void CloseDialogue() {
+        HideMainDialogue();
+        currentDialogue.SetMainIndex(currentIndex);
+    }
+
+    private void HideMainDialogue() {
         dialogueBox.HideDialogue();
-        currentDialogue.SetIndex(currentIndex);
     }
     
     public void NextDialogue() {
@@ -50,8 +59,8 @@ public class DialogueManager : MonoBehaviour {
 
     public void SetCurrentDialogue(GameObject dialogueObject) {
         currentDialogue = dialogueObject.GetComponent<NPCDialogue>();
-        currentIndex = currentDialogue.GetIndex();
-        currentDialogueList = currentDialogue.GetDialogues();
+        currentIndex = currentDialogue.GetMainIndex();
+        currentDialogueList = currentDialogue.GetMainDialogues();
         OpenDialogue();
     }
     

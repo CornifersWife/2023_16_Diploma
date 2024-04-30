@@ -25,8 +25,7 @@ public class ShowName: MonoBehaviour {
         CheckPlayerNear();
         if (playerNear && IsMouseOver()) {
             hoverTimer += Time.deltaTime;
-            if (hoverTimer >= timeToWait)
-            {
+            if (hoverTimer >= timeToWait) {
                 MoveTextNearCursor();
                 ShowMessage();
             }

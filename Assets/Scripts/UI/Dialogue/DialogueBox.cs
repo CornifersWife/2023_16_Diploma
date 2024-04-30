@@ -11,7 +11,7 @@ public class DialogueBox : MonoBehaviour {
     
     [SerializeField] private float typingSpeed;
 
-    public void ShowDialogue(Dialogue dialogue) {
+    public void ShowDialogue(MainDialogue dialogue) {
         nextButton.SetActive(false);
         UIManager.Instance.SetIsOpen(true);
         SetDialogue(dialogue);
@@ -24,7 +24,7 @@ public class DialogueBox : MonoBehaviour {
         gameObject.SetActive(false);
     }
     
-    private void SetDialogue(Dialogue dialogue) {
+    private void SetDialogue(MainDialogue dialogue) {
         icon.sprite = dialogue.Icon;
         nameText.text = dialogue.NameText;
     }
