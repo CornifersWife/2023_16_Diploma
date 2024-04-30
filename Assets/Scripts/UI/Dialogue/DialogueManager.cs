@@ -5,7 +5,7 @@ public class DialogueManager : MonoBehaviour {
     [SerializeField] private GameObject dialoguePanel;
     private DialogueBox dialogueBox;
 
-    private NPCDialogue currentDilogue;
+    private NPCDialogue currentDialogue;
     private int currentIndex;
     private List<Dialogue> currentDialogueList;
 
@@ -28,22 +28,30 @@ public class DialogueManager : MonoBehaviour {
         }
     }
     
+    private void CloseDialogue() {
+        dialogueBox.HideDialogue();
+        currentDialogue.SetIndex(currentIndex);
+    }
+    
     public void NextDialogue() {
         if (currentIndex < currentDialogueList.Count) {
+            if (currentDialogueList[currentIndex].DialogueText == ".") {
+                currentIndex++;
+                CloseDialogue();
+                return;
+            }
             dialogueBox.ShowDialogue(currentDialogueList[currentIndex]);
             currentIndex++;
         }
         else {
-            dialogueBox.HideDialogue();
-            dialoguePanel.SetActive(false);
-            currentDilogue.SetIndex(currentIndex);
+            CloseDialogue();
         }
     }
 
     public void SetCurrentDialogue(GameObject dialogueObject) {
-        currentDilogue = dialogueObject.GetComponent<NPCDialogue>();
-        currentIndex = currentDilogue.GetIndex();
-        currentDialogueList = currentDilogue.GetDialogues();
+        currentDialogue = dialogueObject.GetComponent<NPCDialogue>();
+        currentIndex = currentDialogue.GetIndex();
+        currentDialogueList = currentDialogue.GetDialogues();
         OpenDialogue();
     }
     

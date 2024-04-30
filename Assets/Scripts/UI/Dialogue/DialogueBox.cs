@@ -12,6 +12,7 @@ public class DialogueBox : MonoBehaviour {
     [SerializeField] private float typingSpeed;
 
     public void ShowDialogue(Dialogue dialogue) {
+        nextButton.SetActive(false);
         UIManager.Instance.SetIsOpen(true);
         SetDialogue(dialogue);
         StopAllCoroutines();
@@ -20,6 +21,7 @@ public class DialogueBox : MonoBehaviour {
     
     public void HideDialogue() {
         UIManager.Instance.SetIsOpen(false);
+        gameObject.SetActive(false);
     }
     
     private void SetDialogue(Dialogue dialogue) {

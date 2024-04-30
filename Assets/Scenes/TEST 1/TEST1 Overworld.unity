@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657832, g: 0.49641222, b: 0.57481664, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6178,6 +6178,8 @@ MonoBehaviour:
   icon: {fileID: 1954222403}
   nameText: {fileID: 1291039801}
   dialogueText: {fileID: 890899852}
+  nextButton: {fileID: 1037747189}
+  typingSpeed: 0.05
 --- !u!1 &893003247
 GameObject:
   m_ObjectHideFlags: 0
@@ -13851,6 +13853,8 @@ MonoBehaviour:
   dialogues:
   - {fileID: 11400000, guid: 92505d59bd620b23782cce92a967747d, type: 2}
   - {fileID: 11400000, guid: a2061212ee8bc508188c05619039c34c, type: 2}
+  - {fileID: 11400000, guid: 33e2d4d056430db47824ba04139f15eb, type: 2}
+  - {fileID: 11400000, guid: 7de3e29e97eea0b038b334622179e505, type: 2}
 --- !u!1 &1827384512
 GameObject:
   m_ObjectHideFlags: 0
