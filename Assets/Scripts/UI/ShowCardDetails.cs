@@ -49,7 +49,7 @@ public class ShowCardDetails : MonoBehaviour {
         Vector3 mousePosition = Mouse.current.position.ReadValue();
         descriptionWindow.sizeDelta = new Vector2(descriptionText.preferredWidth > 300 ?
             300 : descriptionText.preferredWidth, descriptionText.preferredHeight);
-        descriptionWindow.transform.position = new Vector2(mousePosition.x + 20, mousePosition.y);
+        descriptionWindow.transform.position = new Vector2(mousePosition.x + 20, mousePosition.y + descriptionWindow.sizeDelta.y/2);
     }
 
     private void ReadCardData() {
