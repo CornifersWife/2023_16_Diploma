@@ -14,14 +14,14 @@ public class ShowName: MonoBehaviour {
     private bool playerNear = false;
     private float hoverTimer = 0f;
 
-    void Awake() {
+    private void Awake() {
         mainCamera = Camera.main;
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player");
         HideMessage();
     }
 
-    void Update() {
+    private void Update() {
         CheckPlayerNear();
         if (playerNear && IsMouseOver()) {
             hoverTimer += Time.deltaTime;
@@ -36,7 +36,7 @@ public class ShowName: MonoBehaviour {
         }
     }
 
-    void CheckPlayerNear() {
+    private void CheckPlayerNear() {
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
         
         if (distanceToPlayer <= detectionRadius) {
@@ -47,7 +47,7 @@ public class ShowName: MonoBehaviour {
         }
     }
 
-    bool IsMouseOver() {
+    private bool IsMouseOver() {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         
