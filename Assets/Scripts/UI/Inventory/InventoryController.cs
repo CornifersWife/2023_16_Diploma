@@ -6,12 +6,12 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class InventoryController : MonoBehaviour {
     [SerializeField] private GameObject inventoryUI;
+    [SerializeField] private GameObject cardSetDetailsPanel;
     [SerializeField] private InputAction rightClickAction;
 
     [SerializeField] private List<ItemSlot> itemSlots;
     [SerializeField] private List<ItemSlot> cardSetSlots;
     [SerializeField] private List<ItemSlot> deckSlots;
-    //TODO add space to show cards
     
     private PostProcessVolume postProcessVolume;
 
@@ -59,13 +59,13 @@ public class InventoryController : MonoBehaviour {
     }
 
     public void AddItem(Item item) {
-        if(item is CardSet)
+        if (item is CardSet)
             AddToSlot(item, cardSetSlots);
         else
             AddToSlot(item, itemSlots);
     }
 
-    public void AddToSlot(Item item, List<ItemSlot> itemList) {
+    private void AddToSlot(Item item, List<ItemSlot> itemList) {
         foreach (ItemSlot itemSlot in itemList) {
             if (!itemSlot.IsOccupied()) {
                 itemSlot.AddItem(item);
@@ -84,8 +84,11 @@ public class InventoryController : MonoBehaviour {
     private void DeselectSlots(List<ItemSlot> itemList) {
         foreach (ItemSlot itemSlot in itemList) {
             itemSlot.GetSelectedShader().SetActive(false);
-            itemSlot.SetIsActive(false);
         }
+    }
+
+    public void ShowCardSetDetails(CardSetData cardSetData) {
+        cardSetDetailsPanel.GetComponent<ManageCardSetDetails>().ReadCardSet(cardSetData);
     }
 
     public List<ItemSlot> GetDeck() {
