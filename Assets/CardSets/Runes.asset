@@ -30,7 +30,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d34bb5124edf4366858d0b34405f3a41, type: 3}
   m_Name: Runes
   m_EditorClassIdentifier: 
-  displayName: nodisplaynameset
+  displayName: Runes
   cards:
   - {fileID: 4288596436349734842}
   - {fileID: 7490268926539263766}
