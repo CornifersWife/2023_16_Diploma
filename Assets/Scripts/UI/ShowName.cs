@@ -49,9 +49,8 @@ public class ShowName: MonoBehaviour {
 
     private bool IsMouseOver() {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        
-        if (Physics.Raycast(ray, out hit) && hit.collider.gameObject == gameObject) {
+
+        if (Physics.Raycast(ray, out var hit) && hit.collider.gameObject == gameObject) {
             return true;
         }
         return false;
