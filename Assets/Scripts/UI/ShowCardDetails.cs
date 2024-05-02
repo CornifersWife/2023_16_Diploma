@@ -1,28 +1,27 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class ShowCardDetails : MonoBehaviour {
+public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
     [SerializeField] private float timeToWait = 0.5f;
     [SerializeField] private RectTransform descriptionWindow;
     [SerializeField] private TMP_Text descriptionText;
     
-    private Camera mainCamera;
     private float hoverTimer = 0f;
 
     private CardDisplay cardDisplay;
     private CardDetail cardDetail;
+
+    private bool isMouseOver;
     
     private void Awake() {
-        mainCamera = Camera.main;
         cardDisplay = GetComponent<CardDisplay>();
         cardDetail = GetComponent<CardDetail>();
-        
-        Debug.Log(gameObject);
     }
     
     private void Update() {
-        if (IsMouseOver()) {
+        if (isMouseOver) {
             hoverTimer += Time.deltaTime;
             if (hoverTimer >= timeToWait) {
                 MoveTextNearCursor();
@@ -35,14 +34,12 @@ public class ShowCardDetails : MonoBehaviour {
         }
     }
     
-    private bool IsMouseOver() {
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+    public void OnPointerEnter(PointerEventData eventData) {
+        isMouseOver = true;
+    }
 
-        if (Physics.Raycast(ray, out var hit) && hit.collider.gameObject == gameObject) {
-            Debug.Log("Hover");
-            return true;
-        }
-        return false;
+    public void OnPointerExit(PointerEventData eventData) {
+        isMouseOver = false;
     }
     
     private void MoveTextNearCursor() {

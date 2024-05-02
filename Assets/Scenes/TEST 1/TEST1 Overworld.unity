@@ -1400,11 +1400,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 202319686}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!224 &236976595 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4060075239787684097, guid: c2486b5d46d544e40963fd307d1628da, type: 3}
-  m_PrefabInstance: {fileID: 1051942420}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &249440898
 GameObject:
   m_ObjectHideFlags: 0
@@ -16449,8 +16444,8 @@ MonoBehaviour:
   nameText: {fileID: 2136755225}
   cardListSpace: {fileID: 792411939}
   cardSetDetailPrefab: {fileID: 3605576278557314391, guid: 143fa8369e4c97d468013ddf40b01ab3, type: 3}
-  descriptionWindow: {fileID: 236976595}
-  descriptionText: {fileID: 2054824159}
+  descriptionWindow: {fileID: 0}
+  descriptionText: {fileID: 0}
 --- !u!95 &1979305611
 Animator:
   serializedVersion: 5
@@ -17445,17 +17440,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2051587926}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &2054824159 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4320940063604230851, guid: c2486b5d46d544e40963fd307d1628da, type: 3}
-  m_PrefabInstance: {fileID: 1051942420}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2067809887
 PrefabInstance:
   m_ObjectHideFlags: 0
