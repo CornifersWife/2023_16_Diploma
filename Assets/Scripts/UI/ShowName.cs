@@ -69,7 +69,6 @@ public class ShowName: MonoBehaviour {
     }
 
     private void HideMessage() {
-        nameText.text = messageToShow;
         nameWindow.gameObject.SetActive(false);
     }
 }
