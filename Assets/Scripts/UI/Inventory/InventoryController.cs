@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.PostProcessing;
@@ -88,7 +87,9 @@ public class InventoryController : MonoBehaviour {
     }
 
     public void ShowCardSetDetails(CardSetData cardSetData) {
-        cardSetDetailsPanel.GetComponent<ManageCardSetDetails>().ReadCardSet(cardSetData);
+        ManageCardSetDetails manageDetails = cardSetDetailsPanel.GetComponent<ManageCardSetDetails>();
+        if (!manageDetails.IsOpen)
+            manageDetails.ReadCardSet(cardSetData);
     }
 
     public List<ItemSlot> GetDeck() {
