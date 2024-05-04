@@ -5,7 +5,7 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class InventoryController : MonoBehaviour {
     [SerializeField] private GameObject inventoryUI;
-    [SerializeField] private GameObject cardSetDetailsPanel;
+    [SerializeField] private ManageCardSetDetails manageCardSetDetails;
     [SerializeField] private InputAction rightClickAction;
 
     [SerializeField] private List<ItemSlot> itemSlots;
@@ -52,6 +52,8 @@ public class InventoryController : MonoBehaviour {
         if (Time.timeScale == 0)
             return;
         postProcessVolume.enabled = false;
+        DeselectAllSlots();
+        manageCardSetDetails.Hide();
         inventoryUI.SetActive(false);
         isOpen = false;
         UIManager.Instance.SetIsOpen(false);
@@ -87,9 +89,8 @@ public class InventoryController : MonoBehaviour {
     }
 
     public void ShowCardSetDetails(CardSetData cardSetData) {
-        ManageCardSetDetails manageDetails = cardSetDetailsPanel.GetComponent<ManageCardSetDetails>();
-        if (!manageDetails.IsOpen)
-            manageDetails.ReadCardSet(cardSetData);
+        if (!manageCardSetDetails.IsOpen)
+            manageCardSetDetails.ReadCardSet(cardSetData);
     }
 
     public List<ItemSlot> GetDeck() {
