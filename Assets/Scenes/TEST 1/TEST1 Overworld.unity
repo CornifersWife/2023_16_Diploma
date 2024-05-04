@@ -860,7 +860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 1611507863}
-  cardSetDetailsPanel: {fileID: 1979305605}
+  manageCardSetDetails: {fileID: 1979305610}
   rightClickAction:
     m_Name: Right Click
     m_Type: 0
