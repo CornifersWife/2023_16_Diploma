@@ -3,6 +3,7 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class PauseManager : MonoBehaviour {
     [SerializeField] private GameObject pauseView;
+    [SerializeField] private GameObject optionsView;
     private PostProcessVolume postProcessVolume;
 
     public static PauseManager Instance = null;
@@ -42,10 +43,15 @@ public class PauseManager : MonoBehaviour {
 
     public void OptionsClicked() {
         pauseView.SetActive(false);
-        
+        optionsView.SetActive(true);
     }
 
     public void ExitClicked() {
         SceneSwitcher.Instance.LoadScene("Main Menu");
+    }
+
+    public void BackClicked() {
+        pauseView.SetActive(true);
+        optionsView.SetActive(false);
     }
 }
