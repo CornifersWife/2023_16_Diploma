@@ -7,17 +7,17 @@ public class DamageEnemyMinionsEffect : Effect {
     public int damage = 1;
 
     public override void ExecuteEffect(BaseCardData sourceCard) {
-        var tmp = SetTargets(sourceCard);
-        if (!tmp.Any())
+        Debug.Log("execute eff");
+        var targets = SetTargets(sourceCard);
+        if (!targets.Any())
             return;
-        foreach (var target in tmp) {
+        foreach (var target in targets) {
             target.TakeDamage(damage);
         }
     }
 
     public override List<IDamageable> SetTargets(BaseCardData sourceCard) {
         var targets = GameManager.Instance.GetEnemyMinions(sourceCard.belongsToPlayer);
-        Debug.Log(sourceCard + "    "+sourceCard.belongsToPlayer +"\n" + Display(targets));
         return targets;
     }
 
