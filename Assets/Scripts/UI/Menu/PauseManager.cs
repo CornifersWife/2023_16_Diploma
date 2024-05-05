@@ -4,7 +4,9 @@ using UnityEngine.Rendering.PostProcessing;
 public class PauseManager : MonoBehaviour {
     [SerializeField] private GameObject pauseView;
     [SerializeField] private GameObject optionsView;
+    
     private PostProcessVolume postProcessVolume;
+    public bool IsOpen { get; set; }
 
     public static PauseManager Instance = null;
     
@@ -15,6 +17,7 @@ public class PauseManager : MonoBehaviour {
         else {
             Instance = this;
         }
+        DontDestroyOnLoad(this);
         pauseView.SetActive(false);
         postProcessVolume = GameObject.FindWithTag("MainCamera").GetComponent<PostProcessVolume>();
     }
@@ -22,6 +25,7 @@ public class PauseManager : MonoBehaviour {
     public void Open() {
         pauseView.SetActive(true);
         postProcessVolume.enabled = true;
+        IsOpen = true;
         UIManager.Instance.SetIsOpen(true);
         Time.timeScale = 0;
     }
@@ -29,6 +33,7 @@ public class PauseManager : MonoBehaviour {
     public void Close() {
         pauseView.SetActive(false);
         postProcessVolume.enabled = false;
+        IsOpen = false;
         UIManager.Instance.SetIsOpen(false);
         Time.timeScale = 1;
     }
