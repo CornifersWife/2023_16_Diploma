@@ -1,13 +1,12 @@
-public class BeatenState : BaseState {
+public class DefeatedState : BaseState {
     private EnemySM enemySM;
-    public BeatenState(EnemySM stateMachine) : base("Beaten", stateMachine) {
+    public DefeatedState(EnemySM stateMachine) : base("Defeated", stateMachine) {
         enemySM = stateMachine;
     }
 
     public override void Enter() {
         base.Enter();
-        enemySM.GetEnemyPopup().enabled = false;
-        enemySM.GetRenderer().material = enemySM.GetBeatenMaterial();
+        enemySM.GetRenderer().material = enemySM.GetDefeatedMaterial();
     }
 
     public override void UpdateLogic() {

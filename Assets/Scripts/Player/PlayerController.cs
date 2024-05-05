@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour, IWalkable {
@@ -11,16 +9,12 @@ public class PlayerController : MonoBehaviour, IWalkable {
     
     private Vector3 targetPosition;
     private int groundLayer;
-    private GameObject UIGameObject;
-    private int activeUIOnStart;
 
     private void Awake() {
         mainCamera = Camera.main;
         navMeshAgent = GetComponent<NavMeshAgent>();
         groundLayer = LayerMask.NameToLayer("Ground");
         targetPosition = transform.position;
-        UIGameObject = GameObject.Find("UI");
-        activeUIOnStart = GetActiveUIOnStart();
     }
 
     private void OnEnable() {
@@ -40,13 +34,7 @@ public class PlayerController : MonoBehaviour, IWalkable {
     
     public void SetTargetPoint() {
         Vector3 mousePos = Mouse.current.position.ReadValue();
-        PointerEventData eventData = new(EventSystem.current)
-        {
-            position = mousePos
-        };
-        List<RaycastResult> results = new();
-        EventSystem.current.RaycastAll(eventData, results);
-        if (results.Count > activeUIOnStart)
+        if (UIManager.Instance.IsOpen())
             return;
 
         Ray ray = mainCamera.ScreenPointToRay(mousePos);
@@ -58,20 +46,6 @@ public class PlayerController : MonoBehaviour, IWalkable {
     public void Walk(Vector3 target) {
         navMeshAgent.SetDestination(target);
     }
-
-    private int GetActiveUIOnStart() {
-        int count = 0;
-        foreach (Transform uiChild in UIGameObject.transform) {
-            if (uiChild.gameObject.activeSelf) {
-                count++;
-            }
-        }
-        return count;
-    }
     
-    private void OnDrawGizmos() {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(targetPosition, 0.3f);
-    }
-
+    
 }

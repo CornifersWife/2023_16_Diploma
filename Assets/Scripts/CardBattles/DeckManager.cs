@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DeckManager : MonoBehaviour {
+    [SerializeField] private bool isPlayer;
     [Header("CardSets")]
     [SerializeField] private List<CardSetData> cardSets = new List<CardSetData>();
     [Space(10)]
@@ -31,7 +32,9 @@ public class DeckManager : MonoBehaviour {
     }
 
     private List<CardSetData> LoadCardSetData() {
-        return InventoryController.Instance.GetCardSets();
+        if(isPlayer)
+            return InventoryController.Instance.GetCardSets();
+        return EnemyStateManager.Instance.GetCurrentEnemy().GetDeck();
     }
 
     public BaseCardData DrawCard() {

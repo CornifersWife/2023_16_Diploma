@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneSwitcher : MonoBehaviour {
-    public static SceneSwitcher Instance { get; set; }
+    public static SceneSwitcher Instance = null;
 
     private void Awake() {
         if (Instance != null && Instance != this) {
@@ -11,6 +11,7 @@ public class SceneSwitcher : MonoBehaviour {
         else {
             Instance = this;
         }
+        DontDestroyOnLoad(gameObject); 
     }
 
     public void LoadScene(string sceneName) {

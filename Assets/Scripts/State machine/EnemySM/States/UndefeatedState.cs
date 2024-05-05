@@ -1,24 +1,26 @@
 
 using UnityEngine;
 
-public class UnbeatenState : BaseState {
+public class UndefeatedState : BaseState {
     private EnemySM enemySM;
     
-    public UnbeatenState(EnemySM stateMachine) : base("Unbeaten", stateMachine) {
+    public UndefeatedState(EnemySM stateMachine) : base("Undefeated", stateMachine) {
         enemySM = stateMachine;
     }
 
     public override void Enter() {
         base.Enter();
-        enemySM.GetRenderer().material = enemySM.GetUnbeatenMaterial();
+        enemySM.GetRenderer().material = enemySM.GetUndefeatedMaterial();
         //prepare deck?
     }
 
     public override void UpdateLogic() {
         base.UpdateLogic();
         //check if beaten
+        /*
         if(enemySM.IsBeaten())
             enemySM.ChangeState(enemySM.beatenState);
+            */
     }
 
     public override void UpdatePhysics() {

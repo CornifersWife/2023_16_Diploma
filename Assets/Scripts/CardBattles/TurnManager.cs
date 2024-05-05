@@ -161,7 +161,6 @@ namespace TurnSystem {
                     //Show something
                 }
 
-                Application.Quit();
             }
         }
 
