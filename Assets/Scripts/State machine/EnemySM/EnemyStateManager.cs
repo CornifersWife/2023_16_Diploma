@@ -5,10 +5,10 @@ public class EnemyStateManager : MonoBehaviour {
     private List<EnemySM> enemyList = new List<EnemySM>();
     private Enemy currentEnemy;
     
-    public static EnemyStateManager Instance = null;
+    public static EnemyStateManager Instance;
 
     private void Awake() {
-        if (Instance != null && Instance != this) {
+        if (Instance is not null && Instance != this) {
             Destroy(gameObject);
         } else {
             Instance = this;
