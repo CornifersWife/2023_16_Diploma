@@ -58,6 +58,10 @@ public class KeyboardInputManager : MonoBehaviour, PlayerControls.IPlayerActionM
     }
     
     public void OnPause(InputAction.CallbackContext context) {
-        Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+        if (PauseManager.Instance.IsOpen)
+            PauseManager.Instance.Close();
+        else {
+            PauseManager.Instance.Open();
+        }
     }
 }

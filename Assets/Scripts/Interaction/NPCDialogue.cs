@@ -2,18 +2,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NPCDialogue : MonoBehaviour {
-    [SerializeField] private List<Dialogue> dialogues;
-    private int index = 0;
+    [SerializeField] private List<MainDialogue> mainDialogues;
+    private int mainIndex;
+    
+    [SerializeField] private List<ShortDialogue> shortDialogues;
+    private int shortIndex;
 
-    public List<Dialogue> GetDialogues() {
-        return dialogues;
+    public List<MainDialogue> GetMainDialogues() {
+        return mainDialogues;
     }
 
-    public int GetIndex() {
-        return index;
+    public int GetMainIndex() {
+        return mainIndex;
     }
 
-    public void SetIndex(int value) {
-        index = value;
+    public void SetMainIndex(int value) {
+        mainIndex = value;
+    }
+    
+    public ShortDialogue GetShortDialogue() {
+        if (shortDialogues.Count == 0 || shortIndex >= shortDialogues.Count)
+            return null;
+        return shortDialogues[shortIndex];
+    }
+
+    public int GetShortIndex() {
+        return shortIndex;
+    }
+
+    public void SetShortIndex(int value) {
+        shortIndex = value;
     }
 }
