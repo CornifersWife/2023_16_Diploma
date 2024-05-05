@@ -45,10 +45,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
         isOccupied = value;
     }
 
-    public void SetIsActive(bool value) {
-        isActive = value;
-    }
-
     public GameObject GetSelectedShader() {
         return selectedShader;
     }
@@ -61,7 +57,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
     private void OnLeftClick() {
         InventoryController.Instance.DeselectAllSlots();
         selectedShader.SetActive(true);
-        SetIsActive(true);
+        if (item is CardSet cardSet) {
+            InventoryController.Instance.ShowCardSetDetails(cardSet.GetCardSetData());
+        }
     }
 
     public void OnDrop(PointerEventData eventData) {
@@ -93,10 +91,10 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
     }
 
     private void SetItem(Item newItem) {
-        this.item = newItem;
+        item = newItem;
     }
 
     private void ClearItem() {
-        this.item = null;
+        item = null;
     }
 }
