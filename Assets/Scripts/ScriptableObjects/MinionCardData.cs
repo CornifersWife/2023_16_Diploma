@@ -58,6 +58,10 @@ public class MinionCardData : BaseCardData, IDamageable, IActivatable {
         return power;
     }
 
+    public void Heal(int healAmount) {
+        throw new NotImplementedException();
+    }
+
     public Vector3 GetPosition() {
         if (OnRequestPosition != null) {
             return OnRequestPosition.Invoke();

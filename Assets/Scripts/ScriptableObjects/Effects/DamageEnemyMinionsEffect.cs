@@ -30,3 +30,54 @@ public class DamageEnemyMinionsEffect : Effect {
         return x;
     }
 }
+
+[CreateAssetMenu(fileName = "SilenceEnemyMinions", menuName = "Effects/Silence/EnemyMinions")]
+public class DamageAllMinionsEffect : Effect {
+    public int damage = 1;
+
+    public override void ExecuteEffect(BaseCardData sourceCard) {
+        Debug.Log("Executing Silence Enemy Minions Effect");
+        var targets = SetTargets(sourceCard);
+        foreach (var target in targets) {
+            target.TakeDamage(damage);
+        }
+    }
+
+    public override List<IDamageable> SetTargets(BaseCardData sourceCard) {
+        return GameManager.Instance.GetEnemyMinions(sourceCard.belongsToPlayer);
+    }
+}
+
+[CreateAssetMenu(fileName = "HealAllAllies", menuName = "Effects/Heal/AllAllies")]
+public class HealAllAlliesEffect : Effect {
+    public int healAmount = 2;
+
+    public override void ExecuteEffect(BaseCardData sourceCard) {
+        Debug.Log("Executing Heal All Allies Effect");
+        var targets = SetTargets(sourceCard);
+        foreach (var target in targets) {
+            target.Heal(healAmount);
+        }
+    }
+
+    public override List<IDamageable> SetTargets(BaseCardData sourceCard) {
+        return GameManager.Instance.GetAllies(sourceCard.belongsToPlayer);
+    }
+}
+
+[CreateAssetMenu(fileName = "DamageAllHeroes", menuName = "Effects/Damage/AllHeroes")]
+public class DamageEnemyHeroEffect : Effect {
+    public int damage = 3;
+
+    public override void ExecuteEffect(BaseCardData sourceCard) {
+        Debug.Log("Executing Damage All Heroes Effect");
+        var targets = SetTargets(sourceCard);
+        foreach (var target in targets) {
+            target.TakeDamage(damage);
+        }
+    }
+
+    public override List<IDamageable> SetTargets(BaseCardData sourceCard) {
+        return new List<IDamageable>() { GameManager.Instance.GetEnemyHero(sourceCard) };
+    }
+}
