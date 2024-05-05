@@ -32,6 +32,7 @@ public class PauseManager : MonoBehaviour {
 
     public void Close() {
         pauseView.SetActive(false);
+        optionsView.SetActive(false);
         postProcessVolume.enabled = false;
         IsOpen = false;
         UIManager.Instance.SetIsOpen(false);
