@@ -52,9 +52,8 @@ public class InventoryController : MonoBehaviour {
         if (PauseManager.Instance.IsOpen)
             return;
         postProcessVolume.enabled = false;
+        manageCardSetDetails.Hide();
         DeselectAllSlots();
-        if(manageCardSetDetails.IsOpen)
-            manageCardSetDetails.Hide();
         inventoryUI.SetActive(false);
         isOpen = false;
         UIManager.Instance.SetIsOpen(false);

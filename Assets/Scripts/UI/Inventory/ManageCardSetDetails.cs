@@ -17,6 +17,7 @@ public class ManageCardSetDetails : MonoBehaviour {
 
     private void Awake() {
         animator = GetComponent<Animator>();
+        animator.SetBool("isOpen", false);
     }
 
     public void ReadCardSet(CardSetData cardSetData) {
