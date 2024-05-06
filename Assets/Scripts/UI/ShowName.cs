@@ -14,19 +14,18 @@ public class ShowName: MonoBehaviour {
     private bool playerNear = false;
     private float hoverTimer = 0f;
 
-    void Awake() {
+    private void Awake() {
         mainCamera = Camera.main;
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player");
         HideMessage();
     }
 
-    void Update() {
+    private void Update() {
         CheckPlayerNear();
         if (playerNear && IsMouseOver()) {
             hoverTimer += Time.deltaTime;
-            if (hoverTimer >= timeToWait)
-            {
+            if (hoverTimer >= timeToWait) {
                 MoveTextNearCursor();
                 ShowMessage();
             }
@@ -37,7 +36,7 @@ public class ShowName: MonoBehaviour {
         }
     }
 
-    void CheckPlayerNear() {
+    private void CheckPlayerNear() {
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
         
         if (distanceToPlayer <= detectionRadius) {
@@ -48,11 +47,10 @@ public class ShowName: MonoBehaviour {
         }
     }
 
-    bool IsMouseOver() {
+    private bool IsMouseOver() {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        
-        if (Physics.Raycast(ray, out hit) && hit.collider.gameObject == gameObject) {
+
+        if (Physics.Raycast(ray, out var hit) && hit.collider.gameObject == gameObject) {
             return true;
         }
         return false;
@@ -70,7 +68,6 @@ public class ShowName: MonoBehaviour {
     }
 
     private void HideMessage() {
-        nameText.text = messageToShow;
         nameWindow.gameObject.SetActive(false);
     }
 }

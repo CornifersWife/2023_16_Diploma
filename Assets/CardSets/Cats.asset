@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1
   cardName: Cats_Card_0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
   power: 1
   currentHealth: 0
   maxHealth: 1
@@ -32,7 +32,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1
   cardName: Cats_Card_2
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
   power: 0
   currentHealth: 0
   maxHealth: 1
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1
   cardName: Cats_Card_3
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
   power: 6
   currentHealth: 0
   maxHealth: 6
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d34bb5124edf4366858d0b34405f3a41, type: 3}
   m_Name: Cats
   m_EditorClassIdentifier: 
-  displayName: nodisplaynameset
+  displayName: Cats
   cards:
   - {fileID: -6699270195159481974}
   - {fileID: 7979782583658758999}
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1
   cardName: Cats_Card_1
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 21300000, guid: 07045f10a0a16f140aea936d45b09cc6, type: 3}
   power: 1
   currentHealth: 0
   maxHealth: 1
