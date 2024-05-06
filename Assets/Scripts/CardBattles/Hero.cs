@@ -22,6 +22,10 @@ public class Hero : MonoBehaviour, IDamageable {
         throw new System.NotImplementedException();
     }
 
+    public void HighlightAsPossibleTarget(bool on) {
+        throw new System.NotImplementedException();
+    }
+
 
     public Vector3 GetPosition() {
         return transform.position;

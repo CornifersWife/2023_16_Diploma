@@ -3,7 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class CardDisplay : MonoBehaviour {
+public class Card : MonoBehaviour {
     public BaseCardData cardData;
     [SerializeField] private TextMeshProUGUI cardNameText;
     [SerializeField] private TextMeshProUGUI cardHealthText;

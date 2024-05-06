@@ -44,37 +44,37 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public CardDisplay CreateCardInstance(BaseCardData cardData) {
+    public Card CreateCardInstance(BaseCardData cardData) {
         GameObject cardObj = Instantiate(cardPrefab, transform);
-        CardDisplay newCardDisplay = cardObj.GetComponent<CardDisplay>();
-        newCardDisplay.SetupCard(Instantiate(cardData));
-        return newCardDisplay;
+        Card newCard = cardObj.GetComponent<Card>();
+        newCard.SetupCard(Instantiate(cardData));
+        return newCard;
     }
 
-    public CardDisplay CreateCardInstance(BaseCardData cardData, Transform newTransform) {
+    public Card CreateCardInstance(BaseCardData cardData, Transform newTransform) {
         GameObject cardObj = Instantiate(cardPrefab, transform);
         cardObj.transform.position = newTransform.position;
-        CardDisplay newCardDisplay = cardObj.GetComponent<CardDisplay>();
-        newCardDisplay.SetupCard(Instantiate(cardData));
-        return newCardDisplay;
+        Card newCard = cardObj.GetComponent<Card>();
+        newCard.SetupCard(Instantiate(cardData));
+        return newCard;
     }
 
-    private void OnCardPlayed(CardSpot cardSpot, CardDisplay cardDisplay) {
+    private void OnCardPlayed(CardSpot cardSpot, Card card) {
         var actionPoint = cardSpot.isPlayers ? playerActionPoint : enemyActionPoint;
         if (!actionPoint.CanUseAP()) {
-            cardDisplay.GetComponent<DragAndDrop>().SnapBack();
+            card.GetComponent<DragAndDrop>().SnapBack();
             return;
         }
 
         actionPoint.UseActionPoint();
         var hand = cardSpot.isPlayers ? playerHand : enemyHand;
-        cardSpot.SetCardDisplay(cardDisplay);
-        hand.RemoveCardFromHand(cardDisplay);
+        cardSpot.SetCardDisplay(card);
+        hand.RemoveCardFromHand(card);
         Transform cardTransform;
-        (cardTransform = cardDisplay.transform).SetParent(cardSpot.transform);
+        (cardTransform = card.transform).SetParent(cardSpot.transform);
         cardTransform.localPosition = Vector3.zero;
         cardTransform.position = cardSpot.transform.position;
-        cardDisplay.transform.rotation = Quaternion.Euler(0, 0, 0);
+        card.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     private void SubscribeToCardSpot(CardSpot cardSpot) {
@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour {
 
         var card = availableCards[Random.Range(0, availableCards.Count())];
         var boardSpot = availableBoardSpaces[Random.Range(0, availableBoardSpaces.Count())];
-        boardSpot.CardDisplay = card;
+        boardSpot.Card = card;
         return true;
     }
 

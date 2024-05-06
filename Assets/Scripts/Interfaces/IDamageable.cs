@@ -7,4 +7,5 @@ public interface IDamageable {
     int GetPower();
 
     void Heal(int healAmount);
+    void HighlightAsPossibleTarget(bool on);
 }

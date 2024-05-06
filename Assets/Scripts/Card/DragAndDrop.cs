@@ -78,6 +78,6 @@ public class DragAndDrop : MonoBehaviour {
     }
 
     private void PlayCardAt(CardSpot target) {
-        target.CardDisplay = GetComponent<CardDisplay>();
+        target.Card = GetComponent<Card>();
     }
 }

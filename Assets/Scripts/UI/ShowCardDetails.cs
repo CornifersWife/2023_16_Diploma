@@ -10,13 +10,13 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
     
     private float hoverTimer = 0f;
 
-    private CardDisplay cardDisplay;
+    private Card card;
     private CardDetail cardDetail;
 
     private bool isMouseOver;
     
     private void Awake() {
-        cardDisplay = GetComponent<CardDisplay>();
+        card = GetComponent<Card>();
         cardDetail = GetComponent<CardDetail>();
     }
     
@@ -51,8 +51,8 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     private void ReadCardData() {
         BaseCardData cardData;
-        if (cardDisplay is not null) {
-            cardData = cardDisplay.cardData;
+        if (card is not null) {
+            cardData = card.cardData;
         }
         else {
             cardData = cardDetail.CardData;

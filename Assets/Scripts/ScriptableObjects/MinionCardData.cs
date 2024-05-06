@@ -62,6 +62,10 @@ public class MinionCardData : BaseCardData, IDamageable, IActivatable {
         throw new NotImplementedException();
     }
 
+    public void HighlightAsPossibleTarget(bool on) {
+        throw new NotImplementedException();
+    }
+
     public Vector3 GetPosition() {
         if (OnRequestPosition != null) {
             return OnRequestPosition.Invoke();

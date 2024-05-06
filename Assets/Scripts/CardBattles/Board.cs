@@ -76,13 +76,13 @@ public class Board : MonoBehaviour {
             if (attackers[i].IsEmpty()) continue;
             yield return new WaitForSeconds(delayBetweenAttacks);
             try {
-                var attacker = (MinionCardData)attackers[i].CardDisplay.cardData;
+                var attacker = (MinionCardData)attackers[i].Card.cardData;
                 if (targetted[i].IsEmpty()) {
                     attacker.Attack(targetHero);
                     continue;
                 }
 
-                var target = (MinionCardData)targetted[i].CardDisplay.cardData;
+                var target = (MinionCardData)targetted[i].Card.cardData;
                 attacker.Attack(target);
             }
             catch (Exception e) {
@@ -98,7 +98,7 @@ public class Board : MonoBehaviour {
         List<IDamageable> tmpOutput = new List<IDamageable>();
         for (int i = 0; i < tmp.Length; i++) {
             if (tmp[i].IsEmpty()) continue;
-            tmpOutput.Add((MinionCardData)tmp[i].CardDisplay.cardData);
+            tmpOutput.Add((MinionCardData)tmp[i].Card.cardData);
         }
 
         return tmpOutput;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HandManager : MonoBehaviour {
-    public List<CardDisplay> hand = new List<CardDisplay>();
+    public List<Card> hand = new List<Card>();
     [SerializeField] private DeckManager deck;
     public bool isPlayers = true;
     [SerializeField] private float baseCardSpacing = 1.0f; 
@@ -49,16 +49,16 @@ public class HandManager : MonoBehaviour {
 
     
     public void AddCardToHand(BaseCardData cardData) {
-        CardDisplay newCardDisplay = GameManager.Instance.CreateCardInstance(cardData,deck.transform);
+        Card newCard = GameManager.Instance.CreateCardInstance(cardData,deck.transform);
         if (!isPlayers) {
-            newCardDisplay.GetComponent<DragAndDrop>().enabled = false;
+            newCard.GetComponent<DragAndDrop>().enabled = false;
         }
-        newCardDisplay.transform.SetParent(transform);
-        hand.Add(newCardDisplay);
+        newCard.transform.SetParent(transform);
+        hand.Add(newCard);
         UpdateCardPositionsInHand();
     }
 
-    public void RemoveCardFromHand(CardDisplay card) {
+    public void RemoveCardFromHand(Card card) {
         if (hand.Remove(card))
             UpdateCardPositionsInHand();
     }

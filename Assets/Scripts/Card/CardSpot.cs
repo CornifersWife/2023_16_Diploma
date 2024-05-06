@@ -2,15 +2,15 @@ using System;
 using UnityEngine;
 
 public class CardSpot : MonoBehaviour {
-    private CardDisplay cardDisplay;
+    private Card card;
     public bool isPlayers = true;
-    public event Action<CardSpot,CardDisplay> Play;
+    public event Action<CardSpot,Card> Play;
     
     public Material defaultMaterial;
     public Material outlineMaterial; // Assign the shimmering outline material here
     private Renderer objectRenderer;
-    public CardDisplay CardDisplay {
-        get => cardDisplay;
+    public Card Card {
+        get => card;
         set => Play?.Invoke(this,value);
     }
 
@@ -18,22 +18,22 @@ public class CardSpot : MonoBehaviour {
         objectRenderer = GetComponent<Renderer>();
         objectRenderer.material = defaultMaterial;
     }
-    public void SetCardDisplay(CardDisplay newCardDisplay) {
-        cardDisplay = newCardDisplay;
-        //cardDisplay.cardData.belongsToPlayer = isPlayers;
-        cardDisplay.cardData.Play();
-        cardDisplay.GetComponent<DragAndDrop>().enabled = false;
-        cardDisplay.OnDestroyed += HandleCardDisplayDestroyed;
-        cardDisplay.transform.localPosition = new Vector3(0, 0, 0);
+    public void SetCardDisplay(Card newCard) {
+        card = newCard;
+        //card.cardData.belongsToPlayer = isPlayers;
+        card.cardData.Play();
+        card.GetComponent<DragAndDrop>().enabled = false;
+        card.OnDestroyed += HandleCardDestroyed;
+        card.transform.localPosition = new Vector3(0, 0, 0);
     }
-    private void HandleCardDisplayDestroyed() {
-        cardDisplay.OnDestroyed -= HandleCardDisplayDestroyed;
-        cardDisplay = null;
+    private void HandleCardDestroyed() {
+        card.OnDestroyed -= HandleCardDestroyed;
+        card = null;
     }
     
 
     public bool IsEmpty () {
-        if (cardDisplay is null) {
+        if (card is null) {
             return true;
         }
         return false;
