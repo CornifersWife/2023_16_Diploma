@@ -40,7 +40,7 @@ public class InventoryController : MonoBehaviour {
     }
 
     public void ShowInventory(InputAction.CallbackContext context) {
-        if (Time.timeScale == 0)
+        if (PauseManager.Instance.IsOpen)
             return;
         inventoryUI.SetActive(true);
         postProcessVolume.enabled = true;
@@ -49,11 +49,11 @@ public class InventoryController : MonoBehaviour {
     }
 
     public void HideInventory() {
-        if (Time.timeScale == 0)
+        if (PauseManager.Instance.IsOpen)
             return;
         postProcessVolume.enabled = false;
-        DeselectAllSlots();
         manageCardSetDetails.Hide();
+        DeselectAllSlots();
         inventoryUI.SetActive(false);
         isOpen = false;
         UIManager.Instance.SetIsOpen(false);
