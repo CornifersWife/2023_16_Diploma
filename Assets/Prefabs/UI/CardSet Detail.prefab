@@ -282,6 +282,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1549342750163232669}
     m_Modifications:
+    - target: {fileID: 3219392622169063251, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
+      propertyPath: m_fontSize
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 3219392622169063251, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3219392622169063251, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3387494698571748497, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -312,7 +324,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3387494698571748497, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 500
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 3387494698571748497, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3387494698571748497, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3387494698571748497, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3387494698571748497, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -368,6 +392,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878614493541960800, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832045608727974014, guid: 09802330c42027d4d9c2951ab876fffa, type: 3}
+      propertyPath: m_RaycastTarget
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
