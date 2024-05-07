@@ -31,11 +31,15 @@ public class ManageGame : MonoBehaviour {
     private void Update() {
         if (enemies[0].GetEnemy().GetState() == EnemyState.Defeated) {
             unlockableNPC.SetActive(true);
+            enemies[0].ChangeState(EnemyState.Locked);
+            enemies[0].gameObject.SetActive(false);
             enemies[1].ChangeState(EnemyState.Undefeated);
         }
 
         if (enemies[1].GetEnemy().GetState() == EnemyState.Defeated) {
             unlockableCard.SetActive(true);
+            enemies[1].ChangeState(EnemyState.Locked);
+            enemies[1].gameObject.SetActive(false);
         }
     }
 

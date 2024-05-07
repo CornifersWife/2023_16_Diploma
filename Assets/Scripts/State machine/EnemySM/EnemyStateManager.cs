@@ -28,6 +28,7 @@ public class EnemyStateManager : MonoBehaviour {
     }
 
     public void ChangeEnemyState(EnemyState state) {
+        Debug.Log(currentEnemy);
         currentEnemy.ChangeState(state);
     }
 

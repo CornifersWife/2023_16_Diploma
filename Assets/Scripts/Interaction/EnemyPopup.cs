@@ -7,6 +7,7 @@ public class EnemyPopup : MonoBehaviour{
     [SerializeField] private RectTransform popupPanel;
     [SerializeField] private GameObject deckPopup;
     [SerializeField] private InputAction mouseClickAction;
+    [SerializeField] private GameObject tmpPanel;
     
     private Camera mainCamera;
     private Enemy enemy; //TODO IF We dont want to use null, use for example Enemy 0 for default value
@@ -55,8 +56,9 @@ public class EnemyPopup : MonoBehaviour{
         popupPanel.gameObject.SetActive(false);
         if (CheckDeck(3)) {
             EnemyStateManager.Instance.SetCurrentEnemy(enemy);
-            Close();
-            SceneSwitcher.Instance.LoadScene("Irys playspace");
+            tmpPanel.SetActive(true);
+            //Close();
+            //SceneSwitcher.Instance.LoadScene("Irys playspace");
         }
         else {
             deckPopup.SetActive(true);
@@ -76,6 +78,12 @@ public class EnemyPopup : MonoBehaviour{
     private void Close() {
         enemy = null;
         UIManager.Instance.SetIsOpen(false);
+    }
+
+    public void ClosePanel() {
+        tmpPanel.SetActive(false);
+        EnemyStateManager.Instance.ChangeEnemyState(EnemyState.Defeated);
+        Close();
     }
 
     private bool CheckDeck(int count) {
