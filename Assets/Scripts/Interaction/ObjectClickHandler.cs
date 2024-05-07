@@ -9,6 +9,11 @@ public class ObjectClickHandler : MonoBehaviour, PlayerControls.IObjectClickMapA
     private Camera mainCamera;
     private GameObject clickedObject;
 
+    public bool IsActive {
+        get;
+        set;
+    }
+
     private void Awake() {
         if (Instance != null && Instance != this) {
             Destroy(gameObject);
@@ -31,10 +36,12 @@ public class ObjectClickHandler : MonoBehaviour, PlayerControls.IObjectClickMapA
     }
 
     private void SetObject() {
-        Ray ray = mainCamera.ScreenPointToRay( Input.mousePosition );
+        if (IsActive) {
+            Ray ray = mainCamera.ScreenPointToRay( Input.mousePosition );
 		
-        if(Physics.Raycast( ray, out RaycastHit hit)) {
-            clickedObject = hit.collider.gameObject;
+            if(Physics.Raycast( ray, out RaycastHit hit)) {
+                clickedObject = hit.collider.gameObject;
+            } 
         }
     }
 

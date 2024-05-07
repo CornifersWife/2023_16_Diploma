@@ -27,6 +27,7 @@ public class DialogueTrigger : MonoBehaviour, PlayerControls.INPCClickMapActions
             GameObject NPC = hit.collider.gameObject;
             DialogueManager.Instance.SetCurrentDialogue(NPC);
             ObjectClickHandler.Instance.SetObject(NPC);
+            ObjectClickHandler.Instance.IsActive = false;
         }
     }
 }

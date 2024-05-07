@@ -21,6 +21,7 @@ public class DialogueBox : MonoBehaviour {
     
     public void HideDialogue() {
         UIManager.Instance.SetIsOpen(false);
+        ObjectClickHandler.Instance.IsActive = true;
         gameObject.SetActive(false);
     }
     

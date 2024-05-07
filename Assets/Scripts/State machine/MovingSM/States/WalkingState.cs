@@ -20,7 +20,7 @@ public class WalkingState : PatrolState {
     public override void UpdateLogic() {
         base.UpdateLogic();
         UpdateWaypoint();
-        if (Vector3.Distance(navMeshAgent.transform.position, currentWaypoint) < Mathf.Epsilon) {
+        if (Vector3.Distance(navMeshAgent.transform.position, currentWaypoint) < 0.6) {
             SetWaypoint();
             movingSM.SetWaiting(true);
             movingSM.ChangeState(movingSM.waitingState);
