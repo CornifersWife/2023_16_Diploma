@@ -21,6 +21,11 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
     }
     
     private void Update() {
+        if (PauseManager.Instance.IsOpen)
+            return;
+        if (cardDisplay is not null && InventoryController.Instance.IsOpen())
+            return;
+        
         if (isMouseOver) {
             hoverTimer += Time.deltaTime;
             if (hoverTimer >= timeToWait) {
