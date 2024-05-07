@@ -8,13 +8,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Overworld Test.unity
     guid: 427002d2bdd2f1d4190e7f29a251f938
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TEST 1/TEST1 Overworld.unity
     guid: 6cf40fddb86f1cc4f879c5ef282ef9bf
   - enabled: 1
-    path: Assets/Scenes/Irys playspace.unity
-    guid: c85c7edea3557ec489103e21449e6762
-  - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 0ca1db45a6557ce47b846358bd8b408b
+  - enabled: 1
+    path: Assets/Scenes/TEST 2/Overworld Test 2.unity
+    guid: 32fa3bda47ce47341b911345ee8ac404
+  - enabled: 1
+    path: Assets/Scenes/Irys playspace.unity
+    guid: c85c7edea3557ec489103e21449e6762
   m_configObjects: {}
