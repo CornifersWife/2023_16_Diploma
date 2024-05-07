@@ -4,15 +4,17 @@ using UnityEngine;
 public class EnemyStateManager : MonoBehaviour {
     private List<EnemySM> enemyList = new List<EnemySM>();
     private Enemy currentEnemy;
-    
-    public static EnemyStateManager Instance = null;
+
+    public static EnemyStateManager Instance;
 
     private void Awake() {
-        if (Instance != null && Instance != this) {
+        if (Instance is not null && Instance != this) {
             Destroy(gameObject);
-        } else {
+        }
+        else {
             Instance = this;
         }
+
         DontDestroyOnLoad(this);
         LoadAllEnemies();
     }
@@ -20,7 +22,8 @@ public class EnemyStateManager : MonoBehaviour {
     private void LoadAllEnemies() {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (var enemy in enemies) {
-            enemyList.Add(enemy.GetComponent<EnemySM>());
+            if (enemy.TryGetComponent<EnemySM>(out var enemySm))
+                enemyList.Add(enemySm);
         }
     }
 
@@ -31,9 +34,8 @@ public class EnemyStateManager : MonoBehaviour {
     public void SetCurrentEnemy(Enemy enemy) {
         currentEnemy = enemy;
     }
-    
+
     public Enemy GetCurrentEnemy() {
         return currentEnemy;
     }
-    
 }

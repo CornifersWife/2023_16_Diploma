@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class DeckManager : MonoBehaviour {
     [SerializeField] private bool isPlayer;
-    [Header("CardSets")]
     [SerializeField] private List<CardSetData> cardSets = new List<CardSetData>();
     [Space(10)]
     public List<BaseCardData> deck = new List<BaseCardData>();
 
     private void Awake() {
-        cardSets = LoadCardSetData();
+        if(!Application.isEditor)
+            cardSets = LoadCardSetData();
     }
 
     private void Start() {
@@ -26,6 +26,10 @@ public class DeckManager : MonoBehaviour {
         var baseCardDatas = new List<BaseCardData>();
         foreach (CardSetData cardSet in cardSetDataCopies) {
             baseCardDatas.AddRange(cardSet.cards);
+        }
+
+        foreach (var card in baseCardDatas) {
+            card.belongsToPlayer = isPlayer;
         }
 
         return baseCardDatas;

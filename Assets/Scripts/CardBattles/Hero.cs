@@ -18,6 +18,10 @@ public class Hero : MonoBehaviour, IDamageable {
         return 0;
     }
 
+    public void Heal(int healAmount) {
+        throw new System.NotImplementedException();
+    }
+
 
     public Vector3 GetPosition() {
         return transform.position;

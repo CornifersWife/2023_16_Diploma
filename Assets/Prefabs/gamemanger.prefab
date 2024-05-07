@@ -46,8 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDeck: {fileID: 0}
   playerHand: {fileID: 0}
+  playerActionPoint: {fileID: 0}
   enemyDeck: {fileID: 0}
   enemyHand: {fileID: 0}
+  enemyActionPoint: {fileID: 0}
   board: {fileID: 0}
-  cardtoplay: -1
-  boardspacechosen: -1
+  cardPrefab: {fileID: 3111465510936162625, guid: c2486b5d46d544e40963fd307d1628da, type: 3}
+  loseImage: {fileID: 0}
+  winImage: {fileID: 0}

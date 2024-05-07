@@ -15,9 +15,15 @@ MonoBehaviour:
   cost: 1
   cardName: Goblins_Card_2
   cardImage: {fileID: 0}
+  belongsToPlayer: 1
   power: 2
   currentHealth: 0
   maxHealth: 2
+  hasDivineShield: 0
+  onPlayEffects:
+  - {fileID: 11400000, guid: 761e9826c2a338042acdaad74d01d1a2, type: 2}
+  onActivationEffects: []
+  onDeathEffects: []
 --- !u!114 &-6404360989559284207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33,9 +39,15 @@ MonoBehaviour:
   cost: 1
   cardName: Goblins_Card_4
   cardImage: {fileID: 0}
+  belongsToPlayer: 1
   power: 2
   currentHealth: 0
   maxHealth: 2
+  hasDivineShield: 0
+  onPlayEffects:
+  - {fileID: 11400000, guid: 761e9826c2a338042acdaad74d01d1a2, type: 2}
+  onActivationEffects: []
+  onDeathEffects: []
 --- !u!114 &-1042890870349328260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51,9 +63,15 @@ MonoBehaviour:
   cost: 1
   cardName: Goblins_Card_0
   cardImage: {fileID: 0}
+  belongsToPlayer: 1
   power: 2
   currentHealth: 0
   maxHealth: 2
+  hasDivineShield: 0
+  onPlayEffects:
+  - {fileID: 11400000, guid: 761e9826c2a338042acdaad74d01d1a2, type: 2}
+  onActivationEffects: []
+  onDeathEffects: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,9 +107,15 @@ MonoBehaviour:
   cost: 1
   cardName: Goblins_Card_3
   cardImage: {fileID: 0}
+  belongsToPlayer: 1
   power: 2
   currentHealth: 0
   maxHealth: 2
+  hasDivineShield: 0
+  onPlayEffects:
+  - {fileID: 11400000, guid: 761e9826c2a338042acdaad74d01d1a2, type: 2}
+  onActivationEffects: []
+  onDeathEffects: []
 --- !u!114 &4175809038653434971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,6 +131,12 @@ MonoBehaviour:
   cost: 1
   cardName: Goblins_Card_1
   cardImage: {fileID: 0}
+  belongsToPlayer: 1
   power: 2
   currentHealth: 0
   maxHealth: 2
+  hasDivineShield: 0
+  onPlayEffects:
+  - {fileID: 11400000, guid: 761e9826c2a338042acdaad74d01d1a2, type: 2}
+  onActivationEffects: []
+  onDeathEffects: []

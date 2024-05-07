@@ -1,4 +1,7 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Board : MonoBehaviour {
@@ -72,14 +75,32 @@ public class Board : MonoBehaviour {
         for (int i = 0; i < attackers.Length; i++) {
             if (attackers[i].IsEmpty()) continue;
             yield return new WaitForSeconds(delayBetweenAttacks);
-            var attacker = (MinionCardData)attackers[i].CardDisplay.cardData;
-            if (targetted[i].IsEmpty()) {
-                attacker.Attack(targetHero);
-                continue;
-            }
+            try {
+                var attacker = (MinionCardData)attackers[i].CardDisplay.cardData;
+                if (targetted[i].IsEmpty()) {
+                    attacker.Attack(targetHero);
+                    continue;
+                }
 
-            var target = (MinionCardData)targetted[i].CardDisplay.cardData;
-            attacker.Attack(target);
+                var target = (MinionCardData)targetted[i].CardDisplay.cardData;
+                attacker.Attack(target);
+            }
+            catch (Exception e) {
+                Debug.Log(e);
+                
+            }
+            
         }
+    }
+
+    public List<IDamageable> GetMinons(bool isPLayerSide) {
+        var tmp = isPLayerSide ? playerMinions : enemyMinions;
+        List<IDamageable> tmpOutput = new List<IDamageable>();
+        for (int i = 0; i < tmp.Length; i++) {
+            if (tmp[i].IsEmpty()) continue;
+            tmpOutput.Add((MinionCardData)tmp[i].CardDisplay.cardData);
+        }
+
+        return tmpOutput;
     }
 }
