@@ -31,6 +31,7 @@ public class SettingsManager : MonoBehaviour {
 
         fullscreenToggle.GetComponent<Toggle>().isOn = Screen.fullScreenMode == FullScreenMode.ExclusiveFullScreen;
     }
+    
     public void SetMusicVolume(float volume) {
         musicMixer.SetFloat("volume", volume);
     }
