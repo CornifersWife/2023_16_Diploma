@@ -3,9 +3,12 @@ using UnityEngine;
 
 public class ManageGame : MonoBehaviour {
     [SerializeField] private List<CardSet> currentCardSets;
-    [SerializeField] private List<Enemy> enemies;
+    [SerializeField] private List<EnemySM> enemies;
     [SerializeField] private GameObject unlockableNPC;
     [SerializeField] private GameObject unlockableCard;
+
+    [SerializeField] private Transform waypoint3;
+    [SerializeField] private Transform waypoint4;
 
     private static ManageGame Instance = null;
 
@@ -26,12 +29,12 @@ public class ManageGame : MonoBehaviour {
     }
 
     private void Update() {
-        if (enemies[0].GetState() == EnemyState.Defeated) {
+        if (enemies[0].GetEnemy().GetState() == EnemyState.Defeated) {
             unlockableNPC.SetActive(true);
             enemies[1].ChangeState(EnemyState.Undefeated);
         }
 
-        if (enemies[1].GetState() == EnemyState.Defeated) {
+        if (enemies[1].GetEnemy().GetState() == EnemyState.Defeated) {
             unlockableCard.SetActive(true);
         }
     }

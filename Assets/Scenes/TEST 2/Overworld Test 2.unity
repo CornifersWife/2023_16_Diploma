@@ -2987,7 +2987,7 @@ Transform:
   m_GameObject: {fileID: 132752148}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 25.9, y: 1, z: -69.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5852,6 +5852,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2486b5d46d544e40963fd307d1628da, type: 3}
+--- !u!1 &334832821 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3111465510936162625, guid: c2486b5d46d544e40963fd307d1628da, type: 3}
+  m_PrefabInstance: {fileID: 334832820}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &334862786
 GameObject:
   m_ObjectHideFlags: 0
@@ -8672,6 +8677,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupPanel: {fileID: 1287751425}
   deckPopup: {fileID: 1628933933}
+  mouseClickAction:
+    m_Name: Mouse Click
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: b3f1a400-fd22-47fa-bdec-2c1434344424
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 8217dbad-2101-4d71-874c-05ef07e29e7f
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Mouse Click
+      m_Flags: 0
+    m_Flags: 0
 --- !u!4 &529010453
 Transform:
   m_ObjectHideFlags: 0
@@ -20701,6 +20723,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540f2142c8ca4e35861f91c910a73755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseClickAction:
+    m_Name: Mouse Click
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: d37c24d0-7c51-4ab4-bbed-fd70de17b9a0
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: cf33b8d2-6095-4b8e-a538-1944ff2570e4
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Mouse Click
+      m_Flags: 0
+    m_Flags: 0
 --- !u!4 &1357026256
 Transform:
   m_ObjectHideFlags: 0
@@ -29163,6 +29202,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a7af63480e443bc89df8344efe4d04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseClickAction:
+    m_Name: Mouse Click
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 568dbb6f-c480-4154-9e86-15deef8d7f0a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 05726df7-307a-4d61-bae6-48b019b5d1b3
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Mouse Click
+      m_Flags: 0
+    m_Flags: 0
 --- !u!4 &1844159013
 Transform:
   m_ObjectHideFlags: 0
@@ -33677,9 +33733,13 @@ MonoBehaviour:
   - {fileID: 1735604708}
   - {fileID: 600550063}
   - {fileID: 804108035}
-  enemies: []
-  unlockableNPC: {fileID: 0}
-  unlockableCard: {fileID: 0}
+  enemies:
+  - {fileID: 194923483}
+  - {fileID: 1487363560}
+  unlockableNPC: {fileID: 425810761}
+  unlockableCard: {fileID: 334832821}
+  waypoint3: {fileID: 2142392793}
+  waypoint4: {fileID: 1476705790}
 --- !u!1 &2052404456
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,11 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class ObjectClickHandler : MonoBehaviour, PlayerControls.IObjectClickMapActions {
+public class ObjectClickHandler : MonoBehaviour {
     public static ObjectClickHandler Instance = null;
+    [SerializeField] private InputAction mouseClickAction;
     
-    private PlayerControls playerControls;
-
     private Camera mainCamera;
     private GameObject clickedObject;
 
@@ -24,18 +24,20 @@ public class ObjectClickHandler : MonoBehaviour, PlayerControls.IObjectClickMapA
     }
 
     private void Start() {
-        playerControls = InputManager.Instance.playerControls;
-        playerControls.ObjectClickMap.SetCallbacks(this);
-        playerControls.ObjectClickMap.Enable();
         mainCamera = Camera.main;
     }
-    
-    public void OnObjectClick(InputAction.CallbackContext context) {
-        if(context.started)
-            SetObject();
+
+    private void OnEnable() {
+        mouseClickAction.Enable();
+        mouseClickAction.performed += SetObject;
     }
 
-    private void SetObject() {
+    private void OnDisable() {
+        mouseClickAction.performed -= SetObject;
+        mouseClickAction.Disable();
+    }
+
+    private void SetObject(InputAction.CallbackContext context) {
         if (IsActive) {
             Ray ray = mainCamera.ScreenPointToRay( Input.mousePosition );
 		
