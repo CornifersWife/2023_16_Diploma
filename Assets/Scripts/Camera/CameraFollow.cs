@@ -3,6 +3,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour {
     [SerializeField] private float smoothing = 5f;
     [SerializeField] private Transform target;
+    [SerializeField] private HandleCameraCollision cameraCollision;
 
     private Vector3 offset;
     private Vector3 cameraPosition;
@@ -20,6 +21,10 @@ public class CameraFollow : MonoBehaviour {
 
     private void Update() {
         Vector3 newPosition = target.position + offset;
+        if (cameraCollision.IsColliding) {
+            newPosition.x -= 15;
+            newPosition.y += 15;
+        }
         transform.position = Vector3.Lerp (transform.position, newPosition, smoothing * Time.deltaTime);
     }
 }
