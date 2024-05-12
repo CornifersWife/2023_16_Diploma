@@ -590,8 +590,6 @@ GameObject:
   - component: {fileID: 25805795}
   - component: {fileID: 25805794}
   - component: {fileID: 25805793}
-  - component: {fileID: 25805799}
-  - component: {fileID: 25805800}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -766,41 +764,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &25805799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 25805791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 757a97dddbabb4249bd70e33bb7874b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!136 &25805800
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 25805791}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 8
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &30388000
 GameObject:
   m_ObjectHideFlags: 0
@@ -18151,7 +18114,7 @@ TerrainCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 2
   m_TerrainData: {fileID: 15600000, guid: 3e4f509db4c343d4d9c4ee4a77d3ee3d, type: 2}
@@ -18213,7 +18176,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 19863
+    m_Bits: 28055
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -30538,7 +30501,7 @@ Transform:
   m_GameObject: {fileID: 1857820964}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -30577,7 +30540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothing: 5
   target: {fileID: 132752155}
-  cameraCollision: {fileID: 25805799}
+  offset: {x: -15, y: 12, z: -15}
 --- !u!1 &1860020586
 GameObject:
   m_ObjectHideFlags: 0
