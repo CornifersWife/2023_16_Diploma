@@ -43,7 +43,6 @@ public class PlayerController : MonoBehaviour, IWalkable {
     }
 
     public void Walk(Vector3 target) {
-        Debug.Log(target);
         navMeshAgent.SetDestination(target);
     }
     
