@@ -28,22 +28,22 @@ public class PlayerController : MonoBehaviour, IWalkable {
     }
     
     private void MovePlayer(InputAction.CallbackContext context) {
+        if (UIManager.Instance.IsOpen())
+            return;
         SetTargetPoint();
-        Walk(targetPosition);
     }
     
     public void SetTargetPoint() {
         Vector3 mousePos = Mouse.current.position.ReadValue();
-        if (UIManager.Instance.IsOpen())
-            return;
-
         Ray ray = mainCamera.ScreenPointToRay(mousePos);
         if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(groundLayer) == 0) {
             targetPosition = hit.point;
+            Walk(targetPosition);
         }
     }
 
     public void Walk(Vector3 target) {
+        Debug.Log(target);
         navMeshAgent.SetDestination(target);
     }
     
