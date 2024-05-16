@@ -15,14 +15,13 @@ public static class ResolutionHandler {
         for (int i = 0; i < resolutions.Length; i++) {
             string option = resolutions[i].width + " x " + resolutions[i].height;
             Options.Add(option);
-
-            if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height) 
-                CurrentResolutionIndex = i;
+            CurrentResolutionIndex = resolutions.Length - 1;
         }
-        Screen.SetResolution(1920, 1080, FullScreenMode.ExclusiveFullScreen);
+        Screen.SetResolution(resolutions[CurrentResolutionIndex].width, resolutions[CurrentResolutionIndex].height, FullScreenMode.ExclusiveFullScreen);
     }
 
     public static void ChangeResolution(int resolutionIndex) {
+        Debug.LogError(resolutions[CurrentResolutionIndex]);
         CurrentResolutionIndex = resolutionIndex;
         Resolution resolution = resolutions[resolutionIndex];
         if(!resolution.Equals(Screen.currentResolution)) 
