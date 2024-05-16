@@ -22590,8 +22590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f4c9c94b7674f29a7cea7bec6e2ec8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicMixer: {fileID: 0}
-  SFXMixer: {fileID: 0}
   resolutionDropdown: {fileID: 1138001097}
   fullscreenToggle: {fileID: 225049712}
 --- !u!114 &1489389842
