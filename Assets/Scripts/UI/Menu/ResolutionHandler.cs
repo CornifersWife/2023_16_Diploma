@@ -17,11 +17,10 @@ public static class ResolutionHandler {
             Options.Add(option);
             CurrentResolutionIndex = resolutions.Length - 1;
         }
-        Screen.SetResolution(resolutions[CurrentResolutionIndex].width, resolutions[CurrentResolutionIndex].height, FullScreenMode.ExclusiveFullScreen);
+        Screen.SetResolution(resolutions[CurrentResolutionIndex].width, resolutions[CurrentResolutionIndex].height, FullScreenMode.FullScreenWindow);
     }
 
     public static void ChangeResolution(int resolutionIndex) {
-        Debug.LogError(resolutions[CurrentResolutionIndex]);
         CurrentResolutionIndex = resolutionIndex;
         Resolution resolution = resolutions[resolutionIndex];
         if(!resolution.Equals(Screen.currentResolution)) 
