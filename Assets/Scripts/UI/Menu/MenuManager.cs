@@ -15,6 +15,10 @@ public class MenuManager : MonoBehaviour {
         creditsView.SetActive(false);
     }
 
+    private void Start() {
+        ResolutionHandler.SetUpResolutions();
+    }
+
     #region  Main View
     public void StartClicked(string sceneName) {
         SceneManager.LoadScene(sceneName);
