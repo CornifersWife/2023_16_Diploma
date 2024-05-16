@@ -20766,7 +20766,15 @@ MonoBehaviour:
     m_Id: 174b35d0-df5c-47c5-bff9-24a6cc97d621
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: abba31a1-7acb-4398-8456-c5390c808ac7
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Mouse Click
+      m_Flags: 0
     m_Flags: 0
 --- !u!4 &1357026256
 Transform:
