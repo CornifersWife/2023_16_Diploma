@@ -6533,6 +6533,11 @@ MonoBehaviour:
     mixer: {fileID: 24300002, guid: 385decd12b6358346b631e41ff548c0e, type: 2}
     loop: 1
     source: {fileID: 0}
+  - soundName: Magic Click
+    clip: {fileID: 8300000, guid: 0dbea431e50f4214aad4d2459e2d12ce, type: 3}
+    mixer: {fileID: 24300002, guid: df39b2d0693626047beb99df21c9aea8, type: 2}
+    loop: 1
+    source: {fileID: 0}
 --- !u!4 &1949380588
 Transform:
   m_ObjectHideFlags: 0

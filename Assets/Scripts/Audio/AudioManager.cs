@@ -31,6 +31,7 @@ public class AudioManager : MonoBehaviour {
         }
         else if (SceneManager.GetActiveScene().name == "Main Menu") {
             Play("Main Menu Music");
+            Play("Magic Click");
         }
     }
 
@@ -49,6 +50,6 @@ public class AudioManager : MonoBehaviour {
     }
     
     public void SetSFXVolume(float volume) {
-        sfxMixer.SetFloat("volume", Mathf.Log10(volume) * 20);
+        sfxMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
     }
 }
