@@ -26,8 +26,8 @@ public class SettingsManager : MonoBehaviour {
         SFXMixer.SetFloat("volume", volume);
     }
 
-    public void SetFullscreen(bool isFullscreen) {
-        Screen.fullScreenMode = isFullscreen ? FullScreenMode.ExclusiveFullScreen : FullScreenMode.Windowed;
+    public void SetFullscreen() {
+        Screen.fullScreenMode = fullscreenToggle.isOn ? FullScreenMode.ExclusiveFullScreen : FullScreenMode.Windowed;
     }
 
     public void SetResolution() {
