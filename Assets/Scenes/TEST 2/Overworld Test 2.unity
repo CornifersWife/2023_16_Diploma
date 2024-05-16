@@ -8712,12 +8712,12 @@ MonoBehaviour:
     m_Name: Mouse Click
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: b3f1a400-fd22-47fa-bdec-2c1434344424
+    m_Id: ff6265d9-206a-453f-a05c-c836fe064f30
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 8217dbad-2101-4d71-874c-05ef07e29e7f
+      m_Id: 1f91e0be-fc3e-4548-86ae-a02c7846b270
       m_Path: <Mouse>/leftButton
       m_Interactions: 
       m_Processors: 
@@ -20763,18 +20763,10 @@ MonoBehaviour:
     m_Name: Mouse Click
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: d37c24d0-7c51-4ab4-bbed-fd70de17b9a0
+    m_Id: 174b35d0-df5c-47c5-bff9-24a6cc97d621
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: cf33b8d2-6095-4b8e-a538-1944ff2570e4
-      m_Path: <Mouse>/leftButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Mouse Click
-      m_Flags: 0
+    m_SingletonActionBindings: []
     m_Flags: 0
 --- !u!4 &1357026256
 Transform:
@@ -29492,12 +29484,12 @@ MonoBehaviour:
     m_Name: Mouse Click
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 568dbb6f-c480-4154-9e86-15deef8d7f0a
+    m_Id: 9721263c-a8d7-4b73-a0e6-8583a0004897
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 05726df7-307a-4d61-bae6-48b019b5d1b3
+      m_Id: 1ee2b178-fa82-4a03-bc44-b632d61d0b7b
       m_Path: <Mouse>/leftButton
       m_Interactions: 
       m_Processors: 
@@ -34025,8 +34017,8 @@ MonoBehaviour:
   - {fileID: 1487363560}
   unlockableNPC: {fileID: 425810761}
   unlockableCard: {fileID: 305605301}
-  waypoint3: {fileID: 2142392793}
-  waypoint4: {fileID: 1476705790}
+  waypoint3: {fileID: 0}
+  waypoint4: {fileID: 0}
 --- !u!1 &2052404456
 GameObject:
   m_ObjectHideFlags: 0
