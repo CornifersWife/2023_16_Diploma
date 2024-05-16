@@ -9,7 +9,7 @@ public class DeckManager : MonoBehaviour {
     public List<BaseCardData> deck = new List<BaseCardData>();
 
     private void Awake() {
-        if(!Application.isEditor)
+        //if(!Application.isEditor)
             cardSets = LoadCardSetData();
         deck = CreateDeckFromCardSets();
     }
