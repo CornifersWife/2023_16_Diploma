@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour, IWalkable {
     
     private Vector3 targetPosition;
     private int groundLayer;
+    private bool mouseClickEnabled = true;
 
     private void Awake() {
         mainCamera = Camera.main;
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour, IWalkable {
     }
     
     private void MovePlayer(InputAction.CallbackContext context) {
-        if (UIManager.Instance.IsOpen())
+        if (!mouseClickEnabled || UIManager.Instance.IsOpen())
             return;
         SetTargetPoint();
     }
@@ -45,6 +46,12 @@ public class PlayerController : MonoBehaviour, IWalkable {
     public void Walk(Vector3 target) {
         navMeshAgent.SetDestination(target);
     }
-    
-    
+
+    public void Stop() {
+        navMeshAgent.ResetPath();
+    }
+
+    public void Enable(bool value) {
+        mouseClickEnabled = value;
+    }
 }
