@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class DialogueBox : MonoBehaviour {
@@ -10,13 +11,26 @@ public class DialogueBox : MonoBehaviour {
     [SerializeField] private GameObject nextButton;
     
     [SerializeField] private float typingSpeed;
+    [SerializeField] private InputAction mouseClick;
+
+    private string sentence;
+    
+    private void OnEnable() {
+        mouseClick.Enable();
+        mouseClick.performed += ShowAllText;
+    }
+
+    private void OnDisable() {
+        mouseClick.performed -= ShowAllText;
+        mouseClick.Disable();
+    }
 
     public void ShowDialogue(MainDialogue dialogue) {
         nextButton.SetActive(false);
         UIManager.Instance.SetIsOpen(true);
         SetDialogue(dialogue);
         StopAllCoroutines();
-        StartCoroutine(TypeSentence(dialogue.DialogueText));
+        StartCoroutine(TypeSentence());
     }
     
     public void HideDialogue() {
@@ -28,14 +42,21 @@ public class DialogueBox : MonoBehaviour {
     private void SetDialogue(MainDialogue dialogue) {
         icon.sprite = dialogue.Icon;
         nameText.text = dialogue.NameText;
+        sentence = dialogue.DialogueText;
     }
 
-    private IEnumerator TypeSentence(string sentence) {
+    private IEnumerator TypeSentence() {
         dialogueText.text = "";
         foreach (char letter in sentence) {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
+            yield return new WaitForSeconds(1/typingSpeed);
         }
+        nextButton.SetActive(true);
+    }
+
+    private void ShowAllText(InputAction.CallbackContext context) {
+        StopAllCoroutines();
+        dialogueText.text = sentence;
         nextButton.SetActive(true);
     }
 }
