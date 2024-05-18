@@ -9,10 +9,7 @@ public class ObjectClickHandler : MonoBehaviour {
     private Camera mainCamera;
     private GameObject clickedObject;
 
-    public bool IsActive {
-        get;
-        set;
-    }
+    public bool isActive;
 
     private void Awake() {
         if (Instance != null && Instance != this) {
@@ -38,7 +35,7 @@ public class ObjectClickHandler : MonoBehaviour {
     }
 
     private void SetObject(InputAction.CallbackContext context) {
-        if (IsActive) {
+        if (isActive) {
             Ray ray = mainCamera.ScreenPointToRay( Input.mousePosition );
 		
             if(Physics.Raycast( ray, out RaycastHit hit)) {
@@ -53,5 +50,13 @@ public class ObjectClickHandler : MonoBehaviour {
     
     public GameObject GetObject() {
         return clickedObject;
+    }
+
+    public void EnableClickDetection() {
+        isActive = true;
+    }
+    
+    public void DisableClickDetection() {
+        isActive = false;
     }
 }

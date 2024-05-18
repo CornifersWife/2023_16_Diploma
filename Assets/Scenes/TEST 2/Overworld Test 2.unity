@@ -26766,7 +26766,6 @@ MonoBehaviour:
   fullscreenToggle: {fileID: 1304578011}
   mouseToggle: {fileID: 1934900782}
   keyboardToggle: {fileID: 637053461}
-  playerController: {fileID: 132752151}
 --- !u!114 &1606775186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31653,6 +31652,7 @@ MonoBehaviour:
       m_Action: Mouse Click
       m_Flags: 0
     m_Flags: 0
+  isActive: 0
 --- !u!4 &1844159013
 Transform:
   m_ObjectHideFlags: 0
@@ -33519,6 +33519,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec84d145a84f4856aa9c3d23ef15d7d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseInputManager: {fileID: 132752151}
+  keyboardInputManager: {fileID: 1934350919}
 --- !u!4 &1934350921
 Transform:
   m_ObjectHideFlags: 0

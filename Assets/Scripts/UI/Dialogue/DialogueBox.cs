@@ -14,6 +14,7 @@ public class DialogueBox : MonoBehaviour {
     [SerializeField] private InputAction mouseClick;
 
     private string sentence;
+    private bool skipped;
     
     private void OnEnable() {
         mouseClick.Enable();
@@ -35,7 +36,7 @@ public class DialogueBox : MonoBehaviour {
     
     public void HideDialogue() {
         InputManager.Instance.EnableAllInput();
-        ObjectClickHandler.Instance.IsActive = true;
+        ObjectClickHandler.Instance.EnableClickDetection();
         gameObject.SetActive(false);
     }
     
@@ -55,8 +56,15 @@ public class DialogueBox : MonoBehaviour {
     }
 
     private void ShowAllText(InputAction.CallbackContext context) {
-        StopAllCoroutines();
-        dialogueText.text = sentence;
-        nextButton.SetActive(true);
+        if (!skipped) {
+            StopAllCoroutines();
+            dialogueText.text = sentence;
+            nextButton.SetActive(true);
+            skipped = true;
+        }
+        else {
+            DialogueManager.Instance.NextDialogue();
+            skipped = false;
+        }
     }
 }

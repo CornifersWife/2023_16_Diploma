@@ -30,7 +30,7 @@ public class DialogueTrigger : MonoBehaviour {
                 GameObject NPC = hit.collider.gameObject;
                 DialogueManager.Instance.SetCurrentDialogue(NPC);
                 ObjectClickHandler.Instance.SetObject(NPC);
-                ObjectClickHandler.Instance.IsActive = false;
+                ObjectClickHandler.Instance.DisableClickDetection();
             }
         }
     }
