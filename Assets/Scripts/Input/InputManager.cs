@@ -8,10 +8,10 @@ public class InputManager : MonoBehaviour {
 
     [SerializeField] private MouseInputManager mouseInputManager;
     [SerializeField] private KeyboardInputManager keyboardInputManager;
-    
-    public bool MouseControls { get; set; }
-    public bool KeyboardControls { get; set; }
-    
+
+    public bool MouseControls { get; set; } = true;
+    public bool KeyboardControls { get; set; } = true;
+
     private void Awake() {
         if (Instance != null && Instance != this) {
             Destroy(gameObject);

@@ -11,19 +11,19 @@ public class DialogueBox : MonoBehaviour {
     [SerializeField] private GameObject nextIcon;
     
     [SerializeField] private float typingSpeed;
-    [SerializeField] private InputAction mouseClick;
+    [SerializeField] private InputAction skipDialogue;
 
     private string sentence;
     private bool skipped;
     
     private void OnEnable() {
-        mouseClick.Enable();
-        mouseClick.performed += ShowAllText;
+        skipDialogue.Enable();
+        skipDialogue.performed += ShowAllText;
     }
 
     private void OnDisable() {
-        mouseClick.performed -= ShowAllText;
-        mouseClick.Disable();
+        skipDialogue.performed -= ShowAllText;
+        skipDialogue.Disable();
     }
 
     public void ShowDialogue(MainDialogue dialogue) {

@@ -10445,21 +10445,29 @@ MonoBehaviour:
   dialogueText: {fileID: 1047388424}
   nextIcon: {fileID: 1855182896}
   typingSpeed: 30
-  mouseClick:
-    m_Name: Mouse Click
+  skipDialogue:
+    m_Name: Skip Dialogue
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: ffdf3979-8735-4f99-ac62-f89476d95091
+    m_Id: b54fac60-0430-4bcf-9013-8a204cd9c1cf
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: ca5a777f-3ac5-4422-80d1-3da812a1361c
+      m_Id: e518b373-d880-45dd-b3a9-4f6f25835e17
       m_Path: <Mouse>/leftButton
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Mouse Click
+      m_Action: Skip Dialogue
+      m_Flags: 0
+    - m_Name: 
+      m_Id: aa00fd72-18b6-4d5a-8d40-4d243254f303
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Skip Dialogue
       m_Flags: 0
     m_Flags: 0
 --- !u!114 &580688447
