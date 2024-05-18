@@ -7,13 +7,9 @@ public class SettingsManager : MonoBehaviour {
     [SerializeField] private Toggle fullscreenToggle;
     [SerializeField] private Toggle mouseToggle;
     [SerializeField] private Toggle keyboardToggle;
-    [SerializeField] private PlayerController playerController;
     
-    private PlayerControls playerControls;
     
     void Start() {
-        playerControls = InputManager.Instance.playerControls;
-        
         ResolutionHandler.SetUpResolutions();
         
         resolutionDropdown.ClearOptions();
@@ -32,19 +28,20 @@ public class SettingsManager : MonoBehaviour {
     }
 
     public void SetKeyboardControls() {
+        InputManager.Instance.KeyboardControls = keyboardToggle.isOn;
         if(keyboardToggle.isOn)
-            playerControls.PlayerActionMap.Move.Enable();
+            InputManager.Instance.EnableKeyboardInput();
         else {
-            playerControls.PlayerActionMap.Move.Disable();
+            InputManager.Instance.DisableKeyboardInput();
         }
     }
 
     public void SetMouseControls() {
-        if(mouseToggle.isOn)
-            playerController.Enable(true);
+        InputManager.Instance.MouseControls = mouseToggle.isOn;
+        if(keyboardToggle.isOn)
+            InputManager.Instance.EnableMouseInput();
         else {
-            playerController.Enable(false);
-            playerController.Stop();
+            InputManager.Instance.DisableMouseInput();
         }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class SceneTriggerClick : MonoBehaviour {
-    
+    /*
     [SerializeField] private string loadName;
     [SerializeField] private string unloadName;
     [SerializeField] private RectTransform popupPanel;
@@ -59,4 +59,5 @@ public class SceneTriggerClick : MonoBehaviour {
         popupPanel.gameObject.SetActive(false);
         playerController.enabled = true;
     }
+    */
 }

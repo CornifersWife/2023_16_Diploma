@@ -64,4 +64,12 @@ public class KeyboardInputManager : MonoBehaviour, PlayerControls.IPlayerActionM
             PauseManager.Instance.Open();
         }
     }
+
+    public void EnableKeyboardControls() {
+        playerControls.PlayerActionMap.Enable();
+    }
+    
+    public void DisableKeyboardControls() {
+        playerControls.PlayerActionMap.Disable();
+    }
 }

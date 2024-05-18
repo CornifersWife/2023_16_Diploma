@@ -30,7 +30,7 @@ public class PauseManager : MonoBehaviour {
         optionsView.SetActive(false);
         postProcessVolume.enabled = true;
         IsOpen = true;
-        UIManager.Instance.SetIsOpen(true);
+        InputManager.Instance.DisableAllInput();
         Time.timeScale = 0;
     }
 
@@ -39,7 +39,7 @@ public class PauseManager : MonoBehaviour {
         optionsView.SetActive(false);
         postProcessVolume.enabled = false;
         IsOpen = false;
-        UIManager.Instance.SetIsOpen(false);
+        InputManager.Instance.EnableAllInput();
         Time.timeScale = 1;
     }
 

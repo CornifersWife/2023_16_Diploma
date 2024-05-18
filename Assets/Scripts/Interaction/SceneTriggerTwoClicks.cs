@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class SceneTriggerTwoClicks : MonoBehaviour {
+    /*
     
     [SerializeField] private string loadName;
     [SerializeField] private string unloadName;
@@ -57,4 +58,5 @@ public class SceneTriggerTwoClicks : MonoBehaviour {
             clickNumber = 0;
         }
     }
+    */
 }

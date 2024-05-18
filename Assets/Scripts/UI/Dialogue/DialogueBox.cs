@@ -27,14 +27,14 @@ public class DialogueBox : MonoBehaviour {
 
     public void ShowDialogue(MainDialogue dialogue) {
         nextButton.SetActive(false);
-        UIManager.Instance.SetIsOpen(true);
+        InputManager.Instance.DisableAllInput();
         SetDialogue(dialogue);
         StopAllCoroutines();
         StartCoroutine(TypeSentence());
     }
     
     public void HideDialogue() {
-        UIManager.Instance.SetIsOpen(false);
+        InputManager.Instance.EnableAllInput();
         ObjectClickHandler.Instance.IsActive = true;
         gameObject.SetActive(false);
     }

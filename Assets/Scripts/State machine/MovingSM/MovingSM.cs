@@ -59,6 +59,7 @@ public class MovingSM : StateMachine {
         waiting = value;
     }
     
+    //TODO rework this
     public bool IsDialogue() {
         return ObjectClickHandler.Instance.GetObject() == gameObject && UIManager.Instance.IsOpen();
     }

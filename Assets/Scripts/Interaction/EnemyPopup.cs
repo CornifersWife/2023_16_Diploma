@@ -41,7 +41,7 @@ public class EnemyPopup : MonoBehaviour{
                 enemy = hit.collider.gameObject.GetComponent<EnemySM>().GetEnemy();
                 if (enemy.GetState() == EnemyState.Undefeated) {
                     popupPanel.gameObject.SetActive(true);
-                    UIManager.Instance.SetIsOpen(true);
+                    InputManager.Instance.DisableAllInput();
                     ObjectClickHandler.Instance.SetObject(hit.collider.gameObject);
                 }
                 else {
@@ -76,7 +76,7 @@ public class EnemyPopup : MonoBehaviour{
 
     private void Close() {
         enemy = null;
-        UIManager.Instance.SetIsOpen(false);
+        InputManager.Instance.EnableAllInput();
     }
 
     private bool CheckDeck(int count) {
