@@ -8,6 +8,8 @@ public class DialogueManager : MonoBehaviour {
     private NPCDialogue currentDialogue;
     private int currentIndex;
     private List<MainDialogue> currentDialogueList = new List<MainDialogue>();
+    
+    public bool IsOpen { get; private set; }
 
     public static DialogueManager Instance = null;
 
@@ -22,6 +24,7 @@ public class DialogueManager : MonoBehaviour {
 
     private void OpenDialogue() {
         if (currentIndex < currentDialogueList.Count) {
+            IsOpen = true;
             ShowMainDialogue();
             currentIndex++;
             currentDialogue.SetMainIndex(currentIndex);
@@ -34,6 +37,7 @@ public class DialogueManager : MonoBehaviour {
     }
     
     private void CloseDialogue() {
+        IsOpen = false;
         HideMainDialogue();
         currentDialogue.SetMainIndex(currentIndex);
     }

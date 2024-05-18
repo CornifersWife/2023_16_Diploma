@@ -15,7 +15,7 @@ public class PatrolState : BaseState {
 
     public override void UpdateLogic() {
         base.UpdateLogic();
-        if(movingSM.IsDialogue())
+        if(movingSM.IsDialogue)
             movingSM.ChangeState(movingSM.dialogueState);
     }
 

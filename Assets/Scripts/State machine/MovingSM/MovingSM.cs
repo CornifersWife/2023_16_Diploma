@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
-public class MovingSM : StateMachine {
+public class MovingSM : StateMachine, IPointerClickHandler {
     [HideInInspector]
     public IdleState idleState;
     [HideInInspector]
@@ -17,6 +18,7 @@ public class MovingSM : StateMachine {
     private NavMeshAgent navMeshAgent;
     private int currentWaypointIndex;
     private bool waiting = false;
+    public bool IsDialogue { get; set; } = false;
 
     private void Awake() {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -60,7 +62,8 @@ public class MovingSM : StateMachine {
     }
     
     //TODO rework this
-    public bool IsDialogue() {
-        return ObjectClickHandler.Instance.GetObject() == gameObject && UIManager.Instance.IsOpen();
+
+    public void OnPointerClick(PointerEventData eventData) {
+        IsDialogue = true;
     }
 }
