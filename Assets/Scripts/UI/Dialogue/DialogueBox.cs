@@ -8,7 +8,7 @@ public class DialogueBox : MonoBehaviour {
     [SerializeField] private Image icon;
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text dialogueText;
-    [SerializeField] private GameObject nextButton;
+    [SerializeField] private GameObject nextIcon;
     
     [SerializeField] private float typingSpeed;
     [SerializeField] private InputAction mouseClick;
@@ -27,7 +27,7 @@ public class DialogueBox : MonoBehaviour {
     }
 
     public void ShowDialogue(MainDialogue dialogue) {
-        nextButton.SetActive(false);
+        nextIcon.SetActive(false);
         InputManager.Instance.DisableAllInput();
         SetDialogue(dialogue);
         StopAllCoroutines();
@@ -52,14 +52,14 @@ public class DialogueBox : MonoBehaviour {
             dialogueText.text += letter;
             yield return new WaitForSeconds(1/typingSpeed);
         }
-        nextButton.SetActive(true);
+        nextIcon.SetActive(true);
     }
 
     private void ShowAllText(InputAction.CallbackContext context) {
         if (!skipped) {
             StopAllCoroutines();
             dialogueText.text = sentence;
-            nextButton.SetActive(true);
+            nextIcon.SetActive(true);
             skipped = true;
         }
         else {
