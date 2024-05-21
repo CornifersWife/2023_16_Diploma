@@ -42,7 +42,6 @@ public class EnemyPopup : MonoBehaviour{
                 if (enemy.GetState() == EnemyState.Undefeated) {
                     popupPanel.gameObject.SetActive(true);
                     InputManager.Instance.DisableAllInput();
-                    ObjectClickHandler.Instance.SetObject(hit.collider.gameObject);
                 }
                 else {
                     enemy = null;

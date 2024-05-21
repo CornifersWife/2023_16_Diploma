@@ -32,7 +32,6 @@ public class DialogueTrigger : MonoBehaviour {
             if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(npcLayer) == 0) {
                 GameObject NPC = hit.collider.gameObject;
                 DialogueManager.Instance.SetCurrentDialogue(NPC);
-                ObjectClickHandler.Instance.SetObject(NPC);
                 ObjectClickHandler.Instance.DisableClickDetection();
             }
         }

@@ -63,6 +63,8 @@ public class MovingSM : StateMachine, IPointerClickHandler {
     
     //TODO rework this
     public void OnPointerClick(PointerEventData eventData) {
+        if (PauseManager.Instance.IsOpen)
+            return;
         IsDialogue = true;
     }
 }
