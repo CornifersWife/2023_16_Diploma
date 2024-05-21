@@ -3,9 +3,14 @@ using UnityEngine.InputSystem;
 
 public class HUDController : MonoBehaviour {
     [SerializeField] private GameObject overlay;
+    public static HUDController Instance;
 
-    private void Update() {
-        overlay.SetActive(!UIManager.Instance.IsOpen());
+    private void Awake() {
+        if (Instance != null && Instance != this) {
+            Destroy(gameObject);
+        } else {
+            Instance = this;
+        }
     }
     
     public void PauseGame() {
@@ -14,5 +19,13 @@ public class HUDController : MonoBehaviour {
 
     public void OpenInventory() {
         InventoryController.Instance.ShowInventory(new InputAction.CallbackContext());
+    }
+
+    public void HideHUD() {
+        overlay.SetActive(false);
+    }
+
+    public void ShowHUD() {
+        overlay.SetActive(true);
     }
 }

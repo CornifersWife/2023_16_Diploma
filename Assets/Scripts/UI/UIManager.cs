@@ -17,8 +17,5 @@ public class UIManager : MonoBehaviour {
     public bool IsOpen() {
         return isOpen;
     }
-
-    public void SetIsOpen(bool value) {
-        isOpen = value;
-    }
+    
 }

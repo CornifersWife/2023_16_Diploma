@@ -24,6 +24,9 @@ public class DialogueTrigger : MonoBehaviour {
     }
 
     private void OpenDialogue(InputAction.CallbackContext context) {
+        if (PauseManager.Instance.IsOpen)
+            return;
+        
         if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Irys playspace")) {
             Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
             if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(npcLayer) == 0) {

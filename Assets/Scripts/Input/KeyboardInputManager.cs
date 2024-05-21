@@ -40,8 +40,6 @@ public class KeyboardInputManager : MonoBehaviour, PlayerControls.IPlayerActionM
     }
     
     public void OnMove(InputAction.CallbackContext context) {
-        if (UIManager.Instance.IsOpen())
-            return;
         navMeshAgent.ResetPath();
         Vector2 input = context.ReadValue<Vector2>();
         Vector3 skewedInput = rotationMatrix.MultiplyPoint3x4(input);

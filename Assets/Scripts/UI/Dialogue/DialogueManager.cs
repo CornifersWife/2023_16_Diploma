@@ -24,6 +24,7 @@ public class DialogueManager : MonoBehaviour {
 
     private void OpenDialogue() {
         if (currentIndex < currentDialogueList.Count) {
+            HUDController.Instance.HideHUD();
             IsOpen = true;
             ShowMainDialogue();
             currentIndex++;
@@ -40,6 +41,7 @@ public class DialogueManager : MonoBehaviour {
         IsOpen = false;
         HideMainDialogue();
         currentDialogue.SetMainIndex(currentIndex);
+        HUDController.Instance.ShowHUD();
     }
 
     private void HideMainDialogue() {

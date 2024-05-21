@@ -45,6 +45,7 @@ public class InventoryController : MonoBehaviour {
         inventoryUI.SetActive(true);
         postProcessVolume.enabled = true;
         isOpen = true;
+        HUDController.Instance.HideHUD();
         InputManager.Instance.DisableAllInput();
     }
 
@@ -56,6 +57,7 @@ public class InventoryController : MonoBehaviour {
         DeselectAllSlots();
         inventoryUI.SetActive(false);
         isOpen = false;
+        HUDController.Instance.ShowHUD();
         InputManager.Instance.EnableAllInput();
     }
 

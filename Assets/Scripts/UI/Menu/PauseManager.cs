@@ -31,6 +31,8 @@ public class PauseManager : MonoBehaviour {
         postProcessVolume.enabled = true;
         IsOpen = true;
         InputManager.Instance.DisableAllInput();
+        HUDController.Instance.HideHUD();
+        ObjectClickHandler.Instance.DisableClickDetection();
         Time.timeScale = 0;
     }
 
@@ -40,6 +42,8 @@ public class PauseManager : MonoBehaviour {
         postProcessVolume.enabled = false;
         IsOpen = false;
         InputManager.Instance.EnableAllInput();
+        HUDController.Instance.ShowHUD();
+        ObjectClickHandler.Instance.EnableClickDetection();
         Time.timeScale = 1;
     }
 
