@@ -32,20 +32,24 @@ public class EnemyPopup : MonoBehaviour{
     }
 
     private void Clicked(InputAction.CallbackContext context) {
-        if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Irys playspace")) {
-            Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-            if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider &&
-                hit.collider.gameObject.layer.CompareTo(enemyLayer) == 0) {
-                if (enemy != null)
-                    return;
-                enemy = hit.collider.gameObject.GetComponent<EnemySM>().GetEnemy();
-                if (enemy.GetState() == EnemyState.Undefeated) {
-                    popupPanel.gameObject.SetActive(true);
-                    InputManager.Instance.DisableAllInput();
-                }
-                else {
-                    enemy = null;
-                }
+        if (PauseManager.Instance.IsOpen)
+            return;
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Irys playspace")) 
+            return;
+        
+        Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider &&
+            hit.collider.gameObject.layer.CompareTo(enemyLayer) == 0) {
+            if (enemy != null)
+                return;
+            enemy = hit.collider.gameObject.GetComponent<EnemySM>().GetEnemy();
+            if (enemy.GetState() == EnemyState.Undefeated) {
+                popupPanel.gameObject.SetActive(true);
+                InputManager.Instance.DisableAllInput();
+            }
+            else {
+                enemy = null;
             }
         }
     }

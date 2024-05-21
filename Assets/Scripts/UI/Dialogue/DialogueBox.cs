@@ -14,7 +14,8 @@ public class DialogueBox : MonoBehaviour {
     [SerializeField] private InputAction skipDialogue;
 
     private string sentence;
-    private bool skipped;
+    private bool wasSkipped;
+    private bool isTyping;
     
     private void OnEnable() {
         skipDialogue.Enable();
@@ -27,6 +28,7 @@ public class DialogueBox : MonoBehaviour {
     }
 
     public void ShowDialogue(MainDialogue dialogue) {
+        isTyping = false;
         nextIcon.SetActive(false);
         InputManager.Instance.DisableAllInput();
         SetDialogue(dialogue);
@@ -50,21 +52,26 @@ public class DialogueBox : MonoBehaviour {
         dialogueText.text = "";
         foreach (char letter in sentence) {
             dialogueText.text += letter;
+            if (dialogueText.text.Length > 1) // set the isTyping when we have at least 2 characters
+                isTyping = true;
             yield return new WaitForSeconds(1/typingSpeed);
         }
         nextIcon.SetActive(true);
     }
 
     private void ShowAllText(InputAction.CallbackContext context) {
-        if (!skipped) {
+        if (!isTyping)
+            return;
+        
+        if (!wasSkipped) {
             StopAllCoroutines();
             dialogueText.text = sentence;
             nextIcon.SetActive(true);
-            skipped = true;
+            wasSkipped = true;
         }
         else {
             DialogueManager.Instance.NextDialogue();
-            skipped = false;
+            wasSkipped = false;
         }
     }
 }
