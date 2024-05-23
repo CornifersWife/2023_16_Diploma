@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class MouseInputManager : MonoBehaviour {
     [SerializeField] private InputAction mouseClickAction;
+    [SerializeField] private ParticleSystem clickEffect;
     private Camera mainCamera;
     private NavMeshAgent navMeshAgent;
     
@@ -39,6 +40,7 @@ public class MouseInputManager : MonoBehaviour {
         Ray ray = mainCamera.ScreenPointToRay(mousePos);
         if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(groundLayer) == 0) {
             targetPosition = hit.point;
+            Instantiate(clickEffect, hit.point += new Vector3(0, 0.1f, 0), clickEffect.transform.rotation);
             Walk(targetPosition);
         }
     }
