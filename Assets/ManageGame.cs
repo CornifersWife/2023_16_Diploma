@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ManageGame : MonoBehaviour {
+    [SerializeField] private GameObject player;
     [SerializeField] private List<CardSet> currentCardSets;
     [SerializeField] private List<EnemySM> enemies;
     [SerializeField] private GameObject unlockableNPC;
@@ -11,6 +12,7 @@ public class ManageGame : MonoBehaviour {
     [SerializeField] private Transform waypoint4;
 
     private static ManageGame Instance = null;
+    private PlayerStats playerStats;
 
     private void Awake() {
         if (Instance != null && Instance != this) {
@@ -18,6 +20,7 @@ public class ManageGame : MonoBehaviour {
         } else {
             Instance = this;
         }
+        playerStats = new PlayerStats();
     }
 
     private void Start() {
@@ -41,6 +44,19 @@ public class ManageGame : MonoBehaviour {
             enemies[1].ChangeState(EnemyState.Locked);
             enemies[1].gameObject.SetActive(false);
         }
+    }
+
+    public void Save() {
+        playerStats.position[0] = player.transform.position.x;
+        playerStats.position[1] = player.transform.position.y;
+        playerStats.position[2] = player.transform.position.z;
+        SaveManager.SaveGame("/player.json", playerStats);
+    }
+
+    public void Load() {
+        PlayerStats stats = SaveManager.LoadGame<PlayerStats>("/player.json");
+        Vector3 pos = new Vector3(stats.position[0], stats.position[1], stats.position[2]);
+        player.transform.position = pos;
     }
 
 }
