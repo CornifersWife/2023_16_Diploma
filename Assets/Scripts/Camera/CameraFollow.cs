@@ -9,4 +9,8 @@ public class CameraFollow : MonoBehaviour {
         Vector3 newPosition = target.position + offset;
         transform.position = Vector3.Lerp (transform.position, newPosition, smoothing * Time.deltaTime);
     }
+
+    public void SetTarget(GameObject newTarget) {
+        target = newTarget.transform;
+    }
 }

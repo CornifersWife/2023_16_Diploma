@@ -47,16 +47,12 @@ public class ManageGame : MonoBehaviour {
     }
 
     public void Save() {
-        playerStats.position[0] = player.transform.position.x;
-        playerStats.position[1] = player.transform.position.y;
-        playerStats.position[2] = player.transform.position.z;
-        SaveManager.SaveGame("/player.json", playerStats);
+        SaveManager.SavePlayer("/player.json", player);
     }
 
     public void Load() {
-        PlayerStats stats = SaveManager.LoadGame<PlayerStats>("/player.json");
-        Vector3 pos = new Vector3(stats.position[0], stats.position[1], stats.position[2]);
-        player.transform.position = pos;
+        Destroy(player);
+        SaveManager.LoadPlayer("/player.json", Instantiate(player));
     }
 
 }
