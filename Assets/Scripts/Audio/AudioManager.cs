@@ -4,8 +4,6 @@ using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour {
-    [SerializeField] private AudioMixer musicMixer;
-    [SerializeField] private AudioMixer sfxMixer;
     
     public static AudioManager Instance;
     public Sound[] sounds;
@@ -49,13 +47,5 @@ public class AudioManager : MonoBehaviour {
     public void Stop(string sound) {
         Sound s = Array.Find(sounds, item => item.soundName == sound);
         s.source.Stop();
-    }
-    
-    public void SetMusicVolume(float volume) {
-        musicMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
-    }
-    
-    public void SetSFXVolume(float volume) {
-        sfxMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
     }
 }
