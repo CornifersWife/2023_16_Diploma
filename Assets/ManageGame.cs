@@ -3,8 +3,8 @@ using UnityEngine.Windows;
 
 public class ManageGame : MonoBehaviour {
     [SerializeField] private SettingsManager settingsManager;
-    
-    private static ManageGame Instance = null;
+    public bool IsStarted { get; private set; }
+    public static ManageGame Instance = null;
 
     private void Awake() {
         if (Instance != null && Instance != this) {

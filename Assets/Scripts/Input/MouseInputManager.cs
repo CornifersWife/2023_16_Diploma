@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class MouseInputManager : MonoBehaviour {
     [SerializeField] private InputAction mouseClickAction;
     [SerializeField] private ParticleSystem clickEffect;
+    [SerializeField] private GameObject player;
     private Camera mainCamera;
     private NavMeshAgent navMeshAgent;
     
@@ -14,9 +15,9 @@ public class MouseInputManager : MonoBehaviour {
 
     private void Awake() {
         mainCamera = Camera.main;
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent = player.GetComponent<NavMeshAgent>();
         groundLayer = LayerMask.NameToLayer("Ground");
-        targetPosition = transform.position;
+        targetPosition = player.transform.position;
     }
 
     private void OnEnable() {
@@ -30,7 +31,7 @@ public class MouseInputManager : MonoBehaviour {
     }
     
     private void MovePlayer(InputAction.CallbackContext context) {
-        if (!mouseClickEnabled)
+        if (!ManageGame.Instance.IsStarted || !mouseClickEnabled)
             return;
         SetTargetPoint();
     }
@@ -40,13 +41,9 @@ public class MouseInputManager : MonoBehaviour {
         Ray ray = mainCamera.ScreenPointToRay(mousePos);
         if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(groundLayer) == 0) {
             targetPosition = hit.point;
-            Instantiate(clickEffect, hit.point += new Vector3(0, 0.1f, 0), clickEffect.transform.rotation);
-            Walk(targetPosition);
+            Instantiate(clickEffect, targetPosition += new Vector3(0, 0.1f, 0), clickEffect.transform.rotation);
+            navMeshAgent.SetDestination(targetPosition);
         }
-    }
-
-    private void Walk(Vector3 target) {
-        navMeshAgent.SetDestination(target);
     }
 
     public void EnableMouseControls() {
@@ -54,7 +51,8 @@ public class MouseInputManager : MonoBehaviour {
     }
     
     public void DisableMouseControls() {
-        navMeshAgent.ResetPath();
+        if(ManageGame.Instance.IsStarted)
+            navMeshAgent.ResetPath();
         mouseClickEnabled = false;
     }
 }

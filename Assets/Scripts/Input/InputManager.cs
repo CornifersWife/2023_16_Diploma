@@ -1,6 +1,6 @@
-using System;
 using UnityEngine;
 
+[DefaultExecutionOrder(-100)] // so that the input manager loads before keyboard and mouse managers 
 public class InputManager : MonoBehaviour {
     public static InputManager Instance = null;
 
@@ -19,7 +19,6 @@ public class InputManager : MonoBehaviour {
         else {
             Instance = this;
         }
-
         playerControls = new PlayerControls();
     }
 

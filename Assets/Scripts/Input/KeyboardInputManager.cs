@@ -3,13 +3,12 @@ using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 public class KeyboardInputManager : MonoBehaviour, PlayerControls.IPlayerActionMapActions {
-
-    private PlayerControls playerControls;
     [SerializeField] private GameObject player;
     [SerializeField] private Transform cameraPivot;
-    [SerializeField] private float speed;
     
+    private PlayerControls playerControls;
     private NavMeshAgent navMeshAgent;
+    private float speed;
     private Vector3 movementVector;
     private Vector3 targetDirection;
     private float lerpTime;
@@ -18,16 +17,16 @@ public class KeyboardInputManager : MonoBehaviour, PlayerControls.IPlayerActionM
 
     private void Awake() {
         navMeshAgent = player.GetComponent<NavMeshAgent>();
-        rotationMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 0, -cameraPivot.rotation.eulerAngles.y));
-    }
-    
-    private void Start() {
+        speed = navMeshAgent.speed;
         playerControls = InputManager.Instance.playerControls;
         playerControls.PlayerActionMap.SetCallbacks(this);
         playerControls.PlayerActionMap.Enable();
+        rotationMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 0, -cameraPivot.rotation.eulerAngles.y));
     }
     
     private void Update() {
+        if (!ManageGame.Instance.IsStarted)
+            return;
         movementVector.Normalize();
         targetDirection = Vector3.Lerp(targetDirection, movementVector, speed * Time.deltaTime);
         navMeshAgent.Move(targetDirection * (navMeshAgent.speed * Time.deltaTime));

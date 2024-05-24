@@ -9,21 +9,20 @@ public class MenuManager : MonoBehaviour {
     [SerializeField] private GameObject mainView;
     [SerializeField] private GameObject optionsView;
     [SerializeField] private GameObject creditsView;
+    [SerializeField] private GameObject continueButton;
 
-    private GameObject audioVideoPanel;
-    private GameObject controlsPanel;
+    [SerializeField] private GameObject audioVideoPanel;
+    [SerializeField] private GameObject controlsPanel;
     
     private void Awake() {
-        audioVideoPanel = optionsView.transform.GetChild(0).gameObject;
-        controlsPanel = optionsView.transform.GetChild(1).gameObject;
-        
         mainView.SetActive(true);
         optionsView.SetActive(false);
         creditsView.SetActive(false);
     }
 
     private void Start() {
-        
+        if(SaveManager.saveExists)
+            continueButton.SetActive(true);
     }
 
     #region  Main View

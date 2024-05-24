@@ -13,6 +13,8 @@ public class SettingsManager : MonoBehaviour, ISaveable {
     [SerializeField] private Slider sfxSlider;
     [SerializeField] private AudioMixer musicMixer;
     [SerializeField] private AudioMixer sfxMixer;
+    [SerializeField] private GameObject audioVideoPanel;
+    [SerializeField] private GameObject controlsPanel;
 
     private float currentMusicVolume;
     private float currentSFXVolume;
@@ -85,7 +87,7 @@ public class SettingsManager : MonoBehaviour, ISaveable {
         resolutionDropdown.RefreshShownValue();
     }
 
-    public void ChangeResolution(int resolutionIndex) {
+    private void ChangeResolution(int resolutionIndex) {
         currentResolutionIndex = resolutionIndex;
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
