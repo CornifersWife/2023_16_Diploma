@@ -23,7 +23,7 @@ public class MenuManager : MonoBehaviour {
     }
 
     private void Start() {
-        ResolutionHandler.SetUpResolutions();
+        
     }
 
     #region  Main View
