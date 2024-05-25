@@ -43,12 +43,12 @@ public class KeyboardInputManager : MonoBehaviour, PlayerControls.IPlayerActionM
     }
     
     public void OnMove(InputAction.CallbackContext context) {
+        navMeshAgent.ResetPath();
         if (context.performed)
             isWalking = true;
         if (context.canceled)
             isWalking = false;
         animator.SetBool(IsMoving, isWalking);
-        navMeshAgent.ResetPath();
         Vector2 input = context.ReadValue<Vector2>();
         Vector3 skewedInput = rotationMatrix.MultiplyPoint3x4(input);
         movementVector = new Vector3(skewedInput.x, 0, skewedInput.y);
