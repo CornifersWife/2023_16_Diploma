@@ -10,7 +10,7 @@ public class PlayerSound : MonoBehaviour {
      }
 
      public void PlayFootstep() {
-          AudioClip clip = footstepSounds[Random.Range(0, leftFootstepSounds.Count)];
+          AudioClip clip = footstepSounds[Random.Range(0, footstepSounds.Count)];
           audioSource.clip = clip;
           audioSource.volume = Random.Range(0.1f, 0.3f);
           audioSource.pitch = Random.Range(0.8f, 1.2f);
