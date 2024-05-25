@@ -325,14 +325,14 @@ ModelImporter:
       curves: []
       events:
       - time: 0.2554645
-        functionName: PlayFootstep
+        functionName: PlayRightFootstep
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.7281421
-        functionName: PlayFootstep
+        functionName: PlayLeftFootstep
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
