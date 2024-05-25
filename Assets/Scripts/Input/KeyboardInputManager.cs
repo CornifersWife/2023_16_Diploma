@@ -10,11 +10,14 @@ public class KeyboardInputManager : MonoBehaviour, PlayerControls.IPlayerActionM
     [SerializeField] private float speed;
     
     private NavMeshAgent navMeshAgent;
+    [SerializeField] private Animator animator;
     private Vector3 movementVector;
     private Vector3 targetDirection;
     private float lerpTime;
+    private bool isWalking;
 
     private Matrix4x4 rotationMatrix;
+    private static readonly int IsMoving = Animator.StringToHash("isMoving");
 
     private void Awake() {
         navMeshAgent = player.GetComponent<NavMeshAgent>();
@@ -40,6 +43,11 @@ public class KeyboardInputManager : MonoBehaviour, PlayerControls.IPlayerActionM
     }
     
     public void OnMove(InputAction.CallbackContext context) {
+        if (context.performed)
+            isWalking = true;
+        if (context.canceled)
+            isWalking = false;
+        animator.SetBool(IsMoving, isWalking);
         navMeshAgent.ResetPath();
         Vector2 input = context.ReadValue<Vector2>();
         Vector3 skewedInput = rotationMatrix.MultiplyPoint3x4(input);
