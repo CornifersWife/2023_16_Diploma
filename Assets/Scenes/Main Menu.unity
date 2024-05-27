@@ -1326,6 +1326,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resolutionDropdown: {fileID: 1108648327}
   fullscreenToggle: {fileID: 1457445341}
+  mouseToggle: {fileID: 0}
+  keyboardToggle: {fileID: 0}
 --- !u!1 &400826121
 GameObject:
   m_ObjectHideFlags: 0
@@ -2899,7 +2901,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 672.6686, y: 338.37}
+  m_SizeDelta: {x: 829.6293, y: 404.9222}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &702091444
 MonoBehaviour:
@@ -2921,7 +2923,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 07c45227a207dc141bb33e8fe60719e9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 106d3f5518140a74386641f27dcfd25b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
