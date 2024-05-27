@@ -419,7 +419,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 399615267}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
-        m_MethodName: SetFullscreen
+        m_MethodName: SetMouseControls
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -809,7 +809,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 399615267}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
-        m_MethodName: SetFullscreen
+        m_MethodName: SetKeyboardControls
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2536,6 +2536,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 478137945}
+        m_TargetAssemblyTypeName: ManageGame, Assembly-CSharp
+        m_MethodName: SaveSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &567506191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4001,8 +4013,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1949380587}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+      - m_Target: {fileID: 399615267}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: SetSFXVolume
         m_Mode: 0
         m_Arguments:
@@ -7531,8 +7543,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1949380587}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+      - m_Target: {fileID: 399615267}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: SetMusicVolume
         m_Mode: 0
         m_Arguments:
@@ -10393,9 +10405,9 @@ MonoBehaviour:
   mainView: {fileID: 695102912}
   optionsView: {fileID: 399615264}
   creditsView: {fileID: 679490361}
-  continueButton: {fileID: 0}
-  audioVideoPanel: {fileID: 0}
-  controlsPanel: {fileID: 0}
+  continueButton: {fileID: 502858481}
+  audioVideoPanel: {fileID: 1370049634}
+  controlsPanel: {fileID: 1378467784}
 --- !u!4 &2126096144
 Transform:
   m_ObjectHideFlags: 0
