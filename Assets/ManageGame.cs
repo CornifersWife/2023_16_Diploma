@@ -21,12 +21,12 @@ public class ManageGame : MonoBehaviour {
     public void SaveSettings() {
         SettingsSaveData settingsSaveData = new SettingsSaveData();
         settingsManager.PopulateSaveData(settingsSaveData);
-        SaveManager.SaveGame("/settings.json", settingsSaveData);
+        SaveManager.SaveGame(SaveManager.settingsSavePath, settingsSaveData);
     }
 
     public void LoadSettings() {
-        if (File.Exists(Application.persistentDataPath + "/settings.json")) {
-            SettingsSaveData settingsSaveData = SaveManager.LoadGame<SettingsSaveData>("/settings.json");
+        if (SaveManager.settingsSaveExists) {
+            SettingsSaveData settingsSaveData = SaveManager.LoadGame<SettingsSaveData>(SaveManager.settingsSavePath);
             settingsManager.LoadSaveData(settingsSaveData);
         }
     }

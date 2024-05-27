@@ -16,17 +16,19 @@ public class SettingsManager : MonoBehaviour, ISaveable {
     [SerializeField] private GameObject audioVideoPanel;
     [SerializeField] private GameObject controlsPanel;
 
-    private float currentMusicVolume;
-    private float currentSFXVolume;
+    private float currentMusicVolume = 0.5f;
+    private float currentSFXVolume = 0.5f;
     private Resolution[] resolutions;
     private static List<string> options;
     private int currentResolutionIndex;
-    private bool isFullscreen;
-    private bool isMouse;
-    private bool isKeyboard;
+    private bool isFullscreen = true;
+    private bool isMouse = true;
+    private bool isKeyboard = true;
     
     void Start() {
-        
+        if (SaveManager.settingsSaveExists)
+            return;
+        SetUpResolutions();
     }
 
     public void SetFullscreen() {
@@ -71,14 +73,14 @@ public class SettingsManager : MonoBehaviour, ISaveable {
     private void SetUpResolutions() {
         resolutions = Screen.resolutions;
         options = new List<string>();
-        currentResolutionIndex = 0;
         
         for (int i = 0; i <resolutions.Length; i++) {
             string option = resolutions[i].width + " x " + resolutions[i].height;
             options.Add(option);
-            if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
-            {
-                currentResolutionIndex = i;
+            if (!SaveManager.settingsSaveExists) {
+                if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height) {
+                    currentResolutionIndex = i;
+                }
             }
         }
         resolutionDropdown.ClearOptions();
@@ -112,10 +114,10 @@ public class SettingsManager : MonoBehaviour, ISaveable {
         SetSFXVolume(((SettingsSaveData)saveData).settingsData.sfxVolume);
         sfxSlider.value = currentSFXVolume;
         
+        currentResolutionIndex = ((SettingsSaveData)saveData).settingsData.resolutionIndex;
         resolutions = ((SettingsSaveData)saveData).settingsData.resolutions;
         SetUpResolutions();
         
-        ChangeResolution(((SettingsSaveData)saveData).settingsData.resolutionIndex);
         fullscreenToggle.isOn = ((SettingsSaveData)saveData).settingsData.isFullscreen;
         SetFullscreen();
         
