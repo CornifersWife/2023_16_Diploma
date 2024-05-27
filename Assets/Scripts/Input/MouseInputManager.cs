@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
@@ -5,19 +6,20 @@ using UnityEngine.InputSystem;
 public class MouseInputManager : MonoBehaviour {
     [SerializeField] private InputAction mouseClickAction;
     [SerializeField] private ParticleSystem clickEffect;
-    [SerializeField] private GameObject player;
     private Camera mainCamera;
     private NavMeshAgent navMeshAgent;
     
     private Vector3 targetPosition;
     private int groundLayer;
     private bool mouseClickEnabled = true;
+    [SerializeField] private Animator animator;
+    private static readonly int IsMoving = Animator.StringToHash("isMoving");
 
     private void Awake() {
         mainCamera = Camera.main;
-        navMeshAgent = player.GetComponent<NavMeshAgent>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
         groundLayer = LayerMask.NameToLayer("Ground");
-        targetPosition = player.transform.position;
+        targetPosition = transform.position;
     }
 
     private void OnEnable() {
@@ -31,7 +33,7 @@ public class MouseInputManager : MonoBehaviour {
     }
     
     private void MovePlayer(InputAction.CallbackContext context) {
-        if (!ManageGame.Instance.IsStarted || !mouseClickEnabled)
+        if (!mouseClickEnabled)
             return;
         SetTargetPoint();
     }
@@ -41,9 +43,32 @@ public class MouseInputManager : MonoBehaviour {
         Ray ray = mainCamera.ScreenPointToRay(mousePos);
         if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider && hit.collider.gameObject.layer.CompareTo(groundLayer) == 0) {
             targetPosition = hit.point;
-            Instantiate(clickEffect, targetPosition += new Vector3(0, 0.1f, 0), clickEffect.transform.rotation);
-            navMeshAgent.SetDestination(targetPosition);
+            Instantiate(clickEffect, hit.point += new Vector3(0, 0.1f, 0), clickEffect.transform.rotation);
+            Walk(targetPosition);
+            StopAllCoroutines();
+            StartCoroutine(Wait());
         }
+    }
+
+    private void Walk(Vector3 target) {
+        animator.SetBool(IsMoving, true);
+        navMeshAgent.SetDestination(target);
+    }
+
+    private IEnumerator Wait() {
+        bool isDone = false;
+        
+        while (!isDone) {
+            if (!navMeshAgent.pathPending) {
+                if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance) {
+                    if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f) {
+                        isDone = true;
+                    }
+                }
+            }
+            yield return null;
+        } 
+        animator.SetBool(IsMoving, false);
     }
 
     public void EnableMouseControls() {
@@ -51,8 +76,7 @@ public class MouseInputManager : MonoBehaviour {
     }
     
     public void DisableMouseControls() {
-        if(ManageGame.Instance.IsStarted)
-            navMeshAgent.ResetPath();
+        navMeshAgent.ResetPath();
         mouseClickEnabled = false;
     }
 }
