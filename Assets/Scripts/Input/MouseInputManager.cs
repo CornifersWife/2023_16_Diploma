@@ -33,7 +33,7 @@ public class MouseInputManager : MonoBehaviour {
     }
     
     private void MovePlayer(InputAction.CallbackContext context) {
-        if (!mouseClickEnabled)
+        if (!ManageGame.Instance.IsStarted || !mouseClickEnabled)
             return;
         SetTargetPoint();
     }
@@ -76,7 +76,8 @@ public class MouseInputManager : MonoBehaviour {
     }
     
     public void DisableMouseControls() {
-        navMeshAgent.ResetPath();
+        if(ManageGame.Instance.IsStarted)
+            navMeshAgent.ResetPath();
         mouseClickEnabled = false;
     }
 }
