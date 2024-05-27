@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Windows;
 
 public class ManageGame : MonoBehaviour {
     [SerializeField] private SettingsManager settingsManager;
-    public bool IsStarted { get; private set; }
+    public bool IsStarted => SceneManager.GetActiveScene().name == "Overworld Test 2";
     public static ManageGame Instance = null;
 
     private void Awake() {

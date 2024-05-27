@@ -4075,6 +4075,7 @@ GameObject:
   - component: {fileID: 996209044}
   - component: {fileID: 996209043}
   - component: {fileID: 996209042}
+  - component: {fileID: 996209046}
   m_Layer: 0
   m_Name: Camera Pivot
   m_TagString: Untagged
@@ -4091,12 +4092,12 @@ Transform:
   m_GameObject: {fileID: 996209040}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1338920825}
-  m_Father: {fileID: 1725177428}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
 --- !u!82 &996209042
 AudioSource:
@@ -4108,7 +4109,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: df39b2d0693626047beb99df21c9aea8, type: 2}
-  m_audioClip: {fileID: 8300000, guid: c6c964a7604c0e94cb877984fb971eab, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -4204,7 +4205,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 385decd12b6358346b631e41ff548c0e, type: 2}
-  m_audioClip: {fileID: 8300000, guid: e4aaa9c9955438241aeffd2c4a1070db, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f4d196e8a9b6c8448b4a859ebb30b608, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -4323,6 +4324,24 @@ MonoBehaviour:
   smoothing: 5
   target: {fileID: 0}
   offset: {x: -15, y: 12, z: -15}
+--- !u!114 &996209046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996209040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aafa6fcfcf64d139df34f805c394428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicAudioSource: {fileID: 996209043}
+  sfxAudioSource: {fileID: 996209042}
+  menuMusic: {fileID: 8300000, guid: f4d196e8a9b6c8448b4a859ebb30b608, type: 3}
+  villageMusic: {fileID: 8300000, guid: e4aaa9c9955438241aeffd2c4a1070db, type: 3}
+  villageAmbience: {fileID: 8300000, guid: c6c964a7604c0e94cb877984fb971eab, type: 3}
+  cardBattleMusic: {fileID: 0}
 --- !u!1 &1016930277
 GameObject:
   m_ObjectHideFlags: 0
@@ -8664,7 +8683,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 116541167}
-  - {fileID: 996209041}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1728237137
@@ -9690,61 +9708,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1931875487}
   m_CullTransparentMesh: 1
---- !u!1 &1949380586
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1949380588}
-  - component: {fileID: 1949380587}
-  m_Layer: 0
-  m_Name: Audio Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1949380587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1949380586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aafa6fcfcf64d139df34f805c394428, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - soundName: Main Menu Music
-    clip: {fileID: 8300000, guid: edbe3722b11f6ae4c8cb643f4df15fe4, type: 3}
-    mixer: {fileID: 24300002, guid: 385decd12b6358346b631e41ff548c0e, type: 2}
-    loop: 1
-    source: {fileID: 0}
-  - soundName: Magic Click
-    clip: {fileID: 8300000, guid: 0dbea431e50f4214aad4d2459e2d12ce, type: 3}
-    mixer: {fileID: 24300002, guid: df39b2d0693626047beb99df21c9aea8, type: 2}
-    loop: 1
-    source: {fileID: 0}
---- !u!4 &1949380588
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1949380586}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.42, y: 1.45, z: 3.9771776}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2001752165
 GameObject:
   m_ObjectHideFlags: 0
@@ -10562,11 +10525,11 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 996209041}
   - {fileID: 1725177428}
   - {fileID: 273940499}
   - {fileID: 1701245880}
   - {fileID: 2126096144}
-  - {fileID: 1949380588}
   - {fileID: 1516304600}
   - {fileID: 478137946}
   - {fileID: 867372527}

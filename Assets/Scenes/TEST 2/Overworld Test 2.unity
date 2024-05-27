@@ -9452,7 +9452,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aafa6fcfcf64d139df34f805c394428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  musicAudioSource: {fileID: 0}
+  sfxAudioSource: {fileID: 0}
+  menuMusic: {fileID: 0}
+  villageMusic: {fileID: 0}
+  villageAmbience: {fileID: 0}
+  cardBattleMusic: {fileID: 0}
 --- !u!4 &674140047
 Transform:
   m_ObjectHideFlags: 0
@@ -29092,7 +29097,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 385decd12b6358346b631e41ff548c0e, type: 2}
-  m_audioClip: {fileID: 8300000, guid: e4aaa9c9955438241aeffd2c4a1070db, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -29188,7 +29193,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: df39b2d0693626047beb99df21c9aea8, type: 2}
-  m_audioClip: {fileID: 8300000, guid: c6c964a7604c0e94cb877984fb971eab, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

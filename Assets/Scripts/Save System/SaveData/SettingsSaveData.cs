@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[System.Serializable]
 public class SettingsSaveData : SaveData {
     [System.Serializable]
     public struct SettingsData {

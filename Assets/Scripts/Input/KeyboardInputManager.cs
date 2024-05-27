@@ -46,6 +46,8 @@ public class KeyboardInputManager : MonoBehaviour, PlayerControls.IPlayerActionM
     }
     
     public void OnMove(InputAction.CallbackContext context) {
+        if (!ManageGame.Instance.IsStarted)
+            return;
         navMeshAgent.ResetPath();
         if (context.performed)
             isWalking = true;
