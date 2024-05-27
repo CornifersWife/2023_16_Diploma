@@ -976,6 +976,39 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1 &515514040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 515514041}
+  m_Layer: 0
+  m_Name: Kitty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &515514041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515514040}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 36.26062, y: 6.201338, z: 1.3267736}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1084726319}
+  - {fileID: 778621483}
+  m_Father: {fileID: 1032275018}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &617692875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1033,6 +1066,75 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cefde91975ec34141a0fe07546440b08, type: 3}
+--- !u!1001 &626019837
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1156532673366978845, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 30.832691
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156532673366978845, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156532673366978845, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.2327595
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156532673366978845, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5233449
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156532673366978845, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156532673366978845, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.852121
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156532673366978845, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156532673366978845, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156532673366978845, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 116.886
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156532673366978845, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582857185398548112, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      propertyPath: waypoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582857185398548112, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      propertyPath: waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1084726319}
+    - target: {fileID: 1582857185398548112, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      propertyPath: waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 778621483}
+    - target: {fileID: 7619115504855137570, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      propertyPath: m_Name
+      value: NPC
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
 --- !u!1 &747963247
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,6 +1212,37 @@ Transform:
   - {fileID: 1160149714}
   - {fileID: 1873926518}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &778621482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 778621483}
+  m_Layer: 0
+  m_Name: Kitty Waypoint 2
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &778621483
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778621482}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.614, y: -0.20133781, z: -10.09}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 515514041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &945899185 stripped
 Transform:
@@ -1246,6 +1379,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5254029167935941323, guid: 30804b2b4a4ed9b4683bfbea20fe860d, type: 3}
   m_PrefabInstance: {fileID: 1017280963}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1032275017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1032275018}
+  m_Layer: 0
+  m_Name: Waypoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1032275018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032275017}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 515514041}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1047114751
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,6 +1454,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1084726318
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1084726319}
+  m_Layer: 0
+  m_Name: Kitty Waypoint 1
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1084726319
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084726318}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.5966206, y: -0.20133781, z: -3.3177738}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 515514041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1160149713
 GameObject:
@@ -1801,3 +1997,5 @@ SceneRoots:
   - {fileID: 350858963}
   - {fileID: 1017280963}
   - {fileID: 747963249}
+  - {fileID: 626019837}
+  - {fileID: 1032275018}
