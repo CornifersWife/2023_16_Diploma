@@ -4,7 +4,7 @@ using UnityEngine.Windows;
 
 public class ManageGame : MonoBehaviour {
     [SerializeField] private SettingsManager settingsManager;
-    public bool IsStarted => SceneManager.GetActiveScene().name == "Final map";
+    public bool IsStarted => SceneManager.GetActiveScene().name == "beta-release";
     public static ManageGame Instance = null;
 
     private void Awake() {
