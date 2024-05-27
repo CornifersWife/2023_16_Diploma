@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class MouseInputManager : MonoBehaviour {
     [SerializeField] private InputAction mouseClickAction;
     [SerializeField] private ParticleSystem clickEffect;
+    [SerializeField] private GameObject player;
     private Camera mainCamera;
     private NavMeshAgent navMeshAgent;
     
@@ -17,7 +18,7 @@ public class MouseInputManager : MonoBehaviour {
 
     private void Awake() {
         mainCamera = Camera.main;
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent = player.GetComponent<NavMeshAgent>();
         groundLayer = LayerMask.NameToLayer("Ground");
         targetPosition = transform.position;
     }
