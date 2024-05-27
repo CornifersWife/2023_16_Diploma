@@ -31,6 +31,9 @@ public class KeyboardInputManager : MonoBehaviour, PlayerControls.IPlayerActionM
     }
     
     private void Update() {
+        if (!ManageGame.Instance.IsStarted)
+            return;
+        
         movementVector.Normalize();
         targetDirection = Vector3.Lerp(targetDirection, movementVector, speed * Time.deltaTime);
         navMeshAgent.Move(targetDirection * (navMeshAgent.speed * Time.deltaTime));
