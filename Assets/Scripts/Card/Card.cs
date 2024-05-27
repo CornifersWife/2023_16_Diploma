@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using ScriptableObjects;
 using TMPro;
 using UnityEngine;
 

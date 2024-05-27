@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ScriptableObjects;
 using UnityEngine;
 
 public class DeckManager : MonoBehaviour {
@@ -24,9 +25,10 @@ public class DeckManager : MonoBehaviour {
         }
 
         var baseCardDatas = new List<BaseCardData>();
-        foreach (CardSetData cardSet in cardSetDataCopies) {
-            baseCardDatas.AddRange(cardSet.cards);
-        }
+        Debug.Log("FIX ME I USED TO BE BASECARDDATA");
+        // foreach (CardSetData cardSet in cardSetDataCopies) {
+        //     baseCardDatas.AddRange(cardSet.cards);
+        // }
 
         foreach (var card in baseCardDatas) {
             card.belongsToPlayer = isPlayer;
