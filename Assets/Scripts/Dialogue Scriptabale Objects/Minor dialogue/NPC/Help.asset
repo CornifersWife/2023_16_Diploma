@@ -12,7 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e63e89906c41c19a85c77a2e04a319, type: 3}
   m_Name: Help
   m_EditorClassIdentifier: 
-  dialogueText: 'Help me!!
-
-    Nya~!'
+  dialogueText: What do I do, what do I do, what do I do!?
   showForSeconds: 10

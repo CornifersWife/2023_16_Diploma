@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2816799cad394e22b5ec36d2dc5970e2, type: 3}
   m_Name: Dialogue 1
   m_EditorClassIdentifier: 
-  dialogueText: 'My friend is in danger!
-
-    You''ve gotta help them!'
+  dialogueText: Who are you? Where did you come from?
   icon: {fileID: 21300000, guid: 53661ad43e985c04ebbeb058dcc7d4fd, type: 3}
-  nameText: Miss Whiskers
+  nameText: Bella

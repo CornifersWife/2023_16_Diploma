@@ -19,6 +19,8 @@ public class SpeechBubble : MonoBehaviour {
 
     private void Awake() {
         NPCdialogue = host.GetComponent<NPCDialogue>();
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update() {
