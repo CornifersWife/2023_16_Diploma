@@ -9223,7 +9223,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &283387515
 Transform:
   m_ObjectHideFlags: 0
@@ -12327,7 +12327,7 @@ Transform:
   m_GameObject: {fileID: 554344005}
   serializedVersion: 2
   m_LocalRotation: {x: 0.11965422, y: -0.69690955, z: -0.69690955, w: -0.11965422}
-  m_LocalPosition: {x: 1.7, y: 53.01, z: -61.45}
+  m_LocalPosition: {x: -0.26, y: 53.01, z: -60.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13044,7 +13044,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 13.4818325, y: 9.383936, z: 9.095552}
+    m_Scale: {x: 8.644011, y: 9.383936, z: 9.095552}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -30988,6 +30988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f5bf0ec4ab9344ea7f86c54931c83e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!4 &876440740
 Transform:
   m_ObjectHideFlags: 0
@@ -31460,7 +31461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &908285477
 Transform:
   m_ObjectHideFlags: 0
