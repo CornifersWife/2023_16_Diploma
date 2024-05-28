@@ -20,7 +20,7 @@ public class PauseManager : MonoBehaviour {
         else {
             Instance = this;
         }
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
         pauseView.SetActive(false);
         postProcessVolume = GameObject.FindWithTag("MainCamera").GetComponent<PostProcessVolume>();
     }
