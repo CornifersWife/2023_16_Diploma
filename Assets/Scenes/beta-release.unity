@@ -23961,7 +23961,6 @@ Transform:
   - {fileID: 1401133534}
   - {fileID: 2112642749}
   - {fileID: 932106704}
-  - {fileID: 1439787763}
   - {fileID: 2053977846}
   - {fileID: 1942729030}
   - {fileID: 1667578276}
@@ -23973,6 +23972,7 @@ Transform:
   - {fileID: 1264082672}
   - {fileID: 1836034593}
   - {fileID: 2016746467}
+  - {fileID: 1439787763}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &295698201
@@ -52050,6 +52050,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+--- !u!1 &626019838 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7619115504855137570, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+  m_PrefabInstance: {fileID: 626019837}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &631033819
 GameObject:
   m_ObjectHideFlags: 0
@@ -58787,9 +58792,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingsManager: {fileID: 1056539393}
   player: {fileID: 0}
-  npc: {fileID: 0}
-  npc2: {fileID: 0}
-  enemy: {fileID: 0}
+  npc: {fileID: 626019838}
+  npc2: {fileID: 1882389876}
+  enemy: {fileID: 2080875766}
+  wall: {fileID: 1439787762}
+  removablePS: {fileID: 7871961}
+  cardSets:
+  - {fileID: 1682129018}
+  - {fileID: 1811679069}
+  - {fileID: 478780045}
 --- !u!4 &747963249
 Transform:
   m_ObjectHideFlags: 0
@@ -112053,7 +112064,7 @@ GameObject:
   - component: {fileID: 1439787765}
   - component: {fileID: 1439787764}
   m_Layer: 14
-  m_Name: Plane (32)
+  m_Name: Removable plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141934,6 +141945,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+--- !u!1 &1882389876 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7619115504855137570, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+  m_PrefabInstance: {fileID: 1882389875}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1889333408 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
@@ -154263,6 +154279,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a98f4c367eed9d4d81dba64a20e94a0, type: 3}
+--- !u!1 &2080875766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6454280357590413841, guid: 5a98f4c367eed9d4d81dba64a20e94a0, type: 3}
+  m_PrefabInstance: {fileID: 2080875765}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2084202593
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ public class NPCDialogue : MonoBehaviour {
     [SerializeField] private List<ShortDialogue> shortDialogues;
     private int shortIndex;
 
+    public List<ShortDialogue> ShortDialogues => shortDialogues;
+
     public List<MainDialogue> GetMainDialogues() {
         return mainDialogues;
     }

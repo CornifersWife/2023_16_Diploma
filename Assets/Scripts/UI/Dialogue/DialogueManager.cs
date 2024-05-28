@@ -42,6 +42,7 @@ public class DialogueManager : MonoBehaviour {
         HideMainDialogue();
         currentDialogue.SetMainIndex(currentIndex);
         HUDController.Instance.ShowHUD();
+        ManageGame.Instance.IsAfterTutorial = true;
     }
 
     private void HideMainDialogue() {
