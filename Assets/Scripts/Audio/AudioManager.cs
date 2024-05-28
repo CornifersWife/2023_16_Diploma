@@ -33,10 +33,12 @@ public class AudioManager : MonoBehaviour {
             sfxAudioSource.mute = true;
         }
         
-        else if (scene1.name == "Overworld Test 2") {
+        else if (scene1.name == "beta-release") {
             sfxAudioSource.mute = false;
             musicAudioSource.clip = villageMusic;
             sfxAudioSource.clip = villageAmbience;
+            musicAudioSource.Play();
+            sfxAudioSource.Play();
         }
         
         else if (scene1.name == "Irys playspace") {

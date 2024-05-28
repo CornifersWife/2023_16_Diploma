@@ -27,7 +27,7 @@ public class MenuManager : MonoBehaviour {
 
     #region  Main View
     public void StartClicked(string sceneName) {
-        SceneManager.LoadScene(sceneName);
+        SceneSwitcher.Instance.LoadScene(sceneName);
     }
 
     public void ContinueClicked() {
