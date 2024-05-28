@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 022218b8dd6a97846999858c193e505a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 50
   currentHealth: 1
 --- !u!114 &136956496 stripped
 MonoBehaviour:
@@ -2655,7 +2655,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2023112824056620315, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: maxHealth
-      value: 5
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2276270804808241581, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: uimanager
