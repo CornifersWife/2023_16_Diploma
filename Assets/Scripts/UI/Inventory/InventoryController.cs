@@ -50,7 +50,6 @@ public class InventoryController : MonoBehaviour {
     }
 
     public void HideInventory() {
-        Debug.Log("hide");
         if (PauseManager.Instance.IsOpen)
             return;
         postProcessVolume.enabled = false;
