@@ -40,12 +40,5 @@ public class AudioManager : MonoBehaviour {
             musicAudioSource.Play();
             sfxAudioSource.Play();
         }
-        
-        else if (scene1.name == "Irys playspace") {
-            musicAudioSource.clip = cardBattleMusic;
-            sfxAudioSource.mute = true;
-            musicAudioSource.Play();
-            sfxAudioSource.Play();
-        }
     }
 }
