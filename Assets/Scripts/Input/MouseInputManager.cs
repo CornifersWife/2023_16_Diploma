@@ -18,6 +18,8 @@ public class MouseInputManager : MonoBehaviour {
 
     private void Awake() {
         mainCamera = Camera.main;
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player");
         navMeshAgent = player.GetComponent<NavMeshAgent>();
         groundLayer = LayerMask.NameToLayer("Ground");
         targetPosition = transform.position;

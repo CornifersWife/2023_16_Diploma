@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour {
         loseImage.enabled = false;
 
         EnemyStateManager.Instance.ChangeEnemyState(EnemyState.Defeated);
-        SceneSwitcher.Instance.LoadScene("Overworld Test 2");
+        SceneSwitcher.Instance.LoadScene("beta-release");
     }
 
     private IEnumerator WinnerImageAndLoadScene() {
@@ -155,7 +155,7 @@ public class GameManager : MonoBehaviour {
         winImage.enabled = false;
 
         EnemyStateManager.Instance.ChangeEnemyState(EnemyState.Defeated);
-        SceneSwitcher.Instance.LoadScene("Overworld Test 2");
+        SceneSwitcher.Instance.LoadScene("beta-release");
     }
     
     

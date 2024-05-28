@@ -21,6 +21,8 @@ public class KeyboardInputManager : MonoBehaviour, PlayerControls.IPlayerActionM
     private static readonly int IsMoving = Animator.StringToHash("isMoving");
 
     private void Awake() {
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player");
         navMeshAgent = player.GetComponent<NavMeshAgent>();
         rotationMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 0, -cameraPivot.rotation.eulerAngles.y));
     }

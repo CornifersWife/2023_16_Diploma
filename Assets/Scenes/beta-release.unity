@@ -6057,7 +6057,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 8528989877e0e304c9181e68b23e4404, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.92
+      value: -1.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8528989877e0e304c9181e68b23e4404, type: 3}
       propertyPath: m_LocalPosition.y
@@ -51578,7 +51578,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 840559600}
         m_TargetAssemblyTypeName: EnemyPopup, Assembly-CSharp
         m_MethodName: ClosePopup
         m_Mode: 1
@@ -59042,7 +59042,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 840559600}
         m_TargetAssemblyTypeName: EnemyPopup, Assembly-CSharp
         m_MethodName: NoClicked
         m_Mode: 1
@@ -65413,6 +65413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  cameraPivot: {fileID: 0}
 --- !u!4 &876440740
 Transform:
   m_ObjectHideFlags: 0
@@ -105690,7 +105691,7 @@ GameObject:
   - component: {fileID: 1337640860}
   m_Layer: 5
   m_Name: Inventory UI
-  m_TagString: Untagged
+  m_TagString: Inventory UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112063,6 +112064,7 @@ GameObject:
   - component: {fileID: 1439787766}
   - component: {fileID: 1439787765}
   - component: {fileID: 1439787764}
+  - component: {fileID: 1439787767}
   m_Layer: 14
   m_Name: Removable plane
   m_TagString: Untagged
@@ -112157,6 +112159,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1439787762}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!208 &1439787767
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439787762}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 5, y: 0.00001, z: 5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1442513534
 GameObject:
   m_ObjectHideFlags: 0
@@ -118027,7 +118045,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 840559600}
         m_TargetAssemblyTypeName: EnemyPopup, Assembly-CSharp
         m_MethodName: YesClicked
         m_Mode: 1

@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class SceneSwitcher : MonoBehaviour {
     public static SceneSwitcher Instance = null;
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject cameraPivot;
 
     private void Awake() {
         if (Instance != null && Instance != this) {
@@ -17,6 +18,7 @@ public class SceneSwitcher : MonoBehaviour {
 
     public void LoadScene(string sceneName) {
         player.SetActive(sceneName == "beta-release");
+        cameraPivot.SetActive(sceneName != "Irys playspace");
         if(!SceneManager.GetSceneByName(sceneName).isLoaded)
             SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
