@@ -40,7 +40,6 @@ public class ManageGame : MonoBehaviour {
             IsAfterTutorial = false;
         }
         
-
     }
     public void SaveSettings() {
         SettingsSaveData settingsSaveData = new SettingsSaveData();
