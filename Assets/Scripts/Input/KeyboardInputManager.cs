@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
+[DefaultExecutionOrder(-90)]
 public class KeyboardInputManager : MonoBehaviour, PlayerControls.IPlayerActionMapActions {
 
     private PlayerControls playerControls;
