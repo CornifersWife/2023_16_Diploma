@@ -145,6 +145,7 @@ public class GameManager : MonoBehaviour {
         loseImage.enabled = false;
 
         EnemyStateManager.Instance.ChangeEnemyState(EnemyState.Defeated);
+        ManageGame.Instance.IsAfterFirstFight = true;
         SceneSwitcher.Instance.LoadScene("beta-release");
     }
 
@@ -155,6 +156,7 @@ public class GameManager : MonoBehaviour {
         winImage.enabled = false;
 
         EnemyStateManager.Instance.ChangeEnemyState(EnemyState.Defeated);
+        ManageGame.Instance.IsAfterFirstFight = true;
         SceneSwitcher.Instance.LoadScene("beta-release");
     }
     

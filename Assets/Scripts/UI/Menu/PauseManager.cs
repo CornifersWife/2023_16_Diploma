@@ -68,6 +68,7 @@ public class PauseManager : MonoBehaviour {
     }
 
     public void ExitClicked() {
+        Close();
         SceneSwitcher.Instance.LoadScene("Main Menu");
     }
 

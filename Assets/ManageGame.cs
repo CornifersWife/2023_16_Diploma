@@ -25,7 +25,6 @@ public class ManageGame : MonoBehaviour {
         } else {
             Instance = this;
         }
-
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -41,8 +40,11 @@ public class ManageGame : MonoBehaviour {
             enemy.GetComponent<EnemySM>().GetEnemy().ChangeState(EnemyState.Undefeated);
             IsAfterTutorial = false;
         }
+        
+        Debug.Log(IsAfterFirstFight);
 
         if (IsAfterFirstFight && SceneManager.GetActiveScene().name == "beta-release") {
+            Debug.Log("Fight won");
             enemy.GetComponent<EnemySM>().GetEnemy().ChangeState(EnemyState.Defeated);
             Destroy(enemy);
             wall.SetActive(false);
