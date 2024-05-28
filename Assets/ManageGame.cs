@@ -3,6 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class ManageGame : MonoBehaviour {
     [SerializeField] private SettingsManager settingsManager;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject npc;
+    [SerializeField] private GameObject npc2;
+    [SerializeField] private GameObject enemy;
     public bool IsStarted => SceneManager.GetActiveScene().name == "beta-release";
     public static ManageGame Instance = null;
 
@@ -11,6 +15,12 @@ public class ManageGame : MonoBehaviour {
             Destroy(gameObject);
         } else {
             Instance = this;
+        }
+    }
+
+    private void Update() {
+        if (SceneManager.GetActiveScene().name == "") {
+            
         }
     }
 

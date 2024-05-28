@@ -56,6 +56,7 @@ public class DialogueBox : MonoBehaviour {
                 isTyping = true;
             yield return new WaitForSeconds(1/typingSpeed);
         }
+        wasSkipped = true;
         nextIcon.SetActive(true);
     }
 
