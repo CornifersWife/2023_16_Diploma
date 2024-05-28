@@ -28,7 +28,9 @@ public class ManageGame : MonoBehaviour {
     }
 
     private void Start() {
-        LoadSettings();
+        if (SceneManager.GetActiveScene().name == "Irys playspace")
+            return;
+        //LoadSettings();
         foreach (CardSet cardSet in cardSets) {
             InventoryController.Instance.AddItem(cardSet);
         }

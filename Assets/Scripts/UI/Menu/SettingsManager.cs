@@ -26,8 +26,8 @@ public class SettingsManager : MonoBehaviour, ISaveable {
     private bool isKeyboard = true;
     
     void Start() {
-        if (SaveManager.settingsSaveExists)
-            return;
+        //if (SaveManager.settingsSaveExists)
+            //return;
         SetUpResolutions();
     }
 
