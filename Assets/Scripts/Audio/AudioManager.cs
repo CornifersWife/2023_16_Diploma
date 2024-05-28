@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour {
             sfxAudioSource.mute = true;
         }
         
-        else if (scene1.name == "beta-release") {
+        else if (scene1.name is "beta-release" or "beta-release-2") {
             sfxAudioSource.mute = false;
             musicAudioSource.clip = villageMusic;
             sfxAudioSource.clip = villageAmbience;
@@ -44,6 +44,8 @@ public class AudioManager : MonoBehaviour {
         else if (scene1.name == "Irys playspace") {
             musicAudioSource.clip = cardBattleMusic;
             sfxAudioSource.mute = true;
+            musicAudioSource.Play();
+            sfxAudioSource.Play();
         }
     }
 }

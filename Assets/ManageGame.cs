@@ -7,16 +7,15 @@ public class ManageGame : MonoBehaviour {
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject npc;
     [SerializeField] private GameObject npc2;
-    [SerializeField] private GameObject enemy;
+    [SerializeField] private EnemySM enemy;
     [SerializeField] private GameObject wall;
     [SerializeField] private ParticleSystem removablePS;
     [SerializeField] private List<CardSet> cardSets;
         
-    public bool IsStarted => SceneManager.GetActiveScene().name == "beta-release";
+    public bool IsStarted => SceneManager.GetActiveScene().name is "beta-release" or "beta-release-2";
     public static ManageGame Instance = null;
     
     public bool IsAfterTutorial { get; set; }
-    public bool IsAfterFirstFight { get; set; }
     public bool IsAfterSecondFight { get; set; }
 
     private void Awake() {
@@ -37,24 +36,12 @@ public class ManageGame : MonoBehaviour {
     
     private void Update() {
         if (IsAfterTutorial && SceneManager.GetActiveScene().name == "beta-release") {
-            enemy.GetComponent<EnemySM>().GetEnemy().ChangeState(EnemyState.Undefeated);
+            enemy.GetEnemy().ChangeState(EnemyState.Undefeated);
             IsAfterTutorial = false;
         }
         
-        Debug.Log(IsAfterFirstFight);
 
-        if (IsAfterFirstFight && SceneManager.GetActiveScene().name == "beta-release") {
-            Debug.Log("Fight won");
-            enemy.GetComponent<EnemySM>().GetEnemy().ChangeState(EnemyState.Defeated);
-            Destroy(enemy);
-            wall.SetActive(false);
-            Destroy(removablePS);
-            IsAfterFirstFight = false;
-        }
-        
-        
     }
-
     public void SaveSettings() {
         SettingsSaveData settingsSaveData = new SettingsSaveData();
         settingsManager.PopulateSaveData(settingsSaveData);

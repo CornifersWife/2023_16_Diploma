@@ -2554,7 +2554,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1772377130961104570, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2023112824056620315, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: maxHealth
@@ -2660,6 +2660,10 @@ PrefabInstance:
       propertyPath: cardSets.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: c97246dd3c42cc9468fc0245df821c85, type: 2}
+    - target: {fileID: 3647455059854935843, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 4150459490861231547, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.1724458
@@ -2702,7 +2706,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4813557635752938063, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5098201863365681037, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2718,7 +2722,7 @@ PrefabInstance:
       objectReference: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 5667093268589797735, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6080153318332867301, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: m_Name
@@ -2726,7 +2730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6080153318332867301, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6374912989519180820, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: deck
@@ -2762,7 +2766,7 @@ PrefabInstance:
       objectReference: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 7713074856195259577, guid: 859848d3dcf727c45b701293536f2ab6, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -9,6 +9,7 @@ TagManager:
   - Dead
   - SnapTarget
   - Inventory UI
+  - World Player
   layers:
   - Default
   - TransparentFX

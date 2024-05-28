@@ -4360,7 +4360,7 @@ MonoBehaviour:
   menuMusic: {fileID: 8300000, guid: f4d196e8a9b6c8448b4a859ebb30b608, type: 3}
   villageMusic: {fileID: 8300000, guid: e4aaa9c9955438241aeffd2c4a1070db, type: 3}
   villageAmbience: {fileID: 8300000, guid: c6c964a7604c0e94cb877984fb971eab, type: 3}
-  cardBattleMusic: {fileID: 0}
+  cardBattleMusic: {fileID: 8300000, guid: f4d71c341868b2d42b37289d00a7cbc2, type: 3}
 --- !u!1 &1016930277
 GameObject:
   m_ObjectHideFlags: 0
