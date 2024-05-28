@@ -3613,7 +3613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2668557158482891500, guid: 30804b2b4a4ed9b4683bfbea20fe860d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5254029167935941323, guid: 30804b2b4a4ed9b4683bfbea20fe860d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3655,8 +3655,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5416512292268597287, guid: 30804b2b4a4ed9b4683bfbea20fe860d, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3669,6 +3668,11 @@ Animator:
 --- !u!1 &867372529 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2668557158482891500, guid: 30804b2b4a4ed9b4683bfbea20fe860d, type: 3}
+  m_PrefabInstance: {fileID: 867372527}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &867372534 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5254029167935941323, guid: 30804b2b4a4ed9b4683bfbea20fe860d, type: 3}
   m_PrefabInstance: {fileID: 867372527}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &868513405
@@ -4322,7 +4326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothing: 5
-  target: {fileID: 0}
+  target: {fileID: 867372534}
   offset: {x: -15, y: 12, z: -15}
 --- !u!114 &996209046
 MonoBehaviour:
@@ -6939,6 +6943,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   clickEffect: {fileID: 3909366380797715212, guid: 4ff364087d38e7e46a9833d34416aa70, type: 3}
+  player: {fileID: 867372529}
   animator: {fileID: 867372528}
 --- !u!114 &1516304603
 MonoBehaviour:
@@ -8469,7 +8474,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Overworld Test 2
+          m_StringArgument: beta-release
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1673926517

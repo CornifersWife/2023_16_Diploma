@@ -19,6 +19,7 @@ public class InputManager : MonoBehaviour {
         else {
             Instance = this;
         }
+        DontDestroyOnLoad(this);
         playerControls = new PlayerControls();
     }
 
