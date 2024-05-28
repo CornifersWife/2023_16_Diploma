@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2816799cad394e22b5ec36d2dc5970e2, type: 3}
   m_Name: Dialogue 3
   m_EditorClassIdentifier: 
-  dialogueText: 'Oh, have you met my friend, Miss Whiskers?
+  dialogueText: 'Oooo! There it is! I must have dropped it.
 
-    I have to see her
-    and tell her I''m alright.'
+    Here, it''s for
+    you and if you wanna we can play together ^^'
   icon: {fileID: 21300000, guid: 53661ad43e985c04ebbeb058dcc7d4fd, type: 3}
   nameText: Tallia
