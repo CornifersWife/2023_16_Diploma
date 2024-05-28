@@ -5881,6 +5881,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 51371413}
   m_CullTransparentMesh: 1
+--- !u!1 &51851361
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 51851362}
+  m_Layer: 0
+  m_Name: Enemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &51851362
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51851361}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7175961, z: -0, w: 0.6964595}
+  m_LocalPosition: {x: 29.33, y: 6.201338, z: -19.26}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 295989648}
+  - {fileID: 1402275722}
+  m_Father: {fileID: 1032275018}
+  m_LocalEulerAnglesHint: {x: 0, y: 91.713, z: 0}
 --- !u!1 &54766503
 GameObject:
   m_ObjectHideFlags: 0
@@ -24056,6 +24089,37 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2368625731194957279, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
   m_PrefabInstance: {fileID: 295698201}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &295989647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 295989648}
+  m_Layer: 0
+  m_Name: Kitty Waypoint 1
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &295989648
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295989647}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.71, y: -0.20133781, z: -3.38}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 51851362}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &297302694
 GameObject:
   m_ObjectHideFlags: 0
@@ -67369,6 +67433,7 @@ Transform:
   m_Children:
   - {fileID: 515514041}
   - {fileID: 763260527}
+  - {fileID: 51851362}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1036351651
@@ -111412,6 +111477,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401133533}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1402275721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1402275722}
+  m_Layer: 0
+  m_Name: Kitty Waypoint 2
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1402275722
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402275721}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.09, y: -0.20133781, z: -8.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 51851362}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1402560200
 GameObject:
   m_ObjectHideFlags: 0
@@ -154090,9 +154186,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 755335890215761283, guid: 5a98f4c367eed9d4d81dba64a20e94a0, type: 3}
+      propertyPath: waypoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 755335890215761283, guid: 5a98f4c367eed9d4d81dba64a20e94a0, type: 3}
+      propertyPath: waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 295989648}
+    - target: {fileID: 755335890215761283, guid: 5a98f4c367eed9d4d81dba64a20e94a0, type: 3}
+      propertyPath: waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1402275722}
     - target: {fileID: 4533639405261564135, guid: 5a98f4c367eed9d4d81dba64a20e94a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.10031
+      value: 24.59
       objectReference: {fileID: 0}
     - target: {fileID: 4533639405261564135, guid: 5a98f4c367eed9d4d81dba64a20e94a0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -154100,7 +154208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4533639405261564135, guid: 5a98f4c367eed9d4d81dba64a20e94a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.985334
+      value: -12.48
       objectReference: {fileID: 0}
     - target: {fileID: 4533639405261564135, guid: 5a98f4c367eed9d4d81dba64a20e94a0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -154138,6 +154246,14 @@ PrefabInstance:
       propertyPath: enemyPopup
       value: 
       objectReference: {fileID: 840559600}
+    - target: {fileID: 9158143557127376718, guid: 5a98f4c367eed9d4d81dba64a20e94a0, type: 3}
+      propertyPath: nameText
+      value: 
+      objectReference: {fileID: 1402560202}
+    - target: {fileID: 9158143557127376718, guid: 5a98f4c367eed9d4d81dba64a20e94a0, type: 3}
+      propertyPath: nameWindow
+      value: 
+      objectReference: {fileID: 1112181360}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -154735,6 +154851,7 @@ SceneRoots:
   - {fileID: 747963249}
   - {fileID: 626019837}
   - {fileID: 1882389875}
+  - {fileID: 2080875765}
   - {fileID: 1032275018}
   - {fileID: 137570113}
   - {fileID: 876440740}
@@ -154747,4 +154864,3 @@ SceneRoots:
   - {fileID: 283387515}
   - {fileID: 908285477}
   - {fileID: 1040345959}
-  - {fileID: 2080875765}
