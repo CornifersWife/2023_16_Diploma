@@ -1,6 +1,7 @@
+using Scenes.Irys_is_doing_her_best.Scripts;
 using UnityEngine;
 
-public class Hero : MonoBehaviour, IDamageable {
+public class HeroOld : MonoBehaviour, IDamageable {
     public int maxHealth = 20;
     public int currentHealth;
     private void Awake() {
@@ -19,6 +20,10 @@ public class Hero : MonoBehaviour, IDamageable {
     }
 
     public void Heal(int healAmount) {
+        throw new System.NotImplementedException();
+    }
+
+    public void Die() {
         throw new System.NotImplementedException();
     }
 
@@ -45,6 +50,6 @@ public class Hero : MonoBehaviour, IDamageable {
             GameManager.Instance.Win();
             return;
         }
-        Debug.Log("Critical error hero died but nothing happened");
+        Debug.Log("Critical error heroOld died but nothing happened");
     }
 }

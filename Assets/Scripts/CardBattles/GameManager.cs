@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Scenes.Irys_is_doing_her_best.Scripts;
 using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,16 +11,16 @@ using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour {
     private bool gameOver = false;
-    public Hero playerHero;
-    public DeckManager playerDeck;
+    [FormerlySerializedAs("playerHero")] public HeroOld playerHeroOld;
+    public DeckManagerOld playerDeck;
     public HandManager playerHand;
     public ActionPointManager playerActionPoint;
 
-    [Space] public Hero enemyHero;
-    public DeckManager enemyDeck;
+    [FormerlySerializedAs("enemyHero")] [Space] public HeroOld enemyHeroOld;
+    public DeckManagerOld enemyDeck;
     public HandManager enemyHand;
     public ActionPointManager enemyActionPoint;
-    [Space] public Board board;
+    [FormerlySerializedAs("board")] [Space] public BoardOld boardOld;
     public GameObject cardPrefab;
 
     public static GameManager Instance { get; private set; }
@@ -40,46 +41,46 @@ public class GameManager : MonoBehaviour {
     }
 
     void Start() {
-        foreach (var cardSpot in FindObjectsOfType<CardSpot>()) {
+        foreach (var cardSpot in FindObjectsOfType<CardSpotOld>()) {
             SubscribeToCardSpot(cardSpot);
         }
     }
 
-    public Card CreateCardInstance(BaseCardData cardData) {
+    public CardOld CreateCardInstance(BaseCardData cardData) {
         GameObject cardObj = Instantiate(cardPrefab, transform);
-        Card newCard = cardObj.GetComponent<Card>();
-        newCard.SetupCard(Instantiate(cardData));
-        return newCard;
+        CardOld newCardOld = cardObj.GetComponent<CardOld>();
+        newCardOld.SetupCard(Instantiate(cardData));
+        return newCardOld;
     }
 
-    public Card CreateCardInstance(BaseCardData cardData, Transform newTransform) {
+    public CardOld CreateCardInstance(BaseCardData cardData, Transform newTransform) {
         GameObject cardObj = Instantiate(cardPrefab, transform);
         cardObj.transform.position = newTransform.position;
-        Card newCard = cardObj.GetComponent<Card>();
-        newCard.SetupCard(Instantiate(cardData));
-        return newCard;
+        CardOld newCardOld = cardObj.GetComponent<CardOld>();
+        newCardOld.SetupCard(Instantiate(cardData));
+        return newCardOld;
     }
 
-    private void OnCardPlayed(CardSpot cardSpot, Card card) {
-        var actionPoint = cardSpot.isPlayers ? playerActionPoint : enemyActionPoint;
+    private void OnCardPlayed(CardSpotOld cardSpotOld, CardOld cardOld) {
+        var actionPoint = cardSpotOld.isPlayers ? playerActionPoint : enemyActionPoint;
         if (!actionPoint.CanUseAP()) {
-            card.GetComponent<DragAndDrop>().SnapBack();
+            cardOld.GetComponent<DragAndDrop>().SnapBack();
             return;
         }
 
         actionPoint.UseActionPoint();
-        var hand = cardSpot.isPlayers ? playerHand : enemyHand;
-        cardSpot.SetCardDisplay(card);
-        hand.RemoveCardFromHand(card);
+        var hand = cardSpotOld.isPlayers ? playerHand : enemyHand;
+        cardSpotOld.SetCardDisplay(cardOld);
+        hand.RemoveCardFromHand(cardOld);
         Transform cardTransform;
-        (cardTransform = card.transform).SetParent(cardSpot.transform);
+        (cardTransform = cardOld.transform).SetParent(cardSpotOld.transform);
         cardTransform.localPosition = Vector3.zero;
-        cardTransform.position = cardSpot.transform.position;
-        card.transform.rotation = Quaternion.Euler(0, 0, 0);
+        cardTransform.position = cardSpotOld.transform.position;
+        cardOld.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
-    private void SubscribeToCardSpot(CardSpot cardSpot) {
-        cardSpot.Play += OnCardPlayed;
+    private void SubscribeToCardSpot(CardSpotOld cardSpotOld) {
+        cardSpotOld.Play += OnCardPlayed;
     }
 
     public void PlayerDrawCard() {
@@ -91,8 +92,8 @@ public class GameManager : MonoBehaviour {
 
     public bool EnemyPlayMinion() {
         var availableCards = enemyHand.hand
-            .Where(card => card.cardData is MinionCardData && enemyActionPoint.CanUseAP()).ToArray();
-        var availableBoardSpaces = board.enemyMinions
+            .Where(card =>/* card.cardData is MinionCardData && */enemyActionPoint.CanUseAP()).ToArray();
+        var availableBoardSpaces = boardOld.enemyMinions
             .Where(space => space.IsEmpty()).ToArray();
         if (availableCards.Length <= 0 || availableBoardSpaces.Length <= 0) {
             return false;
@@ -100,7 +101,7 @@ public class GameManager : MonoBehaviour {
 
         var card = availableCards[Random.Range(0, availableCards.Count())];
         var boardSpot = availableBoardSpaces[Random.Range(0, availableBoardSpaces.Count())];
-        boardSpot.Card = card;
+        boardSpot.CardOld = card;
         return true;
     }
 
@@ -122,11 +123,11 @@ public class GameManager : MonoBehaviour {
     }
 
     public void PlayerAttack() {
-        board.MinionsAttack(true);
+        boardOld.MinionsAttack(true);
     }
 
     public void EnemyAttack() {
-        board.MinionsAttack(false);
+        boardOld.MinionsAttack(false);
     }
 
     public void Win() {
@@ -162,7 +163,7 @@ public class GameManager : MonoBehaviour {
     
     
     public List<IDamageable> GetYourMinions(bool belongsToPlayer) { //untested
-        return board.GetMinons(belongsToPlayer);
+        return boardOld.GetMinons(belongsToPlayer);
     }
     
     public List<IDamageable> GetEnemyMinions(bool belongsToPlayer) { //untested
@@ -177,7 +178,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public IDamageable GetYourHero(bool belongsToPlayer) { //untested
-        return belongsToPlayer ? playerHero : enemyHero;
+        return belongsToPlayer ? playerHeroOld : enemyHeroOld;
     }
 
     public IDamageable GetEnemyHero(bool belongsToPlayer) { //untested
@@ -185,7 +186,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public List<IDamageable> GetAllHeroes() { //untested
-        return new List<IDamageable> { playerHero, enemyHero };
+        return new List<IDamageable> { playerHeroOld, enemyHeroOld };
     }
 
     public List<IDamageable> GetAllies(bool belongsToPlayer) { //untested

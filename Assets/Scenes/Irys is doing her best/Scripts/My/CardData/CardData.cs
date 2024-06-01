@@ -38,11 +38,5 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My {
             get => onPlayEffects;
             set => onPlayEffects = value;
         }
-
-        public virtual void TriggerOnPlayEffects() {
-            foreach (var effect in OnPlayEffects) {
-                effect.ApplyEffect();
-            }
-        }
     }
 }

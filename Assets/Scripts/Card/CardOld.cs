@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
+using Scenes.Irys_is_doing_her_best.Scripts;
 using ScriptableObjects;
 using TMPro;
 using UnityEngine;
 
-public class Card : MonoBehaviour {
+public class CardOld : MonoBehaviour {
     public BaseCardData cardData;
     [SerializeField] private TextMeshProUGUI cardNameText;
     [SerializeField] private TextMeshProUGUI cardHealthText;
@@ -29,15 +30,16 @@ public class Card : MonoBehaviour {
     [SerializeField] private float deathAnimationStopDuration = 0.6f;
 
     public void SetupCard(BaseCardData data) {
-        if (data is MinionCardData minionCardData) {
+        /*if (data is MinionCardData minionCardData) {
             SetupCard(minionCardData);
             return;
-        }
+        }*/
 
         cardData = data;
         DisplayData(gameObject);
     }
 
+    /*
     public void SetupCard(MinionCardData minionData) {
         cardData = minionData;
         minionData.currentHealth = minionData.maxHealth;
@@ -46,16 +48,17 @@ public class Card : MonoBehaviour {
         minionData.OnRequestPosition += GetCardPosition;
         minionData.OnDeath += Destroy;
         DisplayData(gameObject);
-    }
+    }*/
 
     Vector3 GetCardPosition() {
         return transform.position;
     }
 
 
+    /*
     private void AttackTarget(IDamageable target) {
         StartCoroutine(MoveTowardsTarget(target.GetPosition()));
-    }
+    }*/
 
     //TODO Change how it works the code is awful
     //TODO move to a separate component
@@ -97,13 +100,14 @@ public class Card : MonoBehaviour {
         OnDestroyed?.Invoke();
     }
 
+    /*
     private void Destroy(MinionCardData minionData) {
         StartCoroutine(DeathSequence());
         minionData.OnHealthChanged -= UpdateHealthDisplay;
         minionData.OnAttack -= AttackTarget;
         minionData.OnRequestPosition -= GetCardPosition;
         minionData.OnDeath -= Destroy;
-    }
+    }*/
 
     private IEnumerator DeathSequence() {
         yield return new WaitUntil(() => !inAnimation);
@@ -129,14 +133,14 @@ public class Card : MonoBehaviour {
     }
 
     private void Update() {
-        if (cardData is MinionCardData minionCardData) {
+        /*if (cardData is MinionCardData minionCardData) {
             string newHealthText = minionCardData.currentHealth.ToString();
 
             if (healthText != newHealthText) {
                 healthText = newHealthText;
                 UpdateHealthDisplay(minionCardData.currentHealth);
             }
-        }
+        }*/
     }
     
     private void UpdateHealthDisplay(int newHealth) {
@@ -147,16 +151,16 @@ public class Card : MonoBehaviour {
     private void DisplayData(GameObject card) {
         cardNameText.text = cardData.cardName;
 
-        if (cardData is MinionCardData minionCardData) {
+        /*if (cardData is MinionCardData minionCardData) {
             cardAttackText.text = minionCardData.power.ToString();
             cardHealthText.text = minionCardData.currentHealth.ToString();
             healthText = cardHealthText.text;
-        }
+        }*/
 
-        //If card is not Minion:
-        else {
+        //If cardOld is not Minion:
+        /*else {
             cardAttackText.text = "";
             cardHealthText.text = "";
-        }
+        }*/
     }
 }

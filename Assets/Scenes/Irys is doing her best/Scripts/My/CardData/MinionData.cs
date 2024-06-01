@@ -1,8 +1,11 @@
 using System.Collections.Generic;
+using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.ProBuilder;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My {
-    [CreateAssetMenu(fileName = "New Minion Data", menuName = "Card Data/Minion")]
+    [CreateAssetMenu(fileName = "New Minion Data", menuName = "CardOld Data/Minion")]
     public class MinionData : CardData {
         [SerializeField]
         private int attack;
@@ -25,10 +28,5 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My {
             set => onDeathEffects = value;
         }
 
-        public void TriggerOnDeathEffects() {
-            foreach (var effect in OnDeathEffects) {
-                effect.ApplyEffect();
-            }
-        }
     }
 }

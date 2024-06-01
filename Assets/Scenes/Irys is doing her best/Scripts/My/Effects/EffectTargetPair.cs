@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Scenes.Irys_is_doing_her_best.Scripts.My {
     [Serializable]
     public class EffectTargetPair {
-        public IEffect effect { get; set; }
+        public EffectBase Effect { get; set; }
         public TargetType TargetType { get; set; }
 
         public void ApplyEffect() {

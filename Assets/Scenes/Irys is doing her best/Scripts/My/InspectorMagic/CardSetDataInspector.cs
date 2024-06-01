@@ -9,10 +9,10 @@ public class CardSetDataInspector : Editor {
 
         CardSetData cardSet = (CardSetData)target;
 
-        if (GUILayout.Button("Add New Minion Card")) {
+        if (GUILayout.Button("Add New Minion CardOld")) {
             CreateAndAddMinionCard(cardSet);
         }
-        if (GUILayout.Button("Add New Spell Card")) {
+        if (GUILayout.Button("Add New Spell CardOld")) {
             CreateAndAddSpellCard(cardSet);
         }
 
@@ -20,7 +20,7 @@ public class CardSetDataInspector : Editor {
         for (int i = cardSet.cards.Count - 1; i >= 0; i--) {
             if (cardSet.cards[i] is MinionData) {
                 GUILayout.BeginHorizontal();
-                EditorGUILayout.ObjectField("Minion Card", cardSet.cards[i], typeof(CardData), false);
+                EditorGUILayout.ObjectField("Minion CardOld", cardSet.cards[i], typeof(CardData), false);
 
                 if (GUILayout.Button("Remove", GUILayout.Width(100))) {
                     RemoveCard(cardSet, i);
@@ -34,7 +34,7 @@ public class CardSetDataInspector : Editor {
         for (int i = cardSet.cards.Count - 1; i >= 0; i--) {
             if (cardSet.cards[i] is SpellData) {
                 GUILayout.BeginHorizontal();
-                EditorGUILayout.ObjectField("Spell Card", cardSet.cards[i], typeof(CardData), false);
+                EditorGUILayout.ObjectField("Spell CardOld", cardSet.cards[i], typeof(CardData), false);
 
                 if (GUILayout.Button("Remove", GUILayout.Width(100))) {
                     RemoveCard(cardSet, i);

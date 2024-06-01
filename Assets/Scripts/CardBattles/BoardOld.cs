@@ -2,13 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using Scenes.Irys_is_doing_her_best.Scripts;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class Board : MonoBehaviour {
+public class BoardOld : MonoBehaviour {
     public int maxMinions = 5;
 
-    public CardSpot[] playerMinions;
-    public CardSpot[] enemyMinions;
+    public CardSpotOld[] playerMinions;
+    public CardSpotOld[] enemyMinions;
 
     public GameObject cardSpot;
     public GameObject minionCardPrefab; //check if still needed
@@ -18,14 +20,14 @@ public class Board : MonoBehaviour {
     public float cardSpacing = 1;
     public float delayBetweenAttacks = 0.3f;
 
-    public Hero playerHero;
+    [FormerlySerializedAs("playerHero")] public HeroOld playerHeroOld;
 
-    public Hero opponentHero;
+    [FormerlySerializedAs("opponentHero")] public HeroOld opponentHeroOld;
 
 
     private void Awake() {
-        playerMinions = new CardSpot[maxMinions];
-        enemyMinions = new CardSpot[maxMinions];
+        playerMinions = new CardSpotOld[maxMinions];
+        enemyMinions = new CardSpotOld[maxMinions];
         GenerateBoardSpaces();
     }
 
@@ -37,11 +39,11 @@ public class Board : MonoBehaviour {
     public void GenerateEnemyBoardSpaces() {
         for (int i = 0; i < maxMinions; i++) {
             GameObject cardSpotobj = Instantiate(cardSpot, opponentMinionArea);
-            cardSpotobj.GetComponent<CardSpot>().isPlayers = false;
+            cardSpotobj.GetComponent<CardSpotOld>().isPlayers = false;
             cardSpotobj.transform.position += new Vector3(i * cardSpacing, 0, 0);
             cardSpotobj.name = "EnemyCardSpot_" + i;
             cardSpotobj.transform.rotation *= Quaternion.Euler(0, 180, 0);
-            enemyMinions[i] = cardSpotobj.GetComponent<CardSpot>();
+            enemyMinions[i] = cardSpotobj.GetComponent<CardSpotOld>();
         }
     }
 
@@ -50,12 +52,12 @@ public class Board : MonoBehaviour {
             GameObject cardSpotobj = Instantiate(cardSpot, playerMinionArea);
             cardSpotobj.transform.position += new Vector3(i * cardSpacing, 0, 0);
             cardSpotobj.name = "PlayerCardSpot_" + i;
-            playerMinions[i] = cardSpotobj.GetComponent<CardSpot>();
+            playerMinions[i] = cardSpotobj.GetComponent<CardSpotOld>();
         }
     }
 
     public bool HasEmptySpace(bool isPlayerSide) {
-        CardSpot[] boardSide = isPlayerSide ? playerMinions : enemyMinions;
+        CardSpotOld[] boardSide = isPlayerSide ? playerMinions : enemyMinions;
         for (int i = 0; i < boardSide.Length; i++) {
             if (boardSide[i] is null)
                 return true;
@@ -69,28 +71,30 @@ public class Board : MonoBehaviour {
     }
 
     private IEnumerator AttackCoroutine(bool isPlayerSide) {
-        CardSpot[] attackers = isPlayerSide ? playerMinions : enemyMinions;
-        CardSpot[] targetted = !isPlayerSide ? playerMinions : enemyMinions;
-        Hero targetHero = !isPlayerSide ? playerHero : opponentHero;
+        CardSpotOld[] attackers = isPlayerSide ? playerMinions : enemyMinions;
+        CardSpotOld[] targetted = !isPlayerSide ? playerMinions : enemyMinions;
+        HeroOld targetHeroOld = !isPlayerSide ? playerHeroOld : opponentHeroOld;
         for (int i = 0; i < attackers.Length; i++) {
             if (attackers[i].IsEmpty()) continue;
-            yield return new WaitForSeconds(delayBetweenAttacks);
+            /*yield return new WaitForSeconds(delayBetweenAttacks);
             try {
-                var attacker = (MinionCardData)attackers[i].Card.cardData;
+                var attacker = (MinionCardData)attackers[i].CardOld.cardData;
                 if (targetted[i].IsEmpty()) {
-                    attacker.Attack(targetHero);
+                    attacker.Attack(targetHeroOld);
                     continue;
                 }
 
-                var target = (MinionCardData)targetted[i].Card.cardData;
+                var target = (MinionCardData)targetted[i].CardOld.cardData;
                 attacker.Attack(target);
             }
             catch (Exception e) {
                 Debug.Log(e);
                 
-            }
+            }*/
             
         }
+
+        return null;
     }
 
     public List<IDamageable> GetMinons(bool isPLayerSide) {
@@ -98,9 +102,9 @@ public class Board : MonoBehaviour {
         List<IDamageable> tmpOutput = new List<IDamageable>();
         for (int i = 0; i < tmp.Length; i++) {
             if (tmp[i].IsEmpty()) continue;
-            tmpOutput.Add((MinionCardData)tmp[i].Card.cardData);
+            //tmpOutput.Add((MinionCardData)tmp[i].CardOld.cardData);
         }
 
-        return tmpOutput;
+        return null;
     }
 }

@@ -11,13 +11,13 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
     
     private float hoverTimer = 0f;
 
-    private Card card;
+    private CardOld cardOld;
     private CardDetail cardDetail;
 
     private bool isMouseOver;
     
     private void Awake() {
-        card = GetComponent<Card>();
+        cardOld = GetComponent<CardOld>();
         cardDetail = GetComponent<CardDetail>();
     }
     
@@ -52,8 +52,9 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     private void ReadCardData() {
         BaseCardData cardData;
-        if (card is not null) {
-            cardData = card.cardData;
+        //TODO UPDATE TO NEW ONES
+        /*if (cardOld is not null) {
+            cardData = cardOld.cardData;
         }
         else {
             cardData = cardDetail.CardData;
@@ -61,13 +62,15 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
         string displayText = cardData.cardName + "\nDescription: ";
         displayText += "description text";
         
-        if (cardData is MinionCardData) {
+        if (cardData is Minion) {
             displayText += "\nPower: " + ((MinionCardData)cardData).power;
             displayText += "\nHealth: " + ((MinionCardData)cardData).maxHealth;
         }
+        
 
         descriptionText.text = displayText;
         descriptionWindow.gameObject.SetActive(true);
+        */
     }
     
     private void ShowDetails() {
