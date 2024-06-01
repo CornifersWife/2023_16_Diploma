@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My {
     public abstract class CardData : ScriptableObject {
+        
         [SerializeField]
         private string name;
         public string Name {

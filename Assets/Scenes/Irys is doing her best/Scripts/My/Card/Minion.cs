@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
 using UnityEngine;
@@ -42,6 +43,8 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Card {
 
         public List<EffectTargetPair> OnDeathEffects { get; private set; }
 
+        
+
         public override void Initialize(CardData cardData) {
             base.Initialize(cardData);
             
@@ -53,6 +56,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Card {
                 MaxHealth = minionData.MaxHealth;
                 CurrentHealth = MaxHealth;
                 OnDeathEffects = minionData.OnDeathEffects;
+                cardDisplay.SetCardData(minionData);
             }
         }
 

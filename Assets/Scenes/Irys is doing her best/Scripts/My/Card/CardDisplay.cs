@@ -50,7 +50,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Card {
             image.sprite = spellData.Sprite;
             cardName.text = spellData.name;
             description.text = spellData.Description;
-            minionOnlyElements.GetComponent<CanvasGroup>().enabled = false;
+            minionOnlyElements.GetComponent<CanvasGroup>().alpha = 0;
             // TODO IMPLEMENT cardSetSymbol.sprite and colors
         }
     }
