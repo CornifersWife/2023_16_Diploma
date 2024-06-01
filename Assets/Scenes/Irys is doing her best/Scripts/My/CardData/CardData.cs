@@ -31,6 +31,12 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My {
             get => cardSet;
             set => cardSet = value;
         }
+        [SerializeField]
+        private Sprite sprite; 
+        public Sprite Sprite {
+            get => sprite;
+            set => sprite = value;
+        }
 
         [SerializeField]
         private List<EffectTargetPair> onPlayEffects = new List<EffectTargetPair>();
