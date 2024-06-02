@@ -119,7 +119,7 @@ public class InventoryController : MonoBehaviour, ISaveable {
             if (!itemSlots[i].IsOccupied()) 
                 continue;
             Item item = itemSlots[i].GetItem();
-            Debug.Log(AssetDatabase.GetAssetPath(item.GetSprite()));
+           
             InventorySaveData.ItemData itemData = new InventorySaveData.ItemData {
                 index = i,
                 name = item.GetName(),
@@ -149,11 +149,7 @@ public class InventoryController : MonoBehaviour, ISaveable {
                 index = i,
                 name = item.GetName(),
                 image = AssetDatabase.GetAssetPath(item.GetSprite()),
-                color = ColorUtility.ToHtmlStringRGBA(((CardSet)item).GetCardSetData().setColor),
-                cardCosts = costs,
-                cardNames = names,
-                cardBelongsToPlayer = isPlayers,
-                cardImages = sprites
+                cardSetData = AssetDatabase.GetAssetPath(((CardSet)item).GetCardSetData())
             };
             ((InventorySaveData)saveData).cardSetDatas.Add(itemData);
         }
@@ -178,11 +174,7 @@ public class InventoryController : MonoBehaviour, ISaveable {
                 index = i,
                 name = item.GetName(),
                 image = AssetDatabase.GetAssetPath(item.GetSprite()),
-                color = ColorUtility.ToHtmlStringRGBA(((CardSet)item).GetCardSetData().setColor),
-                cardCosts = costs,
-                cardNames = names,
-                cardBelongsToPlayer = isPlayers,
-                cardImages = sprites
+                cardSetData = AssetDatabase.GetAssetPath(((CardSet)item).GetCardSetData())
             };
             ((InventorySaveData)saveData).deckDatas.Add(itemData);
         }
@@ -193,35 +185,15 @@ public class InventoryController : MonoBehaviour, ISaveable {
         for (int i = 0; i < inventorySaveData.itemDatas.Count; i++) {
             CollectibleItem item = new GameObject().AddComponent<CollectibleItem>();
             item.SetName(inventorySaveData.itemDatas[i].name);
-            item.SetSprite(Resources.Load<Sprite>(inventorySaveData.itemDatas[i].image));
+            item.SetSprite(AssetDatabase.LoadAssetAtPath<Sprite>(inventorySaveData.itemDatas[i].image));
             itemSlots[inventorySaveData.itemDatas[i].index].AddItem(item);
         }
         
         for (int i = 0; i < inventorySaveData.cardSetDatas.Count; i++) {
             CardSet item = new GameObject().AddComponent<CardSet>();
             item.SetName(inventorySaveData.cardSetDatas[i].name);
-            item.SetSprite(Resources.Load<Sprite>(inventorySaveData.cardSetDatas[i].image));
-            
-            CardSetData cardSetData = ScriptableObject.CreateInstance<CardSetData>();
-            ColorUtility.TryParseHtmlString(inventorySaveData.cardSetDatas[i].color, out Color color);
-            cardSetData.setColor = color;
-            
-            List<BaseCardData> cards = new List<BaseCardData>();
-            int[] costs = inventorySaveData.cardSetDatas[i].cardCosts;
-            string[] names = inventorySaveData.cardSetDatas[i].cardNames;
-            bool[] isPlayers = inventorySaveData.cardSetDatas[i].cardBelongsToPlayer;
-            string[] sprites = inventorySaveData.cardSetDatas[i].cardImages;
-            for (int j = 0; j < costs.Length; j++) {
-                BaseCardData cardData =  ScriptableObject.CreateInstance<BaseCardData>();
-                cardData.cost = costs[i];
-                cardData.cardName = names[i];
-                cardData.belongsToPlayer = isPlayers[i];
-                cardData.cardImage = Resources.Load<Sprite>(sprites[i]);
-                cards.Add(cardData);
-            }
-
-            cardSetData.cards = cards;
-            cardSetData.displayName = inventorySaveData.cardSetDatas[i].name;
+            item.SetSprite(AssetDatabase.LoadAssetAtPath<Sprite>(inventorySaveData.cardSetDatas[i].image));
+            item.SetCardSetData(AssetDatabase.LoadAssetAtPath<CardSetData>(inventorySaveData.cardSetDatas[i].cardSetData));
             
             cardSetSlots[inventorySaveData.cardSetDatas[i].index].AddItem(item);
         }
@@ -229,28 +201,8 @@ public class InventoryController : MonoBehaviour, ISaveable {
         for (int i = 0; i < inventorySaveData.deckDatas.Count; i++) {
             CardSet item = new GameObject().AddComponent<CardSet>();
             item.SetName(inventorySaveData.deckDatas[i].name);
-            item.SetSprite(Resources.Load<Sprite>(inventorySaveData.deckDatas[i].image));
-            
-            CardSetData cardSetData = ScriptableObject.CreateInstance<CardSetData>();
-            ColorUtility.TryParseHtmlString(inventorySaveData.deckDatas[i].color, out Color color);
-            cardSetData.setColor = color;
-            
-            List<BaseCardData> cards = new List<BaseCardData>();
-            int[] costs = inventorySaveData.cardSetDatas[i].cardCosts;
-            string[] names = inventorySaveData.cardSetDatas[i].cardNames;
-            bool[] isPlayers = inventorySaveData.cardSetDatas[i].cardBelongsToPlayer;
-            string[] sprites = inventorySaveData.cardSetDatas[i].cardImages;
-            for (int j = 0; j < costs.Length; j++) {
-                BaseCardData cardData =  ScriptableObject.CreateInstance<BaseCardData>();
-                cardData.cost = costs[i];
-                cardData.cardName = names[i];
-                cardData.belongsToPlayer = isPlayers[i];
-                cardData.cardImage = Resources.Load<Sprite>(sprites[i]);
-                cards.Add(cardData);
-            }
-
-            cardSetData.cards = cards;
-            cardSetData.displayName = inventorySaveData.deckDatas[i].name;
+            item.SetSprite(AssetDatabase.LoadAssetAtPath<Sprite>(inventorySaveData.deckDatas[i].image));
+            item.SetCardSetData(AssetDatabase.LoadAssetAtPath<CardSetData>(inventorySaveData.deckDatas[i].cardSetData));
             
             deckSlots[inventorySaveData.deckDatas[i].index].AddItem(item);
         }

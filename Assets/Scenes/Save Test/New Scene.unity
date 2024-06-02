@@ -1179,7 +1179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Card Set 1
-  sprite: {fileID: 21300002, guid: 388e8eb6de557964999d88f8d42114db, type: 3}
+  sprite: {fileID: 21300000, guid: e5eae2c6d71262d4ba0fa2c773995d7d, type: 2}
   cards: {fileID: 11400000, guid: c97246dd3c42cc9468fc0245df821c85, type: 2}
 --- !u!54 &87115878
 Rigidbody:
@@ -150414,7 +150414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Card 1
-  sprite: {fileID: 21300000, guid: 388e8eb6de557964999d88f8d42114db, type: 3}
+  sprite: {fileID: 21300000, guid: 2964d65d71ec0ed4c8de2bd7a5f65dc4, type: 2}
 --- !u!54 &2086719489
 Rigidbody:
   m_ObjectHideFlags: 0

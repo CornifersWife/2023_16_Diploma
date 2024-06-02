@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 public class InventorySaveData : SaveData{
     [System.Serializable]
@@ -13,11 +12,7 @@ public class InventorySaveData : SaveData{
         public int index;
         public string name;
         public string image;
-        public string color;
-        public int[] cardCosts;
-        public string[] cardNames;
-        public bool[] cardBelongsToPlayer;
-        public string[] cardImages;
+        public string cardSetData;
     }
 
     public List<ItemData> itemDatas = new List<ItemData>();
