@@ -12,7 +12,7 @@ public class ManageGame : MonoBehaviour {
     [SerializeField] private ParticleSystem removablePS;
     [SerializeField] private List<CardSet> cardSets;
         
-    public bool IsStarted => SceneManager.GetActiveScene().name is "beta-release" or "beta-release-2";
+    public bool IsStarted => SceneManager.GetActiveScene().name is "beta-release" or "beta-release-2" or "New Scene";
     public static ManageGame Instance = null;
     
     public bool IsAfterTutorial { get; set; }
