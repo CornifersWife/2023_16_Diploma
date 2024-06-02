@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class ManageGame : MonoBehaviour {
     [SerializeField] private SettingsManager settingsManager;
+    [SerializeField] private InventoryController inventoryController;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject npc;
     [SerializeField] private GameObject npc2;
@@ -53,6 +54,19 @@ public class ManageGame : MonoBehaviour {
         if (SaveManager.settingsSaveExists) {
             SettingsSaveData settingsSaveData = SaveManager.LoadGame<SettingsSaveData>(SaveManager.settingsSavePath);
             settingsManager.LoadSaveData(settingsSaveData);
+        }
+    }
+
+    public void SaveInventory() {
+        InventorySaveData inventorySaveData = new InventorySaveData();
+        inventoryController.PopulateSaveData(inventorySaveData);
+        SaveManager.SaveGame(SaveManager.inventorySavePath, inventorySaveData);
+    }
+
+    public void LoadInventory() {
+        if (SaveManager.inventorySaveExists) {
+            InventorySaveData inventorySaveData = SaveManager.LoadGame<InventorySaveData>(SaveManager.inventorySavePath);
+            inventoryController.LoadSaveData(inventorySaveData);
         }
     }
 

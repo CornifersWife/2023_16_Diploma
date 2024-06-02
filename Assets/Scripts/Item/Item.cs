@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+[System.Serializable]
 public class Item: MonoBehaviour, IPointerClickHandler{
     [SerializeField] private string itemName;
     [SerializeField] private Sprite sprite;
@@ -11,6 +12,14 @@ public class Item: MonoBehaviour, IPointerClickHandler{
 
     public Sprite GetSprite() {
         return sprite;
+    }
+    
+    public void SetName(string name) {
+        itemName = name;
+    }
+
+    public void SetSprite(Sprite sprite) {
+        this.sprite = sprite;
     }
     
     public void OnPointerClick(PointerEventData eventData) {

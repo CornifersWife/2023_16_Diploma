@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.PostProcessing;
 
-public class InventoryController : MonoBehaviour {
+public class InventoryController : MonoBehaviour, ISaveable {
     [SerializeField] private GameObject inventoryUI;
     [SerializeField] private ManageCardSetDetails manageCardSetDetails;
     [SerializeField] private InputAction rightClickAction;
@@ -110,5 +111,148 @@ public class InventoryController : MonoBehaviour {
 
     public bool IsOpen() {
         return isOpen;
+    }
+
+
+    public void PopulateSaveData(SaveData saveData) {
+        for (int i = 0; i < itemSlots.Count; i++) {
+            if (!itemSlots[i].IsOccupied()) 
+                continue;
+            Item item = itemSlots[i].GetItem();
+            Debug.Log(AssetDatabase.GetAssetPath(item.GetSprite()));
+            InventorySaveData.ItemData itemData = new InventorySaveData.ItemData {
+                index = i,
+                name = item.GetName(),
+                image = AssetDatabase.GetAssetPath(item.GetSprite())
+            };
+            ((InventorySaveData)saveData).itemDatas.Add(itemData);
+        }
+        
+        for (int i = 0; i < cardSetSlots.Count; i++) {
+            if (!cardSetSlots[i].IsOccupied()) 
+                continue;
+            Item item = cardSetSlots[i].GetItem();
+
+            List<BaseCardData> cards = ((CardSet)item).GetCardSetData().cards;
+            int[] costs = new int[cards.Count];
+            string[] names = new string[cards.Count];
+            bool[] isPlayers = new bool[cards.Count];
+            string[] sprites = new string[cards.Count];
+            for (int j = 0; j < cards.Count; j++) {
+                costs[i] = cards[i].cost;
+                names[i] = cards[i].name;
+                isPlayers[i] = cards[i].belongsToPlayer;
+                sprites[i] = AssetDatabase.GetAssetPath(cards[i].cardImage);
+            }
+            
+            InventorySaveData.CardSetItemData itemData = new InventorySaveData.CardSetItemData() {
+                index = i,
+                name = item.GetName(),
+                image = AssetDatabase.GetAssetPath(item.GetSprite()),
+                color = ColorUtility.ToHtmlStringRGBA(((CardSet)item).GetCardSetData().setColor),
+                cardCosts = costs,
+                cardNames = names,
+                cardBelongsToPlayer = isPlayers,
+                cardImages = sprites
+            };
+            ((InventorySaveData)saveData).cardSetDatas.Add(itemData);
+        }
+        
+        for (int i = 0; i < deckSlots.Count; i++) {
+            if (!deckSlots[i].IsOccupied()) 
+                continue;
+            Item item = deckSlots[i].GetItem();
+            List<BaseCardData> cards = ((CardSet)item).GetCardSetData().cards;
+            int[] costs = new int[cards.Count];
+            string[] names = new string[cards.Count];
+            bool[] isPlayers = new bool[cards.Count];
+            string[] sprites = new string[cards.Count];
+            for (int j = 0; j < cards.Count; j++) {
+                costs[i] = cards[i].cost;
+                names[i] = cards[i].name;
+                isPlayers[i] = cards[i].belongsToPlayer;
+                sprites[i] = AssetDatabase.GetAssetPath(cards[i].cardImage);
+            }
+            
+            InventorySaveData.CardSetItemData itemData = new InventorySaveData.CardSetItemData() {
+                index = i,
+                name = item.GetName(),
+                image = AssetDatabase.GetAssetPath(item.GetSprite()),
+                color = ColorUtility.ToHtmlStringRGBA(((CardSet)item).GetCardSetData().setColor),
+                cardCosts = costs,
+                cardNames = names,
+                cardBelongsToPlayer = isPlayers,
+                cardImages = sprites
+            };
+            ((InventorySaveData)saveData).deckDatas.Add(itemData);
+        }
+    }
+
+    public void LoadSaveData(SaveData saveData) {
+        InventorySaveData inventorySaveData = (InventorySaveData)saveData;
+        for (int i = 0; i < inventorySaveData.itemDatas.Count; i++) {
+            CollectibleItem item = new GameObject().AddComponent<CollectibleItem>();
+            item.SetName(inventorySaveData.itemDatas[i].name);
+            item.SetSprite(Resources.Load<Sprite>(inventorySaveData.itemDatas[i].image));
+            itemSlots[inventorySaveData.itemDatas[i].index].AddItem(item);
+        }
+        
+        for (int i = 0; i < inventorySaveData.cardSetDatas.Count; i++) {
+            CardSet item = new GameObject().AddComponent<CardSet>();
+            item.SetName(inventorySaveData.cardSetDatas[i].name);
+            item.SetSprite(Resources.Load<Sprite>(inventorySaveData.itemDatas[i].image));
+            
+            CardSetData cardSetData = ScriptableObject.CreateInstance<CardSetData>();
+            ColorUtility.TryParseHtmlString(inventorySaveData.cardSetDatas[i].color, out Color color);
+            cardSetData.setColor = color;
+            
+            List<BaseCardData> cards = new List<BaseCardData>();
+            int[] costs = inventorySaveData.cardSetDatas[i].cardCosts;
+            string[] names = inventorySaveData.cardSetDatas[i].cardNames;
+            bool[] isPlayers = inventorySaveData.cardSetDatas[i].cardBelongsToPlayer;
+            string[] sprites = inventorySaveData.cardSetDatas[i].cardImages;
+            for (int j = 0; j < costs.Length; j++) {
+                BaseCardData cardData =  ScriptableObject.CreateInstance<BaseCardData>();
+                cardData.cost = costs[i];
+                cardData.cardName = names[i];
+                cardData.belongsToPlayer = isPlayers[i];
+                cardData.cardImage = Resources.Load<Sprite>(sprites[i]);
+                cards.Add(cardData);
+            }
+
+            cardSetData.cards = cards;
+            cardSetData.displayName = inventorySaveData.cardSetDatas[i].name;
+            
+            cardSetSlots[inventorySaveData.cardSetDatas[i].index].AddItem(item);
+        }
+        
+        for (int i = 0; i < inventorySaveData.deckDatas.Count; i++) {
+            CardSet item = new GameObject().AddComponent<CardSet>();
+            item.SetName(inventorySaveData.itemDatas[i].name);
+            item.SetSprite(Resources.Load<Sprite>(inventorySaveData.itemDatas[i].image));
+            
+            CardSetData cardSetData = ScriptableObject.CreateInstance<CardSetData>();
+            ColorUtility.TryParseHtmlString(inventorySaveData.cardSetDatas[i].color, out Color color);
+            cardSetData.setColor = color;
+            
+            List<BaseCardData> cards = new List<BaseCardData>();
+            int[] costs = inventorySaveData.cardSetDatas[i].cardCosts;
+            string[] names = inventorySaveData.cardSetDatas[i].cardNames;
+            bool[] isPlayers = inventorySaveData.cardSetDatas[i].cardBelongsToPlayer;
+            string[] sprites = inventorySaveData.cardSetDatas[i].cardImages;
+            for (int j = 0; j < costs.Length; j++) {
+                BaseCardData cardData =  ScriptableObject.CreateInstance<BaseCardData>();
+                cardData.cost = costs[i];
+                cardData.cardName = names[i];
+                cardData.belongsToPlayer = isPlayers[i];
+                cardData.cardImage = Resources.Load<Sprite>(sprites[i]);
+                cards.Add(cardData);
+            }
+
+            cardSetData.cards = cards;
+            cardSetData.displayName = inventorySaveData.cardSetDatas[i].name;
+            
+            deckSlots[inventorySaveData.deckDatas[i].index].AddItem(item);
+        }
     }
 }
