@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Item: MonoBehaviour {
+public class Item: MonoBehaviour, IPointerClickHandler{
     [SerializeField] private string itemName;
     [SerializeField] private Sprite sprite;
 
@@ -10,5 +11,10 @@ public class Item: MonoBehaviour {
 
     public Sprite GetSprite() {
         return sprite;
+    }
+    
+    public void OnPointerClick(PointerEventData eventData) {
+        InventoryController.Instance.AddItem(this);
+        gameObject.SetActive(false);
     }
 }
