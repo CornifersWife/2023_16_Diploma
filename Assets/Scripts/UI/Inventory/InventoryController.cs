@@ -200,7 +200,7 @@ public class InventoryController : MonoBehaviour, ISaveable {
         for (int i = 0; i < inventorySaveData.cardSetDatas.Count; i++) {
             CardSet item = new GameObject().AddComponent<CardSet>();
             item.SetName(inventorySaveData.cardSetDatas[i].name);
-            item.SetSprite(Resources.Load<Sprite>(inventorySaveData.itemDatas[i].image));
+            item.SetSprite(Resources.Load<Sprite>(inventorySaveData.cardSetDatas[i].image));
             
             CardSetData cardSetData = ScriptableObject.CreateInstance<CardSetData>();
             ColorUtility.TryParseHtmlString(inventorySaveData.cardSetDatas[i].color, out Color color);
@@ -228,11 +228,11 @@ public class InventoryController : MonoBehaviour, ISaveable {
         
         for (int i = 0; i < inventorySaveData.deckDatas.Count; i++) {
             CardSet item = new GameObject().AddComponent<CardSet>();
-            item.SetName(inventorySaveData.itemDatas[i].name);
-            item.SetSprite(Resources.Load<Sprite>(inventorySaveData.itemDatas[i].image));
+            item.SetName(inventorySaveData.deckDatas[i].name);
+            item.SetSprite(Resources.Load<Sprite>(inventorySaveData.deckDatas[i].image));
             
             CardSetData cardSetData = ScriptableObject.CreateInstance<CardSetData>();
-            ColorUtility.TryParseHtmlString(inventorySaveData.cardSetDatas[i].color, out Color color);
+            ColorUtility.TryParseHtmlString(inventorySaveData.deckDatas[i].color, out Color color);
             cardSetData.setColor = color;
             
             List<BaseCardData> cards = new List<BaseCardData>();
@@ -250,7 +250,7 @@ public class InventoryController : MonoBehaviour, ISaveable {
             }
 
             cardSetData.cards = cards;
-            cardSetData.displayName = inventorySaveData.cardSetDatas[i].name;
+            cardSetData.displayName = inventorySaveData.deckDatas[i].name;
             
             deckSlots[inventorySaveData.deckDatas[i].index].AddItem(item);
         }
