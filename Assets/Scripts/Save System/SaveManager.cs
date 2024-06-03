@@ -6,10 +6,12 @@ public static class SaveManager {
 
     public static string settingsSavePath = "/settings.json";
     public static string inventorySavePath = "/inventory.json";
+    public static string npcSavePath = "/npc.json";
     
     public static bool saveExists;
     public static bool settingsSaveExists => File.Exists(Application.persistentDataPath + settingsSavePath);
     public static bool inventorySaveExists => File.Exists(Application.persistentDataPath + inventorySavePath);
+    public static bool npcSaveExists => File.Exists(Application.persistentDataPath + npcSavePath);
     
     public static bool SaveGame<T>(string relativePath, T data) {
         return saveSystem.SaveData(relativePath, data);
