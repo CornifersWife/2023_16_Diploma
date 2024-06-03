@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Scenes.Irys_is_doing_her_best.Scripts.My;
+using ScriptableObjects;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -132,18 +134,6 @@ public class InventoryController : MonoBehaviour, ISaveable {
             if (!cardSetSlots[i].IsOccupied()) 
                 continue;
             Item item = cardSetSlots[i].GetItem();
-
-            List<BaseCardData> cards = ((CardSet)item).GetCardSetData().cards;
-            int[] costs = new int[cards.Count];
-            string[] names = new string[cards.Count];
-            bool[] isPlayers = new bool[cards.Count];
-            string[] sprites = new string[cards.Count];
-            for (int j = 0; j < cards.Count; j++) {
-                costs[i] = cards[i].cost;
-                names[i] = cards[i].name;
-                isPlayers[i] = cards[i].belongsToPlayer;
-                sprites[i] = AssetDatabase.GetAssetPath(cards[i].cardImage);
-            }
             
             InventorySaveData.CardSetItemData itemData = new InventorySaveData.CardSetItemData() {
                 index = i,
@@ -158,17 +148,6 @@ public class InventoryController : MonoBehaviour, ISaveable {
             if (!deckSlots[i].IsOccupied()) 
                 continue;
             Item item = deckSlots[i].GetItem();
-            List<BaseCardData> cards = ((CardSet)item).GetCardSetData().cards;
-            int[] costs = new int[cards.Count];
-            string[] names = new string[cards.Count];
-            bool[] isPlayers = new bool[cards.Count];
-            string[] sprites = new string[cards.Count];
-            for (int j = 0; j < cards.Count; j++) {
-                costs[i] = cards[i].cost;
-                names[i] = cards[i].name;
-                isPlayers[i] = cards[i].belongsToPlayer;
-                sprites[i] = AssetDatabase.GetAssetPath(cards[i].cardImage);
-            }
             
             InventorySaveData.CardSetItemData itemData = new InventorySaveData.CardSetItemData() {
                 index = i,
