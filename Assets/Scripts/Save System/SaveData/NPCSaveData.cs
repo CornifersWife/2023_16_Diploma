@@ -5,7 +5,6 @@ public class NPCSaveData : SaveData{
     public struct NPCData {
         public float[] position;
         public bool isActive;
-        public string prefab;
     }
     
     public List<NPCData> npcDatas = new List<NPCData>();

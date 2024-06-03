@@ -8,5 +8,5 @@ public class EnemySaveData : SaveData {
         public bool isActive;
     }
     
-    public List<EnemyData> enemyData = new List<EnemyData>();
+    public List<EnemyData> enemyDatas = new List<EnemyData>();
 }

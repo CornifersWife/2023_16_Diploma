@@ -6,6 +6,7 @@ public class ManageGame : MonoBehaviour {
     [SerializeField] private SettingsManager settingsManager;
     [SerializeField] private InventoryController inventoryController;
     [SerializeField] private NPCManager npcManager;
+    [SerializeField] private EnemyStateManager enemyStateManager;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject npc;
     [SerializeField] private GameObject npc2;
@@ -82,6 +83,19 @@ public class ManageGame : MonoBehaviour {
         if (SaveManager.npcSaveExists) {
             NPCSaveData npcSaveData = SaveManager.LoadGame<NPCSaveData>(SaveManager.npcSavePath);
             npcManager.LoadSaveData(npcSaveData);
+        }
+    }
+    
+    public void SaveEnemy() {
+        EnemySaveData enemySaveData = new EnemySaveData();
+        enemyStateManager.PopulateSaveData(enemySaveData);
+        SaveManager.SaveGame(SaveManager.enemySavePath, enemySaveData);
+    }
+    
+    public void LoadEnemy() {
+        if (SaveManager.enemySaveExists) {
+            EnemySaveData enemySaveData = SaveManager.LoadGame<EnemySaveData>(SaveManager.enemySavePath);
+            enemyStateManager.LoadSaveData(enemySaveData);
         }
     }
 
