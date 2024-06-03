@@ -117,6 +117,7 @@ public class InventoryController : MonoBehaviour, ISaveable {
 
 
     public void PopulateSaveData(SaveData saveData) {
+        //TODO change how card sets are handled -> Card Data
         for (int i = 0; i < itemSlots.Count; i++) {
             if (!itemSlots[i].IsOccupied()) 
                 continue;
