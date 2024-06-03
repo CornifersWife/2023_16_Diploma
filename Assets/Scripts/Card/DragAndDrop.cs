@@ -8,7 +8,7 @@ public class DragAndDrop : MonoBehaviour {
     private TurnManager turnManager;
     [SerializeField] float snapDistance = 2.0f;
     
-    private CardSpot potentialSnapTarget;
+    private CardSpotOld potentialSnapTarget;
 
     private void Awake() {
         turnManager = TurnManager.Instance;
@@ -25,7 +25,7 @@ public class DragAndDrop : MonoBehaviour {
     private void UpdatePotentialSnapTarget() {
         if (!turnManager.isPlayerTurn) return;
 
-        var targets = FindObjectsOfType<CardSpot>().Where(cardSpot => cardSpot.IsValid()).ToArray();
+        var targets = FindObjectsOfType<CardSpotOld>().Where(cardSpot => cardSpot.IsValid()).ToArray();
         var closestTarget = targets
             .OrderBy(t => (t.transform.position - transform.position).sqrMagnitude)
             .FirstOrDefault();
@@ -72,12 +72,12 @@ public class DragAndDrop : MonoBehaviour {
     }
     
 
-    //TODO BUG when holding a card and drawing new ones, after snapping back the card will return to its original position, not the correct position that it should be at after after drawing a new card
+    //TODO BUG when holding a cardOld and drawing new ones, after snapping back the cardOld will return to its original position, not the correct position that it should be at after after drawing a new cardOld
     public void SnapBack() {
         transform.position = startingPosition;
     }
 
-    private void PlayCardAt(CardSpot target) {
-        target.CardDisplay = GetComponent<CardDisplay>();
+    private void PlayCardAt(CardSpotOld target) {
+        target.CardOld = GetComponent<CardOld>();
     }
 }

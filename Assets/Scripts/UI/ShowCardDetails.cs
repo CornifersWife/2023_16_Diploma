@@ -1,3 +1,4 @@
+using ScriptableObjects;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,13 +11,13 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
     
     private float hoverTimer = 0f;
 
-    private CardDisplay cardDisplay;
+    private CardOld cardOld;
     private CardDetail cardDetail;
 
     private bool isMouseOver;
     
     private void Awake() {
-        cardDisplay = GetComponent<CardDisplay>();
+        cardOld = GetComponent<CardOld>();
         cardDetail = GetComponent<CardDetail>();
     }
     
@@ -56,8 +57,9 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     private void ReadCardData() {
         BaseCardData cardData;
-        if (cardDisplay is not null) {
-            cardData = cardDisplay.cardData;
+        //TODO UPDATE TO NEW ONES
+        /*if (cardOld is not null) {
+            cardData = cardOld.cardData;
         }
         else {
             cardData = cardDetail.CardData;
@@ -65,13 +67,15 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
         string displayText = cardData.cardName + "\nDescription: ";
         displayText += "description text";
         
-        if (cardData is MinionCardData) {
+        if (cardData is Minion) {
             displayText += "\nPower: " + ((MinionCardData)cardData).power;
             displayText += "\nHealth: " + ((MinionCardData)cardData).maxHealth;
         }
+        
 
         descriptionText.text = displayText;
         descriptionWindow.gameObject.SetActive(true);
+        */
     }
     
     private void ShowDetails() {

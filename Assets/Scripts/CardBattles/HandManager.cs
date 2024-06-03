@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using ScriptableObjects;
 using UnityEngine;
 
 public class HandManager : MonoBehaviour {
-    public List<CardDisplay> hand = new List<CardDisplay>();
-    [SerializeField] private DeckManager deck;
+    public List<CardOld> hand = new List<CardOld>();
+    [SerializeField] private DeckManagerOld deck;
     public bool isPlayers = true;
     [SerializeField] private float baseCardSpacing = 1.0f; 
     [SerializeField] private float animationDuration = 0.1f;
 
-    [Header("card spacing")] 
+    [Header("cardOld spacing")] 
     [SerializeField] private int cardAmountLimit = 4;
 
     [SerializeField] private float verticalCardSpacing = 0.05f;
@@ -49,17 +50,17 @@ public class HandManager : MonoBehaviour {
 
     
     public void AddCardToHand(BaseCardData cardData) {
-        CardDisplay newCardDisplay = GameManager.Instance.CreateCardInstance(cardData,deck.transform);
+        CardOld newCardOld = GameManager.Instance.CreateCardInstance(cardData,deck.transform);
         if (!isPlayers) {
-            newCardDisplay.GetComponent<DragAndDrop>().enabled = false;
+            newCardOld.GetComponent<DragAndDrop>().enabled = false;
         }
-        newCardDisplay.transform.SetParent(transform);
-        hand.Add(newCardDisplay);
+        newCardOld.transform.SetParent(transform);
+        hand.Add(newCardOld);
         UpdateCardPositionsInHand();
     }
 
-    public void RemoveCardFromHand(CardDisplay card) {
-        if (hand.Remove(card))
+    public void RemoveCardFromHand(CardOld cardOld) {
+        if (hand.Remove(cardOld))
             UpdateCardPositionsInHand();
     }
 }
