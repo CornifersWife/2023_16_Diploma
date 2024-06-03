@@ -127418,6 +127418,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9158143557127376718, guid: 5a98f4c367eed9d4d81dba64a20e94a0, type: 3}
+      propertyPath: nameWindow
+      value: 
+      objectReference: {fileID: 481210041}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -140364,6 +140368,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 304915134669630458, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      propertyPath: nameWindow
+      value: 
+      objectReference: {fileID: 1969433485}
     - target: {fileID: 1156532673366978845, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.64
