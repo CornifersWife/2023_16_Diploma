@@ -1180,7 +1180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Card Set 1
   sprite: {fileID: 21300000, guid: e5eae2c6d71262d4ba0fa2c773995d7d, type: 2}
-  cards: {fileID: 11400000, guid: c97246dd3c42cc9468fc0245df821c85, type: 2}
+  cards: {fileID: 0}
 --- !u!54 &87115878
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -37202,12 +37202,12 @@ MonoBehaviour:
     m_Name: Mouse Click
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: ad7e1d66-f42c-4d60-9e49-427706b207fd
+    m_Id: 4ba9590d-5b4c-4b4f-be2e-3bd2db5db69c
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 5bba2890-4ef1-413d-b134-cedae7e3f8a1
+      m_Id: 6caaa3c3-1c2a-4e9f-90bb-e9a172470ef1
       m_Path: <Mouse>/leftButton
       m_Interactions: 
       m_Processors: 
