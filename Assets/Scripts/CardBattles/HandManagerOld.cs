@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Card;
 using ScriptableObjects;
 using UnityEngine;
 
-public class HandManager : MonoBehaviour {
+public class HandManagerOld : MonoBehaviour {
     public List<CardOld> hand = new List<CardOld>();
     [SerializeField] private DeckManagerOld deck;
     public bool isPlayers = true;
@@ -42,7 +43,7 @@ public class HandManager : MonoBehaviour {
     public void DrawACard() {
         BaseCardData drawn = deck.DrawCard();
         if (drawn is null) {
-            Debug.Log("Deck is empty");
+            Debug.Log("DeckManager is empty");
             return;
         }
         AddCardToHand(drawn);

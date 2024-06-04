@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Card;
 using Scenes.Irys_is_doing_her_best.Scripts;
 using ScriptableObjects;
 using UnityEngine;
@@ -13,12 +14,12 @@ public class GameManager : MonoBehaviour {
     private bool gameOver = false;
     [FormerlySerializedAs("playerHero")] public HeroOld playerHeroOld;
     public DeckManagerOld playerDeck;
-    public HandManager playerHand;
+    public HandManagerOld playerHand;
     public ActionPointManager playerActionPoint;
 
     [FormerlySerializedAs("enemyHero")] [Space] public HeroOld enemyHeroOld;
     public DeckManagerOld enemyDeck;
-    public HandManager enemyHand;
+    public HandManagerOld enemyHand;
     public ActionPointManager enemyActionPoint;
     [FormerlySerializedAs("board")] [Space] public BoardOld boardOld;
     public GameObject cardPrefab;

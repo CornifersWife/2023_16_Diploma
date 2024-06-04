@@ -1,3 +1,4 @@
+using Card;
 using ScriptableObjects;
 using TMPro;
 using UnityEngine;
@@ -57,7 +58,7 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
             cardData = cardOld.cardData;
         }
         else {
-            cardData = cardDetail.CardData;
+            cardData = cardDetail.CardDatas;
         }
         string displayText = cardData.cardName + "\nDescription: ";
         displayText += "description text";

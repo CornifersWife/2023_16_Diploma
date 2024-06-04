@@ -1,18 +1,21 @@
+using System;
+using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
 using UnityEditor;
 using UnityEngine;
-using Scenes.Irys_is_doing_her_best.Scripts.My;
 
-[CustomEditor(typeof(CardData), true)]
-public class CardEditor : Editor {
-    public override void OnInspectorGUI() {
-        base.OnInspectorGUI(); // Draws the default inspector
-
-        serializedObject.Update();
-
-       // DrawPropertiesExcluding(serializedObject, "onPlayEffects");
-       // SerializedProperty effectsProperty = serializedObject.FindProperty("onPlayEffects");
-       // EditorGUILayout.PropertyField(effectsProperty, true);
-
-        serializedObject.ApplyModifiedProperties();
+namespace Scenes.Irys_is_doing_her_best.Scripts.My.InspectorMagic {
+    [CustomEditor(typeof(CardData), true)]
+    public class CardDataEditor : Editor {
+        public override void OnInspectorGUI() {
+            base.OnInspectorGUI();
+            if (GUI.changed) {
+                EditorUtility.SetDirty(target);
+                var nameGiven = ((CardData)target).cardName;
+                if (String.IsNullOrWhiteSpace(nameGiven))
+                    nameGiven = "No name given";
+                ((CardData)target).name = nameGiven;
+                AssetDatabase.SaveAssets();
+            }
+        }
     }
 }

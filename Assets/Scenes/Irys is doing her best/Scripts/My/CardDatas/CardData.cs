@@ -1,37 +1,26 @@
-using System;
 using System.Collections.Generic;
+using Scenes.Irys_is_doing_her_best.Scripts.My.Enums;
 using UnityEngine;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My {
+namespace Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas {
     public abstract class CardData : ScriptableObject {
         
-        [SerializeField]
-        private string name;
-        public string Name {
-            get => name;
-            set => name = value;
-        }
+        [SerializeField] public string cardName;
+        [SerializeField] public string description;
+        
 
-        [SerializeField]
-        private string description;
-        public string Description {
-            get => description;
-            set => description = value;
-        }
-
-        [SerializeField]
         private HashSet<AdditionalProperty> properties = new HashSet<AdditionalProperty>();
         public HashSet<AdditionalProperty> Properties {
             get => properties;
             set => properties = value;
         }
 
-        [SerializeField]
+        /*[SerializeField]
         private CardSet cardSet;
         public CardSet CardSet {
             get => cardSet;
             set => cardSet = value;
-        }
+        }*/
         [SerializeField]
         private Sprite sprite; 
         public Sprite Sprite {

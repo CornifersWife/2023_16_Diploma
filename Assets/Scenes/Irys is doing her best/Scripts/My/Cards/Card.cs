@@ -1,7 +1,10 @@
 using System.Collections.Generic;
+using Scenes.Irys_is_doing_her_best.Scripts.My.Card;
+using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
+using Scenes.Irys_is_doing_her_best.Scripts.My.Enums;
 using UnityEngine;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.Card {
+namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
     public abstract class Card : MonoBehaviour {
         protected CardDisplay cardDisplay;
 
@@ -15,11 +18,10 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Card {
             cardDisplay = GetComponent<CardDisplay>();
         }
         public virtual void Initialize(CardData cardData) {
-            CardName = cardData.Name;
+            CardName = cardData.cardName;
             this.name = CardName;
-            Description = cardData.Description;
+            Description = cardData.description;
             Properties = cardData.Properties;
-            CardSet = cardData.CardSet;
             OnPlayEffects = cardData.OnPlayEffects;
         }
     }

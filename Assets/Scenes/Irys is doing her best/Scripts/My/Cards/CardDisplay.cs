@@ -1,3 +1,4 @@
+using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Card {
     public class CardDisplay : MonoBehaviour {
-        [Header("Card Elements")]
+        [Header("Cards Elements")]
         [SerializeField] private GameObject imageObject;
 
         [SerializeField] public GameObject cardNameObject;
@@ -14,7 +15,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Card {
         [SerializeField] public GameObject healthObject;
 
         [SerializeField] private GameObject minionOnlyElements;
-        [Header("Card Set")]
+        [Header("Cards Set")]
         [SerializeField] public GameObject cardSetSymbolObject;
 
         [Header("Type")]
@@ -41,7 +42,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Card {
         public void SetCardData(MinionData minionData) {
             image.sprite = minionData.Sprite;
             cardName.text = minionData.name;
-            description.text = minionData.Description;
+            description.text = minionData.description;
             attack.text = minionData.Attack.ToString();
             health.text = minionData.MaxHealth.ToString();
             // TODO IMPLEMENT cardSetSymbol.sprite and colors
@@ -49,7 +50,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Card {
         public void SetCardData(SpellData spellData) {
             image.sprite = spellData.Sprite;
             cardName.text = spellData.name;
-            description.text = spellData.Description;
+            description.text = spellData.description;
             minionOnlyElements.GetComponent<CanvasGroup>().alpha = 0;
             // TODO IMPLEMENT cardSetSymbol.sprite and colors
         }

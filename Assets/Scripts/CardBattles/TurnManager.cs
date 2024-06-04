@@ -59,10 +59,10 @@ namespace TurnSystem {
 
         private bool gameStarted = false;
 
-        public HandManager playerHand;
+        public HandManagerOld playerHand;
         public DeckManagerOld playerDeck;
 
-        public HandManager enemyHand;
+        public HandManagerOld enemyHand;
         public DeckManagerOld enemyDeck;
 
         [FormerlySerializedAs("playerMana")] public ActionPointManager playerActionPoint;

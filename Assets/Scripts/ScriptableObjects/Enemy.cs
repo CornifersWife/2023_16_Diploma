@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
 using UnityEngine;
 
 [Serializable]

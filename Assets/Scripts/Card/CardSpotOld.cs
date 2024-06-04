@@ -1,4 +1,5 @@
 using System;
+using Card;
 using UnityEngine;
 
 public class CardSpotOld : MonoBehaviour {
