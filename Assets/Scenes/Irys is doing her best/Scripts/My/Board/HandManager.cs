@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -38,5 +39,6 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             float output = Mathf.Pow(10, exponent);
             return output;
         }
+        
     }
 }
