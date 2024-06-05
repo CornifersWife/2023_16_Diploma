@@ -8,9 +8,9 @@ using UnityEngine;
 using UnityEngine.Playables;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
-    public abstract class Card : MonoBehaviour,IHasCost {
+    public abstract class Card : MonoBehaviour,IHasCost,IMoveable {
         protected CardDisplay cardDisplay;
-
+        protected CardAnimation cardAnimation;
         public string CardName { get; private set; }
         public string Description { get; private set; }
         public string FlavourText { get; private set; }
@@ -18,12 +18,17 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
         public CardSet CardSet { get; private set; }
         public List<EffectTargetPair> OnPlayEffects { get; private set; }
 
+        public bool isPlayers = false;
+
         private void Awake() {
             cardDisplay = GetComponent<CardDisplay>();
+            cardAnimation = GetComponent<CardAnimation>();
         }
-        public virtual void Initialize(CardData cardData) {
+        
+        public virtual void Initialize(CardData cardData, bool isPlayers) {
+            this.isPlayers = isPlayers;
             CardName = cardData.cardName;
-            this.name = CardName;
+            name = CardName;
             FlavourText = cardData.flavourText;
             Description = cardData.description;
             properties = cardData.Properties;
@@ -36,6 +41,10 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
             }
 
             return 1;
+        }
+
+        public void Move(Vector3 vector3) {
+            cardAnimation.MoveTo(vector3);
         }
     }
 }

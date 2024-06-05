@@ -46,8 +46,8 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
 
         
 
-        public override void Initialize(CardData cardData) {
-            base.Initialize(cardData);
+        public override void Initialize(CardData cardData,bool isPlayers) {
+            base.Initialize(cardData,isPlayers);
             
             if (cardData is not MinionData minionData) {
                 Debug.LogError("Invalid data type passed to Minion.Initialize");

@@ -5,17 +5,22 @@ using System.Linq;
 using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Singletons;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
     public class DeckManager : MonoBehaviour {
         [SerializeField] private List<CardSetData> cardSetDatas = new List<CardSetData>();
-        [SerializeField]
         private SerializableDictionary<string, List<Cards.Card>> cardSets = new SerializableDictionary<string, List<Cards.Card>>();
-       // [InspectorMagic.ReadOnly.ReadOnly]
-        public List<Cards.Card> cards = new List<Cards.Card>();
-        public bool isPlayer;
+        public List<Cards.Card> Cards = new List<Cards.Card>();
+        public bool isPlayer=false;
 
         private void Start() {
+            try {
+                isPlayer = GetComponentInParent<CharacterManager>().isPlayer;
+            }
+            catch (Exception e) {
+                Debug.LogException(e);
+            }
             if (!Application.isEditor)
                 cardSetDatas = LoadCardSetData();
 
@@ -62,7 +67,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
                 }
 
                 foreach (var cardData in cardSetData.cards) {
-                    var card = CardManager.Instance.CreateCard(cardData, gameObject.transform); 
+                    var card = CardManager.Instance.CreateCard(cardData, gameObject.transform,isPlayer); 
                     //TODO not sure if needed
                     //card.GetComponent<CardDisplay>().enabled = false;
                     
@@ -91,7 +96,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
                         continue;
                     }
                    
-                    var card = CardManager.Instance.CreateCard(cardData,gameObject.transform);//CreateCard(cardData,gameObject.transform);
+                    var card = CardManager.Instance.CreateCard(cardData,gameObject.transform,isPlayer);//CreateCard(cardData,gameObject.transform);
                    
 
                     if (card == null) {
@@ -114,7 +119,8 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             }
             var shuffledList = allCards.OrderBy(_ => Guid.NewGuid()).ToList(); //randomly shuffles
 
-            cards.AddRange(shuffledList);
+            Cards.AddRange(shuffledList);
         }
+        
     }
 }

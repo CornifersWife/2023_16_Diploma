@@ -20,7 +20,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Singletons {
         public CardData CardData;
 
         public void TestCreateCard() {
-            var output = CardManager.Instance.CreateCard(CardData,gameObject.transform);
+            var output = CardManager.Instance.CreateCard(CardData,gameObject.transform,true);
             Debug.Log(output);
         }
     }

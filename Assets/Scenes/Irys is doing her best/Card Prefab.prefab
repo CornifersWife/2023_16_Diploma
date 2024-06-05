@@ -934,6 +934,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e859706086c95547b111d0ac44adea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inAnimation: 0
+  isPlayers: 0
+  handMoveAnimationTime: 0.3
+  ease: 2
 --- !u!1 &5379242662566633894
 GameObject:
   m_ObjectHideFlags: 0

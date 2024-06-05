@@ -1,3 +1,4 @@
+using System;
 using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Cards;
 using UnityEngine;
@@ -18,8 +19,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Singletons {
                 Destroy(gameObject);
             }
         }
-        
-        public Cards.Card CreateCard(CardData cardData, Transform parentTransform) {
+        public Cards.Card CreateCard(CardData cardData, Transform parentTransform,bool isPlayers) {
             GameObject cardObject;
             Cards.Card cardComponent = null;
 
@@ -36,12 +36,14 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Singletons {
                 return null;
             }
 
-            cardComponent.Initialize(cardData);
+            cardComponent.Initialize(cardData,isPlayers);
             cardComponent.transform.SetParent(parentTransform);
             cardComponent.transform.localPosition = Vector3.zero;
 
             return cardComponent;
         }
+        
+        
         
     }
 }
