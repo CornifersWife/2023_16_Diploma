@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My {
+namespace Scenes.Irys_is_doing_her_best.Scripts.My.Structure {
     public abstract class ChangeValueByEffect : EffectBase {
-        [Range(1,int.MaxValue)]
+        [Min(1)]
         [SerializeField] public int amount;
     }
 }

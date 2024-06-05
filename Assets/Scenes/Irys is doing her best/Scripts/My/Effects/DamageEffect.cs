@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
+using Scenes.Irys_is_doing_her_best.Scripts.My.Structure;
 using UnityEngine;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My {
+    [CreateAssetMenu(fileName = "Damage Effect",menuName = "Effects/Damage Effect")]
     public class DamageEffect : ChangeValueByEffect {
         public override void ApplyEffect(ICollection<GameObject> targets) {
             var trueTargets =targets

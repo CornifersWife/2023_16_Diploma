@@ -15,7 +15,11 @@ MonoBehaviour:
   cardName: aa
   description: 
   sprite: {fileID: 0}
-  onPlayEffects: []
+  onPlayEffects:
+  - effect: {fileID: 11400000, guid: e95374d1948c15040a332e774887568e, type: 2}
+    targetType: 0
+  - effect: {fileID: 11400000, guid: e95374d1948c15040a332e774887568e, type: 2}
+    targetType: 0
 --- !u!114 &-3916478798600375810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,7 +51,11 @@ MonoBehaviour:
   cardName: aaaaa works
   description: big gay
   sprite: {fileID: 21300000, guid: fec754f96dcca4c41a87769d24e6dafb, type: 3}
-  onPlayEffects: []
+  onPlayEffects:
+  - effect: {fileID: 0}
+    targetType: 0
+  - effect: {fileID: 0}
+    targetType: 0
   attack: 4
   maxHealth: 8
   onDeathEffects: []

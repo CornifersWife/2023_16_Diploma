@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Enums;
+using Scenes.Irys_is_doing_her_best.Scripts.My.Structure;
 using UnityEngine;
 using UnityEngine.Serialization;
 
