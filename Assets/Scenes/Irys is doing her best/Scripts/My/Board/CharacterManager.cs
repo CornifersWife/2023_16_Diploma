@@ -23,6 +23,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             var card = deck.Cards[0];
             card.GetComponent<CardDisplay>().ChangeCardVisible(isPlayer);
             hand.Cards.Add(card);
+            card.transform.SetParent(hand.transform);
             deck.Cards.RemoveAt(0);
             
         }
