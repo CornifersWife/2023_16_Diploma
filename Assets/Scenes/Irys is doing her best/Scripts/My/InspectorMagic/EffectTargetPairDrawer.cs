@@ -25,7 +25,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.InspectorMagic {
             // Check if effect is a ChangeValueByEffect
             if (effectProperty.objectReferenceValue != null && effectProperty.objectReferenceValue is ChangeValueByEffect) {
                 SerializedObject effectSerializedObject = new SerializedObject(effectProperty.objectReferenceValue);
-                SerializedProperty amountProperty = effectSerializedObject.FindProperty("amount");
+                SerializedProperty amountProperty = effectSerializedObject.FindProperty("Amount");
 
                 var amountRect = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing, position.width, EditorGUIUtility.singleLineHeight);
                 EditorGUI.PropertyField(amountRect, amountProperty, new GUIContent("Amount"));
@@ -39,7 +39,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.InspectorMagic {
             // Check if effect is a ChangeValueByEffect
             var effectProperty = property.FindPropertyRelative("effect");
             if (effectProperty.objectReferenceValue != null && effectProperty.objectReferenceValue is ChangeValueByEffect) {
-                // Add extra height for the amount field
+                // Add extra height for the Amount field
                 return base.GetPropertyHeight(property, label) + EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
             }
 

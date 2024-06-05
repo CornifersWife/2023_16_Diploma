@@ -10,11 +10,11 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.InspectorMagic {
 
             CardSetData cardSet = (CardSetData)target;
 
-            if (GUILayout.Button("Add New Minion CardOld")) {
+            if (GUILayout.Button("Add New Minion")) {
                 CreateAndAddMinionCard(cardSet);
             }
 
-            if (GUILayout.Button("Add New Spell CardOld")) {
+            if (GUILayout.Button("Add New Spell")) {
                 CreateAndAddSpellCard(cardSet);
             }
 
@@ -22,9 +22,9 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.InspectorMagic {
             for (int i = cardSet.cards.Count - 1; i >= 0; i--) {
                 if (cardSet.cards[i] is MinionData) {
                     GUILayout.BeginHorizontal();
-                    EditorGUILayout.ObjectField("Minion CardOld", cardSet.cards[i], typeof(CardData), false);
+                    EditorGUILayout.ObjectField(cardSet.cards[i], typeof(CardData), false);
 
-                    if (GUILayout.Button("Remove", GUILayout.Width(100))) {
+                    if (GUILayout.Button("Remove", GUILayout.Width(70))) {
                         RemoveCard(cardSet, i);
                     }
 
@@ -36,9 +36,9 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.InspectorMagic {
             for (int i = cardSet.cards.Count - 1; i >= 0; i--) {
                 if (cardSet.cards[i] is SpellData) {
                     GUILayout.BeginHorizontal();
-                    EditorGUILayout.ObjectField("Spell CardOld", cardSet.cards[i], typeof(CardData), false);
+                    EditorGUILayout.ObjectField(cardSet.cards[i], typeof(CardData), false);
 
-                    if (GUILayout.Button("Remove", GUILayout.Width(100))) {
+                    if (GUILayout.Button("Remove", GUILayout.Width(70))) {
                         RemoveCard(cardSet, i);
                     }
 

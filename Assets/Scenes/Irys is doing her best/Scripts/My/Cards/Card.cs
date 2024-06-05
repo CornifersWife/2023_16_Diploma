@@ -1,16 +1,20 @@
+using System;
 using System.Collections.Generic;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Card;
 using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Enums;
+using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
+using Scenes.Irys_is_doing_her_best.Scripts.My.Structure;
 using UnityEngine;
+using UnityEngine.Playables;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
-    public abstract class Card : MonoBehaviour {
+    public abstract class Card : MonoBehaviour,IHasCost {
         protected CardDisplay cardDisplay;
 
         public string CardName { get; private set; }
         public string Description { get; private set; }
-        public HashSet<AdditionalProperty> Properties { get; private set; }
+        public string FlavourText { get; private set; }
+        public HashSet<AdditionalProperty> properties;
         public CardSet CardSet { get; private set; }
         public List<EffectTargetPair> OnPlayEffects { get; private set; }
 
@@ -20,9 +24,18 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
         public virtual void Initialize(CardData cardData) {
             CardName = cardData.cardName;
             this.name = CardName;
+            FlavourText = cardData.flavourText;
             Description = cardData.description;
-            Properties = cardData.Properties;
+            properties = cardData.Properties;
             OnPlayEffects = cardData.OnPlayEffects;
+        }
+
+        public virtual int GetCost() {
+            if (properties.Contains(AdditionalProperty.FreeToPlay)) {
+                return 0;
+            }
+
+            return 1;
         }
     }
 }

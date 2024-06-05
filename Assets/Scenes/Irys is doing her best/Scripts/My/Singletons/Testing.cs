@@ -1,4 +1,3 @@
-using Scenes.Irys_is_doing_her_best.Scripts.My.Card;
 using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
 using UnityEditor;
 using UnityEngine;
@@ -21,7 +20,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Singletons {
         public CardData CardData;
 
         public void TestCreateCard() {
-            var output = CardManager.Instance.CreateCard(CardData,gameObject);
+            var output = CardManager.Instance.CreateCard(CardData,gameObject.transform);
             Debug.Log(output);
         }
     }

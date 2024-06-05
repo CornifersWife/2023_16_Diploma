@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Singletons {
     public class CardManager : MonoBehaviour {
-        
-        public static CardManager Instance { get; private set; }
+
+        public static CardManager Instance;
 
         public GameObject minionPrefab;
         public GameObject spellPrefab;
@@ -19,8 +19,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Singletons {
             }
         }
         
-        public Cards.Card CreateCard(CardData cardData, GameObject parentGameObject) {
-            var parent = parentGameObject.transform.parent;
+        public Cards.Card CreateCard(CardData cardData, Transform parentTransform) {
             GameObject cardObject;
             Cards.Card cardComponent = null;
 
@@ -38,8 +37,8 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Singletons {
             }
 
             cardComponent.Initialize(cardData);
-            cardComponent.transform.parent = parent;
-            
+            cardComponent.transform.SetParent(parentTransform);
+            cardComponent.transform.localPosition = Vector3.zero;
 
             return cardComponent;
         }

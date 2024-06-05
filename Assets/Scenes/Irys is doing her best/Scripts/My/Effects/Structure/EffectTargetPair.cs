@@ -1,11 +1,8 @@
 using System;
-using System.Collections.Generic;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Enums;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Structure;
-using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My {
+namespace Scenes.Irys_is_doing_her_best.Scripts.My.Structure {
     [Serializable]
     public class EffectTargetPair {
         [FormerlySerializedAs("Effect")] public EffectBase effect;

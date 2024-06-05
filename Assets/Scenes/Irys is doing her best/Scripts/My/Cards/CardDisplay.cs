@@ -1,10 +1,10 @@
 using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.Card {
+namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
     public class CardDisplay : MonoBehaviour {
         [Header("Cards Elements")]
         [SerializeField] private GameObject imageObject;
@@ -15,12 +15,19 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Card {
         [SerializeField] public GameObject healthObject;
 
         [SerializeField] private GameObject minionOnlyElements;
+        
+        [Space(10)]
+        [SerializeField] public CanvasGroup frontOfCard;
+        [SerializeField] public Image backOfCard;
+        public bool frontVisible = false;
+        
         [Header("Cards Set")]
         [SerializeField] public GameObject cardSetSymbolObject;
 
         [Header("Type")]
         [SerializeField] public GameObject cardTypeObject;
 
+        
         private Image image;
         private TextMeshProUGUI cardName;
         private TextMeshProUGUI description;
@@ -37,6 +44,9 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Card {
             health = healthObject.GetComponent<TextMeshProUGUI>();
             cardSetSymbol = cardSetSymbolObject.GetComponent<Image>();
             cardType = cardTypeObject.GetComponent<Image>();
+            
+            frontOfCard.enabled = !frontVisible;
+            backOfCard.enabled = !frontVisible;
         }
 
         public void SetCardData(MinionData minionData) {
@@ -53,6 +63,18 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Card {
             description.text = spellData.description;
             minionOnlyElements.GetComponent<CanvasGroup>().alpha = 0;
             // TODO IMPLEMENT cardSetSymbol.sprite and colors
+        }
+
+        public void ChangeCardVisible(bool visible) {
+            frontOfCard.enabled = !visible;
+            backOfCard.enabled = !visible;
+            frontVisible = visible;
+        }
+        
+        public void ChangeCardVisible() {
+            frontOfCard.enabled = !frontVisible;
+            backOfCard.enabled = !frontVisible;
+            frontVisible = !frontVisible;
         }
     }
 }

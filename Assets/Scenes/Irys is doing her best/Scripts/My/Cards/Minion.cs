@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
+using Scenes.Irys_is_doing_her_best.Scripts.My.Structure;
 using UnityEngine;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
-    public class Minion : Cards.Card, IAttacker {
+    public class Minion : Card, IAttacker {
         private int attack;
 
         public int Attack {

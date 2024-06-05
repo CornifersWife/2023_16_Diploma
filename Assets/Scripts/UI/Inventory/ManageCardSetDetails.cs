@@ -45,7 +45,7 @@ public class ManageCardSetDetails : MonoBehaviour {
         displayObject.AddComponent<CardDetail>().CardData = cardData;
         descriptionWindow = displayObject.transform.GetChild(2).GetComponent<RectTransform>();
         descriptionText = descriptionWindow.gameObject.transform.GetChild(0).GetComponent<TMP_Text>();
-        displayObject.AddComponent<ShowCardDetails>().SetComponents(descriptionWindow, descriptionText);
+        displayObject.AddComponent<ShowCardDetailsOld>().SetComponents(descriptionWindow, descriptionText);
         displayObject.transform.GetChild(0).GetComponent<Image>().sprite = cardData.cardImage;
         displayObject.transform.GetChild(1).GetComponent<TMP_Text>().text = cardData.cardName;
     }

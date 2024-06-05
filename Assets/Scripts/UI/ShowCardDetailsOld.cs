@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
+public class ShowCardDetailsOld : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
     [SerializeField] private float timeToWait = 0.5f;
     [SerializeField] private RectTransform descriptionWindow;
     [SerializeField] private TMP_Text descriptionText;
@@ -52,7 +52,6 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
     }
 
     private void ReadCardData() {
-        BaseCardData cardData;
         //TODO UPDATE TO NEW ONES
         /*if (cardOld is not null) {
             cardData = cardOld.cardData;
