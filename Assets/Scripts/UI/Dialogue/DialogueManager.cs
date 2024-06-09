@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour {
     [SerializeField] private GameObject dialoguePanel;
-    private DialogueBox dialogueBox;
+    [SerializeField] private DialogueBox dialogueBox;
 
     private NPCDialogue currentDialogue;
     private int currentIndex;
@@ -19,7 +19,6 @@ public class DialogueManager : MonoBehaviour {
         } else {
             Instance = this;
         }
-        dialogueBox = dialoguePanel.GetComponent<DialogueBox>();
     }
 
     private void OpenDialogue() {
@@ -47,6 +46,7 @@ public class DialogueManager : MonoBehaviour {
 
     private void HideMainDialogue() {
         dialogueBox.HideDialogue();
+        dialoguePanel.SetActive(false);
     }
     
     public void NextDialogue() {
