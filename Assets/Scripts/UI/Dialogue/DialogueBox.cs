@@ -38,7 +38,6 @@ public class DialogueBox : MonoBehaviour {
     
     public void HideDialogue() {
         InputManager.Instance.EnableAllInput();
-        ObjectClickHandler.Instance.EnableClickDetection();
         gameObject.SetActive(false);
     }
     

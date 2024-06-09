@@ -32,7 +32,6 @@ public class PauseManager : MonoBehaviour {
         IsOpen = true;
         InputManager.Instance.DisableAllMovement();
         HUDController.Instance.HideHUD();
-        ObjectClickHandler.Instance.DisableClickDetection();
         Time.timeScale = 0;
     }
 
@@ -43,7 +42,6 @@ public class PauseManager : MonoBehaviour {
         IsOpen = false;
         InputManager.Instance.EnableAllMovement();
         HUDController.Instance.ShowHUD();
-        ObjectClickHandler.Instance.EnableClickDetection();
         Time.timeScale = 1;
     }
 
