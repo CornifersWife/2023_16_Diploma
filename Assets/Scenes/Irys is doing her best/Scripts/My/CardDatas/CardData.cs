@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
+using NaughtyAttributes;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Enums;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Structure;
 using Unity.VisualScripting;
@@ -15,11 +16,9 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas {
         [TextArea]
         [SerializeField] public string flavourText;
 
-        private HashSet<AdditionalProperty> properties = new HashSet<AdditionalProperty>();
-        public HashSet<AdditionalProperty> Properties {
-            get => properties;
-            set => properties = value;
-        }
+        [SerializeField]
+        [EnumFlags]
+        public List<AdditionalProperty> Properties = new List<AdditionalProperty>();
 
         /*[SerializeField]
         private CardSet cardSet;

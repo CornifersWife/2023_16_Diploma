@@ -53,7 +53,7 @@ namespace TurnSystem {
         }
     }
 
-    public class TurnManager : MonoBehaviour {
+    public class TurnManagerOld : MonoBehaviour {
         [SerializeField] public bool isPlayerTurn = true; // Flag to track whose turn it is
         [SerializeField] public float enemyDelay = 1f;
 
@@ -78,7 +78,7 @@ namespace TurnSystem {
         public CheckCondition[] loseConditions;
 
 
-        public static TurnManager Instance { get; private set; }
+        public static TurnManagerOld Instance { get; private set; }
 
         private void Awake() {
             if (Instance != null && Instance != this) {

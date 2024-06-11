@@ -33,7 +33,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 145, y: -315}
+  m_AnchoredPosition: {x: 180, y: -295}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4427159775873632988
@@ -48,7 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abcae5c24102411d969f44c5765011d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cards: []
+  distanceScalar: 10
+  distanceMulti: 300
 --- !u!1 &1061652695579603536
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,6 +165,11 @@ MonoBehaviour:
   deck: {fileID: 11471108929920545}
   hero: {fileID: 6368447993570103243}
   boardSide: {fileID: 1363167129428915371}
+  isPlayer: 0
+  getCardSpots:
+    m_PersistentCalls:
+      m_Calls: []
+  timeBetweenDrawingManyCard: 0.5
 --- !u!1 &1587326959488814697
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,7 +252,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -422, y: -284}
+  m_AnchoredPosition: {x: -604, y: -241}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6158406892823634024
@@ -345,7 +351,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -229, y: -275}
+  m_AnchoredPosition: {x: -175, y: -291}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6368447993570103243
@@ -501,7 +507,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 390, y: -241}
+  m_AnchoredPosition: {x: 611, y: -245}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &11471108929920545
@@ -518,5 +524,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSetDatas:
   - {fileID: 11400000, guid: 66865fefba2b02a4dafc9b77cc8017ce, type: 2}
-  cards: []
-  isPlayer: 1
+  Cards: []
+  isPlayers: 0

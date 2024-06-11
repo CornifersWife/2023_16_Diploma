@@ -6,13 +6,13 @@ using UnityEngine;
 public class DragAndDrop : MonoBehaviour {
     private Vector3 mousePosition;
     private Vector3 startingPosition;
-    private TurnManager turnManager;
+    private TurnManagerOld turnManagerOld;
     [SerializeField] float snapDistance = 2.0f;
     
     private CardSpotOld potentialSnapTarget;
 
     private void Awake() {
-        turnManager = TurnManager.Instance;
+        turnManagerOld = TurnManagerOld.Instance;
     }
     
     
@@ -20,11 +20,11 @@ public class DragAndDrop : MonoBehaviour {
     private void OnMouseDrag() {
         if (!enabled) return;
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
-        if(turnManager.isPlayerTurn)
+        if(turnManagerOld.isPlayerTurn)
             UpdatePotentialSnapTarget(); 
     }
     private void UpdatePotentialSnapTarget() {
-        if (!turnManager.isPlayerTurn) return;
+        if (!turnManagerOld.isPlayerTurn) return;
 
         var targets = FindObjectsOfType<CardSpotOld>().Where(cardSpot => cardSpot.IsValid()).ToArray();
         var closestTarget = targets
@@ -43,7 +43,7 @@ public class DragAndDrop : MonoBehaviour {
         }
     }
     private void FindTargetToSnapTo() {
-        if (!turnManager.isPlayerTurn) {
+        if (!turnManagerOld.isPlayerTurn) {
             SnapBack();
             return;
         }

@@ -935,7 +935,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inAnimation: 0
+  isWaiting: 0
   isPlayers: 0
+  showPosition: {x: 450, y: 0, z: 0}
+  showScale: {x: 2, y: 2, z: 2}
+  playerToShow: 15
+  timeToShow: 0.4
+  showToHand: 2
+  timeToHand: 0.4
+  enemyToHand: 4
+  enemyDraw: 0.4
   handMoveAnimationTime: 0.3
   ease: 2
 --- !u!1 &5379242662566633894

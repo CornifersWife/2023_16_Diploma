@@ -4,10 +4,16 @@ using UnityEngine;
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
     public class CardSpot : MonoBehaviour {
         public Cards.Card card;
-        public bool isPlayers;
         
+        
+        public bool isPlayer { get; set; }
+
         private void Awake() {
-            isPlayers = GetComponentInParent<BoardSide>().isPlayers;
+            if (CompareTag("Player"))
+                isPlayer = true;
+            else {
+                isPlayer = false;
+            }
         }
     }
 }
