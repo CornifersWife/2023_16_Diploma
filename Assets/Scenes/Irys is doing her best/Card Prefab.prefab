@@ -851,6 +851,7 @@ GameObject:
   - component: {fileID: 3954926437469511714}
   - component: {fileID: 541712151741894622}
   - component: {fileID: 3513187511264810272}
+  - component: {fileID: -6973358634639818209}
   m_Layer: 0
   m_Name: Card Prefab
   m_TagString: Untagged
@@ -947,6 +948,19 @@ MonoBehaviour:
   enemyDraw: 0.4
   handMoveAnimationTime: 0.3
   ease: 2
+--- !u!114 &-6973358634639818209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5229332580041227260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feb7fea3bc749a28e492c893962c329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropDistanceThreshold: 100
 --- !u!1 &5379242662566633894
 GameObject:
   m_ObjectHideFlags: 0
