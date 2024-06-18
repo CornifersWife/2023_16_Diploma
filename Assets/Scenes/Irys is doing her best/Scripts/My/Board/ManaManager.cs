@@ -1,18 +1,19 @@
 using System;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Object = UnityEngine.Object;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
     public class ManaManager : MonoBehaviour {
-       [SerializeField]
+        private ManaDisplay manaDisplay;
+
+        [SerializeField]
         public int maxMana = 2;
 
         [Min(0)]
         private int currentMana;
         
-        public int CurrentMana {
+        private int CurrentMana {
             get {
                 manaDisplay.currentMana = currentMana;
                 return currentMana;
@@ -23,10 +24,9 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             }
         }
 
-        private ManaDisplay manaDisplay;
         private void Awake() {
-            CurrentMana = maxMana;
             manaDisplay = GetComponent<ManaDisplay>();
+            CurrentMana = maxMana;
         }
 
         private bool CanUseMana(IHasCost cost) {
@@ -49,6 +49,9 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             return true;
         }
 
+        public void RefreshMana() {
+            CurrentMana = maxMana;
+        }        
         private void ShowLackOfMana() {
             manaDisplay.ShowLackOfMana();
         }
