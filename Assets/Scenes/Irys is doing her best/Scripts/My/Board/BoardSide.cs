@@ -4,14 +4,11 @@ using UnityEngine;
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
     public class BoardSide : MonoBehaviour {
         [SerializeField] public CardSpot[] cardSpots = new CardSpot[4];
-        public bool isPlayer { get; set; }
+        public bool isPlayers { get; set; }
 
         private void Awake() {
-            if (CompareTag("Player"))
-                isPlayer = true;
-            else {
-                isPlayer = false;
-            }
+            isPlayers = CompareTag("Player");
+
         }
 
         private void Start() {

@@ -7,27 +7,21 @@ using Unity.VisualScripting;
 using UnityEngine;
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
     public class HandManager : MonoBehaviour {
+        
         private List<Cards.Card> cards = new List<Cards.Card>();
 
         public List<Cards.Card> Cards {
-            get {
-                return cards;
-            }
-            private set {
-                cards = value;
-            }
+            get => cards;
+            private set => cards = value;
         }
-        public bool isPlayer { get; set; }
+        public bool isPlayers { get; set; }
 
         private void Awake() {
-            if (CompareTag("Player"))
-                isPlayer = true;
-            else {
-                isPlayer = false;
-            }
+            isPlayers = CompareTag("Player");
         }
-
         
+
+
         [Space] [Header("Distance Between Cards")] [SerializeField] [Range(10, 1000)]
         public float distanceScalar = 10f;
 

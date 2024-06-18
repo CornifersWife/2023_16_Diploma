@@ -1,12 +1,9 @@
-using System;
 using System.Collections.Generic;
-using NaughtyAttributes;
 using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Enums;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Structure;
 using UnityEngine;
-using UnityEngine.Playables;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
     public abstract class Card : MonoBehaviour,IHasCost,IMoveable {

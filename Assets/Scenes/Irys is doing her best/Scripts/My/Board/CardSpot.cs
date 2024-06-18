@@ -1,6 +1,5 @@
-using System;
 using DG.Tweening;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Cards;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -8,38 +7,41 @@ using UnityEngine.UI;
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
     public class CardSpot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
         private Image image;
-        public GameObject cardObject;
+        public Cards.Card card;
+        private bool isPlayers;
+        [ShowNativeProperty] public bool IsPlayers => isPlayers;
 
-        public bool isPlayers { get; set; }
-
+        
+        
         private void Awake() {
-            if (CompareTag("Player"))
-                isPlayers = true;
-            else {
-                isPlayers = false;
-            }
+            isPlayers = CompareTag("Player");
 
             image = GetComponent<Image>();
         }
 
         public void OnDrop(PointerEventData eventData) {
+
+            if (!isPlayers) {
+                return;
+            }
+
+            if (card is not null) {
+                Debug.Log($"{name} already has a card");
+                return;
+            }
+
             Debug.Log(eventData.pointerDrag.name);
 
-            if(!isPlayers)
-                return;
-            if(cardObject is not null)
-                return;
-            
             if (eventData.pointerDrag is null) {
                 Debug.Log($"{name}, was dropped a null object");
                 return;
             }
             if (!eventData.pointerDrag.TryGetComponent
-                    (typeof(Cards.Card), out var card)) {
+                    (typeof(Cards.Card), out var draggedCard)) {
                 Debug.Log($"{name}, dropped object was not a card");
                 return;
             }
-            CharacterManager.PlayACard((Cards.Card)card, this);
+            CharacterManager.PlayACard((Cards.Card)draggedCard, this);
         }
 
         
@@ -53,7 +55,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         public void OnPointerExit(PointerEventData eventData) {
             if(!isPlayers)
                 return;
-            image.DOColor(Color.white, 0.1f).SetEase(Ease.InOutQuad);;
+            image.DOColor(Color.white, 0.1f).SetEase(Ease.InOutQuad);
         }
     }
 }

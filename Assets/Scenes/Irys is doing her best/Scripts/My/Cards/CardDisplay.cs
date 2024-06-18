@@ -83,18 +83,16 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
 
 
         [BoxGroup("Hover")]
-        [SerializeField] private float scaleOnHover = 1.1f;
+        [SerializeField] private float scaleOnHover = 1.05f;
         [BoxGroup("Hover")]
         [SerializeField] private float scaleOnHoverTime = 0.1f;
 
-        //TODO MAGIC NUMBER
         public void OnPointerEnter(PointerEventData eventData) {
             if (!frontVisible) {
                 return;
             }
             transform.DOScale(transform.localScale*scaleOnHover, scaleOnHoverTime);
         }
-        //TODO MAGIC NUMBER
         public void OnPointerExit(PointerEventData eventData) {
             if (!frontVisible) {
                 return;

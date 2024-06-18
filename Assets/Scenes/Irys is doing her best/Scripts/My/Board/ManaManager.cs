@@ -6,25 +6,38 @@ using Object = UnityEngine.Object;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
     public class ManaManager : MonoBehaviour {
-        [SerializeField]
-        public int MaxMana = 2;
-        [Min(0)]
-        public int currentMana;
+       [SerializeField]
+        public int maxMana = 2;
 
+        [Min(0)]
+        private int currentMana;
+        
+        public int CurrentMana {
+            get {
+                manaDisplay.currentMana = currentMana;
+                return currentMana;
+            }
+            set {
+                manaDisplay.currentMana = value;
+                currentMana = value;
+            }
+        }
+
+        private ManaDisplay manaDisplay;
         private void Awake() {
-            currentMana = MaxMana;
+            CurrentMana = maxMana;
+            manaDisplay = GetComponent<ManaDisplay>();
         }
 
         private bool CanUseMana(IHasCost cost) {
-            return currentMana >= cost.GetCost();
+            return CurrentMana >= cost.GetCost();
         }
 
         private void UseMana(IHasCost cost) {
             if (!CanUseMana(cost)) {
                 Debug.LogException(new ArgumentException($"Not enough mana to play a card\ncost: {cost.GetCost()}   mana: {currentMana}"),(Object)cost);
             }
-
-            currentMana -= 1;
+            CurrentMana -= 1;
         }
 
         public bool TryUseMana(IHasCost cost) {
@@ -35,8 +48,9 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             UseMana(cost);
             return true;
         }
-        public void ShowLackOfMana() {
-            //TODO
+
+        private void ShowLackOfMana() {
+            manaDisplay.ShowLackOfMana();
         }
         
     }

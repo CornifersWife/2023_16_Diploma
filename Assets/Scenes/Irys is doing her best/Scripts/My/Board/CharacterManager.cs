@@ -34,6 +34,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         }
 
         public static void PlayACard(Cards.Card card, CardSpot cardSpot) {
+            Debug.Log("Yipee");
             onCardPlayed.Invoke(card, cardSpot);
         }
         
@@ -45,6 +46,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             }
             MoveCardToCardSpot(card,cardSpot);
             hand.UpdateCardPositions();
+            card.GetComponent<CardDragging>().droppedOnSlot = true;
         }
 
         private void MoveCardToCardSpot(Cards.Card card, CardSpot cardSpot) {
@@ -52,7 +54,9 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             card.GetComponent<RectTransform>().position = cardSpot.GetComponent<RectTransform>().position;
             card.GetComponent<CardDragging>().droppedOnSlot = true;
             card.transform.SetParent(cardSpot.transform);
-            cardSpot.cardObject = card.gameObject;
+            //TODO change so that it works not only from hand
+            hand.Cards.Remove(card);
+            cardSpot.card = card;
         }
 
         private void Draw() {

@@ -1,8 +1,8 @@
+using System.Collections;
+using DG.Tweening;
 using NaughtyAttributes;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
     public class CardDragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
@@ -25,7 +25,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
         }
 
         public void OnBeginDrag(PointerEventData eventData) {
-            if (!enabled || !card.isPlayers) {
+            if (!enabled || !card.isPlayers || droppedOnSlot) {
                 enabled = false;
                 return;
             }
@@ -49,6 +49,9 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
             rectTransform.anchoredPosition = localPointerPosition;
         }
 
+        [SerializeField] private float snapBackTime = 0.1f;
+        [SerializeField] private float animationFasterIfDistanceLessThan = 700f;
+
         public void OnEndDrag(PointerEventData eventData) {
             if (!enabled) {
                 return;
@@ -57,11 +60,35 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
             canvasGroup.alpha = 1f;
             canvasGroup.blocksRaycasts = true;
 
-            if (droppedOnSlot)
+            if (droppedOnSlot) {
                 enabled = false;
-            else {
-                transform.position = originalPosition;
             }
+            else {
+                SnapBack();
+            }
+        }
+
+        /*private IEnumerator CheckIfPlaced() {
+            yield return new WaitForSeconds(0.5f);
+            if (droppedOnSlot) {
+                enabled = false;
+            }
+            else {
+                SnapBack();
+            }
+        }*/
+
+        private void SnapBack() {
+            var distance = Vector3.Distance(transform.position, originalPosition);
+            var animationTime = snapBackTime;
+            if (distance < animationFasterIfDistanceLessThan) {
+                animationTime *= distance / animationFasterIfDistanceLessThan;
+            }
+
+            transform
+                .DOMove(originalPosition,
+                    animationTime)
+                .SetEase(Ease.InOutSine);
         }
     }
 }

@@ -35,11 +35,8 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
 
 
         private void Awake() {
-            if (CompareTag("Player"))
-                isPlayers = true;
-            else {
-                isPlayers = false;
-            }
+            isPlayers = CompareTag("Player");
+
         }
 
         public void DrawAnimation(Vector3 finalPosition) {

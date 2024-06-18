@@ -20,11 +20,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         [SerializeField] public bool isPlayers;
 
         private void Awake() {
-            if (CompareTag("Player"))
-                isPlayers = true;
-            else {
-                isPlayers = false;
-            }
+            isPlayers = CompareTag("Player");
         }
 
         private void Start() {
