@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class ManageGame : MonoBehaviour {
     [SerializeField] private SettingsManager settingsManager;
+    [SerializeField] private InventoryController inventoryController;
+    [SerializeField] private NPCManager npcManager;
+    [SerializeField] private EnemyStateManager enemyStateManager;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject npc;
     [SerializeField] private GameObject npc2;
@@ -12,7 +15,7 @@ public class ManageGame : MonoBehaviour {
     [SerializeField] private ParticleSystem removablePS;
     [SerializeField] private List<CardSet> cardSets;
         
-    public bool IsStarted => SceneManager.GetActiveScene().name is "beta-release" or "beta-release-2";
+    public bool IsStarted => SceneManager.GetActiveScene().name is "beta-release" or "beta-release-2" or "New Scene";
     public static ManageGame Instance = null;
     
     public bool IsAfterTutorial { get; set; }
@@ -31,9 +34,10 @@ public class ManageGame : MonoBehaviour {
         if (SceneManager.GetActiveScene().name == "Irys playspace")
             return;
         //LoadSettings();
-        foreach (CardSet cardSet in cardSets) {
+        /*foreach (CardSet cardSet in cardSets) {
             InventoryController.Instance.AddItem(cardSet);
         }
+        */
     }
     
     private void Update() {
@@ -53,6 +57,45 @@ public class ManageGame : MonoBehaviour {
         if (SaveManager.settingsSaveExists) {
             SettingsSaveData settingsSaveData = SaveManager.LoadGame<SettingsSaveData>(SaveManager.settingsSavePath);
             settingsManager.LoadSaveData(settingsSaveData);
+        }
+    }
+
+    public void SaveInventory() {
+        InventorySaveData inventorySaveData = new InventorySaveData();
+        inventoryController.PopulateSaveData(inventorySaveData);
+        SaveManager.SaveGame(SaveManager.inventorySavePath, inventorySaveData);
+    }
+
+    public void LoadInventory() {
+        if (SaveManager.inventorySaveExists) {
+            InventorySaveData inventorySaveData = SaveManager.LoadGame<InventorySaveData>(SaveManager.inventorySavePath);
+            inventoryController.LoadSaveData(inventorySaveData);
+        }
+    }
+
+    public void SaveNPC() {
+        NPCSaveData npcSaveData = new NPCSaveData();
+        npcManager.PopulateSaveData(npcSaveData);
+        SaveManager.SaveGame(SaveManager.npcSavePath, npcSaveData);
+    }
+    
+    public void LoadNPC() {
+        if (SaveManager.npcSaveExists) {
+            NPCSaveData npcSaveData = SaveManager.LoadGame<NPCSaveData>(SaveManager.npcSavePath);
+            npcManager.LoadSaveData(npcSaveData);
+        }
+    }
+    
+    public void SaveEnemy() {
+        EnemySaveData enemySaveData = new EnemySaveData();
+        enemyStateManager.PopulateSaveData(enemySaveData);
+        SaveManager.SaveGame(SaveManager.enemySavePath, enemySaveData);
+    }
+    
+    public void LoadEnemy() {
+        if (SaveManager.enemySaveExists) {
+            EnemySaveData enemySaveData = SaveManager.LoadGame<EnemySaveData>(SaveManager.enemySavePath);
+            enemyStateManager.LoadSaveData(enemySaveData);
         }
     }
 

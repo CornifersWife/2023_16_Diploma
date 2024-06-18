@@ -2,7 +2,14 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
+public enum EntityType {
+    NPC,
+    Enemy
+}
+
 public class MovingSM : StateMachine, IPointerClickHandler {
+    [SerializeField] public EntityType type;
+    
     [HideInInspector]
     public IdleState idleState;
     [HideInInspector]
@@ -63,8 +70,8 @@ public class MovingSM : StateMachine, IPointerClickHandler {
     
     //TODO rework this
     public void OnPointerClick(PointerEventData eventData) {
-        if (PauseManager.Instance.IsOpen || DialogueManager.Instance.IsOpen)
-            return;
+        if (type is EntityType.NPC)
+            DialogueManager.Instance.SetCurrentDialogue(gameObject);
         IsDialogue = true;
     }
 }

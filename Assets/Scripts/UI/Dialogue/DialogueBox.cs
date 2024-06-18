@@ -13,6 +13,8 @@ public class DialogueBox : MonoBehaviour {
     [SerializeField] private float typingSpeed;
     [SerializeField] private InputAction skipDialogue;
 
+    private const string HTML_ALPHA = "<color=#00000000>";
+    
     private string sentence;
     private bool wasSkipped;
     private bool isTyping;
@@ -38,7 +40,6 @@ public class DialogueBox : MonoBehaviour {
     
     public void HideDialogue() {
         InputManager.Instance.EnableAllInput();
-        ObjectClickHandler.Instance.EnableClickDetection();
         gameObject.SetActive(false);
     }
     
@@ -49,15 +50,22 @@ public class DialogueBox : MonoBehaviour {
     }
 
     private IEnumerator TypeSentence() {
+        isTyping = true;
         dialogueText.text = "";
+        string originalText = sentence;
+        string displayedText = "";
+        int alphaIndex = 0;
+        
         foreach (char letter in sentence) {
-            dialogueText.text += letter;
-            if (dialogueText.text.Length > 1) // set the isTyping when we have at least 2 characters
-                isTyping = true;
+            alphaIndex++;
+            dialogueText.text = originalText;
+            displayedText = dialogueText.text.Insert(alphaIndex, HTML_ALPHA);
+            dialogueText.text = displayedText;
             yield return new WaitForSeconds(1/typingSpeed);
         }
         wasSkipped = true;
         nextIcon.SetActive(true);
+        //isTyping = false;
     }
 
     private void ShowAllText(InputAction.CallbackContext context) {

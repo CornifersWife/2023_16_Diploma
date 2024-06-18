@@ -3,20 +3,20 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HeroHpDisplay : MonoBehaviour {
-    private Hero hero;
+    private HeroOld heroOld;
     public Button button; 
     private int showValue;
     private TMP_Text buttonText;
 
     private void Start() {
-        hero = GetComponent<Hero>();
-        showValue = hero.currentHealth;
+        heroOld = GetComponent<HeroOld>();
+        showValue = heroOld.currentHealth;
         buttonText = button.GetComponentInChildren<TMP_Text>(); 
     }
 
     void Update()
     {
-        showValue = hero.currentHealth;
+        showValue = heroOld.currentHealth;
         UpdateButtonText();
     }
 

@@ -8,4 +8,8 @@ public class CardSet : Item {
     public CardSetData GetCardSetData() {
         return cards;
     }
+    
+    public void SetCardSetData(CardSetData cardSetData) {
+        cards = cardSetData;
+    }
 }

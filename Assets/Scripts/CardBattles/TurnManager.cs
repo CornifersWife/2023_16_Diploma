@@ -60,15 +60,15 @@ namespace TurnSystem {
         private bool gameStarted = false;
 
         public HandManager playerHand;
-        public DeckManager playerDeck;
+        public DeckManagerOld playerDeck;
 
         public HandManager enemyHand;
-        public DeckManager enemyDeck;
+        public DeckManagerOld enemyDeck;
 
         [FormerlySerializedAs("playerMana")] public ActionPointManager playerActionPoint;
         [FormerlySerializedAs("enemyMana")] public ActionPointManager enemyActionPoint;
 
-        public Board board;
+        [FormerlySerializedAs("board")] public BoardOld boardOld;
 
         [Header("Events")] public UnityEvent OnGameStarted;
         public UnityEvent OnGameWon;
@@ -186,7 +186,7 @@ namespace TurnSystem {
         }
 
         private void EndOfTurn(bool isPlayer) {
-            board.MinionsAttack(isPlayer);
+            boardOld.MinionsAttack(isPlayer);
         }
 
         public void EndPlayerTurn() {
@@ -201,7 +201,7 @@ namespace TurnSystem {
         }
 
         private void EndOfPlayerTurnActions() {
-            board.MinionsAttack(true);
+            boardOld.MinionsAttack(true);
         }
 
         private IEnumerator OpponentTurnRoutine() {

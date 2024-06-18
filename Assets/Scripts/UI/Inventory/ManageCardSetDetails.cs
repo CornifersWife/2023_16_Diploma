@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Scenes.Irys_is_doing_her_best.Scripts.My;
+using ScriptableObjects;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +12,7 @@ public class ManageCardSetDetails : MonoBehaviour {
     [SerializeField] private RectTransform descriptionWindow;
     [SerializeField] private TMP_Text descriptionText;
 
-    private List<BaseCardData> cards = new List<BaseCardData>();
+    private List<CardData> cards = new List<CardData>();
     private Animator animator;
     private bool isOpen;
     public bool IsOpen => isOpen;
@@ -24,15 +26,16 @@ public class ManageCardSetDetails : MonoBehaviour {
         isOpen = true;
         nameText.text = cardSetData.displayName;
 
-        foreach (BaseCardData cardData in cardSetData.cards) {
+        foreach (CardData cardData in cardSetData.cards) {
             cards.Add(cardData);
         }
         DisplayCards();
     }
 
     private void DisplayCards() {
-        foreach (BaseCardData cardData in cards) {
-            SetUpObjects(cardData);
+        foreach (CardData cardData in cards) {
+            Debug.Log("FIX ME I USED TO BE BASECARDDATA");
+           // SetUpObjects(cardData);
         }
         animator.SetBool("isOpen", true);
     }
