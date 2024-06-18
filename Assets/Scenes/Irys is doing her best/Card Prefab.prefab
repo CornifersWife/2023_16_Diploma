@@ -960,7 +960,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5feb7fea3bc749a28e492c893962c329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlaced: 0
   dropDistanceThreshold: 100
+  alphaDuringDragging: 0.8
 --- !u!1 &5379242662566633894
 GameObject:
   m_ObjectHideFlags: 0
