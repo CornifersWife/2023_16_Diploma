@@ -14,6 +14,8 @@ public class ManageGame : MonoBehaviour {
     [SerializeField] private GameObject wall;
     [SerializeField] private ParticleSystem removablePS;
     [SerializeField] private List<CardSet> cardSets;
+
+    [SerializeField] private GameObject info;
         
     public bool IsStarted => SceneManager.GetActiveScene().name is "beta-release" or "beta-release-2" or "New Scene";
     public static ManageGame Instance = null;
@@ -98,4 +100,7 @@ public class ManageGame : MonoBehaviour {
         }
     }
 
+    public void OKClick() {
+        info.SetActive(false);
+    }
 }
