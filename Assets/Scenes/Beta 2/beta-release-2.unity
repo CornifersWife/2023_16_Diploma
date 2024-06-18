@@ -19567,13 +19567,49 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7619115504855137570, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 257644858}
+    - targetCorrespondingSourceObject: {fileID: 7619115504855137570, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 257644857}
   m_SourcePrefab: {fileID: 100100000, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
 --- !u!1 &257644856 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7619115504855137570, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
   m_PrefabInstance: {fileID: 257644855}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &257644857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257644856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9081f2cea4a704791eb03716e7faa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &257644858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257644856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0.7830189, g: 0.7539826, b: 0.7350036, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &263532503
 GameObject:
   m_ObjectHideFlags: 0
@@ -26069,13 +26105,49 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7619115504855137570, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 360376824}
+    - targetCorrespondingSourceObject: {fileID: 7619115504855137570, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 360376823}
   m_SourcePrefab: {fileID: 100100000, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
 --- !u!1 &360376822 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7619115504855137570, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
   m_PrefabInstance: {fileID: 360376821}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &360376823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360376822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9081f2cea4a704791eb03716e7faa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &360376824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360376822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0.7830189, g: 0.7539826, b: 0.7350036, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &363477986
 GameObject:
   m_ObjectHideFlags: 0
@@ -26726,6 +26798,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsManager: {fileID: 1593344933}
+  inventoryController: {fileID: 0}
+  npcManager: {fileID: 0}
+  enemyStateManager: {fileID: 0}
   player: {fileID: 0}
   npc: {fileID: 360376822}
   npc2: {fileID: 257644856}
@@ -67937,6 +68012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 1014855748}
+  dialogueBox: {fileID: 0}
 --- !u!4 &1055914076
 Transform:
   m_ObjectHideFlags: 0
@@ -132104,25 +132180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4a83a1827fbb142805003b5cead684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popupPanel: {fileID: 1111419044}
-  deckPopup: {fileID: 1183995178}
-  mouseClickAction:
-    m_Name: Mouse Click
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: ff6265d9-206a-453f-a05c-c836fe064f30
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 1f91e0be-fc3e-4548-86ae-a02c7846b270
-      m_Path: <Mouse>/leftButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Mouse Click
-      m_Flags: 0
-    m_Flags: 0
+  enemyPanel: {fileID: 0}
 --- !u!4 &1852921041
 Transform:
   m_ObjectHideFlags: 0
