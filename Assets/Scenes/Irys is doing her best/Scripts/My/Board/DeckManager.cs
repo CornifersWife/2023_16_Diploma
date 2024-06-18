@@ -29,7 +29,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
 
         private void Start() {
             try {
-                isPlayers = GetComponentInParent<CharacterManager>().isPlayer;
+                isPlayers = GetComponentInParent<CharacterManager>().isPlayers;
             }
             catch (Exception e) {
                 Debug.LogException(e);

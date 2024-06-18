@@ -940,8 +940,8 @@ MonoBehaviour:
   isPlayers: 0
   showPosition: {x: 450, y: 0, z: 0}
   showScale: {x: 2, y: 2, z: 2}
-  playerToShow: 15
-  timeToShow: 0.4
+  playerToShow: 13
+  timeToShow: 0.409
   showToHand: 2
   timeToHand: 0.4
   enemyToHand: 4
@@ -960,8 +960,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5feb7fea3bc749a28e492c893962c329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlaced: 0
+  droppedOnSlot: 0
+  card: {fileID: 0}
   dropDistanceThreshold: 100
+  deltaScalar: 1.05
   alphaDuringDragging: 0.8
 --- !u!1 &5379242662566633894
 GameObject:

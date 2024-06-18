@@ -91,7 +91,6 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
 
 
         [SerializeField] private float handMoveAnimationTime = 0.3f;
-
         [SerializeField] private Ease ease;
 
         public void MoveTo(Vector3 vector3) {

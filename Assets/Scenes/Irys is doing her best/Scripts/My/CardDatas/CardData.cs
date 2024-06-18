@@ -19,13 +19,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas {
         [SerializeField]
         [EnumFlags]
         public List<AdditionalProperty> Properties = new List<AdditionalProperty>();
-
-        /*[SerializeField]
-        private CardSet cardSet;
-        public CardSet CardSet {
-            get => cardSet;
-            set => cardSet = value;
-        }*/
+        
         [SerializeField]
         private Sprite sprite; 
         public Sprite Sprite {

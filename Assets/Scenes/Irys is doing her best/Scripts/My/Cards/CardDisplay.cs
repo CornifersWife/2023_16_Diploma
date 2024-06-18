@@ -1,11 +1,14 @@
+using DG.Tweening;
+using NaughtyAttributes;
 using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
-    public class CardDisplay : MonoBehaviour {
+    public class CardDisplay : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler{
         [Header("Cards Elements")]
         [SerializeField] private GameObject imageObject;
 
@@ -26,7 +29,6 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
 
         [Header("Type")]
         [SerializeField] public GameObject cardTypeObject;
-
         
         private Image image;
         private TextMeshProUGUI cardName;
@@ -37,6 +39,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
         private Image cardType;
 
         void Awake() {
+            //TODO idk why it forced me to do it this way, i could not assign it in inspector
             image = imageObject.GetComponent<Image>();
             cardName = cardNameObject.GetComponent<TextMeshProUGUI>();
             description = descriptionObject.GetComponent<TextMeshProUGUI>();
@@ -69,12 +72,34 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
             frontOfCard.enabled = !visible;
             backOfCard.enabled = !visible;
             frontVisible = visible;
+            transform.DORotate(new Vector3(0, 0, 0), 0.1f);
         }
         
         public void ChangeCardVisible() {
             frontOfCard.enabled = !frontVisible;
             backOfCard.enabled = !frontVisible;
             frontVisible = !frontVisible;
+        }
+
+
+        [BoxGroup("Hover")]
+        [SerializeField] private float scaleOnHover = 1.1f;
+        [BoxGroup("Hover")]
+        [SerializeField] private float scaleOnHoverTime = 0.1f;
+
+        //TODO MAGIC NUMBER
+        public void OnPointerEnter(PointerEventData eventData) {
+            if (!frontVisible) {
+                return;
+            }
+            transform.DOScale(transform.localScale*scaleOnHover, scaleOnHoverTime);
+        }
+        //TODO MAGIC NUMBER
+        public void OnPointerExit(PointerEventData eventData) {
+            if (!frontVisible) {
+                return;
+            }
+            transform.DOScale(Vector3.one, scaleOnHoverTime);
         }
     }
 }

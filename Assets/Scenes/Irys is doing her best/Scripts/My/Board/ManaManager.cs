@@ -1,30 +1,43 @@
 using System;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Object = UnityEngine.Object;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
     public class ManaManager : MonoBehaviour {
+        [SerializeField]
         public int MaxMana = 2;
         [Min(0)]
-        public int CurrentMana;
+        public int currentMana;
 
         private void Awake() {
-            CurrentMana = MaxMana;
+            currentMana = MaxMana;
         }
 
-        public bool CanUseMana(IHasCost hasCost) {
-            return CurrentMana >= hasCost.GetCost();
+        private bool CanUseMana(IHasCost cost) {
+            return currentMana >= cost.GetCost();
         }
 
-        public void UseMana(IHasCost hasCost) {
-            if (!CanUseMana(hasCost)) {
-                Debug.LogException(new ArgumentException($"Not enough mana to play a card\ncost: {hasCost.GetCost()}   mana: {CurrentMana}"),(Object)hasCost);
+        private void UseMana(IHasCost cost) {
+            if (!CanUseMana(cost)) {
+                Debug.LogException(new ArgumentException($"Not enough mana to play a card\ncost: {cost.GetCost()}   mana: {currentMana}"),(Object)cost);
             }
 
-            CurrentMana -= 1;
+            currentMana -= 1;
         }
-        
+
+        public bool TryUseMana(IHasCost cost) {
+            if (!CanUseMana(cost)) {
+                ShowLackOfMana();
+                return false;
+            }
+            UseMana(cost);
+            return true;
+        }
+        public void ShowLackOfMana() {
+            //TODO
+        }
         
     }
 }
