@@ -128,7 +128,7 @@ public class InventoryController : MonoBehaviour, ISaveable {
             InventorySaveData.ItemData itemData = new InventorySaveData.ItemData {
                 index = i,
                 name = item.GetName(),
-                image = AssetDatabase.GetAssetPath(item.GetSprite())
+                //image = AssetDatabase.GetAssetPath(item.GetSprite())
             };
             ((InventorySaveData)saveData).itemDatas.Add(itemData);
         }
@@ -141,8 +141,8 @@ public class InventoryController : MonoBehaviour, ISaveable {
             InventorySaveData.CardSetItemData itemData = new InventorySaveData.CardSetItemData() {
                 index = i,
                 name = item.GetName(),
-                image = AssetDatabase.GetAssetPath(item.GetSprite()),
-                cardSetData = AssetDatabase.GetAssetPath(((CardSet)item).GetCardSetData())
+                //image = AssetDatabase.GetAssetPath(item.GetSprite()),
+                //cardSetData = AssetDatabase.GetAssetPath(((CardSet)item).GetCardSetData())
             };
             ((InventorySaveData)saveData).cardSetDatas.Add(itemData);
         }
@@ -155,8 +155,8 @@ public class InventoryController : MonoBehaviour, ISaveable {
             InventorySaveData.CardSetItemData itemData = new InventorySaveData.CardSetItemData() {
                 index = i,
                 name = item.GetName(),
-                image = AssetDatabase.GetAssetPath(item.GetSprite()),
-                cardSetData = AssetDatabase.GetAssetPath(((CardSet)item).GetCardSetData())
+                //image = AssetDatabase.GetAssetPath(item.GetSprite()),
+                //cardSetData = AssetDatabase.GetAssetPath(((CardSet)item).GetCardSetData())
             };
             ((InventorySaveData)saveData).deckDatas.Add(itemData);
         }
@@ -167,15 +167,15 @@ public class InventoryController : MonoBehaviour, ISaveable {
         for (int i = 0; i < inventorySaveData.itemDatas.Count; i++) {
             CollectibleItem item = new GameObject().AddComponent<CollectibleItem>();
             item.SetName(inventorySaveData.itemDatas[i].name);
-            item.SetSprite(AssetDatabase.LoadAssetAtPath<Sprite>(inventorySaveData.itemDatas[i].image));
+            //item.SetSprite(AssetDatabase.LoadAssetAtPath<Sprite>(inventorySaveData.itemDatas[i].image));
             itemSlots[inventorySaveData.itemDatas[i].index].AddItem(item);
         }
         
         for (int i = 0; i < inventorySaveData.cardSetDatas.Count; i++) {
             CardSet item = new GameObject().AddComponent<CardSet>();
             item.SetName(inventorySaveData.cardSetDatas[i].name);
-            item.SetSprite(AssetDatabase.LoadAssetAtPath<Sprite>(inventorySaveData.cardSetDatas[i].image));
-            item.SetCardSetData(AssetDatabase.LoadAssetAtPath<CardSetData>(inventorySaveData.cardSetDatas[i].cardSetData));
+            //item.SetSprite(AssetDatabase.LoadAssetAtPath<Sprite>(inventorySaveData.cardSetDatas[i].image));
+            //item.SetCardSetData(AssetDatabase.LoadAssetAtPath<CardSetData>(inventorySaveData.cardSetDatas[i].cardSetData));
             
             cardSetSlots[inventorySaveData.cardSetDatas[i].index].AddItem(item);
         }
@@ -183,8 +183,8 @@ public class InventoryController : MonoBehaviour, ISaveable {
         for (int i = 0; i < inventorySaveData.deckDatas.Count; i++) {
             CardSet item = new GameObject().AddComponent<CardSet>();
             item.SetName(inventorySaveData.deckDatas[i].name);
-            item.SetSprite(AssetDatabase.LoadAssetAtPath<Sprite>(inventorySaveData.deckDatas[i].image));
-            item.SetCardSetData(AssetDatabase.LoadAssetAtPath<CardSetData>(inventorySaveData.deckDatas[i].cardSetData));
+            //item.SetSprite(AssetDatabase.LoadAssetAtPath<Sprite>(inventorySaveData.deckDatas[i].image));
+            //item.SetCardSetData(AssetDatabase.LoadAssetAtPath<CardSetData>(inventorySaveData.deckDatas[i].cardSetData));
             
             deckSlots[inventorySaveData.deckDatas[i].index].AddItem(item);
         }

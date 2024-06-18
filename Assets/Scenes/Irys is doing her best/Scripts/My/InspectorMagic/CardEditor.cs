@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 using Scenes.Irys_is_doing_her_best.Scripts.My;
-
+/*
 [CustomEditor(typeof(CardData), true)]
 public class CardEditor : Editor {
     public override void OnInspectorGUI() {
@@ -16,3 +16,4 @@ public class CardEditor : Editor {
         serializedObject.ApplyModifiedProperties();
     }
 }
+*/

@@ -2,6 +2,7 @@ using Scenes.Irys_is_doing_her_best.Scripts.My;
 using UnityEngine;
 using UnityEditor;
 
+/*
 [CustomEditor(typeof(CardSetData))]
 public class CardSetDataInspector : Editor {
     public override void OnInspectorGUI() {
@@ -93,3 +94,4 @@ public class CardSetDataInspector : Editor {
         AssetDatabase.Refresh(); // Refresh the Asset Database to show changes immediately
     }
 }
+*/

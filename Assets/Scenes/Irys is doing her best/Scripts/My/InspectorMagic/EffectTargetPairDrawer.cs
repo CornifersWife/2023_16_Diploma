@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
+/*
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.InspectorMagic {
     [CustomPropertyDrawer(typeof(EffectTargetPair))]
     public class EffectTargetPairDrawer : PropertyDrawer {
@@ -19,6 +20,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.InspectorMagic {
             EditorGUI.PropertyField(targetTypeRect, targetTypeProperty, GUIContent.none);
 
             EditorGUI.EndProperty();
-        }*/
+        }
     }
 }
+*/

@@ -543,6 +543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41327384dc2ae1e438942c8596440b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   waitTimeSeconds: 0
   waypoints:
   - {fileID: 999763625}
@@ -2905,17 +2906,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2668557158482891500, guid: 30804b2b4a4ed9b4683bfbea20fe860d, type: 3}
   m_PrefabInstance: {fileID: 7822287579524944006}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &132752151 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5416512292268597287, guid: 30804b2b4a4ed9b4683bfbea20fe860d, type: 3}
-  m_PrefabInstance: {fileID: 7822287579524944006}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 132752148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e482b37540532d42965ccc878635a5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &132752155 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5254029167935941323, guid: 30804b2b4a4ed9b4683bfbea20fe860d, type: 3}
@@ -3593,6 +3583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41327384dc2ae1e438942c8596440b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   waitTimeSeconds: 3
   waypoints:
   - {fileID: 1323960394}
@@ -3610,7 +3601,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: 66561b19a76fbe24788d1342d7a0b198, type: 2}
-  enemyPopup: {fileID: 529010452}
   undefeatedMaterial: {fileID: 2100000, guid: cefd3f4c819e7be4dae58ab529761ed7, type: 2}
   defeatedMaterial: {fileID: 2100000, guid: 7d55af4c91526b34cb074df79891f15f, type: 2}
 --- !u!114 &194923484
@@ -6390,6 +6380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41327384dc2ae1e438942c8596440b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   waitTimeSeconds: 1
   waypoints:
   - {fileID: 1323960394}
@@ -7550,25 +7541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4a83a1827fbb142805003b5cead684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popupPanel: {fileID: 1287751425}
-  deckPopup: {fileID: 1628933933}
-  mouseClickAction:
-    m_Name: Mouse Click
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: ff6265d9-206a-453f-a05c-c836fe064f30
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 1f91e0be-fc3e-4548-86ae-a02c7846b270
-      m_Path: <Mouse>/leftButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Mouse Click
-      m_Flags: 0
-    m_Flags: 0
+  enemyPanel: {fileID: 0}
 --- !u!4 &529010453
 Transform:
   m_ObjectHideFlags: 0
@@ -18179,6 +18152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41327384dc2ae1e438942c8596440b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   waitTimeSeconds: 0
   waypoints:
   - {fileID: 999763625}
@@ -21611,6 +21585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 580688444}
+  dialogueBox: {fileID: 1357026255}
 --- !u!114 &1357026255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21620,24 +21595,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 1357026253}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 540f2142c8ca4e35861f91c910a73755, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d67d0ca147bc95f49cfe0149af793f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseClickAction:
-    m_Name: Mouse Click
+  icon: {fileID: 1932015768}
+  nameText: {fileID: 49048817}
+  dialogueText: {fileID: 1047388424}
+  nextIcon: {fileID: 1855182896}
+  typingSpeed: 5
+  skipDialogue:
+    m_Name: Skip Dialogue
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: d7827992-eb48-4288-8740-5a8272d2ca69
+    m_Id: 924407cb-e2ef-4d7b-bbc2-4d627681a206
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 4daac303-c965-49c3-8ae7-89fc44c3e997
+      m_Id: 69971eab-82b0-4c05-b862-e14b4ea77c93
       m_Path: <Mouse>/leftButton
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Mouse Click
+      m_Action: Skip Dialogue
       m_Flags: 0
     m_Flags: 0
 --- !u!4 &1357026256
@@ -23018,6 +22998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41327384dc2ae1e438942c8596440b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   waitTimeSeconds: 0.5
   waypoints:
   - {fileID: 513650859}
@@ -23038,7 +23019,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: b4a0e2832118a1949a2ac861ba9a8bf6, type: 2}
-  enemyPopup: {fileID: 529010452}
   undefeatedMaterial: {fileID: 2100000, guid: cefd3f4c819e7be4dae58ab529761ed7, type: 2}
   defeatedMaterial: {fileID: 2100000, guid: 7d55af4c91526b34cb074df79891f15f, type: 2}
 --- !u!114 &1487363561
@@ -30251,7 +30231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec84d145a84f4856aa9c3d23ef15d7d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseInputManager: {fileID: 132752151}
+  mouseInputManager: {fileID: 0}
   keyboardInputManager: {fileID: 1934350919}
 --- !u!4 &1934350921
 Transform:
@@ -32519,6 +32499,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f5bf0ec4ab9344ea7f86c54931c83e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  cameraPivot: {fileID: 0}
 --- !u!4 &2025751241
 Transform:
   m_ObjectHideFlags: 0
@@ -32863,6 +32845,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsManager: {fileID: 0}
+  inventoryController: {fileID: 0}
+  npcManager: {fileID: 0}
+  enemyStateManager: {fileID: 0}
+  player: {fileID: 0}
+  npc: {fileID: 0}
+  npc2: {fileID: 0}
+  enemy: {fileID: 0}
+  wall: {fileID: 0}
+  removablePS: {fileID: 0}
+  cardSets: []
 --- !u!1 &2054062280
 GameObject:
   m_ObjectHideFlags: 0
