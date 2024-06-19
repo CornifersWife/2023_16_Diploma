@@ -5,6 +5,9 @@ using UnityEngine.Serialization;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
     public class TurnManager : MonoBehaviour {
+
+        [SerializeField] private float startOfGameWait = 0.1f;
+        
         public static TurnManager Instance { get; private set; }
 
         private void Awake() {
@@ -29,7 +32,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         }
 
         private IEnumerator WaitForGameToFullyLoad() {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(startOfGameWait);
             StartingDraw();
         }
         private void StartingDraw() {

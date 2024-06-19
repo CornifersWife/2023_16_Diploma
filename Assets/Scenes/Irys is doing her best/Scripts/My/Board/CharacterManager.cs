@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Cards;
 using UnityEngine;
@@ -22,8 +23,6 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
 
         private static CardEvent onCardPlayed = new CardEvent();
 
-        [Space] [Header("Variables")] [SerializeField]
-        private float timeBetweenDrawingManyCard = 1.1f;
 
         public void Awake() {
             onCardPlayed.AddListener(OnCardPlayedHandler);
@@ -37,14 +36,15 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             Debug.Log("Yipee");
             onCardPlayed.Invoke(card, cardSpot);
         }
-        
+
         private void OnCardPlayedHandler(Cards.Card card, CardSpot cardSpot) {
             if (card.isPlayers != isPlayers)
                 return;
             if (!manaManager.TryUseMana(card)) {
                 return;
             }
-            MoveCardToCardSpot(card,cardSpot);
+
+            MoveCardToCardSpot(card, cardSpot);
             hand.UpdateCardPositions();
             card.GetComponent<CardDragging>().droppedOnSlot = true;
         }
@@ -59,34 +59,31 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             cardSpot.card = card;
         }
 
-        private void Draw() {
-            if (!deck.Cards.Any()) {
-                //TODO implement feedback
-                Debug.LogError("No more cards honey");
+        public void Draw(int amount) {
+            if (amount <= 0) {
+                Debug.LogError("Player just tried to draw 0 or less cards");
                 return;
             }
 
-            var card = deck.Cards[0];
-            card.GetComponent<CardDisplay>().ChangeCardVisible(isPlayers);
-            card.GetComponent<CardDragging>().enabled = true;
-            hand.DrawACard(card);
-            deck.Cards.RemoveAt(0);
-        }
-
-        public void Draw(int amount) {
-            StartCoroutine(DrawMany(amount));
-        }
-
-        private IEnumerator DrawMany(int amount) {
-            for (int i = 0; i < amount; i++) {
-                Draw();
-                yield return new WaitForSeconds(timeBetweenDrawingManyCard);
+            if (!deck.Cards.Any()) {
+                //TODO implement feedback
+                deck.NoMoreCards();
+                return;
             }
 
-            yield return new WaitForSeconds(1f);
-            hand.UpdateCardPositions();
-        }
+            var xd = new List<Cards.Card>();
+            for (int i = 0; i < amount; i++) {
+                if (!deck.Cards.Any()) {
+                    //TODO ADD FEEDBACK CURRENTLY IS JUST DEBUG LOG
+                    deck.NoMoreCards();
+                    break;
+                }
 
-        
+                xd.Add(deck.Cards[0]);
+                deck.Cards.RemoveAt(0);
+            }
+
+            hand.DrawCards(xd);
+        }
     }
 }

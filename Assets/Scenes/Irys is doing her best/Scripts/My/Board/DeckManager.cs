@@ -106,5 +106,10 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
 
             Cards.AddRange(shuffledList);
         }
+
+        public void NoMoreCards() {
+            //TODO ADD SOME ANIMATION
+            Debug.Log("No more cards honey");
+        }
     }
 }

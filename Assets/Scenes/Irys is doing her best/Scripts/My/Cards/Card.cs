@@ -9,6 +9,8 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
     public abstract class Card : MonoBehaviour,IHasCost,IMoveable {
         public CardDisplay cardDisplay;
         public CardAnimation cardAnimation;
+        public CardDragging cardDragging;
+        
         public string CardName { get; private set; }
         public string Description { get; private set; }
         public string FlavourText { get; private set; }
@@ -21,7 +23,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
         private void Awake() {
             cardDisplay = GetComponent<CardDisplay>();
             cardAnimation = GetComponent<CardAnimation>();
-            
+            cardDragging = GetComponent<CardDragging>();
         }
         
         public virtual void Initialize(CardData cardData, bool isPlayers) {
@@ -39,12 +41,17 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
             if (properties.Contains(AdditionalProperty.FreeToPlay)) {
                 return 0;
             }
-
             return 1;
         }
 
         public void Move(Vector3 vector3) {
             cardAnimation.MoveTo(vector3);
+        }
+
+        //TODO CHANGE ITS NAME
+        public void IsDrawn() {
+            cardDisplay.ChangeCardVisible(isPlayers);
+            cardDragging.enabled = true;
         }
     }
 }

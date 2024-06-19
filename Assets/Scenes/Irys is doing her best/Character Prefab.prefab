@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abcae5c24102411d969f44c5765011d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBetweenDrawingManyCard: 0.5
   distanceScalar: 10
   distanceMulti: 300
 --- !u!1 &1163585385573026960
@@ -138,6 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e69adb79c2509e4d91076dee9e889d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAvailableColor: {r: 0, g: 1, b: 1, a: 1}
+  isEmptyColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &1577691811338400432
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +209,6 @@ MonoBehaviour:
   boardSide: {fileID: 1363167129428915371}
   manaManager: {fileID: 6158406892823634024}
   isPlayers: 0
-  timeBetweenDrawingManyCard: 0.5
 --- !u!1 &1797842050393473140
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,8 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e744d47eec243e79b025e0559f305f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxMana: 2
-  currentMana: 0
+  maxMana: 2
 --- !u!114 &6921751290839891526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +312,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c11b73e165d26142ab9363500c7fd93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manaPointPrefab: {fileID: 0}
+  manaPoints: []
+  currentMana: 0
 --- !u!1 &5476774564936078917
 GameObject:
   m_ObjectHideFlags: 0
