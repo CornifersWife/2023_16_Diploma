@@ -15,17 +15,18 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         
         private int CurrentMana {
             get {
-                manaDisplay.currentMana = currentMana;
+                manaDisplay.CurrentMana = currentMana;
                 return currentMana;
             }
             set {
-                manaDisplay.currentMana = value;
+                manaDisplay.CurrentMana = value;
                 currentMana = value;
             }
         }
 
         private void Awake() {
-            manaDisplay = GetComponent<ManaDisplay>();
+            manaDisplay = GetComponentInChildren<ManaDisplay>();
+            manaDisplay.UpdateMaxMana(maxMana);
             CurrentMana = maxMana;
         }
 

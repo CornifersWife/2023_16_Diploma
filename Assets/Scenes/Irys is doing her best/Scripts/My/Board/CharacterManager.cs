@@ -33,7 +33,6 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         }
 
         public static void PlayACard(Cards.Card card, CardSpot cardSpot) {
-            Debug.Log("Yipee");
             onCardPlayed.Invoke(card, cardSpot);
         }
 

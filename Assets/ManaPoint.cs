@@ -7,23 +7,27 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class ManaPoint : MonoBehaviour {
-    private Image image;
+    public Image image;
 
-    private bool isAvailable = false;
+
+    private bool isAvailable = true;
     [SerializeField] private Color isAvailableColor = Color.cyan;
     [SerializeField] private Color isEmptyColor = Color.gray;
 
+
     private void Awake() {
         image = GetComponent<Image>();
+        image.color = isAvailable ? isAvailableColor : isEmptyColor;
     }
 
-    public void LackOfMana() {
-        throw new System.NotImplementedException();
-    }
 
     //TODO MAGIC NUMBERS
     public void IsAvaliable(bool value) {
         var newColor = value ? isAvailableColor : isEmptyColor;
         image.DOColor(newColor, 0.2f).SetEase(Ease.InOutCubic);
+    }
+
+    public void LackOfMana() {
+        
     }
 }

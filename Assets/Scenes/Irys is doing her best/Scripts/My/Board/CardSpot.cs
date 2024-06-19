@@ -29,9 +29,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
                 Debug.Log($"{name} already has a card");
                 return;
             }
-
-            Debug.Log(eventData.pointerDrag.name);
-
+            
             if (eventData.pointerDrag is null) {
                 Debug.Log($"{name}, was dropped a null object");
                 return;
