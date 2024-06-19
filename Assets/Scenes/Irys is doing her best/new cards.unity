@@ -736,6 +736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c797cc5fea37472e80932d904961f8ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startOfGameWait: 0.1
   isPlayersTurn: 1
   player: {fileID: 4994773569284584968}
   enemy: {fileID: 521443531}
@@ -1401,6 +1402,10 @@ PrefabInstance:
     - target: {fileID: 6896468766100950936, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6921751290839891526, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
+      propertyPath: noManaAnimationEase
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8002710251550648687, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       propertyPath: m_TagString
