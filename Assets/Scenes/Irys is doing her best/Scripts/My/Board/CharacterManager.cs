@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
+using NaughtyAttributes;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Cards;
 using UnityEngine;
 using UnityEngine.Events;
@@ -20,7 +22,11 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         [SerializeField] public BoardSide boardSide;
         [SerializeField] public ManaManager manaManager;
         [SerializeField] public bool isPlayers;
-
+        
+        private bool isYourTurn = false; //only true after all the "start of turn" things happen
+        [ShowNativeProperty] private bool IsYourTurn => isYourTurn;
+        
+        
         private static CardEvent onCardPlayed = new CardEvent();
 
 
@@ -58,16 +64,16 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             cardSpot.card = card;
         }
 
-        public void Draw(int amount) {
+        public IEnumerator Draw(int amount) {
             if (amount <= 0) {
                 Debug.LogError("Player just tried to draw 0 or less cards");
-                return;
+                yield return null;
             }
 
             if (!deck.Cards.Any()) {
                 //TODO implement feedback
                 deck.NoMoreCards();
-                return;
+                yield return null;
             }
 
             var xd = new List<Cards.Card>();
@@ -82,7 +88,15 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
                 deck.Cards.RemoveAt(0);
             }
 
-            hand.DrawCards(xd);
+            yield return hand.DrawManyCoroutine(xd);
+        }
+
+        public IEnumerator StartOfTurn() {
+            yield return Draw(1);
+        }
+
+        public IEnumerator EndOfTurn() {
+            throw new NotImplementedException();
         }
     }
 }

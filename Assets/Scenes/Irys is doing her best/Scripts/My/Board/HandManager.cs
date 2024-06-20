@@ -40,7 +40,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         }
 
         //TODO move to another file?
-        private IEnumerator DrawManyCoroutine(List<Cards.Card> cardsToDraw) {
+        public IEnumerator DrawManyCoroutine(List<Cards.Card> cardsToDraw) {
             //TODO Change it to updateCardPosition(cardsToDraw.count)
             var finalPositions = CalculateCardPositions(cardsToDraw.Count);
             int i = 0;
