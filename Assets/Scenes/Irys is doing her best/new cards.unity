@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 229165083}
   - component: {fileID: 229165082}
   m_Layer: 5
-  m_Name: Square
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -307,17 +307,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229165080}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 585415136}
+  m_Father: {fileID: 726530921}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -200, y: -99.99999}
+  m_SizeDelta: {x: 1300, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &229165082
 MonoBehaviour:
@@ -648,7 +648,6 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 212680231}
-  - {fileID: 229165081}
   - {fileID: 726530921}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -686,6 +685,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 229165081}
   - {fileID: 4994773569284584967}
   - {fileID: 521443532}
   m_Father: {fileID: 585415136}
@@ -737,7 +737,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startOfGameWait: 0.1
-  isPlayersTurn: 1
   player: {fileID: 4994773569284584968}
   enemy: {fileID: 521443531}
   cardsAtStartOfGame: 3
@@ -1070,6 +1069,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 726530921}
     m_Modifications:
+    - target: {fileID: 675005521252453992, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 842877544061070012, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       propertyPath: m_TagString
       value: Enemy
@@ -1235,6 +1238,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 726530921}
     m_Modifications:
+    - target: {fileID: 675005521252453992, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 842877544061070012, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       propertyPath: m_TagString
       value: Player
@@ -1244,16 +1251,8 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1304091546832479286, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
-      propertyPath: isPlayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1304091546832479286, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       propertyPath: isPlayers
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1304091546832479286, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
-      propertyPath: hand.Array.size
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1577691811338400432, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       propertyPath: m_Name
