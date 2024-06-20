@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Enums;
@@ -44,14 +45,20 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
             return 1;
         }
 
-        public void Move(Vector3 vector3) {
-            cardAnimation.MoveTo(vector3);
-        }
+        
 
         //TODO CHANGE ITS NAME
         public void IsDrawn() {
             cardDisplay.ChangeCardVisible(isPlayers);
             cardDragging.enabled = true;
         }
+
+        public IEnumerator Move(Vector3 vector3) {
+            yield return StartCoroutine(cardAnimation.MoveTo(vector3));
+        }
+        public IEnumerator DrawAnimation(Vector3 finalPosition) {
+            yield return cardAnimation.DrawAnimation(finalPosition);
+        }
+        
     }
 }

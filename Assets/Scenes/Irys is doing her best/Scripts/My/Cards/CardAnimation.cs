@@ -39,11 +39,12 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
 
         }
 
-        public void DrawAnimation(Vector3 finalPosition) {
+        public IEnumerator DrawAnimation(Vector3 finalPosition) {
             
-            StartCoroutine(isPlayers
+            var drawAnimation = StartCoroutine(isPlayers
                 ? PlayerDrawAnimationCoroutine(finalPosition)
                 : EnemyDrawAnimationCoroutine(finalPosition));
+            yield return drawAnimation;
         }
 
         private IEnumerator PlayerDrawAnimationCoroutine(Vector3 finalPosition) {
@@ -90,11 +91,9 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
         [SerializeField] private float handMoveAnimationTime = 0.3f;
         [SerializeField] private Ease ease;
 
-        public void MoveTo(Vector3 vector3) {
-            StartCoroutine(MoveToCoroutine(vector3));
-        }
+        
 
-        private IEnumerator MoveToCoroutine(Vector3 vector3) {
+        public IEnumerator MoveTo(Vector3 vector3) {
             yield return new WaitUntil(() => inAnimation == false);
             inAnimation = true;
             yield return transform

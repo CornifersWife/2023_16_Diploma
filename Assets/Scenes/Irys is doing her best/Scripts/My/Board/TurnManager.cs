@@ -6,7 +6,10 @@ using UnityEngine.Serialization;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
     public class TurnManager : MonoBehaviour {
+        
+        
         [SerializeField] private float startOfGameWait = 0.1f;
+        [SerializeField] private float afterStartOfGameWaitToTurn = 0.8f;
 
         public static TurnManager Instance { get; private set; }
 
@@ -21,15 +24,16 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
 
         [BoxGroup("Info")] private bool isPlayersTurn = true;
 
-        [Space] [SerializeField] private CharacterManager player; // don't use them in code, use playing/waiting
+        [Space, SerializeField] private CharacterManager player; // don't use them in code, use playing/waiting
         [SerializeField] private CharacterManager enemy;
 
         private CharacterManager playing;
         private CharacterManager waiting;
 
-        [Space] [Header("Data")] [SerializeField]
+        [BoxGroup("Start of game"), SerializeField]
+        [Label("Cards Drawn")]
         private int cardsAtStartOfGame;
-
+            
 
         private void Start() {
             playing = isPlayersTurn ? player : enemy;
@@ -40,31 +44,36 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
 
         private IEnumerator StartGame() {
             yield return WaitForGameToFullyLoad();
-
-            StartingDraw();
+            yield return StartingDraw();
+            yield return playing.StartOfTurn();
         }
 
         private IEnumerator WaitForGameToFullyLoad() {
             yield return new WaitForSeconds(startOfGameWait);
         }
 
-        private void StartingDraw() {
-            playing.Draw(cardsAtStartOfGame);
-            waiting.Draw(cardsAtStartOfGame);
+        private IEnumerator StartingDraw() {
+            var playingDraw = StartCoroutine(playing.Draw(cardsAtStartOfGame));
+            var waitingDraw = StartCoroutine(waiting.Draw(cardsAtStartOfGame));
+
+            yield return playingDraw;
+            yield return waitingDraw;
         }
 
-        public void ChangeTurn() {
-            StartCoroutine("ChangeTurnCoroutine");
-        }
-
-        private IEnumerator ChangeTurnCoroutine() {
-            yield return playing.EndOfTurn();
-            yield return TurnChangeAnimation();
-            yield return waiting.StartOfTurn();
+        [Button(enabledMode: EButtonEnableMode.Playmode)]
+        public IEnumerator ChangeTurn() {
+            yield return ChangeTurnActions();
+                
+            isPlayersTurn = !isPlayersTurn;
             (playing, waiting) = (waiting, playing);
         }
 
-        //TODO
+        private IEnumerator ChangeTurnActions() {
+            yield return playing.EndOfTurn();
+            yield return TurnChangeAnimation();
+            yield return waiting.StartOfTurn();
+        }
+
         private IEnumerator TurnChangeAnimation() {
             yield return null;
         }

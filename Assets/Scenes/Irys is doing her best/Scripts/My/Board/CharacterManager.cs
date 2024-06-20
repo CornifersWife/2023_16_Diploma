@@ -2,13 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using DG.Tweening;
 using NaughtyAttributes;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Cards;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
     public class CharacterManager : MonoBehaviour {
@@ -22,11 +19,11 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         [SerializeField] public BoardSide boardSide;
         [SerializeField] public ManaManager manaManager;
         [SerializeField] public bool isPlayers;
-        
+
         private bool isYourTurn = false; //only true after all the "start of turn" things happen
         [ShowNativeProperty] private bool IsYourTurn => isYourTurn;
-        
-        
+
+
         private static CardEvent onCardPlayed = new CardEvent();
 
 
@@ -64,6 +61,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             cardSpot.card = card;
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         public IEnumerator Draw(int amount) {
             if (amount <= 0) {
                 Debug.LogError("Player just tried to draw 0 or less cards");
@@ -91,12 +89,17 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             yield return hand.DrawManyCoroutine(xd);
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         public IEnumerator StartOfTurn() {
+            manaManager.RefreshMana();
             yield return Draw(1);
+            Debug.Log("started");
+            //TODO trigger all start of turn effects
         }
 
         public IEnumerator EndOfTurn() {
-            throw new NotImplementedException();
+            //TODO trigger all start of turn effects
+            yield return null;
         }
     }
 }

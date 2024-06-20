@@ -1,8 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NaughtyAttributes;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Cards;
 using UnityEngine;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
@@ -30,47 +30,60 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         [SerializeField] [Range(100, 1000)] public float distanceMulti = 300f;
 
 
-        //TODO simplify Drawing so Draw and DrawMany dont have repeated code;
-        public void DrawCard(Cards.Card card) {
-            DrawCards(new List<Cards.Card> { card });
-        }
-
+        /*
         public void DrawCards(List<Cards.Card> cardsToDraw) {
             StartCoroutine(DrawManyCoroutine(cardsToDraw));
-        }
+        }*/
 
         //TODO move to another file?
         public IEnumerator DrawManyCoroutine(List<Cards.Card> cardsToDraw) {
-            //TODO Change it to updateCardPosition(cardsToDraw.count)
-            var finalPositions = CalculateCardPositions(cardsToDraw.Count);
+            AddNewCards(cardsToDraw);
+
+            var finalPositions = CalculateCardPositions(Cards.Count);
+            var couroutines = new List<Coroutine>();
+
+
             int i = 0;
-            for (; i < Cards.Count; i++) {
-                Cards[i].Move(finalPositions[i]);
+            for (; i < (Cards.Count - cardsToDraw.Count); i++) {
+                StartCoroutine(Cards[i].Move(finalPositions[i]));
             }
 
-            //
-            yield return new WaitForFixedUpdate();
-            foreach (var card in cardsToDraw) {
-                //This is the only logic here, rest is animation
+
+            for (int j = 0; i < Cards.Count && j < cardsToDraw.Count; i++, j++) {
+                Cards[i].IsDrawn();
+
+                var huh = Cards[i].DrawAnimation(finalPositions[i]);
+
+
+                couroutines.Add(StartCoroutine(huh));
+                //    TrackCoroutine(coroutine,
+               //         () => coroutineCompletionFlags[localIndex] = true));
+
+                if (j < cardsToDraw.Count - 1) {
+                    yield return new WaitForSeconds(timeBetweenDrawingManyCard);
+                }
+            }
+
+            foreach (var coroutine in couroutines) {
+                yield return coroutine;
+            }
+            //yield return new WaitUntil(() => coroutineCompletionFlags.All(flag => flag));
+
+            //UpdateCardPositions();
+        }
+
+
+        private void AddNewCards(List<Cards.Card> cardsAdded) {
+            cardsAdded.ForEach(card => {
                 card.transform.SetParent(transform, true);
                 Cards.Add(card);
-                //
-            }
-
-            for (; i < Cards.Count; i++) {
-                Cards[i].IsDrawn();
-                Cards[i].cardAnimation.DrawAnimation(finalPositions[i]);
-                yield return new WaitForSeconds(timeBetweenDrawingManyCard);
-
-            }
-            
-            UpdateCardPositions();
+            });
         }
 
         public void UpdateCardPositions(int additionalCards = 0) {
             var newHandPositions = CalculateCardPositions(cards.Count + additionalCards);
             for (int i = 0; i < cards.Count; i++) {
-                cards[i].Move(newHandPositions[i]);
+                StartCoroutine(cards[i].Move(newHandPositions[i]));
             }
         }
 
@@ -85,6 +98,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
                 newPosition.x += (i * cardDistance);
                 output.Add(newPosition);
             }
+
             return output;
         }
 
@@ -94,6 +108,11 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             float output = Mathf.Pow(10, exponent);
             output *= distanceMulti;
             return output;
+        }
+
+        private IEnumerator TrackCoroutine(IEnumerator coroutine, Action onComplete) {
+            yield return coroutine;
+            onComplete();
         }
     }
 }

@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -175, y: -291}
+  m_AnchoredPosition: {x: -500, y: -300}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &21712213841038305
@@ -177,7 +177,7 @@ MonoBehaviour:
   hero: {fileID: 6368447993570103243}
   boardSide: {fileID: 1363167129428915371}
   manaManager: {fileID: 515543031216963993}
-  isPlayers: 0
+  isPlayers: 1
 --- !u!1 &1797842050393473140
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +213,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -333, y: -14}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6921751290839891526
@@ -234,6 +234,7 @@ MonoBehaviour:
   startingPositionOffset: {x: -40, y: 0, z: 0}
   shakeTime: 0.15
   noManaAnimationEase: 7
+  shakeStrength: 15
 --- !u!222 &5643885046872754150
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -412,7 +413,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 611, y: -245}
+  m_AnchoredPosition: {x: 600, y: -245}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &11471108929920545
