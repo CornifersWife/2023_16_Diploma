@@ -68,11 +68,11 @@ public class ManaDisplay : MonoBehaviour {
 
     private void OnCurrentManaChanged(int value) {
         if (value > manaPoints.Count) {
-            Debug.LogError("should reach this code, if it does, fix the code");
+            Debug.LogError("shouldn't reach this code, if it does, fix the code");
         }
 
         for (int i = 0; i < manaPoints.Count; i++) {
-            manaPoints[i].IsAvaliable(i < value);
+            manaPoints[i].IsAvailable(i < value);
         }
     }
 
