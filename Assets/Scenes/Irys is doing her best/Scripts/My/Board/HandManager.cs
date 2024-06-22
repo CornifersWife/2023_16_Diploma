@@ -29,11 +29,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
 
         [SerializeField] [Range(100, 1000)] public float distanceMulti = 300f;
 
-
-        /*
-        public void DrawCards(List<Cards.Card> cardsToDraw) {
-            StartCoroutine(DrawManyCoroutine(cardsToDraw));
-        }*/
+        
 
         //TODO move to another file?
         public IEnumerator DrawManyCoroutine(List<Cards.Card> cardsToDraw) {
@@ -56,8 +52,6 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
 
 
                 couroutines.Add(StartCoroutine(huh));
-                //    TrackCoroutine(coroutine,
-               //         () => coroutineCompletionFlags[localIndex] = true));
 
                 if (j < cardsToDraw.Count - 1) {
                     yield return new WaitForSeconds(timeBetweenDrawingManyCard);
@@ -67,9 +61,6 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             foreach (var coroutine in couroutines) {
                 yield return coroutine;
             }
-            //yield return new WaitUntil(() => coroutineCompletionFlags.All(flag => flag));
-
-            //UpdateCardPositions();
         }
 
 

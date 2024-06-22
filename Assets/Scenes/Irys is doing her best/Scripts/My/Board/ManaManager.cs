@@ -7,13 +7,11 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
     public class ManaManager : MonoBehaviour {
         private ManaDisplay manaDisplay;
 
-        [SerializeField]
-        public int maxMana = 2;
+        [SerializeField] public int maxMana = 2;
 
-        [Min(0)]
-        private int currentMana;
-        
-        private int CurrentMana {
+        [Min(0)] private int currentMana;
+
+        public int CurrentMana {
             get {
                 manaDisplay.CurrentMana = currentMana;
                 return currentMana;
@@ -36,26 +34,35 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
 
         private void UseMana(IHasCost cost) {
             if (!CanUseMana(cost)) {
-                Debug.LogException(new ArgumentException($"Not enough mana to play a card\ncost: {cost.GetCost()}   mana: {currentMana}"),(Object)cost);
+                Debug.LogException(
+                    new ArgumentException(
+                        $"Not enough mana to play a card\ncost: {cost.GetCost()}   mana: {currentMana}"), (Object)cost);
             }
+
             CurrentMana -= 1;
         }
+
 
         public bool TryUseMana(IHasCost cost) {
             if (!CanUseMana(cost)) {
                 ShowLackOfMana();
                 return false;
             }
+
             UseMana(cost);
             return true;
         }
 
+        public bool TryUseMana(int cost) {
+            return TryUseMana(new HasCost(cost));
+        }
+
         public void RefreshMana() {
             CurrentMana = maxMana;
-        }        
+        }
+
         private void ShowLackOfMana() {
             StartCoroutine(manaDisplay.ShowLackOfMana());
         }
-        
     }
 }

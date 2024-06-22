@@ -5,6 +5,13 @@ using UnityEngine;
 
 [Serializable]
 public class StringStringDictionary : SerializableDictionary<string, string> {}
+[Serializable]
+public class IntStringDictionary : SerializableDictionary<int, string> {}
+[Serializable]
+public class StringFloatDictionary :  SerializableDictionary<string, float>{ }
+[Serializable]
+public class StringIntDictionary : SerializableDictionary<string, int> {}
+
 
 [Serializable]
 public class ObjectColorDictionary : SerializableDictionary<UnityEngine.Object, Color> {}

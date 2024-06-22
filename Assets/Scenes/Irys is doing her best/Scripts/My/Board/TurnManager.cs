@@ -14,25 +14,29 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
 
         public static TurnManager Instance { get; private set; }
 
-        private void Awake() {
-            if (!Instance) {
-                Instance = this;
-            }
-            else {
-                Destroy(gameObject);
-            }
-        }
-
+        [NonSerialized]
+        public bool gameHasEnded = false;
         [SerializeField] public bool isPlayersTurn = false;
 
         [Space, SerializeField] private CharacterManager player; // don't use them in code, use playing/waiting
         [SerializeField] private CharacterManager enemy;
+        private EnemyAi enemyAi;
 
         private CharacterManager playing;
         private CharacterManager waiting;
 
         [BoxGroup("Start of game"), SerializeField] [Label("Cards Drawn")]
         private int cardsAtStartOfGame;
+
+
+        private void Awake() {
+            if (!Instance)
+                Instance = this;
+            else
+                Destroy(gameObject);
+
+            enemyAi = enemy.GetComponent<EnemyAi>();
+        }
 
 
         private void Start() {
@@ -45,7 +49,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         private IEnumerator StartGame() {
             yield return WaitForGameToFullyLoad();
             yield return StartingDraw();
-            
+
             yield return playing.StartOfTurn();
         }
 
@@ -64,14 +68,16 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         [Button(enabledMode: EButtonEnableMode.Playmode)]
         public IEnumerator ChangeTurn() {
             yield return ChangeTurnActions();
-
             isPlayersTurn = !isPlayersTurn;
             (playing, waiting) = (waiting, playing);
+            if (playing == enemy)
+                yield return enemyAi.PlayTurn();
         }
 
         private IEnumerator ChangeTurnActions() {
             yield return playing.EndOfTurn();
             yield return TurnChangeAnimation();
+            yield return null;
             yield return waiting.StartOfTurn();
         }
 

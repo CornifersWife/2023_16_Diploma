@@ -1,13 +1,15 @@
 using System.Collections;
 using DG.Tweening;
 using NaughtyAttributes;
+using Scenes.Irys_is_doing_her_best.Scripts.My.Board;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
     public class CardAnimation : MonoBehaviour {
-        public bool inAnimation = false;
-        public bool isWaiting = false;
+        public bool inAnimation = false; //TODO CHECK IF NEEDED
+        public bool isWaiting = false; //TODO CHECK IF NEEDED
         [SerializeField] public bool isPlayers = false;
 
 
@@ -88,19 +90,34 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
         }
 
 
-        [SerializeField] private float handMoveAnimationTime = 0.3f;
-        [SerializeField] private Ease ease;
+        [BoxGroup("Move To")]
+        [SerializeField] private float moveToAnimationTime = 0.3f;
+        [BoxGroup("Move To")]
+        [SerializeField] private Ease moveToEase;
 
-        
 
         public IEnumerator MoveTo(Vector3 vector3) {
             yield return new WaitUntil(() => inAnimation == false);
             inAnimation = true;
             yield return transform
-                .DOMove(vector3, handMoveAnimationTime)
+                .DOMove(vector3, moveToAnimationTime)
                 .SetEase(Ease.InOutSine)
                 .WaitForCompletion(true);
             inAnimation = false;
+        }
+        
+        [BoxGroup("Play Card")]
+        [InfoBox("Currently only used when enemy plays a card")]
+        [SerializeField] private float playCardTime = 0.4f;
+        [BoxGroup("Play Card")]
+        [SerializeField] private Ease playCardEase = Ease.InOutSine;
+
+        public IEnumerator PlayAnimation(CardSpot cardSpot) {
+            yield return transform
+                .DOMove(
+                    cardSpot.transform.position,
+                    playCardTime)
+                .SetEase(playCardEase);
         }
     }
 }

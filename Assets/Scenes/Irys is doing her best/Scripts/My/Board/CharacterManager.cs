@@ -21,7 +21,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         [SerializeField] public bool isPlayers;
 
         [ShowNativeProperty]
-        private bool IsYourTurn {
+        public bool IsYourTurn {
             get {
                 if (Application.isPlaying)
                     return TurnManager.Instance.isPlayersTurn == isPlayers;
@@ -58,30 +58,40 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             card.GetComponent<CardDragging>().droppedOnSlot = true;
         }
 
+        public IEnumerator PlayCardCoroutine(Cards.Card card, CardSpot cardSpot, float time) { //time defined in EnemyAi
+            OnCardPlayedHandler(card, cardSpot);
+            yield return new WaitForSeconds(time);
+        }
+
         private void MoveCardToCardSpot(Cards.Card card, CardSpot cardSpot) {
+            //TODO change all of these to functions inside card 
+            if (!isPlayers)
+                StartCoroutine(
+                    card.GetComponent<CardAnimation>()
+                        .PlayAnimation(cardSpot));
             card.GetComponent<CardDisplay>().ChangeCardVisible(true);
-            card.GetComponent<RectTransform>().position = cardSpot.GetComponent<RectTransform>().position;
+            card.GetComponent<RectTransform>().position =
+                cardSpot.GetComponent<RectTransform>().position; //prevTODO aside from this
             card.GetComponent<CardDragging>().droppedOnSlot = true;
             card.transform.SetParent(cardSpot.transform);
+
             //TODO change so that it works not only from hand
             hand.Cards.Remove(card);
             cardSpot.card = card;
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
-        public IEnumerator Draw(int amount) {
+        public IEnumerator Draw(int amount, int cost = 0) {
             if (amount <= 0) {
                 Debug.LogError("Player just tried to draw 0 or less cards");
-                yield return null;
+                yield break;
             }
 
-            if (!deck.Cards.Any()) {
-                //TODO implement feedback
-                deck.NoMoreCards();
-                yield return null;
-            }
+            if (cost > 0)
+                if (!manaManager.TryUseMana(cost))
+                    yield break;
 
-            var xd = new List<Cards.Card>();
+            var cardsToDraw = new List<Cards.Card>();
             for (int i = 0; i < amount; i++) {
                 if (!deck.Cards.Any()) {
                     //TODO ADD FEEDBACK CURRENTLY IS JUST DEBUG LOG
@@ -89,19 +99,17 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
                     break;
                 }
 
-                xd.Add(deck.Cards[0]);
+                cardsToDraw.Add(deck.Cards[0]);
                 deck.Cards.RemoveAt(0);
             }
 
-            yield return hand.DrawManyCoroutine(xd);
+            yield return hand.DrawManyCoroutine(cardsToDraw);
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
         public IEnumerator StartOfTurn() {
             manaManager.RefreshMana();
             yield return Draw(1);
-            Debug.Log("started");
-            //TODO trigger all start of turn effects
         }
 
         public IEnumerator EndOfTurn() {

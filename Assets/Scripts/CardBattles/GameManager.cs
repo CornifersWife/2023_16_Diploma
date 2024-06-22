@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
+[Obsolete]
 public class GameManager : MonoBehaviour {
     private bool gameOver = false;
     [FormerlySerializedAs("playerHero")] public HeroOld playerHeroOld;
