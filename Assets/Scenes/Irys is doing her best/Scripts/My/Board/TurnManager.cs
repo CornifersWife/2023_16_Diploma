@@ -6,10 +6,11 @@ using UnityEngine.Serialization;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
     public class TurnManager : MonoBehaviour {
-        
-        
-        [SerializeField] private float startOfGameWait = 0.1f;
-        [SerializeField] private float afterStartOfGameWaitToTurn = 0.8f;
+        [BoxGroup("Wait Times"), SerializeField]
+        private float startOfGameWait = 0.1f;
+
+        [BoxGroup("Wait Times"), SerializeField]
+        private float afterStartOfGameWaitToTurn = 0.8f;
 
         public static TurnManager Instance { get; private set; }
 
@@ -22,7 +23,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             }
         }
 
-        [BoxGroup("Info")] private bool isPlayersTurn = true;
+        [SerializeField] public bool isPlayersTurn = false;
 
         [Space, SerializeField] private CharacterManager player; // don't use them in code, use playing/waiting
         [SerializeField] private CharacterManager enemy;
@@ -30,10 +31,9 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         private CharacterManager playing;
         private CharacterManager waiting;
 
-        [BoxGroup("Start of game"), SerializeField]
-        [Label("Cards Drawn")]
+        [BoxGroup("Start of game"), SerializeField] [Label("Cards Drawn")]
         private int cardsAtStartOfGame;
-            
+
 
         private void Start() {
             playing = isPlayersTurn ? player : enemy;
@@ -45,6 +45,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         private IEnumerator StartGame() {
             yield return WaitForGameToFullyLoad();
             yield return StartingDraw();
+            
             yield return playing.StartOfTurn();
         }
 
@@ -63,7 +64,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         [Button(enabledMode: EButtonEnableMode.Playmode)]
         public IEnumerator ChangeTurn() {
             yield return ChangeTurnActions();
-                
+
             isPlayersTurn = !isPlayersTurn;
             (playing, waiting) = (waiting, playing);
         }

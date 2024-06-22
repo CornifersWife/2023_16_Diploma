@@ -17,7 +17,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         [SerializeField]
         private int currentHealth;
 
-        public int CurrentHealth {
+        private int CurrentHealth {
             get => currentHealth;
             set {
                 currentHealth = value > MaxHealth ? MaxHealth : value;
@@ -29,7 +29,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         }
 
         public void TakeDamage(int amount) {
-            throw new System.NotImplementedException();
+            CurrentHealth -= amount;
         }
 
         public void Heal(int amount) {

@@ -20,9 +20,14 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         [SerializeField] public ManaManager manaManager;
         [SerializeField] public bool isPlayers;
 
-        private bool isYourTurn = false; //only true after all the "start of turn" things happen
-        [ShowNativeProperty] private bool IsYourTurn => isYourTurn;
-
+        [ShowNativeProperty]
+        private bool IsYourTurn {
+            get {
+                if (Application.isPlaying)
+                    return TurnManager.Instance.isPlayersTurn == isPlayers;
+                return false;
+            }
+        }
 
         private static CardEvent onCardPlayed = new CardEvent();
 
@@ -41,6 +46,8 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
 
         private void OnCardPlayedHandler(Cards.Card card, CardSpot cardSpot) {
             if (card.isPlayers != isPlayers)
+                return;
+            if (!IsYourTurn)
                 return;
             if (!manaManager.TryUseMana(card)) {
                 return;

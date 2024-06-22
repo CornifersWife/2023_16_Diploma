@@ -738,6 +738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startOfGameWait: 0.1
   afterStartOfGameWaitToTurn: 0.3
+  isPlayersTurn: 1
   player: {fileID: 4994773569284584968}
   enemy: {fileID: 521443531}
   cardsAtStartOfGame: 3
