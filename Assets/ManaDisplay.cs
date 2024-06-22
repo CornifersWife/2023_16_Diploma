@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using NaughtyAttributes;
@@ -13,16 +14,44 @@ public class ManaDisplay : MonoBehaviour {
 
     [SerializeField] private Vector3 startingPositionOffset;
 
-    [BoxGroup("No mana animation")] [Label("Time")] [SerializeField]
+    [Space] [BoxGroup("No mana animation"), Label("Shake Strength"), SerializeField]
+    private int noManaShakeStrength = 15;
+
+    [BoxGroup("No mana animation"), Label("Time"), SerializeField]
     private float shakeTime = 0.3f;
 
-    [BoxGroup("No mana animation")] [Label("Ease")] [SerializeField]
+    [BoxGroup("No mana animation"), Label("Ease"), SerializeField]
     private Ease noManaAnimationEase;
 
-    [BoxGroup("No mana animation")] [SerializeField]
-    private int shakeStrength = 15;
 
-    //TODO read up on how to use it
+    [Space] [BoxGroup("Refresh Animation"), SerializeField, Label("Scale Up"), Range(0.5f, 2f)]
+    private float refreshScapeUp = 2f;
+
+    [BoxGroup("Refresh Animation"), SerializeField, Label("Flash Color")]
+    private Color refreshAnimationFlashColor = Color.white;
+
+    [Space]
+    [BoxGroup("Refresh Animation"), SerializeField, Label("Duration")]
+    private float refreshAnimationDuration = 0.8f;
+
+    [BoxGroup("Refresh Animation"), SerializeField, Label("% Duration of ease in"), Range(0, 1)]
+    private float refreshAnimationEasePercentage = 0.5f;
+
+    [Space]
+    [BoxGroup("Refresh Animation"), SerializeField, Label("In Ease")]
+    private Ease refreshAnimationInEase = Ease.InCubic;
+
+    [BoxGroup("Refresh Animation"), SerializeField, Label("Out Ease")]
+    private Ease refreshAnimationOutEase = Ease.OutCubic;
+
+
+    [Space] [BoxGroup("Mana Point"), SerializeField, Label("Available")]
+    private Color isAvailableColor = Color.cyan;
+
+    [BoxGroup("Mana Point"), SerializeField, Label("Empty")]
+    private Color isEmptyColor = Color.gray;
+
+
     private int currentMana; // backing field
 
     public int CurrentMana {
@@ -37,13 +66,13 @@ public class ManaDisplay : MonoBehaviour {
 
 
     public void UpdateMaxMana(int value) {
-        SetManaPointAmount(value);
+        SetMaxManaPointAmount(value);
 
         //TODO NOT SURE IF THIS IS NEEDED
         OnCurrentManaChanged(currentMana);
     }
 
-    private void SetManaPointAmount(int value) {
+    private void SetMaxManaPointAmount(int value) {
         if (value == manaPoints.Count)
             return;
         var firstPosition = transform.position + startingPositionOffset;
@@ -57,13 +86,13 @@ public class ManaDisplay : MonoBehaviour {
         //TODO it seems so wrong to do it this way, dont have brain energy to do it smarter
         manaPoints.ForEach(Destroy);
         manaPoints = new List<ManaPoint>();
-        //
 
         foreach (var pos in positions) {
             var manaPoint = Instantiate(manaPointPrefab, transform);
             manaPoints.Add(manaPoint.GetComponent<ManaPoint>());
             manaPoint.transform.position = pos;
         }
+        //
     }
 
     private void OnCurrentManaChanged(int value) {
@@ -72,19 +101,65 @@ public class ManaDisplay : MonoBehaviour {
         }
 
         for (int i = 0; i < manaPoints.Count; i++) {
-            manaPoints[i].IsAvailable(i < value);
+            if (i < value)
+                StartCoroutine(MakeAvailable(manaPoints[i]));
+            else {
+                manaPoints[i].isAvailable = false;
+                manaPoints[i].image.DOColor(isEmptyColor, 0.2f);
+            }
         }
     }
 
-    public void ShowLackOfMana() {
-        var xd = DOTween.Sequence();
-        xd.Append(transform.DOShakePosition(shakeTime, new Vector3(shakeStrength, 0, 0),
-            randomnessMode: ShakeRandomnessMode.Harmonic).SetLoops(3,LoopType.Yoyo));
+    public IEnumerator ShowLackOfMana() {
+        var sequence = DOTween.Sequence();
+        var boxShake = transform
+            .DOShakePosition(
+                shakeTime,
+                new Vector3(noManaShakeStrength, 0, 0),
+                randomnessMode: ShakeRandomnessMode.Harmonic)
+            .SetLoops(3, LoopType.Yoyo);
+
+        sequence.Append(boxShake);
+
         foreach (var manaPoint in manaPoints) {
-            xd.Join(manaPoint.image.DOColor(Color.red, shakeTime).SetEase(noManaAnimationEase)
-                .SetLoops(4, LoopType.Yoyo));
+            var manaPointColorSwitch = manaPoint.image
+                .DOColor(Color.red, shakeTime)
+                .SetEase(noManaAnimationEase)
+                .SetLoops(4, LoopType.Yoyo);
+            sequence.Join(manaPointColorSwitch);
         }
 
-        xd.Play();
+        yield return sequence.Play();
+    }
+
+    private IEnumerator MakeAvailable(ManaPoint manaPoint, bool skipAnimation = false) {
+        if (manaPoint.isAvailable && !skipAnimation) {
+            yield return MakeAvailable(manaPoint, true);
+        }
+
+        manaPoint.isAvailable = true;
+
+        var changeSequence = DOTween.Sequence();
+
+        var duration = refreshAnimationDuration;
+        if (skipAnimation)
+            duration = 0f;
+
+
+        var flashTween = manaPoint.image
+            .DOColor(
+                refreshAnimationFlashColor,
+                duration * refreshAnimationEasePercentage)
+            .SetEase(refreshAnimationInEase);
+        var colorToAvailable = manaPoint.image
+            .DOColor(
+                isAvailableColor,
+                duration * (1 - refreshAnimationEasePercentage))
+            .SetEase(refreshAnimationOutEase);
+
+        changeSequence.Join(flashTween);
+        changeSequence.Append(colorToAvailable);
+
+        yield return changeSequence;
     }
 }

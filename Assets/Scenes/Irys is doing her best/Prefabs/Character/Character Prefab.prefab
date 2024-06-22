@@ -232,9 +232,17 @@ MonoBehaviour:
   distanceBetweenManaPoints: 80
   manaPoints: []
   startingPositionOffset: {x: -40, y: 0, z: 0}
+  noManaShakeStrength: 15
   shakeTime: 0.15
   noManaAnimationEase: 7
-  shakeStrength: 15
+  refreshScapeUp: 2
+  refreshAnimationFlashColor: {r: 1, g: 1, b: 1, a: 1}
+  refreshAnimationDuration: 0.5
+  refreshAnimationEasePercentage: 0.3
+  refreshAnimationInEase: 8
+  refreshAnimationOutEase: 21
+  isAvailableColor: {r: 0, g: 1, b: 1, a: 1}
+  isEmptyColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!222 &5643885046872754150
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -54,7 +54,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             CurrentMana = maxMana;
         }        
         private void ShowLackOfMana() {
-            manaDisplay.ShowLackOfMana();
+            StartCoroutine(manaDisplay.ShowLackOfMana());
         }
         
     }
