@@ -10,10 +10,11 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         private float startOfGameWait = 0.1f;
 
         [BoxGroup("Wait Times"), SerializeField]
-        private float afterStartOfGameWaitToTurn = 0.8f;
-
+        private float turnChangeBuffer = 0.8f;
+        
         public static TurnManager Instance { get; private set; }
 
+        // private bool gameHasStarted = false;
         [NonSerialized]
         public bool gameHasEnded = false;
         [SerializeField] public bool isPlayersTurn = false;
@@ -29,6 +30,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         private int cardsAtStartOfGame;
 
 
+
         private void Awake() {
             if (!Instance)
                 Instance = this;
@@ -40,26 +42,31 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
 
 
         private void Start() {
+            StartCoroutine(StartGame());
+        }
+        private void UpdatePlayers(){
             playing = isPlayersTurn ? player : enemy;
             waiting = isPlayersTurn ? enemy : player;
-
-            StartCoroutine(StartGame());
         }
 
         private IEnumerator StartGame() {
             yield return WaitForGameToFullyLoad();
             yield return StartingDraw();
 
-            yield return playing.StartOfTurn();
+            //TODO allow for the enemy to start the game
+            yield return player.StartOfTurn();
+            isPlayersTurn = true;
+            UpdatePlayers();
         }
 
+   
         private IEnumerator WaitForGameToFullyLoad() {
             yield return new WaitForSeconds(startOfGameWait);
         }
 
         private IEnumerator StartingDraw() {
-            var playingDraw = StartCoroutine(playing.Draw(cardsAtStartOfGame));
-            var waitingDraw = StartCoroutine(waiting.Draw(cardsAtStartOfGame));
+            var playingDraw = StartCoroutine(player.Draw(cardsAtStartOfGame));
+            var waitingDraw = StartCoroutine(enemy.Draw(cardsAtStartOfGame));
 
             yield return playingDraw;
             yield return waitingDraw;
@@ -68,19 +75,24 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         [Button(enabledMode: EButtonEnableMode.Playmode)]
         public IEnumerator ChangeTurn() {
             yield return ChangeTurnActions();
+            yield return new WaitForSeconds(turnChangeBuffer);
+            
             isPlayersTurn = !isPlayersTurn;
-            (playing, waiting) = (waiting, playing);
-            if (playing == enemy)
+            UpdatePlayers();
+            if (playing == enemy) {
                 yield return enemyAi.PlayTurn();
+                yield return new WaitForSeconds(turnChangeBuffer);
+                StartCoroutine(ChangeTurn());
+            }
         }
 
         private IEnumerator ChangeTurnActions() {
             yield return playing.EndOfTurn();
             yield return TurnChangeAnimation();
-            yield return null;
             yield return waiting.StartOfTurn();
         }
 
+        //TODO
         private IEnumerator TurnChangeAnimation() {
             yield return null;
         }

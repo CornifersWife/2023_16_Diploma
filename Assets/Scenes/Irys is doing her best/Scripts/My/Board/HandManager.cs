@@ -29,7 +29,6 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
 
         [SerializeField] [Range(100, 1000)] public float distanceMulti = 300f;
 
-        
 
         //TODO move to another file?
         public IEnumerator DrawManyCoroutine(List<Cards.Card> cardsToDraw) {
@@ -44,16 +43,16 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
                 StartCoroutine(Cards[i].Move(finalPositions[i]));
             }
 
-
+            yield return new WaitForEndOfFrame();
+            
             for (int j = 0; i < Cards.Count && j < cardsToDraw.Count; i++, j++) {
-                Cards[i].IsDrawn();
+                Cards[i].cardDisplay.ChangeCardVisible(isPlayers);
 
-                var huh = Cards[i].DrawAnimation(finalPositions[i]);
+                var huh = StartCoroutine(Cards[i].DrawAnimation(finalPositions[i]));
 
+                couroutines.Add(huh);
 
-                couroutines.Add(StartCoroutine(huh));
-
-                if (j < cardsToDraw.Count - 1) {
+                if (cardsToDraw.Count > 1) {
                     yield return new WaitForSeconds(timeBetweenDrawingManyCard);
                 }
             }
@@ -61,6 +60,11 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             foreach (var coroutine in couroutines) {
                 yield return coroutine;
             }
+
+            foreach (var card in Cards) {
+                card.IsDrawn();
+            }
+
         }
 
 
@@ -99,11 +103,6 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             float output = Mathf.Pow(10, exponent);
             output *= distanceMulti;
             return output;
-        }
-
-        private IEnumerator TrackCoroutine(IEnumerator coroutine, Action onComplete) {
-            yield return coroutine;
-            onComplete();
         }
     }
 }

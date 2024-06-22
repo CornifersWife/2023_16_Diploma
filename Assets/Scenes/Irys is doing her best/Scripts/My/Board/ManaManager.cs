@@ -1,4 +1,5 @@
 using System;
+using NaughtyAttributes;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -10,6 +11,8 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         [SerializeField] public int maxMana = 2;
 
         [Min(0)] private int currentMana;
+
+        private bool isPlayers;
 
         public int CurrentMana {
             get {
@@ -23,6 +26,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         }
 
         private void Awake() {
+            isPlayers = CompareTag("Player");
             manaDisplay = GetComponentInChildren<ManaDisplay>();
             manaDisplay.UpdateMaxMana(maxMana);
             CurrentMana = maxMana;
@@ -57,12 +61,14 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             return TryUseMana(new HasCost(cost));
         }
 
+        [Button]
         public void RefreshMana() {
             CurrentMana = maxMana;
         }
 
         private void ShowLackOfMana() {
-            StartCoroutine(manaDisplay.ShowLackOfMana());
+            if (isPlayers)
+                StartCoroutine(manaDisplay.ShowLackOfMana());
         }
     }
 }

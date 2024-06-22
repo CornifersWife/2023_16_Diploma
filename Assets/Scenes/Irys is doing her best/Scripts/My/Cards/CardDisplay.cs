@@ -1,35 +1,43 @@
+using System;
 using DG.Tweening;
 using NaughtyAttributes;
 using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
-    public class CardDisplay : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler{
-        [Header("Cards Elements")]
-        [SerializeField] private GameObject imageObject;
+    public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
+        [Header("Cards Elements")] [SerializeField]
+        private GameObject imageObject;
 
-        [SerializeField] public GameObject cardNameObject;
-        [SerializeField] public GameObject descriptionObject;
-        [SerializeField] public GameObject attackObject;
-        [SerializeField] public GameObject healthObject;
-
+        [SerializeField] private GameObject cardNameObject;
+        [SerializeField] private GameObject descriptionObject;
+        [SerializeField] private GameObject attackObject;
+        [SerializeField] private GameObject healthObject;
         [SerializeField] private GameObject minionOnlyElements;
-        
-        [Space(10)]
-        [SerializeField] public CanvasGroup frontOfCard;
-        [SerializeField] public Image backOfCard;
-        public bool frontVisible = false;
-        
-        [Header("Cards Set")]
-        [SerializeField] public GameObject cardSetSymbolObject;
 
-        [Header("Type")]
-        [SerializeField] public GameObject cardTypeObject;
-        
+        [Space(10)] [SerializeField] private CanvasGroup frontOfCard;
+        [SerializeField] private Image backOfCard;
+        public bool frontVisible = false;
+
+        [Header("Cards Set")] [SerializeField] public GameObject cardSetSymbolObject;
+
+        [Header("Type")] [SerializeField] public GameObject cardTypeObject;
+
+        [BoxGroup("Card scale"), SerializeField]
+        public float scaleInHand = 0.9f;
+
+        [BoxGroup("Card scale"), SerializeField]
+        private float scaleOnBoard = 1f;
+
+        [BoxGroup("Card scale"), SerializeField]
+        private float scaleOnHover = 1.1f;
+
+        private float currentScale = 1f;
+
+
         private Image image;
         private TextMeshProUGUI cardName;
         private TextMeshProUGUI description;
@@ -47,7 +55,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
             health = healthObject.GetComponent<TextMeshProUGUI>();
             cardSetSymbol = cardSetSymbolObject.GetComponent<Image>();
             cardType = cardTypeObject.GetComponent<Image>();
-            
+
             frontOfCard.enabled = !frontVisible;
             backOfCard.enabled = !frontVisible;
         }
@@ -60,6 +68,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
             health.text = minionData.MaxHealth.ToString();
             // TODO IMPLEMENT cardSetSymbol.sprite and colors
         }
+
         public void SetCardData(SpellData spellData) {
             image.sprite = spellData.Sprite;
             cardName.text = spellData.name;
@@ -74,7 +83,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
             frontVisible = visible;
             transform.DORotate(new Vector3(0, 0, 0), 0.1f);
         }
-        
+
         public void ChangeCardVisible() {
             frontOfCard.enabled = !frontVisible;
             backOfCard.enabled = !frontVisible;
@@ -82,22 +91,40 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
         }
 
 
-        [BoxGroup("Hover")]
-        [SerializeField] private float scaleOnHover = 1.05f;
-        [BoxGroup("Hover")]
         [SerializeField] private float scaleOnHoverTime = 0.1f;
 
         public void OnPointerEnter(PointerEventData eventData) {
             if (!frontVisible) {
                 return;
             }
-            transform.DOScale(transform.localScale*scaleOnHover, scaleOnHoverTime);
+            transform.DOScale(scaleOnHover, 
+                scaleOnHoverTime);
         }
+
         public void OnPointerExit(PointerEventData eventData) {
             if (!frontVisible) {
                 return;
             }
-            transform.DOScale(Vector3.one, scaleOnHoverTime);
+
+            transform.DOScale(Vector3.one * currentScale, scaleOnHoverTime);
+        }
+
+        public void IsInPlay(bool isNotNull) {
+            if (!isNotNull) {
+                ChangeCurrentScale(1f);
+                return;
+            }
+
+            ChangeCurrentScale(scaleOnBoard);
+        }
+
+        public void IsDrawn() {
+            ChangeCurrentScale(scaleInHand);
+        }
+
+        private void ChangeCurrentScale(float scale) {
+            currentScale = scale;
+            transform.DOScale(currentScale, 0.3f);
         }
     }
 }

@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
     public class Spell : Card {
-        public override void Initialize(CardData cardData,bool isPlayer) {
-            base.Initialize(cardData,isPlayer);
+        public override void Initialize(CardData cardData,bool isPlayersCard) {
+            base.Initialize(cardData,isPlayersCard);
             if (cardData is not SpellData spellData) {
                 Debug.LogError("Invalid data type passed to Spell.Initialize");
             }

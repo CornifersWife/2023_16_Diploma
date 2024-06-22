@@ -153,7 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenDrawingManyCard: 0.5
   distanceScalar: 10
-  distanceMulti: 300
+  distanceMulti: 275
 --- !u!223 &3147822543683485689
 Canvas:
   m_ObjectHideFlags: 0

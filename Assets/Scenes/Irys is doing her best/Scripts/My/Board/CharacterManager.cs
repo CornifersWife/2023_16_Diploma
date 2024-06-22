@@ -63,21 +63,31 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             yield return new WaitForSeconds(time);
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         private void MoveCardToCardSpot(Cards.Card card, CardSpot cardSpot) {
             //TODO change all of these to functions inside card 
             if (!isPlayers)
                 StartCoroutine(
                     card.GetComponent<CardAnimation>()
                         .PlayAnimation(cardSpot));
+            
             card.GetComponent<CardDisplay>().ChangeCardVisible(true);
-            card.GetComponent<RectTransform>().position =
-                cardSpot.GetComponent<RectTransform>().position; //prevTODO aside from this
+            if (isPlayers)
+                card.GetComponent<RectTransform>().position =
+                    cardSpot.GetComponent<RectTransform>().position; //prevTODO aside from this
+            else {
+                StartCoroutine(
+                    card.GetComponent<CardAnimation>()
+                        .PlayAnimation(cardSpot));
+            }
+
             card.GetComponent<CardDragging>().droppedOnSlot = true;
             card.transform.SetParent(cardSpot.transform);
 
             //TODO change so that it works not only from hand
             hand.Cards.Remove(card);
             cardSpot.card = card;
+            card.AssignCardSpot(cardSpot);
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
@@ -108,8 +118,8 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
 
         // ReSharper disable Unity.PerformanceAnalysis
         public IEnumerator StartOfTurn() {
-            manaManager.RefreshMana();
             yield return Draw(1);
+            manaManager.RefreshMana();
         }
 
         public IEnumerator EndOfTurn() {

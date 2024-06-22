@@ -1,16 +1,17 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using NaughtyAttributes;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Board;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
     public class CardAnimation : MonoBehaviour {
-        public bool inAnimation = false; //TODO CHECK IF NEEDED
-        public bool isWaiting = false; //TODO CHECK IF NEEDED
-        [SerializeField] public bool isPlayers = false;
+        private bool inAnimation = false; //TODO CHECK IF NEEDED
+        private bool isWaiting = false; //TODO CHECK IF NEEDED
+        [NonSerialized] public bool isPlayers = false;
+
+        private float scaleInHand;
 
 
         [BoxGroup("Show")] [SerializeField] public Vector3 showPosition;
@@ -36,13 +37,12 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
         private float enemyDraw = 0.5f;
 
 
-        private void Awake() {
+        private void Start() {
             isPlayers = CompareTag("Player");
-
+            scaleInHand = GetComponent<CardDisplay>().scaleInHand;
         }
 
         public IEnumerator DrawAnimation(Vector3 finalPosition) {
-            
             var drawAnimation = StartCoroutine(isPlayers
                 ? PlayerDrawAnimationCoroutine(finalPosition)
                 : EnemyDrawAnimationCoroutine(finalPosition));
@@ -63,16 +63,20 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
                 .Join(transform
                     .DOScale(showScale, timeToShow)
                     .SetEase(playerToShow));
+           // yield return sequence.Play();
+
+            //var sequence2 = DOTween.Sequence();
             sequence
                 .Append(transform
                     .DOMove(finalPosition, timeToHand)
                     .SetEase(showToHand))
                 .Join(transform
-                    .DOScale(Vector3.one, timeToHand)
+                    .DOScale(Vector3.one * scaleInHand, timeToHand)
                     .SetEase(showToHand));
 
             sequence.Play();
             yield return sequence.WaitForCompletion();
+
             inAnimation = false;
         }
 
@@ -82,18 +86,22 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
             yield return new WaitUntil(() => inAnimation == false);
             inAnimation = true;
             isWaiting = false;
-            yield return transform
-                .DOMove(finalPosition, enemyDraw)
-                .SetEase(enemyToHand)
-                .WaitForCompletion(true);
+            var sequence = DOTween.Sequence();
+            sequence.Append(
+                transform
+                    .DOMove(finalPosition, enemyDraw)
+                    .SetEase(enemyToHand));
+            sequence.Join(
+                transform
+                    .DOScale(Vector3.one * scaleInHand
+                        , enemyDraw));
+            yield return sequence.Play();
             inAnimation = false;
         }
 
 
-        [BoxGroup("Move To")]
-        [SerializeField] private float moveToAnimationTime = 0.3f;
-        [BoxGroup("Move To")]
-        [SerializeField] private Ease moveToEase;
+        [BoxGroup("Move To")] [SerializeField] private float moveToAnimationTime = 0.3f;
+        [BoxGroup("Move To")] [SerializeField] private Ease moveToEase;
 
 
         public IEnumerator MoveTo(Vector3 vector3) {
@@ -105,12 +113,12 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
                 .WaitForCompletion(true);
             inAnimation = false;
         }
-        
-        [BoxGroup("Play Card")]
-        [InfoBox("Currently only used when enemy plays a card")]
-        [SerializeField] private float playCardTime = 0.4f;
-        [BoxGroup("Play Card")]
-        [SerializeField] private Ease playCardEase = Ease.InOutSine;
+
+        [BoxGroup("Play Card")] [InfoBox("Currently only used when enemy plays a card")] [SerializeField]
+        private float playCardTime = 0.4f;
+
+        [BoxGroup("Play Card")] [SerializeField]
+        private Ease playCardEase = Ease.InOutSine;
 
         public IEnumerator PlayAnimation(CardSpot cardSpot) {
             yield return transform

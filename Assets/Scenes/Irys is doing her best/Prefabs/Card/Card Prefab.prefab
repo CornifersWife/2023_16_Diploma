@@ -923,7 +923,9 @@ MonoBehaviour:
   frontVisible: 0
   cardSetSymbolObject: {fileID: 1427954470503933369}
   cardTypeObject: {fileID: 401347801818912136}
-  scaleOnHover: 1.05
+  scaleInHand: 0.85
+  scaleOnBoard: 1
+  scaleOnHover: 1.1
   scaleOnHoverTime: 0.1
 --- !u!114 &3513187511264810272
 MonoBehaviour:
@@ -937,19 +939,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e859706086c95547b111d0ac44adea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inAnimation: 0
-  isWaiting: 0
-  isPlayers: 0
   showPosition: {x: 450, y: 0, z: 0}
   showScale: {x: 2, y: 2, z: 2}
   playerToShow: 13
-  timeToShow: 0.409
+  timeToShow: 0.4
   showToHand: 2
   timeToHand: 0.4
   enemyToHand: 4
   enemyDraw: 0.4
-  handMoveAnimationTime: 0.3
-  ease: 2
+  moveToAnimationTime: 0.3
+  moveToEase: 0
+  playCardTime: 0.4
+  playCardEase: 4
 --- !u!114 &-6973358634639818209
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -193,3 +193,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556d59f60fc31ef49b61df846d27acf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitBetweenPlayingCards: 1
+  chanceToEndAfterEachAction: 0.3
+  baseWeights:
+    m_keys:
+    - Draw
+    - Play
+    m_values:
+    - 3
+    - 8

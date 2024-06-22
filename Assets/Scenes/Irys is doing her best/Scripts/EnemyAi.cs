@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Linq;
-using NaughtyAttributes;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Board;
 using UnityEngine;
 using Random = System.Random;
@@ -17,20 +16,24 @@ namespace Scenes.Irys_is_doing_her_best.Scripts {
 
         private StringFloatDictionary weights;
 
-        private StringFloatDictionary percentageWeights;
+        //private StringFloatDictionary percentageWeights = new StringFloatDictionary();
 
-        [ShowNativeProperty] private StringFloatDictionary PercentageWeights => percentageWeights;
 
 
         private void Awake() {
             random = new Random();
             character = GetComponent<CharacterManager>();
-            weights.CopyFrom(baseWeights);
-
-            CalculatePercentageWeights();
+            CopyWeightValues();
         }
 
-        private void CalculatePercentageWeights() {
+        private void CopyWeightValues() {
+            weights = new StringFloatDictionary();
+            foreach (var key in baseWeights.Keys) {
+                weights.Add(key,baseWeights[key]);
+            }
+        }
+
+        /*private void CalculatePercentageWeights() {
             percentageWeights.CopyFrom(weights);
 
             var sum = weights.Sum(e => e.Value);
@@ -39,17 +42,18 @@ namespace Scenes.Irys_is_doing_her_best.Scripts {
                 percentageWeights[entry] /= sum;
             }
         }
+        */
 
 
         public IEnumerator PlayTurn() {
-            weights.CopyFrom(baseWeights);
+            CopyWeightValues();
 
             if (CantDoNextAction()) {
                 yield break;
             }
 
             var nextAction = ChooseActionToDo();
-            
+
             switch (nextAction) {
                 case "Draw":
                     yield return character.Draw(1, 1);
@@ -129,8 +133,6 @@ namespace Scenes.Irys_is_doing_her_best.Scripts {
             if (!character.boardSide.GetEmptyCardSpots().Any()) {
                 weights["Play"] = 0;
             }
-
-            CalculatePercentageWeights();
         }
     }
 }
