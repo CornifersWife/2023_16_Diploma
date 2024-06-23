@@ -1,7 +1,12 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
     public class Hero : MonoBehaviour,IDamageable {
+
+        public Action<bool> death;
+        
         [SerializeField]
         private int maxHealth = 30;
 
@@ -28,16 +33,22 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             }
         }
 
+        private bool isPlayers;
+
+        private void Awake() {
+            isPlayers = CompareTag("Player");
+        }
+
         public void TakeDamage(int amount) {
             CurrentHealth -= amount;
         }
 
         public void Heal(int amount) {
-            throw new System.NotImplementedException();
+            CurrentHealth += amount;
         }
 
         public void Die() {
-            throw new System.NotImplementedException();
+            death.Invoke(isPlayers);
         }
     }
 }

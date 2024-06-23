@@ -1,6 +1,8 @@
+using Scenes.Irys_is_doing_her_best.Scripts.My.Board;
 using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Singletons {
     public class Testing : MonoBehaviour {
@@ -9,19 +11,21 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Singletons {
         private void Awake() {
             if (Instance == null) {
                 Instance = this;
-                DontDestroyOnLoad(gameObject); // Optional: makes the manager persist across scenes
             }
             else {
                 Destroy(gameObject);
             }
         }
 
-        [field: Header("CardManager")] [SerializeField]
-        public CardData CardData;
+        [SerializeField]
+        private Button changeTurnButton;
 
-        public void TestCreateCard() {
-            var output = CardManager.Instance.CreateCard(CardData,gameObject.transform,true);
-            Debug.Log(output);
+        private void Update() {
+            changeTurnButton.interactable = TurnManager.Instance.isPlayersTurn;
         }
+        
+
+
+
     }
 }

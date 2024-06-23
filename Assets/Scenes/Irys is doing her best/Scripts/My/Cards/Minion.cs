@@ -8,7 +8,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
     public class Minion : Card, IAttacker {
         private int attack;
 
-        public int Attack {
+        private int Attack {
             get => attack;
             set {
                 if (value < 0)
@@ -19,7 +19,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
 
         private int maxHealth;
 
-        public int MaxHealth {
+        private int MaxHealth {
             get => maxHealth;
             set {
                 maxHealth = value;
@@ -31,7 +31,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
 
         private int currentHealth;
 
-        public int CurrentHealth {
+        private int CurrentHealth {
             get => currentHealth;
             set {
                 currentHealth = value > MaxHealth ? MaxHealth : value;

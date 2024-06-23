@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Linq;
-using DG.Tweening;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Board;
 using UnityEngine;
 using Random = System.Random;
