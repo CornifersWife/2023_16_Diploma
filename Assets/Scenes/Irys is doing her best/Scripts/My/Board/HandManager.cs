@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -14,11 +12,11 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
 
         public List<Cards.Card> Cards {
             get => cards;
-            private set => cards = value;
+            set => cards = value;
         }
 
-        public bool isPlayers { get; set; }
-
+        private bool isPlayers;
+        
         private void Awake() {
             isPlayers = CompareTag("Player");
         }
@@ -30,7 +28,6 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         [SerializeField] [Range(100, 1000)] public float distanceMulti = 300f;
 
 
-        //TODO move to another file?
         public IEnumerator DrawManyCoroutine(List<Cards.Card> cardsToDraw) {
             AddNewCards(cardsToDraw);
 
@@ -48,9 +45,9 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             for (int j = 0; i < Cards.Count && j < cardsToDraw.Count; i++, j++) {
                 Cards[i].cardDisplay.ChangeCardVisible(isPlayers);
 
-                var huh = StartCoroutine(Cards[i].DrawAnimation(finalPositions[i]));
+                var coroutine = StartCoroutine(Cards[i].DrawAnimation(finalPositions[i]));
 
-                coroutines.Add(huh);
+                coroutines.Add(coroutine);
 
                 if (cardsToDraw.Count > 1) {
                     yield return new WaitForSeconds(timeBetweenDrawingManyCard);
@@ -76,9 +73,9 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         }
 
         public void UpdateCardPositions(int additionalCards = 0) {
-            var newHandPositions = CalculateCardPositions(cards.Count + additionalCards);
-            for (int i = 0; i < cards.Count; i++) {
-                StartCoroutine(cards[i].Move(newHandPositions[i]));
+            var newHandPositions = CalculateCardPositions(Cards.Count + additionalCards);
+            for (int i = 0; i < Cards.Count; i++) {
+                StartCoroutine(Cards[i].Move(newHandPositions[i]));
             }
         }
 
