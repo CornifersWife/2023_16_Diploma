@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+[Obsolete]
 public class ActionPointDisplay : MonoBehaviour {
     [SerializeField] private GameObject orbPrefab;
     [SerializeField] private Transform apField;

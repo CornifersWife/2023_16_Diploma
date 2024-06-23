@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+[Obsolete]
 public class ActionPointManager : MonoBehaviour {
     public int maxAP  = 3;
     public int CurrentAP { get; private set; }

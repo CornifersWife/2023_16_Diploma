@@ -1,7 +1,7 @@
 using System;
 using Card;
 using UnityEngine;
-
+[Obsolete]
 public class CardSpotOld : MonoBehaviour {
     private CardOld cardOld;
     public bool isPlayers = true;

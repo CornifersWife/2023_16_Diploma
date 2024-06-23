@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Card;
 using Scenes.Irys_is_doing_her_best.Scripts;
+using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
 using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.SceneManagement;

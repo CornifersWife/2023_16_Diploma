@@ -18,11 +18,11 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My {
 
 
         [Foldout("Hit Animation"), SerializeField]
-        private float hitAnimatonDuration = 0.3f;
+        private float hitAnimatonDuration;
         [Foldout("Hit Animation"), SerializeField]
-        private float hitAnimatonShakeStrength = 10f;
+        private float hitAnimatonShakeStrength;
         [Foldout("Hit Animation"), SerializeField]
-        private float hitAnimatonKnockbackStrength = 30f;
+        private float hitAnimatonKnockbackStrength;
         
         private Hero hero;
 

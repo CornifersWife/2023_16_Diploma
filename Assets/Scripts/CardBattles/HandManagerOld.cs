@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Card;
 using ScriptableObjects;
 using UnityEngine;
-
+[Obsolete]
 public class HandManagerOld : MonoBehaviour {
     public List<CardOld> hand = new List<CardOld>();
     [SerializeField] private DeckManagerOld deck;

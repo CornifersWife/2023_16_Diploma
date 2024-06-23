@@ -1,10 +1,11 @@
+using System;
 using TMPro;
 using TurnSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
 
-
+[Obsolete]
 public class TurnDisplay : MonoBehaviour {
     private TurnManagerOld turnManagerOld;
     public Button button;

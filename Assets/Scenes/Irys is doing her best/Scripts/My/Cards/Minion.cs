@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
@@ -6,6 +7,8 @@ using UnityEngine;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
     public class Minion : Card, IAttacker {
+        private AttackAnimations attackAnimations;
+        
         private int attack;
 
         private int Attack {
@@ -61,8 +64,11 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
             }
         }
 
+        public Action<Vector3, IDamageable> action;
         public int GetAttack() => Attack;
         public void ChangeAttackBy(int amount) => Attack += amount;
+        
+        
 
         public void TakeDamage(int amount) {
             amount = amount > 0 ? amount : 0;
@@ -73,9 +79,18 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
             amount = amount > 0 ? amount : 0;
             CurrentHealth += amount;
         }
-
+        
         public void Die() {
-            // Handle death logic
+            
+            Destroy(this);
+        }
+
+        public Vector3 GetPosition() {
+            return transform.position;
+        }
+
+        public void AttackTarget(IDamageable target) {
+            throw new NotImplementedException();
         }
     }
 }

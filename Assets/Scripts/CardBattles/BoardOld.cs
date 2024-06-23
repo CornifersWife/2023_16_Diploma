@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using Scenes.Irys_is_doing_her_best.Scripts;
+using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
 using UnityEngine;
 using UnityEngine.Serialization;
-
+[Obsolete]
 public class BoardOld : MonoBehaviour {
     public int maxMinions = 5;
 

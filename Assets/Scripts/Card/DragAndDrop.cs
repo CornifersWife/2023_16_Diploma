@@ -1,8 +1,9 @@
+using System;
 using System.Linq;
 using Card;
 using TurnSystem;
 using UnityEngine;
-
+[Obsolete]
 public class DragAndDrop : MonoBehaviour {
     private Vector3 mousePosition;
     private Vector3 startingPosition;

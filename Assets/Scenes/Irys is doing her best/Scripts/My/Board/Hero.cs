@@ -1,4 +1,5 @@
 using System;
+using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -59,6 +60,10 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
 
         public void Die() {
             death.Invoke(isPlayers);
+        }
+
+        public Vector3 GetPosition() {
+            return transform.position;
         }
     }
 }

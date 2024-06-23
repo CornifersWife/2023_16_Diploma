@@ -1,6 +1,8 @@
+using System;
 using Scenes.Irys_is_doing_her_best.Scripts;
+using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
 using UnityEngine;
-
+[Obsolete]
 public class HeroOld : MonoBehaviour, IDamageable {
     public int maxHealth = 20;
     public int currentHealth;

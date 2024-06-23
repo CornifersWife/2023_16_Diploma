@@ -23,10 +23,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts {
 
         [BoxGroup("No mana animation"), Label("Ease"), SerializeField]
         private Ease noManaAnimationEase;
-
-
-        [Space] [BoxGroup("Refresh Animation"), SerializeField, Label("Scale Up"), Range(0.5f, 2f)]
-        private float refreshScapeUp = 2f;
+        
 
         [BoxGroup("Refresh Animation"), SerializeField, Label("Flash Color")]
         private Color refreshAnimationFlashColor = Color.white;

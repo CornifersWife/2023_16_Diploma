@@ -20,6 +20,7 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -52,7 +53,7 @@ namespace TurnSystem {
             return GameObject.FindGameObjectsWithTag("Player").Length == 0;
         }
     }
-
+    [Obsolete]
     public class TurnManagerOld : MonoBehaviour {
         [SerializeField] public bool isPlayerTurn = true; // Flag to track whose turn it is
         [SerializeField] public float enemyDelay = 1f;

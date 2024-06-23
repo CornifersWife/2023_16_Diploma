@@ -1,7 +1,8 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+[Obsolete]
 public class HeroHpDisplay : MonoBehaviour {
     private HeroOld heroOld;
     public Button button; 

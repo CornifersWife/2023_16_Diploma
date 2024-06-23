@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
 using ScriptableObjects;
 using UnityEngine;
-
+[Obsolete]
 public class DeckManagerOld : MonoBehaviour {
     [SerializeField] private bool isPlayer;
     [SerializeField] private List<CardSetData> cardSets = new List<CardSetData>();

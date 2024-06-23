@@ -67,7 +67,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Singletons {
 
         private IEnumerator DrawButtonCooldownRoutine() {
             drawButtonCooldown = true;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(drawButtonCooldownTime);
             drawButtonCooldown = false;
         }
 
