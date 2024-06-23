@@ -18,7 +18,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
         public CardAnimation cardAnimation;
         public CardDragging cardDragging;
 
-        public string CardName { get; private set; }
+        public string CardName { get; set; }
         public string Description { get; private set; }
         public string FlavourText { get; private set; }
         public List<AdditionalProperty> properties;

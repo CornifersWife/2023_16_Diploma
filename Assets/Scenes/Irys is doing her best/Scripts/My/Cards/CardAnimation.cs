@@ -95,7 +95,8 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
                 transform
                     .DOScale(Vector3.one * scaleInHand
                         , enemyDraw));
-            yield return sequence.Play();
+            sequence.Play();
+            yield return sequence.WaitForCompletion();
             inAnimation = false;
         }
 

@@ -94,7 +94,8 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
         [SerializeField] private float scaleOnHoverTime = 0.1f;
 
         public void OnPointerEnter(PointerEventData eventData) {
-            if (!frontVisible) {
+            //TODO add ability to drop some cards on top of other, like a buff
+            if (!frontVisible || eventData.pointerDrag is not null) {
                 return;
             }
             transform.DOScale(scaleOnHover, 
@@ -102,7 +103,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
         }
 
         public void OnPointerExit(PointerEventData eventData) {
-            if (!frontVisible) {
+            if (!frontVisible || eventData.pointerDrag is not null) {
                 return;
             }
 

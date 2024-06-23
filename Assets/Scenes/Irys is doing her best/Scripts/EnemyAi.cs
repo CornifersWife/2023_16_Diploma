@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Linq;
+using DG.Tweening;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Board;
 using UnityEngine;
 using Random = System.Random;
@@ -61,9 +62,12 @@ namespace Scenes.Irys_is_doing_her_best.Scripts {
         private bool NoMoreActions() {
             bool deck = character.deck.Cards.Any();
             bool hand = character.hand.Cards.Any();
+            
+            //TODO account for 0-mana cost cards
             bool mana = character.manaManager.CurrentMana <= 0;
 
-            return (!deck && !hand && !mana);
+            //TODO change this when you can do stuff without mana
+            return (!deck && !hand) || !mana;
         }
 
         private string ChooseActionToDo() {

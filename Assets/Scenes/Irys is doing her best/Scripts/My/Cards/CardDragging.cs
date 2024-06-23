@@ -10,8 +10,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
         private CanvasGroup canvasGroup;
         private Vector2 originalPosition;
         public bool droppedOnSlot;
-
-        [SerializeField] private Card card;
+        private Card card;
 
 
         [BoxGroup("make it pretty")] [SerializeField]
@@ -67,16 +66,6 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
                 SnapBack();
             }
         }
-
-        /*private IEnumerator CheckIfPlaced() {
-            yield return new WaitForSeconds(0.5f);
-            if (droppedOnSlot) {
-                enabled = false;
-            }
-            else {
-                SnapBack();
-            }
-        }*/
 
         private void SnapBack() {
             var distance = Vector3.Distance(transform.position, originalPosition);
