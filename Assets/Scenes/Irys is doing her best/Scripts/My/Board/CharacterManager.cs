@@ -104,6 +104,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             var cardsToDraw = new List<Cards.Card>();
             for (int i = 0; i < amount; i++) {
                 if (!deck.Cards.Any()) {
+                    
                     //TODO ADD FEEDBACK CURRENTLY IS JUST DEBUG LOG
                     deck.NoMoreCards();
                     break;

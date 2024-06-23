@@ -37,18 +37,10 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             if (cardSetDatas == null) {
                 Debug.LogError("cardSetDatas is null");
             }
-            else {
-                Debug.Log("cardSetDatas is not null and contains " + cardSetDatas.Count + " elements");
-            }
-
-            CreateCardSetsFromData(); //line 24
+            
+            CreateCardSetsFromData(); 
             CreateCardFromDeck();
         }
-
-        private IEnumerator Sleep1() {
-            yield return new WaitForEndOfFrame();
-        }
-
 
         private List<CardSetData> LoadCardSetData() {
             if (isPlayers)
@@ -79,8 +71,8 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
                         continue;
                     }
 
-                    var card = CardManager.Instance.CreateCard(cardData, gameObject.transform,
-                        isPlayers); //CreateCard(cardData,gameObject.transform);
+                    var card = CardManager.Instance.CreateCard
+                    (cardData, gameObject.transform, isPlayers); 
                     card.tag = isPlayers ? "Player": "Enemy";
 
                     if (card == null) {
