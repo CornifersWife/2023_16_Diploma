@@ -15,11 +15,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts {
         [SerializeField] private StringFloatDictionary baseWeights;
 
         private StringFloatDictionary weights;
-
-        //private StringFloatDictionary percentageWeights = new StringFloatDictionary();
-
-
-
+        
         private void Awake() {
             random = new Random();
             character = GetComponent<CharacterManager>();
@@ -32,18 +28,6 @@ namespace Scenes.Irys_is_doing_her_best.Scripts {
                 weights.Add(key,baseWeights[key]);
             }
         }
-
-        /*private void CalculatePercentageWeights() {
-            percentageWeights.CopyFrom(weights);
-
-            var sum = weights.Sum(e => e.Value);
-
-            foreach (var entry in percentageWeights.Keys) {
-                percentageWeights[entry] /= sum;
-            }
-        }
-        */
-
 
         public IEnumerator PlayTurn() {
             CopyWeightValues();
