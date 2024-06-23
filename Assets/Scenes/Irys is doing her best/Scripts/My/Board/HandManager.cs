@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.ProBuilder;
+using Math = System.Math;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
     public class HandManager : MonoBehaviour {
@@ -44,7 +46,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
 
             for (int j = 0; i < Cards.Count && j < cardsToDraw.Count; i++, j++) {
                 Cards[i].cardDisplay.ChangeCardVisible(isPlayers);
-
+                Cards[i].transform.SetParent(transform, true);
                 var coroutine = StartCoroutine(Cards[i].DrawAnimation(finalPositions[i]));
 
                 coroutines.Add(coroutine);
@@ -67,11 +69,6 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         private void AddNewCards(List<Cards.Card> cardsAdded) {
             foreach (var card in cardsAdded) {
                 Cards.Add(card);
-            }
-
-            //reversed to sort of visual bug
-            for (int i = cardsAdded.Count - 1; i >= 0; i--) {
-                cardsAdded[i].transform.SetParent(transform, true);
             }
         }
 
@@ -99,11 +96,9 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         }
 
         private float DistanceBetweenCardsCalculator(int numberOfCards) {
-            float x = numberOfCards - 1;
-            float exponent = (x * -1f) / distanceScalar;
-            float output = Mathf.Pow(10, exponent);
-            output *= distanceMulti;
-            return output;
+            double distance = Math.Log(numberOfCards + 1) * distanceMulti;
+            distance /= (numberOfCards - 1);
+            return (float)distance;
         }
     }
 }

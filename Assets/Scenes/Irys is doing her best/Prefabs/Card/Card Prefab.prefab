@@ -852,6 +852,8 @@ GameObject:
   - component: {fileID: 541712151741894622}
   - component: {fileID: 3513187511264810272}
   - component: {fileID: -6973358634639818209}
+  - component: {fileID: 346244956261130896}
+  - component: {fileID: 5876080510664462263}
   m_Layer: 0
   m_Name: Card Prefab
   m_TagString: Untagged
@@ -964,10 +966,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   droppedOnSlot: 0
-  card: {fileID: 0}
   alphaDuringDragging: 0.8
   snapBackTime: 0.15
   animationFasterIfDistanceLessThan: 400
+--- !u!223 &346244956261130896
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5229332580041227260}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 7
+  m_TargetDisplay: 0
+--- !u!114 &5876080510664462263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5229332580041227260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &5379242662566633894
 GameObject:
   m_ObjectHideFlags: 0

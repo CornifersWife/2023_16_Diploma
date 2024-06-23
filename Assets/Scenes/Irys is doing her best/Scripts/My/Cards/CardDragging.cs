@@ -11,12 +11,14 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
         private Vector2 originalPosition;
         public bool droppedOnSlot;
         private Card card;
-
+        private Canvas canvas;
+        private int baseOrder;
 
         [BoxGroup("make it pretty")] [SerializeField]
         private float alphaDuringDragging = 0.8f;
 
         private void Awake() {
+            canvas = GetComponent<Canvas>();
             card = GetComponent<Card>();
             rectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
@@ -28,6 +30,10 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
                 enabled = false;
                 return;
             }
+
+            baseOrder = canvas.sortingOrder;
+            canvas.sortingOrder = 100;
+            
 
             canvasGroup.alpha = alphaDuringDragging;
             canvasGroup.blocksRaycasts = false;
@@ -56,6 +62,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
                 return;
             }
 
+            canvas.sortingOrder = baseOrder;
             canvasGroup.alpha = 1f;
             canvasGroup.blocksRaycasts = true;
 
