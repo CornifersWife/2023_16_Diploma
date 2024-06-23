@@ -317,7 +317,6 @@ MonoBehaviour:
   noManaShakeStrength: 15
   shakeTime: 0.15
   noManaAnimationEase: 7
-  refreshScapeUp: 2
   refreshAnimationFlashColor: {r: 1, g: 1, b: 1, a: 1}
   refreshAnimationDuration: 0.5
   refreshAnimationEasePercentage: 0.3
@@ -746,6 +745,7 @@ MonoBehaviour:
   - {fileID: 21854630378422938}
   - {fileID: 3418754918119212509}
   - {fileID: 5339340403843177972}
+  hero: {fileID: 6368447993570103243}
 --- !u!223 &7821785199341873865
 Canvas:
   m_ObjectHideFlags: 0

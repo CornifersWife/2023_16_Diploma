@@ -953,6 +953,13 @@ MonoBehaviour:
   moveToEase: 0
   playCardTime: 0.4
   playCardEase: 4
+  attackMoveToTime: 0.1
+  attackMoveToEase: 17
+  attackKnockBackAmount: 30
+  attackKnockBackTime: 0.05
+  attackKnockBackEase: 6
+  attackMoveBackTime: 0.15
+  attackMoveBackEase: 4
 --- !u!114 &-6973358634639818209
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,6 +7,11 @@ using Math = System.Math;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
     public class HandManager : MonoBehaviour {
+        
+        
+        //TODO after adding each card, sort the objects in hand so the order matches the order in Cards
+        //it will make all the cards lay on top of each other correctly
+        
         [BoxGroup("Animations")] [SerializeField]
         private float timeBetweenDrawingManyCard = 1.1f;
 
@@ -79,6 +84,9 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         private List<Vector3> CalculateCardPositions(int numberOfCards) {
             var output = new List<Vector3>();
             float cardDistance = numberOfCards > 1 ? DistanceBetweenCardsCalculator(numberOfCards) : 0.01f;
+            if (numberOfCards == 2)
+                cardDistance /= 2;
+            
             float totalWidth = cardDistance * numberOfCards;
             var leftMostPosition = transform.position;
             leftMostPosition.x -= (totalWidth / 2f);
@@ -87,6 +95,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
                 newPosition.x += (i * cardDistance);
                 output.Add(newPosition);
             }
+            
 
             return output;
         }

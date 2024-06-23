@@ -1,6 +1,7 @@
 using System.Collections;
 using DG.Tweening;
 using NaughtyAttributes;
+using UnityEditor;
 using UnityEngine;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
@@ -27,17 +28,21 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
 
         private IEnumerator WinGame() {
             Debug.Log("Congrats you won");
-            yield return null;
+            yield return new WaitForSecondsRealtime(2f);
+            if (Application.isEditor)
+                EditorApplication.isPlaying = false;
         }
 
         private IEnumerator LoseGame() {
-            Debug.Log("Boohoo :(");
-            yield return null;
+            Debug.Log("Boohoo :(  LOSER");
+            yield return new WaitForSecondsRealtime(2f);
+            if(Application.isEditor)
+                EditorApplication.isPlaying = false;
         }
         
         
         [BoxGroup("SlowDown"), SerializeField] private float endGameSlowDownFinalTimeScaleValue = 0.1f;
-        [BoxGroup("SlowDown"), SerializeField] private float endGameSlowDownTime = 7f;
+        [BoxGroup("SlowDown"), SerializeField] private float endGameSlowDownTime = 2f;
         [BoxGroup("SlowDown"), SerializeField] private Ease endGameSlowDownEase;
 
         [Button]
@@ -47,8 +52,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
                     x => Time.timeScale = x,
                     endGameSlowDownFinalTimeScaleValue,
                     endGameSlowDownTime)
-                .SetEase(endGameSlowDownEase)
-                .OnUpdate(() => { Debug.Log(Time.timeScale); });
+                .SetEase(endGameSlowDownEase);
         }
     }
 }

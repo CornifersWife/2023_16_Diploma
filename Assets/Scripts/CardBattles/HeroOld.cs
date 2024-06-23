@@ -1,9 +1,9 @@
-using System;
+/*using System;
 using Scenes.Irys_is_doing_her_best.Scripts;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
 using UnityEngine;
 [Obsolete]
-public class HeroOld : MonoBehaviour, IDamageable {
+public class HeroOld : MonoBehaviour{
     public int maxHealth = 20;
     public int currentHealth;
     private void Awake() {
@@ -54,4 +54,4 @@ public class HeroOld : MonoBehaviour, IDamageable {
         }
         Debug.Log("Critical error heroOld died but nothing happened");
     }
-}
+}*/

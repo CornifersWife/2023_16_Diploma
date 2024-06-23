@@ -1,3 +1,4 @@
+/*
 using System;
 using Card;
 using UnityEngine;
@@ -54,3 +55,4 @@ public class CardSpotOld : MonoBehaviour {
         objectRenderer.material = defaultMaterial;
     }
 }
+*/

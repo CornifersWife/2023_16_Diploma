@@ -32,6 +32,8 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My {
             hero = GetComponent<Hero>();
             hero.currentHealthAction += SetCurrentHealth;
             hero.takeDamageAction += GetHit;
+            SetCurrentHealth(hero.MaxHealth);
+            hpText.fontMaterial = Instantiate(hpText.fontMaterial);
         }
 
         private void SetCurrentHealth(int value) {
@@ -41,22 +43,20 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My {
         
         private void SetHpColor() {
             if (hero.HasFullHp)
-                hpText.color = fullHpColor;
+                hpText.fontMaterial.color = fullHpColor;
             else {
-                hpText.color = missingHpColor;
+                hpText.fontMaterial.color = missingHpColor;
             }
         }
 
         private void GetHit() {
+            SetCurrentHealth(hero.currentHealth);
             StartCoroutine(GetHitAnimation());
+            
         }
         private IEnumerator GetHitAnimation() {
             yield return null;
-            /*var shake = heroImage.transform
-                .DOShakePosition(hitAnimatonDuration,hitAnimatonShakeStrength);
-            var knockback = heroImage.transform
-                .DOMove(,hitAnimatonShakeStrength);
-            shake.Play();*/
+            
         }
         
         

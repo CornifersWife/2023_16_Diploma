@@ -1,4 +1,4 @@
-//MIT License
+/*//MIT License
 
 //Copyright (c) 2019 William Herrera
 
@@ -223,4 +223,4 @@ namespace TurnSystem {
             StartOfTurn();
         }
     }
-}
+}*/

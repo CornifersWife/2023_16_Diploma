@@ -45,10 +45,8 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         }
 
 
-        public void EndGame(bool isPlayersHero) {
+        private void EndGame(bool isPlayersHero) {
             if (gameHasEnded) {
-                Debug.Log(
-                    "Game tried to end after it was finished"); //not sure if this code could happen, but probably 
                 return;
             }
 

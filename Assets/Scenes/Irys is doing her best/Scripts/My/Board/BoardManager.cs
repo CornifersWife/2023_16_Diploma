@@ -1,9 +1,14 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
+using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
 using UnityEngine;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
+    
+    
     public class BoardManager : MonoBehaviour {
+
+        [SerializeField] private float betweenAttacksTime;
         
         public static BoardManager Instance { get; private set; }
 
@@ -21,20 +26,32 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         }
 
 
-        private void Attack(bool isPlayers) {
+        public IEnumerator Attack(bool isPlayers) {
             var attacker = isPlayers ? player : enemy;
             var target = isPlayers ? enemy : player;
 
-            var attackers = attacker.GetIAttackers();
-            var targets = target.GetIDamageables();
-
-            for (int i = 0; i < attackers.Count; i++) {
-                attackers[i].AttackTarget(targets[i]);
-            }
+            var xd = StartCoroutine(
+                AttackCourutine(
+                attacker.GetIAttackers(),
+                target.GetIDamageables()));
+            yield return xd;
         }
 
-        private void DetermineTargets() {
+        private IEnumerator AttackCourutine(List<IAttacker> attackers, List<IDamageable> targets) {
+          if(attackers.Count != 4)
+              Debug.LogError($"{attackers.Count}  attack >:(");
+          if(targets.Count != 4)
+              Debug.LogError($"{targets.Count}  target >:(");
+          
             
+            for (int i = 0; i < 4; i++) {
+                if(attackers[i] is null)
+                    continue;
+                if(attackers[i].GetAttack()<=0)
+                    continue;
+                attackers[i].AttackTarget(targets[i]);
+                yield return new WaitForSeconds(betweenAttacksTime);
+            }
         }
     }
 }

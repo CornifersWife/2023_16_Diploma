@@ -25,7 +25,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
         public CardSet CardSet { get; private set; }
         public List<EffectTargetPair> OnPlayEffects { get; private set; }
 
-        [CanBeNull] private CardSpot isPlacedAt = null;
+        [CanBeNull] protected CardSpot isPlacedAt = null;
         [NonSerialized] public bool isPlayers;
 
         [ShowNativeProperty] private bool IsPlayers => isPlayers;

@@ -15,10 +15,11 @@ MonoBehaviour:
   cardName: cats_Minion_3875
   description: 
   flavourText: 
+  Properties: 
   sprite: {fileID: 0}
   onPlayEffects: []
-  Attack: 0
-  MaxHealth: 1
+  Attack: 1
+  MaxHealth: 2
   onDeathEffects: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -54,9 +55,10 @@ MonoBehaviour:
   cardName: cats_Minion_8701
   description: 
   flavourText: 
+  Properties: 
   sprite: {fileID: 0}
   onPlayEffects: []
-  Attack: 0
+  Attack: 1
   MaxHealth: 1
   onDeathEffects: []
 --- !u!114 &4154407072327070877
@@ -74,6 +76,7 @@ MonoBehaviour:
   cardName: Big cat
   description: description
   flavourText: He has a tendency to eat his siblings :(
+  Properties: 
   sprite: {fileID: 1771446180, guid: 91ece539279118a438c900dfb08582ed, type: 3}
   onPlayEffects: []
   Attack: 6
@@ -94,8 +97,9 @@ MonoBehaviour:
   cardName: cats_Minion_2098
   description: 
   flavourText: 
+  Properties: 
   sprite: {fileID: 0}
   onPlayEffects: []
-  Attack: 0
-  MaxHealth: 1
+  Attack: 1
+  MaxHealth: 3
   onDeathEffects: []

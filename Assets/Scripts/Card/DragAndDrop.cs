@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using System.Linq;
 using Card;
 using TurnSystem;
@@ -82,4 +82,4 @@ public class DragAndDrop : MonoBehaviour {
     private void PlayCardAt(CardSpotOld target) {
         target.CardOld = GetComponent<CardOld>();
     }
-}
+}*/

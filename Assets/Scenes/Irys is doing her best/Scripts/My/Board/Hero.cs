@@ -26,7 +26,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         
         [SerializeField]
         
-        private int currentHealth;
+        public int currentHealth;
 
         private int CurrentHealth {
             get => currentHealth;
@@ -60,10 +60,11 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
 
         public void Die() {
             death.Invoke(isPlayers);
+            
         }
 
-        public Vector3 GetPosition() {
-            return transform.position;
+        public Transform GetTransform() {
+            return transform;
         }
     }
 }

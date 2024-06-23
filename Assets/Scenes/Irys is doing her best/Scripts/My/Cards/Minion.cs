@@ -7,19 +7,21 @@ using UnityEngine;
 
 namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
     public class Minion : Card, IAttacker {
-        private AttackAnimations attackAnimations;
         
         private int attack;
 
         private int Attack {
             get => attack;
             set {
-                if (value < 0)
+                if (value < 0) {
                     attack = 0;
-                attack = 0;
+                    return;
+                }
+                attack = value;
             }
         }
 
+        [SerializeField]
         private int maxHealth;
 
         private int MaxHealth {
@@ -32,11 +34,12 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
         }
 
 
+        [SerializeField]
         private int currentHealth;
 
         private int CurrentHealth {
             get => currentHealth;
-            set {
+            set { 
                 currentHealth = value > MaxHealth ? MaxHealth : value;
 
                 if (currentHealth <= 0) {
@@ -81,16 +84,27 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
         }
         
         public void Die() {
-            
-            Destroy(this);
+            Destroy(gameObject);
         }
 
-        public Vector3 GetPosition() {
-            return transform.position;
+        public Transform GetTransform() {
+            return transform;
         }
 
         public void AttackTarget(IDamageable target) {
-            throw new NotImplementedException();
+            StartCoroutine(
+                cardAnimation.AttackAnimation(
+                    this, target));
+        }
+
+        private void OnDestroy() {
+            if (isPlacedAt is not null) {
+                if (isPlacedAt.card is not null) {
+                    isPlacedAt.card = null;
+                }
+
+                isPlacedAt = null;
+            }
         }
     }
 }

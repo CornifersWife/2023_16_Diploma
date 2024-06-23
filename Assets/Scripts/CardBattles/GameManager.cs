@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour {
 
     public bool EnemyPlayMinion() {
         var availableCards = enemyHand.hand
-            .Where(card =>/* card.cardData is MinionCardData && */enemyActionPoint.CanUseAP()).ToArray();
+            .Where(card =>/* card.cardData is MinionCardData && #1#enemyActionPoint.CanUseAP()).ToArray();
         var availableBoardSpaces = boardOld.enemyMinions
             .Where(space => space.IsEmpty()).ToArray();
         if (availableCards.Length <= 0 || availableBoardSpaces.Length <= 0) {
@@ -214,4 +214,4 @@ public class GameManager : MonoBehaviour {
     public List<IDamageable> GetMinionsInSameSet(BaseCardData sourceCard) { //untested
         throw new System.NotImplementedException();
     }
-}
+}*/

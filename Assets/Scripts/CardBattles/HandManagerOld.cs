@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using System.Collections;
 using System.Collections.Generic;
 using Card;
@@ -65,4 +65,4 @@ public class HandManagerOld : MonoBehaviour {
         if (hand.Remove(cardOld))
             UpdateCardPositionsInHand();
     }
-}
+}*/

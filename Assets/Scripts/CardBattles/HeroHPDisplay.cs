@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,4 +25,4 @@ public class HeroHpDisplay : MonoBehaviour {
     {
         buttonText.text = showValue.ToString();
     }
-}
+}*/

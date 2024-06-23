@@ -128,7 +128,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             StartCoroutine(Draw(1, 1));
         }
         public IEnumerator EndOfTurn() {
-            //TODO trigger all start of turn effects
+            yield return BoardManager.Instance.Attack(isPlayers);
             yield return null;
         }
     }

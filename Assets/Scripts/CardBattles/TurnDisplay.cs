@@ -1,3 +1,4 @@
+/*
 using System;
 using TMPro;
 using TurnSystem;
@@ -27,3 +28,4 @@ public class TurnDisplay : MonoBehaviour {
             turnManagerOld.isPlayerTurn ? new Color(0.8f, 1f, 0.6f, 1f) : new Color(1f, 0.5f, 0.5f, 1f);
     }
 }
+*/
