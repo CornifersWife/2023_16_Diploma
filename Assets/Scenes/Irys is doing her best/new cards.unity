@@ -1158,9 +1158,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayCastBlocker: {fileID: 633087930}
-  endGameSlowDownFinalTimeScaleValue: 0.01
+  endGameSlowDownFinalTimeScaleValue: 0.05
   endGameSlowDownTime: 2
-  endGameSlowDownEase: 11
+  endGameSlowDownEase: 14
 --- !u!1 &1283696031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1741,6 +1741,22 @@ PrefabInstance:
     - target: {fileID: 2761464978714311140, guid: b3651c7bb3a7e4d44a8ed57f90c8fb7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8652541029627356794, guid: b3651c7bb3a7e4d44a8ed57f90c8fb7e, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8652541029627356794, guid: b3651c7bb3a7e4d44a8ed57f90c8fb7e, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8652541029627356794, guid: b3651c7bb3a7e4d44a8ed57f90c8fb7e, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8652541029627356794, guid: b3651c7bb3a7e4d44a8ed57f90c8fb7e, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
