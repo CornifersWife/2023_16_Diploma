@@ -16,7 +16,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         }
 
         private bool isPlayers;
-        
+
         private void Awake() {
             isPlayers = CompareTag("Player");
         }
@@ -41,7 +41,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             }
 
             yield return new WaitForEndOfFrame();
-            
+
             for (int j = 0; i < Cards.Count && j < cardsToDraw.Count; i++, j++) {
                 Cards[i].cardDisplay.ChangeCardVisible(isPlayers);
 
@@ -61,16 +61,21 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             foreach (var card in Cards) {
                 card.IsDrawn();
             }
-
         }
 
 
         private void AddNewCards(List<Cards.Card> cardsAdded) {
-            cardsAdded.ForEach(card => {
-                card.transform.SetParent(transform, true);
+            foreach (var card in cardsAdded) {
                 Cards.Add(card);
-            });
+            }
+            
+            //reversed to sort of visual bug
+            cardsAdded.Reverse();
+            foreach (var card in cardsAdded) {
+                card.transform.SetParent(transform, true);
+            }
         }
+
 
         public void UpdateCardPositions(int additionalCards = 0) {
             var newHandPositions = CalculateCardPositions(Cards.Count + additionalCards);
