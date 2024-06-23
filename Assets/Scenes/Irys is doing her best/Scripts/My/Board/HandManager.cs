@@ -35,7 +35,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             AddNewCards(cardsToDraw);
 
             var finalPositions = CalculateCardPositions(Cards.Count);
-            var couroutines = new List<Coroutine>();
+            var coroutines = new List<Coroutine>();
 
 
             int i = 0;
@@ -50,14 +50,14 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
 
                 var huh = StartCoroutine(Cards[i].DrawAnimation(finalPositions[i]));
 
-                couroutines.Add(huh);
+                coroutines.Add(huh);
 
                 if (cardsToDraw.Count > 1) {
                     yield return new WaitForSeconds(timeBetweenDrawingManyCard);
                 }
             }
 
-            foreach (var coroutine in couroutines) {
+            foreach (var coroutine in coroutines) {
                 yield return coroutine;
             }
 
