@@ -23,10 +23,6 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             isPlayers = CompareTag("Player");
         }
 
-
-        [Space] [Header("Distance Between Cards")] [SerializeField] [Range(10, 1000)]
-        public float distanceScalar = 10f;
-
         [SerializeField] [Range(100, 1000)] public float distanceMulti = 300f;
 
 
