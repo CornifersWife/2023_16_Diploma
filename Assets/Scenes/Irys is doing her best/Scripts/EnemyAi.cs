@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Linq;
+using NaughtyAttributes;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Board;
 using UnityEngine;
 using Random = System.Random;
@@ -14,6 +15,9 @@ namespace Scenes.Irys_is_doing_her_best.Scripts {
 
         [SerializeField] private StringFloatDictionary baseWeights;
 
+        
+        [BoxGroup("Debug"),SerializeField] private bool showInnerDialogue;//debug
+        
         private StringFloatDictionary weights;
         
         private void Awake() {
@@ -32,6 +36,10 @@ namespace Scenes.Irys_is_doing_her_best.Scripts {
         public IEnumerator PlayTurn() {
             CopyWeightValues();
 
+            /*if (showInnerDialogue) 
+                Debug.Log($"Can do next move {!CantDoNextAction()}");
+                */
+            
             if (CantDoNextAction()) {
                 yield break;
             }
@@ -63,7 +71,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts {
             bool hand = character.hand.Cards.Any();
             
             //TODO account for 0-mana cost cards
-            bool mana = character.manaManager.CurrentMana <= 0;
+            bool mana = character.manaManager.CurrentMana > 0;
 
             //TODO change this when you can do stuff without mana
             return (!deck && !hand) || !mana;

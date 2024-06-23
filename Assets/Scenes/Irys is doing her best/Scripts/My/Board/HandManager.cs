@@ -68,11 +68,10 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             foreach (var card in cardsAdded) {
                 Cards.Add(card);
             }
-            
+
             //reversed to sort of visual bug
-            cardsAdded.Reverse();
-            foreach (var card in cardsAdded) {
-                card.transform.SetParent(transform, true);
+            for (int i = cardsAdded.Count - 1; i >= 0; i--) {
+                cardsAdded[i].transform.SetParent(transform, true);
             }
         }
 

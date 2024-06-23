@@ -63,9 +63,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
                 .Join(transform
                     .DOScale(showScale, timeToShow)
                     .SetEase(playerToShow));
-           // yield return sequence.Play();
 
-            //var sequence2 = DOTween.Sequence();
             sequence
                 .Append(transform
                     .DOMove(finalPosition, timeToHand)

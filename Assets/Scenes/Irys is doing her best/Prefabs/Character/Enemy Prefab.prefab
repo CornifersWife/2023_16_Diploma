@@ -46,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2589515621153180791, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -100
+      value: -250
       objectReference: {fileID: 0}
     - target: {fileID: 2756966147138138962, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       propertyPath: m_Pivot.x
@@ -128,11 +128,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 3346907710758192480, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 3472186452170629456, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3687859169180639565, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589913225148541359, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -146,7 +154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4913253379892746156, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 175
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4913253379892746156, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -203,9 +211,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1577691811338400432, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8988459506883656048}
-    - targetCorrespondingSourceObject: {fileID: 5476774564936078917, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 2208113686594858877}
   m_SourcePrefab: {fileID: 100100000, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
 --- !u!1 &1582190124498597894 stripped
 GameObject:
@@ -233,20 +238,4 @@ MonoBehaviour:
     m_values:
     - 3
     - 8
---- !u!1 &5481283914618658035 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5476774564936078917, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
-  m_PrefabInstance: {fileID: 4512253885844150}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2208113686594858877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5481283914618658035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fa287baf0a54468a6fde7aabc8ba03e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  showInnerDialogue: 0

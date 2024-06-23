@@ -90,6 +90,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             card.AssignCardSpot(cardSpot);
         }
 
+        
         // ReSharper disable Unity.PerformanceAnalysis
         public IEnumerator Draw(int amount, int cost = 0) {
             if (amount <= 0) {
@@ -123,6 +124,9 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             manaManager.RefreshMana();
         }
 
+        public void DrawACard() {
+            StartCoroutine(Draw(1, 1));
+        }
         public IEnumerator EndOfTurn() {
             //TODO trigger all start of turn effects
             yield return null;

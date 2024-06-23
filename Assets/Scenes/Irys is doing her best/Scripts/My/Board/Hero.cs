@@ -19,20 +19,29 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             }
         }
 
+        public Action<int> currentHealthAction;
+        public Action takeDamageAction;
+
+        
         [SerializeField]
+        
         private int currentHealth;
 
         private int CurrentHealth {
             get => currentHealth;
             set {
                 currentHealth = value > MaxHealth ? MaxHealth : value;
-
+                
+                currentHealthAction.Invoke(currentHealth);
                 if (currentHealth <= 0) {
                     Die();
                 }
             }
         }
 
+        public bool HasFullHp => CurrentHealth == MaxHealth;
+
+        
         private bool isPlayers;
 
         private void Awake() {
@@ -41,6 +50,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
 
         public void TakeDamage(int amount) {
             CurrentHealth -= amount;
+            takeDamageAction.Invoke();
         }
 
         public void Heal(int amount) {

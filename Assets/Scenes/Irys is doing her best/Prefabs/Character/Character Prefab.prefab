@@ -136,7 +136,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 218, y: -295}
+  m_AnchoredPosition: {x: 250, y: -300}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4427159775873632988
@@ -506,7 +506,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: HP
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -533,10 +533,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14.9
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 8
   m_fontSizeMax: 30
   m_fontStyle: 17
@@ -585,6 +585,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4913253379892746156}
   - component: {fileID: 6368447993570103243}
+  - component: {fileID: 2212618081495852491}
   - component: {fileID: 7062501365206036219}
   - component: {fileID: 795123351192678220}
   m_Layer: 5
@@ -611,7 +612,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -175, y: -291}
+  m_AnchoredPosition: {x: -300, y: -300}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6368447993570103243
@@ -626,11 +627,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1291138a9305451e9fbd272b8b8bcab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  death:
-    m_PersistentCalls:
-      m_Calls: []
   maxHealth: 30
   currentHealth: 30
+--- !u!114 &2212618081495852491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5476774564936078917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fa287baf0a54468a6fde7aabc8ba03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heroImage: {fileID: 5980433114990578076}
+  hpText: {fileID: 8648045876690742476}
+  fullHpColor: {r: 0, g: 0, b: 0, a: 1}
+  missingHpColor: {r: 0.3529412, g: 0.11764706, b: 0.11764706, a: 0}
+  hitAnimatonDuration: 0.3
+  hitAnimatonShakeStrength: 10
+  hitAnimatonKnockbackStrength: 30
 --- !u!223 &7062501365206036219
 Canvas:
   m_ObjectHideFlags: 0
@@ -805,7 +822,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 600, y: -245}
+  m_AnchoredPosition: {x: 600, y: -220}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &11471108929920545
