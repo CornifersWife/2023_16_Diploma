@@ -2,16 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using CardBattles.CardScripts.Additional;
+using CardBattles.CardScripts.CardDatas;
+using CardBattles.CardScripts.Effects.Structure;
+using CardBattles.Enums;
+using CardBattles.Interfaces;
 using JetBrains.Annotations;
 using NaughtyAttributes;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Board;
-using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Enums;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Structure;
 using UnityEngine;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
+namespace CardBattles.CardScripts {
     [SuppressMessage("ReSharper", "UnusedMember.Local")]
     public abstract class Card : MonoBehaviour, IHasCost {
         public CardDisplay cardDisplay;
@@ -44,7 +44,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
             name = CardName;
             FlavourText = cardData.flavourText;
             Description = cardData.description;
-            properties = cardData.Properties;
+            properties = cardData.properties;
             OnPlayEffects = cardData.OnPlayEffects;
         }
 

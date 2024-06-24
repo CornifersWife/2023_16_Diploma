@@ -4,18 +4,15 @@ using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
+namespace CardBattles.Managers {
     public class EndGameManager : MonoBehaviour {
+        [SerializeField, Required] private CanvasGroup rayCastBlocker;
 
-        [SerializeField,Required]
-        private CanvasGroup rayCastBlocker;
-        
         public void EndGame(bool isPlayersHero) {
             StartCoroutine(EndGameCoroutine(isPlayersHero));
             StartCoroutine(GameSlowDown());
         }
 
-        
         private IEnumerator EndGameCoroutine(bool isPlayersHero) {
             rayCastBlocker.blocksRaycasts = true;
             if (isPlayersHero) {
@@ -36,11 +33,11 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         private IEnumerator LoseGame() {
             Debug.Log("Boohoo :(  LOSER");
             yield return new WaitForSecondsRealtime(2f);
-            if(Application.isEditor)
+            if (Application.isEditor)
                 EditorApplication.isPlaying = false;
         }
-        
-        
+
+
         [BoxGroup("SlowDown"), SerializeField] private float endGameSlowDownFinalTimeScaleValue = 0.1f;
         [BoxGroup("SlowDown"), SerializeField] private float endGameSlowDownTime = 2f;
         [BoxGroup("SlowDown"), SerializeField] private Ease endGameSlowDownEase;

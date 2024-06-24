@@ -1,67 +1,51 @@
-using System;
+using CardBattles.CardScripts.CardDatas;
 using DG.Tweening;
 using NaughtyAttributes;
-using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
+namespace CardBattles.CardScripts.Additional {
     public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
-        [Header("Cards Elements")] [SerializeField]
-        private GameObject imageObject;
-
-        [SerializeField] private GameObject cardNameObject;
-        [SerializeField] private GameObject descriptionObject;
-        [SerializeField] private GameObject attackObject;
-        [SerializeField] private GameObject healthObject;
-        [SerializeField] private GameObject minionOnlyElements;
-
-        [Space(10)] [SerializeField] private CanvasGroup frontOfCard;
-        [SerializeField] private Image backOfCard;
-        public bool frontVisible = false;
-
-        [Header("Cards Set")] [SerializeField] public GameObject cardSetSymbolObject;
-
-        [Header("Type")] [SerializeField] public GameObject cardTypeObject;
-
-        [BoxGroup("Card scale"), SerializeField]
+        [Foldout("Card scale"), SerializeField]
         public float scaleInHand = 0.9f;
 
-        [BoxGroup("Card scale"), SerializeField]
+        [Foldout("Card scale"), SerializeField]
         private float scaleOnBoard = 1f;
 
-        [BoxGroup("Card scale"), SerializeField]
+        [Foldout("Card scale"), SerializeField]
         private float scaleOnHover = 1.1f;
 
         private float currentScale = 1f;
 
+        [Header("Front/Back")] [Foldout("Objects")] [SerializeField]
+        private CanvasGroup frontOfCard;
 
-        private Image image;
+        [Foldout("Objects")] [SerializeField] private Image backOfCard;
+
+        [Space, Header("Elements")] [Foldout("Objects")] [SerializeField]
         private TextMeshProUGUI cardName;
-        private TextMeshProUGUI description;
-        private TextMeshProUGUI attack;
-        private TextMeshProUGUI health;
-        private Image cardSetSymbol;
-        private Image cardType;
+
+        [Foldout("Objects")] [SerializeField] private TextMeshProUGUI description;
+        [Foldout("Objects")] [SerializeField] private TextMeshProUGUI attack;
+        [Foldout("Objects")] [SerializeField] private TextMeshProUGUI health;
+        [Foldout("Objects")] [SerializeField] private Image cardImage;
+        [Foldout("Objects")] [SerializeField] private Image cardSetSymbol;
+        [Foldout("Objects")] [SerializeField] private Image cardType;
+
+        [Foldout("Objects")] [SerializeField] private CanvasGroup minionOnlyElements;
+
+        public bool frontVisible;
 
         void Awake() {
-            //TODO idk why it forced me to do it this way, i could not assign it in inspector
-            image = imageObject.GetComponent<Image>();
-            cardName = cardNameObject.GetComponent<TextMeshProUGUI>();
-            description = descriptionObject.GetComponent<TextMeshProUGUI>();
-            attack = attackObject.GetComponent<TextMeshProUGUI>();
-            health = healthObject.GetComponent<TextMeshProUGUI>();
-            cardSetSymbol = cardSetSymbolObject.GetComponent<Image>();
-            cardType = cardTypeObject.GetComponent<Image>();
-
             frontOfCard.enabled = !frontVisible;
             backOfCard.enabled = !frontVisible;
         }
 
         public void SetCardData(MinionData minionData) {
-            image.sprite = minionData.Sprite;
+            cardImage.sprite = minionData.Sprite;
             cardName.text = minionData.name;
             description.text = minionData.description;
             attack.text = minionData.Attack.ToString();
@@ -70,7 +54,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
         }
 
         public void SetCardData(SpellData spellData) {
-            image.sprite = spellData.Sprite;
+            cardImage.sprite = spellData.Sprite;
             cardName.text = spellData.name;
             description.text = spellData.description;
             minionOnlyElements.GetComponent<CanvasGroup>().alpha = 0;
@@ -98,7 +82,8 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
             if (!frontVisible || eventData.pointerDrag is not null) {
                 return;
             }
-            transform.DOScale(scaleOnHover, 
+
+            transform.DOScale(scaleOnHover,
                 scaleOnHoverTime);
         }
 

@@ -1,22 +1,22 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using NaughtyAttributes;
-using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Singletons;
+using CardBattles.CardScripts;
+using CardBattles.CardScripts.CardDatas;
+using CardBattles.Managers;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
+namespace CardBattles.Character {
     public class DeckManager : MonoBehaviour {
         [SerializeField] private List<CardSetData> cardSetDatas = new List<CardSetData>();
 
+        
+        //TODO ADD SERIAZABLE DICTIONARY
         [SerializeField]
-        private SerializableDictionary<string, List<Cards.Card>> cardSets =
-            new SerializableDictionary<string, List<Cards.Card>>();
+        private SerializableDictionary<string, List<Card>> cardSets =
+            new SerializableDictionary<string, List<Card>>();
 
-        public List<Cards.Card> Cards = new List<Cards.Card>();
+        public List<Card> Cards = new List<Card>();
         [SerializeField] public bool isPlayers;
 
         private void Awake() {
@@ -80,7 +80,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
                         continue;
                     }
 
-                    cardSets.TryAdd(cardSetData.displayName + i, new List<Cards.Card>());
+                    cardSets.TryAdd(cardSetData.displayName + i, new List<Card>());
                     cardSets[cardSetData.displayName + i].Add(card);
                 }
             }
@@ -89,7 +89,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
 
         private void CreateCardFromDeck() {
             var cardLists = cardSets.Values.ToList();
-            var allCards = new List<Cards.Card>();
+            var allCards = new List<Card>();
             foreach (var _ in cardLists) {
                 allCards.AddRange(_);
             }

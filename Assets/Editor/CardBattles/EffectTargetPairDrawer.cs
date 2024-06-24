@@ -1,4 +1,4 @@
-using Scenes.Irys_is_doing_her_best.Scripts.My.Structure;
+using CardBattles.CardScripts.Effects.Structure;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;

@@ -2,21 +2,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using CardBattles.CardScripts;
 using CardBattles.CardScripts.Additional;
+using CardBattles.Character.Mana;
+using CardBattles.Managers;
 using NaughtyAttributes;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Cards;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
+namespace CardBattles.Character {
     public class CharacterManager : MonoBehaviour {
         [Serializable]
-        public class CardEvent : UnityEvent<Cards.Card, CardSpot> {
+        public class CardEvent : UnityEvent<Card, CardSpot> {
         }
 
         [Header("Data")] [SerializeField] public HandManager hand;
         [SerializeField] public DeckManager deck;
-        [SerializeField] public Hero hero;
+        [SerializeField] public Hero.Hero hero;
         [SerializeField] public BoardSide boardSide;
         [SerializeField] public ManaManager manaManager;
         [SerializeField] public bool isPlayers;
@@ -41,11 +43,11 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             onCardPlayed.RemoveListener(OnCardPlayedHandler);
         }
 
-        public static void PlayACard(Cards.Card card, CardSpot cardSpot) {
+        public static void PlayACard(Card card, CardSpot cardSpot) {
             onCardPlayed.Invoke(card, cardSpot);
         }
 
-        private void OnCardPlayedHandler(Cards.Card card, CardSpot cardSpot) {
+        private void OnCardPlayedHandler(Card card, CardSpot cardSpot) {
             if (card.isPlayers != isPlayers)
                 return;
             if (!IsYourTurn)
@@ -59,13 +61,13 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             card.GetComponent<CardDragging>().droppedOnSlot = true;
         }
 
-        public IEnumerator PlayCardCoroutine(Cards.Card card, CardSpot cardSpot, float time) { //time defined in EnemyAi
+        public IEnumerator PlayCardCoroutine(Card card, CardSpot cardSpot, float time) { //time defined in EnemyAi
             OnCardPlayedHandler(card, cardSpot);
             yield return new WaitForSeconds(time);
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
-        private void MoveCardToCardSpot(Cards.Card card, CardSpot cardSpot) {
+        private void MoveCardToCardSpot(Card card, CardSpot cardSpot) {
             //TODO change all of these to functions inside card 
             if (!isPlayers)
                 StartCoroutine(
@@ -103,7 +105,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
                 if (!manaManager.TryUseMana(cost))
                     yield break;
 
-            var cardsToDraw = new List<Cards.Card>();
+            var cardsToDraw = new List<Card>();
             for (int i = 0; i < amount; i++) {
                 if (!deck.Cards.Any()) {
                     

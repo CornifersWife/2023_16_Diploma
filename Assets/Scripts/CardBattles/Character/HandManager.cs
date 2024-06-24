@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using CardBattles.CardScripts;
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.ProBuilder;
 using Math = System.Math;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
+namespace CardBattles.Character {
     public class HandManager : MonoBehaviour {
         
         
@@ -15,9 +15,9 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         [BoxGroup("Animations")] [SerializeField]
         private float timeBetweenDrawingManyCard = 1.1f;
 
-        private List<Cards.Card> cards = new List<Cards.Card>();
+        private List<Card> cards = new List<Card>();
 
-        public List<Cards.Card> Cards {
+        public List<Card> Cards {
             get => cards;
             set => cards = value;
         }
@@ -31,7 +31,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         [SerializeField] [Range(100, 1000)] public float distanceMulti = 300f;
 
 
-        public IEnumerator DrawManyCoroutine(List<Cards.Card> cardsToDraw) {
+        public IEnumerator DrawManyCoroutine(List<Card> cardsToDraw) {
             AddNewCards(cardsToDraw);
 
             var finalPositions = CalculateCardPositions(Cards.Count);
@@ -67,7 +67,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
         }
 
 
-        private void AddNewCards(List<Cards.Card> cardsAdded) {
+        private void AddNewCards(List<Card> cardsAdded) {
             foreach (var card in cardsAdded) {
                 Cards.Add(card);
             }

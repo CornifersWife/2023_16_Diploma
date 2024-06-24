@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Board;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.Singletons {
+namespace CardBattles.Managers {
     public class ButtonManager : MonoBehaviour {
         public static ButtonManager Instance { get; private set; }
         private bool buttonsEnabled;

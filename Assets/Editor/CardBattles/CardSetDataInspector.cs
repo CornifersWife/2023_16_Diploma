@@ -1,4 +1,4 @@
-using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
+using CardBattles.CardScripts.CardDatas;
 using UnityEditor;
 using UnityEngine;
 

@@ -1,8 +1,8 @@
 using System;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Enums;
+using CardBattles.Enums;
 using UnityEngine.Serialization;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.Structure {
+namespace CardBattles.CardScripts.Effects.Structure {
     [Serializable]
     public class EffectTargetPair {
         [FormerlySerializedAs("Effect")] public EffectBase effect;

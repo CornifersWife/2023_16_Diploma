@@ -1,13 +1,14 @@
+using CardBattles.Character;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
+namespace CardBattles.CardScripts {
     public class CardSpot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
         private Image image;
-        public Cards.Card card;
+        public Card card;
         private bool isPlayers;
         [ShowNativeProperty] public bool IsPlayers => isPlayers;
 
@@ -35,11 +36,11 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
                 return;
             }
             if (!eventData.pointerDrag.TryGetComponent
-                    (typeof(Cards.Card), out var draggedCard)) {
+                    (typeof(Card), out var draggedCard)) {
                 Debug.Log($"{name}, dropped object was not a card");
                 return;
             }
-            CharacterManager.PlayACard((Cards.Card)draggedCard, this);
+            CharacterManager.PlayACard((Card)draggedCard, this);
         }
 
         

@@ -1,7 +1,7 @@
-using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
+using CardBattles.CardScripts.CardDatas;
 using UnityEngine;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
+namespace CardBattles.CardScripts {
     public class Spell : Card {
         public override void Initialize(CardData cardData,bool isPlayersCard) {
             base.Initialize(cardData,isPlayersCard);

@@ -1,10 +1,13 @@
 using System;
+using CardBattles.Character.Mana.Additional;
+using CardBattles.Interfaces;
+using CardBattles.Interfaces.InterfaceObjects;
 using NaughtyAttributes;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
+using Scenes.Irys_is_doing_her_best.Scripts;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
+namespace CardBattles.Character.Mana {
     public class ManaManager : MonoBehaviour {
         private ManaDisplay manaDisplay;
 

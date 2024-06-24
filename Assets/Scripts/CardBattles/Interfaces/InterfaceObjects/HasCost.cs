@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces {
+namespace CardBattles.Interfaces.InterfaceObjects {
     public class HasCost : IHasCost {
         [Min(1)]
         private int cost;

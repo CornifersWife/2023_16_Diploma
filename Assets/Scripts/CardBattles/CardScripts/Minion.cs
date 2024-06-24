@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Cards;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Structure;
+using CardBattles.CardScripts.CardDatas;
+using CardBattles.CardScripts.Effects.Structure;
+using CardBattles.Interfaces;
 using UnityEngine;
 
 namespace CardBattles.CardScripts {

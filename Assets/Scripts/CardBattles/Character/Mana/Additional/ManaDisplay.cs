@@ -6,7 +6,7 @@ using UnityEngine;
 
 
 //TODO hate this script, someone please rework it, its awful, thankfully this isn't important code but :(
-namespace Scenes.Irys_is_doing_her_best.Scripts {
+namespace CardBattles.Character.Mana.Additional {
     public class ManaDisplay : MonoBehaviour {
         [SerializeField] public GameObject manaPointPrefab;
 

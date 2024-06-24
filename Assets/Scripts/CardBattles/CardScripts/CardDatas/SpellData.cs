@@ -1,4 +1,4 @@
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas {
+namespace CardBattles.CardScripts.CardDatas {
     public class SpellData : CardData {
         
     }

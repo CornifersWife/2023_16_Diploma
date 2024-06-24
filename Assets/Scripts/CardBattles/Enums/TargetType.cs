@@ -1,4 +1,4 @@
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.Enums {
+namespace CardBattles.Enums {
     public enum TargetType {
         AllMinions,
         EnemyMinions,

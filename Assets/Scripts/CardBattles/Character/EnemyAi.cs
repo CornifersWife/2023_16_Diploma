@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Linq;
+using CardBattles.Managers;
 using NaughtyAttributes;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Board;
 using UnityEngine;
 using Random = System.Random;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts {
+namespace CardBattles.Character {
     public class EnemyAi : MonoBehaviour {
         private CharacterManager character;
         private Random random;

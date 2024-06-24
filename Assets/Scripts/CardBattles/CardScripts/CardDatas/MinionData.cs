@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Structure;
+using CardBattles.CardScripts.Effects.Structure;
 using UnityEngine;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas {
+namespace CardBattles.CardScripts.CardDatas {
     public class MinionData : CardData {
         [Min(0)] public int Attack;
 

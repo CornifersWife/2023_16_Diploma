@@ -1,10 +1,9 @@
-using System.Collections;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
+namespace CardBattles.CardScripts.Additional {
     public class CardDragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
         private RectTransform rectTransform;
         private CanvasGroup canvasGroup;

@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Structure;
+using CardBattles.CardScripts.Effects.Structure;
+using CardBattles.Interfaces;
 using UnityEngine;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My {
+namespace CardBattles.CardScripts.Effects {
     [CreateAssetMenu(fileName = "Damage Effect",menuName = "Effects/Damage Effect")]
     public class DamageEffect : ChangeValueByEffect {
         public override void ApplyEffect(ICollection<GameObject> targets) {

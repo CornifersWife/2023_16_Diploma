@@ -1,16 +1,15 @@
 #nullable enable
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using CardBattles.CardScripts;
+using CardBattles.Interfaces;
 using NaughtyAttributes;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
 using UnityEngine;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
+namespace CardBattles.Character {
     public class BoardSide : MonoBehaviour {
         [SerializeField] public CardSpot[] cardSpots = new CardSpot[4];
-        [SerializeField,Required] public Hero hero = null!;
+        [SerializeField,Required] public Hero.Hero hero = null!;
         private bool isPlayers;
 
         private void Awake() {

@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
+using CardBattles.Character;
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
-    
+namespace CardBattles.Managers {
     public class TurnManager : MonoBehaviour {
         [BoxGroup("Wait Times"), SerializeField]
         private float startOfGameWait = 0.1f;
@@ -14,8 +14,8 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
 
         public static TurnManager Instance { get; private set; }
 
-        [NonSerialized] public bool gameHasEnded = false;
-        [SerializeField] public bool isPlayersTurn = false;
+        [NonSerialized] public bool gameHasEnded;
+        [SerializeField] public bool isPlayersTurn;
         private bool playerCanPlay;
 
         [Space, SerializeField] private CharacterManager player; // don't use them in code, use playing/waiting

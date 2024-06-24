@@ -1,5 +1,5 @@
 //NOT IMPLEMENTED
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.Enums {
+namespace CardBattles.Enums {
     public enum EffectTrigger {
         OnPlay,
         OnDeath,

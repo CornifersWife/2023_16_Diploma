@@ -1,13 +1,11 @@
 using System.Collections.Generic;
-using System.ComponentModel;
+using CardBattles.CardScripts.Effects.Structure;
+using CardBattles.Enums;
 using NaughtyAttributes;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Enums;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Structure;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Serialization;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas {
+namespace CardBattles.CardScripts.CardDatas {
     public abstract class CardData : ScriptableObject {
         
         [SerializeField] public string cardName;
@@ -18,7 +16,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas {
 
         [SerializeField]
         [EnumFlags]
-        public List<AdditionalProperty> Properties = new List<AdditionalProperty>();
+        public List<AdditionalProperty> properties = new List<AdditionalProperty>();
         
         [SerializeField]
         private Sprite sprite; 

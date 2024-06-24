@@ -1,9 +1,8 @@
 using System;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
+using CardBattles.Interfaces;
 using UnityEngine;
-using UnityEngine.Events;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
+namespace CardBattles.Character.Hero {
     public class Hero : MonoBehaviour,IDamageable {
 
         public Action<bool> death;

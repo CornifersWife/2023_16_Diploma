@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
+using CardBattles.Interfaces;
 using DG.Tweening;
 using NaughtyAttributes;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Board;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Cards;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
 using UnityEngine;
 
 namespace CardBattles.CardScripts.Additional {
@@ -114,9 +112,7 @@ namespace CardBattles.CardScripts.Additional {
                     playCardTime)
                 .SetEase(playCardEase);
         }
-        
-        
-        
+
 
         [Space, Header("MoveTo")] [Foldout("Attack Animation"), SerializeField]
         private float attackMoveToTime;
@@ -196,6 +192,4 @@ namespace CardBattles.CardScripts.Additional {
             throw new NotImplementedException();
         }
     }
-    
-    
 }

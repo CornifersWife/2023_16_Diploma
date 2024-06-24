@@ -1,5 +1,5 @@
 using System;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Cards;
+using CardBattles.CardScripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;

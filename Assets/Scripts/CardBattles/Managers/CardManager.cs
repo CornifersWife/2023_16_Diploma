@@ -1,50 +1,49 @@
-using System;
 using CardBattles.CardScripts;
-using Scenes.Irys_is_doing_her_best.Scripts.My.CardDatas;
-using Scenes.Irys_is_doing_her_best.Scripts.My.Cards;
+using CardBattles.CardScripts.CardDatas;
 using UnityEngine;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.Singletons {
+namespace CardBattles.Managers {
     public class CardManager : MonoBehaviour {
-
         public static CardManager Instance;
 
         public GameObject minionPrefab;
         public GameObject spellPrefab;
 
         private void Awake() {
-            if (Instance == null) {
+            if (Instance is null) {
                 Instance = this;
-                DontDestroyOnLoad(gameObject); // Optional: makes the manager persist across scenes
-            } else {
+                DontDestroyOnLoad(gameObject); 
+            }
+            else {
                 Destroy(gameObject);
             }
         }
-        public Cards.Card CreateCard(CardData cardData, Transform parentTransform,bool isPlayers) {
-            GameObject cardObject;
-            Cards.Card cardComponent = null;
 
-            if (cardData is MinionData) {
-                cardObject = Instantiate(minionPrefab);
-                cardComponent = cardObject.GetComponent<Minion>();
-                
-            } else if (cardData is SpellData) {
-                cardObject = Instantiate(spellPrefab);
-                cardComponent = cardObject.GetComponent<Spell>();
+        public Card CreateCard(CardData cardData, Transform parentTransform, bool isPlayers) {
+            GameObject cardObject;
+            Card cardComponent = null;
+
+            switch (cardData) {
+                case MinionData:
+                    cardObject = Instantiate(minionPrefab);
+                    cardComponent = cardObject.GetComponent<Minion>();
+                    break;
+                case SpellData:
+                    cardObject = Instantiate(spellPrefab);
+                    cardComponent = cardObject.GetComponent<Spell>();
+                    break;
             }
+
             if (cardComponent is null) {
                 Debug.LogError("Failed to create card.");
                 return null;
             }
 
-            cardComponent.Initialize(cardData,isPlayers);
+            cardComponent.Initialize(cardData, isPlayers);
             cardComponent.transform.SetParent(parentTransform);
             cardComponent.transform.localPosition = Vector3.zero;
 
             return cardComponent;
         }
-        
-        
-        
     }
 }
