@@ -1105,6 +1105,7 @@ GameObject:
   - component: {fileID: 1228417405}
   - component: {fileID: 1228417404}
   - component: {fileID: 1228417406}
+  - component: {fileID: 1228417407}
   m_Layer: 0
   m_Name: TurnManager
   m_TagString: Untagged
@@ -1161,6 +1162,19 @@ MonoBehaviour:
   endGameSlowDownFinalTimeScaleValue: 0.05
   endGameSlowDownTime: 2
   endGameSlowDownEase: 14
+--- !u!114 &1228417407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228417403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217e632eb63a57546bb75d3e3f7b8527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeScale: 1
 --- !u!1 &1283696031
 GameObject:
   m_ObjectHideFlags: 0
