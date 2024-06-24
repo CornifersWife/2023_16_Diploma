@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using CardBattles.CardScripts.CardDatas;
 using CardBattles.Interfaces;
 using NaughtyAttributes;
@@ -6,6 +7,9 @@ using UnityEngine;
 
 namespace CardBattles.CardScripts {
     public class Minion : Card, IAttacker {
+
+        [SerializeField] private float dyingDuration = 0.5f;
+        
         [Space(30), Header("Minion")] 
         [BoxGroup("Data")]
         [ShowNonSerializedField]
@@ -72,10 +76,8 @@ namespace CardBattles.CardScripts {
         
 
         public void TakeDamage(int amount) {
-            string debugout = $"{name}: {currentHealth}";
             amount = amount > 0 ? amount : 0;
             CurrentHealth -= amount;
-            Debug.Log(debugout + $"--> {currentHealth}");
         }
 
         public void Heal(int amount) {
@@ -84,7 +86,14 @@ namespace CardBattles.CardScripts {
         }
         
         public void Die() {
+            StartCoroutine(DeathCoroutine());
+        }
+
+        public IEnumerator DeathCoroutine() {
+            yield return cardAnimation.DeathAnimation();
+            yield return new WaitForSeconds(dyingDuration);
             Destroy(gameObject);
+
         }
 
         public Transform GetTransform() {

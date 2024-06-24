@@ -79,13 +79,10 @@ MonoBehaviour:
   cardName: Big cat
   description: description
   flavourText: He has a tendency to eat his siblings :(
-  properties: 00000000
+  properties: 
   effectDictionary:
-    m_keys: 00000000
-    m_values:
-    - effect: 0
-      targetType: 0
-      value: 0
+    m_keys: 
+    m_values: []
   Attack: 6
   MaxHealth: 6
 --- !u!114 &7135807820275663687

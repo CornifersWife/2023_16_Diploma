@@ -10,6 +10,7 @@ using CardBattles.Interfaces;
 using CardBattles.Managers;
 using JetBrains.Annotations;
 using NaughtyAttributes;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace CardBattles.CardScripts {
@@ -46,7 +47,7 @@ namespace CardBattles.CardScripts {
             cardAnimation = GetComponent<CardAnimation>();
             cardDragging = GetComponent<CardDragging>();
         }
-
+        
         public virtual void Initialize(CardData cardData, bool isPlayersCard) {
             isPlayers = isPlayersCard;
             cardAnimation.isPlayers = isPlayersCard;
@@ -55,7 +56,13 @@ namespace CardBattles.CardScripts {
             flavourText = cardData.flavourText;
             description = cardData.description;
             properties = cardData.properties;
-            effectDictionary = cardData.effectDictionary;
+            foreach (var key in cardData.effectDictionary.Keys) {
+                effectDictionary.Add(key, new EffectTargetValue() {
+                    effect  =cardData.effectDictionary[key].effect,
+                    targetType  = cardData.effectDictionary[key].targetType,
+                    value  = cardData.effectDictionary[key].value,
+                });
+            }
         }
 
         public virtual int GetCost() {

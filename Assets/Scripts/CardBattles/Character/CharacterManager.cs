@@ -125,9 +125,7 @@ namespace CardBattles.Character {
         // ReSharper disable Unity.PerformanceAnalysis
         public IEnumerator StartOfTurn() {
             yield return Draw(1);
-            foreach (var card in boardSide.GetNoNullCards()) {
-                card.DoEffect(EffectTrigger.OnEndTurn);
-            }
+            
             manaManager.RefreshMana();
         }
 
@@ -136,6 +134,9 @@ namespace CardBattles.Character {
         }
         public IEnumerator EndOfTurn() {
             yield return BoardManager.Instance.Attack(isPlayers);
+            foreach (var card in boardSide.GetNoNullCards()) {
+                card.DoEffect(EffectTrigger.OnEndTurn);
+            }
             yield return null;
         }
     }

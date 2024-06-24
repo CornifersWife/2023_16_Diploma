@@ -234,5 +234,9 @@ namespace CardBattles.CardScripts.Additional {
         private IEnumerator CanBeAnimated() {
             throw new NotImplementedException();
         }
+
+        public IEnumerator DeathAnimation() {
+            yield return null;
+        }
     }
 }
