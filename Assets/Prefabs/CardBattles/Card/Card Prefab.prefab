@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1319922846925468558}
   - component: {fileID: 3744092642489605594}
   m_Layer: 0
-  m_Name: TypeSymbol
+  m_Name: Type Symbol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 1852805539509261135}
   - component: {fileID: 7854320695674442013}
   m_Layer: 0
-  m_Name: CardSetSymbol
+  m_Name: Card Set Symbol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 3802619096665743914}
   - component: {fileID: 8827812836535052623}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Card Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 6183407427709630752}
   - component: {fileID: 2107554566278885536}
   m_Layer: 0
-  m_Name: NameText
+  m_Name: Card Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -478,7 +478,7 @@ GameObject:
   - component: {fileID: 8195821942191762571}
   - component: {fileID: 2281940196610079590}
   m_Layer: 0
-  m_Name: Symbol
+  m_Name: Attack Symbol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -601,7 +601,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6349265401802868057}
   m_Layer: 0
-  m_Name: ImageBox
+  m_Name: Image Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -640,7 +640,7 @@ GameObject:
   - component: {fileID: 3690032707994995170}
   - component: {fileID: 2579617865883325183}
   m_Layer: 0
-  m_Name: HealthText
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -774,7 +774,7 @@ GameObject:
   - component: {fileID: 2482749692710979481}
   - component: {fileID: 813253505726377624}
   m_Layer: 0
-  m_Name: Card Name
+  m_Name: Card Name Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -914,20 +914,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b644e4a967a2495e87e3a521f10be06a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageObject: {fileID: 1700879076466784326}
-  cardNameObject: {fileID: 1871670930220903345}
-  descriptionObject: {fileID: 7129834780842957257}
-  attackObject: {fileID: 6575927842755631391}
-  healthObject: {fileID: 4013582096273306834}
-  minionOnlyElements: {fileID: 2353364419396079771}
-  frontOfCard: {fileID: 1394851734013426853}
-  backOfCard: {fileID: 823127779925956174}
-  frontVisible: 0
-  cardSetSymbolObject: {fileID: 1427954470503933369}
-  cardTypeObject: {fileID: 401347801818912136}
   scaleInHand: 0.85
   scaleOnBoard: 1
   scaleOnHover: 1.1
+  frontOfCard: {fileID: 1394851734013426853}
+  backOfCard: {fileID: 823127779925956174}
+  cardName: {fileID: 2107554566278885536}
+  description: {fileID: 1295935989582342870}
+  attack: {fileID: 1133875390605523127}
+  health: {fileID: 2579617865883325183}
+  cardImage: {fileID: 8827812836535052623}
+  cardSetSymbol: {fileID: 1852805539509261135}
+  cardType: {fileID: 1319922846925468558}
+  minionOnlyElements: {fileID: 9072930608417842193}
+  frontVisible: 0
   scaleOnHoverTime: 0.1
 --- !u!114 &3513187511264810272
 MonoBehaviour:
@@ -953,12 +953,13 @@ MonoBehaviour:
   moveToEase: 0
   playCardTime: 0.4
   playCardEase: 4
-  attackMoveToTime: 0.1
-  attackMoveToEase: 17
-  attackKnockBackAmount: 30
-  attackKnockBackTime: 0.05
+  attackMoveToTime: 0.15
+  attackMoveToEase: 26
+  attackKnockBackAmount: 75
+  attackKnockBackShakeStrength: 25
+  attackKnockBackTime: 0.2
   attackKnockBackEase: 6
-  attackMoveBackTime: 0.15
+  attackMoveBackTime: 0.25
   attackMoveBackEase: 4
 --- !u!114 &-6973358634639818209
 MonoBehaviour:
@@ -1048,7 +1049,6 @@ RectTransform:
   - {fileID: 7199740840306809457}
   - {fileID: 6349265401802868057}
   - {fileID: 2492583842736791316}
-  - {fileID: 3611386204555009781}
   - {fileID: 6164440946622896066}
   - {fileID: 2285336409795668094}
   - {fileID: 8506977968748419502}
@@ -1159,7 +1159,7 @@ GameObject:
   - component: {fileID: 5263486111494083351}
   - component: {fileID: 1556368667087934931}
   m_Layer: 0
-  m_Name: CardSetColorTag
+  m_Name: Card Set Color Tag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1235,7 +1235,7 @@ GameObject:
   - component: {fileID: 506853054145357503}
   - component: {fileID: 8470441671292691609}
   m_Layer: 0
-  m_Name: Attack
+  m_Name: Attack Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1312,7 +1312,7 @@ GameObject:
   - component: {fileID: 679831884247456620}
   - component: {fileID: 1133875390605523127}
   m_Layer: 0
-  m_Name: AttackText
+  m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1446,7 +1446,7 @@ GameObject:
   - component: {fileID: 984703156877598432}
   - component: {fileID: 1295935989582342870}
   m_Layer: 0
-  m_Name: DescriptionText
+  m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1459,16 +1459,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7129834780842957257}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
-  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2299287321701531908}
+  m_Father: {fileID: 2492583842736791316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -49}
+  m_AnchoredPosition: {x: 0, y: 16}
   m_SizeDelta: {x: 118, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &984703156877598432
@@ -1582,7 +1582,7 @@ GameObject:
   - component: {fileID: 3758308498605840526}
   - component: {fileID: 1453846028665306360}
   m_Layer: 0
-  m_Name: Description
+  m_Name: Description Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1599,7 +1599,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3611386204555009781}
   m_Father: {fileID: 2299287321701531908}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1657,7 +1658,7 @@ GameObject:
   - component: {fileID: 4305979308125846755}
   - component: {fileID: 77844186508291622}
   m_Layer: 0
-  m_Name: Health
+  m_Name: Health Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1736,7 +1737,7 @@ GameObject:
   - component: {fileID: 2308293624275969145}
   - component: {fileID: 2711175865775701601}
   m_Layer: 0
-  m_Name: TypeBackground
+  m_Name: Type Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1929,7 +1930,7 @@ GameObject:
   - component: {fileID: 7119656004427051242}
   - component: {fileID: 7018741087287277845}
   m_Layer: 0
-  m_Name: Symbol
+  m_Name: Health Symbol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

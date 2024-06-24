@@ -125,6 +125,9 @@ namespace CardBattles.CardScripts.Additional {
         private float attackKnockBackAmount;
 
         [Foldout("Attack Animation"), SerializeField]
+        private float attackKnockBackShakeStrength;
+        
+        [Foldout("Attack Animation"), SerializeField]
         private float attackKnockBackTime;
 
         [Foldout("Attack Animation"), SerializeField]
@@ -136,25 +139,28 @@ namespace CardBattles.CardScripts.Additional {
         [Foldout("Attack Animation"), SerializeField]
         private Ease attackMoveBackEase;
 
+        //TODO Add distance scaling to animaation
         //USE LIKE A STATIC METHOD 
         public IEnumerator AttackAnimation(IAttacker attacker, IDamageable damageable) {
             var attack = attacker.GetAttack();
             var attackerTransform = attacker.GetTransform();
             var originalPosition = attackerTransform.position;
             var targetPosition = damageable.GetTransform().position;
-
+            var moveDirection = (targetPosition - originalPosition).normalized;
             yield return AttackMoveToTarget(attackerTransform, targetPosition);
 
             damageable.TakeDamage(attack);
 
-            yield return AttackKnockback(attackerTransform);
+            //TODO add variable to determine how much time to stop for at a target
+            yield return new WaitForEndOfFrame();
+            yield return AttackKnockback(attackerTransform,moveDirection);
 
             yield return AttackMoveBack(attackerTransform, originalPosition);
 
 
             yield return null;
         }
-
+        
         private IEnumerator AttackMoveToTarget(Transform attackerTransform, Vector3 finalPosition) {
             var moveToTarget = attackerTransform
                 .DOMove(
@@ -165,9 +171,38 @@ namespace CardBattles.CardScripts.Additional {
             yield return moveToTarget;
         }
 
-        private IEnumerator AttackKnockback(Transform attackerTransform) {
-            var knockbackPosition = attackerTransform.position;
-            knockbackPosition -= new Vector3(0, attackKnockBackAmount, 0);
+        private IEnumerator AttackKnockback(Transform attackerTransform, Vector3 moveDirection) {
+            //TODO for some reason this doenst animate both at once
+            //var move = StartCoroutine(AttackKnockbackMove(attackerTransform, moveDirection));
+            //var shake = StartCoroutine(AttackKnockbackShake(attackerTransform));
+            //TODO so i had to do this
+            var sequence = DOTween.Sequence();
+            
+            var knockbackPosition = attackerTransform.position - (moveDirection*attackKnockBackAmount);
+            
+
+            sequence.Join(attackerTransform
+                .DOMove(
+                    knockbackPosition,
+                    attackKnockBackTime)
+                .SetEase(attackKnockBackEase));
+
+
+            
+            /*
+            sequence.Join(attackerTransform
+                .DOShakePosition(
+                    attackKnockBackTime,
+                    attackKnockBackShakeStrength)
+                .SetEase(attackMoveToEase));*/
+                
+
+            sequence.Play();
+            yield return sequence.WaitForCompletion();
+        }
+        private IEnumerator AttackKnockbackMove(Transform attackerTransform, Vector3 moveDirection) {
+            var knockbackPosition = attackerTransform.position - moveDirection*attackKnockBackAmount;
+            
             var knockBack = attackerTransform
                 .DOMove(
                     knockbackPosition,
@@ -175,6 +210,16 @@ namespace CardBattles.CardScripts.Additional {
                 .SetEase(attackKnockBackEase)
                 .WaitForCompletion(true);
             yield return knockBack;
+        }
+
+        private IEnumerator AttackKnockbackShake(Transform attackerTransform) {
+            var shake = attackerTransform
+                .DOShakePosition(
+                    attackKnockBackTime,
+                    attackKnockBackShakeStrength)
+                .SetEase(attackMoveToEase)
+                .WaitForCompletion(true);
+            yield return shake;
         }
 
         private IEnumerator AttackMoveBack(Transform attackerTransform, Vector3 originalPosition) {

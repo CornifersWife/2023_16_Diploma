@@ -3,7 +3,6 @@ using CardBattles.Character.Mana.Additional;
 using CardBattles.Interfaces;
 using CardBattles.Interfaces.InterfaceObjects;
 using NaughtyAttributes;
-using Scenes.Irys_is_doing_her_best.Scripts;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
