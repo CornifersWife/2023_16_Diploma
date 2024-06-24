@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using CardBattles.CardScripts.Additional;
 using CardBattles.CardScripts.CardDatas;
 using CardBattles.CardScripts.Effects;
@@ -55,7 +56,7 @@ namespace CardBattles.CardScripts {
             name = cardName;
             flavourText = cardData.flavourText;
             description = cardData.description;
-            properties = cardData.properties;
+            properties = cardData.properties.ToList();
             foreach (var key in cardData.effectDictionary.Keys) {
                 effectDictionary.Add(key, new EffectTargetValue() {
                     effect  =cardData.effectDictionary[key].effect,

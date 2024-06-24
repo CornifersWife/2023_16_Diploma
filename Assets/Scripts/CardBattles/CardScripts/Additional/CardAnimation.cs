@@ -236,6 +236,8 @@ namespace CardBattles.CardScripts.Additional {
         }
 
         public IEnumerator DeathAnimation() {
+            
+            //TODO
             yield return null;
         }
     }
