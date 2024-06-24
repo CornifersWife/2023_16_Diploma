@@ -3,14 +3,13 @@ using System.Collections;
 using DG.Tweening;
 using NaughtyAttributes;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Board;
+using Scenes.Irys_is_doing_her_best.Scripts.My.Cards;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Interfaces;
 using UnityEngine;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
+namespace CardBattles.CardScripts.Additional {
     public class CardAnimation : MonoBehaviour {
-        private bool inAnimation = false; //TODO CHECK IF NEEDED
-        private bool isWaiting = false; //TODO CHECK IF NEEDED
-        [NonSerialized] public bool isPlayers = false;
+        [NonSerialized] public bool isPlayers;
 
         private float scaleInHand;
 
@@ -55,11 +54,6 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
         }
 
         private IEnumerator PlayerDrawAnimationCoroutine(Vector3 finalPosition) {
-            yield return new WaitUntil(() => isWaiting == false);
-            isWaiting = true;
-            yield return new WaitUntil(() => inAnimation == false);
-            inAnimation = true;
-            isWaiting = false;
             var sequence = DOTween.Sequence();
             sequence
                 .Append(transform
@@ -79,16 +73,9 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
 
             sequence.Play();
             yield return sequence.WaitForCompletion();
-
-            inAnimation = false;
         }
 
         private IEnumerator EnemyDrawAnimationCoroutine(Vector3 finalPosition) {
-            yield return new WaitUntil(() => isWaiting == false);
-            isWaiting = true;
-            yield return new WaitUntil(() => inAnimation == false);
-            inAnimation = true;
-            isWaiting = false;
             var sequence = DOTween.Sequence();
             sequence.Append(
                 transform
@@ -100,7 +87,6 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
                         , enemyDraw));
             sequence.Play();
             yield return sequence.WaitForCompletion();
-            inAnimation = false;
         }
 
 
@@ -109,13 +95,10 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
 
 
         public IEnumerator MoveTo(Vector3 vector3) {
-            yield return new WaitUntil(() => inAnimation == false);
-            inAnimation = true;
             yield return transform
                 .DOMove(vector3, moveToAnimationTime)
                 .SetEase(Ease.InOutSine)
                 .WaitForCompletion(true);
-            inAnimation = false;
         }
 
         [Foldout("Play Card")] [InfoBox("Currently only used when enemy plays a card")] [SerializeField]
@@ -124,13 +107,16 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
         [Foldout("Play Card")] [SerializeField]
         private Ease playCardEase = Ease.InOutSine;
 
-        public IEnumerator PlayAnimation(CardSpot cardSpot) {
+        public IEnumerator PlayToCardSpotAnimation(CardSpot cardSpot) {
             yield return transform
                 .DOMove(
                     cardSpot.transform.position,
                     playCardTime)
                 .SetEase(playCardEase);
         }
+        
+        
+        
 
         [Space, Header("MoveTo")] [Foldout("Attack Animation"), SerializeField]
         private float attackMoveToTime;
@@ -204,5 +190,12 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Cards {
                 .WaitForCompletion(true);
             yield return moveBack;
         }
+
+        //check if the card is dragged
+        private IEnumerator CanBeAnimated() {
+            throw new NotImplementedException();
+        }
     }
+    
+    
 }
