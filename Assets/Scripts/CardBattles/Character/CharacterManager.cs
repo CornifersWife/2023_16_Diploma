@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using CardBattles.CardScripts.Additional;
 using NaughtyAttributes;
 using Scenes.Irys_is_doing_her_best.Scripts.My.Cards;
 using UnityEngine;
@@ -69,7 +70,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             if (!isPlayers)
                 StartCoroutine(
                     card.GetComponent<CardAnimation>()
-                        .PlayAnimation(cardSpot));
+                        .PlayToCardSpotAnimation(cardSpot));
             
             card.GetComponent<CardDisplay>().ChangeCardVisible(true);
             if (isPlayers)
@@ -78,7 +79,7 @@ namespace Scenes.Irys_is_doing_her_best.Scripts.My.Board {
             else {
                 StartCoroutine(
                     card.GetComponent<CardAnimation>()
-                        .PlayAnimation(cardSpot));
+                        .PlayToCardSpotAnimation(cardSpot));
             }
 
             card.GetComponent<CardDragging>().droppedOnSlot = true;
