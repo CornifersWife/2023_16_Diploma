@@ -172,7 +172,7 @@ namespace CardBattles.CardScripts.Additional {
         }
 
         private IEnumerator AttackKnockback(Transform attackerTransform, Vector3 moveDirection) {
-            //TODO for some reason this doenst animate both at once
+            //TODO for some reason this doenst animate both shake and move at once
             //var move = StartCoroutine(AttackKnockbackMove(attackerTransform, moveDirection));
             //var shake = StartCoroutine(AttackKnockbackShake(attackerTransform));
             //TODO so i had to do this
