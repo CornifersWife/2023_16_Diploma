@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using CardBattles.CardScripts.Effects.Structure;
 using CardBattles.Enums;
 using NaughtyAttributes;
 using UnityEngine;
@@ -7,29 +6,21 @@ using UnityEngine.Serialization;
 
 namespace CardBattles.CardScripts.CardDatas {
     public abstract class CardData : ScriptableObject {
-        
-        [SerializeField] public string cardName;
-        [TextArea]
-        [SerializeField] public string description;
-        [TextArea]
-        [SerializeField] public string flavourText;
+        [BoxGroup("Card")] [SerializeField, ShowAssetPreview]
+        public Sprite sprite;
 
-        [SerializeField]
-        [EnumFlags]
+        [BoxGroup("Card")] [SerializeField] public string cardName;
+
+        [BoxGroup("Card")] [TextArea] [SerializeField]
+        public string description;
+
+        [BoxGroup("Card")] [TextArea] [SerializeField]
+        public string flavourText;
+
+        [BoxGroup("Data")] [SerializeField] 
         public List<AdditionalProperty> properties = new List<AdditionalProperty>();
-        
-        [SerializeField]
-        private Sprite sprite; 
-        public Sprite Sprite {
-            get => sprite;
-            set => sprite = value;
-        }
 
-        [SerializeField]
-        private List<EffectTargetPair> onPlayEffects = new List<EffectTargetPair>();
-        public List<EffectTargetPair> OnPlayEffects {
-            get => onPlayEffects;
-            set => onPlayEffects = value;
-        }
+        [BoxGroup("Data")] [SerializeField]
+        public TriggerEffectDictionary effectDictionary = new TriggerEffectDictionary();
     }
 }

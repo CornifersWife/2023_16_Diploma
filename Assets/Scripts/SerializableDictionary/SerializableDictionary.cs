@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using NaughtyAttributes;
 using UnityEngine;
 
 public abstract class SerializableDictionaryBase

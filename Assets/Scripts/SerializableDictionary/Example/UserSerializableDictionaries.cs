@@ -1,8 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System;
+using CardBattles.CardScripts.Effects;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using CardBattles.Enums;
 
+[Serializable]
+public class TriggerEffectDictionary : SerializableDictionary<EffectTrigger, EffectTargetValue> {}
 [Serializable]
 public class StringStringDictionary : SerializableDictionary<string, string> {}
 [Serializable]

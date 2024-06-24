@@ -103,5 +103,15 @@ namespace CardBattles.Character {
             //TODO ADD SOME ANIMATION
             Debug.Log("No more cards honey");
         }
+
+        public List<GameObject> GetCardFromSameCardSet(Card card) {
+            foreach (var cardSet in cardSets.Values) {
+                
+                if (cardSet.Contains(card)) {
+                    return cardSet.Select(e => e.gameObject).ToList();
+                }
+            }
+            return new List<GameObject>();
+        }
     }
 }

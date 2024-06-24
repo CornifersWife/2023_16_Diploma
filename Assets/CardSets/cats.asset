@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
   m_Name: cats_Minion_3875
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
   cardName: cats_Minion_3875
   description: 
   flavourText: 
-  Properties: 
-  sprite: {fileID: 0}
-  onPlayEffects: []
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
   Attack: 1
   MaxHealth: 2
-  onDeathEffects: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52,15 +53,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
   m_Name: cats_Minion_8701
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
   cardName: cats_Minion_8701
   description: 
   flavourText: 
-  Properties: 
-  sprite: {fileID: 0}
-  onPlayEffects: []
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
   Attack: 1
   MaxHealth: 1
-  onDeathEffects: []
 --- !u!114 &4154407072327070877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,15 +75,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
   m_Name: Big cat
   m_EditorClassIdentifier: 
+  sprite: {fileID: 1771446180, guid: 91ece539279118a438c900dfb08582ed, type: 3}
   cardName: Big cat
   description: description
   flavourText: He has a tendency to eat his siblings :(
-  Properties: 
-  sprite: {fileID: 1771446180, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  onPlayEffects: []
+  properties: 00000000
+  effectDictionary:
+    m_keys: 00000000
+    m_values:
+    - effect: 0
+      targetType: 0
+      value: 0
   Attack: 6
   MaxHealth: 6
-  onDeathEffects: []
 --- !u!114 &7135807820275663687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,12 +100,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
   m_Name: cats_Minion_2098
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
   cardName: cats_Minion_2098
   description: 
   flavourText: 
-  Properties: 
-  sprite: {fileID: 0}
-  onPlayEffects: []
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
   Attack: 1
   MaxHealth: 3
-  onDeathEffects: []

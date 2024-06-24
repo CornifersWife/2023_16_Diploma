@@ -120,7 +120,6 @@ namespace CardBattles.CardScripts.Additional {
         [Foldout("Attack Animation"), SerializeField]
         private Ease attackMoveToEase;
 
-
         [Space, Header("KnockBack")] [Foldout("Attack Animation"), SerializeField]
         private float attackKnockBackAmount;
 
@@ -156,8 +155,7 @@ namespace CardBattles.CardScripts.Additional {
             yield return AttackKnockback(attackerTransform,moveDirection);
 
             yield return AttackMoveBack(attackerTransform, originalPosition);
-
-
+            
             yield return null;
         }
         

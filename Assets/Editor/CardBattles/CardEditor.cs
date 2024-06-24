@@ -3,9 +3,9 @@ using CardBattles.CardScripts.CardDatas;
 using UnityEditor;
 using UnityEngine;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.InspectorMagic {
+namespace Editor.CardBattles {
     [CustomEditor(typeof(CardData), true)]
-    public class CardDataEditor : Editor {
+    public class CardDataEditor : UnityEditor.Editor {
         public override void OnInspectorGUI() {
             base.OnInspectorGUI();
             if (GUI.changed) {

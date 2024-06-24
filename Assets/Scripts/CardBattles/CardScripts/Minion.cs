@@ -1,13 +1,14 @@
 using System;
-using System.Collections.Generic;
 using CardBattles.CardScripts.CardDatas;
-using CardBattles.CardScripts.Effects.Structure;
 using CardBattles.Interfaces;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace CardBattles.CardScripts {
     public class Minion : Card, IAttacker {
-        
+        [Space(30), Header("Minion")] 
+        [BoxGroup("Data")]
+        [ShowNonSerializedField]
         private int attack;
 
         private int Attack {
@@ -21,7 +22,8 @@ namespace CardBattles.CardScripts {
             }
         }
 
-        [SerializeField]
+        [ShowNonSerializedField]
+        [BoxGroup("Data")]
         private int maxHealth;
 
         private int MaxHealth {
@@ -34,12 +36,13 @@ namespace CardBattles.CardScripts {
         }
 
 
-        [SerializeField]
+        [ShowNonSerializedField]
+        [BoxGroup("Data")]
         private int currentHealth;
 
         private int CurrentHealth {
             get => currentHealth;
-            set { 
+            set {
                 currentHealth = value > MaxHealth ? MaxHealth : value;
 
                 if (currentHealth <= 0) {
@@ -47,10 +50,6 @@ namespace CardBattles.CardScripts {
                 }
             }
         }
-
-        public List<EffectTargetPair> OnDeathEffects { get; private set; }
-
-        
 
         public override void Initialize(CardData cardData,bool isPlayersCard) {
             base.Initialize(cardData,isPlayersCard);
@@ -62,7 +61,6 @@ namespace CardBattles.CardScripts {
                 Attack = minionData.Attack;
                 MaxHealth = minionData.MaxHealth;
                 CurrentHealth = MaxHealth;
-                OnDeathEffects = minionData.OnDeathEffects;
                 cardDisplay.SetCardData(minionData);
             }
         }
@@ -74,8 +72,10 @@ namespace CardBattles.CardScripts {
         
 
         public void TakeDamage(int amount) {
+            string debugout = $"{name}: {currentHealth}";
             amount = amount > 0 ? amount : 0;
             CurrentHealth -= amount;
+            Debug.Log(debugout + $"--> {currentHealth}");
         }
 
         public void Heal(int amount) {

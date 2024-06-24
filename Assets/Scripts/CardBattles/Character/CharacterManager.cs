@@ -5,6 +5,7 @@ using System.Linq;
 using CardBattles.CardScripts;
 using CardBattles.CardScripts.Additional;
 using CardBattles.Character.Mana;
+using CardBattles.Enums;
 using CardBattles.Managers;
 using NaughtyAttributes;
 using UnityEngine;
@@ -124,6 +125,9 @@ namespace CardBattles.Character {
         // ReSharper disable Unity.PerformanceAnalysis
         public IEnumerator StartOfTurn() {
             yield return Draw(1);
+            foreach (var card in boardSide.GetNoNullCards()) {
+                card.DoEffect(EffectTrigger.OnEndTurn);
+            }
             manaManager.RefreshMana();
         }
 

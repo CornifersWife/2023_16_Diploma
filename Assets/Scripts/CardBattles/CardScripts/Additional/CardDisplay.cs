@@ -45,7 +45,7 @@ namespace CardBattles.CardScripts.Additional {
         }
 
         public void SetCardData(MinionData minionData) {
-            cardImage.sprite = minionData.Sprite;
+            cardImage.sprite = minionData.sprite;
             cardName.text = minionData.name;
             description.text = minionData.description;
             attack.text = minionData.Attack.ToString();
@@ -54,7 +54,7 @@ namespace CardBattles.CardScripts.Additional {
         }
 
         public void SetCardData(SpellData spellData) {
-            cardImage.sprite = spellData.Sprite;
+            cardImage.sprite = spellData.sprite;
             cardName.text = spellData.name;
             description.text = spellData.description;
             minionOnlyElements.GetComponent<CanvasGroup>().alpha = 0;

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using CardBattles.CardScripts;
 using CardBattles.Character;
+using CardBattles.Enums;
 using CardBattles.Interfaces;
 using UnityEngine;
 
@@ -10,9 +12,16 @@ namespace CardBattles.Managers {
 
         public static BoardManager Instance { get; private set; }
 
-        [SerializeField] private BoardSide player;
-        [SerializeField] private BoardSide enemy;
+        [SerializeField] private CharacterManager playerCharacter;
+        [SerializeField] private CharacterManager enemyCharacter;
+        private BoardSide player;
+        private BoardSide enemy;
 
+        private CharacterManager PlayingCharacter(bool isPlayers) => isPlayers ? playerCharacter : enemyCharacter;
+        private CharacterManager WaitingCharacter(bool isPlayers) => isPlayers ? enemyCharacter : playerCharacter;
+
+        private BoardSide Playing(bool isPlayers) => isPlayers ? player : enemy;
+        private BoardSide Waiting(bool isPlayers) => isPlayers ? enemy : player;
 
         private void Awake() {
             if (Instance == null) {
@@ -21,12 +30,15 @@ namespace CardBattles.Managers {
             else {
                 Destroy(gameObject);
             }
+
+            player = playerCharacter.boardSide;
+            enemy = enemyCharacter.boardSide;
         }
 
 
         public IEnumerator Attack(bool isPlayers) {
-            var attacker = isPlayers ? player : enemy;
-            var target = isPlayers ? enemy : player;
+            var attacker = Playing(isPlayers);
+            var target = Waiting(isPlayers);
 
             var coroutine = StartCoroutine(
                 AttackCourutine(
@@ -50,6 +62,52 @@ namespace CardBattles.Managers {
                 attackers[i].AttackTarget(targets[i]);
                 yield return new WaitForSeconds(betweenAttacksTime);
             }
+        }
+
+        public delegate List<GameObject> TargetsDelegate(TargetType targetType, Card card);
+
+        public List<GameObject> GetTargets(TargetType targetType, Card card) {
+            bool isPlayers = card.isPlayers;
+            List<GameObject> targets = new List<GameObject>();
+
+            switch (targetType) {
+                case TargetType.AllMinions:
+                    targets.AddRange(player.GetNoNullCardsObjects());
+                    targets.AddRange(enemy.GetNoNullCardsObjects());
+                    break;
+                case TargetType.EnemyMinions:
+                    targets.AddRange(Waiting(isPlayers).GetNoNullCardsObjects());
+                    break;
+                case TargetType.YourMinions:
+                    targets.AddRange(Playing(isPlayers).GetNoNullCardsObjects());
+                    break;
+                case TargetType.OpposingMinion:
+                    targets.AddRange(GetOpposingCard(card));
+                    break;
+                case TargetType.AdjacentMinions:
+                    targets.AddRange(Playing(isPlayers).GetAdjecentCards());
+                    break;
+                case TargetType.BothHeroes:
+                    targets.Add(player.hero.gameObject);
+                    targets.Add(enemy.hero.gameObject);
+                    break;
+                case TargetType.YourHero:
+                    targets.Add(Playing(isPlayers).hero.gameObject);
+                    break;
+                case TargetType.OpposingHero:
+                    targets.Add(Waiting(isPlayers).hero.gameObject);
+
+                    break;
+                case TargetType.CardSet:
+                    targets.AddRange(PlayingCharacter(isPlayers).deck.GetCardFromSameCardSet(card));
+                    break;
+            }
+
+            return targets;
+        }
+
+        private IEnumerable<GameObject> GetOpposingCard(Card card) {
+            throw new System.NotImplementedException();
         }
     }
 }

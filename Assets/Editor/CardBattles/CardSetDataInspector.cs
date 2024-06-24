@@ -2,11 +2,11 @@ using CardBattles.CardScripts.CardDatas;
 using UnityEditor;
 using UnityEngine;
 
-namespace Scenes.Irys_is_doing_her_best.Scripts.My.InspectorMagic {
+namespace Editor.CardBattles {
     [CustomEditor(typeof(CardSetData))]
-    public class CardSetDataInspector : Editor {
+    public class CardSetDataInspector : UnityEditor.Editor {
         public override void OnInspectorGUI() {
-            base.OnInspectorGUI(); // Draws the default inspector
+            base.OnInspectorGUI(); 
 
             CardSetData cardSet = (CardSetData)target;
 

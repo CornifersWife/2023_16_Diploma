@@ -1,18 +1,13 @@
-using System.Collections.Generic;
-using CardBattles.CardScripts.Effects.Structure;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace CardBattles.CardScripts.CardDatas {
     public class MinionData : CardData {
-        [Min(0)] public int Attack;
+        [Space(30), Header("Minion")] 
+        [BoxGroup("Data")][Min(0)] [SerializeField]
+        public int Attack;
 
-        [Min(1)] public int MaxHealth = 1;
-
-        [SerializeField] private List<EffectTargetPair> onDeathEffects = new List<EffectTargetPair>();
-
-        public List<EffectTargetPair> OnDeathEffects {
-            get => onDeathEffects;
-            set => onDeathEffects = value;
-        }
+        [BoxGroup("Data")] [SerializeField] [Min(1)]
+        public int MaxHealth = 1;
     }
 }

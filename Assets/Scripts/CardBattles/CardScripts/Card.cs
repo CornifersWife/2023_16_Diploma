@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using CardBattles.CardScripts.Additional;
 using CardBattles.CardScripts.CardDatas;
-using CardBattles.CardScripts.Effects.Structure;
+using CardBattles.CardScripts.Effects;
 using CardBattles.Enums;
 using CardBattles.Interfaces;
+using CardBattles.Managers;
 using JetBrains.Annotations;
 using NaughtyAttributes;
 using UnityEngine;
@@ -14,22 +15,31 @@ using UnityEngine;
 namespace CardBattles.CardScripts {
     [SuppressMessage("ReSharper", "UnusedMember.Local")]
     public abstract class Card : MonoBehaviour, IHasCost {
-        public CardDisplay cardDisplay;
-        public CardAnimation cardAnimation;
-        public CardDragging cardDragging;
+        [NonSerialized] private EffectManager.EffectDelegate effectDelegate;
 
-        public string CardName { get; set; }
-        public string Description { get; private set; }
-        public string FlavourText { get; private set; }
-        public List<AdditionalProperty> properties;
-        public CardSet CardSet { get; private set; }
-        public List<EffectTargetPair> OnPlayEffects { get; private set; }
+        [NonSerialized] public CardDisplay cardDisplay;
+        [NonSerialized] public CardAnimation cardAnimation;
+        [NonSerialized] public CardDragging cardDragging;
+
+        [BoxGroup("Card")] public string cardName;
+        [BoxGroup("Card"), ResizableTextArea] public string description;
+        [BoxGroup("Card"), ResizableTextArea] public string flavourText;
+        [BoxGroup("Data")] public List<AdditionalProperty> properties;
+
+        [NonSerialized] public CardSet cardSet;
+
+        [BoxGroup("Data")] public TriggerEffectDictionary effectDictionary;
+
 
         [CanBeNull] protected CardSpot isPlacedAt = null;
-        [NonSerialized] public bool isPlayers;
 
-        [ShowNativeProperty] private bool IsPlayers => isPlayers;
+        [Foldout("Additional")] [ShowNonSerializedField] [NonSerialized]
+        public bool isPlayers;
 
+
+        private bool HasCardSet() => cardSet is not null;
+
+        private bool HasCardSpot() => isPlacedAt is not null;
 
         private void Awake() {
             cardDisplay = GetComponent<CardDisplay>();
@@ -38,14 +48,14 @@ namespace CardBattles.CardScripts {
         }
 
         public virtual void Initialize(CardData cardData, bool isPlayersCard) {
-            this.isPlayers = isPlayersCard;
+            isPlayers = isPlayersCard;
             cardAnimation.isPlayers = isPlayersCard;
-            CardName = cardData.cardName;
-            name = CardName;
-            FlavourText = cardData.flavourText;
-            Description = cardData.description;
+            cardName = cardData.cardName;
+            name = cardName;
+            flavourText = cardData.flavourText;
+            description = cardData.description;
             properties = cardData.properties;
-            OnPlayEffects = cardData.OnPlayEffects;
+            effectDictionary = cardData.effectDictionary;
         }
 
         public virtual int GetCost() {
@@ -67,14 +77,27 @@ namespace CardBattles.CardScripts {
             isPlacedAt = cardSpot;
             cardDisplay.IsInPlay(cardSpot is not null);
         }
-        
-        
+
+
         public IEnumerator Move(Vector3 vector3) {
             yield return StartCoroutine(cardAnimation.MoveTo(vector3));
         }
 
         public IEnumerator DrawAnimation(Vector3 finalPosition) {
             yield return cardAnimation.DrawAnimation(finalPosition);
+        }
+
+        public void DoEffect(EffectTrigger effectTrigger) {
+            EffectTargetValue efv;
+            if (!effectDictionary.TryGetValue(effectTrigger, out var value))
+                return;
+            efv = value;
+            var targets = GetTargets(efv.targetType);
+            EffectManager.effectDictionary[efv.effect](targets, efv.value);
+        }
+
+        private List<GameObject> GetTargets(TargetType targetType) {
+            return BoardManager.Instance.GetTargets(targetType, this);
         }
     }
 }

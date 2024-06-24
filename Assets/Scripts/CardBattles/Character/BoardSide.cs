@@ -68,5 +68,31 @@ namespace CardBattles.Character {
 
             return output;
         }
+
+        public List<GameObject> GetNoNullCardsObjects() {
+            List<GameObject> output = new List<GameObject>();
+            var cards = cardSpots.Select(e => e.card).ToList();
+            foreach (var card in cards) {
+                if (card is not null) {
+                    output.Add(card.gameObject);
+                }
+            }
+
+            return output;
+        }
+        public List<Card> GetNoNullCards() {
+            List<Card> output = new List<Card>();
+            var cards = cardSpots.Select(e => e.card).ToList();
+            foreach (var card in cards) {
+                if (card is not null) {
+                    output.Add(card);
+                }
+            }
+            return output;
+        }
+
+        public IEnumerable<GameObject> GetAdjecentCards() {
+            throw new System.NotImplementedException();
+        }
     }
 }

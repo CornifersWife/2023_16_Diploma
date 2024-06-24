@@ -232,17 +232,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_MaxRayIntersections: 0
---- !u!114 &217067039 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1363167129428915371, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
-  m_PrefabInstance: {fileID: 4994773569284584966}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12f24bbb7aaf96546a300966fdc8ab17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &229165080
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,8 +937,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   betweenAttacksTime: 0.2
-  player: {fileID: 217067039}
-  enemy: {fileID: 1448815188}
+  playerCharacter: {fileID: 4994773569284584968}
+  enemyCharacter: {fileID: 521443531}
 --- !u!224 &954868105 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8087694594754018774, guid: 94025caa85302494cb82257a5b22e434, type: 3}
@@ -1323,17 +1312,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1448815188 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1367676564675362333, guid: b3651c7bb3a7e4d44a8ed57f90c8fb7e, type: 3}
-  m_PrefabInstance: {fileID: 2127471823}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12f24bbb7aaf96546a300966fdc8ab17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1488447664
 GameObject:
   m_ObjectHideFlags: 0
