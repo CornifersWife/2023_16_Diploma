@@ -10,6 +10,8 @@ namespace CardBattles.Character.Mana {
     public class ManaManager : MonoBehaviour {
         private ManaDisplay manaDisplay;
 
+        //TODO change
+        [ShowNativeProperty] private int Mana => currentMana;
         [SerializeField] public int maxMana = 2;
 
         [Min(0)] private int currentMana;

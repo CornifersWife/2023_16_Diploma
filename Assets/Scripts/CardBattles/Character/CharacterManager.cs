@@ -46,7 +46,6 @@ namespace CardBattles.Character {
             onCardPlayed.RemoveListener(OnCardPlayedHandler);
         }
 
-        //TODO remove
         public static void PlayACard(Card card, ICardPlayTarget target) {
             onCardPlayed.Invoke(card, target);
         }
@@ -89,9 +88,10 @@ namespace CardBattles.Character {
         }
 
         private void PlaySpell(Spell spell, ICardPlayTarget target) {
-            switch (target) {
+            return;
+            /*switch (target) {
                 
-            }
+            }*/
         }
 
         private void WrongCardTargetCombo() {

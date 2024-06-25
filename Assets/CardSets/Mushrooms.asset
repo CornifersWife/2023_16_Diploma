@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8349169886496739500
+--- !u!114 &-6294856186598340302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,20 +10,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
-  m_Name: Catnip
+  m_Name: Sleepy mushroom
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
-  cardName: Catnip
-  sprite: {fileID: 1805895790, guid: 91ece539279118a438c900dfb08582ed, type: 3}
+  cardName: Sleepy mushroom
+  sprite: {fileID: -531863168, guid: 91ece539279118a438c900dfb08582ed, type: 3}
+  description: Sleepy
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []
+  attack: 0
+  maxHealth: 1
+--- !u!114 &-4410584988164027419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Tall mushroom
+  m_EditorClassIdentifier: 
+  cardSet: {fileID: 11400000}
+  cardName: Tall mushroom
+  sprite: {fileID: 1496995457, guid: 91ece539279118a438c900dfb08582ed, type: 3}
   description: 
   flavourText: 
   properties: 
   effectDictionary:
     m_keys: 
     m_values: []
-  attack: 2
-  maxHealth: 4
---- !u!114 &-8147225101921612015
+  attack: 4
+  maxHealth: 1
+--- !u!114 &-2504094293402209270
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -32,20 +55,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
-  m_Name: Orange cat
+  m_Script: {fileID: 11500000, guid: 537dd90dd58445ba8276e5a74251b9d7, type: 3}
+  m_Name: Healing mushroom
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
-  cardName: Orange cat
-  sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
-  description: Has a 50% chance to not attack
+  cardName: Healing mushroom
+  sprite: {fileID: -608562150, guid: 91ece539279118a438c900dfb08582ed, type: 3}
+  description: 'Heals, all allies, by 2 hp '
   flavourText: 
   properties: 
   effectDictionary:
     m_keys: 
     m_values: []
-  attack: 5
-  maxHealth: 4
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56,17 +77,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c29dbaa46b5e2f444b66ac66cc96aaae, type: 3}
-  m_Name: cats
+  m_Name: Mushrooms
   m_EditorClassIdentifier: 
-  displayName: Cats
+  displayName: Mushrooms
   cards:
-  - {fileID: 4154407072327070877}
-  - {fileID: -8349169886496739500}
-  - {fileID: 7135807820275663687}
-  - {fileID: -8147225101921612015}
-  - {fileID: 1641530078219909850}
-  setColor: {r: 1, g: 0, b: 0, a: 1}
---- !u!114 &1641530078219909850
+  - {fileID: -4410584988164027419}
+  - {fileID: 5882690054721663262}
+  - {fileID: -6294856186598340302}
+  - {fileID: -2504094293402209270}
+  setColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &5882690054721663262
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,61 +95,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 537dd90dd58445ba8276e5a74251b9d7, type: 3}
-  m_Name: Feeding time
+  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
+  m_Name: Poisonous Mushroom
   m_EditorClassIdentifier: 
   cardSet: {fileID: 11400000}
-  cardName: Feeding time
-  sprite: {fileID: -572797459, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  description: Gives all other cards in this set +3 health
+  cardName: Poisonous Mushroom
+  sprite: {fileID: -509220665, guid: 91ece539279118a438c900dfb08582ed, type: 3}
+  description: Kills all cards with one hit
   flavourText: 
   properties: 
   effectDictionary:
     m_keys: 
     m_values: []
---- !u!114 &4154407072327070877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
-  m_Name: Big cat
-  m_EditorClassIdentifier: 
-  cardSet: {fileID: 11400000}
-  cardName: Big cat
-  sprite: {fileID: 1771446180, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  description: Kitty
-  flavourText: He has a tendency to eat his siblings :(
-  properties: 
-  effectDictionary:
-    m_keys: 
-    m_values: []
-  attack: 4
-  maxHealth: 2
---- !u!114 &7135807820275663687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd067ac95b274a8490422f36a7f8252b, type: 3}
-  m_Name: Catnip Tea
-  m_EditorClassIdentifier: 
-  cardSet: {fileID: 11400000}
-  cardName: Catnip Tea
-  sprite: {fileID: 634790958, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  description: Buffs your cards
-  flavourText: Its totally not wine
-  properties: 
-  effectDictionary:
-    m_keys: 
-    m_values: []
   attack: 1
-  maxHealth: 3
+  maxHealth: 6

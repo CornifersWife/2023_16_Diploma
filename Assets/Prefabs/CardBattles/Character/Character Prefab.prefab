@@ -259,7 +259,6 @@ MonoBehaviour:
   hero: {fileID: 6368447993570103243}
   boardSide: {fileID: 1363167129428915371}
   manaManager: {fileID: 515543031216963993}
-  isPlayers: 1
 --- !u!1 &1797842050393473140
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,8 +511,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -642,9 +641,9 @@ MonoBehaviour:
   hpText: {fileID: 8648045876690742476}
   fullHpColor: {r: 0, g: 0, b: 0, a: 1}
   missingHpColor: {r: 0.3529412, g: 0.11764706, b: 0.11764706, a: 0}
-  hitAnimatonDuration: 0.3
-  hitAnimatonShakeStrength: 10
-  hitAnimatonKnockbackStrength: 30
+  hitAnimationDuration: 0
+  hitAnimationShakeStrength: 0
+  hitAnimationKnockbackStrength: 0
 --- !u!223 &7062501365206036219
 Canvas:
   m_ObjectHideFlags: 0
@@ -725,7 +724,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -120}
+  m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1363167129428915371
@@ -838,9 +837,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSetDatas:
   - {fileID: 11400000, guid: 66865fefba2b02a4dafc9b77cc8017ce, type: 2}
-  - {fileID: 11400000, guid: 66865fefba2b02a4dafc9b77cc8017ce, type: 2}
-  Cards: []
-  isPlayers: 0
+  - {fileID: 11400000, guid: 93a68ce33da350a4c95448a9156b6763, type: 2}
+  cards: []
 --- !u!223 &8087347571029791455
 Canvas:
   m_ObjectHideFlags: 0

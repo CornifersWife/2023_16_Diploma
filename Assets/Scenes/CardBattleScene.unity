@@ -307,6 +307,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229165080}
   m_CullTransparentMesh: 1
+--- !u!1 &325818536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 325818537}
+  - component: {fileID: 325818539}
+  - component: {fileID: 325818538}
+  m_Layer: 5
+  m_Name: belowBoard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &325818537
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325818536}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 585415136}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 300}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &325818538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325818536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.23584908, g: 0.13216448, b: 0.13216448, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &325818539
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325818536}
+  m_CullTransparentMesh: 1
 --- !u!1 &336690233
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,10 +443,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 0, b: 0.009685516, a: 1}
-    m_PressedColor: {r: 0.045694947, g: 1, b: 0, a: 1}
-    m_SelectedColor: {r: 0, g: 0.20207572, b: 1, a: 1}
-    m_DisabledColor: {r: 0.46226418, g: 0.4243234, b: 0.23287648, a: 0.5019608}
+    m_HighlightedColor: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
+    m_PressedColor: {r: 0.04705882, g: 1, b: 0, a: 1}
+    m_SelectedColor: {r: 0, g: 1, b: 0.00674963, a: 1}
+    m_DisabledColor: {r: 0.4528302, g: 0.32549238, b: 0.1170523, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.01
   m_SpriteState:
@@ -390,10 +465,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1101153909}
-        m_TargetAssemblyTypeName: Scenes.Irys_is_doing_her_best.Scripts.My.Board.TurnManager,
-          Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 4994773569284584968}
+        m_TargetAssemblyTypeName: CardBattles.Character.CharacterManager, Assembly-CSharp
+        m_MethodName: DrawACard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -599,6 +673,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 954868105}
+  - {fileID: 325818537}
   - {fileID: 726530921}
   - {fileID: 630963488}
   m_Father: {fileID: 0}
@@ -716,7 +791,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 101
   m_TargetDisplay: 0
 --- !u!225 &633087930
 CanvasGroup:
@@ -846,10 +921,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 0, b: 0.009685516, a: 1}
-    m_PressedColor: {r: 0.045694947, g: 1, b: 0, a: 1}
-    m_SelectedColor: {r: 0, g: 0.20207572, b: 1, a: 1}
-    m_DisabledColor: {r: 0.46226418, g: 0.4243234, b: 0.23287648, a: 0.5019608}
+    m_HighlightedColor: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
+    m_PressedColor: {r: 0.04705882, g: 1, b: 0, a: 1}
+    m_SelectedColor: {r: 0, g: 1, b: 0.00674963, a: 1}
+    m_DisabledColor: {r: 0.4528302, g: 0.32549238, b: 0.1170523, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.01
   m_SpriteState:
@@ -979,11 +1054,6 @@ MonoBehaviour:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8087694594754018774, guid: 94025caa85302494cb82257a5b22e434, type: 3}
   m_PrefabInstance: {fileID: 1828333911}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1101153909 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1577691811338400432, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
-  m_PrefabInstance: {fileID: 4994773569284584966}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1207863697
 GameObject:
@@ -1335,10 +1405,10 @@ MonoBehaviour:
   drawButtonEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4994773569284584968}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Scenes.Irys_is_doing_her_best.Scripts.My.Board.CharacterManager,
           Assembly-CSharp
-        m_MethodName: DrawACard
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1584,6 +1654,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 585415136}
     m_Modifications:
+    - target: {fileID: 346244956261130896, guid: 94025caa85302494cb82257a5b22e434, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2779277525124394148, guid: 94025caa85302494cb82257a5b22e434, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
@@ -1795,6 +1869,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 726530921}
     m_Modifications:
+    - target: {fileID: 11471108929920545, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
+      propertyPath: cardSetDatas.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11471108929920545, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
+      propertyPath: cardSetDatas.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 93a68ce33da350a4c95448a9156b6763, type: 2}
     - target: {fileID: 675005521252453992, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       propertyPath: m_TagString
       value: Player
@@ -1975,7 +2057,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1304091546832479286, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
   m_PrefabInstance: {fileID: 4994773569284584966}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1101153909}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba40ff045a58c4e43b4ffae9ea1c9a32, type: 3}

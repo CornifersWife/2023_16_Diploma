@@ -34,6 +34,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1097064367, guid: d529f63f32c1a2b438dc3ffcf58f7a73, type: 3}
+    - target: {fileID: 1556368667087934931, guid: 94025caa85302494cb82257a5b22e434, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1873686710, guid: b2713bbf286ea3b4d8cf4478d348ee16, type: 3}
+    - target: {fileID: 1980067742894569591, guid: 94025caa85302494cb82257a5b22e434, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1654849837, guid: b2713bbf286ea3b4d8cf4478d348ee16, type: 3}
     - target: {fileID: 2107554566278885536, guid: 94025caa85302494cb82257a5b22e434, type: 3}
       propertyPath: m_text
       value: 'Name
@@ -201,3 +209,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9250c33de7410ebec48173040697b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardName: 
+  description: 
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 
+    m_values: []

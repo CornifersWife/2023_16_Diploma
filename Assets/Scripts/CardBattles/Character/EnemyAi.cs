@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using CardBattles.CardScripts;
 using CardBattles.Managers;
 using NaughtyAttributes;
 using UnityEngine;
@@ -15,7 +17,9 @@ namespace CardBattles.Character {
 
         [SerializeField] private StringFloatDictionary baseWeights;
 
+        private List<Card> CardsInHand => character.hand.Cards.Where(e => e is Minion).ToList();
         
+            
         [BoxGroup("Debug"),SerializeField] private bool showInnerDialogue;//debug
         
         private StringFloatDictionary weights;
@@ -32,7 +36,7 @@ namespace CardBattles.Character {
                 weights.Add(key,baseWeights[key]);
             }
         }
-
+        
         public IEnumerator PlayTurn() {
             CopyWeightValues();
 
@@ -68,7 +72,7 @@ namespace CardBattles.Character {
 
         private bool NoMoreActions() {
             bool deck = character.deck.cards.Any();
-            bool hand = character.hand.Cards.Any();
+            bool hand = CardsInHand.Any();
             
             //TODO account for 0-mana cost cards
             bool mana = character.manaManager.CurrentMana > 0;
@@ -99,7 +103,7 @@ namespace CardBattles.Character {
         }
 
         private IEnumerator PlayACard() {
-            var hand = character.hand.Cards;
+            var hand = CardsInHand;
             var cardSpots = character.boardSide.GetEmptyCardSpots();
 
 
@@ -109,6 +113,10 @@ namespace CardBattles.Character {
             }
 
             var card = hand[random.Next(hand.Count)];
+            while (card is not Minion) {
+                card = hand[random.Next(hand.Count)];
+            }
+                
             var cardSpot = cardSpots[random.Next(cardSpots.Count)];
 
             yield return character.PlayCardCoroutine(card, cardSpot, waitBetweenPlayingCards);
@@ -117,12 +125,12 @@ namespace CardBattles.Character {
 
         //TODO MAGIC NUMBERS
         private void ModifyProbabilities() {
-            if (character.hand.Cards.Count == 0) {
+            if (CardsInHand.Count == 0) {
                 weights = new StringFloatDictionary { { "Draw", 1f } };
                 return;
             }
 
-            if (character.hand.Cards.Count <= 1)
+            if (CardsInHand.Count <= 1)
                 weights["Draw"] *= 2;
 
             if (!character.boardSide.GetEmptyCardSpots().Any()) {
