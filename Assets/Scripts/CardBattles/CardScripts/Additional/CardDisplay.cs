@@ -48,8 +48,8 @@ namespace CardBattles.CardScripts.Additional {
             cardImage.sprite = minionData.sprite;
             cardName.text = minionData.name;
             description.text = minionData.description;
-            attack.text = minionData.Attack.ToString();
-            health.text = minionData.MaxHealth.ToString();
+            attack.text = minionData.attack.ToString();
+            health.text = minionData.maxHealth.ToString();
             // TODO IMPLEMENT cardSetSymbol.sprite and colors
         }
 

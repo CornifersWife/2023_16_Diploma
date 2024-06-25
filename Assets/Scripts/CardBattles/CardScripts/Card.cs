@@ -8,62 +8,50 @@ using CardBattles.CardScripts.CardDatas;
 using CardBattles.CardScripts.Effects;
 using CardBattles.Enums;
 using CardBattles.Interfaces;
+using CardBattles.Interfaces.InterfaceObjects;
 using CardBattles.Managers;
 using JetBrains.Annotations;
 using NaughtyAttributes;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace CardBattles.CardScripts {
     [SuppressMessage("ReSharper", "UnusedMember.Local")]
-    public abstract class Card : MonoBehaviour, IHasCost {
+    public abstract class Card : PlayerEnemyMonoBehaviour, IHasCost {
         [NonSerialized] private EffectManager.EffectDelegate effectDelegate;
 
-        [NonSerialized] public CardDisplay cardDisplay;
-        [NonSerialized] public CardAnimation cardAnimation;
-        [NonSerialized] public CardDragging cardDragging;
+        [NonSerialized] protected CardDisplay cardDisplay;
+        [NonSerialized] protected CardAnimation cardAnimation;
+        [NonSerialized] protected CardDragging cardDragging;
 
         [BoxGroup("Card")] public string cardName;
         [BoxGroup("Card"), ResizableTextArea] public string description;
         [BoxGroup("Card"), ResizableTextArea] public string flavourText;
-        [BoxGroup("Data")] public List<AdditionalProperty> properties;
 
-        [NonSerialized] public CardSet cardSet;
+        [BoxGroup("Data"),Space] public List<AdditionalProperty> properties;
 
+        [NonSerialized] public string cardSetName;
+[HorizontalLine(1f)]
         [BoxGroup("Data")] public TriggerEffectDictionary effectDictionary;
 
+        [HorizontalLine(1f)]
 
-        [CanBeNull] protected CardSpot isPlacedAt = null;
-
-        [Foldout("Additional")] [ShowNonSerializedField] [NonSerialized]
-        public bool isPlayers;
-
-
-        private bool HasCardSet() => cardSet is not null;
-
-        private bool HasCardSpot() => isPlacedAt is not null;
-
+        [CanBeNull] protected CardSpot isPlacedAt;
+        
         private void Awake() {
             cardDisplay = GetComponent<CardDisplay>();
             cardAnimation = GetComponent<CardAnimation>();
             cardDragging = GetComponent<CardDragging>();
         }
         
-        public virtual void Initialize(CardData cardData, bool isPlayersCard) {
-            isPlayers = isPlayersCard;
-            cardAnimation.isPlayers = isPlayersCard;
+        public virtual void Initialize(CardData cardData,bool isPlayersCard) {
+            SetTag(isPlayersCard);
             cardName = cardData.cardName;
             name = cardName;
             flavourText = cardData.flavourText;
             description = cardData.description;
             properties = cardData.properties.ToList();
-            foreach (var key in cardData.effectDictionary.Keys) {
-                effectDictionary.Add(key, new EffectTargetValue() {
-                    effect  =cardData.effectDictionary[key].effect,
-                    targetType  = cardData.effectDictionary[key].targetType,
-                    value  = cardData.effectDictionary[key].value,
-                });
-            }
+            cardSetName = cardData.cardSet.name;
+            effectDictionary = cardData.EffectDictionary;
         }
 
         public virtual int GetCost() {
@@ -86,6 +74,9 @@ namespace CardBattles.CardScripts {
             cardDisplay.IsInPlay(cardSpot is not null);
         }
 
+        public void ChangeCardVisible(bool isPlayersVal) {
+            cardDisplay.ChangeCardVisible(isPlayersVal);
+        }
 
         public IEnumerator Move(Vector3 vector3) {
             yield return StartCoroutine(cardAnimation.MoveTo(vector3));
@@ -96,12 +87,12 @@ namespace CardBattles.CardScripts {
         }
 
         public void DoEffect(EffectTrigger effectTrigger) {
-            EffectTargetValue efv;
+            EffectTargetValue effectTargetValue;
             if (!effectDictionary.TryGetValue(effectTrigger, out var value))
                 return;
-            efv = value;
-            var targets = GetTargets(efv.targetType);
-            EffectManager.effectDictionary[efv.effect](targets, efv.value);
+            effectTargetValue = value;
+            var targets = GetTargets(effectTargetValue.targetType);
+            EffectManager.effectDictionary[effectTargetValue.effectName](targets, effectTargetValue.value);
         }
 
         private List<GameObject> GetTargets(TargetType targetType) {

@@ -135,3 +135,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13101e29391c487396c2222b2360684d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardName: 
+  description: 
+  flavourText: 
+  properties: 
+  effectDictionary:
+    m_keys: 00000000
+    m_values:
+    - effectName: 0
+      targetType: 0
+      value: 0
+  dyingDuration: 0.5
+  attack: 0
+  maxHealth: 0

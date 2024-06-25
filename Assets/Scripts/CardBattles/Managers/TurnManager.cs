@@ -101,7 +101,7 @@ namespace CardBattles.Managers {
             yield return ChangeTurnActions();
             yield return new WaitForSeconds(turnChangeBuffer);
 
-            isPlayersTurn = waiting.isPlayers;
+            isPlayersTurn = waiting.IsPlayers;
             UpdatePlayers();
             if (playing == enemy) {
                 yield return enemyAi.PlayTurn();

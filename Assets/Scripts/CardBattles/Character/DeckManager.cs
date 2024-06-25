@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using CardBattles.CardScripts;
 using CardBattles.CardScripts.CardDatas;
+using CardBattles.Interfaces.InterfaceObjects;
 using CardBattles.Managers;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace CardBattles.Character {
-    public class DeckManager : MonoBehaviour {
+    public class DeckManager : PlayerEnemyMonoBehaviour {
         [SerializeField] private List<CardSetData> cardSetDatas = new List<CardSetData>();
 
         
@@ -16,21 +18,10 @@ namespace CardBattles.Character {
         private SerializableDictionary<string, List<Card>> cardSets =
             new SerializableDictionary<string, List<Card>>();
 
-        public List<Card> Cards = new List<Card>();
-        [SerializeField] public bool isPlayers;
-
-        private void Awake() {
-            isPlayers = CompareTag("Player");
-        }
-
+        public List<Card> cards = new List<Card>();
+        
         private void Start() {
-            try {
-                isPlayers = GetComponentInParent<CharacterManager>().isPlayers;
-            }
-            catch (Exception e) {
-                Debug.LogException(e);
-            }
-
+            
             if (!Application.isEditor)
                 cardSetDatas = LoadCardSetData();
 
@@ -43,7 +34,7 @@ namespace CardBattles.Character {
         }
 
         private List<CardSetData> LoadCardSetData() {
-            if (isPlayers)
+            if (IsPlayers)
                 return InventoryController.Instance.GetCardSets();
             return EnemyStateManager.Instance.GetCurrentEnemy().GetDeck();
         }
@@ -72,8 +63,8 @@ namespace CardBattles.Character {
                     }
 
                     var card = CardManager.Instance.CreateCard
-                    (cardData, gameObject.transform, isPlayers); 
-                    card.tag = isPlayers ? "Player": "Enemy";
+                    (cardData, this); 
+                    //card.tag = isPlayers ? "Player": "Enemy";
 
                     if (card == null) {
                         Debug.LogError("Card creation failed for cardData in cardSetData: " + cardSetData.displayName);
@@ -96,7 +87,7 @@ namespace CardBattles.Character {
 
             var shuffledList = allCards.OrderBy(_ => Guid.NewGuid()).ToList(); //randomly shuffles
 
-            Cards.AddRange(shuffledList);
+            cards.AddRange(shuffledList);
         }
 
         public void NoMoreCards() {

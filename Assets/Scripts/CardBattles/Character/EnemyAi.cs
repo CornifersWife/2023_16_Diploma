@@ -67,7 +67,7 @@ namespace CardBattles.Character {
         }
 
         private bool NoMoreActions() {
-            bool deck = character.deck.Cards.Any();
+            bool deck = character.deck.cards.Any();
             bool hand = character.hand.Cards.Any();
             
             //TODO account for 0-mana cost cards

@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 using CardBattles.Enums;
 
 [Serializable]
-public class TriggerEffectDictionary : SerializableDictionary<EffectTrigger, EffectTargetValue> {}
+public class TriggerEffectDictionary : SerializableDictionary<EffectTrigger, EffectTargetValue>{}
 [Serializable]
 public class StringStringDictionary : SerializableDictionary<string, string> {}
 [Serializable]

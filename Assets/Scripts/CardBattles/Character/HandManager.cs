@@ -46,7 +46,7 @@ namespace CardBattles.Character {
             yield return new WaitForEndOfFrame();
 
             for (int j = 0; i < Cards.Count && j < cardsToDraw.Count; i++, j++) {
-                Cards[i].cardDisplay.ChangeCardVisible(isPlayers);
+                Cards[i].ChangeCardVisible(isPlayers);
                 Cards[i].transform.SetParent(transform, true);
                 var coroutine = StartCoroutine(Cards[i].DrawAnimation(finalPositions[i]));
 

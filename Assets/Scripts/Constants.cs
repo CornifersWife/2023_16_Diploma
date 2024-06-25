@@ -1,4 +1,5 @@
-public class Constants {
-        //TODO add as many constants into here as possible
-        //like staring draw
+using UnityEngine;
+
+public class Constants : ScriptableObject {
+        
 }

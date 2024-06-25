@@ -3,18 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using CardBattles.CardScripts;
 using CardBattles.Interfaces;
+using CardBattles.Interfaces.InterfaceObjects;
 using NaughtyAttributes;
 using UnityEngine;
 
 namespace CardBattles.Character {
-    public class BoardSide : MonoBehaviour {
+    public class BoardSide : PlayerEnemyMonoBehaviour {
         [SerializeField] public CardSpot[] cardSpots = new CardSpot[4];
         [SerializeField,Required] public Hero.Hero hero = null!;
-        private bool isPlayers;
-
-        private void Awake() {
-            isPlayers = CompareTag("Player");
-        }
+      
 
         private void Start() {
             GetCardSpots();

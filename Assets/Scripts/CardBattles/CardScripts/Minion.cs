@@ -7,12 +7,9 @@ using UnityEngine;
 
 namespace CardBattles.CardScripts {
     public class Minion : Card, IAttacker {
-
         [SerializeField] private float dyingDuration = 0.5f;
-        
-        [Space(30), Header("Minion")] 
-        [BoxGroup("Data")]
-        [ShowNonSerializedField]
+
+        [Space(20), Header("Minion")] [HorizontalLine(1f)] [BoxGroup("Data")] [SerializeField]
         private int attack;
 
         private int Attack {
@@ -22,27 +19,23 @@ namespace CardBattles.CardScripts {
                     attack = 0;
                     return;
                 }
+
                 attack = value;
             }
         }
 
-        [ShowNonSerializedField]
-        [BoxGroup("Data")]
-        private int maxHealth;
+        [SerializeField] [BoxGroup("Data")] private int maxHealth;
 
         private int MaxHealth {
             get => maxHealth;
             set {
                 maxHealth = value;
-                if(CurrentHealth>maxHealth)
-                   CurrentHealth = value;
+                if (CurrentHealth > maxHealth)
+                    CurrentHealth = value;
             }
         }
 
-
-        [ShowNonSerializedField]
-        [BoxGroup("Data")]
-        private int currentHealth;
+        [BoxGroup("Data")] private int currentHealth;
 
         private int CurrentHealth {
             get => currentHealth;
@@ -55,15 +48,15 @@ namespace CardBattles.CardScripts {
             }
         }
 
-        public override void Initialize(CardData cardData,bool isPlayersCard) {
-            base.Initialize(cardData,isPlayersCard);
-            
+        public override void Initialize(CardData cardData, bool isPlayersCard) {
+            base.Initialize(cardData, isPlayersCard);
+
             if (cardData is not MinionData minionData) {
                 Debug.LogError("Invalid data type passed to Minion.Initialize");
             }
             else {
-                Attack = minionData.Attack;
-                MaxHealth = minionData.MaxHealth;
+                Attack = minionData.attack;
+                MaxHealth = minionData.maxHealth;
                 CurrentHealth = MaxHealth;
                 cardDisplay.SetCardData(minionData);
             }
@@ -72,8 +65,7 @@ namespace CardBattles.CardScripts {
         public Action<Vector3, IDamageable> action;
         public int GetAttack() => Attack;
         public void ChangeAttackBy(int amount) => Attack += amount;
-        
-        
+
 
         public void TakeDamage(int amount) {
             amount = amount > 0 ? amount : 0;
@@ -84,7 +76,7 @@ namespace CardBattles.CardScripts {
             amount = amount > 0 ? amount : 0;
             CurrentHealth += amount;
         }
-        
+
         public void Die() {
             StartCoroutine(DeathCoroutine());
         }
@@ -93,7 +85,6 @@ namespace CardBattles.CardScripts {
             yield return cardAnimation.DeathAnimation();
             yield return new WaitForSeconds(dyingDuration);
             Destroy(gameObject);
-
         }
 
         public Transform GetTransform() {

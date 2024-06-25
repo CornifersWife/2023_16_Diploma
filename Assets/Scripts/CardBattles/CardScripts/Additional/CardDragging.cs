@@ -25,7 +25,7 @@ namespace CardBattles.CardScripts.Additional {
         }
 
         public void OnBeginDrag(PointerEventData eventData) {
-            if (!enabled || !card.isPlayers || droppedOnSlot) {
+            if (!enabled || !card.IsPlayers || droppedOnSlot) {
                 enabled = false;
                 return;
             }

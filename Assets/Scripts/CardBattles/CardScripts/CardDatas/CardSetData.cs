@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace CardBattles.CardScripts.CardDatas {
+    [Serializable]
     [CreateAssetMenu(fileName = "New CardSet", menuName = "Cards/CardSet")]
     public class CardSetData :ScriptableObject {
         [SerializeField]

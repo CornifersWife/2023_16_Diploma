@@ -67,7 +67,7 @@ namespace CardBattles.Managers {
         public delegate List<GameObject> TargetsDelegate(TargetType targetType, Card card);
 
         public List<GameObject> GetTargets(TargetType targetType, Card card) {
-            bool isPlayers = card.isPlayers;
+            bool isPlayers = card.IsPlayers;
             List<GameObject> targets = new List<GameObject>();
 
             switch (targetType) {
