@@ -48,6 +48,7 @@ namespace CardBattles.Managers {
             return cardComponent;
         }
 
+        /*
         public void PlayACard(CharacterManager character, Card card, CharacterManager.ITarget target) {
             switch (card)
             {
@@ -79,6 +80,6 @@ namespace CardBattles.Managers {
 
         private void PlayASpell(CharacterManager character, Spell spell, CharacterManager.ITarget target) {
             throw new System.NotImplementedException();
-        }
+        }*/
     }
 }

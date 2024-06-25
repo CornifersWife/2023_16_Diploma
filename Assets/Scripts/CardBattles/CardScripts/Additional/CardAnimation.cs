@@ -235,9 +235,14 @@ namespace CardBattles.CardScripts.Additional {
             throw new NotImplementedException();
         }
 
-        public IEnumerator DeathAnimation() {
-            
-            //TODO
+        public IEnumerator Die() {
+            yield return null;
+        }
+
+        public IEnumerator TakeDamage() {
+            yield return null;
+        }
+        public IEnumerator Play() {
             yield return null;
         }
     }

@@ -6,6 +6,7 @@ using CardBattles.CardScripts;
 using CardBattles.CardScripts.Additional;
 using CardBattles.Character.Mana;
 using CardBattles.Enums;
+using CardBattles.Interfaces;
 using CardBattles.Interfaces.InterfaceObjects;
 using CardBattles.Managers;
 using NaughtyAttributes;
@@ -14,17 +15,11 @@ using UnityEngine.Events;
 
 namespace CardBattles.Character {
     public class CharacterManager : PlayerEnemyMonoBehaviour {
-        public interface ITarget {
-            //CardSpot, Minion, Hero, Board
-        }
         [Serializable]
-        public class CardEvent : UnityEvent<Card, CardSpot> {
+        public class CardEvent : UnityEvent<Card, ICardPlayTarget> {
         }
 
-        
-        [Serializable]
-        public class CardEventNew : UnityEvent<Card, ITarget> {
-        }
+
         [Header("Data")] [SerializeField] public HandManager hand;
         [SerializeField] public DeckManager deck;
         [SerializeField] public Hero.Hero hero;
@@ -39,34 +34,25 @@ namespace CardBattles.Character {
                 return false;
             }
         }
-        
-        //TODO remove
+
         private static CardEvent onCardPlayed = new CardEvent();
-        private static CardEventNew onCardPlayedNew = new CardEventNew();
 
 
         public void Awake() {
             onCardPlayed.AddListener(OnCardPlayedHandler);
-            onCardPlayedNew.AddListener(PlayCardHandler);
         }
 
         public void OnDestroy() {
             onCardPlayed.RemoveListener(OnCardPlayedHandler);
-            onCardPlayedNew.AddListener(PlayCardHandler);
-
         }
+
         //TODO remove
-        public static void PlayACard(Card card, CardSpot cardSpot) {
-            onCardPlayed.Invoke(card, cardSpot);
+        public static void PlayACard(Card card, ICardPlayTarget target) {
+            onCardPlayed.Invoke(card, target);
         }
 
-        public static void PlayACardNew(Card card, ITarget target) {
-            onCardPlayedNew.Invoke(card, target);
-            Debug.Log("added to reformat");
-        }
 
-        //new
-        private void PlayCardHandler(Card card, ITarget target) {
+        private void OnCardPlayedHandler(Card card, ICardPlayTarget target) {
             if (card.IsPlayers != IsPlayers)
                 return;
             if (!IsYourTurn)
@@ -74,35 +60,50 @@ namespace CardBattles.Character {
             if (!manaManager.TryUseMana(card)) {
                 return;
             }
-            CardManager.Instance.PlayACard(this, card, target);
-        }
-        
-        //TODO TryToMoveToCardManager
-        private void OnCardPlayedHandler(Card card, CardSpot cardSpot) {
-            if (card.IsPlayers != IsPlayers)
-                return;
-            if (!IsYourTurn)
-                return;
-            if (!manaManager.TryUseMana(card)) {
-                return;
+
+            switch (card) {
+                case Minion minion:
+                    PlayMinion(minion, target);
+                    break;
+                case Spell spell:
+                    PlaySpell(spell, target);
+                    break;
+                default:
+                    Debug.LogError("Card type not valid");
+                    break;
             }
-            MoveCardToCardSpot(card, cardSpot);
+            card.Play();
+
             hand.UpdateCardPositions();
-            card.GetComponent<CardDragging>().droppedOnSlot = true;
         }
 
-        //TODO TryToMoveToCardManager
+        private void PlayMinion(Minion minion, ICardPlayTarget target) {
+            switch (target) {
+                case CardSpot cardSpot:
+                    MoveCardToCardSpot(minion, cardSpot);
+                    break;
+                default:
+                    WrongCardTargetCombo();
+                    break;
+            }
+        }
+
+        private void PlaySpell(Spell spell, ICardPlayTarget target) {
+            switch (target) {
+                
+            }
+        }
+
+        private void WrongCardTargetCombo() {
+            Debug.LogError("This card cannot be played at given cardSpot");
+        }
+
         public IEnumerator PlayCardCoroutine(Card card, CardSpot cardSpot, float time) { //time defined in EnemyAi
             OnCardPlayedHandler(card, cardSpot);
             yield return new WaitForSeconds(time);
         }
-        
-        //new
-        public static void PlayACard(Card card, ITarget target) {
-            onCardPlayedNew.Invoke(card,target);
-        }
-        
-        //TODO TryToMoveToCardManager
+
+
         // ReSharper disable Unity.PerformanceAnalysis
         private void MoveCardToCardSpot(Card card, CardSpot cardSpot) {
             //TODO change all of these to functions inside card 
@@ -110,7 +111,7 @@ namespace CardBattles.Character {
                 StartCoroutine(
                     card.GetComponent<CardAnimation>()
                         .PlayToCardSpotAnimation(cardSpot));
-            
+
             card.GetComponent<CardDisplay>().ChangeCardVisible(true);
             if (IsPlayers)
                 card.GetComponent<RectTransform>().position =
@@ -121,7 +122,7 @@ namespace CardBattles.Character {
                         .PlayToCardSpotAnimation(cardSpot));
             }
 
-            card.GetComponent<CardDragging>().droppedOnSlot = true;
+            card.AssignCardSpot(cardSpot);
             card.transform.SetParent(cardSpot.transform);
 
             //TODO change so that it works not only from hand
@@ -130,7 +131,7 @@ namespace CardBattles.Character {
             card.AssignCardSpot(cardSpot);
         }
 
-        
+
         // ReSharper disable Unity.PerformanceAnalysis
         public IEnumerator Draw(int amount, int cost = 0) {
             if (amount <= 0) {
@@ -145,7 +146,6 @@ namespace CardBattles.Character {
             var cardsToDraw = new List<Card>();
             for (int i = 0; i < amount; i++) {
                 if (!deck.cards.Any()) {
-                    
                     //TODO ADD FEEDBACK CURRENTLY IS JUST DEBUG LOG
                     deck.NoMoreCards();
                     break;
@@ -161,18 +161,20 @@ namespace CardBattles.Character {
         // ReSharper disable Unity.PerformanceAnalysis
         public IEnumerator StartOfTurn() {
             yield return Draw(1);
-            
+
             manaManager.RefreshMana();
         }
 
         public void DrawACard() {
             StartCoroutine(Draw(1, 1));
         }
+
         public IEnumerator EndOfTurn() {
             yield return BoardManager.Instance.Attack(IsPlayers);
             foreach (var card in boardSide.GetNoNullCards()) {
                 card.DoEffect(EffectTrigger.OnEndTurn);
             }
+
             yield return null;
         }
     }

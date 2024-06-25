@@ -31,6 +31,21 @@ namespace CardBattles.Character {
         [SerializeField] [Range(100, 1000)] public float distanceMulti = 300f;
 
 
+        public void DestroyCard(Card card) {
+            
+        }
+        public void RemoveCard(Card card) {
+            if(!CardInHandCheck(card))
+                return;
+            Cards.Remove(card);
+        }
+
+        private bool CardInHandCheck(Card card) {
+            var notInHand = !Cards.Contains(card);
+            if(notInHand)
+                Debug.LogError("Tried to remove or access a card that isnt contained in Cards");
+            return !notInHand;
+        }
         public IEnumerator DrawManyCoroutine(List<Card> cardsToDraw) {
             AddNewCards(cardsToDraw);
 

@@ -27,23 +27,22 @@ namespace CardBattles.CardScripts {
         [BoxGroup("Card"), ResizableTextArea] public string description;
         [BoxGroup("Card"), ResizableTextArea] public string flavourText;
 
-        [BoxGroup("Data"),Space] public List<AdditionalProperty> properties;
+        [BoxGroup("Data"), Space] public List<AdditionalProperty> properties;
 
         [NonSerialized] public string cardSetName;
-[HorizontalLine(1f)]
-        [BoxGroup("Data")] public TriggerEffectDictionary effectDictionary;
 
-        [HorizontalLine(1f)]
+        [HorizontalLine(1f)] [BoxGroup("Data")]
+        public TriggerEffectDictionary effectDictionary;
 
-        [CanBeNull] protected CardSpot isPlacedAt;
-        
+        [HorizontalLine(1f)] [CanBeNull] protected CardSpot isPlacedAt;
+
         private void Awake() {
             cardDisplay = GetComponent<CardDisplay>();
             cardAnimation = GetComponent<CardAnimation>();
             cardDragging = GetComponent<CardDragging>();
         }
-        
-        public virtual void Initialize(CardData cardData,bool isPlayersCard) {
+
+        public virtual void Initialize(CardData cardData, bool isPlayersCard) {
             SetTag(isPlayersCard);
             cardName = cardData.cardName;
             name = cardName;
@@ -71,7 +70,12 @@ namespace CardBattles.CardScripts {
 
         public void AssignCardSpot(CardSpot cardSpot) {
             isPlacedAt = cardSpot;
-            cardDisplay.IsInPlay(cardSpot is not null);
+            bool hasValue = cardSpot is not null;
+            if (hasValue)
+                cardSpot.card = this;
+
+            cardDragging.droppedOnSlot = hasValue;
+            cardDisplay.IsPlacedOnBoard(hasValue);
         }
 
         public void ChangeCardVisible(bool isPlayersVal) {
@@ -86,13 +90,17 @@ namespace CardBattles.CardScripts {
             yield return cardAnimation.DrawAnimation(finalPosition);
         }
 
-        public void DoEffect(EffectTrigger effectTrigger) {
-            EffectTargetValue effectTargetValue;
+        public IEnumerator Play() {
+            yield return cardAnimation.Play();
+            yield return DoEffect(EffectTrigger.OnPlay);
+        }
+
+        public IEnumerator DoEffect(EffectTrigger effectTrigger) {
             if (!effectDictionary.TryGetValue(effectTrigger, out var value))
-                return;
-            effectTargetValue = value;
+                yield return null;
+            var effectTargetValue = value;
             var targets = GetTargets(effectTargetValue.targetType);
-            EffectManager.effectDictionary[effectTargetValue.effectName](targets, effectTargetValue.value);
+            yield return EffectManager.effectDictionary[effectTargetValue.effectName](targets, effectTargetValue.value);
         }
 
         private List<GameObject> GetTargets(TargetType targetType) {

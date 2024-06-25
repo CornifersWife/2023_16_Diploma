@@ -95,7 +95,7 @@ namespace CardBattles.CardScripts.Additional {
             transform.DOScale(Vector3.one * currentScale, scaleOnHoverTime);
         }
 
-        public void IsInPlay(bool isNotNull) {
+        public void IsPlacedOnBoard(bool isNotNull) {
             if (!isNotNull) {
                 ChangeCurrentScale(1f);
                 return;

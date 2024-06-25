@@ -82,7 +82,7 @@ namespace CardBattles.CardScripts {
         }
 
         public IEnumerator DeathCoroutine() {
-            yield return cardAnimation.DeathAnimation();
+            yield return cardAnimation.Die();
             yield return new WaitForSeconds(dyingDuration);
             Destroy(gameObject);
         }
