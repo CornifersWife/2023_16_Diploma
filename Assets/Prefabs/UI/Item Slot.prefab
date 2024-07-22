@@ -68,8 +68,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 1852718054, guid: debc99c57d2d174478299e8d21a4311a, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -91,6 +91,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedShader: {fileID: 6810523441715282931}
+  itemList: {fileID: 0}
+  deckList: {fileID: 0}
+  cardSetList: {fileID: 0}
 --- !u!114 &3726694525457515191
 MonoBehaviour:
   m_ObjectHideFlags: 0
