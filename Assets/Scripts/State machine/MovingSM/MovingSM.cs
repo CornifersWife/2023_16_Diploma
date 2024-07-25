@@ -70,8 +70,8 @@ public class MovingSM : StateMachine, IPointerClickHandler {
     
     //TODO rework this
     public void OnPointerClick(PointerEventData eventData) {
-        if (type is EntityType.NPC)
-            DialogueManager.Instance.SetCurrentDialogue(gameObject);
-        IsDialogue = true;
+        //if (type is EntityType.NPC)
+            //DialogueManager.Instance.SetCurrentDialogue(gameObject);
+        //IsDialogue = true;
     }
 }
