@@ -17,10 +17,12 @@ public class DialogueState : BaseState {
 
     public override void UpdateLogic() {
         base.UpdateLogic();
+        /*
         if (!DialogueManager.Instance.IsOpen && !EnemyPopup.Instance.IsOpen) {
             movingSM.IsDialogue = false;
             movingSM.ChangeState(movingSM.idleState);
         }
+        */
     }
 
     public override void Exit() {
