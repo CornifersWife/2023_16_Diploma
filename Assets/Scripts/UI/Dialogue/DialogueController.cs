@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using ScriptableObjects.Dialogue;
 using TMPro;
-using UnityEngine;
+using UnityEngine;using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DialogueController : MonoBehaviour {
+public class DialogueController : MonoBehaviour, IPointerClickHandler{
     [SerializeField] private Image icon;
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text dialogueText;
@@ -17,12 +17,15 @@ public class DialogueController : MonoBehaviour {
 
     private Queue<string> sentences = new Queue<string>();
     private string sentence;
+    private DialogueText dialogue;
     
     private bool wasSkipped;
     private bool isTyping;
     private bool conversationEnded;
     
     public void DisplaySentence(DialogueText dialogue) {
+        this.dialogue = dialogue;
+        
         if (sentences.Count == 0) {
             if (!conversationEnded) {
                 StartConversation(dialogue);
@@ -106,5 +109,8 @@ public class DialogueController : MonoBehaviour {
         dialogueText.text = sentence;
         nextIcon.SetActive(true);
         isTyping = false;
+    }
+    public void OnPointerClick(PointerEventData eventData) {
+        DisplaySentence(dialogue);
     }
 }
