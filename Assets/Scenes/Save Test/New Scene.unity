@@ -69244,9 +69244,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseView: {fileID: 305754600}
-  optionsView: {fileID: 0}
-  audioVideoPanel: {fileID: 0}
-  controlsPanel: {fileID: 0}
+  optionsView: {fileID: 1954538489}
+  audioVideoPanel: {fileID: 1282615920}
+  controlsPanel: {fileID: 1369680860}
 --- !u!4 &1013884774
 Transform:
   m_ObjectHideFlags: 0
