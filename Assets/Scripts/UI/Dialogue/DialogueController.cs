@@ -23,7 +23,8 @@ public class DialogueController : MonoBehaviour, IPointerClickHandler{
     private bool wasSkipped;
     private bool isTyping;
     private bool conversationEnded;
-    public bool ConversationEnded => conversationEnded;
+    private bool dialogueClosed;
+    public bool DialogueClosed => dialogueClosed;
 
     public static DialogueController Instance;
 
@@ -38,6 +39,7 @@ public class DialogueController : MonoBehaviour, IPointerClickHandler{
 
     public void DisplaySentence(DialogueText dialogue) {
         this.dialogue = dialogue;
+        dialogueClosed = false;
         
         if (sentences.Count == 0) {
             if (!conversationEnded) {
@@ -88,6 +90,7 @@ public class DialogueController : MonoBehaviour, IPointerClickHandler{
     
     private void HideDialogue() {
         InputManager.Instance.EnableAllInput();
+        dialogueClosed = true;
         gameObject.SetActive(false);
     }
     
