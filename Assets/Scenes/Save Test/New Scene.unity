@@ -56951,7 +56951,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72237510a63f44b8b993a68a12371b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialoguePanel: {fileID: 0}
 --- !u!4 &836892329
 Transform:
   m_ObjectHideFlags: 0
@@ -127941,7 +127940,7 @@ Transform:
   m_GameObject: {fileID: 1666895784}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.81056726, z: -0, w: 0.5856457}
-  m_LocalPosition: {x: 1.5939966, y: 6.8, z: -12.3765}
+  m_LocalPosition: {x: 5.82, y: 6.8, z: -0.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -141642,6 +141641,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 304915134669630458, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1156532673366978845, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.6
@@ -141681,6 +141684,10 @@ PrefabInstance:
     - target: {fileID: 1156532673366978845, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582857185398548112, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1582857185398548112, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
       propertyPath: waypoints.Array.size

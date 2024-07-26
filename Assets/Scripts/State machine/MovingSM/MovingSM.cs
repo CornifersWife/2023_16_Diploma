@@ -23,12 +23,14 @@ public class MovingSM : StateMachine, IPointerClickHandler {
     [SerializeField] private Transform[] waypoints;
     
     private NavMeshAgent navMeshAgent;
+    private GameObject player;
     private int currentWaypointIndex;
     private bool waiting = false;
     public bool IsDialogue { get; set; } = false;
 
     private void Awake() {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        player = GameObject.FindGameObjectWithTag("Player");
         
         idleState = new IdleState(this);
         walkingState = new WalkingState(this);
@@ -52,6 +54,10 @@ public class MovingSM : StateMachine, IPointerClickHandler {
         return navMeshAgent;
     }
 
+    public GameObject GetPlayer() {
+        return player;
+    }
+
     public float GetWaitTime() {
         return waitTimeSeconds;
     }
@@ -70,8 +76,6 @@ public class MovingSM : StateMachine, IPointerClickHandler {
     
     //TODO rework this
     public void OnPointerClick(PointerEventData eventData) {
-        //if (type is EntityType.NPC)
-            //DialogueManager.Instance.SetCurrentDialogue(gameObject);
-        //IsDialogue = true;
+        IsDialogue = true;
     }
 }
