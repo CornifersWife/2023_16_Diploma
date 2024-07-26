@@ -74,7 +74,6 @@ public class MovingSM : StateMachine, IPointerClickHandler {
         waiting = value;
     }
     
-    //TODO rework this
     public void OnPointerClick(PointerEventData eventData) {
         IsDialogue = true;
     }

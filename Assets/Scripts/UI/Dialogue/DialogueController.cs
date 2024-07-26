@@ -23,7 +23,19 @@ public class DialogueController : MonoBehaviour, IPointerClickHandler{
     private bool wasSkipped;
     private bool isTyping;
     private bool conversationEnded;
-    
+    public bool ConversationEnded => conversationEnded;
+
+    public static DialogueController Instance;
+
+    private void Awake() {
+        if (Instance == null) {
+            Instance = this;
+        }
+        else if (Instance != this) {
+            Destroy(gameObject);
+        }
+    }
+
     public void DisplaySentence(DialogueText dialogue) {
         this.dialogue = dialogue;
         

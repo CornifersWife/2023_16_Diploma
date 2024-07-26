@@ -11,6 +11,7 @@ public class PatrolState : BaseState {
         base.Enter();
         NavMeshAgent navMeshAgent = movingSM.GetNavMeshAgent();
         navMeshAgent.isStopped = false;
+        navMeshAgent.updateRotation = true;
     }
 
     public override void UpdateLogic() {
