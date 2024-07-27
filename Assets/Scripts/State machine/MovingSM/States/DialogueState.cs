@@ -37,12 +37,17 @@ public class DialogueState : BaseState {
     }
 
     private void FacePlayer() {
-        Transform target = movingSM.GetPlayer().transform;
+        Transform player = movingSM.GetPlayer().transform;
         Transform npc = navMeshAgent.transform;
         
-        Vector3 lookPos = (target.position - npc.position).normalized;
+        RotateTowards(npc, player);
+        RotateTowards(player, npc);
+    }
+
+    private void RotateTowards(Transform source, Transform target) {
+        Vector3 lookPos = (target.position - source.position).normalized;
         lookPos.y = 0;
         Quaternion lookRotation = Quaternion.LookRotation(lookPos);
-        npc.rotation = Quaternion.Slerp(npc.rotation, lookRotation, Time.deltaTime * navMeshAgent.speed);
+        source.rotation = Quaternion.Slerp(source.rotation, lookRotation, Time.deltaTime * navMeshAgent.speed);
     }
 }
