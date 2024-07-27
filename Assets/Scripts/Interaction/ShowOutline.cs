@@ -2,15 +2,21 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class ShowOutline : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
+    [SerializeField] private float detectionDistance = 8;
+    
     private Outline outlineScript;
+    private GameObject player;
 
     private void Awake() {
         outlineScript = GetComponent<Outline>();
         outlineScript.enabled = false;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
     
     public void OnPointerEnter(PointerEventData eventData) {
-        outlineScript.enabled = true;
+        if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance) {
+            outlineScript.enabled = true;
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData) {

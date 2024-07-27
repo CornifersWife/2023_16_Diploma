@@ -25328,6 +25328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd9081f2cea4a704791eb03716e7faa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detectionDistance: 5
 --- !u!1 &368546871
 GameObject:
   m_ObjectHideFlags: 0
@@ -57874,6 +57875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd9081f2cea4a704791eb03716e7faa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detectionDistance: 5
 --- !u!114 &901435808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91925,6 +91927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd9081f2cea4a704791eb03716e7faa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detectionDistance: 5
 --- !u!114 &1226769434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141690,6 +141693,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1582857185398548112, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      propertyPath: detectionDistance
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582857185398548112, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
       propertyPath: waypoints.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -141717,6 +141724,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7619115504855137570, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1936791261}
+    - targetCorrespondingSourceObject: {fileID: 7619115504855137570, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1936791269}
+    - targetCorrespondingSourceObject: {fileID: 7619115504855137570, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1936791270}
   m_SourcePrefab: {fileID: 100100000, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
 --- !u!1 &1936791260 stripped
 GameObject:
@@ -141737,6 +141750,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 11400000, guid: ffb3a11b9a5a7224caad8618760a166a, type: 2}
   dialogueController: {fileID: 1241713688}
+--- !u!114 &1936791269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936791260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9081f2cea4a704791eb03716e7faa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionDistance: 8
+--- !u!114 &1936791270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936791260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &1940217221
 PrefabInstance:
   m_ObjectHideFlags: 0

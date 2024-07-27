@@ -2,13 +2,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
-public enum EntityType {
-    NPC,
-    Enemy
-}
-
 public class MovingSM : StateMachine, IPointerClickHandler {
-    [SerializeField] public EntityType type;
+    [SerializeField] private float detectionDistance = 8;
     
     [HideInInspector]
     public IdleState idleState;
@@ -75,6 +70,7 @@ public class MovingSM : StateMachine, IPointerClickHandler {
     }
     
     public void OnPointerClick(PointerEventData eventData) {
-        IsDialogue = true;
+        if(Vector3.Distance(player.transform.position, navMeshAgent.transform.position) < detectionDistance)
+            IsDialogue = true;
     }
 }
