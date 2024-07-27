@@ -6,7 +6,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DialogueController : MonoBehaviour, IPointerClickHandler{
+public class DialogueController : MonoBehaviour, IPointerClickHandler {
+    [Header("Dialogue camera settings")] 
+    [SerializeField] private float zoomIntensity = 5f;
+    [SerializeField] private float rotationUnits = 0.05f;
+    
+    [Header("References")]
     [SerializeField] private Image icon;
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text dialogueText;
@@ -71,6 +76,7 @@ public class DialogueController : MonoBehaviour, IPointerClickHandler{
         }
         SetDialogue(dialogue);
         HUDController.Instance.HideHUD();
+        CameraController.Instance.SootheIn(zoomIntensity, rotationUnits);
     }
 
     private void EndConversation() {
@@ -78,6 +84,7 @@ public class DialogueController : MonoBehaviour, IPointerClickHandler{
         sentences.Clear();
         HideDialogue();
         HUDController.Instance.ShowHUD();
+        CameraController.Instance.SootheOut(7f, rotationUnits);
     }
     
     private void ShowDialogue() {

@@ -8011,11 +8011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoomSpeed: 0.1
-  minZoomRange: 1
-  maxZoomRange: 8
   rotationSpeed: 5
-  rightRotateRangeUnits: 0.2
-  leftRotateRangeUnits: 0.2
 --- !u!114 &196341084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92113,6 +92109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d67d0ca147bc95f49cfe0149af793f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zoomIntensity: 5
+  rotationUnits: 0.1
   icon: {fileID: 105915199}
   nameText: {fileID: 1667691623}
   dialogueText: {fileID: 1371969266}
