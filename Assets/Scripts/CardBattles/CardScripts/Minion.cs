@@ -58,7 +58,7 @@ namespace CardBattles.CardScripts {
                 Attack = minionData.attack;
                 MaxHealth = minionData.maxHealth;
                 CurrentHealth = MaxHealth;
-                cardDisplay.SetCardData(minionData);
+                cardDisplay.SetCardDisplayData(minionData);
             }
         }
 

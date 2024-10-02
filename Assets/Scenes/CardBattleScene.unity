@@ -1658,10 +1658,6 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 2779277525124394148, guid: 94025caa85302494cb82257a5b22e434, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 5229332580041227260, guid: 94025caa85302494cb82257a5b22e434, type: 3}
       propertyPath: m_Name
       value: card (here for easy access)
@@ -1746,8 +1742,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8839855187464670592, guid: 94025caa85302494cb82257a5b22e434, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

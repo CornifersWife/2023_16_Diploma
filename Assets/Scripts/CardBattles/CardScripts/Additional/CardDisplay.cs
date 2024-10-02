@@ -4,7 +4,6 @@ using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace CardBattles.CardScripts.Additional {
@@ -32,33 +31,45 @@ namespace CardBattles.CardScripts.Additional {
         [Foldout("Objects")] [SerializeField] private TextMeshProUGUI attack;
         [Foldout("Objects")] [SerializeField] private TextMeshProUGUI health;
         [Foldout("Objects")] [SerializeField] private Image cardImage;
+        [Foldout("Objects")] [SerializeField] private Image cardSetSymbolBox;
         [Foldout("Objects")] [SerializeField] private Image cardSetSymbol;
+
         [Foldout("Objects")] [SerializeField] private Image cardType;
 
         [Foldout("Objects")] [SerializeField] private CanvasGroup minionOnlyElements;
 
         public bool frontVisible;
 
-        void Awake() {
+        private void Awake() {
             frontOfCard.enabled = !frontVisible;
             backOfCard.enabled = !frontVisible;
         }
 
-        public void SetCardData(MinionData minionData) {
-            cardImage.sprite = minionData.sprite;
-            cardName.text = minionData.name;
-            description.text = minionData.description;
-            attack.text = minionData.attack.ToString();
-            health.text = minionData.maxHealth.ToString();
-            // TODO IMPLEMENT cardSetSymbol.sprite and colors
+        public void SetCardDisplayData(CardData cardData) {
+            cardImage.sprite = cardData.sprite;
+            cardName.text = cardData.name;
+            description.text = cardData.description;
+
+            cardSetSymbol.sprite = cardData.cardSet.cardSetIcon;
+            cardSetSymbolBox.color = cardData.cardSet.setColor;
+            
+            switch (cardData) {
+                case MinionData minionData:
+                    SetMinionDisplayData(minionData);
+                    break;
+                case SpellData spellData:
+                    SetSpellDisplayData(spellData);
+                    break;
+            }
         }
 
-        public void SetCardData(SpellData spellData) {
-            cardImage.sprite = spellData.sprite;
-            cardName.text = spellData.name;
-            description.text = spellData.description;
+        private void SetMinionDisplayData(MinionData minionData) {
+            attack.text = minionData.attack.ToString();
+            health.text = minionData.maxHealth.ToString();
+        }
+
+        private void SetSpellDisplayData(SpellData spellData) {
             minionOnlyElements.GetComponent<CanvasGroup>().alpha = 0;
-            // TODO IMPLEMENT cardSetSymbol.sprite and colors
         }
 
         public void ChangeCardVisible(bool visible) {

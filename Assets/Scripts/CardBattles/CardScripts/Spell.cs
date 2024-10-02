@@ -9,7 +9,7 @@ namespace CardBattles.CardScripts {
                 Debug.LogError("Invalid data type passed to Spell.Initialize");
             }
             else {
-                cardDisplay.SetCardData(spellData);
+                cardDisplay.SetCardDisplayData(spellData);
             }
         }
     }

@@ -893,6 +893,7 @@ MonoBehaviour:
   health: {fileID: 2579617865883325183}
   cardImage: {fileID: 8827812836535052623}
   cardSetSymbol: {fileID: 1852805539509261135}
+  cardSetSymbolBox: {fileID: 1556368667087934931}
   cardType: {fileID: 1319922846925468558}
   minionOnlyElements: {fileID: 9072930608417842193}
   frontVisible: 0

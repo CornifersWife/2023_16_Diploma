@@ -85,7 +85,8 @@ MonoBehaviour:
   - {fileID: 5882690054721663262}
   - {fileID: -6294856186598340302}
   - {fileID: -2504094293402209270}
-  setColor: {r: 1, g: 1, b: 1, a: 1}
+  setColor: {r: 0.14955486, g: 0.5471698, b: 0.094980404, a: 1}
+  cardSetIcon: {fileID: -7277625285002365882, guid: 29b7ffb6267a313468f6dfd24439c307, type: 3}
 --- !u!114 &5882690054721663262
 MonoBehaviour:
   m_ObjectHideFlags: 0

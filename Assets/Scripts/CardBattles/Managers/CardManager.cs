@@ -1,6 +1,5 @@
 using CardBattles.CardScripts;
 using CardBattles.CardScripts.CardDatas;
-using CardBattles.Character;
 using CardBattles.Interfaces.InterfaceObjects;
 using UnityEngine;
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CardBattles.CardScripts.CardDatas {
     [Serializable]
@@ -10,6 +11,8 @@ namespace CardBattles.CardScripts.CardDatas {
         public string displayName = "No Display Name";
         [HideInInspector]public List<CardData> cards = new List<CardData>();
         [SerializeField]
-        public Color setColor = Color.white; 
+        public Color setColor = Color.white;
+
+        [SerializeField] public Sprite cardSetIcon;
     }
 }
