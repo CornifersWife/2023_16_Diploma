@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3497907b731f5c94cae4c2915e0314a7
+guid: 29b7ffb6267a313468f6dfd24439c307
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -35,7 +35,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 100
+    spritePixelsToUnits: 16
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -71,7 +71,7 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   previousAsepriteImporterSettings:
-    fileImportMode: 1
+    fileImportMode: 0
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
@@ -84,7 +84,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   asepriteImporterSettings:
-    fileImportMode: 1
+    fileImportMode: 0
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 638634889952107804
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Board
+  - name: Icons
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.50666666, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 1920
-      height: 1080
-    spriteID: 04b9b98c990a0b441a35c3b3ca514c4b
+      width: 75
+      height: 31
+    spriteID: 23ac2680b8c48ad428dda5ad89b20848
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,21 +144,21 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -452468590
-    name: Board
+    guid: -1744697416
+    name: Icons
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Board
+    - name: Icons
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
+        x: 2
         y: 0
-        width: 1920
-        height: 1080
-      spriteId: 04b9b98c990a0b441a35c3b3ca514c4b
+        width: 75
+        height: 31
+      spriteId: 23ac2680b8c48ad428dda5ad89b20848
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -174,7 +174,43 @@ ScriptedImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 1920, y: 1080}
+  canvasSize: {x: 80, y: 32}
