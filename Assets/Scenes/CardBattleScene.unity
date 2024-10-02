@@ -1658,21 +1658,9 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 2711175865775701601, guid: 94025caa85302494cb82257a5b22e434, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2779277525124394148, guid: 94025caa85302494cb82257a5b22e434, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3513187511264810272, guid: 94025caa85302494cb82257a5b22e434, type: 3}
-      propertyPath: attackKnockBackEase
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3513187511264810272, guid: 94025caa85302494cb82257a5b22e434, type: 3}
-      propertyPath: attackKnockBackTime
-      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5229332580041227260, guid: 94025caa85302494cb82257a5b22e434, type: 3}
       propertyPath: m_Name
