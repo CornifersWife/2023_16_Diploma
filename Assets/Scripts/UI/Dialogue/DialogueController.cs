@@ -133,15 +133,17 @@ public class DialogueController : MonoBehaviour, IPointerClickHandler {
         int alphaIndex = 0;
         
         foreach (char letter in sentence) {
-            if(dialogueText.text != "")
-                PlayDialogueSound(alphaIndex, dialogueText.text[alphaIndex]);
-            
+            if (dialogueText.text != "") {
+                PlayDialogueSound(alphaIndex, originalText[alphaIndex]);
+            }
+
             alphaIndex++;
             dialogueText.text = originalText;
             displayedText = dialogueText.text.Insert(alphaIndex, HTML_ALPHA);
             dialogueText.text = displayedText;
             yield return new WaitForSeconds(1/typingSpeed);
         }
+        audioSource.Stop();
         nextIcon.SetActive(true);
         isTyping = false;
     }
