@@ -36,7 +36,7 @@ namespace CardBattles.Character.Mana {
             CurrentMana = maxMana;
         }
 
-        private bool CanUseMana(IHasCost cost) {
+        public bool CanUseMana(IHasCost cost) {
             return CurrentMana >= cost.GetCost();
         }
 

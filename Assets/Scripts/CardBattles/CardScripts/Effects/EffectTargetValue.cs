@@ -7,11 +7,11 @@ using UnityEngine.Serialization;
 namespace CardBattles.CardScripts.Effects {
     [Serializable]
     public class EffectTargetValue {
-        [SerializeField,AllowNesting]
+        [SerializeField,AllowNesting,Required]
         public EffectName effectName;
-        [SerializeField,AllowNesting]
+        [SerializeField,AllowNesting,Required]
         public TargetType targetType;
-        [SerializeField,AllowNesting]
+        [SerializeField,AllowNesting,Required]
         public int value;
 
         private EffectTargetValue(EffectName effectName, TargetType targetType, int value) {

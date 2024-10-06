@@ -12,6 +12,7 @@ using CardBattles.Managers;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
+// ReSharper disable Unity.PerformanceCriticalCodeInvocation
 
 namespace CardBattles.Character {
     public class CharacterManager : PlayerEnemyMonoBehaviour {
@@ -56,7 +57,7 @@ namespace CardBattles.Character {
                 return;
             if (!IsYourTurn)
                 return;
-            if (!manaManager.TryUseMana(card)) {
+            if (!manaManager.CanUseMana(card)) {
                 return;
             }
 
@@ -71,7 +72,8 @@ namespace CardBattles.Character {
                     Debug.LogError("Card type not valid");
                     break;
             }
-            card.Play();
+
+            StartCoroutine(card.Play());
 
             hand.UpdateCardPositions();
         }
@@ -88,6 +90,7 @@ namespace CardBattles.Character {
         }
 
         private void PlaySpell(Spell spell, ICardPlayTarget target) {
+            Debug.Log($"{spell.name} has been played");
             return;
             /*switch (target) {
                 
@@ -104,7 +107,6 @@ namespace CardBattles.Character {
         }
 
 
-        // ReSharper disable Unity.PerformanceAnalysis
         private void MoveCardToCardSpot(Card card, CardSpot cardSpot) {
             //TODO change all of these to functions inside card 
             if (!IsPlayers)
@@ -115,7 +117,7 @@ namespace CardBattles.Character {
             card.GetComponent<CardDisplay>().ChangeCardVisible(true);
             if (IsPlayers)
                 card.GetComponent<RectTransform>().position =
-                    cardSpot.GetComponent<RectTransform>().position; //prevTODO aside from this
+                    cardSpot.GetComponent<RectTransform>().position; 
             else {
                 StartCoroutine(
                     card.GetComponent<CardAnimation>()
@@ -132,7 +134,6 @@ namespace CardBattles.Character {
         }
 
 
-        // ReSharper disable Unity.PerformanceAnalysis
         public IEnumerator Draw(int amount, int cost = 0) {
             if (amount <= 0) {
                 Debug.LogError("Player just tried to draw 0 or less cards");
