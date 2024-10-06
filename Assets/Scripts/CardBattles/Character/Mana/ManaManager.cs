@@ -40,7 +40,7 @@ namespace CardBattles.Character.Mana {
             return CurrentMana >= cost.GetCost();
         }
 
-        private void UseMana(IHasCost cost) {
+        public void UseMana(IHasCost cost) {
             if (!CanUseMana(cost)) {
                 Debug.LogException(
                     new ArgumentException(

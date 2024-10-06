@@ -97,7 +97,7 @@ namespace CardBattles.CardScripts {
 
         public IEnumerator DoEffect(EffectTrigger effectTrigger) {
             if (!effectDictionary.TryGetValue(effectTrigger, out var value))
-                yield return null;
+                yield break;
             var effectTargetValue = value;
             var targets = GetTargets(effectTargetValue.targetType);
             yield return EffectManager.effectDictionary[effectTargetValue.effectName](targets, effectTargetValue.value);

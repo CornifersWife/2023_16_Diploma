@@ -61,39 +61,47 @@ namespace CardBattles.Character {
                 return;
             }
 
+            bool wasPlayed = false;
             switch (card) {
                 case Minion minion:
-                    PlayMinion(minion, target);
+                    wasPlayed = PlayMinion(minion, target);
                     break;
                 case Spell spell:
-                    PlaySpell(spell, target);
+                    wasPlayed =PlaySpell(spell, target);
                     break;
                 default:
                     Debug.LogError("Card type not valid");
                     break;
             }
-
+            if(!wasPlayed)
+                return;
+            
+            manaManager.UseMana(card);
+            
             StartCoroutine(card.Play());
 
             hand.UpdateCardPositions();
         }
 
-        private void PlayMinion(Minion minion, ICardPlayTarget target) {
+        private bool PlayMinion(Minion minion, ICardPlayTarget target) {
             switch (target) {
                 case CardSpot cardSpot:
                     MoveCardToCardSpot(minion, cardSpot);
                     break;
                 default:
                     WrongCardTargetCombo();
-                    break;
+                    return false;
             }
+            return true;
         }
 
-        private void PlaySpell(Spell spell, ICardPlayTarget target) {
+        
+        //TODO FIX
+        private bool PlaySpell(Spell spell, ICardPlayTarget target) {
             Debug.Log($"{spell.name} has been played");
-            return;
+            return true;
             /*switch (target) {
-                
+
             }*/
         }
 
