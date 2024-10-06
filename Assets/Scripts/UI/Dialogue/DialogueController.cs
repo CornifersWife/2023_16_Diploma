@@ -151,6 +151,7 @@ public class DialogueController : MonoBehaviour, IPointerClickHandler {
     private void ShowAllText() {
         StopAllCoroutines();
         dialogueText.text = sentence;
+        audioSource.Stop();
         nextIcon.SetActive(true);
         isTyping = false;
     }

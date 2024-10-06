@@ -25294,7 +25294,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5a932338a7aeb5647babaff55ed7b8ee, type: 2}
   dialogueController: {fileID: 1241713688}
   questIndicator: {fileID: 38404667}
-  audioConfig: {fileID: 11400000, guid: a986c14c9dc24f94bbc17cc50300eac5, type: 2}
+  audioConfig: {fileID: 11400000, guid: 5a56d19f0663bff459578f7d25de4c81, type: 2}
 --- !u!1 &362838657
 GameObject:
   m_ObjectHideFlags: 0
