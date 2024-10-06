@@ -1,14 +1,16 @@
+using System.Collections.Generic;
 using Interaction;
 using ScriptableObjects.Dialogue;
 using UnityEngine;
 
 namespace NPC {
     public class TalkableNPC : NPC, ITalkable {
-        [SerializeField] private DialogueText dialogueText;
+        [SerializeField] private List<DialogueText> dialogueText;
         [SerializeField] private DialogueController dialogueController;
         [SerializeField] private ShowQuestIndicator questIndicator;
+        
         public override void Interact() {
-            Talk(dialogueText);
+            Talk(dialogueText[0]);
         }
 
         public void Talk(DialogueText dialogueText) {
@@ -16,10 +18,8 @@ namespace NPC {
             questIndicator.HideQuestIcon();
         }
 
-        public void AddNewDialogue() {
-            //TODO implement changing dialogue text
-            //...
-            
+        public void SetUpNextDialogue() {
+            dialogueText.Remove(dialogueText[0]);
             questIndicator.ShowQuestIcon();
         }
     }
