@@ -25295,6 +25295,7 @@ MonoBehaviour:
   dialogueController: {fileID: 1241713688}
   questIndicator: {fileID: 38404667}
   audioConfig: {fileID: 11400000, guid: 5a56d19f0663bff459578f7d25de4c81, type: 2}
+  detectionDistance: 8
 --- !u!1 &362838657
 GameObject:
   m_ObjectHideFlags: 0
@@ -92578,7 +92579,7 @@ MonoBehaviour:
   dialogueText: {fileID: 1371969266}
   nextIcon: {fileID: 119418731}
   typingSpeed: 30
-  defaultAudioConfig: {fileID: 11400000, guid: 09d9c3a66ff1a2749ab6a03097f34d97, type: 2}
+  defaultAudioConfig: {fileID: 11400000, guid: 7505a4fde64315b438f41b7f29033911, type: 2}
   makePredictable: 1
 --- !u!224 &1241713689
 RectTransform:
@@ -142313,6 +142314,7 @@ MonoBehaviour:
   dialogueController: {fileID: 1241713688}
   questIndicator: {fileID: 1071021590}
   audioConfig: {fileID: 11400000, guid: 7505a4fde64315b438f41b7f29033911, type: 2}
+  detectionDistance: 8
 --- !u!114 &1936791269
 MonoBehaviour:
   m_ObjectHideFlags: 0

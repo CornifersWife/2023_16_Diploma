@@ -10,9 +10,19 @@ namespace NPC {
         [SerializeField] private DialogueController dialogueController;
         [SerializeField] private ShowQuestIndicator questIndicator;
         [SerializeField] private DialogueAudioConfig audioConfig;
+        [Range(0, 10)] 
+        [SerializeField] private float detectionDistance = 8;
+
+        private GameObject player;
+
+        private void Awake() {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
         
         public override void Interact() {
-            Talk(dialogueText[0]);
+            if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance) {
+                Talk(dialogueText[0]);
+            }
         }
 
         public void Talk(DialogueText dialogueText) {

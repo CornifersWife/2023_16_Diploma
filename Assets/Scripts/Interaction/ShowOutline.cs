@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class ShowOutline : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
+    [Range(0, 10)]
     [SerializeField] private float detectionDistance = 8;
     
     private Outline outlineScript;
