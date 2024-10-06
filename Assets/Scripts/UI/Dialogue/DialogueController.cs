@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using ScriptableObjects.Dialogue;
 using TMPro;
 using UnityEngine;
@@ -18,6 +19,14 @@ public class DialogueController : MonoBehaviour, IPointerClickHandler {
     [SerializeField] private GameObject nextIcon;
     
     [SerializeField] private float typingSpeed;
+
+    [Header("Audio")] 
+    [SerializeField] private DialogueAudioConfig defaultAudioConfig;
+    [SerializeField] private DialogueAudioConfig[] allAudioConfigs;
+    [SerializeField] private bool makePredictable;
+    private DialogueAudioConfig currentAudioConfig;
+    private Dictionary<string, DialogueAudioConfig> audioConfigDictionary;
+    private AudioSource audioSource;
 
     private const string HTML_ALPHA = "<color=#00000000>";
 
@@ -40,8 +49,27 @@ public class DialogueController : MonoBehaviour, IPointerClickHandler {
         else if (Instance != this) {
             Destroy(gameObject);
         }
+
+        audioSource = this.gameObject.AddComponent<AudioSource>();
+        currentAudioConfig = defaultAudioConfig;
+        InitializeAudioConfigDictionary();
     }
 
+    private void InitializeAudioConfigDictionary() {
+        audioConfigDictionary = new Dictionary<string, DialogueAudioConfig>();
+        audioConfigDictionary.Add(defaultAudioConfig.id, defaultAudioConfig);
+        foreach (DialogueAudioConfig audioConfig in allAudioConfigs) {
+            audioConfigDictionary.Add(audioConfig.id, audioConfig);
+        }
+    }
+
+    private void SetCurrentAudioConfig(string id) {
+        audioConfigDictionary.TryGetValue(id, out var audioConfig);
+        if (audioConfig != null) {
+            currentAudioConfig = audioConfig;
+        }
+    }
+    
     public void DisplaySentence(DialogueText dialogue) {
         this.dialogue = dialogue;
         dialogueClosed = false;
@@ -117,6 +145,9 @@ public class DialogueController : MonoBehaviour, IPointerClickHandler {
         int alphaIndex = 0;
         
         foreach (char letter in sentence) {
+            if(dialogueText.text != "")
+                PlayDialogueSound(alphaIndex, dialogueText.text[alphaIndex]);
+            
             alphaIndex++;
             dialogueText.text = originalText;
             displayedText = dialogueText.text.Insert(alphaIndex, HTML_ALPHA);
@@ -135,5 +166,43 @@ public class DialogueController : MonoBehaviour, IPointerClickHandler {
     }
     public void OnPointerClick(PointerEventData eventData) {
         DisplaySentence(dialogue);
+    }
+
+    private void PlayDialogueSound(int currentDisplayedCharacterCount, char currentCharacter) {
+        AudioClip[] dialogueAudios = currentAudioConfig.dialogueAudios;
+        int frequencyLevel = currentAudioConfig.frequencyLevel;
+        float minPitch = currentAudioConfig.minPitch;
+        float maxPitch = currentAudioConfig.maxPitch;
+        bool stopAudioSource = currentAudioConfig.stopAudioSource;
+        
+        if (currentDisplayedCharacterCount % frequencyLevel == 0) {
+            if(stopAudioSource)
+                audioSource.Stop();
+
+            AudioClip audioClip = null;
+            if (makePredictable) {
+                int hashCode = (int)currentCharacter + 10000;
+                int index = hashCode % dialogueAudios.Length;
+                audioClip = dialogueAudios[index];
+
+                int minPitchInt = (int)(minPitch * 100);
+                int maxPitchInt = (int)(maxPitch * 100);
+                int pitchRangeInt = maxPitchInt - minPitchInt;
+                if (pitchRangeInt != 0) {
+                    int predictablePitchInt = (hashCode % pitchRangeInt) + minPitchInt;
+                    float predictablePitch = predictablePitchInt / 100f;
+                    audioSource.pitch = predictablePitch;
+                }
+                else {
+                    audioSource.pitch = minPitch;
+                }
+            }
+            else {
+                int audioIndex = Random.Range(0, dialogueAudios.Length);
+                audioClip = dialogueAudios[audioIndex];
+                audioSource.pitch = Random.Range(minPitch, maxPitch);
+            }
+            audioSource.PlayOneShot(audioClip);
+        }
     }
 }
