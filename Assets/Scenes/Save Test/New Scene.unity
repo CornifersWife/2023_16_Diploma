@@ -142312,7 +142312,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5a932338a7aeb5647babaff55ed7b8ee, type: 2}
   dialogueController: {fileID: 1241713688}
   questIndicator: {fileID: 1071021590}
-  audioConfig: {fileID: 11400000, guid: 09d9c3a66ff1a2749ab6a03097f34d97, type: 2}
+  audioConfig: {fileID: 11400000, guid: 7505a4fde64315b438f41b7f29033911, type: 2}
 --- !u!114 &1936791269
 MonoBehaviour:
   m_ObjectHideFlags: 0
