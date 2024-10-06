@@ -7,24 +7,19 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace CardBattles.CardScripts {
-    public class CardSpot : PlayerEnemyMonoBehaviour, ICardPlayTarget,IDropHandler, IPointerEnterHandler, IPointerExitHandler {
+    public class CardSpot : PlayerEnemyMonoBehaviour,ICardPlayTarget,IDropHandler, IPointerEnterHandler, IPointerExitHandler {
+        private bool isActive = false;
         private Image image;
         public Card card;
 
         
         
         private void Awake() {
-
             image = GetComponent<Image>();
         }
 
         public void OnDrop(PointerEventData eventData) {
-            if (!IsPlayers) {
-                return;
-            }
-
-            if (card is not null) {
-                Debug.Log($"{name} already has a card");
+            if (!isActive) {
                 return;
             }
             
@@ -33,25 +28,38 @@ namespace CardBattles.CardScripts {
                 return;
             }
             if (!eventData.pointerDrag.TryGetComponent
-                    (typeof(Card), out var draggedCard)) {
+                    (typeof(Minion), out var draggedCard)) {
                 Debug.Log($"{name}, dropped object was not a card");
                 return;
             }
             CharacterManager.PlayACard((Card)draggedCard, this);
+            isActive = false;
         }
 
-        
+        //TODO MOVE TO NEW CLASS
         //TODO MAGIC NUMBER AND COLOR AND EASE
         public void OnPointerEnter(PointerEventData eventData) {
-            if(IsPlayers)
+            if(!IsPlayers)
                 return;
+            if(eventData.pointerDrag is not null && !eventData.pointerDrag.TryGetComponent(typeof(Minion), out var minion))
+                return;
+            if(!IsAvailable())
+                return;
+
+            isActive = true;
             image.DOColor(Color.gray, 0.1f).SetEase(Ease.InOutQuad);
         }
+        
         //TODO SAME AS PREV
         public void OnPointerExit(PointerEventData eventData) {
-            if(IsPlayers)
+            if(!isActive)
                 return;
+            isActive = false;
             image.DOColor(Color.white, 0.1f).SetEase(Ease.InOutQuad);
+        }
+
+        private bool IsAvailable() {
+            return (card is null);
         }
     }
 }

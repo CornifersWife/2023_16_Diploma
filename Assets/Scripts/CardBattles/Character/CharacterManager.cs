@@ -41,6 +41,7 @@ namespace CardBattles.Character {
 
         public void Awake() {
             onCardPlayed.AddListener(OnCardPlayedHandler);
+            
         }
 
         public void OnDestroy() {
@@ -77,7 +78,8 @@ namespace CardBattles.Character {
                 return;
             
             manaManager.UseMana(card);
-            
+            hand.Cards.Remove(card);
+
             StartCoroutine(card.Play());
 
             hand.UpdateCardPositions();
@@ -95,6 +97,7 @@ namespace CardBattles.Character {
             return true;
         }
 
+     
         
         //TODO FIX
         private bool PlaySpell(Spell spell, ICardPlayTarget target) {
@@ -136,7 +139,6 @@ namespace CardBattles.Character {
             card.transform.SetParent(cardSpot.transform);
 
             //TODO change so that it works not only from hand
-            hand.Cards.Remove(card);
             cardSpot.card = card;
             card.AssignCardSpot(cardSpot);
         }

@@ -29,7 +29,6 @@ namespace CardBattles.CardScripts.Additional {
                 enabled = false;
                 return;
             }
-
             baseOrder = canvas.sortingOrder;
             canvas.sortingOrder = 100;
             

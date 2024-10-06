@@ -84,7 +84,18 @@ namespace CardBattles.CardScripts.Additional {
             backOfCard.enabled = !frontVisible;
             frontVisible = !frontVisible;
         }
+        internal void UpdateData(int newAttack, int newCurrentHealth, int newMaxHealth) {
+            attack.text = newAttack.ToString();
+            health.text = newCurrentHealth.ToString();
+            
+            //TODO Make it red when this is true
+            if(newCurrentHealth!= newMaxHealth)
+                return;
+            else {
+                return;
+            }
 
+        }
 
         [SerializeField] private float scaleOnHoverTime = 0.1f;
 

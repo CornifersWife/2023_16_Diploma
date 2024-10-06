@@ -1,3 +1,4 @@
+using System.Collections;
 using CardBattles.CardScripts.CardDatas;
 using UnityEngine;
 
@@ -11,6 +12,11 @@ namespace CardBattles.CardScripts {
             else {
                 cardDisplay.SetCardDisplayData(spellData);
             }
+        }
+
+        public override IEnumerator Play() {
+            yield return StartCoroutine(base.Play());
+            Destroy(this.gameObject);
         }
     }
 }

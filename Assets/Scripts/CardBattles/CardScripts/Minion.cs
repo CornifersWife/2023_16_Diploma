@@ -3,11 +3,14 @@ using System.Collections;
 using CardBattles.CardScripts.CardDatas;
 using CardBattles.Interfaces;
 using NaughtyAttributes;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CardBattles.CardScripts {
     public class Minion : Card, IAttacker {
         [SerializeField] private float dyingDuration = 0.5f;
+        [SerializeField] public UnityEvent<int, int, int> dataChanged;
 
         [Space(20), Header("Minion")] [HorizontalLine(1f)] [BoxGroup("Data")] [SerializeField]
         private int attack;
@@ -15,12 +18,8 @@ namespace CardBattles.CardScripts {
         private int Attack {
             get => attack;
             set {
-                if (value < 0) {
-                    attack = 0;
-                    return;
-                }
-
-                attack = value;
+                attack = math.max(value, 0);
+                dataChanged?.Invoke(attack, currentHealth, maxHealth);
             }
         }
 
@@ -30,6 +29,7 @@ namespace CardBattles.CardScripts {
             get => maxHealth;
             set {
                 maxHealth = value;
+                dataChanged?.Invoke(attack, currentHealth, maxHealth);
                 if (CurrentHealth > maxHealth)
                     CurrentHealth = value;
             }
@@ -41,7 +41,7 @@ namespace CardBattles.CardScripts {
             get => currentHealth;
             set {
                 currentHealth = value > MaxHealth ? MaxHealth : value;
-
+                dataChanged?.Invoke(attack, currentHealth, maxHealth);
                 if (currentHealth <= 0) {
                     Die();
                 }
@@ -60,7 +60,11 @@ namespace CardBattles.CardScripts {
                 CurrentHealth = MaxHealth;
                 cardDisplay.SetCardDisplayData(minionData);
             }
+
+            dataChanged.AddListener(cardDisplay.UpdateData);
         }
+
+   
 
         public Action<Vector3, IDamageable> action;
         public int GetAttack() => Attack;
@@ -81,8 +85,8 @@ namespace CardBattles.CardScripts {
             StartCoroutine(DeathCoroutine());
         }
 
-        public IEnumerator DeathCoroutine() {
-            yield return cardAnimation.Die();
+        private IEnumerator DeathCoroutine() {
+            yield return StartCoroutine(cardAnimation.Die());
             yield return new WaitForSeconds(dyingDuration);
             Destroy(gameObject);
         }

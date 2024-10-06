@@ -13,6 +13,7 @@ using CardBattles.Managers;
 using JetBrains.Annotations;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CardBattles.CardScripts {
     [SuppressMessage("ReSharper", "UnusedMember.Local")]
@@ -57,7 +58,6 @@ namespace CardBattles.CardScripts {
             if (properties.Contains(AdditionalProperty.FreeToPlay)) {
                 return 0;
             }
-
             return 1;
         }
 
@@ -90,9 +90,9 @@ namespace CardBattles.CardScripts {
             yield return cardAnimation.DrawAnimation(finalPosition);
         }
 
-        public IEnumerator Play() {
-            yield return cardAnimation.Play();
-            yield return DoEffect(EffectTrigger.OnPlay);
+        public virtual IEnumerator Play() {
+            yield return StartCoroutine(cardAnimation.Play(this));
+            yield return StartCoroutine(DoEffect(EffectTrigger.OnPlay));
         }
 
         public IEnumerator DoEffect(EffectTrigger effectTrigger) {
@@ -100,7 +100,8 @@ namespace CardBattles.CardScripts {
                 yield break;
             var effectTargetValue = value;
             var targets = GetTargets(effectTargetValue.targetType);
-            yield return EffectManager.effectDictionary[effectTargetValue.effectName](targets, effectTargetValue.value);
+            yield return StartCoroutine(
+                EffectManager.effectDictionary[effectTargetValue.effectName](targets, effectTargetValue.value));
         }
 
         private List<GameObject> GetTargets(TargetType targetType) {

@@ -38,6 +38,7 @@ namespace CardBattles.Character {
             if(!CardInHandCheck(card))
                 return;
             Cards.Remove(card);
+            UpdateCardPositions();
         }
 
         private bool CardInHandCheck(Card card) {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using CardBattles.CardScripts;
+using CardBattles.CardScripts.temp;
 using CardBattles.Character;
 using CardBattles.Enums;
 using CardBattles.Interfaces;
@@ -66,6 +67,7 @@ namespace CardBattles.Managers {
 
         public delegate List<GameObject> TargetsDelegate(TargetType targetType, Card card);
 
+        
         public List<GameObject> GetTargets(TargetType targetType, Card card) {
             bool isPlayers = card.IsPlayers;
             List<GameObject> targets = new List<GameObject>();

@@ -1,14 +1,13 @@
 using System;
 using System.Collections;
 using CardBattles.Interfaces;
+using CardBattles.Interfaces.InterfaceObjects;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 
 namespace CardBattles.CardScripts.Additional {
-    public class CardAnimation : MonoBehaviour {
-        [NonSerialized] public bool isPlayers;
-
+    public class CardAnimation : PlayerEnemyMonoBehaviour {
         private float scaleInHand;
 
 
@@ -40,12 +39,11 @@ namespace CardBattles.CardScripts.Additional {
 
 
         private void Start() {
-            isPlayers = CompareTag("Player");
             scaleInHand = GetComponent<CardDisplay>().scaleInHand;
         }
 
         public IEnumerator DrawAnimation(Vector3 finalPosition) {
-            var drawAnimation = StartCoroutine(isPlayers
+            var drawAnimation = StartCoroutine(IsPlayers
                 ? PlayerDrawAnimationCoroutine(finalPosition)
                 : EnemyDrawAnimationCoroutine(finalPosition));
             yield return drawAnimation;
@@ -125,7 +123,7 @@ namespace CardBattles.CardScripts.Additional {
 
         [Foldout("Attack Animation"), SerializeField]
         private float attackKnockBackShakeStrength;
-        
+
         [Foldout("Attack Animation"), SerializeField]
         private float attackKnockBackTime;
 
@@ -152,13 +150,13 @@ namespace CardBattles.CardScripts.Additional {
 
             //TODO add variable to determine how much time to stop for at a target
             yield return new WaitForEndOfFrame();
-            yield return AttackKnockback(attackerTransform,moveDirection);
+            yield return AttackKnockback(attackerTransform, moveDirection);
 
             yield return AttackMoveBack(attackerTransform, originalPosition);
-            
+
             yield return null;
         }
-        
+
         private IEnumerator AttackMoveToTarget(Transform attackerTransform, Vector3 finalPosition) {
             var moveToTarget = attackerTransform
                 .DOMove(
@@ -175,9 +173,9 @@ namespace CardBattles.CardScripts.Additional {
             //var shake = StartCoroutine(AttackKnockbackShake(attackerTransform));
             //TODO so i had to do this
             var sequence = DOTween.Sequence();
-            
-            var knockbackPosition = attackerTransform.position - (moveDirection*attackKnockBackAmount);
-            
+
+            var knockbackPosition = attackerTransform.position - (moveDirection * attackKnockBackAmount);
+
 
             sequence.Join(attackerTransform
                 .DOMove(
@@ -186,21 +184,21 @@ namespace CardBattles.CardScripts.Additional {
                 .SetEase(attackKnockBackEase));
 
 
-            
             /*
             sequence.Join(attackerTransform
                 .DOShakePosition(
                     attackKnockBackTime,
                     attackKnockBackShakeStrength)
                 .SetEase(attackMoveToEase));*/
-                
+
 
             sequence.Play();
             yield return sequence.WaitForCompletion();
         }
+
         private IEnumerator AttackKnockbackMove(Transform attackerTransform, Vector3 moveDirection) {
-            var knockbackPosition = attackerTransform.position - moveDirection*attackKnockBackAmount;
-            
+            var knockbackPosition = attackerTransform.position - moveDirection * attackKnockBackAmount;
+
             var knockBack = attackerTransform
                 .DOMove(
                     knockbackPosition,
@@ -242,8 +240,29 @@ namespace CardBattles.CardScripts.Additional {
         public IEnumerator TakeDamage() {
             yield return null;
         }
-        public IEnumerator Play() {
+
+        public IEnumerator Play(Card card) {
+            switch (card) {
+                case Spell:
+                    yield return StartCoroutine(FadeOut(card.gameObject));
+                    break;
+            }
             yield return null;
+        }
+
+        [Space, Header("FadeOut"), Foldout("FadeOut"), SerializeField]
+        private float cardFadeOutDuration = 0.7f;
+
+        [Foldout("FadeOut"), SerializeField] 
+        private Ease cardFadeOutEase = Ease.InOutQuad;
+
+        private IEnumerator FadeOut(GameObject cardGameObject) {
+            if (!TryGetComponent(typeof(CanvasGroup), out var canvasGroup))
+                yield break;
+
+            yield return ((CanvasGroup)canvasGroup)
+                .DOFade(0f, cardFadeOutDuration)
+                .SetEase(cardFadeOutEase);
         }
     }
 }
