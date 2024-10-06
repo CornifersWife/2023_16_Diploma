@@ -22,10 +22,8 @@ public class DialogueController : MonoBehaviour, IPointerClickHandler {
 
     [Header("Audio")] 
     [SerializeField] private DialogueAudioConfig defaultAudioConfig;
-    [SerializeField] private DialogueAudioConfig[] allAudioConfigs;
     [SerializeField] private bool makePredictable;
     private DialogueAudioConfig currentAudioConfig;
-    private Dictionary<string, DialogueAudioConfig> audioConfigDictionary;
     private AudioSource audioSource;
 
     private const string HTML_ALPHA = "<color=#00000000>";
@@ -52,22 +50,12 @@ public class DialogueController : MonoBehaviour, IPointerClickHandler {
 
         audioSource = this.gameObject.AddComponent<AudioSource>();
         currentAudioConfig = defaultAudioConfig;
-        InitializeAudioConfigDictionary();
     }
 
-    private void InitializeAudioConfigDictionary() {
-        audioConfigDictionary = new Dictionary<string, DialogueAudioConfig>();
-        audioConfigDictionary.Add(defaultAudioConfig.id, defaultAudioConfig);
-        foreach (DialogueAudioConfig audioConfig in allAudioConfigs) {
-            audioConfigDictionary.Add(audioConfig.id, audioConfig);
-        }
-    }
-
-    private void SetCurrentAudioConfig(string id) {
-        audioConfigDictionary.TryGetValue(id, out var audioConfig);
-        if (audioConfig != null) {
-            currentAudioConfig = audioConfig;
-        }
+    public void SetCurrentAudioConfig(DialogueAudioConfig audioConfig) {
+        if (audioConfig == null)
+            currentAudioConfig = defaultAudioConfig;
+        currentAudioConfig = audioConfig;
     }
     
     public void DisplaySentence(DialogueText dialogue) {
