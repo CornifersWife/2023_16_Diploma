@@ -35,6 +35,18 @@ public class InputManager : MonoBehaviour {
             EnableKeyboardInput();
     }
 
+    public void DisableAllMovement() {
+        DisableMouseInput();
+        DisableKeyboardMovement();
+    }
+
+    public void EnableAllMovement() {
+        if(MouseControls)
+            EnableMouseInput();
+        if(KeyboardControls)
+            EnableKeyboardMovement();
+    }
+
     public void EnableMouseInput() {
         mouseInputManager.EnableMouseControls();
     }
@@ -49,5 +61,21 @@ public class InputManager : MonoBehaviour {
 
     public void DisableKeyboardInput() {
         keyboardInputManager.DisableKeyboardControls();
+    }
+
+    private void EnableKeyboardMovement() {
+        keyboardInputManager.EnableMovement();
+    }
+
+    private void DisableKeyboardMovement() {
+        keyboardInputManager.DisableMovement();
+    }
+
+    public void DisablePause() {
+        keyboardInputManager.DisablePause();
+    }
+    
+    public void EnablePause() {
+        keyboardInputManager.EnablePause();
     }
 }

@@ -1,63 +1,28 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
-public class EnemyPopup : MonoBehaviour{
-    [SerializeField] private RectTransform popupPanel;
+public class EnemyPopup : MonoBehaviour {
+    [SerializeField] private GameObject enemyPopup;
+    [SerializeField] private GameObject popupPanel;
     [SerializeField] private GameObject deckPopup;
-    [SerializeField] private InputAction mouseClickAction;
-    
-    private Camera mainCamera;
-    private Enemy enemy; //TODO IF We dont want to use null, use for example Enemy 0 for default value
 
-    private int enemyLayer;
-    private Vector3 target;
-    
+    public Enemy Enemy { get; set; }
+    public bool IsOpen => enemyPopup.activeSelf;
+
+    public static EnemyPopup Instance;
+
     private void Awake() {
-        mainCamera = Camera.main;
-        
-        enemyLayer = LayerMask.NameToLayer("Enemy");
-        popupPanel.gameObject.SetActive(false);
-    }
-
-    private void OnEnable() {
-        mouseClickAction.Enable();
-        mouseClickAction.performed += Clicked;
-    }
-
-    private void OnDisable() {
-        mouseClickAction.performed -= Clicked;
-        mouseClickAction.Disable();
-    }
-
-    private void Clicked(InputAction.CallbackContext context) {
-        if (PauseManager.Instance.IsOpen)
-            return;
-
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Irys playspace")) 
-            return;
-        
-        Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider &&
-            hit.collider.gameObject.layer.CompareTo(enemyLayer) == 0) {
-            if (enemy != null)
-                return;
-            enemy = hit.collider.gameObject.GetComponent<EnemySM>().GetEnemy();
-            if (enemy.GetState() == EnemyState.Undefeated) {
-                popupPanel.gameObject.SetActive(true);
-                InputManager.Instance.DisableAllInput();
-            }
-            else {
-                enemy = null;
-            }
+        if (Instance != null && Instance != this) {
+            Destroy(gameObject);
+        } else {
+            Instance = this;
         }
     }
-
+    
     public void YesClicked() {
-        popupPanel.gameObject.SetActive(false);
+        popupPanel.SetActive(false);
         if (CheckDeck(3)) {
-            EnemyStateManager.Instance.SetCurrentEnemy(enemy);
+            EnemyStateManager.Instance.SetCurrentEnemy(Enemy);
             Close();
             SceneSwitcher.Instance.LoadScene("Irys playspace");
         }
@@ -67,7 +32,7 @@ public class EnemyPopup : MonoBehaviour{
     }
 
     public void NoClicked() {
-        popupPanel.gameObject.SetActive(false);
+        popupPanel.SetActive(false);
         Close();
     }
 
@@ -78,7 +43,8 @@ public class EnemyPopup : MonoBehaviour{
     }
 
     private void Close() {
-        enemy = null;
+        Enemy = null;
+        enemyPopup.SetActive(false);
         InputManager.Instance.EnableAllInput();
     }
 

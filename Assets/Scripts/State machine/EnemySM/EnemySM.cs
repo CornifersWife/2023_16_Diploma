@@ -9,7 +9,6 @@ public class EnemySM : StateMachine {
     public DefeatedState defeatedState;
     
     [SerializeField] private Enemy enemy;
-    [SerializeField] private EnemyPopup enemyPopup;
 
     [SerializeField] private Material undefeatedMaterial;
     [SerializeField] private Material defeatedMaterial;
@@ -61,10 +60,6 @@ public class EnemySM : StateMachine {
 
     public void SetBeaten(bool value) {
         isBeaten = value;
-    }
-
-    public EnemyPopup GetEnemyPopup() {
-        return enemyPopup;
     }
 
     public Enemy GetEnemy() {
