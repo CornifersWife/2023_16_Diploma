@@ -18,10 +18,11 @@ public class ShowName: MonoBehaviour {
         mainCamera = Camera.main;
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player");
-        HideMessage();
+        //HideMessage();
     }
 
     private void Update() {
+        /*
         CheckPlayerNear();
         if (playerNear && IsMouseOver()) {
             hoverTimer += Time.deltaTime;
@@ -34,6 +35,7 @@ public class ShowName: MonoBehaviour {
             hoverTimer = 0f;
             HideMessage();
         }
+        */
     }
 
     private void CheckPlayerNear() {
