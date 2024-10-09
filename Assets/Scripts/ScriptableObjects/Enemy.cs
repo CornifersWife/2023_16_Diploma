@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CardBattles.CardScripts.CardDatas;
 using UnityEngine;
 
 [Serializable]

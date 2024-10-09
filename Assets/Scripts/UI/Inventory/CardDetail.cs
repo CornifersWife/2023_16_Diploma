@@ -1,10 +1,11 @@
-using ScriptableObjects;
+using System;
+using CardBattles.CardScripts.CardDatas;
 using UnityEngine;
-
+[Obsolete]
 public class CardDetail : MonoBehaviour{
-    private BaseCardData cardData;
+    private CardData cardData;
 
-    public BaseCardData CardData {
+    public CardData CardData {
         get;
         set;
     }

@@ -1,4 +1,5 @@
 
+using CardBattles.CardScripts.CardDatas;
 using UnityEngine;
 
 public class CardSet : Item {

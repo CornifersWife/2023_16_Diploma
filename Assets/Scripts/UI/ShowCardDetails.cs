@@ -1,4 +1,5 @@
-using ScriptableObjects;
+using System;
+using CardBattles.CardScripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,13 +12,15 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
     
     private float hoverTimer = 0f;
 
-    private CardOld cardOld;
+    private Card card;
+    [Obsolete]
     private CardDetail cardDetail;
 
     private bool isMouseOver;
     
+    [Obsolete("Obsolete")]
     private void Awake() {
-        cardOld = GetComponent<CardOld>();
+        card = GetComponent<Card>();
         cardDetail = GetComponent<CardDetail>();
     }
     
@@ -56,13 +59,12 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
     }
 
     private void ReadCardData() {
-        BaseCardData cardData;
         //TODO UPDATE TO NEW ONES
         /*if (cardOld is not null) {
             cardData = cardOld.cardData;
         }
         else {
-            cardData = cardDetail.CardData;
+            cardData = cardDetail.CardDatas;
         }
         string displayText = cardData.cardName + "\nDescription: ";
         displayText += "description text";

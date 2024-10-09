@@ -1,6 +1,5 @@
 using System.Collections.Generic;
-using Scenes.Irys_is_doing_her_best.Scripts.My;
-using ScriptableObjects;
+using CardBattles.CardScripts.CardDatas;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,7 +39,8 @@ public class ManageCardSetDetails : MonoBehaviour {
         animator.SetBool("isOpen", true);
     }
 
-    private void SetUpObjects(BaseCardData cardData) {
+    /*
+    private void SetUpObjects(CardData cardData) {
         GameObject displayObject = Instantiate(cardSetDetailPrefab, cardListSpace.transform, true);
         displayObject.AddComponent<CardDetail>().CardData = cardData;
         descriptionWindow = displayObject.transform.GetChild(2).GetComponent<RectTransform>();
@@ -48,7 +48,7 @@ public class ManageCardSetDetails : MonoBehaviour {
         displayObject.AddComponent<ShowCardDetails>().SetComponents(descriptionWindow, descriptionText);
         displayObject.transform.GetChild(0).GetComponent<Image>().sprite = cardData.cardImage;
         displayObject.transform.GetChild(1).GetComponent<TMP_Text>().text = cardData.cardName;
-    }
+    }*/
 
     public void Hide() {
         animator.SetBool("isOpen", false);
