@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Scenes.Irys_is_doing_her_best.Scripts.My;
+using CardBattles.CardScripts.CardDatas;
 using ScriptableObjects;
 using UnityEditor;
 using UnityEngine;
