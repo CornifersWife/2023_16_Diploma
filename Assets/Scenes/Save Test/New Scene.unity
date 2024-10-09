@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8587,7 +8587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Cats 3
   sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
-  cards: {fileID: 11400000, guid: 14abd029b264d554f918fca768f67c90, type: 2}
+  cards: {fileID: 11400000, guid: 66865fefba2b02a4dafc9b77cc8017ce, type: 2}
 --- !u!4 &231655315
 Transform:
   m_ObjectHideFlags: 0
@@ -19291,7 +19291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Cats 2
   sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
-  cards: {fileID: 11400000, guid: 14abd029b264d554f918fca768f67c90, type: 2}
+  cards: {fileID: 11400000, guid: 93a68ce33da350a4c95448a9156b6763, type: 2}
 --- !u!1 &305754600
 GameObject:
   m_ObjectHideFlags: 0
@@ -70965,7 +70965,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Cats 1
   sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
-  cards: {fileID: 11400000, guid: 14abd029b264d554f918fca768f67c90, type: 2}
+  cards: {fileID: 11400000, guid: 66865fefba2b02a4dafc9b77cc8017ce, type: 2}
 --- !u!1 &1082206032
 GameObject:
   m_ObjectHideFlags: 0
@@ -142796,8 +142796,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f5bf0ec4ab9344ea7f86c54931c83e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  cameraPivot: {fileID: 0}
+  player: {fileID: 1352021020}
+  cameraPivot: {fileID: 196341080}
 --- !u!4 &1955889537
 Transform:
   m_ObjectHideFlags: 0

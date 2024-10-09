@@ -5,7 +5,8 @@ public class EnemyPopup : MonoBehaviour {
     [SerializeField] private GameObject enemyPopup;
     [SerializeField] private GameObject popupPanel;
     [SerializeField] private GameObject deckPopup;
-
+    [SerializeField] private string BattleSceneName = "CardBattleScene";
+    
     public Enemy Enemy { get; set; }
     public bool IsOpen => enemyPopup.activeSelf;
 
@@ -24,7 +25,7 @@ public class EnemyPopup : MonoBehaviour {
         if (CheckDeck(3)) {
             EnemyStateManager.Instance.SetCurrentEnemy(Enemy);
             Close();
-            SceneSwitcher.Instance.LoadScene("Irys playspace");
+            SceneSwitcher.Instance.LoadScene(BattleSceneName);
         }
         else {
             deckPopup.SetActive(true);

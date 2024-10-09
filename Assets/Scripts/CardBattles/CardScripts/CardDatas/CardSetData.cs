@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +13,7 @@ namespace CardBattles.CardScripts.CardDatas {
         [HideInInspector]public List<CardData> cards = new List<CardData>();
         [SerializeField]
         public Color setColor = Color.white;
-
+[ShowAssetPreview]
         [SerializeField] public Sprite cardSetIcon;
     }
 }

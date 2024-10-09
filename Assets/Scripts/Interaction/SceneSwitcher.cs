@@ -20,7 +20,7 @@ public class SceneSwitcher : MonoBehaviour {
         player.SetActive(sceneName is "beta-release" or "beta-release-2");
         if(sceneName is "beta-release-2")
             player.transform.position = new Vector3(28, 6.7f, -4);
-        cameraPivot.SetActive(sceneName != "Irys playspace");
+        //cameraPivot.SetActive(sceneName != "Irys playspace");
         if(!SceneManager.GetSceneByName(sceneName).isLoaded)
             SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }

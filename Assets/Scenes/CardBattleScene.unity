@@ -1956,6 +1956,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11471108929920545, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
+      propertyPath: cardSetDatas.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 66865fefba2b02a4dafc9b77cc8017ce, type: 2}
+    - target: {fileID: 11471108929920545, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       propertyPath: cardSetDatas.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: 93a68ce33da350a4c95448a9156b6763, type: 2}
