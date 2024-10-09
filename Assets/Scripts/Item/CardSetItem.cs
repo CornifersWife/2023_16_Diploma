@@ -2,7 +2,7 @@
 using CardBattles.CardScripts.CardDatas;
 using UnityEngine;
 
-public class CardSet : Item {
+public class CardSetItem : Item {
     [SerializeField] private CardSetData cards;
     private bool unlocked;
 

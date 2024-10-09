@@ -13,7 +13,7 @@ public class ManageGame : MonoBehaviour {
     [SerializeField] private EnemySM enemy;
     [SerializeField] private GameObject wall;
     [SerializeField] private ParticleSystem removablePS;
-    [SerializeField] private List<CardSet> cardSets;
+    [SerializeField] private List<CardSetItem> cardSets;
         
     public bool IsStarted => SceneManager.GetActiveScene().name is "beta-release" or "beta-release-2" or "New Scene";
     public static ManageGame Instance = null;
@@ -34,7 +34,7 @@ public class ManageGame : MonoBehaviour {
         if (SceneManager.GetActiveScene().name == "Irys playspace")
             return;
         //LoadSettings();
-        foreach (CardSet cardSet in cardSets) {
+        foreach (CardSetItem cardSet in cardSets) {
             InventoryController.Instance.AddItem(cardSet);
         }
         
