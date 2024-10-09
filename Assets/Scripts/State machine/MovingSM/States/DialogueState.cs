@@ -21,10 +21,10 @@ public class DialogueState : BaseState {
     public override void UpdateLogic() {
         base.UpdateLogic();
         
-        /*if (DialogueController.Instance.DialogueClosed) {
+        if (DialogueController.Instance.DialogueClosed) {
             movingSM.IsDialogue = false;
             movingSM.ChangeState(movingSM.idleState);
-        }*/
+        }
     }
 
     public override void UpdatePhysics() {

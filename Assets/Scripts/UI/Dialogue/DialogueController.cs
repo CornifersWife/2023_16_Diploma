@@ -11,8 +11,9 @@ public class DialogueController : MonoBehaviour, IPointerClickHandler {
     [Header("Dialogue camera settings")] 
     [SerializeField] private float zoomIntensity = 5f;
     [SerializeField] private float rotationUnits = 0.05f;
-    
-    [Header("References")]
+
+    [Header("References")] 
+    [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private Image icon;
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text dialogueText;
@@ -87,8 +88,8 @@ public class DialogueController : MonoBehaviour, IPointerClickHandler {
     }
 
     private void StartConversation(DialogueText dialogue) {
-        if (!gameObject.activeSelf) {
-            gameObject.SetActive(true);
+        if (!dialoguePanel.activeSelf) {
+            dialoguePanel.SetActive(true);
         }
         SetDialogue(dialogue);
         HUDController.Instance.HideHUD();
@@ -114,7 +115,7 @@ public class DialogueController : MonoBehaviour, IPointerClickHandler {
     private void HideDialogue() {
         InputManager.Instance.EnableAllInput();
         dialogueClosed = true;
-        gameObject.SetActive(false);
+        dialoguePanel.SetActive(false);
     }
     
     private void SetDialogue(DialogueText dialogue) {
@@ -156,7 +157,8 @@ public class DialogueController : MonoBehaviour, IPointerClickHandler {
         isTyping = false;
     }
     public void OnPointerClick(PointerEventData eventData) {
-        DisplaySentence(dialogue);
+        if(dialoguePanel.activeSelf)
+            DisplaySentence(dialogue);
     }
 
     private void PlayDialogueSound(int currentDisplayedCharacterCount, char currentCharacter) {
