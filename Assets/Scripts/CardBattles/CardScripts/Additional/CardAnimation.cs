@@ -262,7 +262,8 @@ namespace CardBattles.CardScripts.Additional {
 
             yield return ((CanvasGroup)canvasGroup)
                 .DOFade(0f, cardFadeOutDuration)
-                .SetEase(cardFadeOutEase);
+                .SetEase(cardFadeOutEase)
+                .WaitForCompletion();
         }
     }
 }
