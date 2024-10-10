@@ -28,6 +28,7 @@ namespace CardBattles.Character {
             isPlayers = CompareTag("Player");
         }
 
+        [OnValueChanged("UpdateCardPositions")]
         [SerializeField] [Range(100, 1000)] public float distanceMulti = 300f;
 
 
@@ -89,8 +90,12 @@ namespace CardBattles.Character {
             }
         }
 
+        [Button(text: "Force Update Card Positions",enabledMode: EButtonEnableMode.Playmode)]
+        public void UpdateCardPositions() {
+            UpdateCardPositions(0);
+        }
 
-        public void UpdateCardPositions(int additionalCards = 0) {
+        private void UpdateCardPositions(int additionalCards) {
             var newHandPositions = CalculateCardPositions(Cards.Count + additionalCards);
             for (int i = 0; i < Cards.Count; i++) {
                 StartCoroutine(Cards[i].Move(newHandPositions[i]));
