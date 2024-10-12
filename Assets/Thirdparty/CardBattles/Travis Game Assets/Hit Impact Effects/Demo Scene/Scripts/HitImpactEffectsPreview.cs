@@ -25,7 +25,7 @@ namespace TravisGameAssets
 		public Image floorIcon;
 		public Image slowMotionIcon;
 		
-		public GameObject light;
+		public GameObject myLight;
 		
 		private GameObject[] hitEffects;
 
@@ -42,7 +42,7 @@ namespace TravisGameAssets
 		private bool cameraRotating;
 		private bool floorVisible;
 		private bool slowMotion;
-		private bool lighting;
+		private bool myLighting;
 		
 		void Start()
 		{
@@ -50,7 +50,7 @@ namespace TravisGameAssets
 			cameraRotating = false;
 			floorVisible = true;
 			slowMotion = false;
-			lighting = true;
+			myLighting = true;
 			
 			initFov = Camera.main.fieldOfView;
 			initCamPosition = Camera.main.transform.position;
@@ -178,8 +178,8 @@ namespace TravisGameAssets
 		
 		public void ToggleLighting()
 		{
-			lighting = !lighting;
-			light.SetActive(lighting);
+			myLighting = !myLighting;
+			myLight.SetActive(myLighting);
 		}
 		
 		
