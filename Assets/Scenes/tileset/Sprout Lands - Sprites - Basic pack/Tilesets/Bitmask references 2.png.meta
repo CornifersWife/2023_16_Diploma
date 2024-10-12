@@ -1096,6 +1096,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Bitmask references 2_47
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 3
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a218b6db8e90159419b9b800baabf956
+      internalID: -1786777444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bitmask references 2_48
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 3
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc7d3ead7a89ca24c8556f54f008e142
+      internalID: -999008707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1149,6 +1191,8 @@ TextureImporter:
       Bitmask references 2_44: -1713050206
       Bitmask references 2_45: -1627534180
       Bitmask references 2_46: -1546221774
+      Bitmask references 2_47: -1786777444
+      Bitmask references 2_48: -999008707
       Bitmask references 2_5: 678040658
       Bitmask references 2_6: 8716274
       Bitmask references 2_7: 659059999
