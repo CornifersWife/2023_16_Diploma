@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b3c2fd066d3427d4e9271a151730e059
+guid: c5c285a8a8fa3544fb34ce9d0530afcf
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,55 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Grass_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 96
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 131a792b991b185498faec70dde9b0df
-      internalID: 12220580
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grass_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 96
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8a71489962899fc4bb767410199ca8b2
-      internalID: 316446104
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grass_2
+      name: Bitmask references gif_13
       rect:
         serializedVersion: 2
         x: 32
-        y: 96
-        width: 16
-        height: 16
+        y: 444
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 473758bdb65748f4183f7a7cede33de2
-      internalID: -2043440252
+      spriteID: 650db36a051617d48b6a07f4723af300
+      internalID: -2135241839
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_3
+      name: Bitmask references gif_14
       rect:
         serializedVersion: 2
-        x: 48
-        y: 96
-        width: 16
-        height: 16
+        x: 70
+        y: 444
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1038dc2ae51313449b0f1db51f1c2254
-      internalID: 1862101447
+      spriteID: 8bc231db392ab5445872e624b60b50d6
+      internalID: 200313001
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_4
+      name: Bitmask references gif_15
       rect:
         serializedVersion: 2
-        x: 64
-        y: 96
-        width: 16
-        height: 16
+        x: 108
+        y: 444
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3dc2f75c8d854149b8fb541e55defe4
-      internalID: 6468667
+      spriteID: 952f5dc967e824145b1f460212c82fb1
+      internalID: -737246373
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_5
+      name: Bitmask references gif_16
       rect:
         serializedVersion: 2
-        x: 80
-        y: 96
-        width: 16
-        height: 16
+        x: 146
+        y: 444
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf7cbc698489dbd4db55517ee0948bc6
-      internalID: 65267963
+      spriteID: 991f29a67c7a02e458e6e46c6722e360
+      internalID: -738574747
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_6
+      name: Bitmask references gif_17
       rect:
         serializedVersion: 2
-        x: 96
-        y: 96
-        width: 16
-        height: 16
+        x: 184
+        y: 444
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f54c9f407d56ec40b790e68eb652b8a
-      internalID: 96516262
+      spriteID: 501cc6b81389ea1458a4c30482aeb7bc
+      internalID: -1260519271
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_7
+      name: Bitmask references gif_18
       rect:
         serializedVersion: 2
-        x: 112
-        y: 96
-        width: 16
-        height: 16
+        x: 222
+        y: 444
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd248cc705795694b89bf5c7869a2227
-      internalID: 1425177984
+      spriteID: 7bf4ceb8727ba4f4388d86ff98632bc2
+      internalID: 1827594362
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_8
+      name: Bitmask references gif_19
       rect:
         serializedVersion: 2
-        x: 128
-        y: 96
-        width: 16
-        height: 16
+        x: 260
+        y: 444
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef5aeec67ebd9f349963a221654197d3
-      internalID: 636539730
+      spriteID: df5cbcb9561d1e8428df6270205fb46c
+      internalID: -2013359820
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_9
+      name: Bitmask references gif_20
       rect:
         serializedVersion: 2
-        x: 144
-        y: 96
-        width: 16
-        height: 16
+        x: 298
+        y: 444
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,20 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 625e3a10b7cf5b94d8cab0381e41249f
-      internalID: -458165491
+      spriteID: cce13c93912d5554b9657c349f479cba
+      internalID: 1510834987
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_10
+      name: Bitmask references gif_21
       rect:
         serializedVersion: 2
-        x: 0
-        y: 80
-        width: 16
-        height: 16
+        x: 336
+        y: 444
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,20 +292,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3094651e3dd8bc4285efd3788c9b5e5
-      internalID: -420645894
+      spriteID: 09bc87cda06c74a499d34c8386eb543c
+      internalID: 1687918951
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_11
+      name: Bitmask references gif_22
       rect:
         serializedVersion: 2
-        x: 16
-        y: 80
-        width: 16
-        height: 16
+        x: 374
+        y: 444
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,230 +313,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9580aba1a53f9344daf4c1b04fd1869c
-      internalID: -1269649134
+      spriteID: fe83745508911ca4b9fbb248871faab0
+      internalID: -1937273260
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_12
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ec3eb1ce71a396447affe1880740a8af
-      internalID: 234305074
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grass_13
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4cb6d7b636a3aa24db89e640d310243d
-      internalID: 1872615331
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grass_14
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a48f1be1cd1a611488f6057be477643e
-      internalID: -803411720
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grass_15
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ea3df75879cc5a043b113cdc38326486
-      internalID: -1985683483
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grass_16
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fa05a4bdc4f5cd544a100f4e61d1869b
-      internalID: -338756083
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grass_17
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f9ed4b668fb6af441a6adcc244cb3c47
-      internalID: -1863021902
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grass_18
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 17a25ab4e91fc804ba9d4c83b4e4d2d5
-      internalID: 1290462775
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grass_19
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1320eec029a4dfd4f90c7c60968cb5e5
-      internalID: 2107010789
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grass_20
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: acc4cf7a4063f154687bd56034fe2afa
-      internalID: -1533300949
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grass_21
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 27ac0f431c1431d42ac8f39ee25750d3
-      internalID: 341153127
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grass_22
+      name: Bitmask references gif_26
       rect:
         serializedVersion: 2
         x: 32
-        y: 64
-        width: 16
-        height: 16
+        y: 406
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -586,20 +334,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad9c7e31c7ac0b0458fddf60fa8c9ca6
-      internalID: 1420898776
+      spriteID: 1bde337ba4a4a7e49825f7446167e688
+      internalID: 1824701132
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_23
+      name: Bitmask references gif_27
       rect:
         serializedVersion: 2
-        x: 48
-        y: 64
-        width: 16
-        height: 16
+        x: 70
+        y: 406
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -607,20 +355,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a845e9b991885534ab4081a4ba850aab
-      internalID: -928473334
+      spriteID: 0797f7fd08d22374f8fd88791f09d2fb
+      internalID: -1800170110
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_24
+      name: Bitmask references gif_28
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
-        width: 16
-        height: 16
+        x: 108
+        y: 406
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -628,20 +376,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9555a0feae885a43bfe62bc019320d7
-      internalID: -1565525594
+      spriteID: 05eac9a60b630c94cb98a6e24411df03
+      internalID: 194913192
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_25
+      name: Bitmask references gif_29
       rect:
         serializedVersion: 2
-        x: 80
-        y: 64
-        width: 16
-        height: 16
+        x: 146
+        y: 406
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -649,20 +397,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44a1fe2638b1d8a429856cd729d09f68
-      internalID: -755268137
+      spriteID: 0c63410f8de5ca845bc75c6ab01f7c44
+      internalID: -645781086
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_26
+      name: Bitmask references gif_30
       rect:
         serializedVersion: 2
-        x: 96
-        y: 64
-        width: 16
-        height: 16
+        x: 184
+        y: 406
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -670,20 +418,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5bff92ba9d38ba64295fcdfaa9cf276c
-      internalID: 30270088
+      spriteID: 32c06d002ad50d24ab39ef22aa8f31d2
+      internalID: -1489675787
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_27
+      name: Bitmask references gif_31
       rect:
         serializedVersion: 2
-        x: 112
-        y: 64
-        width: 16
-        height: 16
+        x: 222
+        y: 406
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -691,20 +439,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f90402310cdabfb4a9e5fb10648c44f2
-      internalID: 531667599
+      spriteID: 4162ea5499b1ca740bf6b92d2be76569
+      internalID: -2132155641
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_28
+      name: Bitmask references gif_32
       rect:
         serializedVersion: 2
-        x: 128
-        y: 64
-        width: 16
-        height: 16
+        x: 260
+        y: 406
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -712,20 +460,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3477147210d3f3d4e86739779c35c270
-      internalID: 851041641
+      spriteID: 3fd3ba41db9f5f044bf703f58d749e8b
+      internalID: -1490451194
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_29
+      name: Bitmask references gif_33
       rect:
         serializedVersion: 2
-        x: 144
-        y: 64
-        width: 16
-        height: 16
+        x: 298
+        y: 406
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -733,20 +481,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db3c82c0a56d72b4684636d329439003
-      internalID: -1413137409
+      spriteID: d31248eef2ad5c345bbe2f36ad956cea
+      internalID: -401089963
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_30
+      name: Bitmask references gif_34
       rect:
         serializedVersion: 2
-        x: 160
-        y: 64
-        width: 16
-        height: 16
+        x: 336
+        y: 406
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -754,20 +502,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a55fbf1e9e5bb014ea1d80ec9b7e8912
-      internalID: 2097394660
+      spriteID: 227211f7082e0fd48bd0e13cacce6f56
+      internalID: 1167956232
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_31
+      name: Bitmask references gif_35
       rect:
         serializedVersion: 2
-        x: 0
-        y: 48
-        width: 16
-        height: 16
+        x: 374
+        y: 406
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -775,41 +523,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: febaa144502f25043bf270188878e264
-      internalID: 125109809
+      spriteID: f8b0ffc0079f1944a8f7c24f66ae83ce
+      internalID: 1097751455
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_32
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 30f20de566282784aa1dd81b5b1fa770
-      internalID: 1044557454
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grass_33
+      name: Bitmask references gif_39
       rect:
         serializedVersion: 2
         x: 32
-        y: 48
-        width: 16
-        height: 16
+        y: 368
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -817,20 +544,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2b98e7ede1f59d458f1fc1a3a5006d4
-      internalID: 1657154416
+      spriteID: da1f242b5815eb140a5debad70d90e84
+      internalID: -492818741
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_34
+      name: Bitmask references gif_40
       rect:
         serializedVersion: 2
-        x: 48
-        y: 48
-        width: 16
-        height: 16
+        x: 70
+        y: 368
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -838,20 +565,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d58f865d6ff48bf4bad5fdca92e59cdd
-      internalID: -220336223
+      spriteID: 06c87b12b0dcc374caac80a44b557d06
+      internalID: 467838163
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_35
+      name: Bitmask references gif_41
       rect:
         serializedVersion: 2
-        x: 64
-        y: 48
-        width: 16
-        height: 16
+        x: 108
+        y: 368
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -859,20 +586,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bca1934ff00073c4190ed7d7500826ba
-      internalID: 481877656
+      spriteID: c7c47f703d4ea9942ad35c26b0e67f2e
+      internalID: 408227062
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_36
+      name: Bitmask references gif_42
       rect:
         serializedVersion: 2
-        x: 80
-        y: 48
-        width: 16
-        height: 16
+        x: 146
+        y: 368
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -880,20 +607,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65f4f94387b08d440b5be288a9a0acd1
-      internalID: -954933412
+      spriteID: 8a9a3b4c086bea9409b1e08b132788aa
+      internalID: 460986025
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_37
+      name: Bitmask references gif_43
       rect:
         serializedVersion: 2
-        x: 96
-        y: 48
-        width: 16
-        height: 16
+        x: 184
+        y: 368
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -901,20 +628,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 585e6a503387b984eaab3c8b90f93a47
-      internalID: 1780061981
+      spriteID: 42c64c3b3b0090649ae417ed6443e6a7
+      internalID: -1239873620
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_38
+      name: Bitmask references gif_44
       rect:
         serializedVersion: 2
-        x: 112
-        y: 48
-        width: 16
-        height: 16
+        x: 222
+        y: 368
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -922,20 +649,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95b8bc945ac834f4bb626e60c94de8a7
-      internalID: 479528899
+      spriteID: 46e75bb0be0b0194ab4f651845bc8031
+      internalID: -477640479
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_39
+      name: Bitmask references gif_45
       rect:
         serializedVersion: 2
-        x: 128
-        y: 48
-        width: 16
-        height: 16
+        x: 260
+        y: 368
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -943,20 +670,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3533747dc798672458f1e8bcc717339b
-      internalID: 1473787070
+      spriteID: db03dac305628c4479e57534fb02f935
+      internalID: -1408730747
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_40
+      name: Bitmask references gif_46
       rect:
         serializedVersion: 2
-        x: 144
-        y: 48
-        width: 16
-        height: 16
+        x: 298
+        y: 368
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -964,20 +691,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac538d97f212a694ea86dc7e69ce954f
-      internalID: 587578989
+      spriteID: de143cfdfa87328448b3c18cb3a57fbc
+      internalID: -73797799
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_41
+      name: Bitmask references gif_47
       rect:
         serializedVersion: 2
-        x: 160
-        y: 48
-        width: 16
-        height: 16
+        x: 336
+        y: 368
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -985,20 +712,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71e8c1c4c098b5d4f8f4f0f980b3ad88
-      internalID: 315774956
+      spriteID: 25606a74e3407d1499aa9e077192a4c5
+      internalID: -585076626
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_46
+      name: Bitmask references gif_48
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
-        width: 16
-        height: 16
+        x: 374
+        y: 368
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1006,20 +733,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6ca6bedf60116b4abd22b36c063293f
-      internalID: -1421538913
+      spriteID: 7e7002a3a24d09b4598232090acd61fe
+      internalID: -1669135992
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_47
+      name: Bitmask references gif_49
       rect:
         serializedVersion: 2
-        x: 80
-        y: 32
-        width: 16
-        height: 16
+        x: 412
+        y: 368
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1027,20 +754,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f105c5dd4b759e14d9ea98ec600a63e8
-      internalID: 413918504
+      spriteID: bf83a86cdf5f9c244a3f5047d7edde72
+      internalID: 1467875355
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_48
+      name: Bitmask references gif_52
       rect:
         serializedVersion: 2
-        x: 96
-        y: 32
-        width: 16
-        height: 16
+        x: 32
+        y: 330
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1048,20 +775,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11e8decbdc375c643bdf249b9f3b6658
-      internalID: -578597634
+      spriteID: 40ea26e913faadf47abf55153fbe4185
+      internalID: -952986403
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_49
+      name: Bitmask references gif_53
       rect:
         serializedVersion: 2
-        x: 112
-        y: 32
-        width: 16
-        height: 16
+        x: 70
+        y: 330
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1069,20 +796,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4cc4c20cfc59c448a4465b09f0ff655
-      internalID: -696461338
+      spriteID: 4a5b8e92aa795b44294119e46340e8aa
+      internalID: 55648466
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_50
+      name: Bitmask references gif_54
       rect:
         serializedVersion: 2
-        x: 128
-        y: 32
-        width: 16
-        height: 16
+        x: 108
+        y: 330
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1090,8 +817,281 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0bbd92190e3ce44daf23d328b84c9bc
-      internalID: -781374063
+      spriteID: eb00414a1685a0848af71f923b637f11
+      internalID: 890652324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bitmask references gif_55
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 330
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 323ae68b5a564f84aa7b5ca11bb396dd
+      internalID: 1613354017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bitmask references gif_56
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 330
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a43046ff8b3b3d42981ea96568763c5
+      internalID: -619098544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bitmask references gif_57
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 330
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10982cd0f2f7f5b4bb91d742daed44d7
+      internalID: -1595096160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bitmask references gif_58
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 330
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bbdee582d4b40c478221e35eca6c0a0
+      internalID: -1527681536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bitmask references gif_59
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 330
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d9cab198a1f7644f842ef18706d6c6b
+      internalID: 737060500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bitmask references gif_60
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 330
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d341f21b51412f64bb9adbd6b72ff029
+      internalID: 1129945728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bitmask references gif_61
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 330
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36b67b113bf6c2d4e86627b5e59c97f3
+      internalID: 964756348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bitmask references gif_62
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 330
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9ae546b610c45f4cb11d45afbdc4d3a
+      internalID: 1787583434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bitmask references gif_69
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 292
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 837d7442da68d59469287af509f2cada
+      internalID: 1274331051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bitmask references gif_70
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 292
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3984f15f89440424b82e76bcf052f019
+      internalID: -1955313529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bitmask references gif_71
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 292
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c580a29d3e58a0458207b1aa6a74e21
+      internalID: -1404668134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bitmask references gif_72
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 292
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c598663db18f31742bff9b50f747fccc
+      internalID: 1902962906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bitmask references gif_73
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 292
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74344ffa25be6ae4f84cb37a0e2bed20
+      internalID: -1769151086
       vertices: []
       indices: 
       edges: []
@@ -1099,7 +1099,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 241d954c66c08544391e3bddf93a25c4
+    spriteID: cf6fd66d866f7894983a3f049182972e
     internalID: 0
     vertices: []
     indices: 
@@ -1107,77 +1107,175 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Grass_0: 12220580
-      Grass_1: 316446104
-      Grass_10: -420645894
-      Grass_11: -1269649134
-      Grass_12: 234305074
-      Grass_13: 1872615331
-      Grass_14: -803411720
-      Grass_15: -1985683483
-      Grass_16: -338756083
-      Grass_17: -1863021902
-      Grass_18: 1290462775
-      Grass_19: 2107010789
-      Grass_2: -2043440252
-      Grass_20: -1533300949
-      Grass_21: 341153127
-      Grass_22: 1420898776
-      Grass_23: -928473334
-      Grass_24: -1565525594
-      Grass_25: -755268137
-      Grass_26: 30270088
-      Grass_27: 531667599
-      Grass_28: 851041641
-      Grass_29: -1413137409
-      Grass_3: 1862101447
-      Grass_30: 2097394660
-      Grass_31: 125109809
-      Grass_32: 1044557454
-      Grass_33: 1657154416
-      Grass_34: -220336223
-      Grass_35: 481877656
-      Grass_36: -954933412
-      Grass_37: 1780061981
-      Grass_38: 479528899
-      Grass_39: 1473787070
-      Grass_4: 6468667
-      Grass_40: 587578989
-      Grass_41: 315774956
-      Grass_42: 2060922635
-      Grass_43: 1739336442
-      Grass_44: -180378389
-      Grass_45: -1184279694
-      Grass_46: -1421538913
-      Grass_47: 413918504
-      Grass_48: -578597634
-      Grass_49: -696461338
-      Grass_5: 65267963
-      Grass_50: -781374063
-      Grass_51: 391370377
-      Grass_52: 1177751487
-      Grass_53: 1315242764
-      Grass_54: 1798546039
-      Grass_55: 1433216878
-      Grass_56: -1721531792
-      Grass_57: 2053552921
-      Grass_58: 1146295232
-      Grass_59: 1760826656
-      Grass_6: 96516262
-      Grass_60: -1384728835
-      Grass_61: -2006495750
-      Grass_62: 380761036
-      Grass_63: 887786178
-      Grass_64: -1139391138
-      Grass_65: 1661618234
-      Grass_66: -736212319
-      Grass_67: -1811184007
-      Grass_68: 218521706
-      Grass_69: -1818335346
-      Grass_7: 1425177984
-      Grass_70: -713591767
-      Grass_8: 636539730
-      Grass_9: -458165491
+      Bitmask references gif_0: 956113270
+      Bitmask references gif_1: -1660394736
+      Bitmask references gif_10: 1778705230
+      Bitmask references gif_100: 822848373
+      Bitmask references gif_101: 115306686
+      Bitmask references gif_102: -1505230435
+      Bitmask references gif_103: -1227817073
+      Bitmask references gif_104: 664401718
+      Bitmask references gif_105: 415117398
+      Bitmask references gif_106: -975705740
+      Bitmask references gif_107: 685636085
+      Bitmask references gif_108: -746533593
+      Bitmask references gif_109: -2073200787
+      Bitmask references gif_11: 1463608953
+      Bitmask references gif_110: 1319205683
+      Bitmask references gif_111: -762516925
+      Bitmask references gif_112: 928717052
+      Bitmask references gif_113: -1736724028
+      Bitmask references gif_114: -1498781540
+      Bitmask references gif_115: 205221128
+      Bitmask references gif_116: 1128161200
+      Bitmask references gif_117: -127714862
+      Bitmask references gif_118: -552674702
+      Bitmask references gif_119: 1808653882
+      Bitmask references gif_12: 738877800
+      Bitmask references gif_120: -720448102
+      Bitmask references gif_121: -1225718162
+      Bitmask references gif_122: 1398976180
+      Bitmask references gif_123: 1446898825
+      Bitmask references gif_124: 1759410965
+      Bitmask references gif_125: -1778209557
+      Bitmask references gif_126: -1886010384
+      Bitmask references gif_127: 1101803296
+      Bitmask references gif_128: 1233934832
+      Bitmask references gif_129: -1406574987
+      Bitmask references gif_13: -2135241839
+      Bitmask references gif_130: -35152999
+      Bitmask references gif_131: -590736939
+      Bitmask references gif_132: 577925412
+      Bitmask references gif_133: -1364861080
+      Bitmask references gif_134: -1358520586
+      Bitmask references gif_135: -1856363633
+      Bitmask references gif_136: -321824819
+      Bitmask references gif_137: 245569772
+      Bitmask references gif_138: -1446518065
+      Bitmask references gif_139: 670253790
+      Bitmask references gif_14: 200313001
+      Bitmask references gif_140: -532150901
+      Bitmask references gif_141: -2057819427
+      Bitmask references gif_142: -443859821
+      Bitmask references gif_143: -1974900876
+      Bitmask references gif_144: -2093339398
+      Bitmask references gif_145: -1825534602
+      Bitmask references gif_146: -1027389199
+      Bitmask references gif_147: 1611150005
+      Bitmask references gif_148: 1463454172
+      Bitmask references gif_149: -1685253161
+      Bitmask references gif_15: -737246373
+      Bitmask references gif_150: 1930479103
+      Bitmask references gif_151: 496258780
+      Bitmask references gif_152: -806342242
+      Bitmask references gif_153: -1217224655
+      Bitmask references gif_154: 2016209992
+      Bitmask references gif_155: -415283015
+      Bitmask references gif_156: 1756031363
+      Bitmask references gif_157: 1695920121
+      Bitmask references gif_158: 914738301
+      Bitmask references gif_159: 1690536493
+      Bitmask references gif_16: -738574747
+      Bitmask references gif_160: 956020427
+      Bitmask references gif_161: -1373424258
+      Bitmask references gif_162: 1124404662
+      Bitmask references gif_163: 1693630564
+      Bitmask references gif_164: -1313516738
+      Bitmask references gif_165: -207507118
+      Bitmask references gif_166: -694360599
+      Bitmask references gif_167: -1935836404
+      Bitmask references gif_168: 1310367266
+      Bitmask references gif_17: -1260519271
+      Bitmask references gif_18: 1827594362
+      Bitmask references gif_19: -2013359820
+      Bitmask references gif_2: -931663918
+      Bitmask references gif_20: 1510834987
+      Bitmask references gif_21: 1687918951
+      Bitmask references gif_22: -1937273260
+      Bitmask references gif_23: 1673846051
+      Bitmask references gif_24: 1972728281
+      Bitmask references gif_25: -2106721407
+      Bitmask references gif_26: 1824701132
+      Bitmask references gif_27: -1800170110
+      Bitmask references gif_28: 194913192
+      Bitmask references gif_29: -645781086
+      Bitmask references gif_3: -1246608861
+      Bitmask references gif_30: -1489675787
+      Bitmask references gif_31: -2132155641
+      Bitmask references gif_32: -1490451194
+      Bitmask references gif_33: -401089963
+      Bitmask references gif_34: 1167956232
+      Bitmask references gif_35: 1097751455
+      Bitmask references gif_36: -991322590
+      Bitmask references gif_37: -1380552589
+      Bitmask references gif_38: -1981926074
+      Bitmask references gif_39: -492818741
+      Bitmask references gif_4: 2090613604
+      Bitmask references gif_40: 467838163
+      Bitmask references gif_41: 408227062
+      Bitmask references gif_42: 460986025
+      Bitmask references gif_43: -1239873620
+      Bitmask references gif_44: -477640479
+      Bitmask references gif_45: -1408730747
+      Bitmask references gif_46: -73797799
+      Bitmask references gif_47: -585076626
+      Bitmask references gif_48: -1669135992
+      Bitmask references gif_49: 1467875355
+      Bitmask references gif_5: 127154685
+      Bitmask references gif_50: 1624359418
+      Bitmask references gif_51: 141526332
+      Bitmask references gif_52: -952986403
+      Bitmask references gif_53: 55648466
+      Bitmask references gif_54: 890652324
+      Bitmask references gif_55: 1613354017
+      Bitmask references gif_56: -619098544
+      Bitmask references gif_57: -1595096160
+      Bitmask references gif_58: -1527681536
+      Bitmask references gif_59: 737060500
+      Bitmask references gif_6: -150393829
+      Bitmask references gif_60: 1129945728
+      Bitmask references gif_61: 964756348
+      Bitmask references gif_62: 1787583434
+      Bitmask references gif_63: 408878737
+      Bitmask references gif_64: -1430618798
+      Bitmask references gif_65: 505728076
+      Bitmask references gif_66: -68976757
+      Bitmask references gif_67: -1119685408
+      Bitmask references gif_68: 1766960936
+      Bitmask references gif_69: 1274331051
+      Bitmask references gif_7: -858624063
+      Bitmask references gif_70: -1955313529
+      Bitmask references gif_71: -1404668134
+      Bitmask references gif_72: 1902962906
+      Bitmask references gif_73: -1769151086
+      Bitmask references gif_74: -1193613887
+      Bitmask references gif_75: -743527202
+      Bitmask references gif_76: -1580985204
+      Bitmask references gif_77: -2127094154
+      Bitmask references gif_78: 1895324254
+      Bitmask references gif_79: 403008227
+      Bitmask references gif_8: -1990869618
+      Bitmask references gif_80: 185200619
+      Bitmask references gif_81: -478515348
+      Bitmask references gif_82: 966973993
+      Bitmask references gif_83: 1155558413
+      Bitmask references gif_84: -1276370926
+      Bitmask references gif_85: -1778957049
+      Bitmask references gif_86: 1229033493
+      Bitmask references gif_87: -163192256
+      Bitmask references gif_88: 976357280
+      Bitmask references gif_89: 1034678203
+      Bitmask references gif_9: -9268126
+      Bitmask references gif_90: 1740845221
+      Bitmask references gif_91: -290325069
+      Bitmask references gif_92: 235180895
+      Bitmask references gif_93: 733599050
+      Bitmask references gif_94: 2144260906
+      Bitmask references gif_95: -1956166484
+      Bitmask references gif_96: -6095294
+      Bitmask references gif_97: -1003014131
+      Bitmask references gif_98: -1773628998
+      Bitmask references gif_99: -1142815643
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

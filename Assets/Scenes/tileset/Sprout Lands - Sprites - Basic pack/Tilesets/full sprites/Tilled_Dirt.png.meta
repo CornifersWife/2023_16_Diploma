@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9aab0395640cd5c4a95fa46beebc8762
+guid: 1a0b5070e30fdc84c97ef28f74fd3b79
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,55 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bitmask references 1_0
+      name: Tilled_Dirt_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ada0a83ce98c47542817b3edc3bd64f2
+      internalID: -235388358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fa8c6e39d720b44ca99017ce702583d
+      internalID: 420689243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_2
       rect:
         serializedVersion: 2
         x: 32
-        y: 188
-        width: 32
-        height: 32
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9038c731446694a44802ff450f679531
-      internalID: -1807181611
+      spriteID: b78b7eb6e36496148b2a2c83e1f21820
+      internalID: 865428911
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_1
+      name: Tilled_Dirt_3
       rect:
         serializedVersion: 2
-        x: 70
-        y: 188
-        width: 32
-        height: 32
+        x: 48
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01f13d4202c5cb94d9dcdf924c92d4ba
-      internalID: 1080213389
+      spriteID: ec077ca3c6d36df41bb22dc166c58c73
+      internalID: 1875761505
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_2
+      name: Tilled_Dirt_4
       rect:
         serializedVersion: 2
-        x: 108
-        y: 188
-        width: 32
-        height: 32
+        x: 64
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb28cd05f1a634b45ab636b6f2549a72
-      internalID: 25994501
+      spriteID: 04bdb0b6ecb16dc4bb7a65606275ac84
+      internalID: 2139783055
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_3
+      name: Tilled_Dirt_5
       rect:
         serializedVersion: 2
-        x: 146
-        y: 188
-        width: 32
-        height: 32
+        x: 80
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3629501499f81443aabcb3d45170706
-      internalID: 181786177
+      spriteID: 57b76a7e16402c4429b4cac80a82fa28
+      internalID: -1992776198
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_4
+      name: Tilled_Dirt_6
       rect:
         serializedVersion: 2
-        x: 184
-        y: 188
-        width: 32
-        height: 32
+        x: 96
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1450a013a30c22f47baaebfcba4fc9a4
-      internalID: -1935257305
+      spriteID: 1791dccfa7f33944d8a07562fecc108e
+      internalID: -1871085711
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_5
+      name: Tilled_Dirt_7
       rect:
         serializedVersion: 2
-        x: 222
-        y: 188
-        width: 32
-        height: 32
+        x: 112
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98f86795d6111f74383cd166720e195e
-      internalID: 807236056
+      spriteID: 817eda1c08acb0148b3a32a8b11ad62f
+      internalID: -76388741
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_6
+      name: Tilled_Dirt_8
       rect:
         serializedVersion: 2
-        x: 260
-        y: 188
-        width: 32
-        height: 32
+        x: 128
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +292,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74842ccff07a4d846970ebf91909f146
-      internalID: -1707027973
+      spriteID: 47c717a1cf1e70f40a4ac019699e978e
+      internalID: -563230930
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_7
+      name: Tilled_Dirt_9
       rect:
         serializedVersion: 2
-        x: 298
-        y: 188
-        width: 32
-        height: 32
+        x: 144
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,20 +313,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac77749f2820cd84e9556671105cb2be
-      internalID: 1751207623
+      spriteID: 5c3cee3f7748a8e428bbfb8b46259186
+      internalID: 1539957416
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_8
+      name: Tilled_Dirt_10
       rect:
         serializedVersion: 2
-        x: 336
-        y: 188
-        width: 32
-        height: 32
+        x: 0
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,20 +334,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ae01d06c9227914ca85e781ddbe1fd7
-      internalID: -1379287734
+      spriteID: 957c5ebe5034583418046da04c544fdd
+      internalID: -1549394999
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_9
+      name: Tilled_Dirt_11
       rect:
         serializedVersion: 2
-        x: 374
-        y: 188
-        width: 32
-        height: 32
+        x: 16
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,41 +355,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80edea099eda9364aacb3b31e9d13044
-      internalID: -1232781211
+      spriteID: e1adc8560f4c80a48b942ed0a5506ecc
+      internalID: 136165076
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_10
-      rect:
-        serializedVersion: 2
-        x: 412
-        y: 188
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8966ba25dfe1aa3428416e4e179837f5
-      internalID: -1160283050
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bitmask references 1_11
+      name: Tilled_Dirt_12
       rect:
         serializedVersion: 2
         x: 32
-        y: 150
-        width: 32
-        height: 32
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,20 +376,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 032461111edd3464ea14b118af28e454
-      internalID: 323101869
+      spriteID: a8fec8d09e3435b438765729f92eaad0
+      internalID: -1761005469
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_12
+      name: Tilled_Dirt_13
       rect:
         serializedVersion: 2
-        x: 70
-        y: 150
-        width: 32
-        height: 32
+        x: 48
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -376,20 +397,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43f7cf97fa12ecd4fa48dcea1fdaefa6
-      internalID: 2066880209
+      spriteID: e6685043e58ab7d4cb8c96956a20ba8a
+      internalID: -581330654
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_13
+      name: Tilled_Dirt_14
       rect:
         serializedVersion: 2
-        x: 108
-        y: 150
-        width: 32
-        height: 32
+        x: 64
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,20 +418,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20c8654eb7ed7254ea6c61733025d59f
-      internalID: 2006900068
+      spriteID: 8edeb453688a9774e99a87416f0fb79b
+      internalID: -1394911554
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_14
+      name: Tilled_Dirt_15
       rect:
         serializedVersion: 2
-        x: 146
-        y: 150
-        width: 32
-        height: 32
+        x: 80
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -418,20 +439,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6bf36d8b00754204ca1f135bf5b939be
-      internalID: 1680516701
+      spriteID: 10c216cea687a1a4aba8239ce236cc4e
+      internalID: -884395485
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_15
+      name: Tilled_Dirt_16
       rect:
         serializedVersion: 2
-        x: 184
-        y: 150
-        width: 32
-        height: 32
+        x: 96
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -439,20 +460,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f0307f7cb21afa46bd275409f8a2829
-      internalID: -469139926
+      spriteID: 73926456220a0e64fbb70bc2c3c80a1d
+      internalID: 1877752670
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_16
+      name: Tilled_Dirt_17
       rect:
         serializedVersion: 2
-        x: 222
-        y: 150
-        width: 32
-        height: 32
+        x: 112
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -460,20 +481,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da34c3baee98a7049b754517196aaab5
-      internalID: -2104276021
+      spriteID: 8bfa8fb03270192448d2db3e950b32c3
+      internalID: 175197990
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_17
+      name: Tilled_Dirt_18
       rect:
         serializedVersion: 2
-        x: 260
-        y: 150
-        width: 32
-        height: 32
+        x: 128
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -481,20 +502,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5cfc5d96aeae7c04a86f9d8ffee3270c
-      internalID: 173845326
+      spriteID: 4305e347c0763f04fa8c6300035c6073
+      internalID: 1160716875
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_18
+      name: Tilled_Dirt_19
       rect:
         serializedVersion: 2
-        x: 298
-        y: 150
-        width: 32
-        height: 32
+        x: 144
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -502,20 +523,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbe15dec66a15b9429daa7ee8846254b
-      internalID: -2139023133
+      spriteID: 535f1621f36ec524bb017cb1bdfd4932
+      internalID: 997924338
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_19
+      name: Tilled_Dirt_20
       rect:
         serializedVersion: 2
-        x: 336
-        y: 150
-        width: 32
-        height: 32
+        x: 0
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -523,20 +544,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0c780e255fd4fd419f8b61d913a419c
-      internalID: -224592249
+      spriteID: 2705e1143f3fc2b4bb1ee5c56dd577a7
+      internalID: 107729808
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_20
+      name: Tilled_Dirt_21
       rect:
         serializedVersion: 2
-        x: 374
-        y: 150
-        width: 32
-        height: 32
+        x: 16
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -544,41 +565,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03869eab9c0a74147ac19143736cb67f
-      internalID: 564808813
+      spriteID: 020a26eb56b098b40af4863c94ad99fd
+      internalID: -776366748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_21
-      rect:
-        serializedVersion: 2
-        x: 412
-        y: 150
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 227609883894fef4386583971e1541fc
-      internalID: 1716643151
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bitmask references 1_22
+      name: Tilled_Dirt_22
       rect:
         serializedVersion: 2
         x: 32
-        y: 112
-        width: 32
-        height: 32
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -586,20 +586,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d61fe233c09e1b4baa13aaf00c37f5b
-      internalID: -239859897
+      spriteID: 8134ad7015861444fa40748afbd8178d
+      internalID: 238832269
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_23
+      name: Tilled_Dirt_23
       rect:
         serializedVersion: 2
-        x: 70
-        y: 112
-        width: 32
-        height: 32
+        x: 48
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -607,20 +607,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba6371e1fc1502a49bc18e657774ce80
-      internalID: -968608014
+      spriteID: 5889260568385e54f9bb989dcb762086
+      internalID: 392469384
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_24
+      name: Tilled_Dirt_24
       rect:
         serializedVersion: 2
-        x: 108
-        y: 112
-        width: 32
-        height: 32
+        x: 64
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -628,20 +628,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3ef98cf9790f2a4c94c23f273ddc146
-      internalID: -1576477762
+      spriteID: c615c3bb01a1d0d44a4635466323e2e7
+      internalID: -1768197682
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_25
+      name: Tilled_Dirt_25
       rect:
         serializedVersion: 2
-        x: 146
-        y: 112
-        width: 32
-        height: 32
+        x: 80
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -649,20 +649,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ed9fae685fea0c4b8ec4b92d496d6fe
-      internalID: -1079560454
+      spriteID: f5ea8f04da435604082b8b3bc8213607
+      internalID: 999120034
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_26
+      name: Tilled_Dirt_26
       rect:
         serializedVersion: 2
-        x: 184
-        y: 112
-        width: 32
-        height: 32
+        x: 96
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -670,20 +670,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3dc3360290ecb3e4bbdae616b73874d6
-      internalID: -1512549374
+      spriteID: 1b965303b479c0a4698ed002f6ec4024
+      internalID: -140549273
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_27
+      name: Tilled_Dirt_27
       rect:
         serializedVersion: 2
-        x: 222
-        y: 112
-        width: 32
-        height: 32
+        x: 112
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -691,20 +691,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9be2409950b4a748b7cfee07ee632fa
-      internalID: -105852280
+      spriteID: 6ab2f7723b3127647ae9d6e36727a3ef
+      internalID: 14952432
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_28
+      name: Tilled_Dirt_28
       rect:
         serializedVersion: 2
-        x: 260
-        y: 112
-        width: 32
-        height: 32
+        x: 128
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -712,20 +712,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f2468e5a872ba9499a51da98c5b4786
-      internalID: 1367286504
+      spriteID: 7137a963c284b714690098b4dd8b14f9
+      internalID: 1400366132
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_29
+      name: Tilled_Dirt_29
       rect:
         serializedVersion: 2
-        x: 298
-        y: 112
-        width: 32
-        height: 32
+        x: 144
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -733,20 +733,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd3152ccaeb5f4b4db43be0547338d35
-      internalID: 223167715
+      spriteID: 29cfd308354b19e42854450479b9449c
+      internalID: 913674924
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_30
+      name: Tilled_Dirt_30
       rect:
         serializedVersion: 2
-        x: 336
-        y: 112
-        width: 32
-        height: 32
+        x: 160
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -754,20 +754,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c5a6c2f70f11f0429243fa5c752d66c
-      internalID: -965007920
+      spriteID: 84773f73e717a5c498c9a1e123abdcf5
+      internalID: 1196011225
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_31
+      name: Tilled_Dirt_31
       rect:
         serializedVersion: 2
-        x: 374
-        y: 112
-        width: 32
-        height: 32
+        x: 0
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -775,20 +775,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac04078610e936a4386833a57d52991d
-      internalID: -1853142333
+      spriteID: 1587af32d67982d43955397bc90a2378
+      internalID: 1794194267
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_32
+      name: Tilled_Dirt_32
       rect:
         serializedVersion: 2
-        x: 412
-        y: 112
-        width: 32
-        height: 32
+        x: 16
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -796,251 +796,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6f2a97cdc87f07478a8d81024a77986
-      internalID: -40782890
+      spriteID: d0578ab9bea732f4cb6a40e918162264
+      internalID: -1454021969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_33
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 74
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd738f9f008768e4dbf77eb31d4b7dee
-      internalID: 2026001031
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bitmask references 1_34
-      rect:
-        serializedVersion: 2
-        x: 70
-        y: 74
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5a9c60e239b5ddb4b88c069d4a014038
-      internalID: -1891708055
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bitmask references 1_35
-      rect:
-        serializedVersion: 2
-        x: 108
-        y: 74
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3495c5bbcd337e24da56be2d67dacb67
-      internalID: 786938332
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bitmask references 1_36
-      rect:
-        serializedVersion: 2
-        x: 146
-        y: 74
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1d0154749902b934a81c5558d0fc6d80
-      internalID: -1357901269
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bitmask references 1_37
-      rect:
-        serializedVersion: 2
-        x: 184
-        y: 74
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1c8c77e467acf864ea82183240276eeb
-      internalID: -623288807
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bitmask references 1_38
-      rect:
-        serializedVersion: 2
-        x: 222
-        y: 74
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5f102282b3a52054b91a604e01cd8dd5
-      internalID: -217581931
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bitmask references 1_39
-      rect:
-        serializedVersion: 2
-        x: 260
-        y: 74
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3feba77d0e7555a408f741659417f5ba
-      internalID: -1966974330
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bitmask references 1_40
-      rect:
-        serializedVersion: 2
-        x: 298
-        y: 74
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 52744ef296c054b459198377a54decdc
-      internalID: 1783614723
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bitmask references 1_41
-      rect:
-        serializedVersion: 2
-        x: 336
-        y: 74
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 16b52466f15f27f40877488502f2d468
-      internalID: 1028448994
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bitmask references 1_42
-      rect:
-        serializedVersion: 2
-        x: 374
-        y: 74
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4b5e7803e00ace64a8cc42600cfa546b
-      internalID: -781936056
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bitmask references 1_43
-      rect:
-        serializedVersion: 2
-        x: 412
-        y: 74
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e1283740acfdd354a895d68f0edacbde
-      internalID: -1395619906
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bitmask references 1_44
+      name: Tilled_Dirt_33
       rect:
         serializedVersion: 2
         x: 32
-        y: 36
-        width: 32
-        height: 32
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1048,20 +817,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49f688b4f4f467041932de0c473a65fc
-      internalID: 205532338
+      spriteID: d2aa81fc14a34a74e9dc775d99ae86f4
+      internalID: 450014823
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_45
+      name: Tilled_Dirt_34
       rect:
         serializedVersion: 2
-        x: 70
-        y: 36
-        width: 32
-        height: 32
+        x: 48
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1069,20 +838,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d6c8d25dba5d8647a7b1a5ccf00f83e
-      internalID: -1079126755
+      spriteID: 8467cd653f167b14cb4a2f85bf635815
+      internalID: -717647044
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_46
+      name: Tilled_Dirt_35
       rect:
         serializedVersion: 2
-        x: 108
-        y: 36
-        width: 32
-        height: 32
+        x: 64
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1090,20 +859,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 229eb5feb44a4154486846599acd018e
-      internalID: -2028442420
+      spriteID: 3d975e48b2f988e47a332338da03392d
+      internalID: 1191413602
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_47
+      name: Tilled_Dirt_36
       rect:
         serializedVersion: 2
-        x: 146
-        y: 36
-        width: 32
-        height: 32
+        x: 80
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1111,20 +880,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f4474820c01af546a7566dd8a9ea8ff
-      internalID: -651490377
+      spriteID: 7e920afd4c4b95a47adbc78e569c58f0
+      internalID: -1844832607
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_48
+      name: Tilled_Dirt_37
       rect:
         serializedVersion: 2
-        x: 184
-        y: 36
-        width: 32
-        height: 32
+        x: 96
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1132,20 +901,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dccc8827eb30bd74683667253db3f361
-      internalID: 538711002
+      spriteID: b6e4e566a4422b648940dac4f530db6d
+      internalID: 821721850
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_49
+      name: Tilled_Dirt_38
       rect:
         serializedVersion: 2
-        x: 222
-        y: 36
-        width: 32
-        height: 32
+        x: 112
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1153,20 +922,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe0cf0e746c97a64e99c07e2e3145276
-      internalID: 1500983295
+      spriteID: 11eb17cb96684144784092621a9756ae
+      internalID: 1040003558
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_50
+      name: Tilled_Dirt_39
       rect:
         serializedVersion: 2
-        x: 260
-        y: 36
-        width: 32
-        height: 32
+        x: 128
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1174,20 +943,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc13c48bdc34ba54b9eea34e0e94a921
-      internalID: -1608814226
+      spriteID: 73f96124909ea1141a12b819e3dfc7e6
+      internalID: 540004865
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_51
+      name: Tilled_Dirt_40
       rect:
         serializedVersion: 2
-        x: 298
-        y: 36
-        width: 32
-        height: 32
+        x: 144
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1195,20 +964,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c688c47845e49aa4abbb3524b7bacfe1
-      internalID: -292475023
+      spriteID: 18a219f38aa777747b1a864cf6c91d60
+      internalID: -654637263
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_52
+      name: Tilled_Dirt_41
       rect:
         serializedVersion: 2
-        x: 336
-        y: 36
-        width: 32
-        height: 32
+        x: 160
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1216,20 +985,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb60df0149de642438894bb9ba3de190
-      internalID: 405671091
+      spriteID: 2bd98b0a1e1c77a4982a092693ca9aec
+      internalID: 372501143
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_53
+      name: Tilled_Dirt_42
       rect:
         serializedVersion: 2
-        x: 374
-        y: 36
-        width: 32
-        height: 32
+        x: 0
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1237,20 +1006,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 017249cc704da7a4d99303ef226a1a53
-      internalID: 1413332060
+      spriteID: ebed92e733e00d44aa9fbf7630e90074
+      internalID: -1020803076
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bitmask references 1_54
+      name: Tilled_Dirt_43
       rect:
         serializedVersion: 2
-        x: 412
-        y: 36
-        width: 32
-        height: 32
+        x: 16
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1258,8 +1027,554 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6354d07a22fb89a4d8debcf0eafeeabc
-      internalID: -1273245501
+      spriteID: a9c620f38c2554c49b7b9a4d20a04e87
+      internalID: 1830305133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_44
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b10108f3860d9394c905112528533dad
+      internalID: -571157655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_45
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11928f299a2b9e24dbaa96e7d84d61ab
+      internalID: 1207697672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_46
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fed4564b987f4d344bfa8b6cde2b2b55
+      internalID: 1004871795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_47
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c5aac6bcc6bb564995bca9e5d2a7bf5
+      internalID: 13891470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_48
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d4729b7ae71d97448abfe10fe9e038e
+      internalID: 1670196268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_49
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12a756a54c68cb4438d07baed0edc581
+      internalID: -463209773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_50
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ff34222fd7466447a31a92dfb4e4f98
+      internalID: 1763050030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_51
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c1fb4c575b67dc4ea285213c444d9a2
+      internalID: -837670016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_52
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f3edb90f2e5f5c4286f3b691b3cfef3
+      internalID: -1470884190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_53
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1effa3e49a677134eb7e9190339dbcf6
+      internalID: 1264293745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_54
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9d459092f1a60d44b2825f7ca0c16e9
+      internalID: 1509946921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_55
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ad5356409a738a4e969c8ff9f639f72
+      internalID: -1181128337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_56
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 037568f0b3dcb2d4b90cd1c553b7832f
+      internalID: -1864900623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_57
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a78fad629271f6f4cb30c3ecaa2fd71f
+      internalID: 469822253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_58
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2454740f870dc3049997afab4b32ae56
+      internalID: 397486067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_59
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6788746616fd41247b308d59c90baa70
+      internalID: -1836693688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_60
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c93f6f1cea30104dbb3878faa6240d3
+      internalID: -1225023968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_61
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e593c42326dde24bb215990b78f1508
+      internalID: 1008618129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_62
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d7b0b5161e4387468120a100de7dd2d
+      internalID: 89117097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_63
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9122c2d85c72af0469b8ec250de856d8
+      internalID: -942393778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_64
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea0e0d0434c83634e968a6b7175e8719
+      internalID: -1774525774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_65
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdeea6d74e5e90b4eafec19088a731c2
+      internalID: -569982551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_66
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 470c05ce54a51e84f84b234fb03d1ae8
+      internalID: 1296233905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_67
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82d3003a8a68e724c93de7e5e3d90ec1
+      internalID: 1118645426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_68
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 072655883062b284eaa47d6eb8fa2b04
+      internalID: 1958154222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilled_Dirt_69
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31e0b25570d5557419b3587b22f6958e
+      internalID: 537019407
       vertices: []
       indices: 
       edges: []
@@ -1267,7 +1582,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 7e6fe459179432247b4c3d4e40e7bc61
+    spriteID: c4aaf310a97062647af5a0f39533a2e0
     internalID: 0
     vertices: []
     indices: 
@@ -1275,61 +1590,76 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bitmask references 1_0: -1807181611
-      Bitmask references 1_1: 1080213389
-      Bitmask references 1_10: -1160283050
-      Bitmask references 1_11: 323101869
-      Bitmask references 1_12: 2066880209
-      Bitmask references 1_13: 2006900068
-      Bitmask references 1_14: 1680516701
-      Bitmask references 1_15: -469139926
-      Bitmask references 1_16: -2104276021
-      Bitmask references 1_17: 173845326
-      Bitmask references 1_18: -2139023133
-      Bitmask references 1_19: -224592249
-      Bitmask references 1_2: 25994501
-      Bitmask references 1_20: 564808813
-      Bitmask references 1_21: 1716643151
-      Bitmask references 1_22: -239859897
-      Bitmask references 1_23: -968608014
-      Bitmask references 1_24: -1576477762
-      Bitmask references 1_25: -1079560454
-      Bitmask references 1_26: -1512549374
-      Bitmask references 1_27: -105852280
-      Bitmask references 1_28: 1367286504
-      Bitmask references 1_29: 223167715
-      Bitmask references 1_3: 181786177
-      Bitmask references 1_30: -965007920
-      Bitmask references 1_31: -1853142333
-      Bitmask references 1_32: -40782890
-      Bitmask references 1_33: 2026001031
-      Bitmask references 1_34: -1891708055
-      Bitmask references 1_35: 786938332
-      Bitmask references 1_36: -1357901269
-      Bitmask references 1_37: -623288807
-      Bitmask references 1_38: -217581931
-      Bitmask references 1_39: -1966974330
-      Bitmask references 1_4: -1935257305
-      Bitmask references 1_40: 1783614723
-      Bitmask references 1_41: 1028448994
-      Bitmask references 1_42: -781936056
-      Bitmask references 1_43: -1395619906
-      Bitmask references 1_44: 205532338
-      Bitmask references 1_45: -1079126755
-      Bitmask references 1_46: -2028442420
-      Bitmask references 1_47: -651490377
-      Bitmask references 1_48: 538711002
-      Bitmask references 1_49: 1500983295
-      Bitmask references 1_5: 807236056
-      Bitmask references 1_50: -1608814226
-      Bitmask references 1_51: -292475023
-      Bitmask references 1_52: 405671091
-      Bitmask references 1_53: 1413332060
-      Bitmask references 1_54: -1273245501
-      Bitmask references 1_6: -1707027973
-      Bitmask references 1_7: 1751207623
-      Bitmask references 1_8: -1379287734
-      Bitmask references 1_9: -1232781211
+      Tilled_Dirt_0: -235388358
+      Tilled_Dirt_1: 420689243
+      Tilled_Dirt_10: -1549394999
+      Tilled_Dirt_11: 136165076
+      Tilled_Dirt_12: -1761005469
+      Tilled_Dirt_13: -581330654
+      Tilled_Dirt_14: -1394911554
+      Tilled_Dirt_15: -884395485
+      Tilled_Dirt_16: 1877752670
+      Tilled_Dirt_17: 175197990
+      Tilled_Dirt_18: 1160716875
+      Tilled_Dirt_19: 997924338
+      Tilled_Dirt_2: 865428911
+      Tilled_Dirt_20: 107729808
+      Tilled_Dirt_21: -776366748
+      Tilled_Dirt_22: 238832269
+      Tilled_Dirt_23: 392469384
+      Tilled_Dirt_24: -1768197682
+      Tilled_Dirt_25: 999120034
+      Tilled_Dirt_26: -140549273
+      Tilled_Dirt_27: 14952432
+      Tilled_Dirt_28: 1400366132
+      Tilled_Dirt_29: 913674924
+      Tilled_Dirt_3: 1875761505
+      Tilled_Dirt_30: 1196011225
+      Tilled_Dirt_31: 1794194267
+      Tilled_Dirt_32: -1454021969
+      Tilled_Dirt_33: 450014823
+      Tilled_Dirt_34: -717647044
+      Tilled_Dirt_35: 1191413602
+      Tilled_Dirt_36: -1844832607
+      Tilled_Dirt_37: 821721850
+      Tilled_Dirt_38: 1040003558
+      Tilled_Dirt_39: 540004865
+      Tilled_Dirt_4: 2139783055
+      Tilled_Dirt_40: -654637263
+      Tilled_Dirt_41: 372501143
+      Tilled_Dirt_42: -1020803076
+      Tilled_Dirt_43: 1830305133
+      Tilled_Dirt_44: -571157655
+      Tilled_Dirt_45: 1207697672
+      Tilled_Dirt_46: 1004871795
+      Tilled_Dirt_47: 13891470
+      Tilled_Dirt_48: 1670196268
+      Tilled_Dirt_49: -463209773
+      Tilled_Dirt_5: -1992776198
+      Tilled_Dirt_50: 1763050030
+      Tilled_Dirt_51: -837670016
+      Tilled_Dirt_52: -1470884190
+      Tilled_Dirt_53: 1264293745
+      Tilled_Dirt_54: 1509946921
+      Tilled_Dirt_55: -1181128337
+      Tilled_Dirt_56: -1864900623
+      Tilled_Dirt_57: 469822253
+      Tilled_Dirt_58: 397486067
+      Tilled_Dirt_59: -1836693688
+      Tilled_Dirt_6: -1871085711
+      Tilled_Dirt_60: -1225023968
+      Tilled_Dirt_61: 1008618129
+      Tilled_Dirt_62: 89117097
+      Tilled_Dirt_63: -942393778
+      Tilled_Dirt_64: -1774525774
+      Tilled_Dirt_65: -569982551
+      Tilled_Dirt_66: 1296233905
+      Tilled_Dirt_67: 1118645426
+      Tilled_Dirt_68: 1958154222
+      Tilled_Dirt_69: 537019407
+      Tilled_Dirt_7: -76388741
+      Tilled_Dirt_8: -563230930
+      Tilled_Dirt_9: 1539957416
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
