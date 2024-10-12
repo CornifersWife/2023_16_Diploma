@@ -13,8 +13,6 @@ namespace QuestSystem {
         
         private string questId;
         private QuestState currentQuestState;
-        
-        private bool playerIsNear = false;
 
         private void Awake() {
             questId = questInfo.id;
@@ -28,21 +26,7 @@ namespace QuestSystem {
             GameEventsManager.Instance.QuestEvents.OnQuestStateChange -= QuestStateChange;
         }
         
-        private void OnTriggerEnter(Collider other) {
-            if (other.CompareTag("Player")) {
-                playerIsNear = true;
-            }
-        }
-
-        private void OnTriggerExit(Collider other) {
-            if (other.CompareTag("Player")) {
-                playerIsNear = false;
-            }
-        }
-        
         public void OnPointerClick(PointerEventData eventData) {
-            if (!playerIsNear)
-                return;
             if(currentQuestState.Equals(QuestState.CAN_START) && startPoint)
                 GameEventsManager.Instance.QuestEvents.StartQuest(questId);
             else if(currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)

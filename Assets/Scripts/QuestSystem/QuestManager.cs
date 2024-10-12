@@ -28,16 +28,57 @@ namespace QuestSystem {
             }
         }
 
+        private void Update() {
+            foreach (Quest quest in questsDict.Values) {
+                if (quest.state == QuestState.REQUIREMENTS_NOT_MET && CheckRequirementsMet(quest)) {
+                    ChangeQuestState(quest.info.id, QuestState.CAN_START);
+                }
+            }
+        }
+
+        private void ChangeQuestState(string id, QuestState state) {
+            Quest quest = GetQuestById(id);
+            quest.state = state;
+            GameEventsManager.Instance.QuestEvents.QuestStateChange(quest);
+        }
+
+        private bool CheckRequirementsMet(Quest quest) {
+            bool meetsRequirements = true;
+            foreach (QuestInfoSO questPrerequisite in quest.info.questPrerequisites) {
+                if (GetQuestById(questPrerequisite.id).state != QuestState.FINISHED) {
+                    meetsRequirements = false;
+                    break;
+                }
+            }
+            return meetsRequirements;
+        }
+
         private void StartQuest(string id) {
-            
+            Quest quest = GetQuestById(id);
+            quest.InstantiateCurrentQuestStep(this.transform);
+            ChangeQuestState(quest.info.id, QuestState.IN_PROGRESS);
         }
         
         private void AdvanceQuest(string id) {
-            
+            Quest quest = GetQuestById(id);
+            quest.MoveToNextStep();
+            if (quest.CurrentStepExists()) {
+                quest.InstantiateCurrentQuestStep(this.transform);
+            }
+            else {
+                ChangeQuestState(quest.info.id, QuestState.CAN_FINISH);
+            }
         }
         
         private void FinishQuest(string id) {
-            
+            Quest quest = GetQuestById(id);
+            ClaimRewards(quest);
+            ChangeQuestState(quest.info.id, QuestState.FINISHED);
+        }
+
+        private void ClaimRewards(Quest quest) {
+            //TODO implement rewards
+            Debug.Log("Good job!");
         }
         
         private Dictionary<string, Quest> CreateQuestsDict() {

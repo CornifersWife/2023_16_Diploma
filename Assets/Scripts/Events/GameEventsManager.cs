@@ -1,4 +1,5 @@
 using QuestSystem;
+using Items;
 using UnityEngine;
 
 namespace Events {
@@ -7,6 +8,7 @@ namespace Events {
 
         [Header("Events")] 
         public QuestEvents QuestEvents;
+        public ItemEvents ItemEvents;
 
         private void Awake() {
             if (Instance != null && Instance != this) {
@@ -17,6 +19,7 @@ namespace Events {
             
             //initializing events
             QuestEvents = new QuestEvents();
+            ItemEvents = new ItemEvents();
         }
     }
 }

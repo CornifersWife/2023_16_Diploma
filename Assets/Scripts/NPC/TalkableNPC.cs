@@ -3,6 +3,7 @@ using Audio;
 using Interaction;
 using ScriptableObjects.Dialogue;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace NPC {
     public class TalkableNPC : NPC, ITalkable {

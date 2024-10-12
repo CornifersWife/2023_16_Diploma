@@ -1,3 +1,4 @@
+using Events;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -25,5 +26,6 @@ public class Item: MonoBehaviour, IPointerClickHandler{
     public void OnPointerClick(PointerEventData eventData) {
         InventoryController.Instance.AddItem(this);
         gameObject.SetActive(false);
+        GameEventsManager.Instance.ItemEvents.ItemCollected();
     }
 }
