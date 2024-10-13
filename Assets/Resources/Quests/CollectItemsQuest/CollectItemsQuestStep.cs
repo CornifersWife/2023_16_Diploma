@@ -3,7 +3,7 @@ using QuestSystem;
 
 public class CollectItemsQuestStep : QuestStep {
     private int itemsCollected = 0;
-    private int itemsToComplete = 3;
+    public int itemsToComplete = 3;
 
     private void OnEnable() {
         GameEventsManager.Instance.ItemEvents.OnItemCollected += ItemCollected;
