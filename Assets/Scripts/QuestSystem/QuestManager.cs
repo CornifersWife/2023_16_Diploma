@@ -92,7 +92,7 @@ namespace QuestSystem {
             return idToQuestDict;
         }
 
-        private Quest GetQuestById(string id) {
+        public Quest GetQuestById(string id) {
             return questsDict[id];
         }
     }
