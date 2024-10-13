@@ -51,7 +51,6 @@ public class InventoryController : MonoBehaviour, ISaveable {
         postProcessVolume.enabled = true;
         isOpen = true;
         HUDController.Instance.HideHUD();
-        InputManager.Instance.DisableAllMovement();
         InputManager.Instance.DisablePause();
     }
 
@@ -64,7 +63,6 @@ public class InventoryController : MonoBehaviour, ISaveable {
         inventoryUI.SetActive(false);
         isOpen = false;
         HUDController.Instance.ShowHUD();
-        InputManager.Instance.EnableAllMovement();
         InputManager.Instance.EnablePause();
     }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 
 public class MouseInputManager : MonoBehaviour {
     [SerializeField] private InputAction mouseClickAction;
@@ -9,6 +10,7 @@ public class MouseInputManager : MonoBehaviour {
     [SerializeField] private GameObject player;
     private Camera mainCamera;
     private NavMeshAgent navMeshAgent;
+    private bool pointerOverUI;
     
     private Vector3 targetPosition;
     private int groundLayer;
@@ -38,7 +40,20 @@ public class MouseInputManager : MonoBehaviour {
     private void MovePlayer(InputAction.CallbackContext context) {
         if (!ManageGame.Instance.IsStarted || !mouseClickEnabled)
             return;
+        if (pointerOverUI) {
+            return;
+        }
         SetTargetPoint();
+    }
+    
+    // Call this when the pointer enters a UI element
+    public void OnPointerEnter() {
+        pointerOverUI = true;
+    }
+
+    // Call this when the pointer exits a UI element
+    public void OnPointerExit() {
+        pointerOverUI = false;
     }
     
     private void SetTargetPoint() {

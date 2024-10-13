@@ -30,7 +30,6 @@ public class PauseManager : MonoBehaviour {
         optionsView.SetActive(false);
         postProcessVolume.enabled = true;
         IsOpen = true;
-        InputManager.Instance.DisableAllMovement();
         HUDController.Instance.HideHUD();
         Time.timeScale = 0;
     }
@@ -40,7 +39,6 @@ public class PauseManager : MonoBehaviour {
         optionsView.SetActive(false);
         postProcessVolume.enabled = false;
         IsOpen = false;
-        InputManager.Instance.EnableAllMovement();
         HUDController.Instance.ShowHUD();
         Time.timeScale = 1;
     }
