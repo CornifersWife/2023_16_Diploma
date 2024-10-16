@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class NPCSaveData : SaveData{
+public class NpcSaveDataOld : SaveDataOld{
     [System.Serializable]
     public struct NPCData {
         public float[] position;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SettingsSaveData : SaveData {
+public class SettingsSaveDataOld : SaveDataOld {
     [System.Serializable]
     public struct SettingsData {
         public float musicVolume;

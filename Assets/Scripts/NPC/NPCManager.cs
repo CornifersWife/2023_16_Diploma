@@ -4,10 +4,10 @@ using UnityEngine;
 public class NPCManager : MonoBehaviour, ISaveable {
     [SerializeField] private List<GameObject> allNPCs;
     
-    public void PopulateSaveData(SaveData saveData) {
-        NPCSaveData npcSaveData = (NPCSaveData)saveData;
+    public void PopulateSaveData(SaveDataOld saveDataOld) {
+        NpcSaveDataOld npcSaveDataOld = (NpcSaveDataOld)saveDataOld;
         foreach (GameObject npc in allNPCs) {
-            NPCSaveData.NPCData npcData = new NPCSaveData.NPCData();
+            NpcSaveDataOld.NPCData npcData = new NpcSaveDataOld.NPCData();
             float[] pos = new float[3];
             Vector3 position = npc.transform.position;
             pos[0] = position.x;
@@ -15,13 +15,13 @@ public class NPCManager : MonoBehaviour, ISaveable {
             pos[2] = position.z;
             npcData.position = pos;
             npcData.isActive = npc.activeSelf;
-            npcSaveData.npcDatas.Add(npcData);
+            npcSaveDataOld.npcDatas.Add(npcData);
         }
     }
 
-    public void LoadSaveData(SaveData saveData) {
-        NPCSaveData npcSaveData = (NPCSaveData)saveData;
-        List<NPCSaveData.NPCData> npcDatas = npcSaveData.npcDatas;
+    public void LoadSaveData(SaveDataOld saveDataOld) {
+        NpcSaveDataOld npcSaveDataOld = (NpcSaveDataOld)saveDataOld;
+        List<NpcSaveDataOld.NPCData> npcDatas = npcSaveDataOld.npcDatas;
         
         for (int i = 0; i < npcDatas.Count; i++) {
             allNPCs[i].SetActive(npcDatas[i].isActive);

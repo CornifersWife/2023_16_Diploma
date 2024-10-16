@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class EnemySaveData : SaveData {
+public class EnemySaveDataOld : SaveDataOld {
     [System.Serializable]
     public struct EnemyData {
         public int state;

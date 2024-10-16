@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class LevelSaveData : SaveData{
+public class LevelSaveDataOld : SaveDataOld{
     [System.Serializable]
     public struct FogData {
         public bool isActive;

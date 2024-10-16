@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Save_System_old;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -98,32 +99,32 @@ public class SettingsManager : MonoBehaviour, ISaveable {
             Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
-    public void PopulateSaveData(SaveData saveData) {
-        ((SettingsSaveData)saveData).settingsData.musicVolume = currentMusicVolume;
-        ((SettingsSaveData)saveData).settingsData.sfxVolume = currentSFXVolume;
-        ((SettingsSaveData)saveData).settingsData.resolutions = resolutions;
-        ((SettingsSaveData)saveData).settingsData.resolutionIndex = currentResolutionIndex;
-        ((SettingsSaveData)saveData).settingsData.isFullscreen = isFullscreen;
-        ((SettingsSaveData)saveData).settingsData.isMouse = isMouse;
-        ((SettingsSaveData)saveData).settingsData.isKeyboard = isKeyboard;
+    public void PopulateSaveData(SaveDataOld saveDataOld) {
+        ((SettingsSaveDataOld)saveDataOld).settingsData.musicVolume = currentMusicVolume;
+        ((SettingsSaveDataOld)saveDataOld).settingsData.sfxVolume = currentSFXVolume;
+        ((SettingsSaveDataOld)saveDataOld).settingsData.resolutions = resolutions;
+        ((SettingsSaveDataOld)saveDataOld).settingsData.resolutionIndex = currentResolutionIndex;
+        ((SettingsSaveDataOld)saveDataOld).settingsData.isFullscreen = isFullscreen;
+        ((SettingsSaveDataOld)saveDataOld).settingsData.isMouse = isMouse;
+        ((SettingsSaveDataOld)saveDataOld).settingsData.isKeyboard = isKeyboard;
     }
 
-    public void LoadSaveData(SaveData saveData) {
-        SetMusicVolume(((SettingsSaveData)saveData).settingsData.musicVolume);
+    public void LoadSaveData(SaveDataOld saveDataOld) {
+        SetMusicVolume(((SettingsSaveDataOld)saveDataOld).settingsData.musicVolume);
         musicSlider.value = currentMusicVolume;
-        SetSFXVolume(((SettingsSaveData)saveData).settingsData.sfxVolume);
+        SetSFXVolume(((SettingsSaveDataOld)saveDataOld).settingsData.sfxVolume);
         sfxSlider.value = currentSFXVolume;
         
-        currentResolutionIndex = ((SettingsSaveData)saveData).settingsData.resolutionIndex;
-        resolutions = ((SettingsSaveData)saveData).settingsData.resolutions;
+        currentResolutionIndex = ((SettingsSaveDataOld)saveDataOld).settingsData.resolutionIndex;
+        resolutions = ((SettingsSaveDataOld)saveDataOld).settingsData.resolutions;
         SetUpResolutions();
         
-        fullscreenToggle.isOn = ((SettingsSaveData)saveData).settingsData.isFullscreen;
+        fullscreenToggle.isOn = ((SettingsSaveDataOld)saveDataOld).settingsData.isFullscreen;
         SetFullscreen();
         
-        mouseToggle.isOn = ((SettingsSaveData)saveData).settingsData.isMouse;
+        mouseToggle.isOn = ((SettingsSaveDataOld)saveDataOld).settingsData.isMouse;
         SetMouseControls();
-        keyboardToggle.isOn = ((SettingsSaveData)saveData).settingsData.isKeyboard;
+        keyboardToggle.isOn = ((SettingsSaveDataOld)saveDataOld).settingsData.isKeyboard;
         SetKeyboardControls();
     }
 }

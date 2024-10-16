@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class InventorySaveData : SaveData{
+public class InventorySaveDataOld : SaveDataOld{
     [System.Serializable]
     public struct ItemData {
         public int index;

@@ -40,10 +40,10 @@ public class EnemyStateManager : MonoBehaviour, ISaveable {
         return currentEnemy;
     }
 
-    public void PopulateSaveData(SaveData saveData) {
-        EnemySaveData enemySaveData = (EnemySaveData)saveData;
+    public void PopulateSaveData(SaveDataOld saveDataOld) {
+        EnemySaveDataOld enemySaveDataOld = (EnemySaveDataOld)saveDataOld;
         foreach (GameObject enemy in allEnemies) {
-            EnemySaveData.EnemyData enemyData = new EnemySaveData.EnemyData();
+            EnemySaveDataOld.EnemyData enemyData = new EnemySaveDataOld.EnemyData();
             float[] pos = new float[3];
             Vector3 position = enemy.transform.position;
             pos[0] = position.x;
@@ -52,13 +52,13 @@ public class EnemyStateManager : MonoBehaviour, ISaveable {
             enemyData.position = pos;
             enemyData.isActive = enemy.activeSelf;
             enemyData.state = (int)enemy.GetComponent<EnemySM>().GetEnemy().GetState();
-            enemySaveData.enemyDatas.Add(enemyData);
+            enemySaveDataOld.enemyDatas.Add(enemyData);
         }
     }
 
-    public void LoadSaveData(SaveData saveData) {
-        EnemySaveData enemySaveData = (EnemySaveData)saveData;
-        List<EnemySaveData.EnemyData> enemyDatas = enemySaveData.enemyDatas;
+    public void LoadSaveData(SaveDataOld saveDataOld) {
+        EnemySaveDataOld enemySaveDataOld = (EnemySaveDataOld)saveDataOld;
+        List<EnemySaveDataOld.EnemyData> enemyDatas = enemySaveDataOld.enemyDatas;
         
         for (int i = 0; i < enemyDatas.Count; i++) {
             allEnemies[i].SetActive(enemyDatas[i].isActive);

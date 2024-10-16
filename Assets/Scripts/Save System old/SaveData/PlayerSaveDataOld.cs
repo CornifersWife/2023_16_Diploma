@@ -1,4 +1,4 @@
-public class PlayerSaveData : SaveData {
+public class PlayerSaveDataOld : SaveDataOld {
     [System.Serializable]
     public struct PlayerData {
         public float[] position;

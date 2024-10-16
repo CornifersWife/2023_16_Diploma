@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Save_System_old;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -48,54 +49,54 @@ public class ManageGame : MonoBehaviour {
         
     }
     public void SaveSettings() {
-        SettingsSaveData settingsSaveData = new SettingsSaveData();
-        settingsManager.PopulateSaveData(settingsSaveData);
-        SaveManager.SaveGame(SaveManager.settingsSavePath, settingsSaveData);
+        SettingsSaveDataOld settingsSaveDataOld = new SettingsSaveDataOld();
+        settingsManager.PopulateSaveData(settingsSaveDataOld);
+        SaveManager.SaveGame(SaveManager.settingsSavePath, settingsSaveDataOld);
     }
 
     public void LoadSettings() {
         if (SaveManager.settingsSaveExists) {
-            SettingsSaveData settingsSaveData = SaveManager.LoadGame<SettingsSaveData>(SaveManager.settingsSavePath);
-            settingsManager.LoadSaveData(settingsSaveData);
+            SettingsSaveDataOld settingsSaveDataOld = SaveManager.LoadGame<SettingsSaveDataOld>(SaveManager.settingsSavePath);
+            settingsManager.LoadSaveData(settingsSaveDataOld);
         }
     }
 
     public void SaveInventory() {
-        InventorySaveData inventorySaveData = new InventorySaveData();
-        inventoryController.PopulateSaveData(inventorySaveData);
-        SaveManager.SaveGame(SaveManager.inventorySavePath, inventorySaveData);
+        InventorySaveDataOld inventorySaveDataOld = new InventorySaveDataOld();
+        inventoryController.PopulateSaveData(inventorySaveDataOld);
+        SaveManager.SaveGame(SaveManager.inventorySavePath, inventorySaveDataOld);
     }
 
     public void LoadInventory() {
         if (SaveManager.inventorySaveExists) {
-            InventorySaveData inventorySaveData = SaveManager.LoadGame<InventorySaveData>(SaveManager.inventorySavePath);
-            inventoryController.LoadSaveData(inventorySaveData);
+            InventorySaveDataOld inventorySaveDataOld = SaveManager.LoadGame<InventorySaveDataOld>(SaveManager.inventorySavePath);
+            inventoryController.LoadSaveData(inventorySaveDataOld);
         }
     }
 
     public void SaveNPC() {
-        NPCSaveData npcSaveData = new NPCSaveData();
-        npcManager.PopulateSaveData(npcSaveData);
-        SaveManager.SaveGame(SaveManager.npcSavePath, npcSaveData);
+        NpcSaveDataOld npcSaveDataOld = new NpcSaveDataOld();
+        npcManager.PopulateSaveData(npcSaveDataOld);
+        SaveManager.SaveGame(SaveManager.npcSavePath, npcSaveDataOld);
     }
     
     public void LoadNPC() {
         if (SaveManager.npcSaveExists) {
-            NPCSaveData npcSaveData = SaveManager.LoadGame<NPCSaveData>(SaveManager.npcSavePath);
-            npcManager.LoadSaveData(npcSaveData);
+            NpcSaveDataOld npcSaveDataOld = SaveManager.LoadGame<NpcSaveDataOld>(SaveManager.npcSavePath);
+            npcManager.LoadSaveData(npcSaveDataOld);
         }
     }
     
     public void SaveEnemy() {
-        EnemySaveData enemySaveData = new EnemySaveData();
-        enemyStateManager.PopulateSaveData(enemySaveData);
-        SaveManager.SaveGame(SaveManager.enemySavePath, enemySaveData);
+        EnemySaveDataOld enemySaveDataOld = new EnemySaveDataOld();
+        enemyStateManager.PopulateSaveData(enemySaveDataOld);
+        SaveManager.SaveGame(SaveManager.enemySavePath, enemySaveDataOld);
     }
     
     public void LoadEnemy() {
         if (SaveManager.enemySaveExists) {
-            EnemySaveData enemySaveData = SaveManager.LoadGame<EnemySaveData>(SaveManager.enemySavePath);
-            enemyStateManager.LoadSaveData(enemySaveData);
+            EnemySaveDataOld enemySaveDataOld = SaveManager.LoadGame<EnemySaveDataOld>(SaveManager.enemySavePath);
+            enemyStateManager.LoadSaveData(enemySaveDataOld);
         }
     }
 
