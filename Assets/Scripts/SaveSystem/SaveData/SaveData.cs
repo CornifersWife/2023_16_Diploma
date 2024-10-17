@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Esper.ESave.SavableObjects;
 using ScriptableObjects.Dialogue;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ namespace SaveSystem.SaveData {
     public class SaveData {
         //Player data
         public struct PlayerData {
-            public Transform playerTransform;
+            public SavableTransform playerTransform;
         }
         public PlayerData playerData;
 

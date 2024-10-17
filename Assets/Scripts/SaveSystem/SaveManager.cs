@@ -6,11 +6,9 @@ using UnityEngine.SceneManagement;
 
 namespace SaveSystem {
     public class SaveManager: MonoBehaviour {
-        private SaveData.SaveData saveData;
-        private List<ISavable> savableObjects;
-        
         private SaveFileSetup saveFileSetup;
         private SaveFile saveFile;
+        private List<ISavable> savableObjects;
 
         public static SaveManager Instance;
 
@@ -23,6 +21,8 @@ namespace SaveSystem {
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
+            saveFileSetup = GetComponent<SaveFileSetup>();
+            saveFile = saveFileSetup.GetSaveFile();
             savableObjects = FindAllSavableObjects();
             LoadGame();
         }
@@ -37,41 +37,28 @@ namespace SaveSystem {
             DontDestroyOnLoad(this.gameObject);
         }
 
-        private void Start() {
-            saveFileSetup = GetComponent<SaveFileSetup>();
-            saveFile = saveFileSetup.GetSaveFile();
-            if (saveFile.isOperationOngoing) {
-                saveFile.operation.onOperationEnded.AddListener(LoadGame);
-            }
-            else {
-                LoadGame();
-            }
-        }
-
         public void NewGame() {
-            saveData = new SaveData.SaveData();
+            saveFile = new SaveFile(saveFileSetup.saveFileData);
         }
 
         public void SaveGame() {
-            if (!HasSaveData()) {
+            if (!HasSaveFile()) {
                 return;
             }
             
             foreach (ISavable savableObject in savableObjects) {
-                savableObject.PopulateSaveData(saveData);
+                savableObject.PopulateSaveData(saveFile);
             }
-            
+            saveFile.Save();
         }
         
         public void LoadGame() {
-            saveData = saveFile.GetData<SaveData.SaveData>()[0];
-            
-            if (!HasSaveData()) {
+            if (!HasSaveFile()) {
                 return;
             }
-
+            
             foreach (ISavable savableObject in savableObjects) {
-                savableObject.LoadSaveData(saveData);
+                savableObject.LoadSaveData(saveFile);
             }
         }
 
@@ -81,8 +68,8 @@ namespace SaveSystem {
             return new List<ISavable>(objects);
         }
 
-        public bool HasSaveData() {
-            return saveData != null;
+        public bool HasSaveFile() {
+            return saveFile != null;
         }
     }
 }

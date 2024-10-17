@@ -1,6 +1,8 @@
+using Esper.ESave;
+
 namespace SaveSystem {
     public interface ISavable {
-        void PopulateSaveData(SaveData.SaveData saveData);
-        void LoadSaveData(SaveData.SaveData saveData);
+        void PopulateSaveData(SaveFile saveFile);
+        void LoadSaveData(SaveFile saveFile);
     }
 }
