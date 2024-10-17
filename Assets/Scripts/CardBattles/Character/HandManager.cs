@@ -6,6 +6,7 @@ using UnityEngine;
 using Math = System.Math;
 
 namespace CardBattles.Character {
+    //TODO change to the better monobehaviour
     public class HandManager : MonoBehaviour {
         
         
