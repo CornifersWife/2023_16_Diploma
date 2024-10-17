@@ -1,11 +1,12 @@
 using System.Collections.Generic;
-using Save_System_old;
+using Esper.ESave;
+using SaveSystem;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class SettingsManager : MonoBehaviour, ISaveable {
+public class SettingsManager : MonoBehaviour, ISavable {
     [SerializeField] private TMP_Dropdown resolutionDropdown;
     [SerializeField] private Toggle fullscreenToggle;
     [SerializeField] private Toggle mouseToggle;
@@ -25,10 +26,17 @@ public class SettingsManager : MonoBehaviour, ISaveable {
     private bool isFullscreen = true;
     private bool isMouse = true;
     private bool isKeyboard = true;
+
+    private bool isResolutionLoaded = false;
+
+    private const string MusicVolumeSaveID = "MusicVolume";
+    private const string SFXVolumeSaveID = "SFXVolume";
+    private const string ResolutionSaveID = "ResolutionId";
+    private const string FullscreenSaveID = "FullscreenId";
+    private const string MouseSaveID = "Mouse";
+    private const string KeyboardSaveID = "Keyboard";
     
     void Start() {
-        //if (SaveManager.settingsSaveExists)
-            //return;
         SetUpResolutions();
     }
 
@@ -52,6 +60,7 @@ public class SettingsManager : MonoBehaviour, ISaveable {
     }
 
     public void SetMouseControls() {
+        Debug.Log(InputManager.Instance);
         InputManager.Instance.MouseControls = mouseToggle.isOn;
         isMouse = mouseToggle.isOn;
         if(keyboardToggle.isOn)
@@ -78,7 +87,8 @@ public class SettingsManager : MonoBehaviour, ISaveable {
         for (int i = 0; i <resolutions.Length; i++) {
             string option = resolutions[i].width + " x " + resolutions[i].height;
             options.Add(option);
-            if (!SaveManager.settingsSaveExists) {
+
+            if (!isResolutionLoaded) {
                 if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height) {
                     currentResolutionIndex = i;
                 }
@@ -99,32 +109,34 @@ public class SettingsManager : MonoBehaviour, ISaveable {
             Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
-    public void PopulateSaveData(SaveDataOld saveDataOld) {
-        ((SettingsSaveDataOld)saveDataOld).settingsData.musicVolume = currentMusicVolume;
-        ((SettingsSaveDataOld)saveDataOld).settingsData.sfxVolume = currentSFXVolume;
-        ((SettingsSaveDataOld)saveDataOld).settingsData.resolutions = resolutions;
-        ((SettingsSaveDataOld)saveDataOld).settingsData.resolutionIndex = currentResolutionIndex;
-        ((SettingsSaveDataOld)saveDataOld).settingsData.isFullscreen = isFullscreen;
-        ((SettingsSaveDataOld)saveDataOld).settingsData.isMouse = isMouse;
-        ((SettingsSaveDataOld)saveDataOld).settingsData.isKeyboard = isKeyboard;
+   public void PopulateSaveData(SaveFile saveFile) {
+        saveFile.AddOrUpdateData(MusicVolumeSaveID, currentMusicVolume);
+        saveFile.AddOrUpdateData(SFXVolumeSaveID, currentSFXVolume);
+        saveFile.AddOrUpdateData(ResolutionSaveID, currentResolutionIndex);
+        saveFile.AddOrUpdateData(FullscreenSaveID, isFullscreen);
+        saveFile.AddOrUpdateData(MouseSaveID, isMouse);
+        saveFile.AddOrUpdateData(KeyboardSaveID, isKeyboard);
     }
 
-    public void LoadSaveData(SaveDataOld saveDataOld) {
-        SetMusicVolume(((SettingsSaveDataOld)saveDataOld).settingsData.musicVolume);
-        musicSlider.value = currentMusicVolume;
-        SetSFXVolume(((SettingsSaveDataOld)saveDataOld).settingsData.sfxVolume);
-        sfxSlider.value = currentSFXVolume;
+    public void LoadSaveData(SaveFile saveFile) {
+        if (saveFile.HasData(MusicVolumeSaveID)) {
+            SetMusicVolume(saveFile.GetData<float>(MusicVolumeSaveID));
+            musicSlider.value = currentMusicVolume;
+            SetSFXVolume(saveFile.GetData<float>(SFXVolumeSaveID));
+            sfxSlider.value = currentSFXVolume;
         
-        currentResolutionIndex = ((SettingsSaveDataOld)saveDataOld).settingsData.resolutionIndex;
-        resolutions = ((SettingsSaveDataOld)saveDataOld).settingsData.resolutions;
-        SetUpResolutions();
+            currentResolutionIndex = saveFile.GetData<int>(ResolutionSaveID);
+            isResolutionLoaded = true;
+            SetUpResolutions();
+            ChangeResolution(currentResolutionIndex);
         
-        fullscreenToggle.isOn = ((SettingsSaveDataOld)saveDataOld).settingsData.isFullscreen;
-        SetFullscreen();
+            fullscreenToggle.isOn = saveFile.GetData<bool>(FullscreenSaveID);
+            SetFullscreen();
         
-        mouseToggle.isOn = ((SettingsSaveDataOld)saveDataOld).settingsData.isMouse;
-        SetMouseControls();
-        keyboardToggle.isOn = ((SettingsSaveDataOld)saveDataOld).settingsData.isKeyboard;
-        SetKeyboardControls();
+            mouseToggle.isOn = saveFile.GetData<bool>(MouseSaveID);
+            SetMouseControls();
+            keyboardToggle.isOn = saveFile.GetData<bool>(KeyboardSaveID);
+            SetKeyboardControls();
+        }
     }
 }

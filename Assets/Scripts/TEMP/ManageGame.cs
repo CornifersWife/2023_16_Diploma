@@ -50,14 +50,14 @@ public class ManageGame : MonoBehaviour {
     }
     public void SaveSettings() {
         SettingsSaveDataOld settingsSaveDataOld = new SettingsSaveDataOld();
-        settingsManager.PopulateSaveData(settingsSaveDataOld);
+        //settingsManager.PopulateSaveData(settingsSaveDataOld);
         SaveManager.SaveGame(SaveManager.settingsSavePath, settingsSaveDataOld);
     }
 
     public void LoadSettings() {
         if (SaveManager.settingsSaveExists) {
             SettingsSaveDataOld settingsSaveDataOld = SaveManager.LoadGame<SettingsSaveDataOld>(SaveManager.settingsSavePath);
-            settingsManager.LoadSaveData(settingsSaveDataOld);
+            //settingsManager.LoadSaveData(settingsSaveDataOld);
         }
     }
 

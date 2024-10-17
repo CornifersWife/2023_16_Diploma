@@ -10,6 +10,8 @@ namespace SaveSystem {
         private SaveFile saveFile;
         private List<ISavable> savableObjects;
 
+        private const string InitialSaveDataID = "Initial save data";
+
         public static SaveManager Instance;
 
         private void OnEnable() {
@@ -21,6 +23,7 @@ namespace SaveSystem {
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
+            Debug.Log("Scene loaded");
             saveFileSetup = GetComponent<SaveFileSetup>();
             saveFile = saveFileSetup.GetSaveFile();
             savableObjects = FindAllSavableObjects();
@@ -38,11 +41,14 @@ namespace SaveSystem {
         }
 
         public void NewGame() {
-            saveFile = new SaveFile(saveFileSetup.saveFileData);
+            saveFile.EmptyFile();
+            saveFile.AddOrUpdateData(InitialSaveDataID, 0);
+            saveFile.Save();
         }
 
         public void SaveGame() {
-            if (!HasSaveFile()) {
+            if (!HasSaveData()) {
+                Debug.Log("Tried saving but no data");
                 return;
             }
             
@@ -50,16 +56,19 @@ namespace SaveSystem {
                 savableObject.PopulateSaveData(saveFile);
             }
             saveFile.Save();
+            Debug.Log("Game saved");
         }
         
         public void LoadGame() {
-            if (!HasSaveFile()) {
+            if (!HasSaveData()) {
+                Debug.Log("Tried loading but no data");
                 return;
             }
             
             foreach (ISavable savableObject in savableObjects) {
                 savableObject.LoadSaveData(saveFile);
             }
+            Debug.Log("Game loaded");
         }
 
         private List<ISavable> FindAllSavableObjects() {
@@ -68,8 +77,12 @@ namespace SaveSystem {
             return new List<ISavable>(objects);
         }
 
-        public bool HasSaveFile() {
-            return saveFile != null;
+        public bool HasSaveData() {
+            return saveFile.HasData(InitialSaveDataID);
+        }
+
+        private void OnApplicationQuit() {
+            SaveGame();
         }
     }
 }
