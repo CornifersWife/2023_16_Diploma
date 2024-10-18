@@ -41,6 +41,8 @@ namespace Pandaroo.autoruletile
 
         // Get all the sprites in the Texture2D file (TileMap)
         string spriteSheet = AssetDatabase.GetAssetPath(TileMap);
+        string spiteSheetName = TileMap.name;
+        _new.name = spiteSheetName;
         Sprite[] sprites = AssetDatabase.LoadAllAssetsAtPath(spriteSheet)
             .OfType<Sprite>().ToArray();
 
@@ -53,7 +55,7 @@ namespace Pandaroo.autoruletile
         for (int i = 0; i < RuleTileTemplate.m_TilingRules.Count; i++)
         {
             _new.m_TilingRules[i].m_Sprites[0] = sprites[i];
-            _new.m_DefaultSprite = sprites[24];
+            _new.m_DefaultSprite = sprites[34];
         }
 
         // Replace this Asset with the new one.
