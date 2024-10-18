@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
 
@@ -33,6 +34,11 @@ namespace Pandaroo.autoruletile
         }
     }
 
+    private void ChangeAssetName() {
+        string assetPath = AssetDatabase.GetAssetPath(this);
+        AssetDatabase.RenameAsset(assetPath, "RuleTile_"+TileMap.name);
+        AssetDatabase.Refresh();
+    }
     public void OverrideRuleTile()
     {
         // Make a copy of the Rule Tile Template from a new asset.
@@ -42,14 +48,13 @@ namespace Pandaroo.autoruletile
         // Get all the sprites in the Texture2D file (TileMap)
         string spriteSheet = AssetDatabase.GetAssetPath(TileMap);
         string spiteSheetName = TileMap.name;
-        _new.name = spiteSheetName;
         Sprite[] sprites = AssetDatabase.LoadAllAssetsAtPath(spriteSheet)
             .OfType<Sprite>().ToArray();
 
-        if (sprites.Length != RuleTileTemplate.m_TilingRules.Count)
+        /*if (sprites.Length != RuleTileTemplate.m_TilingRules.Count)
         {
             Debug.LogWarning("The Tilemap doesn't have the same number of sprites than the Rule Tile template has rules.");
-        }
+        }*/
 
         // Set all the sprites of the TileMap.
         for (int i = 0; i < RuleTileTemplate.m_TilingRules.Count; i++)
@@ -67,7 +72,11 @@ namespace Pandaroo.autoruletile
             DestroyImmediate(_new);
             AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(this));
         }
-        else AssetDatabase.CreateAsset(_new, AssetDatabase.GetAssetPath(this));
+        else {
+            ChangeAssetName();
+            AssetDatabase.CreateAsset(_new, AssetDatabase.GetAssetPath(this));
+            
+        }
     }
 
 
