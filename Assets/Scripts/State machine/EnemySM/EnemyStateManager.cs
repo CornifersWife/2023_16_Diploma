@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyStateManager : MonoBehaviour, ISaveable {
     private List<EnemySM> enemyList = new List<EnemySM>();
-    private Enemy currentEnemy;
+    private EnemySM currentEnemy;
     private GameObject[] allEnemies;
 
     public static EnemyStateManager Instance;
@@ -32,12 +32,12 @@ public class EnemyStateManager : MonoBehaviour, ISaveable {
         currentEnemy.ChangeState(state);
     }
 
-    public void SetCurrentEnemy(Enemy enemy) {
+    public void SetCurrentEnemy(EnemySM enemy) {
         currentEnemy = enemy;
     }
 
     public Enemy GetCurrentEnemy() {
-        return currentEnemy;
+        return currentEnemy.GetEnemy();
     }
 
     public void PopulateSaveData(SaveDataOld saveDataOld) {
@@ -51,7 +51,7 @@ public class EnemyStateManager : MonoBehaviour, ISaveable {
             pos[2] = position.z;
             enemyData.position = pos;
             enemyData.isActive = enemy.activeSelf;
-            enemyData.state = (int)enemy.GetComponent<EnemySM>().GetEnemy().GetState();
+            enemyData.state = (int)enemy.GetComponent<EnemySM>().GetState();
             enemySaveDataOld.enemyDatas.Add(enemyData);
         }
     }
@@ -64,7 +64,7 @@ public class EnemyStateManager : MonoBehaviour, ISaveable {
             allEnemies[i].SetActive(enemyDatas[i].isActive);
             Vector3 pos = new Vector3(enemyDatas[i].position[0], enemyDatas[i].position[1], enemyDatas[i].position[2]);
             allEnemies[i].transform.position = pos;
-            allEnemies[i].GetComponent<EnemySM>().GetEnemy().ChangeState((EnemyState)enemyDatas[i].state);
+            allEnemies[i].GetComponent<EnemySM>().ChangeState((EnemyState)enemyDatas[i].state);
         }
     }
 }

@@ -9,6 +9,7 @@ public class EnemySM : StateMachine {
     public DefeatedState defeatedState;
     
     [SerializeField] private Enemy enemy;
+    private EnemyState state;
 
     [SerializeField] private Material undefeatedMaterial;
     [SerializeField] private Material defeatedMaterial;
@@ -23,27 +24,9 @@ public class EnemySM : StateMachine {
         undefeatedState = new UndefeatedState(this);
         defeatedState = new DefeatedState(this);
     }
-    
-    protected override BaseState GetInitialState() {
-        return GetStateFromEnemy();
-    }
 
     public void ChangeState(EnemyState state) {
-        enemy.ChangeState(state);
-        ChangeState(GetStateFromEnemy());
-    }
-
-    private BaseState GetStateFromEnemy() {
-        switch (enemy.GetState()) {
-            case EnemyState.Locked:
-                return lockedState;
-            case EnemyState.Undefeated: 
-                return undefeatedState;
-            case EnemyState.Defeated:
-                return defeatedState;
-            default:
-                return lockedState;
-        }
+        this.state = state;
     }
 
     public bool IsLocked() {
@@ -64,6 +47,10 @@ public class EnemySM : StateMachine {
 
     public Enemy GetEnemy() {
         return enemy;
+    }
+    
+    public EnemyState GetState() {
+        return state;
     }
 
     public Material GetUndefeatedMaterial() {

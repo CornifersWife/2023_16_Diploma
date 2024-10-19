@@ -42,7 +42,7 @@ public class ManageGame : MonoBehaviour {
     
     private void Update() {
         if (IsAfterTutorial && SceneManager.GetActiveScene().name == "beta-release") {
-            enemy.GetEnemy().ChangeState(EnemyState.Undefeated);
+            enemy.ChangeState(EnemyState.Undefeated);
             IsAfterTutorial = false;
         }
         
