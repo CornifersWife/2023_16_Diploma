@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.UI;
 
 public class MouseInputManager : MonoBehaviour {
     [SerializeField] private InputAction mouseClickAction;
@@ -94,8 +93,6 @@ public class MouseInputManager : MonoBehaviour {
     }
     
     public void DisableMouseControls() {
-        if(ManageGame.Instance.IsStarted)
-            navMeshAgent.ResetPath();
         mouseClickEnabled = false;
     }
 }
