@@ -25200,13 +25200,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58aaf8febef4bc99caa1d80b82926d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueText:
+  dialogue:
   - {fileID: 11400000, guid: f69258118e95d9946a4e0c0e9790a48a, type: 2}
   - {fileID: 11400000, guid: 5a932338a7aeb5647babaff55ed7b8ee, type: 2}
   dialogueController: {fileID: 1241713688}
-  questIndicator: {fileID: 0}
+  questIndicator: {fileID: 38404673}
   audioConfig: {fileID: 11400000, guid: 5a56d19f0663bff459578f7d25de4c81, type: 2}
   detectionDistance: 8
+  ID: 
 --- !u!1 &362838657
 GameObject:
   m_ObjectHideFlags: 0
@@ -37726,7 +37727,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 506512553}
-  - component: {fileID: 506512552}
+  - component: {fileID: 506512554}
   m_Layer: 0
   m_Name: NPCManager
   m_TagString: Untagged
@@ -37734,20 +37735,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &506512552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 506512551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d3c8b999cbfaa54b8edd3b33a4d263b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allNPCs:
-  - {fileID: 1940217222}
 --- !u!4 &506512553
 Transform:
   m_ObjectHideFlags: 0
@@ -37763,6 +37750,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 711465379}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &506512554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506512551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 301c0ab88812432bafb9fdff30dd7bb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &523063287
 GameObject:
   m_ObjectHideFlags: 0
@@ -76969,7 +76968,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1124114764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77199,7 +77198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingsManager: {fileID: 0}
   inventoryController: {fileID: 2142827945}
-  npcManager: {fileID: 506512552}
+  npcManager: {fileID: 0}
   enemyStateManager: {fileID: 1893222051}
   player: {fileID: 0}
   npc: {fileID: 363011942}
@@ -124239,7 +124238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1655178470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143398,11 +143397,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
---- !u!1 &1940217222 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7619115504855137570, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
-  m_PrefabInstance: {fileID: 1940217221}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1940217223 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1156532673366978845, guid: 414b35f41893df24b849ad2d76c88bc1, type: 3}
