@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class ManageGame : MonoBehaviour {
     [SerializeField] private SettingsManager settingsManager;
     [SerializeField] private InventoryController inventoryController;
-    [SerializeField] private NPCManager npcManager;
     [SerializeField] private EnemyStateManager enemyStateManager;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject npc;
@@ -71,19 +70,6 @@ public class ManageGame : MonoBehaviour {
         if (SaveManager.inventorySaveExists) {
             InventorySaveDataOld inventorySaveDataOld = SaveManager.LoadGame<InventorySaveDataOld>(SaveManager.inventorySavePath);
             inventoryController.LoadSaveData(inventorySaveDataOld);
-        }
-    }
-
-    public void SaveNPC() {
-        NpcSaveDataOld npcSaveDataOld = new NpcSaveDataOld();
-        npcManager.PopulateSaveData(npcSaveDataOld);
-        SaveManager.SaveGame(SaveManager.npcSavePath, npcSaveDataOld);
-    }
-    
-    public void LoadNPC() {
-        if (SaveManager.npcSaveExists) {
-            NpcSaveDataOld npcSaveDataOld = SaveManager.LoadGame<NpcSaveDataOld>(SaveManager.npcSavePath);
-            npcManager.LoadSaveData(npcSaveDataOld);
         }
     }
     
