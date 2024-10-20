@@ -29,10 +29,15 @@ namespace CardBattles.Character {
                 Debug.LogError("cardSetDatas is null");
             }
             
+            InitializeDeck();
+        }
+
+        public void InitializeDeck() {
             CreateCardSetsFromData(); 
             CreateCardFromDeck();
         }
-
+        
+        
         private List<CardSetData> LoadCardSetData() {
             if (IsPlayers)
                 return InventoryController.Instance.GetCardSets();
