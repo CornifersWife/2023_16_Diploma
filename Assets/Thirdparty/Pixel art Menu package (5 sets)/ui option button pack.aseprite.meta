@@ -152,6 +152,7 @@ ScriptedImporter:
     cells:
     - name: ui option button pack
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 15
         y: 19

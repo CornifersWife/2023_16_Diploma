@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CardBattles.CardScripts.CardDatas;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +11,7 @@ public class ManageCardSetDetails : MonoBehaviour {
     [SerializeField] private RectTransform descriptionWindow;
     [SerializeField] private TMP_Text descriptionText;
 
-    private List<BaseCardData> cards = new List<BaseCardData>();
+    private List<CardData> cards = new List<CardData>();
     private Animator animator;
     private bool isOpen;
     public bool IsOpen => isOpen;
@@ -24,20 +25,22 @@ public class ManageCardSetDetails : MonoBehaviour {
         isOpen = true;
         nameText.text = cardSetData.displayName;
 
-        foreach (BaseCardData cardData in cardSetData.cards) {
+        foreach (CardData cardData in cardSetData.cards) {
             cards.Add(cardData);
         }
         DisplayCards();
     }
 
     private void DisplayCards() {
-        foreach (BaseCardData cardData in cards) {
-            SetUpObjects(cardData);
+        foreach (CardData cardData in cards) {
+            Debug.Log("FIX ME I USED TO BE BASECARDDATA");
+           // SetUpObjects(cardData);
         }
         animator.SetBool("isOpen", true);
     }
 
-    private void SetUpObjects(BaseCardData cardData) {
+    /*
+    private void SetUpObjects(CardData cardData) {
         GameObject displayObject = Instantiate(cardSetDetailPrefab, cardListSpace.transform, true);
         displayObject.AddComponent<CardDetail>().CardData = cardData;
         descriptionWindow = displayObject.transform.GetChild(2).GetComponent<RectTransform>();
@@ -45,7 +48,7 @@ public class ManageCardSetDetails : MonoBehaviour {
         displayObject.AddComponent<ShowCardDetails>().SetComponents(descriptionWindow, descriptionText);
         displayObject.transform.GetChild(0).GetComponent<Image>().sprite = cardData.cardImage;
         displayObject.transform.GetChild(1).GetComponent<TMP_Text>().text = cardData.cardName;
-    }
+    }*/
 
     public void Hide() {
         animator.SetBool("isOpen", false);

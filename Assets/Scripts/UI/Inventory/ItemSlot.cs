@@ -57,7 +57,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
     private void OnLeftClick() {
         InventoryController.Instance.DeselectAllSlots();
         selectedShader.SetActive(true);
-        if (item is CardSet cardSet) {
+        if (item is CardSetItem cardSet) {
             InventoryController.Instance.ShowCardSetDetails(cardSet.GetCardSetData());
         }
     }
@@ -67,7 +67,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
             GameObject itemObject = eventData.pointerDrag;
             DraggableItem draggableItem = itemObject.GetComponent<DraggableItem>();
 
-            if (transform.parent.name == itemList.name && draggableItem.GetItemData() is CardSet) {
+            if (transform.parent.name == itemList.name && draggableItem.GetItemData() is CardSetItem) {
                 return;
             }
 

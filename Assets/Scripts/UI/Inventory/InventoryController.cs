@@ -1,9 +1,12 @@
 using System.Collections.Generic;
+using CardBattles.CardScripts.CardDatas;
+using ScriptableObjects;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.PostProcessing;
 
-public class InventoryController : MonoBehaviour {
+public class InventoryController : MonoBehaviour, ISaveable {
     [SerializeField] private GameObject inventoryUI;
     [SerializeField] private ManageCardSetDetails manageCardSetDetails;
     [SerializeField] private InputAction rightClickAction;
@@ -48,7 +51,8 @@ public class InventoryController : MonoBehaviour {
         postProcessVolume.enabled = true;
         isOpen = true;
         HUDController.Instance.HideHUD();
-        InputManager.Instance.DisableAllInput();
+        InputManager.Instance.DisableAllMovement();
+        InputManager.Instance.DisablePause();
     }
 
     public void HideInventory() {
@@ -60,11 +64,12 @@ public class InventoryController : MonoBehaviour {
         inventoryUI.SetActive(false);
         isOpen = false;
         HUDController.Instance.ShowHUD();
-        InputManager.Instance.EnableAllInput();
+        InputManager.Instance.EnableAllMovement();
+        InputManager.Instance.EnablePause();
     }
 
     public void AddItem(Item item) {
-        if (item is CardSet)
+        if (item is CardSetItem)
             AddToSlot(item, cardSetSlots);
         else
             AddToSlot(item, itemSlots);
@@ -104,11 +109,84 @@ public class InventoryController : MonoBehaviour {
     public List<CardSetData> GetCardSets() {
         List<CardSetData> cardSets = new List<CardSetData>();
         foreach(ItemSlot slot in deckSlots)
-            cardSets.Add(((CardSet)slot.GetItem()).GetCardSetData());
+            cardSets.Add(((CardSetItem)slot.GetItem()).GetCardSetData());
         return cardSets;
     }
 
     public bool IsOpen() {
         return isOpen;
+    }
+
+
+    public void PopulateSaveData(SaveData saveData) {
+        //TODO change how card sets are handled -> Card Data
+        for (int i = 0; i < itemSlots.Count; i++) {
+            if (!itemSlots[i].IsOccupied()) 
+                continue;
+            Item item = itemSlots[i].GetItem();
+           
+            InventorySaveData.ItemData itemData = new InventorySaveData.ItemData {
+                index = i,
+                name = item.GetName(),
+                image = AssetDatabase.GetAssetPath(item.GetSprite())
+            };
+            ((InventorySaveData)saveData).itemDatas.Add(itemData);
+        }
+        
+        for (int i = 0; i < cardSetSlots.Count; i++) {
+            if (!cardSetSlots[i].IsOccupied()) 
+                continue;
+            Item item = cardSetSlots[i].GetItem();
+            
+            InventorySaveData.CardSetItemData itemData = new InventorySaveData.CardSetItemData() {
+                index = i,
+                name = item.GetName(),
+                image = AssetDatabase.GetAssetPath(item.GetSprite()),
+                cardSetData = AssetDatabase.GetAssetPath(((CardSetItem)item).GetCardSetData())
+            };
+            ((InventorySaveData)saveData).cardSetDatas.Add(itemData);
+        }
+        
+        for (int i = 0; i < deckSlots.Count; i++) {
+            if (!deckSlots[i].IsOccupied()) 
+                continue;
+            Item item = deckSlots[i].GetItem();
+            
+            InventorySaveData.CardSetItemData itemData = new InventorySaveData.CardSetItemData() {
+                index = i,
+                name = item.GetName(),
+                image = AssetDatabase.GetAssetPath(item.GetSprite()),
+                cardSetData = AssetDatabase.GetAssetPath(((CardSetItem)item).GetCardSetData())
+            };
+            ((InventorySaveData)saveData).deckDatas.Add(itemData);
+        }
+    }
+
+    public void LoadSaveData(SaveData saveData) {
+        InventorySaveData inventorySaveData = (InventorySaveData)saveData;
+        for (int i = 0; i < inventorySaveData.itemDatas.Count; i++) {
+            CollectibleItem item = new GameObject().AddComponent<CollectibleItem>();
+            item.SetName(inventorySaveData.itemDatas[i].name);
+            item.SetSprite(AssetDatabase.LoadAssetAtPath<Sprite>(inventorySaveData.itemDatas[i].image));
+            itemSlots[inventorySaveData.itemDatas[i].index].AddItem(item);
+        }
+        
+        for (int i = 0; i < inventorySaveData.cardSetDatas.Count; i++) {
+            CardSetItem item = new GameObject().AddComponent<CardSetItem>();
+            item.SetName(inventorySaveData.cardSetDatas[i].name);
+            item.SetSprite(AssetDatabase.LoadAssetAtPath<Sprite>(inventorySaveData.cardSetDatas[i].image));
+            item.SetCardSetData(AssetDatabase.LoadAssetAtPath<CardSetData>(inventorySaveData.cardSetDatas[i].cardSetData));
+            
+            cardSetSlots[inventorySaveData.cardSetDatas[i].index].AddItem(item);
+        }
+        
+        for (int i = 0; i < inventorySaveData.deckDatas.Count; i++) {
+            CardSetItem item = new GameObject().AddComponent<CardSetItem>();
+            item.SetName(inventorySaveData.deckDatas[i].name);
+            item.SetSprite(AssetDatabase.LoadAssetAtPath<Sprite>(inventorySaveData.deckDatas[i].image));
+            item.SetCardSetData(AssetDatabase.LoadAssetAtPath<CardSetData>(inventorySaveData.deckDatas[i].cardSetData));
+            
+            deckSlots[inventorySaveData.deckDatas[i].index].AddItem(item);
+        }
     }
 }

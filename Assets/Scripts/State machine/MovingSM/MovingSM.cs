@@ -3,6 +3,8 @@ using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
 public class MovingSM : StateMachine, IPointerClickHandler {
+    [SerializeField] private float detectionDistance = 8;
+    
     [HideInInspector]
     public IdleState idleState;
     [HideInInspector]
@@ -16,12 +18,14 @@ public class MovingSM : StateMachine, IPointerClickHandler {
     [SerializeField] private Transform[] waypoints;
     
     private NavMeshAgent navMeshAgent;
+    private GameObject player;
     private int currentWaypointIndex;
     private bool waiting = false;
     public bool IsDialogue { get; set; } = false;
 
     private void Awake() {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        player = GameObject.FindGameObjectWithTag("Player");
         
         idleState = new IdleState(this);
         walkingState = new WalkingState(this);
@@ -45,6 +49,10 @@ public class MovingSM : StateMachine, IPointerClickHandler {
         return navMeshAgent;
     }
 
+    public GameObject GetPlayer() {
+        return player;
+    }
+
     public float GetWaitTime() {
         return waitTimeSeconds;
     }
@@ -61,10 +69,8 @@ public class MovingSM : StateMachine, IPointerClickHandler {
         waiting = value;
     }
     
-    //TODO rework this
     public void OnPointerClick(PointerEventData eventData) {
-        if (PauseManager.Instance.IsOpen || DialogueManager.Instance.IsOpen)
-            return;
-        IsDialogue = true;
+        if(Vector3.Distance(player.transform.position, navMeshAgent.transform.position) < detectionDistance)
+            IsDialogue = true;
     }
 }

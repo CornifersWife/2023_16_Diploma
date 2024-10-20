@@ -299,7 +299,6 @@ GameObject:
   - component: {fileID: 3839829626396469490}
   - component: {fileID: 310007276383451072}
   - component: {fileID: 5271645232774963911}
-  - component: {fileID: 5161899807040130693}
   - component: {fileID: 20048022018825092}
   m_Layer: 9
   m_Name: Speech Bubble
@@ -391,24 +390,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &5161899807040130693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6609856824375471268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058030a71be8d1e48b50a3ea2f4c9a01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speechBubble: {fileID: 1123320653452185023}
-  speechText: {fileID: 7342682431228515623}
-  offset: 2
-  host: {fileID: 7619115504855137570}
-  player: {fileID: 0}
-  detectionRadius: 3
 --- !u!114 &20048022018825092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -552,7 +533,6 @@ GameObject:
   - component: {fileID: 6145747611251533154}
   - component: {fileID: 304915134669630458}
   - component: {fileID: 1582857185398548112}
-  - component: {fileID: 1660209534324938406}
   m_Layer: 9
   m_Name: NPC
   m_TagString: Untagged
@@ -703,22 +683,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41327384dc2ae1e438942c8596440b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detectionDistance: 8
   waitTimeSeconds: 0
   waypoints: []
---- !u!114 &1660209534324938406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7619115504855137570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675bb7c0ac92179ab8cd265563c36ecf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainDialogues: []
-  shortDialogues: []
 --- !u!1 &8276514835535548600
 GameObject:
   m_ObjectHideFlags: 0

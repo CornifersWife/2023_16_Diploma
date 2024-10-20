@@ -63,19 +63,23 @@ public class KeyboardInputManager : MonoBehaviour, PlayerControls.IPlayerActionM
     }
     
     public void OnOpenInventory(InputAction.CallbackContext context) {
-        InventoryController inventoryController = InventoryController.Instance;
-        if(inventoryController.IsOpen())
-            inventoryController.HideInventory();
-        else {
-            inventoryController.ShowInventory(context);
+        if (context.performed) {
+            InventoryController inventoryController = InventoryController.Instance;
+            if (inventoryController.IsOpen())
+                inventoryController.HideInventory();
+            else {
+                inventoryController.ShowInventory(context);
+            }
         }
     }
     
     public void OnPause(InputAction.CallbackContext context) {
-        if (PauseManager.Instance.IsOpen)
-            PauseManager.Instance.Close();
-        else {
-            PauseManager.Instance.Open();
+        if (context.performed) {
+            if (PauseManager.Instance.IsOpen)
+                PauseManager.Instance.Close();
+            else {
+                PauseManager.Instance.Open();
+            }
         }
     }
 
@@ -85,5 +89,21 @@ public class KeyboardInputManager : MonoBehaviour, PlayerControls.IPlayerActionM
     
     public void DisableKeyboardControls() {
         playerControls.PlayerActionMap.Disable();
+    }
+    
+    public void EnableMovement() {
+        playerControls.PlayerActionMap.Move.Enable();
+    }
+    
+    public void DisableMovement() {
+        playerControls.PlayerActionMap.Move.Disable();
+    }
+
+    public void DisablePause() {
+        playerControls.PlayerActionMap.Pause.Disable();
+    }
+    
+    public void EnablePause() {
+        playerControls.PlayerActionMap.Pause.Enable();
     }
 }
