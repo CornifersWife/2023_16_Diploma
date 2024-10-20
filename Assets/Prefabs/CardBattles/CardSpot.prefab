@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   card: {fileID: 0}
-  highlightColor: {r: 0.3584906, g: 0.24421771, b: 0.07237451, a: 0.58431375}
+  highlightColor: {r: 0.41960788, g: 0.29411766, b: 0.35686275, a: 0.85882354}
 --- !u!222 &2121145339399140750
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -80,7 +80,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e355d855512379640a675cb649c9d33b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

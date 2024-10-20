@@ -49,11 +49,14 @@ namespace CardBattles.Character.Hero {
 
         private void SetHpColor() {
             return;
+            //TODO
+            
+            /*
             if (hero.HasFullHp)
                 hpText.color = fullHpColor;
             else {
                 hpText.color = missingHpColor;
-            }
+            }*/
         }
 
         private void GetHit() {
