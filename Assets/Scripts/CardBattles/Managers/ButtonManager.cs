@@ -9,7 +9,7 @@ namespace CardBattles.Managers {
     public class ButtonManager : MonoBehaviour {
         public static ButtonManager Instance { get; private set; }
         private bool buttonsEnabled;
-        private bool drawButtonCooldown;
+        private bool drawButtonCooldown = false;
 
         private void Awake() {
             if (Instance is null) {

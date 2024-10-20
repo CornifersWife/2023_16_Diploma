@@ -926,6 +926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e859706086c95547b111d0ac44adea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drawClip: {fileID: 8300000, guid: d474c3dfcfe62e148b4bdfba0b7a1d51, type: 3}
   showPosition: {x: 450, y: 0, z: 0}
   showScale: {x: 2, y: 2, z: 2}
   playerToShow: 13

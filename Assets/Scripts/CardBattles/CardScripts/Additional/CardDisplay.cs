@@ -9,13 +9,13 @@ using UnityEngine.UI;
 namespace CardBattles.CardScripts.Additional {
     public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
         [Foldout("Card scale"), SerializeField]
-        public float scaleInHand = 0.9f;
+        public static float scaleInHand = 0.9f;
 
         [Foldout("Card scale"), SerializeField]
-        private float scaleOnBoard = 1f;
+        public static float scaleOnBoard = 1f;
 
         [Foldout("Card scale"), SerializeField]
-        private float scaleOnHover = 1.1f;
+        public static float scaleOnHover = 1.1f;
 
         private float currentScale = 1f;
 
