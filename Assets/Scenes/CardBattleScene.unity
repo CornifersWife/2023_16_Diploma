@@ -12163,10 +12163,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1228417404}
-        m_TargetAssemblyTypeName: Scenes.Irys_is_doing_her_best.Scripts.My.Board.TurnManager,
-          Assembly-CSharp
-        m_MethodName: ChangeTurnButton
+      - m_Target: {fileID: 4994773569284584968}
+        m_TargetAssemblyTypeName: CardBattles.Character.CharacterManager, Assembly-CSharp
+        m_MethodName: DrawACard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26770,10 +26769,6 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 3513187511264810272, guid: 94025caa85302494cb82257a5b22e434, type: 3}
-      propertyPath: drawClip
-      value: 
-      objectReference: {fileID: 8300000, guid: d474c3dfcfe62e148b4bdfba0b7a1d51, type: 3}
     - target: {fileID: 5229332580041227260, guid: 94025caa85302494cb82257a5b22e434, type: 3}
       propertyPath: m_Name
       value: card (here for easy access)
@@ -28341,10 +28336,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Prefab
       objectReference: {fileID: 0}
-    - target: {fileID: 2594013333823260353, guid: b3651c7bb3a7e4d44a8ed57f90c8fb7e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -230
-      objectReference: {fileID: 0}
     - target: {fileID: 2761464978714311140, guid: b3651c7bb3a7e4d44a8ed57f90c8fb7e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -28426,13 +28417,21 @@ PrefabInstance:
       value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 4422650844748972138, guid: b3651c7bb3a7e4d44a8ed57f90c8fb7e, type: 3}
+      propertyPath: drawClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d474c3dfcfe62e148b4bdfba0b7a1d51, type: 3}
+    - target: {fileID: 4422650844748972138, guid: b3651c7bb3a7e4d44a8ed57f90c8fb7e, type: 3}
       propertyPath: drawEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4422650844748972138, guid: b3651c7bb3a7e4d44a8ed57f90c8fb7e, type: 3}
       propertyPath: drawEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4422650844748972138, guid: b3651c7bb3a7e4d44a8ed57f90c8fb7e, type: 3}
+      propertyPath: drawEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8300000, guid: d474c3dfcfe62e148b4bdfba0b7a1d51, type: 3}
     - target: {fileID: 4422650844748972138, guid: b3651c7bb3a7e4d44a8ed57f90c8fb7e, type: 3}
       propertyPath: drawEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -28489,14 +28488,6 @@ PrefabInstance:
     - target: {fileID: 2044340158239172596, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       propertyPath: m_TagString
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2589515621153180791, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 2589515621153180791, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -300
       objectReference: {fileID: 0}
     - target: {fileID: 2756966147138138962, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       propertyPath: m_Pivot.x
@@ -28586,6 +28577,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4427159775873632988, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
+      propertyPath: drawClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d474c3dfcfe62e148b4bdfba0b7a1d51, type: 3}
     - target: {fileID: 4427159775873632988, guid: 8ef95b3e2dc34f241bd5fbd3bfec4f88, type: 3}
       propertyPath: drawEvent.m_PersistentCalls.m_Calls.Array.size
       value: 0
