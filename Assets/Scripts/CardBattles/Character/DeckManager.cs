@@ -69,7 +69,6 @@ namespace CardBattles.Character {
 
                     var card = CardManager.Instance.CreateCard
                     (cardData, this); 
-                    //card.tag = isPlayers ? "Player": "Enemy";
 
                     if (card == null) {
                         Debug.LogError("Card creation failed for cardData in cardSetData: " + cardSetData.displayName);

@@ -898,9 +898,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b644e4a967a2495e87e3a521f10be06a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleInHand: 0.7
-  scaleOnBoard: 1
-  scaleOnHover: 1.1
   frontOfCard: {fileID: 1394851734013426853}
   backOfCard: {fileID: 823127779925956174}
   cardName: {fileID: 2107554566278885536}
@@ -926,10 +923,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e859706086c95547b111d0ac44adea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawClip: {fileID: 8300000, guid: d474c3dfcfe62e148b4bdfba0b7a1d51, type: 3}
   showPosition: {x: 450, y: 0, z: 0}
   showScale: {x: 2, y: 2, z: 2}
-  playerToShow: 13
+  playerToShow: 6
   timeToShow: 0.4
   showToHand: 2
   timeToHand: 0.4
