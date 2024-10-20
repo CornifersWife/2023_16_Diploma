@@ -25,6 +25,10 @@ public class EnemySM : StateMachine {
         defeatedState = new DefeatedState(this);
     }
 
+    protected override BaseState GetInitialState() {
+        return lockedState;
+    }
+
     public void ChangeState(EnemyState state) {
         this.state = state;
     }
