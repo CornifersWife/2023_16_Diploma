@@ -9,7 +9,7 @@ using UnityEngine.UI;
 namespace CardBattles.Character.Hero {
     public class HeroDisplay : MonoBehaviour {
         [Foldout("Objects"), SerializeField] private Image heroImage;
-        [Foldout("Objects"), SerializeField] private TextMeshProUGUI hpText;
+        [Foldout("Objects"), SerializeField] private Text hpText;
 
         [Foldout("Text"), SerializeField] private Color fullHpColor = Color.black;
         [Foldout("Text"), SerializeField] private Color missingHpColor = new Color(90, 30, 30);
@@ -23,7 +23,7 @@ namespace CardBattles.Character.Hero {
 
         [Foldout("Hit Animation"), Label("Ease"), SerializeField]
         private float hitAnimationKnockbackStrength;
-
+        
         private Hero hero;
 
         private int currentHealth;
@@ -33,19 +33,26 @@ namespace CardBattles.Character.Hero {
             hero.currentHealthAction += SetCurrentHealth;
             hero.takeDamageAction += GetHit;
             SetCurrentHealth(hero.MaxHealth);
-            hpText.fontMaterial = Instantiate(hpText.fontMaterial);
+        }
+       [Button(text:"test",enabledMode: EButtonEnableMode.Always)]
+        private void Test() {
+            var x = hpText.text;
+            Debug.Log(x + " " + hero.currentHealth);
+            hpText.text = x;
         }
 
         private void SetCurrentHealth(int value) {
             SetHpColor();
+            
             hpText.text = value.ToString();
         }
 
         private void SetHpColor() {
+            return;
             if (hero.HasFullHp)
-                hpText.fontMaterial.color = fullHpColor;
+                hpText.color = fullHpColor;
             else {
-                hpText.fontMaterial.color = missingHpColor;
+                hpText.color = missingHpColor;
             }
         }
 
