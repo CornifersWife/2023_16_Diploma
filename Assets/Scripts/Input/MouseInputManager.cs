@@ -37,7 +37,7 @@ public class MouseInputManager : MonoBehaviour {
     }
     
     private void MovePlayer(InputAction.CallbackContext context) {
-        if (!ManageGame.Instance.IsStarted || !mouseClickEnabled)
+        if (!mouseClickEnabled)
             return;
         if (pointerOverUI) {
             return;
