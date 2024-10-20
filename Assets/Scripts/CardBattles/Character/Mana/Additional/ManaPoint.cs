@@ -27,9 +27,9 @@ namespace CardBattles.Character.Mana.Additional {
                 return;
             isAvailable = available;
             var colorTo = available ? Color.white : Color.clear;
-            OnImage.DOColor(colorTo, transitionTime);
-            var growTween = transform.DOScale(Vector3.one * changeStateScaleFlash, transitionTime ).SetEase(ease: Ease.InOutSine);
-            var shrinkTween = transform.DOScale(Vector3.one, transitionTime * 0.9f).SetEase(Ease.InCubic);
+            OnImage.DOColor(colorTo, transitionTime).SetEase(Ease.InQuart);
+            var growTween = transform.DOScale(Vector3.one * changeStateScaleFlash, transitionTime*0.6f ).SetEase(ease: Ease.InOutQuart);
+            var shrinkTween = transform.DOScale(Vector3.one, transitionTime * 0.75f).SetEase(Ease.InQuart);
             var sequence = DOTween.Sequence();
             sequence.Append(growTween);
             sequence.Append(shrinkTween);
