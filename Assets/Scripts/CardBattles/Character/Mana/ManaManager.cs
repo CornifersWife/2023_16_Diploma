@@ -54,10 +54,6 @@ namespace CardBattles.Character.Mana {
             CurrentMana -= 1;
         }
 
-        public void ChangeManaSound(bool available) {
-            var clip = available ? refreshMana : spendMana;
-            AudioManager.Instance.PlayWithVariation(clip);
-        }
 
 
         public bool TryUseMana(IHasCost cost) {

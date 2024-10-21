@@ -11,6 +11,7 @@ namespace Editor.tmp {
             DrawDefaultInspector(); // Draws the default properties (like the JSON input)
             AudioCollection audioCollection = (AudioCollection)target;
 
+            /*
             if (audioCollection.audioMap != null && audioCollection.audioMap.Count > 0)
             {
                 EditorGUILayout.LabelField("Audio Map", EditorStyles.boldLabel);
@@ -21,7 +22,7 @@ namespace Editor.tmp {
                     entry.clip = (AudioClip)EditorGUILayout.ObjectField(entry.clip, typeof(AudioClip), false);
                     EditorGUILayout.EndHorizontal();
                 }
-            }
+            }*/
         }
     }
 }

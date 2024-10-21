@@ -27,14 +27,11 @@ namespace CardBattles.Character.Mana.Additional {
             SetState(isAvailable);
         }
 
-        private void OnEnable() {
-        }
-
-        public void SetState(bool available,float transitionTime = 0.3f) {
+        public void SetState(bool available) {
             if(isAvailable == available)
                 return;
             isAvailable = available;
-            manaChangeState?.Invoke(available);
+            ChangeStateAnimation(available);
         }
 
         private void ChangeStateAnimation(bool available,float transitionTime = 0.3f) {

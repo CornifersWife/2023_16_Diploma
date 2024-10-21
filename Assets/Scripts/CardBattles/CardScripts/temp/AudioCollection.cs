@@ -5,9 +5,13 @@ using NaughtyAttributes;
 using Newtonsoft.Json;
 using UnityEngine;
 using Newtonsoft.Json.Linq;
+using UnityEditor;
 
 public class AudioCollection : MonoBehaviour
 {
+#if UNITY_EDITOR
+
+    //TODO auto load from json after play mode ends
     [ResizableTextArea]
     public string json = @"
     {
@@ -19,9 +23,8 @@ public class AudioCollection : MonoBehaviour
     }";
     private string jsonFilePath;
     private string jsonBackupPath;
-
-    public static AudioCollection Instance;
     
+    public static AudioCollection Instance;
     
     public List<AudioEntry> audioMap = new List<AudioEntry>();
 
@@ -44,16 +47,15 @@ public class AudioCollection : MonoBehaviour
 
     
     public void CreateJsonPaths() {
-        jsonFilePath = Path.Combine(Application.persistentDataPath, "audioMap.json");
+        jsonFilePath = "Assets/Resources/AudioJson/" +"audioMap.json";
         string todayString = DateTime.Now.ToString("yyyy-MM-dd");
         string backupAudioFileName = "backupAudio_" + todayString + ".json";
-        jsonBackupPath = Path.Combine(Application.persistentDataPath, "backupAudioMap.json");
-        LoadJsonFromFile();
-
+        jsonBackupPath = "Assets/Resources/AudioJson/Backup/" + backupAudioFileName;
         Debug.Log(jsonFilePath);
         Debug.Log(jsonBackupPath);
     }
     public void DoLoad() {
+        LoadJsonFromFile();
         var result = FlattenJson(JObject.Parse(json));
 
         audioMap.Clear(); 
@@ -61,7 +63,8 @@ public class AudioCollection : MonoBehaviour
         {
             AudioClip clip = Resources.Load<AudioClip>(entry.Value);
             audioMap.Add(new AudioEntry { key = entry.Key, clip = clip });
-
+            if(String.IsNullOrEmpty(entry.Value))
+                continue;
             if (clip != null)
             {
                 Debug.Log($"{entry.Key} : Loaded AudioClip {entry.Value}");
@@ -86,6 +89,7 @@ public class AudioCollection : MonoBehaviour
         
         SaveJsonToFile();
     }
+    
     private void AddToNestedDictionary(Dictionary<string, object> dict, string[] keys, string value)
     {
         var currentDict = dict;
@@ -138,15 +142,17 @@ public class AudioCollection : MonoBehaviour
         var newEntry = new AudioEntry { key = key, clip = null };
         audioMap.Add(newEntry);
         Debug.Log($"Added new key '{key}' to the audio map with a null AudioClip. You can assign a clip later.");
-
+        OverwriteJson();
         return null;
     }
+    
     public void SaveJsonToFile()
     {
         try {
             if (!File.Exists(jsonFilePath))
                 File.Create(jsonFilePath);
             File.WriteAllText(jsonFilePath, json);
+            AssetDatabase.SaveAssets();
             Debug.Log($"JSON saved to {jsonFilePath}");
         }
         catch (Exception e)
@@ -157,9 +163,11 @@ public class AudioCollection : MonoBehaviour
     public void SaveJsonToBackupFile()
     {
         try {
+            DoLoad();
             if (!File.Exists(jsonBackupPath))
                 File.Create(jsonBackupPath);
             File.WriteAllText(jsonBackupPath, json);
+            AssetDatabase.SaveAssets();
             Debug.Log($"JSON saved to {jsonBackupPath}");
         }
         catch (Exception e)
@@ -188,3 +196,4 @@ public class AudioCollection : MonoBehaviour
     }
 }
 
+#endif

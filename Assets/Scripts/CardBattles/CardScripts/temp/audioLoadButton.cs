@@ -21,6 +21,10 @@ namespace CardBattles.CardScripts.temp {
         }
 
         [Button]
+        private void SaveJsonToBackupFile() {
+            ad.SaveJsonToBackupFile();
+        }
+        [Button]
         private void CreateJsonPaths() {
             ad.CreateJsonPaths();
         }
