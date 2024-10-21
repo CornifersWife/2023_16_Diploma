@@ -85,6 +85,11 @@ namespace SaveSystem {
             return saveFile.HasData(InitialSaveDataID);
         }
 
+        public void ChangeObstacleData(string dataId, bool value) {
+            saveFile.AddOrUpdateData(dataId, value);
+            saveFile.Save();
+        }
+
         private void OnApplicationQuit() {
             SaveGame();
         }
