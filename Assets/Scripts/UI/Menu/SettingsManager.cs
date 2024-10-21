@@ -132,11 +132,13 @@ public class SettingsManager : MonoBehaviour, ISavable {
         
             fullscreenToggle.isOn = saveFile.GetData<bool>(FullscreenSaveID);
             SetFullscreen();
-        
+            
+            /*
             mouseToggle.isOn = saveFile.GetData<bool>(MouseSaveID);
             SetMouseControls();
             keyboardToggle.isOn = saveFile.GetData<bool>(KeyboardSaveID);
             SetKeyboardControls();
+            */
         }
     }
 }
