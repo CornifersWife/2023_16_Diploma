@@ -46,7 +46,7 @@ public class EnemyPopup : MonoBehaviour {
     private void Close() {
         Enemy = null;
         enemyPopup.SetActive(false);
-        InputManager.Instance.EnableAllInput();
+        InputManager.Instance.EnableInput();
     }
 
     private bool CheckDeck(int count) {

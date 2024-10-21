@@ -11,7 +11,7 @@ public class EnemyPopupTrigger : MonoBehaviour, IPointerClickHandler {
             enemyPanel.SetActive(true);
             enemyPanel.transform.GetChild(0).gameObject.SetActive(true);
             EnemyPopup.Instance.Enemy = enemy;
-            InputManager.Instance.DisableAllInput();
+            InputManager.Instance.DisableInput();
         }
     }
 }
