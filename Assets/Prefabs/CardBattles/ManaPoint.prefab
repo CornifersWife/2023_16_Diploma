@@ -134,8 +134,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e69adb79c2509e4d91076dee9e889d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnImage: {fileID: 6906383162465273447}
-  OffImage: {fileID: 3756191732883150950}
+  changeStateScaleFlash: 1.2
+  onImage: {fileID: 6906383162465273447}
+  offImage: {fileID: 3756191732883150950}
+  manaChangeState:
+    m_PersistentCalls:
+      m_Calls: []
   isAvailable: 1
 --- !u!1 &9140320413499992900
 GameObject:

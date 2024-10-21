@@ -29,6 +29,7 @@ namespace Audio {
         public AudioSource effectsSource;
         public AudioSource musicSource;
 
+
         // ReSharper disable Unity.PerformanceAnalysis
         public void Play([CanBeNull] AudioClip clip,float volume=1f, float pitch =1f) 
         {
@@ -41,7 +42,8 @@ namespace Audio {
             effectsSource.clip = clip;
             effectsSource.Play();
         } 
-    
+
+        // ReSharper disable ParameterHidesMember
         public void PlayWithVariation([CanBeNull] AudioClip clip,float volume=1f, float? lowPitchRange = null, float? highPitchRange = null) {
             lowPitchRange ??= this.lowPitchRange;
             highPitchRange ??= this.highPitchRange;
@@ -49,6 +51,9 @@ namespace Audio {
             float randomPitch = Random.Range((float)lowPitchRange, (float)highPitchRange);
             Play(clip,volume: volume, pitch: randomPitch);
         }   
+        // ReSharper restore ParameterHidesMember
+
+
     
         public void PlayRandomFromArray(params AudioClip[] clips)
         {

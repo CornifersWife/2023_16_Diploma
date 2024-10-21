@@ -65,8 +65,11 @@ MonoBehaviour:
   flavourText: 
   properties: 00000000
   effectDictionary:
-    m_keys: 00000000
+    m_keys: 0000000002000000
     m_values:
+    - effectName: 2
+      targetType: 2
+      value: 3
     - effectName: 2
       targetType: 2
       value: 3

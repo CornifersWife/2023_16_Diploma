@@ -1,4 +1,5 @@
 using System;
+using Audio;
 using CardBattles.Character.Mana.Additional;
 using CardBattles.Interfaces;
 using CardBattles.Interfaces.InterfaceObjects;
@@ -29,6 +30,9 @@ namespace CardBattles.Character.Mana {
             }
         }
 
+        [SerializeField] private AudioClip spendMana;
+        [SerializeField] private AudioClip refreshMana;
+
         private void Awake() {
             isPlayers = CompareTag("Player");
             manaDisplay = GetComponentInChildren<ManaDisplay>();
@@ -50,6 +54,11 @@ namespace CardBattles.Character.Mana {
             CurrentMana -= 1;
         }
 
+        public void ChangeManaSound(bool available) {
+            var clip = available ? refreshMana : spendMana;
+            AudioManager.Instance.PlayWithVariation(clip);
+        }
+
 
         public bool TryUseMana(IHasCost cost) {
             if (!CanUseMana(cost)) {
@@ -65,7 +74,7 @@ namespace CardBattles.Character.Mana {
             return TryUseMana(new HasCost(cost));
         }
 
-        [Button]
+        [Button(enabledMode: EButtonEnableMode.Playmode)]
         public void RefreshMana() {
             CurrentMana = maxMana;
         }
