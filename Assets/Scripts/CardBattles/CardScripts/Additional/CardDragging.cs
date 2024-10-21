@@ -1,3 +1,4 @@
+using Audio;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
@@ -29,6 +30,9 @@ namespace CardBattles.CardScripts.Additional {
                 enabled = false;
                 return;
             }
+
+            var clip = AudioCollection.Instance.GetClip("ggg.Abc");
+            //AudioManager.Instance.PlayWithVariation();
             baseOrder = canvas.sortingOrder;
             canvas.sortingOrder = 100;
             

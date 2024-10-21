@@ -29,10 +29,15 @@ namespace CardBattles.Character {
                 Debug.LogError("cardSetDatas is null");
             }
             
+            InitializeDeck();
+        }
+
+        public void InitializeDeck() {
             CreateCardSetsFromData(); 
             CreateCardFromDeck();
         }
-
+        
+        
         private List<CardSetData> LoadCardSetData() {
             if (IsPlayers)
                 return InventoryController.Instance.GetCardSets();
@@ -64,7 +69,6 @@ namespace CardBattles.Character {
 
                     var card = CardManager.Instance.CreateCard
                     (cardData, this); 
-                    //card.tag = isPlayers ? "Player": "Enemy";
 
                     if (card == null) {
                         Debug.LogError("Card creation failed for cardData in cardSetData: " + cardSetData.displayName);

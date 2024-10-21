@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Audio;
 using CardBattles.Interfaces;
 using CardBattles.Interfaces.InterfaceObjects;
 using DG.Tweening;
@@ -8,13 +9,12 @@ using UnityEngine;
 
 namespace CardBattles.CardScripts.Additional {
     public class CardAnimation : PlayerEnemyMonoBehaviour {
-        private float scaleInHand;
-
-
+     
         [Header("Show")] [Foldout("Draw"), SerializeField]
         public Vector3 showPosition;
 
-        [Foldout("Draw"), SerializeField] public Vector3 showScale = Vector3.one;
+        [Foldout("Draw"), SerializeField]
+        public Vector3 showScale = Vector3.one;
 
 
         [Space, Header("Deck to show")] [Foldout("Draw"), SerializeField]
@@ -36,11 +36,6 @@ namespace CardBattles.CardScripts.Additional {
 
         [Foldout("Draw"), Range(0, 1), SerializeField]
         private float enemyDraw = 0.5f;
-
-
-        private void Start() {
-            scaleInHand = GetComponent<CardDisplay>().scaleInHand;
-        }
 
         public IEnumerator DrawAnimation(Vector3 finalPosition) {
             var drawAnimation = StartCoroutine(IsPlayers
@@ -64,7 +59,7 @@ namespace CardBattles.CardScripts.Additional {
                     .DOMove(finalPosition, timeToHand)
                     .SetEase(showToHand))
                 .Join(transform
-                    .DOScale(Vector3.one * scaleInHand, timeToHand)
+                    .DOScale(Vector3.one * CardDisplay.scaleInHand, timeToHand)
                     .SetEase(showToHand));
 
             sequence.Play();
@@ -79,15 +74,18 @@ namespace CardBattles.CardScripts.Additional {
                     .SetEase(enemyToHand));
             sequence.Join(
                 transform
-                    .DOScale(Vector3.one * scaleInHand
+                    .DOScale(Vector3.one * CardDisplay.scaleInHand
                         , enemyDraw));
             sequence.Play();
             yield return sequence.WaitForCompletion();
         }
 
 
-        [Foldout("Move To")] [SerializeField] private float moveToAnimationTime = 0.3f;
-        [Foldout("Move To")] [SerializeField] private Ease moveToEase;
+        [Foldout("Move To")] [SerializeField]
+        private float moveToAnimationTime = 0.3f;
+
+        [Foldout("Move To")] [SerializeField]
+        private Ease moveToEase;
 
 
         public IEnumerator MoveTo(Vector3 vector3) {
@@ -244,16 +242,17 @@ namespace CardBattles.CardScripts.Additional {
         public IEnumerator Play(Card card) {
             switch (card) {
                 case Spell:
-                    yield return StartCoroutine(FadeOut(card.gameObject));
+                    StartCoroutine(FadeOut(card.gameObject));
                     break;
             }
+
             yield return null;
         }
 
         [Space, Header("FadeOut"), Foldout("FadeOut"), SerializeField]
         private float cardFadeOutDuration = 0.7f;
 
-        [Foldout("FadeOut"), SerializeField] 
+        [Foldout("FadeOut"), SerializeField]
         private Ease cardFadeOutEase = Ease.InOutQuad;
 
         private IEnumerator FadeOut(GameObject cardGameObject) {
@@ -262,7 +261,8 @@ namespace CardBattles.CardScripts.Additional {
 
             yield return ((CanvasGroup)canvasGroup)
                 .DOFade(0f, cardFadeOutDuration)
-                .SetEase(cardFadeOutEase);
+                .SetEase(cardFadeOutEase)
+                .WaitForCompletion();
         }
     }
 }
