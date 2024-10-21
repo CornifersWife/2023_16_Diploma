@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Audio;
 using Interaction;
@@ -6,7 +7,7 @@ using UnityEngine;
 
 namespace NPC {
     public class TalkableNPC : NPC, ITalkable {
-        [SerializeField] private List<DialogueText> dialogueText;
+        public List<DialogueText> dialogue;
         [SerializeField] private DialogueController dialogueController;
         [SerializeField] private ShowQuestIndicator questIndicator;
         [SerializeField] private DialogueAudioConfig audioConfig;
@@ -18,10 +19,9 @@ namespace NPC {
         private void Awake() {
             player = GameObject.FindGameObjectWithTag("Player");
         }
-        
         public override void Interact() {
             if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance) {
-                Talk(dialogueText[0]);
+                Talk(dialogue[0]);
             }
         }
 
@@ -32,7 +32,7 @@ namespace NPC {
         }
 
         public void SetUpNextDialogue() {
-            dialogueText.Remove(dialogueText[0]);
+            dialogue.Remove(dialogue[0]);
             questIndicator.ShowQuestIcon();
         }
     }
