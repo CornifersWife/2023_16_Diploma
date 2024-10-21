@@ -9,14 +9,11 @@ using UnityEngine.UI;
 public class SettingsManager : MonoBehaviour, ISavable {
     [SerializeField] private TMP_Dropdown resolutionDropdown;
     [SerializeField] private Toggle fullscreenToggle;
-    [SerializeField] private Toggle mouseToggle;
-    [SerializeField] private Toggle keyboardToggle;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
     [SerializeField] private AudioMixer musicMixer;
     [SerializeField] private AudioMixer sfxMixer;
     [SerializeField] private GameObject audioVideoPanel;
-    [SerializeField] private GameObject controlsPanel;
 
     private float currentMusicVolume = 0.5f;
     private float currentSFXVolume = 0.5f;
@@ -24,8 +21,6 @@ public class SettingsManager : MonoBehaviour, ISavable {
     private static List<string> options;
     private int currentResolutionIndex;
     private bool isFullscreen = true;
-    private bool isMouse = true;
-    private bool isKeyboard = true;
 
     private bool isResolutionLoaded = false;
 
@@ -33,8 +28,6 @@ public class SettingsManager : MonoBehaviour, ISavable {
     private const string SFXVolumeSaveID = "SFXVolume";
     private const string ResolutionSaveID = "ResolutionId";
     private const string FullscreenSaveID = "FullscreenId";
-    private const string MouseSaveID = "Mouse";
-    private const string KeyboardSaveID = "Keyboard";
     
     void Start() {
         SetUpResolutions();
@@ -47,27 +40,6 @@ public class SettingsManager : MonoBehaviour, ISavable {
 
     public void SetResolution() {
         ChangeResolution(resolutionDropdown.value);
-    }
-
-    public void SetKeyboardControls() {
-        InputManager.Instance.KeyboardControls = keyboardToggle.isOn;
-        isKeyboard = keyboardToggle.isOn;
-        if(keyboardToggle.isOn)
-            InputManager.Instance.EnableKeyboardInput();
-        else {
-            InputManager.Instance.DisableKeyboardInput();
-        }
-    }
-
-    public void SetMouseControls() {
-        Debug.Log(InputManager.Instance);
-        InputManager.Instance.MouseControls = mouseToggle.isOn;
-        isMouse = mouseToggle.isOn;
-        if(keyboardToggle.isOn)
-            InputManager.Instance.EnableMouseInput();
-        else {
-            InputManager.Instance.DisableMouseInput();
-        }
     }
     
     public void SetMusicVolume(float volume) {
@@ -114,8 +86,6 @@ public class SettingsManager : MonoBehaviour, ISavable {
         saveFile.AddOrUpdateData(SFXVolumeSaveID, currentSFXVolume);
         saveFile.AddOrUpdateData(ResolutionSaveID, currentResolutionIndex);
         saveFile.AddOrUpdateData(FullscreenSaveID, isFullscreen);
-        saveFile.AddOrUpdateData(MouseSaveID, isMouse);
-        saveFile.AddOrUpdateData(KeyboardSaveID, isKeyboard);
     }
 
     public void LoadSaveData(SaveFile saveFile) {
@@ -132,11 +102,6 @@ public class SettingsManager : MonoBehaviour, ISavable {
         
             fullscreenToggle.isOn = saveFile.GetData<bool>(FullscreenSaveID);
             SetFullscreen();
-        
-            mouseToggle.isOn = saveFile.GetData<bool>(MouseSaveID);
-            SetMouseControls();
-            keyboardToggle.isOn = saveFile.GetData<bool>(KeyboardSaveID);
-            SetKeyboardControls();
         }
     }
 }

@@ -24,8 +24,9 @@ namespace SaveSystem {
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
             Debug.Log("Scene loaded");
-            if (scene.name != "OverworldTesting")
+            if (scene.name != "OverworldTesting" && scene.name != "Main Menu")
                 return;
+            Debug.Log("Scene " + scene.name);
             saveFileSetup = GetComponent<SaveFileSetup>();
             saveFile = saveFileSetup.GetSaveFile();
             savableObjects = FindAllSavableObjects();

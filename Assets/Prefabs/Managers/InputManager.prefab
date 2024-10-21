@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 851443220988844106}
   - component: {fileID: 166375946309251078}
-  - component: {fileID: 2759064335693349102}
   - component: {fileID: 6014060924607383652}
   m_Layer: 0
   m_Name: InputManager
@@ -27,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4984736233754390394}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.3977795, y: -12.247855, z: 5.850275}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -47,23 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseInputManager: {fileID: 6014060924607383652}
-  keyboardInputManager: {fileID: 2759064335693349102}
---- !u!114 &2759064335693349102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4984736233754390394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3994eb7efaae4cbb9270af04bbf8c5c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  cameraPivot: {fileID: 0}
-  speed: 7
-  animator: {fileID: 0}
+  keyboardInputManager: {fileID: 0}
 --- !u!114 &6014060924607383652
 MonoBehaviour:
   m_ObjectHideFlags: 0
