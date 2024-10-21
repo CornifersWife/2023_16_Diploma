@@ -42704,6 +42704,7 @@ Transform:
   - {fileID: 1800690670}
   - {fileID: 506512553}
   - {fileID: 1224368393}
+  - {fileID: 1356361623}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &712031222
@@ -72589,7 +72590,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1124114764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72701,7 +72702,7 @@ Transform:
   m_GameObject: {fileID: 1124114763}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.34513426, y: -0.6535287, z: -0.23493695}
+  m_LocalPosition: {x: 0.93, y: -0.6535287, z: 1.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -94869,11 +94870,11 @@ Transform:
   m_GameObject: {fileID: 1356361622}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.105516, y: 4.6248865, z: -10.554716}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 711465379}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1356361624
 MonoBehaviour:
@@ -153537,7 +153538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4102326752318149805, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5668120488568606045, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
       propertyPath: dialogueController
@@ -154056,7 +154057,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 225767627}
   - {fileID: 7092030444858428485}
-  - {fileID: 1356361623}
   - {fileID: 7141268221703146637}
   - {fileID: 1893222052}
   - {fileID: 8874856105195882976}
