@@ -2,9 +2,9 @@ using NaughtyAttributes;
 using UnityEngine;
 
 namespace CardBattles.CardScripts.temp {
-    public class audioLoadButton :MonoBehaviour {
-
+    public class audioLoadButton : MonoBehaviour {
         [SerializeField] public AudioCollection ad;
+
         [Button]
         private void DoLoad() {
             ad.DoLoad();
@@ -18,6 +18,11 @@ namespace CardBattles.CardScripts.temp {
         [Button]
         private void SaveJsonToFile() {
             ad.SaveJsonToFile();
+        }
+
+        [Button]
+        private void CreateJsonPaths() {
+            ad.CreateJsonPaths();
         }
     }
 }

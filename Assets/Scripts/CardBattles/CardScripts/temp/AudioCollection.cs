@@ -32,19 +32,26 @@ public class AudioCollection : MonoBehaviour
             Destroy(gameObject);
 
         DontDestroyOnLoad(this);
-        
-        jsonFilePath = Path.Combine(Application.persistentDataPath, "audioMap.json");
-        string todayString = DateTime.Now.ToString("yyyy-MM-dd");
-        string backupAudioFileName = "backupAudi_" + todayString + ".json";
-        jsonBackupPath = Path.Combine(Application.persistentDataPath, "backupAudioMap.json");
-        LoadJsonFromFile();
-
+       
     }
 
 
     void Start()
     {
+        CreateJsonPaths();
         DoLoad();
+    }
+
+    
+    public void CreateJsonPaths() {
+        jsonFilePath = Path.Combine(Application.persistentDataPath, "audioMap.json");
+        string todayString = DateTime.Now.ToString("yyyy-MM-dd");
+        string backupAudioFileName = "backupAudio_" + todayString + ".json";
+        jsonBackupPath = Path.Combine(Application.persistentDataPath, "backupAudioMap.json");
+        LoadJsonFromFile();
+
+        Debug.Log(jsonFilePath);
+        Debug.Log(jsonBackupPath);
     }
     public void DoLoad() {
         var result = FlattenJson(JObject.Parse(json));
@@ -136,8 +143,9 @@ public class AudioCollection : MonoBehaviour
     }
     public void SaveJsonToFile()
     {
-        try
-        {
+        try {
+            if (!File.Exists(jsonFilePath))
+                File.Create(jsonFilePath);
             File.WriteAllText(jsonFilePath, json);
             Debug.Log($"JSON saved to {jsonFilePath}");
         }
@@ -148,10 +156,11 @@ public class AudioCollection : MonoBehaviour
     }
     public void SaveJsonToBackupFile()
     {
-        try
-        {
-            File.WriteAllText(jsonFilePath, json);
-            Debug.Log($"JSON saved to {jsonFilePath}");
+        try {
+            if (!File.Exists(jsonBackupPath))
+                File.Create(jsonBackupPath);
+            File.WriteAllText(jsonBackupPath, json);
+            Debug.Log($"JSON saved to {jsonBackupPath}");
         }
         catch (Exception e)
         {
