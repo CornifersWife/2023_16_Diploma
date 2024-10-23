@@ -3,14 +3,14 @@ using CardBattles.CardScripts.CardDatas;
 using UnityEngine;
 
 public class CardSetItem : Item {
-    [SerializeField] private CardSetData cards;
+    [SerializeField] private CardSetData cardSetData;
     private bool unlocked;
 
     public CardSetData GetCardSetData() {
-        return cards;
+        return cardSetData;
     }
     
     public void SetCardSetData(CardSetData cardSetData) {
-        cards = cardSetData;
+        this.cardSetData = cardSetData;
     }
 }

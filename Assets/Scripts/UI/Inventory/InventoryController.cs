@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using CardBattles.CardScripts.CardDatas;
-using ScriptableObjects;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;

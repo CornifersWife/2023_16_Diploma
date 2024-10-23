@@ -1,5 +1,4 @@
-using System;
-using CardBattles.CardScripts;
+using CardBattles.CardScripts.CardDatas;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,21 +11,18 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
     
     private float hoverTimer = 0f;
 
-    private Card card;
-    private CardDetail cardDetail;
+    private CardData cardData;
 
     private bool isMouseOver;
     
-    [Obsolete("Obsolete")]
     private void Awake() {
-        card = GetComponent<Card>();
-        cardDetail = GetComponent<CardDetail>();
+        cardData = GetComponent<CardData>();
     }
     
     private void Update() {
         if (PauseManager.Instance.IsOpen)
             return;
-        if (cardDetail is not null && InventoryController.Instance.IsOpen())
+        if (cardData is not null && InventoryController.Instance.IsOpen())
             return;
         
         if (isMouseOver) {
@@ -58,25 +54,16 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
     }
 
     private void ReadCardData() {
-        //TODO UPDATE TO NEW ONES
-        /*if (cardOld is not null) {
-            cardData = cardOld.cardData;
-        }
-        else {
-            cardData = cardDetail.CardDatas;
-        }
         string displayText = cardData.cardName + "\nDescription: ";
         displayText += "description text";
         
-        if (cardData is Minion) {
-            displayText += "\nPower: " + ((MinionCardData)cardData).power;
-            displayText += "\nHealth: " + ((MinionCardData)cardData).maxHealth;
+        if (cardData is MinionData) {
+            displayText += "\nPower: " + ((MinionData)cardData).attack;
+            displayText += "\nHealth: " + ((MinionData)cardData).maxHealth;
         }
         
-
         descriptionText.text = displayText;
         descriptionWindow.gameObject.SetActive(true);
-        */
     }
     
     private void ShowDetails() {

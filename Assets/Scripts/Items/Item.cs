@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [System.Serializable]
-public class Item: MonoBehaviour, IPointerClickHandler{
+public abstract class Item: MonoBehaviour {
     [SerializeField] private string itemName;
     [SerializeField] private Sprite sprite;
 
@@ -21,11 +21,5 @@ public class Item: MonoBehaviour, IPointerClickHandler{
 
     public void SetSprite(Sprite sprite) {
         this.sprite = sprite;
-    }
-    
-    public void OnPointerClick(PointerEventData eventData) {
-        InventoryController.Instance.AddItem(this);
-        gameObject.SetActive(false);
-        GameEventsManager.Instance.ItemEvents.ItemCollected();
     }
 }

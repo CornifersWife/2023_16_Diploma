@@ -426,7 +426,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1266420823950560344, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 284493138}
   m_SourcePrefab: {fileID: 100100000, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
 --- !u!224 &40050225 stripped
 RectTransform:
@@ -438,7 +441,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1768770626966538140, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
   m_PrefabInstance: {fileID: 40050224}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 284493134}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ddaa13eb2675bf42a82c8f7d1619ea5, type: 3}
@@ -1046,7 +1049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Card Set 1
   sprite: {fileID: 21300000, guid: e5eae2c6d71262d4ba0fa2c773995d7d, type: 2}
-  cards: {fileID: 0}
+  cardSetData: {fileID: 11400000, guid: 66865fefba2b02a4dafc9b77cc8017ce, type: 2}
 --- !u!54 &87115878
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7618,7 +7621,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Cats 3
   sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
-  cards: {fileID: 11400000, guid: 66865fefba2b02a4dafc9b77cc8017ce, type: 2}
+  cardSetData: {fileID: 0}
 --- !u!4 &231655315
 Transform:
   m_ObjectHideFlags: 0
@@ -17761,6 +17764,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 284091156}
   m_CullTransparentMesh: 1
+--- !u!1 &284493134 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1266420823950560344, guid: 4be227e859ce92544b98f1af8677d373, type: 3}
+  m_PrefabInstance: {fileID: 40050224}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &284493138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284493134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d68ff6f46a646bfb4876a87e7a67ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &288824168
 GameObject:
   m_ObjectHideFlags: 0
@@ -18064,7 +18084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Cats 2
   sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
-  cards: {fileID: 11400000, guid: 93a68ce33da350a4c95448a9156b6763, type: 2}
+  cardSetData: {fileID: 0}
 --- !u!1 &305754600 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4789186708790236404, guid: 97903a1a4e3f7c94e9fb7d0eb3615189, type: 3}
@@ -23407,6 +23427,7 @@ MonoBehaviour:
   questIndicator: {fileID: 38404673}
   audioConfig: {fileID: 11400000, guid: 5a56d19f0663bff459578f7d25de4c81, type: 2}
   detectionDistance: 8
+  npcID: 5700a080-c0e2-4e99-9051-593ecf739a4a
 --- !u!1 &362838657
 GameObject:
   m_ObjectHideFlags: 0
@@ -23877,7 +23898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -36345,7 +36366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -42295,7 +42316,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &689072729
 Transform:
   m_ObjectHideFlags: 0
@@ -48494,7 +48515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -67139,7 +67160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Cats 1
   sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
-  cards: {fileID: 11400000, guid: 66865fefba2b02a4dafc9b77cc8017ce, type: 2}
+  cardSetData: {fileID: 0}
 --- !u!1 &1082206032
 GameObject:
   m_ObjectHideFlags: 0
@@ -94455,9 +94476,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1350068690}
-  - component: {fileID: 1350068697}
-  - component: {fileID: 1350068696}
-  - component: {fileID: 1350068695}
   - component: {fileID: 1350068694}
   - component: {fileID: 1350068693}
   - component: {fileID: 1350068692}
@@ -94572,69 +94590,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 0
---- !u!114 &1350068695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1350068689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 0
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &1350068696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1350068689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 1
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
---- !u!223 &1350068697
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1350068689}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 55
-  m_TargetDisplay: 0
 --- !u!114 &1350068698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124385,6 +124340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247d1edca77945f0a9f09fe9ec7c780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obstacleID: 80d1145d-cdd1-414d-8f5e-aed4ce8e3eaa
 --- !u!1 &1733224871
 GameObject:
   m_ObjectHideFlags: 0
@@ -147599,7 +147555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2086719484
 Transform:
   m_ObjectHideFlags: 0
@@ -153534,6 +153490,10 @@ PrefabInstance:
     - target: {fileID: 4102326752318149805, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5668120488568606045, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
+      propertyPath: npcID
+      value: 31e3cc4b-a330-4980-81f2-3d002ff518b6
       objectReference: {fileID: 0}
     - target: {fileID: 5668120488568606045, guid: acc1101ca6d02304d8df04e851b18f5d, type: 3}
       propertyPath: dialogueController
