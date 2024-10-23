@@ -15,10 +15,17 @@ namespace NPC {
         [SerializeField] private float detectionDistance = 8;
 
         private GameObject player;
+        [SerializeField] private string npcID;
+
+        [ContextMenu("Generate guid for id")]
+        private void GenerateGuid() {
+            npcID = Guid.NewGuid().ToString();
+        }
 
         private void Awake() {
             player = GameObject.FindGameObjectWithTag("Player");
         }
+        
         public override void Interact() {
             if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance) {
                 Talk(dialogue[0]);
@@ -34,6 +41,10 @@ namespace NPC {
         public void SetUpNextDialogue() {
             dialogue.Remove(dialogue[0]);
             questIndicator.ShowQuestIcon();
+        }
+
+        public string GetID() {
+            return npcID;
         }
     }
 }

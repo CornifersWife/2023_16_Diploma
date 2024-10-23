@@ -65,6 +65,8 @@ namespace SaveSystem {
         public void LoadGame() {
             if (!HasSaveData()) {
                 Debug.Log("Tried loading but no data");
+                saveFile.AddOrUpdateData(InitialSaveDataID, 0);
+                saveFile.Save();
                 return;
             }
             
