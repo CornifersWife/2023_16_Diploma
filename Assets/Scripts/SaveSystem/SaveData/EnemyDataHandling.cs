@@ -8,7 +8,7 @@ using UnityEngine;
 namespace SaveSystem.SaveData {
     public class EnemyDataHandling: MonoBehaviour, ISavable {
         private List<EnemySM> allEnemies;
-        private const string EnemySaveID = "Enemy data ";
+        private const string EnemySaveData = "Enemy data";
 
         private void Awake() {
             IEnumerable<EnemySM> objects = FindObjectsOfType<MonoBehaviour>(true)
@@ -17,22 +17,23 @@ namespace SaveSystem.SaveData {
         }
         
         public void PopulateSaveData(SaveFile saveFile) {
-            int i = 0;
+            saveFile.AddOrUpdateData(EnemySaveData, EnemySaveData);
             foreach (EnemySM enemy in allEnemies) {
-                saveFile.AddOrUpdateData(EnemySaveID + i, enemy.GetState());
-                i++;
+                string id = enemy.GetID();
+                if(saveFile.HasData(id))
+                    saveFile.DeleteData(id);
+
+                saveFile.AddOrUpdateData(id, enemy.GetState());
             }
         }
 
         public void LoadSaveData(SaveFile saveFile) {
-            if (!saveFile.HasData(EnemySaveID + 0))
+            if (!saveFile.HasData(EnemySaveData))
                 return;
             
-            int i = 0;
             foreach (EnemySM enemy in allEnemies) {
-                EnemyState state = (EnemyState)saveFile.GetData<int>(EnemySaveID + i);
+                EnemyState state = (EnemyState)saveFile.GetData<int>(enemy.GetID());
                 enemy.ChangeState(state);
-                i++;
             }
         }
     }

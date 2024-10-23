@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemySM : StateMachine {
@@ -10,6 +11,12 @@ public class EnemySM : StateMachine {
     
     [SerializeField] private Enemy enemy;
     private EnemyState state;
+
+    [SerializeField] private string enemyID;
+    [ContextMenu("Generate guid for id")]
+    private void GenerateGuid() {
+        enemyID = Guid.NewGuid().ToString();
+    }
 
     [SerializeField] private Material undefeatedMaterial;
     [SerializeField] private Material defeatedMaterial;
@@ -67,5 +74,9 @@ public class EnemySM : StateMachine {
 
     public Renderer GetRenderer() {
         return objectRenderer;
+    }
+
+    public string GetID() {
+        return enemyID;
     }
 }

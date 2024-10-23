@@ -10,8 +10,8 @@ namespace SaveSystem.SaveData {
         private List<GameObject> allItems;
         private List<Obstacle> allObstacles;
 
-        private const string ItemSaveID = "Collectible item ";
-        private const string ObstacleSaveID = "Obstacle ";
+        private const string ItemSaveData = "Collectible item data";
+        private const string ObstacleSaveData = "Obstacle data";
 
         private void Awake() { 
             IEnumerable<Obstacle> objects = FindObjectsOfType<MonoBehaviour>(true)
@@ -20,22 +20,22 @@ namespace SaveSystem.SaveData {
         }
         
         public void PopulateSaveData(SaveFile saveFile) {
-            int i = 0;
+            saveFile.AddOrUpdateData(ObstacleSaveData, ObstacleSaveData);
             foreach (Obstacle obstacle in allObstacles) {
-                saveFile.AddOrUpdateData(ObstacleSaveID + i, obstacle.IsObstacle());
-                i++;
+                string id = obstacle.GetID();
+                if(saveFile.HasData(id))
+                    saveFile.DeleteData(id);
+                saveFile.AddOrUpdateData(id, obstacle.IsObstacle());
             }
         }
 
         public void LoadSaveData(SaveFile saveFile) {
-            if (!saveFile.HasData(ObstacleSaveID + 0))
+            if (!saveFile.HasData(ObstacleSaveData))
                 return;
             
-            int i = 0;
             foreach (Obstacle obstacle in allObstacles) {
-                bool isObstacle = saveFile.GetData<bool>(ObstacleSaveID + i);
+                bool isObstacle = saveFile.GetData<bool>(obstacle.GetID());
                 obstacle.SetObstacle(isObstacle);
-                i++;
             }
         }
     }

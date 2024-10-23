@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Esper.ESave;
 using NPC;
-using ScriptableObjects.Dialogue;
 using UnityEngine;
 
 namespace SaveSystem.SaveData {
@@ -19,14 +18,12 @@ namespace SaveSystem.SaveData {
         public void PopulateSaveData(SaveFile saveFile) {
             saveFile.AddOrUpdateData(NPCSaveData, NPCSaveData);
             foreach (TalkableNPC npc in allNPCs) {
-                if(saveFile.HasData(npc.GetID()))
-                    saveFile.DeleteData(npc.GetID());
+                string id = npc.GetID();
+                if(saveFile.HasData(id))
+                    saveFile.DeleteData(id);
                 
-                int j = 0;
-                foreach (DialogueText dialogue in npc.dialogue) {
-                    j++;
-                }
-                saveFile.AddOrUpdateData(npc.GetID(), j);
+                int j = npc.dialogue.Count();
+                saveFile.AddOrUpdateData(id, j);
             }
         }
 
