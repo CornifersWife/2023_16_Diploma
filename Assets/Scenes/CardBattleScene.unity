@@ -14101,9 +14101,8 @@ GameObject:
   m_Component:
   - component: {fileID: 332644335}
   - component: {fileID: 332644336}
-  - component: {fileID: 332644337}
   m_Layer: 0
-  m_Name: audioCollection
+  m_Name: AudioCollection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14136,31 +14135,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45d8de04daa462caa4b1c8a831034ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  json: "{\r\n  \"Cards\": {\r\n    \"All\": \"beltHandle1\",\r\n    \"B\": \"footstep09\"\r\n 
-    },\r\n  \"Pop\": {\r\n    \"Abc\": \"\"\r\n  },\r\n  \"ggg\": {\r\n    \"Abc\":
-    \"\"\r\n  }\r\n}"
   audioMap:
-  - key: Cards.All
-    clip: {fileID: 8300000, guid: e837238f952cf424590bb3f194a23495, type: 3}
-  - key: Cards.B
-    clip: {fileID: 8300000, guid: 7b464b413d8909f44bcd5b9722e97747, type: 3}
-  - key: Pop.Abc
-    clip: {fileID: 0}
-  - key: ggg.Abc
-    clip: {fileID: 0}
---- !u!114 &332644337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 332644333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e841de23fecb4be7832f7080da9fb2be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ad: {fileID: 332644336}
+  - key: Cards.Draw
+    clip: {fileID: 8300000, guid: 08a47ec0224c9224e82f517d0e7e1165, type: 3}
+  - key: Cards.Place
+    clip: {fileID: 8300000, guid: ff2ad343c1ac6de4698263d6da675a14, type: 3}
 --- !u!1 &336690233
 GameObject:
   m_ObjectHideFlags: 0

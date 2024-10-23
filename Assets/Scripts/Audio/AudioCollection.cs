@@ -9,23 +9,21 @@ using UnityEditor;
 
 public class AudioCollection : MonoBehaviour
 {
-#if UNITY_EDITOR
 
-    //TODO auto load from json after play mode ends
-    [ResizableTextArea]
-    public string json = @"
-    {
-        ""A"": {
-            ""B"": ""Sound1"",
-            ""C"": ""Sound2""
-        },
-        ""D"": ""Sound3""
-    }";
+    private string json ;
+   
     private string jsonFilePath;
     private string jsonBackupPath;
     
     public static AudioCollection Instance;
     
+    [InfoBox(text: "Steps:\n" +
+                   "1. Add .GetClip(string) to code\n" +
+                   "2. Use the script (playmode or editmode)\n" +
+                   "3. Exit playmode\n" +
+                   "4. Press 'Load Data From Json'\n" +
+                   "5. Add Audioclips (first move them to Resources folder)\n" +
+                   "6, Press 'Update Json From Dictionary")]
     public List<AudioEntry> audioMap = new List<AudioEntry>();
 
     private void Awake() {
@@ -33,16 +31,13 @@ public class AudioCollection : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
-
         DontDestroyOnLoad(this);
-       
     }
 
 
     void Start()
     {
-        CreateJsonPaths();
-        DoLoad();
+        LoadDataFromJson();
     }
 
     
@@ -51,61 +46,60 @@ public class AudioCollection : MonoBehaviour
         string todayString = DateTime.Now.ToString("yyyy-MM-dd");
         string backupAudioFileName = "backupAudio_" + todayString + ".json";
         jsonBackupPath = "Assets/Resources/AudioJson/Backup/" + backupAudioFileName;
-        Debug.Log(jsonFilePath);
-        Debug.Log(jsonBackupPath);
+        //Debug.Log(jsonFilePath);
+        //Debug.Log(jsonBackupPath);
     }
-    public void DoLoad() {
-        LoadJsonFromFile();
+    
+    [Button]
+    private void LoadDataFromJson() {
+        CreateJsonPaths();
+        GetJsonFileData();
         var result = FlattenJson(JObject.Parse(json));
+        var noAudioMessage = "No audio for: \n";
+        bool everyKeyHasAudio = true;
 
         audioMap.Clear(); 
-        foreach (var entry in result)
-        {
+        foreach (var entry in result) {
             AudioClip clip = Resources.Load<AudioClip>(entry.Value);
             audioMap.Add(new AudioEntry { key = entry.Key, clip = clip });
-            if(String.IsNullOrEmpty(entry.Value))
-                continue;
-            if (clip != null)
-            {
-                Debug.Log($"{entry.Key} : Loaded AudioClip {entry.Value}");
+            if (String.IsNullOrEmpty(entry.Value)) {
+                {
+                    noAudioMessage += $"{entry.Key}, ";
+                    everyKeyHasAudio = false;
+                    continue;
+                }
             }
-            else
+
+            if (clip is null)
             {
+                everyKeyHasAudio = false;
                 Debug.LogWarning($"AudioClip '{entry.Value}' could not be found for key '{entry.Key}'");
             }
         }
+        if(everyKeyHasAudio)
+            return;
+        print(noAudioMessage);
     }
-    public void OverwriteJson()
+    private void GetJsonFileData()
     {
-        var nestedDictionary = new Dictionary<string, object>();
-
-        foreach (var entry in audioMap)
+        if (File.Exists(jsonFilePath))
         {
-            AddToNestedDictionary(nestedDictionary, entry.key.Split('.'), entry.clip ? entry.clip.name : "");
-        }
-
-        json = JsonConvert.SerializeObject(nestedDictionary, Formatting.Indented);
-        Debug.Log("JSON overwritten with current audio map:\n" + json);
-        
-        SaveJsonToFile();
-    }
-    
-    private void AddToNestedDictionary(Dictionary<string, object> dict, string[] keys, string value)
-    {
-        var currentDict = dict;
-        for (int i = 0; i < keys.Length - 1; i++)
-        {
-            if (!currentDict.ContainsKey(keys[i]))
+            try
             {
-                currentDict[keys[i]] = new Dictionary<string, object>();
+                json = File.ReadAllText(jsonFilePath);
+                Debug.Log($"Loaded JSON from {jsonFilePath}");
             }
-
-            currentDict = currentDict[keys[i]] as Dictionary<string, object>;
+            catch (Exception e)
+            {
+                Debug.LogError($"Failed to load JSON from file: {e.Message}");
+            }
         }
-
-        currentDict[keys[keys.Length - 1]] = value;
+        else
+        {
+            Debug.Log("No saved JSON file found; using default JSON.");
+        }
     }
-     static Dictionary<string, string> FlattenJson(JObject json, string parentKey = "")
+    static Dictionary<string, string> FlattenJson(JObject json, string parentKey = "")
     {
         var result = new Dictionary<string, string>();
 
@@ -142,11 +136,46 @@ public class AudioCollection : MonoBehaviour
         var newEntry = new AudioEntry { key = key, clip = null };
         audioMap.Add(newEntry);
         Debug.Log($"Added new key '{key}' to the audio map with a null AudioClip. You can assign a clip later.");
-        OverwriteJson();
+        UpdateJsonFromDictionary();
         return null;
     }
+#if UNITY_EDITOR
+    [Button]
+    private void UpdateJsonFromDictionary()
+    {      
+        CreateJsonPaths();
+
+        var nestedDictionary = new Dictionary<string, object>();
+
+        foreach (var entry in audioMap)
+        {
+            AddToNestedDictionary(nestedDictionary, entry.key.Split('.'), entry.clip ? entry.clip.name : "");
+        }
+
+        json = JsonConvert.SerializeObject(nestedDictionary, Formatting.Indented);
+        Debug.Log("JSON overwritten with current audio map:\n" + json);
+        
+        SaveJsonToFile();
+    }
     
-    public void SaveJsonToFile()
+    private void AddToNestedDictionary(Dictionary<string, object> dict, string[] keys, string value)
+    {
+        var currentDict = dict;
+        for (int i = 0; i < keys.Length - 1; i++)
+        {
+            if (!currentDict.ContainsKey(keys[i]))
+            {
+                currentDict[keys[i]] = new Dictionary<string, object>();
+            }
+
+            currentDict = currentDict[keys[i]] as Dictionary<string, object>;
+        }
+
+        currentDict[keys[keys.Length - 1]] = value;
+    }
+    
+   
+    private void SaveJsonToFile()
     {
         try {
             if (!File.Exists(jsonFilePath))
@@ -160,10 +189,13 @@ public class AudioCollection : MonoBehaviour
             Debug.LogError($"Failed to save JSON to file: {e.Message}");
         }
     }
+    [Button]
     public void SaveJsonToBackupFile()
     {
+        CreateJsonPaths();
+
         try {
-            DoLoad();
+            LoadDataFromJson();
             if (!File.Exists(jsonBackupPath))
                 File.Create(jsonBackupPath);
             File.WriteAllText(jsonBackupPath, json);
@@ -175,25 +207,7 @@ public class AudioCollection : MonoBehaviour
             Debug.LogError($"Failed to save JSON to file: {e.Message}");
         }
     }
-    private void LoadJsonFromFile()
-    {
-        if (File.Exists(jsonFilePath))
-        {
-            try
-            {
-                json = File.ReadAllText(jsonFilePath);
-                Debug.Log($"Loaded JSON from {jsonFilePath}");
-            }
-            catch (Exception e)
-            {
-                Debug.LogError($"Failed to load JSON from file: {e.Message}");
-            }
-        }
-        else
-        {
-            Debug.Log("No saved JSON file found; using default JSON.");
-        }
-    }
+    
 }
 
 #endif

@@ -22,7 +22,7 @@ namespace CardBattles.CardScripts {
 
         [NonSerialized] protected CardDisplay cardDisplay;
         [NonSerialized] protected CardAnimation cardAnimation;
-        [NonSerialized] protected CardDragging cardDragging;
+        [NonSerialized] public CardDragging cardDragging;
 
         [BoxGroup("Card")] public string cardName;
         [BoxGroup("Card"), ResizableTextArea] public string description;

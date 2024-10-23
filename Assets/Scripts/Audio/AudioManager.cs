@@ -30,6 +30,12 @@ namespace Audio {
         public AudioSource musicSource;
 
 
+        
+        private void Start() {
+            SceneManager.activeSceneChanged += ChangeMusic;
+        }
+        
+        
         // ReSharper disable Unity.PerformanceAnalysis
         public void Play([CanBeNull] AudioClip clip,float volume=1f, float pitch =1f) 
         {
@@ -78,10 +84,6 @@ namespace Audio {
                 Instance = this;
             }
             DontDestroyOnLoad(this);
-        }
-
-        private void Update() {
-            SceneManager.activeSceneChanged += ChangeMusic;
         }
 
         private void ChangeMusic(Scene scene, Scene scene1) {

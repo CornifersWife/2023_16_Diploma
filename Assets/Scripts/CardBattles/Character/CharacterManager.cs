@@ -79,7 +79,7 @@ namespace CardBattles.Character {
             
             manaManager.UseMana(card);
             hand.Cards.Remove(card);
-
+            card.cardDragging.droppedOnSlot = true;
             StartCoroutine(card.Play());
 
             hand.UpdateCardPositions();

@@ -1,12 +1,6 @@
 {
   "Cards": {
-    "All": "beltHandle1",
-    "B": "footstep09"
-  },
-  "Pop": {
-    "Abc": ""
-  },
-  "ggg": {
-    "Abc": ""
+    "Draw": "drawKnife1",
+    "Place": "impactSoft_medium_003"
   }
 }
