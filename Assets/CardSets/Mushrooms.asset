@@ -61,12 +61,18 @@ MonoBehaviour:
   cardSet: {fileID: 11400000}
   cardName: Healing mushroom
   sprite: {fileID: -608562150, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  description: 'Heals, all allies, by 2 hp '
+  description: 'Heals, all allies, by 3 hp '
   flavourText: 
-  properties: 
+  properties: 00000000
   effectDictionary:
-    m_keys: 
-    m_values: []
+    m_keys: 0000000002000000
+    m_values:
+    - effectName: 2
+      targetType: 2
+      value: 3
+    - effectName: 2
+      targetType: 2
+      value: 3
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

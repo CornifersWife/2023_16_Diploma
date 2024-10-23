@@ -1,8 +1,10 @@
+using System;
 using CardBattles.Character;
 using CardBattles.Interfaces;
 using CardBattles.Interfaces.InterfaceObjects;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -12,11 +14,19 @@ namespace CardBattles.CardScripts {
         private Image image;
         public Card card;
 
+        public static UnityEvent<CardSpot> highlight;
         
+        private Color defaultColor = Color.clear;
+        [SerializeField]
+        private Color highlightColor = Color.cyan;
         
         private void Awake() {
             image = GetComponent<Image>();
+            defaultColor = highlightColor;
+            defaultColor.a = 0;
+            StopHighlight();
         }
+        
 
         public void OnDrop(PointerEventData eventData) {
             if (!isActive) {
@@ -33,31 +43,53 @@ namespace CardBattles.CardScripts {
                 return;
             }
             CharacterManager.PlayACard((Card)draggedCard, this);
-            isActive = false;
+            StopHighlight();
         }
 
         //TODO MOVE TO NEW CLASS
         //TODO MAGIC NUMBER AND COLOR AND EASE
         public void OnPointerEnter(PointerEventData eventData) {
-            if(!IsPlayers)
+            if(!CanHighlight(eventData))
                 return;
-            if(eventData.pointerDrag is not null && !eventData.pointerDrag.TryGetComponent(typeof(Minion), out var minion))
-                return;
-            if(!IsAvailable())
-                return;
+            Highlight();
+        }
 
-            isActive = true;
-            image.DOColor(Color.gray, 0.1f).SetEase(Ease.InOutQuad);
+        public void OnPointerExit(PointerEventData eventData) {
+            StopHighlight();
         }
         
-        //TODO SAME AS PREV
-        public void OnPointerExit(PointerEventData eventData) {
-            if(!isActive)
-                return;
-            isActive = false;
-            image.DOColor(Color.white, 0.1f).SetEase(Ease.InOutQuad);
+        private void Highlight() {
+            highlight?.Invoke(this);
+            isActive = true;
+            image.DOColor(highlightColor, 0.1f).SetEase(Ease.InOutQuad);
         }
 
+        private void StopHighlight() {
+            isActive = false;
+            image.DOColor(defaultColor, 0.1f).SetEase(Ease.InOutQuad);
+        }
+
+        private bool CanHighlight(PointerEventData eventData) {
+            if(!IsPlayers)
+                return false;
+
+            if (!IsAvailable())
+                return false;
+            
+            if (!HoldsPlayableMinion(eventData))
+                return false;
+            
+            return true;
+        }
+
+        private bool HoldsPlayableMinion(PointerEventData eventData) {
+            if(eventData.pointerDrag is not null &&
+               !eventData.pointerDrag.TryGetComponent(typeof(Minion), out var minion)
+               )
+                return false;
+            return true;
+        }
+        
         private bool IsAvailable() {
             return (card is null);
         }

@@ -13,7 +13,6 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
     private float hoverTimer = 0f;
 
     private Card card;
-    [Obsolete]
     private CardDetail cardDetail;
 
     private bool isMouseOver;
