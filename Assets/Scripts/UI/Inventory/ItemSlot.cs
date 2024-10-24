@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -8,6 +9,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
     [SerializeField] private GameObject deckList;
     [SerializeField] private GameObject cardSetList;
 
+    [SerializeField] private string itemSlotID;
+    [ContextMenu("Generate guid for id")]
+    private void GenerateGuid() {
+        itemSlotID = Guid.NewGuid().ToString();
+    }
+    
     private Item item;
     private bool isOccupied = false;
     private bool isActive;
@@ -96,5 +103,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
 
     private void ClearItem() {
         item = null;
+    }
+    
+    public string GetID() {
+        return itemSlotID;
     }
 }
