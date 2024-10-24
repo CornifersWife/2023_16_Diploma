@@ -51,7 +51,7 @@ public class EnemyPopup : MonoBehaviour {
 
     private bool CheckDeck(int count) {
         int occupiedCount = 0;
-        foreach (ItemSlot slot in InventoryController.Instance.GetDeck()) {
+        foreach (ItemSlot slot in InventoryController.Instance.GetDeckSlots()) {
             if (slot.IsOccupied())
                 occupiedCount++;
         }

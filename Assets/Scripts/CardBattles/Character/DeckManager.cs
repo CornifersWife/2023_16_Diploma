@@ -40,7 +40,7 @@ namespace CardBattles.Character {
         
         private List<CardSetData> LoadCardSetData() {
             if (IsPlayers)
-                return InventoryController.Instance.GetCardSets();
+                return InventoryController.Instance.GetDeck();
             return EnemyStateManager.Instance.GetCurrentEnemy().GetDeck();
         }
         

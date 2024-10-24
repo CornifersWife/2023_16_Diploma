@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using CardBattles.CardScripts.CardDatas;
+using Items;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -99,15 +100,37 @@ public class InventoryController : MonoBehaviour, ISaveable {
             manageCardSetDetails.ReadCardSet(cardSetData);
     }
 
-    public List<ItemSlot> GetDeck() {
+    public List<ItemSlot> GetDeckSlots() {
         return deckSlots;
     }
+    
+    public List<ItemSlot> GetCardSetSlots() {
+        return cardSetSlots;
+    }
+    
+    public List<ItemSlot> GetItemSlots() {
+        return itemSlots;
+    }
 
-    public List<CardSetData> GetCardSets() {
+    public List<CardSetData> GetDeck() {
         List<CardSetData> cardSets = new List<CardSetData>();
         foreach(ItemSlot slot in deckSlots)
             cardSets.Add(((CardSetItem)slot.GetItem()).GetCardSetData());
         return cardSets;
+    }
+    
+    public List<CardSetData> GetCardSets() {
+        List<CardSetData> cardSets = new List<CardSetData>();
+        foreach(ItemSlot slot in cardSetSlots)
+            cardSets.Add(((CardSetItem)slot.GetItem()).GetCardSetData());
+        return cardSets;
+    }
+    
+    public List<CollectibleItemData> GetItems() {
+        List<CollectibleItemData> items = new List<CollectibleItemData>();
+        foreach(ItemSlot slot in itemSlots)
+            items.Add(((CollectibleItem)slot.GetItem()).GetItemData());
+        return items;
     }
 
     public bool IsOpen() {
