@@ -42,8 +42,6 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public void OnPointerEnter(PointerEventData eventData) {
         isMouseOver = true;
         descriptionWindow.transform.SetParent(transform.parent.transform.parent);
-        Debug.Log(transform.parent.gameObject);
-        Debug.Log(descriptionWindow.GetComponent<LayoutElement>().ignoreLayout);
         descriptionWindow.transform.SetAsLastSibling();
     }
 
