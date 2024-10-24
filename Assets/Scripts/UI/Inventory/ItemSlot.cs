@@ -50,13 +50,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
     }
 
     public void OnPointerClick(PointerEventData eventData) {
-        Debug.Log("Pointer click");
         if (eventData.button == PointerEventData.InputButton.Left)
-            OnLeftClick();
+            SelectSlot();
     }
 
-    private void OnLeftClick() {
-        Debug.Log("Left click");
+    private void SelectSlot() {
         InventoryController.Instance.DeselectAllSlots();
         selectedShader.SetActive(true);
         if (item is CardSetItem cardSet) {

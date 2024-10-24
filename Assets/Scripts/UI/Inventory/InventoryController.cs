@@ -50,6 +50,7 @@ public class InventoryController : MonoBehaviour, ISaveable {
         postProcessVolume.enabled = true;
         isOpen = true;
         HUDController.Instance.HideHUD();
+        InputManager.Instance.DisableInput();
     }
 
     public void HideInventory() {
@@ -61,6 +62,7 @@ public class InventoryController : MonoBehaviour, ISaveable {
         inventoryUI.SetActive(false);
         isOpen = false;
         HUDController.Instance.ShowHUD();
+        InputManager.Instance.EnableInput();
     }
 
     public void AddItem(Item item) {
