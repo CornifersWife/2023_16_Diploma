@@ -40458,8 +40458,8 @@ GameObject:
   - component: {fileID: 689072734}
   - component: {fileID: 689072733}
   - component: {fileID: 689072732}
-  - component: {fileID: 689072731}
   - component: {fileID: 689072730}
+  - component: {fileID: 689072731}
   - component: {fileID: 689072736}
   - component: {fileID: 689072735}
   m_Layer: 15
@@ -40468,7 +40468,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &689072729
 Transform:
   m_ObjectHideFlags: 0
@@ -40523,8 +40523,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497ab3d9b7184582b3d70b2e62e075b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Card 1
+  itemName: Item 2
   sprite: {fileID: 21300000, guid: 2964d65d71ec0ed4c8de2bd7a5f65dc4, type: 2}
+  itemData: {fileID: 11400000, guid: a2912944b121e664b917cda9c8ab548c, type: 2}
 --- !u!65 &689072732
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -58495,6 +58496,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 540865533}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &962359055 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7289906007173557808, guid: ea1a823c8564feb4683477db0c674e75, type: 3}
+  m_PrefabInstance: {fileID: 2355305683728142919}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &973526801
 GameObject:
   m_ObjectHideFlags: 0
@@ -140724,8 +140730,8 @@ GameObject:
   - component: {fileID: 2086719487}
   - component: {fileID: 2086719486}
   - component: {fileID: 2086719485}
-  - component: {fileID: 2086719488}
   - component: {fileID: 2086719489}
+  - component: {fileID: 2086719488}
   - component: {fileID: 2086719491}
   - component: {fileID: 2086719490}
   m_Layer: 15
@@ -140734,7 +140740,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2086719484
 Transform:
   m_ObjectHideFlags: 0
@@ -140833,8 +140839,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497ab3d9b7184582b3d70b2e62e075b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Card 1
+  itemName: Item 1
   sprite: {fileID: 21300000, guid: 2964d65d71ec0ed4c8de2bd7a5f65dc4, type: 2}
+  itemData: {fileID: 11400000, guid: f83b07278439a5140bf64fda3bc02de8, type: 2}
 --- !u!54 &2086719489
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -146154,7 +146161,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9006220477467268367, guid: ea1a823c8564feb4683477db0c674e75, type: 3}
   m_PrefabInstance: {fileID: 2355305683728142919}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 962359055}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 425f3330934486e40a502ecebadb7a4e, type: 3}
@@ -146165,6 +146172,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1022987417242815241, guid: ea1a823c8564feb4683477db0c674e75, type: 3}
   m_PrefabInstance: {fileID: 2355305683728142919}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2142827947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962359055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fef24f23393c445d83c3bb07e291e455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &733145944535868894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146643,7 +146662,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7289906007173557808, guid: ea1a823c8564feb4683477db0c674e75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2142827947}
   m_SourcePrefab: {fileID: 100100000, guid: ea1a823c8564feb4683477db0c674e75, type: 3}
 --- !u!1001 &2825809131530419386
 PrefabInstance:
