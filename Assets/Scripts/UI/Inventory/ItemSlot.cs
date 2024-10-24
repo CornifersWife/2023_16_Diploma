@@ -14,10 +14,15 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
     private void GenerateGuid() {
         itemSlotID = Guid.NewGuid().ToString();
     }
-    
+
+    private string parentName;
     private Item item;
     private bool isOccupied = false;
     private bool isActive;
+
+    private void Awake() {
+        parentName = transform.parent.name;
+    }
     
     public void AddItem(Item item) {
         this.item = item;
@@ -74,11 +79,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
             GameObject itemObject = eventData.pointerDrag;
             DraggableItem draggableItem = itemObject.GetComponent<DraggableItem>();
 
-            if (transform.parent.name == itemList.name && draggableItem.GetItemData() is CardSetItem) {
+            if (parentName == itemList.name && draggableItem.GetItemData() is CardSetItem) {
                 return;
             }
 
-            if ((transform.parent.name == cardSetList.name || transform.parent.name == deckList.name) &&
+            if ((parentName == cardSetList.name || parentName == deckList.name) &&
                 draggableItem.GetItemData() is CollectibleItem) {
                 return;
             }
@@ -103,6 +108,10 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDropHandler {
 
     private void ClearItem() {
         item = null;
+    }
+
+    public string GetParentName() {
+        return parentName ??= transform.parent.name;
     }
     
     public string GetID() {

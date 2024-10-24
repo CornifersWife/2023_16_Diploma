@@ -1,22 +1,39 @@
 using System.Collections.Generic;
+using System.Linq;
 using Esper.ESave;
 using Items;
 using UnityEngine;
 
 namespace SaveSystem.SaveData {
     public class InventoryDataHandling:MonoBehaviour, ISavable {
-        private List<ItemSlot> allItems;
-        private List<ItemSlot> allCardSets;
-        private List<ItemSlot> allDeckCardSets;
+        [SerializeField] private GameObject itemList;
+        [SerializeField] private GameObject deckList;
+        [SerializeField] private GameObject cardSetList;
+        
+        private List<ItemSlot> allItems = new List<ItemSlot>();
+        private List<ItemSlot> allCardSets = new List<ItemSlot>();
+        private List<ItemSlot> allDeckCardSets = new List<ItemSlot>();
 
         private const string ItemSaveID = "Inventory items";
         private const string CardSetSaveID = "Inventory Card Set";
         private const string DeckSaveID = "Inventory deck";
 
-        private void Start() {
-            allItems = InventoryController.Instance.GetItemSlots();
-            allCardSets = InventoryController.Instance.GetCardSetSlots();
-            allDeckCardSets = InventoryController.Instance.GetDeckSlots();
+        private void Awake() {
+            IEnumerable<ItemSlot> objects = FindObjectsOfType<MonoBehaviour>(true)
+                .OfType<ItemSlot>();
+            List<ItemSlot> allItemSlots = new List<ItemSlot>(objects);
+
+            foreach (ItemSlot itemSlot in allItemSlots) {
+                if (itemSlot.GetParentName() == itemList.name) {
+                    allItems.Add(itemSlot);
+                }
+                else if (itemSlot.GetParentName() == deckList.name) {
+                    allDeckCardSets.Add(itemSlot);
+                }
+                else {
+                    allCardSets.Add(itemSlot);
+                }
+            }
         }
         
         

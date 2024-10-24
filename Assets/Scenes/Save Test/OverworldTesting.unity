@@ -32636,6 +32636,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &417561726 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6826891997424746871, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+  m_PrefabInstance: {fileID: 896567920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &419754316
 GameObject:
   m_ObjectHideFlags: 0
@@ -52206,6 +52211,58 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 975929474}
     m_Modifications:
+    - target: {fileID: 457676135413489000, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: d8b95c9d-c5a7-460a-a64d-9520ee5db65d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1179489792999010494, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 41506a9a-cb0a-40c8-85f5-c0354a385de5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422775723101409019, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 433d9ba6-e831-44a5-97fc-8ce1e31cf188
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479110095716218627, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 2f9d6ea5-0380-49f9-9e34-a7bb4cae4cf5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2274957312270988360, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 2dcb0377-0bef-4dc2-88f9-791c055ca312
+      objectReference: {fileID: 0}
+    - target: {fileID: 2448577020107296911, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 9107ce66-dc4a-420d-8274-eae426f48082
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770780023580602161, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 13d4f843-649b-47b6-873b-37576ca979d2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2834083747690279790, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 4dd8d33a-8157-40dc-a76c-22e78c811242
+      objectReference: {fileID: 0}
+    - target: {fileID: 2880445385116753480, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: e17a39b5-ebd0-44de-b37b-4ec94cf30943
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151224107486309774, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: c8efa5e1-337f-41d7-b1b3-a260b1b771dd
+      objectReference: {fileID: 0}
+    - target: {fileID: 3527509825153782143, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: c6fd0321-49d8-498b-91ad-0c0b4f02eea6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3746268060367995101, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 639c29af-53e7-4bb8-85c6-d2dc01dffac1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3864254781946240806, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: feaeb473-5322-4493-bdec-23ddf892fecd
+      objectReference: {fileID: 0}
     - target: {fileID: 3931667305881055040, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -52286,6 +52343,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3972479359935683254, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 726a84e7-9409-4d5c-b1f0-9f23406dfe4a
+      objectReference: {fileID: 0}
+    - target: {fileID: 3975340611724334871, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 7452eed0-ee11-4394-b1ed-a4acc7df8e2d
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085241862150375882, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 282ea6f3-21d5-41e3-94b8-8c63a5bff223
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721035432641592395, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 6aa7a3f8-b7bc-4a1c-af87-d077367342d7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4941304035235383694, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 09e70c3b-2b10-45ef-a218-558047b9dc64
+      objectReference: {fileID: 0}
+    - target: {fileID: 5333230408085444117, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: acae9d1e-341b-4628-b599-244d5226ae03
+      objectReference: {fileID: 0}
+    - target: {fileID: 5378997297738738774, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 29486b84-373a-4a6a-8a85-c0efb90115b4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5544798051239399691, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: c338e828-e96a-48e5-9a13-370c91546107
+      objectReference: {fileID: 0}
     - target: {fileID: 5787864794762114787, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -52294,6 +52383,42 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: HideInventory
       objectReference: {fileID: 0}
+    - target: {fileID: 6011433844868857289, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 8cac3cbe-5892-4bcb-b59b-04b0fb35ea2c
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106436074183185905, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 283b9d05-2cf4-4771-8995-7c397fb4ce15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6773856284606134208, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 517e7ef5-310e-482b-b445-acf7918773d4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784783573865257498, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 1f671917-73bd-4a35-aff0-13276ecb8515
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061607998363266835, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 301f5504-1019-4681-8b8c-aecc7f18b677
+      objectReference: {fileID: 0}
+    - target: {fileID: 7074232029012873163, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 1ed685ca-e349-44f3-acca-ba0ea79b6414
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360173128163772658, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 4e3150d8-6719-4a3f-8725-8d830d8d350d
+      objectReference: {fileID: 0}
+    - target: {fileID: 7932689068047508934, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 3b8ed405-d81c-4949-aa0d-1244ef8fcfd1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050174830576478836, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: fd276bae-1824-4965-9483-55e716667ba2
+      objectReference: {fileID: 0}
     - target: {fileID: 8295542358791338146, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
       propertyPath: descriptionText
       value: 
@@ -52301,6 +52426,18 @@ PrefabInstance:
     - target: {fileID: 8295542358791338146, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
       propertyPath: descriptionWindow
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744094736391383186, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 728e5151-af4e-44e0-8e2e-acc7b42882f0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891316327337261601, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: 23f1cceb-db4a-4c1b-bb5f-d3c1abc54a30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8916508312228040367, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: itemSlotID
+      value: f0808be4-32a6-4de6-a0f7-9d1b63dec3d6
       objectReference: {fileID: 0}
     - target: {fileID: 9093201358767877488, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
       propertyPath: m_Name
@@ -52679,6 +52816,11 @@ MonoBehaviour:
 --- !u!224 &896567954 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3931667305881055040, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+  m_PrefabInstance: {fileID: 896567920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &899892843 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4552158119758982687, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
   m_PrefabInstance: {fileID: 896567920}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &901435791 stripped
@@ -129552,6 +129694,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &1866393277 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9121517384740541845, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+  m_PrefabInstance: {fileID: 896567920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1871213362
 GameObject:
   m_ObjectHideFlags: 0
@@ -146184,6 +146331,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef24f23393c445d83c3bb07e291e455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemList: {fileID: 1866393277}
+  deckList: {fileID: 899892843}
+  cardSetList: {fileID: 417561726}
 --- !u!1001 &733145944535868894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -147348,6 +147498,7 @@ SceneRoots:
   - {fileID: 1955889537}
   - {fileID: 662554831}
   - {fileID: 4598182359749373839}
+  - {fileID: 6723989374039271843}
   - {fileID: 711465379}
   - {fileID: 2039474404}
   - {fileID: 471994958}
@@ -147361,6 +147512,5 @@ SceneRoots:
   - {fileID: 162444204}
   - {fileID: 2117992249}
   - {fileID: 1483364684}
-  - {fileID: 6723989374039271843}
   - {fileID: 807472347}
   - {fileID: 1732561212}
