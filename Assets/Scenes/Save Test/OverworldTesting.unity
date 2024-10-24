@@ -6932,7 +6932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Cats 3
   sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
-  cardSetData: {fileID: 0}
+  cardSetData: {fileID: 11400000, guid: 93a68ce33da350a4c95448a9156b6763, type: 2}
 --- !u!4 &231655315
 Transform:
   m_ObjectHideFlags: 0
@@ -17301,7 +17301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Cats 2
   sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
-  cardSetData: {fileID: 0}
+  cardSetData: {fileID: 11400000, guid: 156e66a02aa2a5b4ebee7ac4ace2be87, type: 2}
 --- !u!1 &305754600 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4789186708790236404, guid: 97903a1a4e3f7c94e9fb7d0eb3615189, type: 3}
@@ -52285,12 +52285,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5787864794762114787, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2142827945}
+    - target: {fileID: 5787864794762114787, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HideInventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295542358791338146, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: descriptionText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295542358791338146, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+      propertyPath: descriptionWindow
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 9093201358767877488, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
       propertyPath: m_Name
       value: Inventory UI
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2180664925633971188, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
+    - {fileID: 8572875216459960694, guid: afb77ac68b7335f41bf6aef7c4fcd374, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -64151,7 +64168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Cats 1
   sprite: {fileID: 21300000, guid: 7b3be6a0b6d47cc48b74f192f8055a27, type: 3}
-  cardSetData: {fileID: 0}
+  cardSetData: {fileID: 11400000, guid: 66865fefba2b02a4dafc9b77cc8017ce, type: 2}
 --- !u!1 &1082206032
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
     [SerializeField] private float timeToWait = 0.5f;
@@ -14,15 +15,15 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
     private CardData cardData;
 
     private bool isMouseOver;
+    private Transform initialParent;
     
     private void Awake() {
-        cardData = GetComponent<CardData>();
+        cardData = GetComponent<CardDetail>().cardData;
+        initialParent = transform.parent;
     }
     
     private void Update() {
         if (PauseManager.Instance.IsOpen)
-            return;
-        if (cardData is not null && InventoryController.Instance.IsOpen())
             return;
         
         if (isMouseOver) {
@@ -40,10 +41,15 @@ public class ShowCardDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
     
     public void OnPointerEnter(PointerEventData eventData) {
         isMouseOver = true;
+        descriptionWindow.transform.SetParent(transform.parent.transform.parent);
+        Debug.Log(transform.parent.gameObject);
+        Debug.Log(descriptionWindow.GetComponent<LayoutElement>().ignoreLayout);
+        descriptionWindow.transform.SetAsLastSibling();
     }
 
     public void OnPointerExit(PointerEventData eventData) {
         isMouseOver = false;
+        descriptionWindow.transform.SetParent(initialParent);
     }
     
     private void MoveTextNearCursor() {
